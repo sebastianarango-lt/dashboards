@@ -248,25 +248,32 @@
 
   <!-- META ADS TAB -->
   <div class="tab-content" id="tab-meta">
-    <div class="kpi-grid" id="meta-kpis"></div>
+
+    <!-- KPI row: 6 cards -->
+    <div class="kpi-grid" id="meta-kpis" style="grid-template-columns:repeat(6,1fr);margin-bottom:20px"></div>
+
+    <!-- Studio breakdown -->
     <div class="chart-card">
-      <div class="chart-card-title">Active ads</div>
+      <div class="chart-card-title">Studio Breakdown</div>
       <div style="overflow-x:auto">
-        <table class="data-table" id="meta-ads-table">
-          <thead><tr><th>Ad</th><th class="num">Impressions</th><th class="num">Clicks</th><th class="num">CTR</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">CPL</th><th class="num">Status</th></tr></thead>
+        <table class="data-table" id="meta-studio-table">
+          <thead>
+            <tr>
+              <th>Studio</th>
+              <th class="num">Impressions</th>
+              <th class="num">Clicks</th>
+              <th class="num">CTR</th>
+              <th class="num">Spend</th>
+              <th class="num">Leads</th>
+              <th class="num">CPL</th>
+              <th class="num">Trials</th>
+            </tr>
+          </thead>
           <tbody></tbody>
         </table>
       </div>
     </div>
-  
 
-    <div class="chart-card" style="margin-top:20px">
-      <div class="chart-card-title" style="margin-bottom:12px">Brand Awareness</div>
-      <div class="placeholder-tab" style="min-height:120px">
-        <div class="placeholder-icon" style="font-size:24px">📢</div>
-        <div class="placeholder-sub">Reach, impressions, frequency and brand lift campaigns — coming soon</div>
-      </div>
-    </div>
   </div>
   <!-- end tab-meta -->
 
@@ -359,6 +366,15 @@ function switchTab(id, btn) {
   if (id === 'cpr')    { buildCPRTab(); checkCPRWarning(); }
   if (id === 'meta')   buildMetaTab();
   if (id === 'google') buildGoogleTab();
+  // Hide source filter for single-source tabs
+  const singleSourceTabs = ['meta', 'google', 'website', 'gbp', 'instagram'];
+  const srcDropEl  = document.getElementById('sourceDropdown');
+  const srcLabelEl = srcDropEl ? srcDropEl.previousElementSibling : null;
+  const srcSepEl   = srcLabelEl ? srcLabelEl.previousElementSibling : null;
+  const showSrc = !singleSourceTabs.includes(id);
+  if (srcDropEl)  srcDropEl.style.display  = showSrc ? '' : 'none';
+  if (srcLabelEl && srcLabelEl.tagName === 'SPAN')           srcLabelEl.style.display = showSrc ? '' : 'none';
+  if (srcSepEl   && srcSepEl.classList.contains('ctrl-sep')) srcSepEl.style.display   = showSrc ? '' : 'none';
 }
 
 
@@ -436,9 +452,13 @@ function applyFilters() {
   const daysToToday = (new Date() - to) / 86400000;
   const recentPartial = !fullMonths && daysToToday < 45;
 
-  if (typeof _partialPeriod !== 'undefined') {
-    _partialPeriod.py = !fullMonths;          // prev year: full months only, always
-    _partialPeriod.pp = !fullMonths;          // prev period: same — full months only
+  if (typeof _partialPeriod !=='undefined') {
+    const today = new Date();
+    const {ppFrom: _ppF, ppTo: _ppT} = computeWindows(from, to);
+    const currWithin90 = (today - from) / 86400000 <= 90 && (today - to) / 86400000 >= 0;
+    const ppWithin90   = (today - _ppF) / 86400000 <= 90;
+    _partialPeriod.py = !fullMonths;                              // prev year: full months only
+    _partialPeriod.pp = !fullMonths && !(currWithin90 && ppWithin90); // pp ok if both within 90d
   }
   const {ppFrom,ppTo,pyFrom,pyTo} = computeWindows(from,to);
   function filterAll(f,t) {
@@ -457,6 +477,14 @@ function applyFilters() {
   // Always build all tabs  all are rendered (just hidden via opacity/height)
   if (typeof checkCPRWarning === 'function') checkCPRWarning();
   buildStageTabs(curr, pp, py, fmtDate(ppFrom)+' – '+fmtDate(ppTo), fmtDate(pyFrom)+' – '+fmtDate(pyTo));
+  // Store filter windows globally for other tabs (e.g. Meta Ads)
+  window._metaFrom   = from;  window._metaTo   = to;
+  window._metaPpFrom = ppFrom; window._metaPpTo = ppTo;
+  window._metaPyFrom = pyFrom; window._metaPyTo = pyTo;
+  window._metaPpLabel = fmtDate(ppFrom)+' – '+fmtDate(ppTo);
+  window._metaPyLabel = fmtDate(pyFrom)+' – '+fmtDate(pyTo);
+  // Rebuild Meta tab if it's currently visible
+  if (document.getElementById('tab-meta')?.classList.contains('active')) buildMetaTab();
 }
 
 
@@ -720,13 +748,128 @@ function buildCPRTab(){
 function toggleCPRds(btn,i){if(!cprChart)return;const ds=cprChart.data.datasets[i];ds.hidden=!ds.hidden;btn.classList.toggle('on');const cols=['#00A3E0','#00FFC2','#DDFF00','#888'];if(btn.classList.contains('on')){btn.style.background=cols[i];btn.style.borderColor=cols[i];btn.style.color='#000';}else{btn.style.background='#f4f9fd';btn.style.borderColor='#c0d4df';btn.style.color='#5a7a8a';}cprChart.update();}
 
 
-function buildMetaTab(){ const el=document.getElementById('meta-kpis');if(!el){return;}
-  el.innerHTML=kpiCard('Total Spend',18420,16800,12300,v=>'$'+v.toLocaleString())+kpiCard('Impressions','1.24M',null,null,v=>v)+kpiCard('Clicks',38450,34200,24100)+kpiCard('Cost per Lead',12.40,13.20,16.80,v=>'$'+v.toFixed(2));
-  const ads=[{name:'Summer Sweat  Video',type:'Video',status:'active',imp:'284K',clk:'9,200',ctr:'3.24%',spend:'$4,120',leads:'332',cpl:'$12.41'},{name:'Transform in 45  Carousel',type:'Carousel',status:'active',imp:'196K',clk:'6,800',ctr:'3.47%',spend:'$3,850',leads:'298',cpl:'$12.92'},{name:'New Studio Open  Image',type:'Image',status:'active',imp:'152K',clk:'4,900',ctr:'3.22%',spend:'$2,980',leads:'241',cpl:'$12.37'},{name:'Free Trial Offer',type:'Image',status:'active',imp:'118K',clk:'3,750',ctr:'3.18%',spend:'$2,310',leads:'187',cpl:'$12.35'},{name:'Member Testimonial  Video',type:'Video',status:'paused',imp:'89K',clk:'2,400',ctr:'2.70%',spend:'$1,960',leads:'142',cpl:'$13.80'},{name:'Referral Program',type:'Carousel',status:'paused',imp:'72K',clk:'1,980',ctr:'2.75%',spend:'$1,560',leads:'118',cpl:'$13.22'},{name:'HIIT Challenge  Reel',type:'Video',status:'active',imp:'65K',clk:'2,100',ctr:'3.23%',spend:'$1,640',leads:'131',cpl:'$12.52'}];
-  const tb=document.querySelector('#meta-ads-table tbody');if(!tb)return;
-  tb.innerHTML=ads.map(a=>'<tr><td><div style="display:flex;align-items:center;gap:10px"><div class="ad-thumb">'+(a.type==='Video'?'&#9654;':'&#128444;')+'</div><div><div class="ad-title">'+a.name+'</div><div class="pill-bar"><span class="pill">'+a.type+'</span></div></div></div></td><td class="num">'+a.imp+'</td><td class="num">'+a.clk+'</td><td class="num">'+a.ctr+'</td><td class="num">'+a.spend+'</td><td class="num">'+a.leads+'</td><td class="num">'+a.cpl+'</td><td><span class="badge '+a.status+'">'+a.status+'</span></td></tr>').join('');
+
+
+
+// -- META ADS ----------------------------------------------------------
+let META_ADS_RAW = null;
+
+async function ensureMetaAds() {
+  if (META_ADS_RAW) return META_ADS_RAW;
+  try {
+    const res = await fetch('paid-ads-data.json?_=' + Date.now());
+    META_ADS_RAW = await res.json();
+  } catch(e) {
+    console.warn('paid-ads-data.json not available:', e);
+    META_ADS_RAW = null;
+  }
+  return META_ADS_RAW;
 }
 
+async function buildMetaTab() {
+  const data = await ensureMetaAds();
+  const kpisEl = document.getElementById('meta-kpis');
+  if (!kpisEl) return;
+
+  if (!data) {
+    kpisEl.innerHTML = '<div style="color:#888;font-family:\'Open Sans\';padding:20px;grid-column:1/-1">No paid-ads-data.json found.</div>';
+    return;
+  }
+
+  // ---- Read date range directly from the filter inputs ----
+  const fromStr = document.getElementById('fFrom')?.value;
+  const toStr   = document.getElementById('fTo')?.value;
+  if (!fromStr || !toStr) return;
+  const from  = new Date(fromStr + 'T00:00:00Z');
+  const to    = new Date(toStr   + 'T23:59:59Z');
+  const fTime = from.getTime();
+  const tTime = to.getTime();
+
+  // ---- Build code→name map ----
+  const codeToName = {};
+  for (const camp of Object.values(data.campaigns || {})) {
+    for (const s of (camp.studios || [])) {
+      if (s.code && s.name) codeToName[s.code] = s.name;
+    }
+  }
+
+  const allCamps = Object.values(data.campaigns || {})
+    .sort((a, b) => a.date_start.localeCompare(b.date_start));
+
+  // ---- Aggregate totals for selected period ----
+  let spend=0, impressions=0, clicks=0, leads=0, trials=0, hasData=false;
+  const studioMap = {};
+
+  for (const camp of allCamps) {
+    for (const row of ((camp.daily_series || {}).by_studio || [])) {
+      const d = new Date(row.date + 'T00:00:00Z').getTime();
+      if (d < fTime || d > tTime) continue;
+      hasData = true;
+      spend       += row.spend       || 0;
+      impressions += row.impressions || 0;
+      clicks      += row.clicks      || 0;
+      leads       += row.leads       || 0;
+      trials      += row.trials      || 0;
+      const code = row.studio_code;
+      if (!studioMap[code]) studioMap[code] = { spend:0, impressions:0, clicks:0, leads:0, trials:0 };
+      studioMap[code].spend       += row.spend       || 0;
+      studioMap[code].impressions += row.impressions || 0;
+      studioMap[code].clicks      += row.clicks      || 0;
+      studioMap[code].leads       += row.leads       || 0;
+      studioMap[code].trials      += row.trials      || 0;
+    }
+  }
+
+  const stTb = document.querySelector('#meta-studio-table tbody');
+
+  if (!hasData) {
+    kpisEl.innerHTML = '<div style="color:#888;padding:20px;grid-column:1/-1">No Meta Ads data for selected period.</div>';
+    if (stTb) stTb.innerHTML = '<tr><td colspan="8" style="color:#8aabbf;text-align:center;padding:20px">No data for selected period.</td></tr>';
+    return;
+  }
+
+  const f$  = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+  const f$2 = v => '$' + Number(v).toFixed(2);
+  const fN  = v => Number(v).toLocaleString();
+  const fK  = v => Number(v) >= 1000 ? (Number(v)/1000).toFixed(0) + 'K' : fN(v);
+  const cpl = leads > 0 ? spend / leads : 0;
+
+  // ---- KPI cards — no comparisons ----
+  kpisEl.innerHTML =
+    kpiCard('Spend',        spend,        null, null, f$)  +
+    kpiCard('Impressions',  impressions,  null, null, v=>fK(v)) +
+    kpiCard('Clicks',       clicks,       null, null, v=>fN(v)) +
+    kpiCard('Leads',        leads,        null, null, v=>v) +
+    kpiCard('Trials',       trials,       null, null, v=>v) +
+    kpiCard('Cost / Lead',  cpl,          null, null, f$2);
+
+  // ---- Studio table ----
+  const studioRows = Object.entries(studioMap).map(([code, s]) => ({
+    name:        codeToName[code] || code,
+    impressions: s.impressions,
+    clicks:      s.clicks,
+    ctr:         s.impressions > 0 ? s.clicks / s.impressions * 100 : 0,
+    spend:       s.spend,
+    leads:       s.leads,
+    cpl:         s.leads > 0 ? s.spend / s.leads : 0,
+    trials:      s.trials,
+  })).sort((a, b) => b.leads - a.leads);
+
+  if (stTb) {
+    stTb.innerHTML = studioRows.map(s =>
+      `<tr>
+        <td>${s.name}</td>
+        <td class="num">${fK(s.impressions)}</td>
+        <td class="num">${fN(s.clicks)}</td>
+        <td class="num">${s.ctr.toFixed(2)}%</td>
+        <td class="num">${f$(s.spend)}</td>
+        <td class="num">${s.leads}</td>
+        <td class="num">${s.cpl > 0 ? f$2(s.cpl) : '<span style="color:#8aabbf">—</span>'}</td>
+        <td class="num">${s.trials}</td>
+      </tr>`
+    ).join('');
+  }
+}
 
 function buildGoogleTab(){
   const el=document.getElementById('google-kpis');if(!el)return;
@@ -806,6 +949,8 @@ function checkCPRWarning() {
     warn.style.display = 'none';
   }
 }
+
+
 
 loadData();
 </script>
