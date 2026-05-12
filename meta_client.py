@@ -131,6 +131,7 @@ class MetaClient:
         # bodies/titles/descriptions (que son enormes y no nos sirven).
         fields = (
             "id,object_type,video_id,image_hash,thumbnail_url,"
+            "effective_object_story_id,permalink_url,"
             "asset_feed_spec{videos,images}"
         )
         chunk_size = 50

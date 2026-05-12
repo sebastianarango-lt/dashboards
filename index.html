@@ -83,11 +83,9 @@
 
 <div class="main">
   <div class="tab-content active" id="tab-summary">
-    <div class="placeholder-tab">
-      <div class="placeholder-icon">📊</div>
-      <div class="placeholder-title">Summary</div>
-      <div class="placeholder-sub">High-level overview across all channels — coming soon</div>
-    </div>
+    <div class="kpi-grid" id="summary-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px"></div>
+    <div class="kpi-grid" id="summary-spend-kpis" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px"></div>
+    <div class="kpi-grid" id="summary-cpr-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px"></div>
   </div>
 
   <div class="tab-content" id="tab-funnel">
@@ -235,12 +233,17 @@
     <div id="cpr-spend-breakdown" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px"></div>
     <div class="kpi-grid" id="cpr-kpis"></div>
     <div class="chart-card">
-      <div class="chart-card-title">Cost per result  over time</div>
-      <div class="toggle-group" id="cpr-toggles">
-        <button class="tog-btn on" data-ds="0" onclick="toggleCPRds(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Blended CPL</button>
-        <button class="tog-btn on" data-ds="1" onclick="toggleCPRds(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>Blended CPFT</button>
-        <button class="tog-btn on" data-ds="2" onclick="toggleCPRds(this,2)" style="border-color:#DDFF00;background:#DDFF00;color:#000"><span class="dot" style="background:#000"></span>Blended CPA</button>
-
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+        <div class="toggle-group" id="cpr-toggles" style="margin-bottom:0">
+          <button class="tog-btn on" data-ds="0" onclick="toggleCPRds(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Blended CPL</button>
+          <button class="tog-btn on" data-ds="1" onclick="toggleCPRds(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>Blended CPFT</button>
+          <button class="tog-btn on" data-ds="2" onclick="toggleCPRds(this,2)" style="border-color:#DDFF00;background:#DDFF00;color:#000"><span class="dot" style="background:#000"></span>Blended CPA</button>
+        </div>
+        <div class="gran-group">
+          <button class="gran-btn" id="cprGranDaily"   onclick="setCPRGran('daily')">Daily</button>
+          <button class="gran-btn" id="cprGranWeekly"  onclick="setCPRGran('weekly')">Weekly</button>
+          <button class="gran-btn active" id="cprGranMonthly" onclick="setCPRGran('monthly')">Monthly</button>
+        </div>
       </div>
       <div style="position:relative;width:100%;height:260px"><canvas id="cprChart" role="img" aria-label="Line chart of cost per result over time"></canvas></div>
     </div>
@@ -519,6 +522,7 @@ function applyFilters() {
   buildMetaTab();
   buildGoogleTab();
   buildCPRTab();
+  buildSummaryTab();
 }
 
 
@@ -689,12 +693,13 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     const {dailyFrom,dailyTo} = getQuarterBounds();
     const from = new Date(document.getElementById('fFrom').value+'T00:00:00Z');
     const to   = new Date(document.getElementById('fTo').value+'T23:59:59Z');
-    const hasDaily = from <= dailyTo && to >= dailyFrom;
-    const daysDiff = (to - from) / 86400000;
+    const hasDaily  = from <= dailyTo && to >= dailyFrom;
+    const hasWeekly = from >= dailyFrom;
+    const daysDiff  = (to - from) / 86400000;
     const bd = document.getElementById('gran-daily-'+id);
     const bw = document.getElementById('gran-weekly-'+id);
     if(bd) bd.disabled = !hasDaily;
-    if(bw) bw.disabled = daysDiff > 366;
+    if(bw) bw.disabled = !hasWeekly || daysDiff > 366;
     // Auto-downgrade granularity WITHOUT recursive call
     if(AREA_GRAN[id]==='daily'  && bd && bd.disabled) {
       AREA_GRAN[id]='weekly';
@@ -713,6 +718,8 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
 
 
 function setAreaGran(canvasId, gran) {
+  const btn = document.getElementById('gran-'+gran+'-'+canvasId);
+  if (btn && btn.disabled) return;
   AREA_GRAN[canvasId] = gran;
   ['daily','weekly','monthly'].forEach(g => {
     const btn = document.getElementById('gran-'+g+'-'+canvasId);
@@ -724,6 +731,7 @@ function setAreaGran(canvasId, gran) {
 
 const CPR_COSTS_ACTIVE={google:true,meta:true,leadteam:true};
 let cprChart=null;
+let CPR_GRAN='monthly';
 
 
 function toggleCPRCost(btn){
@@ -734,6 +742,175 @@ function toggleCPRCost(btn){
   checkCPRWarning();
 }
 
+
+function setCPRGran(gran) {
+  const btn = document.getElementById('cprGran'+gran.charAt(0).toUpperCase()+gran.slice(1));
+  if (btn && btn.disabled) return;
+  CPR_GRAN = gran;
+  ['daily','weekly','monthly'].forEach(g => {
+    const b = document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));
+    if (b) b.classList.toggle('active', g === gran);
+  });
+  buildCPRTab();
+}
+function updateCPRGranButtons() {
+  const fromStr = document.getElementById('fFrom')?.value;
+  const toStr   = document.getElementById('fTo')?.value;
+  if (!fromStr || !toStr) return;
+  const from = new Date(fromStr+'T00:00:00Z'), to = new Date(toStr+'T23:59:59Z');
+  const {dailyFrom,dailyTo} = getQuarterBounds();
+  const hasDaily  = from <= dailyTo && to >= dailyFrom;
+  const hasWeekly = from >= dailyFrom;
+  const daysDiff  = (to-from)/86400000;
+  const btnD = document.getElementById('cprGranDaily');
+  const btnW = document.getElementById('cprGranWeekly');
+  if (btnD) btnD.disabled = !hasDaily;
+  if (btnW) btnW.disabled = !hasWeekly || daysDiff > 366;
+  if (CPR_GRAN==='daily'  && btnD && btnD.disabled) { CPR_GRAN='weekly';  ['daily','weekly','monthly'].forEach(g=>{const b=document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));if(b)b.classList.toggle('active',g==='weekly');}); }
+  if (CPR_GRAN==='weekly' && btnW && btnW.disabled) { CPR_GRAN='monthly'; ['daily','weekly','monthly'].forEach(g=>{const b=document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));if(b)b.classList.toggle('active',g==='monthly');}); }
+}
+function buildSummaryTab() {
+  const funnelEl = document.getElementById('summary-kpis');
+  const spendEl  = document.getElementById('summary-spend-kpis');
+  const cprEl    = document.getElementById('summary-cpr-kpis');
+  if (!funnelEl) return;
+
+  const funnelCurr = window._cprCurr || null;
+  const funnelPp   = window._cprPp   || null;
+  const funnelPy   = window._cprPy   || null;
+  if (!funnelCurr) return;
+
+  function fsum(fi) {
+    if (!fi) return {leads:0, ft:0, mem:0};
+    const rows = [...(fi.daily||[]),...(fi.monthly||[])];
+    return {
+      leads: rows.reduce((s,r)=>s+(r.signups||0),0),
+      ft:    rows.reduce((s,r)=>s+(r.first_visits||0),0),
+      mem:   rows.reduce((s,r)=>s+(r.first_activations||0),0),
+    };
+  }
+  const curr = fsum(funnelCurr), pp = fsum(funnelPp), py = fsum(funnelPy);
+
+  funnelEl.innerHTML =
+    kpiCard('Leads',        curr.leads, pp.leads||null, py.leads||null) +
+    kpiCard('First Timers', curr.ft,    pp.ft||null,    py.ft||null)    +
+    kpiCard('New Members',  curr.mem,   pp.mem||null,   py.mem||null);
+
+  if (!spendEl) return;
+  const from   = window._metaFrom   || null;
+  const to     = window._metaTo     || null;
+  const ppFrom = window._metaPpFrom || null;
+  const ppTo   = window._metaPpTo   || null;
+  const pyFrom = window._metaPyFrom || null;
+  const pyTo   = window._metaPyTo   || null;
+  const selStudios = window._cprStudios || [];
+  if (!from || !to) return;
+
+  const allStudios  = selStudios.length > 0 ? selStudios : (RAW ? RAW.studios : []);
+  const studioCount = allStudios.length || 1;
+  const LTFEE = 1200;
+
+  function ltFor(f,t) {
+    if(!f||!t) return 0;
+    const days=(t.getTime()-f.getTime())/86400000+1;
+    return studioCount*LTFEE*(days/30.4375);
+  }
+  function gFor(f,t) {
+    if(!f||!t||!GOOGLE_ADS_RAW) return 0;
+    const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
+    const dM=new Set((GOOGLE_ADS_RAW.daily||[]).map(r=>r.date.slice(0,7)));
+    const rows=[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[]).filter(r=>!dM.has(r.month.slice(0,7)))];
+    return rows.reduce((s,r)=>{
+      const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();
+      if(d<fT||d>tT) return s;
+      if(bySt&&!selStudios.includes(r.studio)) return s;
+      return s+(r.spend||0);
+    },0);
+  }
+  function mFor(f,t) {
+    if(!f||!t||!META_ADS_RAW) return 0;
+    const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
+    const liveCovered=new Set();
+    let tot=0;
+    for(const camp of Object.values(META_ADS_RAW.campaigns||{})){
+      for(const row of((camp.daily_series||{}).by_studio||[])){
+        const d=new Date(row.date+'T00:00:00Z').getTime();
+        if(d<fT||d>tT) continue;
+        const nm=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+        if(bySt&&!selStudios.includes(nm)) continue;
+        tot+=row.spend||0;
+        liveCovered.add(row.studio_code+'|'+row.date.slice(0,7));
+      }
+    }
+    for(const row of(META_ADS_RAW.monthly_spend||[])){
+      const d=new Date(row.month+'T00:00:00Z').getTime();
+      if(d<fT||d>tT) continue;
+      const nm=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+      if(bySt&&!selStudios.includes(nm)) continue;
+      if(liveCovered.has(row.studio_code+'|'+row.month.slice(0,7))) continue;
+      tot+=row.spend||0;
+    }
+    return tot;
+  }
+
+  const gCurr=gFor(from,to);
+  const gPp=gFor(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const gPy=gFor(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  const mCurr=mFor(from,to);
+  const mPp=mFor(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const mPy=mFor(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  const lCurr=ltFor(from,to);
+  const lPp=ltFor(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const lPy=ltFor(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  const tCurr=gCurr+mCurr+lCurr, tPp=gPp+mPp+lPp, tPy=gPy+mPy+lPy;
+
+  const f$  = v => '$'+Math.round(v).toLocaleString('en-US');
+  const f$2 = v => '$'+Number(v).toFixed(2);
+
+  // Total spend card spanning full width with colour-coded breakdown inside
+  const breakdown =
+    '<div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;font-size:11px">' +
+    '<span style="color:#34A853;font-weight:600">Google ' + f$(gCurr) + '</span>' +
+    '<span style="color:#1877F2;font-weight:600">Meta '   + f$(mCurr) + '</span>' +
+    '<span style="color:#FF6B35;font-weight:600">LT Fee ' + f$(lCurr) + '</span>' +
+    '</div>';
+  const dppT = tPp>0 ? (tCurr-tPp)/tPp*100 : null;
+  const dpyT = tPy>0 ? (tCurr-tPy)/tPy*100 : null;
+  const ppTH = _partialPeriod.pp
+    ? '<div class="kpi-card-delta neu">&#9651; partial period</div>'
+    : (dppT!=null ? '<div class="kpi-card-delta '+(dppT>=0?'pos':'neg')+'">'+(dppT>=0?'&#9650;':'&#9660;')+' '+Math.abs(dppT).toFixed(1)+'% prev period</div>' : '');
+  const pyTH = _partialPeriod.py
+    ? '<div class="kpi-card-delta neu">&#9651; partial period</div>'
+    : (dpyT!=null ? '<div class="kpi-card-delta '+(dpyT>=0?'pos':'neg')+'">'+(dpyT>=0?'&#9650;':'&#9660;')+' '+Math.abs(dpyT).toFixed(1)+'% prev year</div>' : '');
+
+  const totalCard =
+    '<div class="kpi-card" style="grid-column:span 4">' +
+    '<div class="kpi-card-label">Total Mkt Spend</div>' +
+    '<div class="kpi-card-val">' + f$(tCurr) + '</div>' +
+    breakdown + ppTH + pyTH +
+    '</div>';
+
+  spendEl.innerHTML = totalCard +
+    kpiCard('Google Ads', gCurr, gPp||null, gPy||null, f$) +
+    kpiCard('Meta Ads',   mCurr, mPp||null, mPy||null, f$) +
+    kpiCard('Leadteam Fee', lCurr, lPp||null, lPy||null, f$);
+
+  if (!cprEl) return;
+  const cpl_curr  = curr.leads>0 ? tCurr/curr.leads : 0;
+  const cpl_pp    = pp.leads>0   ? tPp/pp.leads     : null;
+  const cpl_py    = py.leads>0   ? tPy/py.leads     : null;
+  const cpft_curr = curr.ft>0    ? tCurr/curr.ft    : 0;
+  const cpft_pp   = pp.ft>0      ? tPp/pp.ft        : null;
+  const cpft_py   = py.ft>0      ? tPy/py.ft        : null;
+  const cpa_curr  = curr.mem>0   ? tCurr/curr.mem   : 0;
+  const cpa_pp    = pp.mem>0     ? tPp/pp.mem       : null;
+  const cpa_py    = py.mem>0     ? tPy/py.mem       : null;
+
+  cprEl.innerHTML =
+    cprKpiCard('Blended CPL',  cpl_curr,  cpl_pp,  cpl_py,  f$2) +
+    cprKpiCard('Blended CPFT', cpft_curr, cpft_pp, cpft_py, f$2) +
+    cprKpiCard('Blended CPA',  cpa_curr,  cpa_pp,  cpa_py,  f$2);
+}
 
 function buildCPRTab() {
   const el = document.getElementById('cpr-kpis');
@@ -752,7 +929,7 @@ function buildCPRTab() {
   const ltCurr=leadteamForRange(from,to);
   const ltPp=leadteamForRange(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
   const ltPy=leadteamForRange(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
-  function sumGoogleSpend(f,t){if(!f||!t||!GOOGLE_ADS_RAW)return 0;const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;return[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[])].reduce((s,r)=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return s;if(bySt&&!selStudios.includes(r.studio))return s;return s+(r.spend||0);},0);}
+  function sumGoogleSpend(f,t){if(!f||!t||!GOOGLE_ADS_RAW)return 0;const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;const dailyMonths=new Set((GOOGLE_ADS_RAW.daily||[]).map(r=>r.date.slice(0,7)));const rows=[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];return rows.reduce((s,r)=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return s;if(bySt&&!selStudios.includes(r.studio))return s;return s+(r.spend||0);},0);}
   function sumMetaSpend(f,t){
     if(!f||!t||!META_ADS_RAW)return 0;
     const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
@@ -796,7 +973,13 @@ function buildCPRTab() {
   if(bdEl){const parts=[];const bLabels={google:'Google Ads',meta:'Meta Ads',leadteam:'Leadteam Fee'};const bColors={google:'#34A853',meta:'#1877F2',leadteam:'#FF6B35'};let first=true;['google','meta','leadteam'].forEach(k=>{if(!CPR_COSTS_ACTIVE[k])return;const v=spCurr[k],vPp=spPp[k],vPy=spPy[k];if(!first)parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">+</span>');const dpp=vPp>0?((v-vPp)/vPp*100).toFixed(1):null,dpy=vPy>0?((v-vPy)/vPy*100).toFixed(1):null;const ppH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpp!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpp)+'% prev period</div>':'');const pyH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpy!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpy)+'% prev year</div>':'');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid '+bColors[k]+'"><div class="kpi-card-label">'+bLabels[k]+'</div><div class="kpi-card-val">'+f$(v)+'</div>'+ppH+pyH+'</div>');first=false;});if(parts.length>0){const totV=spCurr.total,totPp=spPp.total,totPy=spPy.total;const dppT=totPp>0?((totV-totPp)/totPp*100).toFixed(1):null,dpyT=totPy>0?((totV-totPy)/totPy*100).toFixed(1):null;const ppTH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dppT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dppT)+'% prev period</div>':'');const pyTH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpyT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpyT)+'% prev year</div>':'');parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">=</span>');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid #1a1a2e"><div class="kpi-card-label">Total Spend</div><div class="kpi-card-val">'+f$(totV)+'</div>'+ppTH+pyTH+'</div>');}bdEl.innerHTML=parts.join('');}
   if(cprChart){cprChart.destroy();cprChart=null;}
   const ctx=document.getElementById('cprChart');if(!ctx)return;
-  const allGRows=GOOGLE_ADS_RAW?[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[])]:[];
+  // Build Google rows: use daily where available, monthly only for months with no daily data
+  const allGRows = (() => {
+    if (!GOOGLE_ADS_RAW) return [];
+    const dailyMonths = new Set((GOOGLE_ADS_RAW.daily||[]).map(r => r.date.slice(0,7)));
+    const monthly = (GOOGLE_ADS_RAW.monthly||[]).filter(r => !dailyMonths.has(r.month.slice(0,7)));
+    return [...(GOOGLE_ADS_RAW.daily||[]), ...monthly];
+  })();
   const byStudio=selStudios.length>0;
   const allMetaRows=[];
   const metaLiveCovered=new Set();
@@ -808,24 +991,105 @@ function buildCPRTab() {
         metaLiveCovered.add(row.studio_code+'|'+row.date.slice(0,7));
       }
     }
-    // Append baked historical monthly spend for months not covered by live data
+    // Distribute monthly baked spend evenly across each day so weekly/daily buckets get proportional spend
     for(const row of(META_ADS_RAW.monthly_spend||[])){
       if(metaLiveCovered.has(row.studio_code+'|'+row.month.slice(0,7)))continue;
       const name=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
-      allMetaRows.push({date:row.month,studio:name,spend:row.spend||0});
+      const mStart=new Date(row.month+'T00:00:00Z');
+      const daysInMonth=new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth()+1,0)).getUTCDate();
+      const dailySpend=row.spend/daysInMonth;
+      for(let i=0;i<daysInMonth;i++){
+        const day=new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth(),i+1));
+        allMetaRows.push({date:day.toISOString().slice(0,10),studio:name,spend:dailySpend});
+      }
     }
   }
-  const sfRows=[...(funnelCurr.daily||[]),...(funnelCurr.monthly||[])];
-  const buckets={};const mk=s=>(s||'x').slice(0,7)+'-01';
-  for(const r of allGRows){const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fTime||d>tTime)continue;if(byStudio&&!selStudios.includes(r.studio))continue;const key=mk(r.date||r.month);if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0};buckets[key].google+=r.spend||0;}
-  for(const r of allMetaRows){const d=new Date(r.date+'T00:00:00Z').getTime();if(d<fTime||d>tTime)continue;if(byStudio&&!selStudios.includes(r.studio))continue;const key=mk(r.date);if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0};buckets[key].meta+=r.spend||0;}
-  for(const r of sfRows){const key=mk(r.date||r.month);if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0};buckets[key].leads+=r.signups||0;buckets[key].ft+=r.first_visits||0;buckets[key].mem+=r.first_activations||0;}
-  const sortedMonths=Object.keys(buckets).sort();
-  const dispLabels=sortedMonths.map(m=>{const d=new Date(m+'T00:00:00Z');return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});});
-  function trendSpend(key){let s=0;if(CPR_COSTS_ACTIVE.google)s+=buckets[key].google;if(CPR_COSTS_ACTIVE.meta)s+=buckets[key].meta;if(CPR_COSTS_ACTIVE.leadteam)s+=studioCount*LEADTEAM_PER_STUDIO_MONTH;return s;}
-  const cplData=sortedMonths.map(k=>{const s=trendSpend(k),l=buckets[k].leads;return l>0?Math.round(s/l*100)/100:null;});
-  const cpftData=sortedMonths.map(k=>{const s=trendSpend(k),f=buckets[k].ft;return f>0?Math.round(s/f*100)/100:null;});
-  const cpaData=sortedMonths.map(k=>{const s=trendSpend(k),m=buckets[k].mem;return m>0?Math.round(s/m*100)/100:null;});
+  updateCPRGranButtons();
+  const sfRows = [...(funnelCurr.daily||[]),...(funnelCurr.monthly||[])];
+  const buckets = {};
+  function cprKey(ds) {
+    const d = new Date(ds+'T00:00:00Z');
+    if (CPR_GRAN==='daily') return ds.slice(0,10);
+    if (CPR_GRAN==='weekly') { const day=d.getUTCDay()||7; const mon=new Date(d); mon.setUTCDate(d.getUTCDate()-(day-1)); return mon.toISOString().slice(0,10); }
+    return ds.slice(0,7)+'-01';
+  }
+  // Helper: distribute a monthly record evenly across all days in the month
+  // then bucket each day — prevents entire month spend/funnel landing on the 1st
+  function addMonthlyAsDays(dateStr, addFn) {
+    const mStart = new Date(dateStr.slice(0,7)+'-01T00:00:00Z');
+    const dInM   = new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth()+1,0)).getUTCDate();
+    for (let i=0; i<dInM; i++) {
+      const day = new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth(),i+1));
+      const ds  = day.toISOString().slice(0,10);
+      const d   = day.getTime();
+      if (d < fTime || d > tTime) continue;
+      addFn(cprKey(ds), 1/dInM);
+    }
+  }
+
+  for (const r of allGRows) {
+    const ds = r.date || r.month;
+    const isMonthly = !r.date && !!r.month;
+    const d  = new Date(ds+'T00:00:00Z').getTime();
+    if (d < fTime || d > tTime) continue;
+    if (byStudio && !selStudios.includes(r.studio)) continue;
+    if (isMonthly && CPR_GRAN !== 'monthly') {
+      addMonthlyAsDays(ds, (key, frac) => { if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].google+=r.spend*frac; });
+    } else {
+      const key=cprKey(ds); if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].google+=r.spend||0;
+    }
+  }
+  for (const r of allMetaRows) {
+    const d = new Date(r.date+'T00:00:00Z').getTime();
+    if (d < fTime || d > tTime) continue;
+    if (byStudio && !selStudios.includes(r.studio)) continue;
+    const key=cprKey(r.date); if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].meta+=r.spend||0;
+  }
+  for (const r of sfRows) {
+    const ds = r.date || r.month;
+    const isMonthly = !r.date && !!r.month;
+    if (isMonthly && CPR_GRAN !== 'monthly') {
+      addMonthlyAsDays(ds, (key, frac) => { if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].leads+=(r.signups||0)*frac; buckets[key].ft+=(r.first_visits||0)*frac; buckets[key].mem+=(r.first_activations||0)*frac; });
+    } else {
+      const key=cprKey(ds); if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].leads+=r.signups||0; buckets[key].ft+=r.first_visits||0; buckets[key].mem+=r.first_activations||0;
+    }
+  }
+  const sortedKeys = Object.keys(buckets).sort();
+  const dispLabels = sortedKeys.map(k => {
+    const d=new Date(k+'T00:00:00Z');
+    if(CPR_GRAN==='daily')  return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+    if(CPR_GRAN==='weekly') return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+    return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});
+  });
+  // Flat daily LT rate: 200/studio/month * 12 months / 365 days
+  const LT_DAILY_RATE = studioCount * LEADTEAM_PER_STUDIO_MONTH * 12 / 365;
+
+  function bucketDays(key) {
+    // Count how many days this bucket covers that fall within [from, to]
+    const kStart = new Date(key + 'T00:00:00Z');
+    let kEnd;
+    if (CPR_GRAN === 'monthly') {
+      kEnd = new Date(Date.UTC(kStart.getUTCFullYear(), kStart.getUTCMonth()+1, 0, 23, 59, 59));
+    } else if (CPR_GRAN === 'weekly') {
+      kEnd = new Date(kStart.getTime() + 6*86400000);
+    } else {
+      kEnd = new Date(kStart.getTime() + 86400000 - 1);
+    }
+    const clampStart = Math.max(fTime, kStart.getTime());
+    const clampEnd   = Math.min(tTime,  kEnd.getTime());
+    return clampEnd >= clampStart ? (clampEnd - clampStart) / 86400000 + 1 : 0;
+  }
+
+  function trendSpend(key) {
+    let s = 0;
+    if (CPR_COSTS_ACTIVE.google)   s += buckets[key].google;
+    if (CPR_COSTS_ACTIVE.meta)     s += buckets[key].meta;
+    if (CPR_COSTS_ACTIVE.leadteam) s += LT_DAILY_RATE * bucketDays(key);
+    return s;
+  }
+  const cplData=sortedKeys.map(k=>{const s=trendSpend(k),l=buckets[k].leads;return l>0?Math.round(s/l*100)/100:null;});
+  const cpftData=sortedKeys.map(k=>{const s=trendSpend(k),f=buckets[k].ft;return f>0?Math.round(s/f*100)/100:null;});
+  const cpaData=sortedKeys.map(k=>{const s=trendSpend(k),m=buckets[k].mem;return m>0?Math.round(s/m*100)/100:null;});
   cprChart=new Chart(ctx,{type:'line',data:{labels:dispLabels,datasets:[{label:'Blended CPL',data:cplData,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true},{label:'Blended CPFT',data:cpftData,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true},{label:'Blended CPA',data:cpaData,borderColor:'#DDFF00',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>c.dataset.label+': $'+(c.parsed.y!=null?c.parsed.y.toLocaleString():'-')}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',callback:v=>'$'+v},position:'left'}}}});
 }
 
@@ -1093,7 +1357,7 @@ function buildGoogleTab() {
   const selSt=new Set(typeof getSelected==='function'?getSelected('studioMenu'):[]);const fbSt=selSt.size>0;
   function fgr(rows,f,t){if(!rows||!rows.length)return[];const fT=f?f.getTime():0,tT=t?t.getTime():Infinity;return rows.filter(r=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return false;if(fbSt&&!selSt.has(r.studio))return false;return true;});}
   function sg(rows){let sp=0,im=0,cl=0,le=0,ca=0,di=0,op=0;for(const r of rows){sp+=r.spend||0;im+=r.impressions||0;cl+=r.clicks||0;le+=r.leads||0;ca+=r.calls||0;di+=r.directions||0;op+=r.opportunities||0;}return{spend:Math.round(sp*100)/100,impressions:im,clicks:cl,leads:le,calls:ca,directions:di,opportunities:Math.round(op*100)/100};}
-  const allRows=[...(data.daily||[]),...(data.monthly||[])];
+  const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];
   const curr=sg(fgr(allRows,from,to));
   const pp=sg(fgr(allRows,ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null));
   const py=sg(fgr(allRows,pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null));
@@ -1110,7 +1374,7 @@ function buildGoogleTab() {
   const assets=data.assets||{};_buildGoogleAssets(assets.headlines||[],assets.descriptions||[]);
 }
 function _clearGoogleTrend(){if(googleTrendChart){googleTrendChart.destroy();googleTrendChart=null;}}
-function _buildGoogleTrend(data,from,to,fbSt,selSt){_clearGoogleTrend();const ctx=document.getElementById('googleTrendChart');if(!ctx)return;const allRows=[...(data.daily||[]),...(data.monthly||[])];const fTime=from.getTime(),tTime=to.getTime(),rDays=(tTime-fTime)/86400000;const bkts={};for(const r of allRows){const d=new Date((r.date||r.month)+'T00:00:00Z');if(d.getTime()<fTime||d.getTime()>tTime)continue;if(fbSt&&!selSt.has(r.studio))continue;let lbl;if(rDays<=62){lbl=r.date||r.month;}else if(rDays<=180){const day=d.getUTCDay();const mon=new Date(d);mon.setUTCDate(d.getUTCDate()-((day+6)%7));lbl=mon.toISOString().slice(0,10);}else{lbl=(r.date||r.month).slice(0,7)+'-01';}if(!bkts[lbl])bkts[lbl]={spend:0,opportunities:0};bkts[lbl].spend+=r.spend||0;bkts[lbl].opportunities+=r.opportunities||0;}const lbls=Object.keys(bkts).sort();const spends=lbls.map(l=>Math.round(bkts[l].spend*100)/100);const opps=lbls.map(l=>Math.round(bkts[l].opportunities*10)/10);const dL=lbls.map(l=>{const d=new Date(l+'T00:00:00Z');if(rDays<=62)return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});if(rDays<=180)return'Wk '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});});googleTrendChart=new Chart(ctx,{type:'bar',data:{labels:dL,datasets:[{label:'Spend',data:spends,backgroundColor:'rgba(52,168,83,0.25)',borderColor:'#34A853',borderWidth:2,borderRadius:3,yAxisID:'ySpend',order:2},{label:'Opportunities',data:opps,type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yOpp',order:1}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'top',labels:{font:{size:11},color:'#5a7a8a',boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Opportunities: '+c.parsed.y.toFixed(1)}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0,maxTicksLimit:12}},ySpend:{position:'left',grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#34A853',callback:v=>'$'+v.toLocaleString()}},yOpp:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0',callback:v=>v.toFixed(0)}}}}})}
+function _buildGoogleTrend(data,from,to,fbSt,selSt){_clearGoogleTrend();const ctx=document.getElementById('googleTrendChart');if(!ctx)return;const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];const fTime=from.getTime(),tTime=to.getTime(),rDays=(tTime-fTime)/86400000;const bkts={};for(const r of allRows){const d=new Date((r.date||r.month)+'T00:00:00Z');if(d.getTime()<fTime||d.getTime()>tTime)continue;if(fbSt&&!selSt.has(r.studio))continue;let lbl;if(rDays<=62){lbl=r.date||r.month;}else if(rDays<=180){const day=d.getUTCDay();const mon=new Date(d);mon.setUTCDate(d.getUTCDate()-((day+6)%7));lbl=mon.toISOString().slice(0,10);}else{lbl=(r.date||r.month).slice(0,7)+'-01';}if(!bkts[lbl])bkts[lbl]={spend:0,opportunities:0};bkts[lbl].spend+=r.spend||0;bkts[lbl].opportunities+=r.opportunities||0;}const lbls=Object.keys(bkts).sort();const spends=lbls.map(l=>Math.round(bkts[l].spend*100)/100);const opps=lbls.map(l=>Math.round(bkts[l].opportunities*10)/10);const dL=lbls.map(l=>{const d=new Date(l+'T00:00:00Z');if(rDays<=62)return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});if(rDays<=180)return'Wk '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});});googleTrendChart=new Chart(ctx,{type:'bar',data:{labels:dL,datasets:[{label:'Spend',data:spends,backgroundColor:'rgba(52,168,83,0.25)',borderColor:'#34A853',borderWidth:2,borderRadius:3,yAxisID:'ySpend',order:2},{label:'Opportunities',data:opps,type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yOpp',order:1}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'top',labels:{font:{size:11},color:'#5a7a8a',boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Opportunities: '+c.parsed.y.toFixed(1)}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0,maxTicksLimit:12}},ySpend:{position:'left',grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#34A853',callback:v=>'$'+v.toLocaleString()}},yOpp:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0',callback:v=>v.toFixed(0)}}}}})}
 function _buildGoogleAssets(headlines,descriptions){const rb=label=>{const map={BEST:['#0a8a4a','Best'],GOOD:['#b85c00','Good'],LOW:['#888','Low'],LEARNING:['#888','Learning']};const[color,text]=map[label]||['#888',label||'-'];return'<span style="color:'+color+';font-weight:600">'+text+'</span>';};const fK=v=>Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':String(v);const fN=v=>Number(v).toLocaleString();const htb=document.querySelector('#google-headlines-table tbody');if(htb)htb.innerHTML=headlines.length?headlines.slice(0,20).map(h=>'<tr><td>'+h.text+'</td><td class="num">'+fK(h.impressions)+'</td><td class="num">'+fN(h.clicks)+'</td><td class="num">'+h.ctr+'%</td><td class="num">'+rb(h.performance_label)+'</td></tr>').join(''):'<tr><td colspan="5" style="color:#8aabbf;text-align:center;padding:20px">No headline data.</td></tr>';const dtb=document.querySelector('#google-desc-table tbody');if(dtb)dtb.innerHTML=descriptions.length?descriptions.slice(0,20).map(d=>'<tr><td style="max-width:260px;white-space:normal">'+d.text+'</td><td class="num">'+fK(d.impressions)+'</td><td class="num">'+fN(d.clicks)+'</td><td class="num">'+d.ctr+'%</td><td class="num">'+rb(d.performance_label)+'</td></tr>').join(''):'<tr><td colspan="5" style="color:#8aabbf;text-align:center;padding:20px">No description data.</td></tr>';}
 
 
