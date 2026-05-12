@@ -304,21 +304,19 @@ def run_one(meta: MetaClient, campaign_key: str, c: dict) -> dict:
 
     studios_cfg = c["studios"]
 
-    # Normalize studio names to match Snowflake canonical names (source of truth).
-    # config.yaml may use different casing/spacing; this ensures paid-ads-data.json
-    # always uses the same names as data.json for the studio filter merge key.
+    # Normalize studio names to Snowflake canonical
     _CANONICAL = {
-        'Charlotte - NoDa':      'Charlotte - Noda',
-        'Miami Brickell':        'Miami - Brickell',
-        'Miami Upper East Side': 'Miami - Upper East Side',
-        'Midtown Miami':         'Miami - Midtown',
-        'Coconut Grove':         'Miami - Coconut Grove',
-        'NYC Chelsea':           'NYC - Chelsea',
-        'NYC Park Slope':        'NYC - Park Slope',
+        "Charlotte - NoDa":      "Charlotte - Noda",
+        "Miami Brickell":        "Miami - Brickell",
+        "Miami Upper East Side": "Miami - Upper East Side",
+        "Midtown Miami":         "Miami - Midtown",
+        "Coconut Grove":         "Miami - Coconut Grove",
+        "NYC Chelsea":           "NYC - Chelsea",
+        "NYC Park Slope":        "NYC - Park Slope",
     }
     for s in studios_cfg:
-        if s.get('name') in _CANONICAL:
-            s['name'] = _CANONICAL[s['name']]
+        if s.get("name") in _CANONICAL:
+            s["name"] = _CANONICAL[s["name"]]
 
     def _empty_bucket():
         return {"spend": 0.0, "impressions": 0, "leads": 0, "ads": []}
@@ -783,16 +781,6 @@ def run_one(meta: MetaClient, campaign_key: str, c: dict) -> dict:
             or ""
         )
 
-        # Build preview URL: prefer permalink_url, then derive from effective_object_story_id,
-        # fall back to Ads Library (works only for library-indexed ads)
-        permalink = creative.get("permalink_url") or ""
-        story_id  = creative.get("effective_object_story_id") or ""
-        if not permalink and story_id and "_" in story_id:
-            page_id, post_id = story_id.split("_", 1)
-            permalink = f"https://www.facebook.com/permalink.php?story_fbid={post_id}&id={page_id}"
-        if not permalink:
-            permalink = f"https://www.facebook.com/ads/library/?id={ad_id}&country=US"
-
         spend       = round(m["spend"], 2)
         impressions = m["impressions"]
         clicks      = m["clicks"]
@@ -818,7 +806,7 @@ def run_one(meta: MetaClient, campaign_key: str, c: dict) -> dict:
             "cpt":          round(spend / trials, 2) if trials else 0,
             "purchases":    purchases,
             "thumbnail_url": thumb,
-            "library_url":  permalink,
+            "library_url":  f"https://www.facebook.com/ads/library/?id={ad_id}&country=US",
             "first_seen":   ad_first_seen.get(ad_id),
         })
 
@@ -881,11 +869,23 @@ def run():
             "is_default": key == active,
         })
 
+    # Preserve manually-baked static data (monthly_spend etc.) from existing file
+    existing_static = {}
+    if OUT_PATH.exists():
+        try:
+            existing = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+            for key in ("monthly_spend",):
+                if key in existing:
+                    existing_static[key] = existing[key]
+        except Exception:
+            pass
+
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "active_campaign": active,
         "campaigns_index": campaigns_index,
         "campaigns": campaigns_data,
+        **existing_static,
     }
 
     OUT_PATH.write_text(
