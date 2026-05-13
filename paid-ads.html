@@ -523,12 +523,12 @@ const fmtPct   = n => (Number(n) || 0).toFixed(2) + "%";
 
 async function bootstrap() {
   try {
-    const res = await fetch("paid-ads-data.json?t=" + Date.now(), { cache: "no-store" });
+    const res = await fetch("daniel-paid-ads-data.json?t=" + Date.now(), { cache: "no-store" });
     if (!res.ok) throw new Error("HTTP " + res.status);
     DATA = await res.json();
   } catch (e) {
     document.body.innerHTML = `<div class="container"><div class="card" style="color:var(--bad)">
-      <h2>Could not load paid-ads-data.json</h2>
+      <h2>Could not load daniel-paid-ads-data.json</h2>
       <pre style="color:var(--ink-soft);font-size:12px">${String(e)}</pre>
     </div></div>`;
     return;
@@ -1277,7 +1277,7 @@ function renderLineTab(opts) {
 
   if (!rows.length) {
     clearCanvas(chartId); clearCanvas(barChartId); clearCanvas(doughnutChartId);
-    tableEl.innerHTML = `<div class='empty'>No daily series data for this campaign / filter. Regenera <code>paid-ads-data.json</code> con el ETL nuevo, o ajusta el filtro de período.</div>`;
+    tableEl.innerHTML = `<div class='empty'>No daily series data for this campaign / filter. Regenera <code>daniel-paid-ads-data.json</code> con el ETL nuevo, o ajusta el filtro de período.</div>`;
     return;
   }
 
