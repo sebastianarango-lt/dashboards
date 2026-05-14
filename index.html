@@ -83,11 +83,9 @@
 
 <div class="main">
   <div class="tab-content active" id="tab-summary">
-    <div class="placeholder-tab">
-      <div class="placeholder-icon">📊</div>
-      <div class="placeholder-title">Summary</div>
-      <div class="placeholder-sub">High-level overview across all channels — coming soon</div>
-    </div>
+    <div class="kpi-grid" id="summary-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px"></div>
+    <div class="kpi-grid" id="summary-spend-kpis" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px"></div>
+    <div class="kpi-grid" id="summary-cpr-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px"></div>
   </div>
 
   <div class="tab-content" id="tab-funnel">
@@ -142,7 +140,7 @@
         <div class="chart-card-title">Studio ranking</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="leadsStudioTable">
-            <thead><tr><th>Studio</th><th class="num">Leads</th><th class="num">% of total</th></tr></thead>
+            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">Leads</th><th class="num" data-sort="pct">% of total</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -177,7 +175,7 @@
         <div class="chart-card-title">Studio ranking</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="ftStudioTable">
-            <thead><tr><th>Studio</th><th class="num">First Timers</th><th class="num">% of total</th></tr></thead>
+            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">First Timers</th><th class="num" data-sort="pct">% of total</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -212,7 +210,7 @@
         <div class="chart-card-title">Studio ranking</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="memStudioTable">
-            <thead><tr><th>Studio</th><th class="num">New Members</th><th class="num">% of total</th></tr></thead>
+            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">New Members</th><th class="num" data-sort="pct">% of total</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -235,12 +233,17 @@
     <div id="cpr-spend-breakdown" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px"></div>
     <div class="kpi-grid" id="cpr-kpis"></div>
     <div class="chart-card">
-      <div class="chart-card-title">Cost per result  over time</div>
-      <div class="toggle-group" id="cpr-toggles">
-        <button class="tog-btn on" data-ds="0" onclick="toggleCPRds(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Blended CPL</button>
-        <button class="tog-btn on" data-ds="1" onclick="toggleCPRds(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>Blended CPFT</button>
-        <button class="tog-btn on" data-ds="2" onclick="toggleCPRds(this,2)" style="border-color:#DDFF00;background:#DDFF00;color:#000"><span class="dot" style="background:#000"></span>Blended CPM</button>
-
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+        <div class="toggle-group" id="cpr-toggles" style="margin-bottom:0">
+          <button class="tog-btn on" data-ds="0" onclick="toggleCPRds(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Blended CPL</button>
+          <button class="tog-btn on" data-ds="1" onclick="toggleCPRds(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>Blended CPFT</button>
+          <button class="tog-btn on" data-ds="2" onclick="toggleCPRds(this,2)" style="border-color:#DDFF00;background:#DDFF00;color:#000"><span class="dot" style="background:#000"></span>Blended CPA</button>
+        </div>
+        <div class="gran-group">
+          <button class="gran-btn" id="cprGranDaily"   onclick="setCPRGran('daily')">Daily</button>
+          <button class="gran-btn" id="cprGranWeekly"  onclick="setCPRGran('weekly')">Weekly</button>
+          <button class="gran-btn active" id="cprGranMonthly" onclick="setCPRGran('monthly')">Monthly</button>
+        </div>
       </div>
       <div style="position:relative;width:100%;height:260px"><canvas id="cprChart" role="img" aria-label="Line chart of cost per result over time"></canvas></div>
     </div>
@@ -259,14 +262,15 @@
         <table class="data-table" id="meta-ads-table">
           <thead>
             <tr>
+              <th class="row-num">#</th>
               <th style="width:56px"></th>
-              <th>Ad</th>
-              <th class="num">Impressions</th>
-              <th class="num">Clicks</th>
-              <th class="num">CTR</th>
-              <th class="num">Spend</th>
-              <th class="num">Leads</th>
-              <th class="num">CPL</th>
+              <th data-sort="name">Ad</th>
+              <th class="num" data-sort="impressions">Impressions</th>
+              <th class="num" data-sort="clicks">Clicks</th>
+              <th class="num" data-sort="ctr">CTR</th>
+              <th class="num" data-sort="spend">Spend</th>
+              <th class="num" data-sort="leads">Leads</th>
+              <th class="num" data-sort="cpl">CPL</th>
               <th class="num">Status</th>
             </tr>
           </thead>
@@ -282,14 +286,15 @@
         <table class="data-table" id="meta-studio-table">
           <thead>
             <tr>
-              <th>Studio</th>
-              <th class="num">Impressions</th>
-              <th class="num">Clicks</th>
-              <th class="num">CTR</th>
-              <th class="num">Spend</th>
-              <th class="num">Leads</th>
-              <th class="num">CPL</th>
-              <th class="num">Trials</th>
+              <th class="row-num">#</th>
+              <th data-sort="name">Studio</th>
+              <th class="num" data-sort="impressions">Impressions</th>
+              <th class="num" data-sort="clicks">Clicks</th>
+              <th class="num" data-sort="ctr">CTR</th>
+              <th class="num" data-sort="spend">Spend</th>
+              <th class="num" data-sort="leads">Leads</th>
+              <th class="num" data-sort="cpl">CPL</th>
+              <th class="num" data-sort="trials">Trials</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -302,43 +307,12 @@
 
   <!-- GOOGLE ADS TAB -->
   <div class="tab-content" id="tab-google">
-
-    <!-- KPI row: 6 cards -->
     <div class="kpi-grid" id="google-kpis" style="grid-template-columns:repeat(6,1fr);margin-bottom:20px"></div>
-
-    <!-- Trend chart: spend + opportunities over time -->
-    <div class="chart-card" style="margin-bottom:20px">
-      <div class="chart-card-title">Performance over time</div>
-      <div style="position:relative;width:100%;height:260px"><canvas id="googleTrendChart" role="img" aria-label="Google Ads spend and opportunities over time"></canvas></div>
-    </div>
-
-    <!-- Studio breakdown -->
-    <div class="chart-card" style="margin-bottom:20px">
-      <div class="chart-card-title">Studio Breakdown</div>
-      <div style="overflow-x:auto">
-        <table class="data-table" id="google-studio-table">
-          <thead>
-            <tr>
-              <th>Studio</th>
-              <th class="num">Spend</th>
-              <th class="num">Impressions</th>
-              <th class="num">Clicks</th>
-              <th class="num">Leads</th>
-              <th class="num">Calls</th>
-              <th class="num">Directions</th>
-              <th class="num">Opportunities</th>
-              <th class="num">Cost / Opp</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Asset performance — monthly, not date-filtered -->
+    <div class="chart-card" style="margin-bottom:20px"><div class="chart-card-title">Performance over time</div><div style="position:relative;width:100%;height:260px"><canvas id="googleTrendChart" role="img" aria-label="Google Ads performance over time"></canvas></div></div>
+    <div class="chart-card" style="margin-bottom:20px"><div class="chart-card-title">Studio Breakdown</div><div style="overflow-x:auto"><table class="data-table" id="google-studio-table"><thead><tr><th class="row-num">#</th><th data-sort="name">Studio</th><th class="num" data-sort="spend">Spend</th><th class="num" data-sort="impressions">Impressions</th><th class="num" data-sort="clicks">Clicks</th><th class="num" data-sort="leads">Leads</th><th class="num" data-sort="calls">Calls</th><th class="num" data-sort="directions">Directions</th><th class="num" data-sort="opp">Opportunities</th><th class="num" data-sort="cpo">Cost / Opp</th></tr></thead><tbody></tbody></table></div></div>
     <div class="two-col">
       <div class="chart-card">
-        <div class="chart-card-title">Headlines <span style="font-size:11px;font-weight:400;color:#8aabbf;font-family:'Open Sans',sans-serif">(last 90 days)</span></div>
+        <div class="chart-card-title">Headlines performance</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="google-headlines-table">
             <thead><tr><th>Headline</th><th class="num">Impressions</th><th class="num">Clicks</th><th class="num">CTR</th><th class="num">Rating</th></tr></thead>
@@ -347,7 +321,7 @@
         </div>
       </div>
       <div class="chart-card">
-        <div class="chart-card-title">Descriptions <span style="font-size:11px;font-weight:400;color:#8aabbf;font-family:'Open Sans',sans-serif">(last 90 days)</span></div>
+        <div class="chart-card-title">Descriptions performance</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="google-desc-table">
             <thead><tr><th>Description</th><th class="num">Impressions</th><th class="num">Clicks</th><th class="num">CTR</th><th class="num">Rating</th></tr></thead>
@@ -357,8 +331,14 @@
       </div>
     </div>
 
+    <div class="chart-card" style="margin-top:20px">
+      <div class="chart-card-title" style="margin-bottom:12px">Brand Awareness</div>
+      <div class="placeholder-tab" style="min-height:120px">
+        <div class="placeholder-icon" style="font-size:24px">🏷️</div>
+        <div class="placeholder-sub">Display, YouTube and brand search campaigns — coming soon</div>
+      </div>
+    </div>
   </div>
-  <!-- end tab-google -->
 
   <div class="tab-content" id="tab-website">
     <div class="placeholder-tab">
@@ -441,15 +421,20 @@ function toggleControls() {
 
 
 async function loadData() {
+  const [rawRes, metaRes, googleRes] = await Promise.allSettled([
+    fetch('data.json?_='            + Date.now()),
+    fetch('paid-ads-data.json?_='   + Date.now()),
+    fetch('google-ads-data.json?_=' + Date.now()),
+  ]);
   try {
-    const res = await fetch('data.json?_=' + Date.now());
-    RAW = await res.json();
-    // Ensure both arrays exist (backward compat with old data.json format)
+    RAW = await rawRes.value.json();
     if (!RAW.daily_detail)   RAW.daily_detail   = [];
     if (!RAW.monthly_detail) RAW.monthly_detail = [];
   } catch(e) {
     console.warn('Using mock data:', e); RAW = getMock();
   }
+  try { META_ADS_RAW   = await metaRes.value.json();   } catch(e) { console.warn('paid-ads-data.json unavailable:', e); }
+  try { GOOGLE_ADS_RAW = await googleRes.value.json(); } catch(e) { console.warn('google-ads-data.json unavailable:', e); }
   // Set default date range: year to date
   const _today = new Date();
   const _jan1  = new Date(_today.getFullYear(), 0, 1);
@@ -527,15 +512,19 @@ function applyFilters() {
   // Always build all tabs  all are rendered (just hidden via opacity/height)
   if (typeof checkCPRWarning === 'function') checkCPRWarning();
   buildStageTabs(curr, pp, py, fmtDate(ppFrom)+' – '+fmtDate(ppTo), fmtDate(pyFrom)+' – '+fmtDate(pyTo));
-  // Store filter windows globally for other tabs (e.g. Meta Ads)
-  window._metaFrom   = from;  window._metaTo   = to;
-  window._metaPpFrom = ppFrom; window._metaPpTo = ppTo;
-  window._metaPyFrom = pyFrom; window._metaPyTo = pyTo;
+  window._metaFrom    = from;  window._metaTo   = to;
+  window._metaPpFrom  = ppFrom; window._metaPpTo = ppTo;
+  window._metaPyFrom  = pyFrom; window._metaPyTo = pyTo;
   window._metaPpLabel = fmtDate(ppFrom)+' – '+fmtDate(ppTo);
   window._metaPyLabel = fmtDate(pyFrom)+' – '+fmtDate(pyTo);
-  // Rebuild Meta tab if it's currently visible
-  buildMetaTab();     // always sync meta tab to current filters
-  buildGoogleTab();   // always sync google tab to current filters
+  window._cprCurr     = curr;
+  window._cprPp       = pp;
+  window._cprPy       = py;
+  window._cprStudios  = studios;
+  buildMetaTab();
+  buildGoogleTab();
+  buildCPRTab();
+  buildSummaryTab();
 }
 
 
@@ -671,7 +660,7 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     srcList, 'signups');
   buildRingChart('leadsRingChart','leadsRingLegend', srcList,
     srcList.map(s=>currFiltered.all.filter(r=>r.source===s).reduce((sum,r)=>sum+r.signups,0)));
-  buildStudioRankTable('leadsStudioTable', currFiltered.all, 'signups');
+  _buildFunnelRankTable('leadsStudioTable', currFiltered.all, 'signups');
 
   //  FIRST TIMERS TAB 
   const el2 = document.getElementById('ft-kpis');
@@ -685,7 +674,7 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     srcList, 'first_visits');
   buildRingChart('ftRingChart','ftRingLegend', srcList,
     srcList.map(s=>currFiltered.all.filter(r=>r.source===s).reduce((sum,r)=>sum+r.first_visits,0)));
-  buildStudioRankTable('ftStudioTable', currFiltered.all, 'first_visits');
+  _buildFunnelRankTable('ftStudioTable', currFiltered.all, 'first_visits');
 
   //  NEW MEMBERS TAB 
   const el3 = document.getElementById('mem-kpis');
@@ -699,19 +688,20 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     srcList, 'first_activations');
   buildRingChart('memRingChart','memRingLegend', srcList,
     srcList.map(s=>currFiltered.all.filter(r=>r.source===s).reduce((sum,r)=>sum+r.first_activations,0)));
-  buildStudioRankTable('memStudioTable', currFiltered.all, 'first_activations');
+  _buildFunnelRankTable('memStudioTable', currFiltered.all, 'first_activations');
 
   //  Update area gran button states (no recursive calls)
   ['leadsAreaChart','ftAreaChart','memAreaChart'].forEach(id=>{
     const {dailyFrom,dailyTo} = getQuarterBounds();
     const from = new Date(document.getElementById('fFrom').value+'T00:00:00Z');
     const to   = new Date(document.getElementById('fTo').value+'T23:59:59Z');
-    const hasDaily = from <= dailyTo && to >= dailyFrom;
-    const daysDiff = (to - from) / 86400000;
+    const hasDaily  = from <= dailyTo && to >= dailyFrom;
+    const hasWeekly = from >= dailyFrom;
+    const daysDiff  = (to - from) / 86400000;
     const bd = document.getElementById('gran-daily-'+id);
     const bw = document.getElementById('gran-weekly-'+id);
     if(bd) bd.disabled = !hasDaily;
-    if(bw) bw.disabled = daysDiff > 366;
+    if(bw) bw.disabled = !hasWeekly || daysDiff > 366;
     // Auto-downgrade granularity WITHOUT recursive call
     if(AREA_GRAN[id]==='daily'  && bd && bd.disabled) {
       AREA_GRAN[id]='weekly';
@@ -730,6 +720,8 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
 
 
 function setAreaGran(canvasId, gran) {
+  const btn = document.getElementById('gran-'+gran+'-'+canvasId);
+  if (btn && btn.disabled) return;
   AREA_GRAN[canvasId] = gran;
   ['daily','weekly','monthly'].forEach(g => {
     const btn = document.getElementById('gran-'+g+'-'+canvasId);
@@ -741,6 +733,7 @@ function setAreaGran(canvasId, gran) {
 
 const CPR_COSTS_ACTIVE={google:true,meta:true,leadteam:true};
 let cprChart=null;
+let CPR_GRAN='monthly';
 
 
 function toggleCPRCost(btn){
@@ -752,49 +745,472 @@ function toggleCPRCost(btn){
 }
 
 
-function buildCPRTab(){
-  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const sp={google:[2100,1980,2300,2150,2400,2250,2100,2350,2200,2050,2300,2450],meta:[3200,3050,3400,3100,3600,3300,3150,3500,3250,3100,3400,3650],leadteam:[800,800,800,800,800,800,800,800,800,800,800,800]};
-  const mL=[420,398,465,430,480,450,420,470,440,410,460,490],mFT=[231,219,256,237,264,248,231,259,242,226,253,270],mM=[98,93,108,100,112,105,98,110,103,96,107,114];
-  const tot=months.map((_,i)=>{let s=0;if(CPR_COSTS_ACTIVE.google)s+=sp.google[i];if(CPR_COSTS_ACTIVE.meta)s+=sp.meta[i];if(CPR_COSTS_ACTIVE.leadteam)s+=sp.leadteam[i];return s;});
-  const cpl=tot.map((s,i)=>mL[i]?Math.round(s/mL[i]):0),cpft=tot.map((s,i)=>mFT[i]?Math.round(s/mFT[i]):0),cpm=tot.map((s,i)=>mM[i]?Math.round(s/mM[i]):0);
-  const totS=tot.reduce((a,b)=>a+b,0),avgCPL=Math.round(totS/mL.reduce((a,b)=>a+b,0)),avgCPFT=Math.round(totS/mFT.reduce((a,b)=>a+b,0)),avgCPM=Math.round(totS/mM.reduce((a,b)=>a+b,0));
-  const f$=v=>'$'+v.toLocaleString(); const el=document.getElementById('cpr-kpis');if(!el){return;}
-  // CPR cards: decrease = good (green), increase = bad (red)
-  el.innerHTML=cprKpiCard('Blended CPL',avgCPL,Math.round(avgCPL*1.05),Math.round(avgCPL*1.22),f$)+cprKpiCard('Blended CPFT',avgCPFT,Math.round(avgCPFT*1.08),Math.round(avgCPFT*1.30),f$)+cprKpiCard('Blended CPM',avgCPM,Math.round(avgCPM*1.10),Math.round(avgCPM*1.35),f$);
-  // Spend breakdown with + and = signs
-  const bdEl=document.getElementById('cpr-spend-breakdown');
-  if(bdEl){
-    const parts=[];
-    const labels={google:'Google Ads',meta:'Meta Ads',leadteam:'Leadteam Fee'};
-    const bColors={google:'#4285F4',meta:'#1877F2',leadteam:'#00A3E0'};
-    let first=true;
-    ['google','meta','leadteam'].forEach(k=>{
-      if(!CPR_COSTS_ACTIVE[k])return;
-      const v=sp[k].reduce((a,b)=>a+b,0);
-      if(!first) parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">+</span>');
-      const ppSpend=Math.round(v*0.88),pySpend=Math.round(v*0.72);
-      const dppS=((v-ppSpend)/ppSpend*100).toFixed(1),dpyS=((v-pySpend)/pySpend*100).toFixed(1);
-      const ppSH = _partialPeriod.pp ? '<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>' : '<div class="kpi-card-delta neu">&#9650; '+Math.abs(dppS)+'% prev period</div>';
-      const pySH = _partialPeriod.py ? '<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>' : '<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpyS)+'% prev year</div>';
-      parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid '+bColors[k]+'"><div class="kpi-card-label">'+labels[k]+'</div><div class="kpi-card-val">$'+v.toLocaleString()+'</div>'+ppSH+pySH+'</div>');
-      first=false;
+function setCPRGran(gran) {
+  const btn = document.getElementById('cprGran'+gran.charAt(0).toUpperCase()+gran.slice(1));
+  if (btn && btn.disabled) return;
+  CPR_GRAN = gran;
+  ['daily','weekly','monthly'].forEach(g => {
+    const b = document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));
+    if (b) b.classList.toggle('active', g === gran);
+  });
+  buildCPRTab();
+}
+function updateCPRGranButtons() {
+  const fromStr = document.getElementById('fFrom')?.value;
+  const toStr   = document.getElementById('fTo')?.value;
+  if (!fromStr || !toStr) return;
+  const from = new Date(fromStr+'T00:00:00Z'), to = new Date(toStr+'T23:59:59Z');
+  const {dailyFrom,dailyTo} = getQuarterBounds();
+  const hasDaily  = from <= dailyTo && to >= dailyFrom;
+  const hasWeekly = from >= dailyFrom;
+  const daysDiff  = (to-from)/86400000;
+  const btnD = document.getElementById('cprGranDaily');
+  const btnW = document.getElementById('cprGranWeekly');
+  if (btnD) btnD.disabled = !hasDaily;
+  if (btnW) btnW.disabled = !hasWeekly || daysDiff > 366;
+  if (CPR_GRAN==='daily'  && btnD && btnD.disabled) { CPR_GRAN='weekly';  ['daily','weekly','monthly'].forEach(g=>{const b=document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));if(b)b.classList.toggle('active',g==='weekly');}); }
+  if (CPR_GRAN==='weekly' && btnW && btnW.disabled) { CPR_GRAN='monthly'; ['daily','weekly','monthly'].forEach(g=>{const b=document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));if(b)b.classList.toggle('active',g==='monthly');}); }
+}
+// ── Sortable table utility ──────────────────────────────────────────────
+// sortableTable(tableId, data, cols, renderRow, totalsRow?)
+// cols: [{key, label?, numeric?, defaultDesc?}]
+// renderRow(row, i) → <tr> string (no row# cell needed — added automatically)
+// totalsRow(data) → array of cell strings matching col count + 1 for row# col
+const _sortState = {};
+
+function sortableTable(tableId, data, renderRow, totalsRow) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+
+  const ths = table.querySelectorAll('thead th[data-sort]');
+  const tbody = table.querySelector('tbody');
+  const tfoot = table.querySelector('tfoot') || (() => {
+    const tf = document.createElement('tfoot');
+    table.appendChild(tf);
+    return tf;
+  })();
+
+  if (!_sortState[tableId]) _sortState[tableId] = {col: null, asc: true};
+  const state = _sortState[tableId];
+
+  function render() {
+    const sorted = state.col === null ? [...data] : [...data].sort((a, b) => {
+      const va = a[state.col], vb = b[state.col];
+      if (va === null || va === undefined) return 1;
+      if (vb === null || vb === undefined) return -1;
+      const cmp = typeof va === 'string' ? va.localeCompare(vb) : va - vb;
+      return state.asc ? cmp : -cmp;
     });
-    if(parts.length>0){
-      parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">=</span>');
-      const ppTot=Math.round(totS*0.88),pyTot=Math.round(totS*0.72);
-      const dppT=((totS-ppTot)/ppTot*100).toFixed(1),dpyT=((totS-pyTot)/pyTot*100).toFixed(1);
-      const ppTH = _partialPeriod.pp ? '<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>' : '<div class="kpi-card-delta neu">&#9650; '+Math.abs(dppT)+'% prev period</div>';
-      const pyTH = _partialPeriod.py ? '<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>' : '<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpyT)+'% prev year</div>';
-      parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid #1a1a2e"><div class="kpi-card-label">Total Spend</div><div class="kpi-card-val">$'+totS.toLocaleString()+'</div>'+ppTH+pyTH+'</div>');
+
+    tbody.innerHTML = sorted.map((row, i) => renderRow(row, i + 1)).join('');
+
+    // Update header classes
+    ths.forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === state.col) {
+        th.classList.add(state.asc ? 'sort-asc' : 'sort-desc');
+      }
+    });
+
+    // Totals row
+    if (totalsRow) {
+      tfoot.innerHTML = totalsRow(sorted);
     }
-    bdEl.innerHTML=parts.join('');
   }
-  if(cprChart){cprChart.destroy();cprChart=null;}
-  const ctx=document.getElementById('cprChart');if(!ctx)return;
-  cprChart=new Chart(ctx,{type:'line',data:{labels:months,datasets:[{label:'Cost/Lead',data:cpl,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:4,tension:.4,fill:false},{label:'Blended CPFT',data:cpft,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:4,tension:.4,fill:false},{label:'Blended CPA',data:cpm,borderColor:'#DDFF00',borderWidth:2.5,pointRadius:4,tension:.4,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>c.dataset.label+': $'+c.parsed.y.toLocaleString()}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',callback:v=>'$'+v},position:'left'}}}});
+
+  ths.forEach(th => {
+    th.classList.add('sortable');
+    th.addEventListener('click', () => {
+      const col = th.dataset.sort;
+      if (state.col === col) {
+        state.asc = !state.asc;
+      } else {
+        state.col = col;
+        state.asc = true;
+      }
+      render();
+    });
+  });
+
+  render();
 }
 
+function _buildFunnelRankTable(tableId, rows, valueKey) {
+  const byS = {};
+  rows.forEach(r => { byS[r.studio] = (byS[r.studio] || 0) + (r[valueKey] || 0); });
+  const total = Object.values(byS).reduce((s, v) => s + v, 0);
+  const data  = Object.entries(byS).map(([studio, val]) => ({
+    studio, val, pct: total ? val / total * 100 : 0
+  }));
+
+  const fN = v => Number(v).toLocaleString();
+
+  sortableTable(
+    tableId,
+    data,
+    (row, i) => {
+      const bw = total ? Math.round(row.val / total * 80) : 0;
+      return `<tr>
+        <td class="row-num">${i}</td>
+        <td><span class="bar-mini" style="width:${bw}px"></span>${row.studio.replace('SWEAT440 ', '')}</td>
+        <td class="num">${fN(row.val)}</td>
+        <td class="pct">${row.pct.toFixed(1)}%</td>
+      </tr>`;
+    },
+    (sorted) => {
+      const totVal = sorted.reduce((s, r) => s + r.val, 0);
+      return `<tr>
+        <td class="row-num"></td>
+        <td style="font-weight:700">Total (${sorted.length} studios)</td>
+        <td class="num">${fN(totVal)}</td>
+        <td class="pct">100%</td>
+      </tr>`;
+    }
+  );
+}
+
+function buildSummaryTab() {
+  const funnelEl = document.getElementById('summary-kpis');
+  const spendEl  = document.getElementById('summary-spend-kpis');
+  const cprEl    = document.getElementById('summary-cpr-kpis');
+  if (!funnelEl) return;
+
+  const funnelCurr = window._cprCurr || null;
+  const funnelPp   = window._cprPp   || null;
+  const funnelPy   = window._cprPy   || null;
+  if (!funnelCurr) return;
+
+  function fsum(fi) {
+    if (!fi) return {leads:0, ft:0, mem:0};
+    const rows = [...(fi.daily||[]),...(fi.monthly||[])];
+    return {
+      leads: rows.reduce((s,r)=>s+(r.signups||0),0),
+      ft:    rows.reduce((s,r)=>s+(r.first_visits||0),0),
+      mem:   rows.reduce((s,r)=>s+(r.first_activations||0),0),
+    };
+  }
+  const curr = fsum(funnelCurr), pp = fsum(funnelPp), py = fsum(funnelPy);
+
+  funnelEl.innerHTML =
+    kpiCard('Leads',        curr.leads, pp.leads||null, py.leads||null) +
+    kpiCard('First Timers', curr.ft,    pp.ft||null,    py.ft||null)    +
+    kpiCard('New Members',  curr.mem,   pp.mem||null,   py.mem||null);
+
+  if (!spendEl) return;
+  const from   = window._metaFrom   || null;
+  const to     = window._metaTo     || null;
+  const ppFrom = window._metaPpFrom || null;
+  const ppTo   = window._metaPpTo   || null;
+  const pyFrom = window._metaPyFrom || null;
+  const pyTo   = window._metaPyTo   || null;
+  const selStudios = window._cprStudios || [];
+  if (!from || !to) return;
+
+  const allStudios  = selStudios.length > 0 ? selStudios : (RAW ? RAW.studios : []);
+  const studioCount = allStudios.length || 1;
+  const LTFEE = 1200;
+
+  function ltFor(f,t) {
+    if(!f||!t) return 0;
+    const days=Math.round((t.getTime()-f.getTime())/86400000);
+    return studioCount*LTFEE*(days/30.4375);
+  }
+  function gFor(f,t) {
+    if(!f||!t||!GOOGLE_ADS_RAW) return 0;
+    const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
+    const dM=new Set((GOOGLE_ADS_RAW.daily||[]).map(r=>r.date.slice(0,7)));
+    const rows=[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[]).filter(r=>!dM.has(r.month.slice(0,7)))];
+    return rows.reduce((s,r)=>{
+      const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();
+      if(d<fT||d>tT) return s;
+      if(bySt&&!selStudios.includes(r.studio)) return s;
+      return s+(r.spend||0);
+    },0);
+  }
+  function mFor(f,t) {
+    if(!f||!t||!META_ADS_RAW) return 0;
+    const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
+    const liveCovered=new Set();
+    let tot=0;
+    for(const camp of Object.values(META_ADS_RAW.campaigns||{})){
+      for(const row of((camp.daily_series||{}).by_studio||[])){
+        const d=new Date(row.date+'T00:00:00Z').getTime();
+        if(d<fT||d>tT) continue;
+        const nm=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+        if(bySt&&!selStudios.includes(nm)) continue;
+        tot+=row.spend||0;
+        liveCovered.add(row.studio_code+'|'+row.date.slice(0,7));
+      }
+    }
+    for(const row of(META_ADS_RAW.monthly_spend||[])){
+      const d=new Date(row.month+'T00:00:00Z').getTime();
+      if(d<fT||d>tT) continue;
+      const nm=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+      if(bySt&&!selStudios.includes(nm)) continue;
+      if(liveCovered.has(row.studio_code+'|'+row.month.slice(0,7))) continue;
+      tot+=row.spend||0;
+    }
+    return tot;
+  }
+
+  const gCurr=gFor(from,to);
+  const gPp=gFor(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const gPy=gFor(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  const mCurr=mFor(from,to);
+  const mPp=mFor(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const mPy=mFor(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  const lCurr=ltFor(from,to);
+  const lPp=ltFor(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const lPy=ltFor(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  const tCurr=gCurr+mCurr+lCurr, tPp=gPp+mPp+lPp, tPy=gPy+mPy+lPy;
+
+  const f$  = v => '$'+Math.round(v).toLocaleString('en-US');
+  const f$2 = v => '$'+Number(v).toFixed(2);
+
+  // Total spend card spanning full width with colour-coded breakdown inside
+  const breakdown =
+    '<div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;font-size:11px">' +
+    '<span style="color:#34A853;font-weight:600">Google ' + f$(gCurr) + '</span>' +
+    '<span style="color:#1877F2;font-weight:600">Meta '   + f$(mCurr) + '</span>' +
+    '<span style="color:#FF6B35;font-weight:600">LT Fee ' + f$(lCurr) + '</span>' +
+    '</div>';
+  const dppT = tPp>0 ? (tCurr-tPp)/tPp*100 : null;
+  const dpyT = tPy>0 ? (tCurr-tPy)/tPy*100 : null;
+  const ppTH = _partialPeriod.pp
+    ? '<div class="kpi-card-delta neu">&#9651; partial period</div>'
+    : (dppT!=null ? '<div class="kpi-card-delta '+(dppT>=0?'pos':'neg')+'">'+(dppT>=0?'&#9650;':'&#9660;')+' '+Math.abs(dppT).toFixed(1)+'% prev period</div>' : '');
+  const pyTH = _partialPeriod.py
+    ? '<div class="kpi-card-delta neu">&#9651; partial period</div>'
+    : (dpyT!=null ? '<div class="kpi-card-delta '+(dpyT>=0?'pos':'neg')+'">'+(dpyT>=0?'&#9650;':'&#9660;')+' '+Math.abs(dpyT).toFixed(1)+'% prev year</div>' : '');
+
+  const totalCard =
+    '<div class="kpi-card" style="grid-column:span 4">' +
+    '<div class="kpi-card-label">Total Mkt Spend</div>' +
+    '<div class="kpi-card-val">' + f$(tCurr) + '</div>' +
+    breakdown + ppTH + pyTH +
+    '</div>';
+
+  spendEl.innerHTML = totalCard +
+    kpiCard('Google Ads', gCurr, gPp||null, gPy||null, f$) +
+    kpiCard('Meta Ads',   mCurr, mPp||null, mPy||null, f$) +
+    kpiCard('Leadteam Fee', lCurr, lPp||null, lPy||null, f$);
+
+  if (!cprEl) return;
+  const cpl_curr  = curr.leads>0 ? tCurr/curr.leads : 0;
+  const cpl_pp    = pp.leads>0   ? tPp/pp.leads     : null;
+  const cpl_py    = py.leads>0   ? tPy/py.leads     : null;
+  const cpft_curr = curr.ft>0    ? tCurr/curr.ft    : 0;
+  const cpft_pp   = pp.ft>0      ? tPp/pp.ft        : null;
+  const cpft_py   = py.ft>0      ? tPy/py.ft        : null;
+  const cpa_curr  = curr.mem>0   ? tCurr/curr.mem   : 0;
+  const cpa_pp    = pp.mem>0     ? tPp/pp.mem       : null;
+  const cpa_py    = py.mem>0     ? tPy/py.mem       : null;
+
+  cprEl.innerHTML =
+    cprKpiCard('Blended CPL',  cpl_curr,  cpl_pp,  cpl_py,  f$2) +
+    cprKpiCard('Blended CPFT', cpft_curr, cpft_pp, cpft_py, f$2) +
+    cprKpiCard('Blended CPA',  cpa_curr,  cpa_pp,  cpa_py,  f$2);
+}
+
+function buildCPRTab() {
+  const el = document.getElementById('cpr-kpis');
+  if (!el) return;
+  const from=window._metaFrom||null,to=window._metaTo||null;
+  const ppFrom=window._metaPpFrom||null,ppTo=window._metaPpTo||null;
+  const pyFrom=window._metaPyFrom||null,pyTo=window._metaPyTo||null;
+  const funnelCurr=window._cprCurr||null,funnelPp=window._cprPp||null,funnelPy=window._cprPy||null;
+  const selStudios=window._cprStudios||[];
+  if (!from||!to||!funnelCurr) return;
+  const fTime=from.getTime(),tTime=to.getTime();
+  const allStudios=selStudios.length>0?selStudios:(RAW?RAW.studios:[]);
+  const studioCount=allStudios.length||1;
+  const LEADTEAM_PER_STUDIO_MONTH=1200;
+  function leadteamForRange(f,t){if(!f||!t)return 0;const days=Math.round((t.getTime()-f.getTime())/86400000);return studioCount*LEADTEAM_PER_STUDIO_MONTH*(days/30.4375);}
+  const ltCurr=leadteamForRange(from,to);
+  const ltPp=leadteamForRange(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
+  const ltPy=leadteamForRange(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
+  function sumGoogleSpend(f,t){if(!f||!t||!GOOGLE_ADS_RAW)return 0;const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;const dailyMonths=new Set((GOOGLE_ADS_RAW.daily||[]).map(r=>r.date.slice(0,7)));const rows=[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];return rows.reduce((s,r)=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return s;if(bySt&&!selStudios.includes(r.studio))return s;return s+(r.spend||0);},0);}
+  function sumMetaSpend(f,t){
+    if(!f||!t||!META_ADS_RAW)return 0;
+    const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
+    let tot=0;
+    // Track which studio+month combos are covered by live daily data
+    const liveCovered=new Set();
+    for(const camp of Object.values(META_ADS_RAW.campaigns||{})){
+      for(const row of((camp.daily_series||{}).by_studio||[])){
+        const d=new Date(row.date+'T00:00:00Z').getTime();
+        if(d<fT||d>tT)continue;
+        const nm=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+        if(bySt&&!selStudios.includes(nm))continue;
+        tot+=row.spend||0;
+        liveCovered.add(row.studio_code+'|'+row.date.slice(0,7));
+      }
+    }
+    // Add baked historical monthly spend, skipping months already covered by live data
+    for(const row of(META_ADS_RAW.monthly_spend||[])){
+      const d=new Date(row.month+'T00:00:00Z').getTime();
+      if(d<fT||d>tT)continue;
+      const nm=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+      if(bySt&&!selStudios.includes(nm))continue;
+      if(liveCovered.has(row.studio_code+'|'+row.month.slice(0,7)))continue;
+      tot+=row.spend||0;
+    }
+    return tot;
+  }
+  function funnelSum(fi){if(!fi)return{leads:0,ft:0,mem:0};return sumRows([...(fi.daily||[]),...(fi.monthly||[])]);}
+  const curr=funnelSum(funnelCurr),pp=funnelSum(funnelPp),py=funnelSum(funnelPy);
+  function spendTotals(f,t,lt){const g=CPR_COSTS_ACTIVE.google?sumGoogleSpend(f,t):0;const m=CPR_COSTS_ACTIVE.meta?sumMetaSpend(f,t):0;const l=CPR_COSTS_ACTIVE.leadteam?lt:0;return{google:g,meta:m,leadteam:l,total:g+m+l};}
+  const spCurr=spendTotals(from,to,ltCurr);
+  const spPp=spendTotals(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null,ltPp);
+  const spPy=spendTotals(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null,ltPy);
+  const f$=v=>'$'+Math.round(v).toLocaleString('en-US');
+  const f$2=v=>'$'+Number(v).toFixed(2);
+  const cpl_curr=curr.leads>0?spCurr.total/curr.leads:0,cpl_pp=pp.leads>0?spPp.total/pp.leads:null,cpl_py=py.leads>0?spPy.total/py.leads:null;
+  const cpft_curr=curr.ft>0?spCurr.total/curr.ft:0,cpft_pp=pp.ft>0?spPp.total/pp.ft:null,cpft_py=py.ft>0?spPy.total/py.ft:null;
+  const cpa_curr=curr.mem>0?spCurr.total/curr.mem:0,cpa_pp=pp.mem>0?spPp.total/pp.mem:null,cpa_py=py.mem>0?spPy.total/py.mem:null;
+  el.innerHTML=cprKpiCard('Blended CPL',cpl_curr,cpl_pp,cpl_py,f$2)+cprKpiCard('Blended CPFT',cpft_curr,cpft_pp,cpft_py,f$2)+cprKpiCard('Blended CPA',cpa_curr,cpa_pp,cpa_py,f$2);
+  const bdEl=document.getElementById('cpr-spend-breakdown');
+  if(bdEl){const parts=[];const bLabels={google:'Google Ads',meta:'Meta Ads',leadteam:'Leadteam Fee'};const bColors={google:'#34A853',meta:'#1877F2',leadteam:'#FF6B35'};let first=true;['google','meta','leadteam'].forEach(k=>{if(!CPR_COSTS_ACTIVE[k])return;const v=spCurr[k],vPp=spPp[k],vPy=spPy[k];if(!first)parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">+</span>');const dpp=vPp>0?((v-vPp)/vPp*100).toFixed(1):null,dpy=vPy>0?((v-vPy)/vPy*100).toFixed(1):null;const ppH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpp!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpp)+'% prev period</div>':'');const pyH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpy!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpy)+'% prev year</div>':'');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid '+bColors[k]+'"><div class="kpi-card-label">'+bLabels[k]+'</div><div class="kpi-card-val">'+f$(v)+'</div>'+ppH+pyH+'</div>');first=false;});if(parts.length>0){const totV=spCurr.total,totPp=spPp.total,totPy=spPy.total;const dppT=totPp>0?((totV-totPp)/totPp*100).toFixed(1):null,dpyT=totPy>0?((totV-totPy)/totPy*100).toFixed(1):null;const ppTH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dppT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dppT)+'% prev period</div>':'');const pyTH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpyT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpyT)+'% prev year</div>':'');parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">=</span>');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid #1a1a2e"><div class="kpi-card-label">Total Spend</div><div class="kpi-card-val">'+f$(totV)+'</div>'+ppTH+pyTH+'</div>');}bdEl.innerHTML=parts.join('');}
+  if(cprChart){cprChart.destroy();cprChart=null;}
+  const ctx=document.getElementById('cprChart');if(!ctx)return;
+  // Build Google rows: use daily where available, monthly only for months with no daily data
+  const allGRows = (() => {
+    if (!GOOGLE_ADS_RAW) return [];
+    const dailyMonths = new Set((GOOGLE_ADS_RAW.daily||[]).map(r => r.date.slice(0,7)));
+    const monthly = (GOOGLE_ADS_RAW.monthly||[]).filter(r => !dailyMonths.has(r.month.slice(0,7)));
+    return [...(GOOGLE_ADS_RAW.daily||[]), ...monthly];
+  })();
+  const byStudio=selStudios.length>0;
+  const allMetaRows=[];
+  const metaLiveCovered=new Set();
+  if(META_ADS_RAW){
+    for(const camp of Object.values(META_ADS_RAW.campaigns||{})){
+      for(const row of((camp.daily_series||{}).by_studio||[])){
+        const name=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+        allMetaRows.push({date:row.date,studio:name,spend:row.spend||0});
+        metaLiveCovered.add(row.studio_code+'|'+row.date.slice(0,7));
+      }
+    }
+    // Distribute monthly baked spend evenly across each day so weekly/daily buckets get proportional spend
+    for(const row of(META_ADS_RAW.monthly_spend||[])){
+      if(metaLiveCovered.has(row.studio_code+'|'+row.month.slice(0,7)))continue;
+      const name=META_CODE_TO_STUDIO[row.studio_code]||row.studio_code;
+      const mStart=new Date(row.month+'T00:00:00Z');
+      const daysInMonth=new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth()+1,0)).getUTCDate();
+      const dailySpend=row.spend/daysInMonth;
+      for(let i=0;i<daysInMonth;i++){
+        const day=new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth(),i+1));
+        allMetaRows.push({date:day.toISOString().slice(0,10),studio:name,spend:dailySpend});
+      }
+    }
+  }
+  updateCPRGranButtons();
+  const sfRows = [...(funnelCurr.daily||[]),...(funnelCurr.monthly||[])];
+  const buckets = {};
+  function cprKey(ds) {
+    const d = new Date(ds+'T00:00:00Z');
+    if (CPR_GRAN==='daily') return ds.slice(0,10);
+    if (CPR_GRAN==='weekly') { const day=d.getUTCDay()||7; const mon=new Date(d); mon.setUTCDate(d.getUTCDate()-(day-1)); return mon.toISOString().slice(0,10); }
+    return ds.slice(0,7)+'-01';
+  }
+  // Helper: distribute a monthly record evenly across all days in the month
+  // then bucket each day — prevents entire month spend/funnel landing on the 1st
+  function addMonthlyAsDays(dateStr, addFn) {
+    const mStart = new Date(dateStr.slice(0,7)+'-01T00:00:00Z');
+    const dInM   = new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth()+1,0)).getUTCDate();
+    for (let i=0; i<dInM; i++) {
+      const day = new Date(Date.UTC(mStart.getUTCFullYear(),mStart.getUTCMonth(),i+1));
+      const ds  = day.toISOString().slice(0,10);
+      const d   = day.getTime();
+      if (d < fTime || d > tTime) continue;
+      addFn(cprKey(ds), 1/dInM);
+    }
+  }
+
+  for (const r of allGRows) {
+    const ds = r.date || r.month;
+    const isMonthly = !r.date && !!r.month;
+    const d  = new Date(ds+'T00:00:00Z').getTime();
+    if (d < fTime || d > tTime) continue;
+    if (byStudio && !selStudios.includes(r.studio)) continue;
+    if (isMonthly && CPR_GRAN !== 'monthly') {
+      addMonthlyAsDays(ds, (key, frac) => { if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].google+=r.spend*frac; });
+    } else {
+      const key=cprKey(ds); if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].google+=r.spend||0;
+    }
+  }
+  for (const r of allMetaRows) {
+    const d = new Date(r.date+'T00:00:00Z').getTime();
+    if (d < fTime || d > tTime) continue;
+    if (byStudio && !selStudios.includes(r.studio)) continue;
+    const key=cprKey(r.date); if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].meta+=r.spend||0;
+  }
+  for (const r of sfRows) {
+    const ds = r.date || r.month;
+    const isMonthly = !r.date && !!r.month;
+    if (isMonthly && CPR_GRAN !== 'monthly') {
+      addMonthlyAsDays(ds, (key, frac) => { if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].leads+=(r.signups||0)*frac; buckets[key].ft+=(r.first_visits||0)*frac; buckets[key].mem+=(r.first_activations||0)*frac; });
+    } else {
+      const key=cprKey(ds); if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].leads+=r.signups||0; buckets[key].ft+=r.first_visits||0; buckets[key].mem+=r.first_activations||0;
+    }
+  }
+  const sortedKeys = Object.keys(buckets).sort();
+  const dispLabels = sortedKeys.map(k => {
+    const d=new Date(k+'T00:00:00Z');
+    if(CPR_GRAN==='daily')  return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+    if(CPR_GRAN==='weekly') return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+    return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});
+  });
+  // Flat daily LT rate: 200/studio/month * 12 months / 365 days
+  const LT_DAILY_RATE = studioCount * LEADTEAM_PER_STUDIO_MONTH * 12 / 365;
+
+  function bucketDays(key) {
+    // Count how many days this bucket covers that fall within [from, to]
+    const kStart = new Date(key + 'T00:00:00Z');
+    let kEnd;
+    if (CPR_GRAN === 'monthly') {
+      kEnd = new Date(Date.UTC(kStart.getUTCFullYear(), kStart.getUTCMonth()+1, 0, 23, 59, 59));
+    } else if (CPR_GRAN === 'weekly') {
+      kEnd = new Date(kStart.getTime() + 6*86400000);
+    } else {
+      kEnd = new Date(kStart.getTime() + 86400000 - 1);
+    }
+    const clampStart = Math.max(fTime, kStart.getTime());
+    const clampEnd   = Math.min(tTime,  kEnd.getTime());
+    return clampEnd >= clampStart ? (clampEnd - clampStart) / 86400000 + 1 : 0;
+  }
+
+  // Compute spend per bucket using the exact same functions as the KPI cards
+  // so chart values match cards when a single bucket covers the selected period
+  function bucketRange(key) {
+    const kStart = new Date(key + 'T00:00:00Z');
+    let kEnd;
+    if (CPR_GRAN === 'monthly') {
+      kEnd = new Date(Date.UTC(kStart.getUTCFullYear(), kStart.getUTCMonth()+1, 0, 23, 59, 59));
+    } else if (CPR_GRAN === 'weekly') {
+      kEnd = new Date(kStart.getTime() + 6*86400000 + 86399999);
+    } else {
+      kEnd = new Date(kStart.getTime() + 86399999);
+    }
+    return {
+      f: new Date(Math.max(fTime, kStart.getTime())),
+      t: new Date(Math.min(tTime,  kEnd.getTime())),
+    };
+  }
+
+  function trendSpend(key) {
+    const {f, t} = bucketRange(key);
+    let s = 0;
+    if (CPR_COSTS_ACTIVE.google)   s += sumGoogleSpend(f, t);
+    if (CPR_COSTS_ACTIVE.meta)     s += sumMetaSpend(f, t);
+    if (CPR_COSTS_ACTIVE.leadteam) s += leadteamForRange(f, t);
+    return s;
+  }
+  const cplData=sortedKeys.map(k=>{const s=trendSpend(k),l=buckets[k].leads;return l>0?Math.round(s/l*100)/100:null;});
+  const cpftData=sortedKeys.map(k=>{const s=trendSpend(k),f=buckets[k].ft;return f>0?Math.round(s/f*100)/100:null;});
+  const cpaData=sortedKeys.map(k=>{const s=trendSpend(k),m=buckets[k].mem;return m>0?Math.round(s/m*100)/100:null;});
+  cprChart=new Chart(ctx,{type:'line',data:{labels:dispLabels,datasets:[{label:'Blended CPL',data:cplData,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true},{label:'Blended CPFT',data:cpftData,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true},{label:'Blended CPA',data:cpaData,borderColor:'#DDFF00',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>c.dataset.label+': $'+(c.parsed.y!=null?c.parsed.y.toLocaleString():'-')}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',callback:v=>'$'+v},position:'left'}}}});
+}
 
 function toggleCPRds(btn,i){if(!cprChart)return;const ds=cprChart.data.datasets[i];ds.hidden=!ds.hidden;btn.classList.toggle('on');const cols=['#00A3E0','#00FFC2','#DDFF00','#888'];if(btn.classList.contains('on')){btn.style.background=cols[i];btn.style.borderColor=cols[i];btn.style.color='#000';}else{btn.style.background='#f4f9fd';btn.style.borderColor='#c0d4df';btn.style.color='#5a7a8a';}cprChart.update();}
 
@@ -805,23 +1221,27 @@ function toggleCPRds(btn,i){if(!cprChart)return;const ds=cprChart.data.datasets[
 
 
 // -- META ADS ----------------------------------------------------------
-let META_ADS_RAW = null;
+let META_ADS_RAW    = null;
+let GOOGLE_ADS_RAW  = null;
+let googleTrendChart = null;
 
 // Canonical studio code → name (no "SWEAT440 " prefix)
 const META_CODE_TO_STUDIO = {
-  'FL-001': 'Miami Beach',        'FL-002': 'Miami - Brickell',
-  'FL-003': 'Coral Gables',       'FL-004': 'Doral',
-  'FL-005': 'Miami Lakes',        'FL-006': 'Deerfield Beach',
-  'FL-007': 'Miami - Upper East Side', 'FL-008': 'Coral Springs',
-  'FL-009': 'South Miami',        'FL-010': 'Miami - Midtown',
-  'FL-011': 'Miami - Coconut Grove', 'FL-012': 'Miramar',
+  'FL-001': 'Miami Beach',              'FL-002': 'Miami - Brickell',
+  'FL-003': 'Coral Gables',             'FL-004': 'Doral',
+  'FL-005': 'Miami Lakes',              'FL-006': 'Deerfield Beach',
+  'FL-007': 'Miami - Upper East Side',    'FL-008': 'Coral Springs',
+  'FL-009': 'South Miami',              'FL-010': 'Miami - Midtown',
+  'FL-011': 'Miami - Coconut Grove',            'FL-012': 'Miramar',
   'FL-013': 'Fort Lauderdale - Las Olas', 'FL-014': 'Pembroke Pines',
-  'FL-015': 'West Palm Beach',    'FL-016': 'Boca Raton',
-  'NC-001': 'Charlotte - Noda',   'NJ-001': 'Toms River',
-  'NJ-002': 'Ocean Township',     'NJ-003': 'Wall Township',
-  'NY-002': 'NYC - Chelsea',      'NY-003': 'NYC - Park Slope',
-  'NY-004': 'Eastchester',        'TX-001': 'Austin - Zilker',
-  'TX-002': 'Austin - Highland',
+  'FL-015': 'West Palm Beach',          'FL-016': 'Boca Raton',
+  'FL-017': 'Pinecrest',                'FL-019': 'Naples Mercato',
+  'NC-001': 'Charlotte - Noda',         'NJ-001': 'Toms River',
+  'NJ-002': 'Ocean Township',           'NJ-003': 'Wall Township',
+  'NY-002': 'NYC - Chelsea',              'NY-003': 'NYC - Park Slope',
+  'NY-004': 'Eastchester',              'TX-001': 'Austin - Zilker',
+  'TX-002': 'Austin - Highland',        'TX-003': 'Dallas - Prestonwood',
+  'TN-001': 'Music Row',                'VA-001': 'Reston',
 };
 
 // Strip "26-FL-015-02 - " style prefix to get the creative short name
@@ -921,103 +1341,189 @@ async function buildMetaTab() {
     kpiCard('Cost / Lead',  cpl,          null, null, f$2);
 
   // ---- Active Ads table ----
-  // Collect ads from all campaigns that overlap the selected period
-  // Group by creative short name, aggregate metrics, pick best thumbnail
-  const creativeMap = {};
-
+  // Build a lookup of per-ad metadata (status, studio, creative assets) from all campaigns
+  const adMeta = {}; // ad_id -> {name, status, media_type, studio_code, first_seen, last_seen, thumbnail_url, library_url}
   for (const camp of allCamps) {
-    const campStart = new Date(camp.date_start + 'T00:00:00Z').getTime();
-    const campEnd   = new Date(camp.date_end   + 'T23:59:59Z').getTime();
-    if (campStart > tTime || campEnd < fTime) continue; // campaign outside range
-
     for (const ad of (camp.ads || [])) {
-      // Apply studio filter
-      const canonicalName = META_CODE_TO_STUDIO[ad.studio_code] || ad.studio_code;
-      if (filterByStudio && !selectedStudios.has(canonicalName)) continue;
-
-      // Only include ads that were active during the selected period
-      // first_seen must be within or before the selected range
-      if (ad.first_seen) {
-        const fs = new Date(ad.first_seen + 'T00:00:00Z').getTime();
-        if (fs > tTime) continue; // started after the period
-      }
-
-      const shortName = creativeShortName(ad.name);
-      if (!shortName) continue;
-
-      if (!creativeMap[shortName]) {
-        creativeMap[shortName] = {
-          name:        shortName,
-          media_type:  ad.media_type,
-          spend:       0, impressions: 0, clicks: 0, leads: 0, trials: 0,
-          isActive:    false,
-          first_seen:  ad.first_seen || camp.date_start,
-          camp_start:  camp.date_start,
-          thumbnail:   '',
-          library_url: '',
-          _ads:        [],
+      if (!adMeta[ad.ad_id]) {
+        adMeta[ad.ad_id] = {
+          name:          ad.name,
+          status:        ad.status,
+          media_type:    ad.media_type,
+          studio_code:   ad.studio_code,
+          first_seen:    ad.first_seen || camp.date_start,
+          last_seen:     ad.last_seen  || camp.date_end,
+          camp_start:    camp.date_start,
+          thumbnail_url: ad.thumbnail_url || '',
+          library_url:   ad.library_url   || '',
         };
+      } else {
+        // Keep most recent status; update first/last seen
+        if (ad.status === 'ACTIVE') adMeta[ad.ad_id].status = 'ACTIVE';
+        if (ad.first_seen && ad.first_seen < adMeta[ad.ad_id].first_seen) adMeta[ad.ad_id].first_seen = ad.first_seen;
+        if (ad.last_seen  && ad.last_seen  > adMeta[ad.ad_id].last_seen)  adMeta[ad.ad_id].last_seen  = ad.last_seen;
+        if (!adMeta[ad.ad_id].thumbnail_url && ad.thumbnail_url) adMeta[ad.ad_id].thumbnail_url = ad.thumbnail_url;
+        if (!adMeta[ad.ad_id].library_url   && ad.library_url)   adMeta[ad.ad_id].library_url   = ad.library_url;
       }
-
-      const g = creativeMap[shortName];
-      g.spend       += ad.spend       || 0;
-      g.impressions += ad.impressions || 0;
-      g.clicks      += ad.clicks      || 0;
-      g.leads       += ad.leads       || 0;
-      g.trials      += ad.trials      || 0;
-      if (ad.status === 'ACTIVE') g.isActive = true;
-      if (ad.first_seen && ad.first_seen < g.first_seen) g.first_seen = ad.first_seen;
-      g._ads.push(ad);
     }
   }
 
-  // Pick best thumbnail (highest-lead ad that has one)
+  // Aggregate date-filtered metrics from daily_series.by_ad
+  // Fall back to lifetime ad metrics if by_ad is unavailable (older data.json)
+  const byAdRows = (allCamps[0]?.daily_series?.by_ad) || null;
+  const adMetrics = {}; // ad_id -> {spend, impressions, clicks, leads, trials}
+
+  if (byAdRows) {
+    // Use date-filtered daily series - most accurate
+    for (const camp of allCamps) {
+      for (const row of ((camp.daily_series || {}).by_ad || [])) {
+        const d = new Date(row.date + 'T00:00:00Z').getTime();
+        if (d < fTime || d > tTime) continue;
+        const meta = adMeta[row.ad_id];
+        if (!meta) continue;
+        const canonicalName = META_CODE_TO_STUDIO[meta.studio_code] || meta.studio_code;
+        if (filterByStudio && !selectedStudios.has(canonicalName)) continue;
+        if (!adMetrics[row.ad_id]) adMetrics[row.ad_id] = {spend:0, impressions:0, clicks:0, leads:0, trials:0};
+        adMetrics[row.ad_id].spend       += row.spend       || 0;
+        adMetrics[row.ad_id].impressions += row.impressions || 0;
+        adMetrics[row.ad_id].clicks      += row.clicks      || 0;
+        adMetrics[row.ad_id].leads       += row.leads       || 0;
+        adMetrics[row.ad_id].trials      += row.trials      || 0;
+      }
+    }
+  } else {
+    // Fallback: use lifetime ad totals for ads whose window overlaps the selected range
+    for (const camp of allCamps) {
+      const campStart = new Date(camp.date_start + 'T00:00:00Z').getTime();
+      const campEnd   = new Date(camp.date_end   + 'T23:59:59Z').getTime();
+      if (campStart > tTime || campEnd < fTime) continue;
+      for (const ad of (camp.ads || [])) {
+        const canonicalName = META_CODE_TO_STUDIO[ad.studio_code] || ad.studio_code;
+        if (filterByStudio && !selectedStudios.has(canonicalName)) continue;
+        if (ad.first_seen && new Date(ad.first_seen + 'T00:00:00Z').getTime() > tTime) continue;
+        if (!adMetrics[ad.ad_id]) adMetrics[ad.ad_id] = {spend:0, impressions:0, clicks:0, leads:0, trials:0};
+        adMetrics[ad.ad_id].spend       += ad.spend       || 0;
+        adMetrics[ad.ad_id].impressions += ad.impressions || 0;
+        adMetrics[ad.ad_id].clicks      += ad.clicks      || 0;
+        adMetrics[ad.ad_id].leads       += ad.leads       || 0;
+        adMetrics[ad.ad_id].trials      += ad.trials      || 0;
+      }
+    }
+  }
+
+  // Group ads by creative short name, aggregating date-filtered metrics
+  const creativeMap = {};
+  for (const [ad_id, metrics] of Object.entries(adMetrics)) {
+    const meta = adMeta[ad_id];
+    if (!meta) continue;
+    const shortName = creativeShortName(meta.name);
+    if (!shortName) continue;
+
+    if (!creativeMap[shortName]) {
+      creativeMap[shortName] = {
+        name:        shortName,
+        media_type:  meta.media_type,
+        spend:       0, impressions: 0, clicks: 0, leads: 0, trials: 0,
+        isActive:    false,
+        first_seen:  meta.first_seen || '',
+        camp_start:  meta.camp_start || '',
+        thumbnail:   '',
+        library_url: '',
+        _adIds:      [],
+      };
+    }
+
+    const g = creativeMap[shortName];
+    g.spend       += metrics.spend;
+    g.impressions += metrics.impressions;
+    g.clicks      += metrics.clicks;
+    g.leads       += metrics.leads;
+    g.trials      += metrics.trials;
+    if (meta.status === 'ACTIVE') g.isActive = true;
+    if (meta.first_seen && meta.first_seen < g.first_seen) g.first_seen = meta.first_seen;
+    g._adIds.push(ad_id);
+  }
+
+  // Pick best thumbnail (from ad with most leads)
   for (const g of Object.values(creativeMap)) {
-    const sorted = g._ads.slice().sort((a, b) => b.leads - a.leads);
+    const sorted = g._adIds
+      .map(id => ({ ...adMeta[id], leads: adMetrics[id]?.leads || 0 }))
+      .sort((a, b) => b.leads - a.leads);
     g.thumbnail   = sorted.find(a => a.thumbnail_url)?.thumbnail_url || '';
-    g.library_url = sorted.find(a => a.library_url)?.library_url || '';
-    delete g._ads;
+    g.library_url = sorted.find(a => a.library_url)?.library_url   || '';
+    delete g._adIds;
   }
 
   const creativeRows = Object.values(creativeMap)
     .sort((a, b) => b.leads - a.leads);
 
   if (adsTb) {
-    adsTb.innerHTML = creativeRows.length ? creativeRows.map(g => {
-      const isNew = g.first_seen > g.camp_start;
-      const statusBadge = g.isActive
-        ? '<span style="background:#00a86b;color:#fff;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700">ACTIVE</span>'
-        : '<span style="background:#f59e0b;color:#fff;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700">PAUSED</span>';
-      const newBadge = isNew
-        ? '<span style="background:#00A3E0;color:#fff;font-size:9px;padding:1px 6px;border-radius:8px;font-weight:700;margin-left:5px">NEW</span>'
-        : '';
-      const ctr = g.impressions > 0 ? (g.clicks / g.impressions * 100).toFixed(2) + '%' : '—';
-      const adCpl = g.leads > 0 ? f$2(g.spend / g.leads) : '—';
-
-      // Thumbnail cell — click opens Ads Library
-      const thumbCell = g.thumbnail
-        ? `<a href="${g.library_url}" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2);flex-shrink:0">
-             <img src="${g.thumbnail}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.innerHTML='<div style=\'width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px\'>▶</div>'"/>
-           </a>`
-        : `<a href="${g.library_url}" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">▶</a>`;
-
-      const mediaIcon = g.media_type === 'Video' ? '▶' : g.media_type === 'Static' ? '🖼' : '⊞';
-
-      return `<tr>
-        <td style="padding:8px 6px">${thumbCell}</td>
-        <td>
-          <div style="font-weight:600;font-size:13px">${g.name}${newBadge}</div>
-          <div style="font-size:11px;color:#8aabbf;margin-top:2px">${mediaIcon} ${g.media_type}</div>
-        </td>
-        <td class="num">${fK(g.impressions)}</td>
-        <td class="num">${fN(g.clicks)}</td>
-        <td class="num">${ctr}</td>
-        <td class="num">${f$(g.spend)}</td>
-        <td class="num">${g.leads}</td>
-        <td class="num">${adCpl}</td>
-        <td class="num">${statusBadge}</td>
-      </tr>`;
-    }).join('') : '<tr><td colspan="9" style="color:#8aabbf;text-align:center;padding:20px">No ads found for selected period.</td></tr>';
+    if (!creativeRows.length) {
+      adsTb.innerHTML = '<tr><td colspan="10" style="color:#8aabbf;text-align:center;padding:20px">No ads found for selected period.</td></tr>';
+    } else {
+      // Add ctr_num for sorting
+      const adsData = creativeRows.map(g => ({
+        ...g,
+        ctr_num: g.impressions > 0 ? g.clicks/g.impressions*100 : 0,
+        cpl: g.leads > 0 ? g.spend/g.leads : null,
+      }));
+      sortableTable(
+        'meta-ads-table',
+        adsData,
+        (g, i) => {
+          const isNew = g.first_seen > g.camp_start;
+          const statusBadge = g.isActive
+            ? '<span style="background:#00a86b;color:#fff;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700">ACTIVE</span>'
+            : '<span style="background:#f59e0b;color:#fff;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700">PAUSED</span>';
+          const newBadge = isNew
+            ? '<span style="background:#00A3E0;color:#fff;font-size:9px;padding:1px 6px;border-radius:8px;font-weight:700;margin-left:5px">NEW</span>'
+            : '';
+          const ctrStr = g.impressions > 0 ? (g.clicks/g.impressions*100).toFixed(2)+'%' : '—';
+          const adCpl  = g.leads > 0 ? f$2(g.spend/g.leads) : '—';
+          const thumbFallback = '<div style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px">&#9654;</div>';
+          const thumbCell = g.thumbnail
+            ? '<a href="' + g.library_url + '" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2);flex-shrink:0">'
+              + '<img src="' + g.thumbnail + '" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.innerHTML=this.dataset.fb" data-fb="' + thumbFallback.replace(/"/g, '&quot;') + '"/></a>'
+            : '<a href="' + g.library_url + '" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">&#9654;</a>';
+          const mediaIcon = g.media_type==='Video'?'▶':g.media_type==='Static'?'🖼':'⊞';
+          return `<tr>
+            <td class="row-num">${i}</td>
+            <td style="padding:8px 6px">${thumbCell}</td>
+            <td>
+              <div style="font-weight:600;font-size:13px">${g.name}${newBadge}</div>
+              <div style="font-size:11px;color:#8aabbf;margin-top:2px">${mediaIcon} ${g.media_type}</div>
+            </td>
+            <td class="num">${fK(g.impressions)}</td>
+            <td class="num">${fN(g.clicks)}</td>
+            <td class="num">${ctrStr}</td>
+            <td class="num">${f$(g.spend)}</td>
+            <td class="num">${g.leads}</td>
+            <td class="num">${adCpl}</td>
+            <td class="num">${statusBadge}</td>
+          </tr>`;
+        },
+        (sorted) => {
+          const tImp   = sorted.reduce((s,r)=>s+r.impressions,0);
+          const tClk   = sorted.reduce((s,r)=>s+r.clicks,0);
+          const tSpend = sorted.reduce((s,r)=>s+r.spend,0);
+          const tLeads = sorted.reduce((s,r)=>s+r.leads,0);
+          const tCTR   = tImp>0?(tClk/tImp*100).toFixed(2)+'%':'—';
+          const tCPL   = tLeads>0?f$2(tSpend/tLeads):'—';
+          return `<tr>
+            <td class="row-num"></td>
+            <td></td>
+            <td>Total (${sorted.length} creatives)</td>
+            <td class="num">${fK(tImp)}</td>
+            <td class="num">${fN(tClk)}</td>
+            <td class="num">${tCTR}</td>
+            <td class="num">${f$(tSpend)}</td>
+            <td class="num">${tLeads}</td>
+            <td class="num">${tCPL}</td>
+            <td></td>
+          </tr>`;
+        }
+      );
+    }
   }
 
   // ---- Studio table ----
@@ -1031,285 +1537,136 @@ async function buildMetaTab() {
   })).sort((a, b) => b.leads - a.leads);
 
   if (stTb) {
-    stTb.innerHTML = studioRows.length ? studioRows.map(s =>
-      `<tr>
+    if (!studioRows.length) {
+      stTb.innerHTML = '<tr><td colspan="9" style="color:#8aabbf;text-align:center;padding:20px">No data for selected period.</td></tr>';
+    } else {
+      sortableTable(
+        'meta-studio-table',
+        studioRows,
+        (s, i) => `<tr>
+          <td class="row-num">${i}</td>
+          <td>${s.name}</td>
+          <td class="num">${fK(s.impressions)}</td>
+          <td class="num">${fN(s.clicks)}</td>
+          <td class="num">${s.ctr.toFixed(2)}%</td>
+          <td class="num">${f$(s.spend)}</td>
+          <td class="num">${s.leads}</td>
+          <td class="num">${s.cpl > 0 ? f$2(s.cpl) : '<span style="color:#8aabbf">—</span>'}</td>
+          <td class="num">${s.trials}</td>
+        </tr>`,
+        (sorted) => {
+          const tImp = sorted.reduce((s,r)=>s+r.impressions,0);
+          const tClk = sorted.reduce((s,r)=>s+r.clicks,0);
+          const tSpend = sorted.reduce((s,r)=>s+r.spend,0);
+          const tLeads = sorted.reduce((s,r)=>s+r.leads,0);
+          const tTrials = sorted.reduce((s,r)=>s+r.trials,0);
+          const tCPL = tLeads > 0 ? f$2(tSpend/tLeads) : '—';
+          const tCTR = tImp > 0 ? (tClk/tImp*100).toFixed(2)+'%' : '—';
+          return `<tr>
+            <td class="row-num"></td>
+            <td>Total (${sorted.length})</td>
+            <td class="num">${fK(tImp)}</td>
+            <td class="num">${fN(tClk)}</td>
+            <td class="num">${tCTR}</td>
+            <td class="num">${f$(tSpend)}</td>
+            <td class="num">${tLeads}</td>
+            <td class="num">${tCPL}</td>
+            <td class="num">${tTrials}</td>
+          </tr>`;
+        }
+      );
+    }
+  }
+}
+
+function buildGoogleTab() {
+  const data=GOOGLE_ADS_RAW;
+  const kpisEl=document.getElementById('google-kpis');if(!kpisEl)return;
+  if(!data){kpisEl.innerHTML='<div style="color:#888;padding:20px;grid-column:1/-1">No google-ads-data.json found.</div>';return;}
+  const fromStr=document.getElementById('fFrom')?.value,toStr=document.getElementById('fTo')?.value;if(!fromStr||!toStr)return;
+  const from=new Date(fromStr+'T00:00:00Z'),to=new Date(toStr+'T23:59:59Z');
+  const ppFrom=window._metaPpFrom||null,ppTo=window._metaPpTo||null,pyFrom=window._metaPyFrom||null,pyTo=window._metaPyTo||null;
+  const selSt=new Set(typeof getSelected==='function'?getSelected('studioMenu'):[]);const fbSt=selSt.size>0;
+  function fgr(rows,f,t){if(!rows||!rows.length)return[];const fT=f?f.getTime():0,tT=t?t.getTime():Infinity;return rows.filter(r=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return false;if(fbSt&&!selSt.has(r.studio))return false;return true;});}
+  function sg(rows){let sp=0,im=0,cl=0,le=0,ca=0,di=0,op=0;for(const r of rows){sp+=r.spend||0;im+=r.impressions||0;cl+=r.clicks||0;le+=r.leads||0;ca+=r.calls||0;di+=r.directions||0;op+=r.opportunities||0;}return{spend:Math.round(sp*100)/100,impressions:im,clicks:cl,leads:le,calls:ca,directions:di,opportunities:Math.round(op*100)/100};}
+  const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];
+  const curr=sg(fgr(allRows,from,to));
+  const pp=sg(fgr(allRows,ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null));
+  const py=sg(fgr(allRows,pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null));
+  const hasData=curr.spend>0||curr.leads>0||curr.opportunities>0;
+  const stTb=document.querySelector('#google-studio-table tbody');
+  if(!hasData){kpisEl.innerHTML='<div style="color:#888;padding:20px;grid-column:1/-1">No Google Ads data for selected period.</div>';if(stTb)stTb.innerHTML='<tr><td colspan="9" style="color:#8aabbf;text-align:center;padding:20px">No data.</td></tr>';_clearGoogleTrend();return;}
+  const f$=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});const f$2=v=>'$'+Number(v).toFixed(2);const fN=v=>Number(v).toLocaleString();const fK=v=>Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':fN(v);
+  const cpo_c=curr.opportunities>0?curr.spend/curr.opportunities:0,cpo_p=pp.opportunities>0?pp.spend/pp.opportunities:null,cpo_y=py.opportunities>0?py.spend/py.opportunities:null;
+  kpisEl.innerHTML=kpiCard('Spend',curr.spend,pp.spend||null,py.spend||null,f$)+kpiCard('Opportunities',curr.opportunities,pp.opportunities||null,py.opportunities||null,v=>Number(v).toFixed(0))+kpiCard('Cost / Opp',cpo_c,cpo_p,cpo_y,f$2)+kpiCard('Leads',curr.leads,pp.leads||null,py.leads||null,fN)+kpiCard('Calls',curr.calls,pp.calls||null,py.calls||null,fN)+kpiCard('Directions',curr.directions,pp.directions||null,py.directions||null,fN);
+  _buildGoogleTrend(data,from,to,fbSt,selSt);
+  const smap={};for(const r of fgr(allRows,from,to)){const s=r.studio;if(!smap[s])smap[s]={spend:0,impressions:0,clicks:0,leads:0,calls:0,directions:0,opp:0};smap[s].spend+=r.spend||0;smap[s].impressions+=r.impressions||0;smap[s].clicks+=r.clicks||0;smap[s].leads+=r.leads||0;smap[s].calls+=r.calls||0;smap[s].directions+=r.directions||0;smap[s].opp+=r.opportunities||0;}
+  const srows=Object.entries(smap).map(([name,m])=>({name,...m,cpo:m.opp>0?m.spend/m.opp:null})).sort((a,b)=>b.opp-a.opp);
+  if (srows.length) {
+    sortableTable(
+      'google-studio-table',
+      srows,
+      (s, i) => `<tr>
+        <td class="row-num">${i}</td>
         <td>${s.name}</td>
+        <td class="num">${f$(s.spend)}</td>
         <td class="num">${fK(s.impressions)}</td>
         <td class="num">${fN(s.clicks)}</td>
-        <td class="num">${s.ctr.toFixed(2)}%</td>
-        <td class="num">${f$(s.spend)}</td>
         <td class="num">${s.leads}</td>
-        <td class="num">${s.cpl > 0 ? f$2(s.cpl) : '<span style="color:#8aabbf">—</span>'}</td>
-        <td class="num">${s.trials}</td>
-      </tr>`
-    ).join('') : '<tr><td colspan="8" style="color:#8aabbf;text-align:center;padding:20px">No data for selected period.</td></tr>';
+        <td class="num">${s.calls}</td>
+        <td class="num">${s.directions}</td>
+        <td class="num">${s.opp.toFixed(1)}</td>
+        <td class="num">${s.cpo != null ? f$2(s.cpo) : '<span style="color:#8aabbf">—</span>'}</td>
+      </tr>`,
+      (sorted) => {
+        const tSpend = sorted.reduce((s,r)=>s+r.spend,0);
+        const tImp   = sorted.reduce((s,r)=>s+r.impressions,0);
+        const tClk   = sorted.reduce((s,r)=>s+r.clicks,0);
+        const tLeads = sorted.reduce((s,r)=>s+r.leads,0);
+        const tCalls = sorted.reduce((s,r)=>s+r.calls,0);
+        const tDirs  = sorted.reduce((s,r)=>s+r.directions,0);
+        const tOpp   = sorted.reduce((s,r)=>s+r.opp,0);
+        const tCPO   = tOpp>0 ? f$2(tSpend/tOpp) : '—';
+        return `<tr>
+          <td class="row-num"></td>
+          <td>Total (${sorted.length})</td>
+          <td class="num">${f$(tSpend)}</td>
+          <td class="num">${fK(tImp)}</td>
+          <td class="num">${fN(tClk)}</td>
+          <td class="num">${tLeads}</td>
+          <td class="num">${tCalls}</td>
+          <td class="num">${tDirs}</td>
+          <td class="num">${tOpp.toFixed(1)}</td>
+          <td class="num">${tCPO}</td>
+        </tr>`;
+      }
+    );
+  } else if(stTb) {
+    stTb.innerHTML='<tr><td colspan="10" style="color:#8aabbf;text-align:center;padding:20px">No studio data.</td></tr>';
   }
+  const assets=data.assets||{};_buildGoogleAssets(assets.headlines||[],assets.descriptions||[]);
 }
-
-// -- GOOGLE ADS ----------------------------------------------------------
-let GOOGLE_ADS_RAW = null;
-let googleTrendChart = null;
-
-async function ensureGoogleAds() {
-  if (GOOGLE_ADS_RAW) return GOOGLE_ADS_RAW;
-  try {
-    const res = await fetch('google-ads-data.json?_=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    GOOGLE_ADS_RAW = await res.json();
-  } catch(e) {
-    console.warn('google-ads-data.json not available:', e);
-    GOOGLE_ADS_RAW = null;
-  }
-  return GOOGLE_ADS_RAW;
-}
-
-async function buildGoogleTab() {
-  const data = await ensureGoogleAds();
-  const kpisEl = document.getElementById('google-kpis');
-  if (!kpisEl) return;
-
-  if (!data) {
-    kpisEl.innerHTML = '<div style="color:#888;padding:20px;grid-column:1/-1">No google-ads-data.json found. Run fetch_google_ads.py to generate it.</div>';
-    return;
-  }
-
-  // ---- Read filters from DOM ----
-  const fromStr = document.getElementById('fFrom')?.value;
-  const toStr   = document.getElementById('fTo')?.value;
-  if (!fromStr || !toStr) return;
-
-  const from  = new Date(fromStr + 'T00:00:00Z');
-  const to    = new Date(toStr   + 'T23:59:59Z');
-  const fTime = from.getTime();
-  const tTime = to.getTime();
-
-  // Previous period + previous year windows (stored by applyFilters)
-  const ppFrom = window._metaPpFrom || null;
-  const ppTo   = window._metaPpTo   || null;
-  const pyFrom = window._metaPyFrom || null;
-  const pyTo   = window._metaPyTo   || null;
-
-  // Studio filter
-  const selectedStudios = new Set(
-    typeof getSelected === 'function' ? getSelected('studioMenu') : []
-  );
-  const filterByStudio = selectedStudios.size > 0;
-
-  function filterGRows(rows, f, t) {
-    if (!rows || !rows.length) return [];
-    const fT = f ? f.getTime() : 0;
-    const tT = t ? t.getTime() : Infinity;
-    return rows.filter(r => {
-      const d = new Date((r.date || r.month) + 'T00:00:00Z').getTime();
-      if (d < fT || d > tT) return false;
-      if (filterByStudio && !selectedStudios.has(r.studio)) return false;
-      return true;
-    });
-  }
-
-  function sumG(rows) {
-    let spend=0, impressions=0, clicks=0, leads=0, calls=0, directions=0, opp=0;
-    for (const r of rows) {
-      spend       += r.spend        || 0;
-      impressions += r.impressions  || 0;
-      clicks      += r.clicks       || 0;
-      leads       += r.leads        || 0;
-      calls       += r.calls        || 0;
-      directions  += r.directions   || 0;
-      opp         += r.opportunities || 0;
-    }
-    return { spend: Math.round(spend*100)/100, impressions, clicks, leads, calls,
-             directions, opportunities: Math.round(opp*100)/100 };
-  }
-
-  const allRows = [...(data.daily || []), ...(data.monthly || [])];
-
-  const curr   = sumG(filterGRows(allRows, from, to));
-  const ppRows = (ppFrom && ppTo) ? filterGRows(allRows, ppFrom, ppTo) : [];
-  const pyRows = (pyFrom && pyTo) ? filterGRows(allRows, pyFrom, pyTo) : [];
-  const pp     = sumG(ppRows);
-  const py     = sumG(pyRows);
-
-  const hasData = curr.spend > 0 || curr.leads > 0 || curr.opportunities > 0;
-  const stTb    = document.querySelector('#google-studio-table tbody');
-
-  if (!hasData) {
-    kpisEl.innerHTML = '<div style="color:#888;padding:20px;grid-column:1/-1">No Google Ads data for selected period.</div>';
-    if (stTb) stTb.innerHTML = '<tr><td colspan="9" style="color:#8aabbf;text-align:center;padding:20px">No data for selected period.</td></tr>';
-    _clearGoogleTrend();
-    return;
-  }
-
-  const f$  = v => '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
-  const f$2 = v => '$' + Number(v).toFixed(2);
-  const fN  = v => Number(v).toLocaleString();
-  const fK  = v => Number(v) >= 1000 ? (Number(v)/1000).toFixed(0) + 'K' : fN(v);
-
-  const cpo_curr = curr.opportunities > 0 ? curr.spend / curr.opportunities : 0;
-  const cpo_pp   = pp.opportunities   > 0 ? pp.spend   / pp.opportunities   : null;
-  const cpo_py   = py.opportunities   > 0 ? py.spend   / py.opportunities   : null;
-
-  // ---- KPI cards ----
-  kpisEl.innerHTML =
-    kpiCard('Spend',         curr.spend,         pp.spend         || null, py.spend         || null, f$) +
-    kpiCard('Opportunities', curr.opportunities, pp.opportunities  || null, py.opportunities  || null, v => Number(v).toFixed(0)) +
-    kpiCard('Cost / Opp',    cpo_curr,           cpo_pp,                   cpo_py,                   f$2) +
-    kpiCard('Leads',         curr.leads,         pp.leads         || null, py.leads         || null, fN) +
-    kpiCard('Calls',         curr.calls,         pp.calls         || null, py.calls         || null, fN) +
-    kpiCard('Directions',    curr.directions,    pp.directions    || null, py.directions    || null, fN);
-
-  // ---- Trend chart ----
-  _buildGoogleTrend(data, from, to, filterByStudio, selectedStudios);
-
-  // ---- Studio breakdown ----
-  const studioMap = {};
-  for (const r of filterGRows(allRows, from, to)) {
-    const s = r.studio;
-    if (!studioMap[s]) studioMap[s] = {spend:0, impressions:0, clicks:0, leads:0, calls:0, directions:0, opp:0};
-    studioMap[s].spend        += r.spend        || 0;
-    studioMap[s].impressions  += r.impressions  || 0;
-    studioMap[s].clicks       += r.clicks       || 0;
-    studioMap[s].leads        += r.leads        || 0;
-    studioMap[s].calls        += r.calls        || 0;
-    studioMap[s].directions   += r.directions   || 0;
-    studioMap[s].opp          += r.opportunities || 0;
-  }
-  const studioRows = Object.entries(studioMap)
-    .map(([name, m]) => ({ name, ...m }))
-    .sort((a, b) => b.opp - a.opp);
-
-  if (stTb) {
-    stTb.innerHTML = studioRows.length ? studioRows.map(s => {
-      const cpo = s.opp > 0 ? f$2(s.spend / s.opp) : '-';
-      return '<tr><td>' + s.name + '</td>' +
-        '<td class="num">' + f$(s.spend) + '</td>' +
-        '<td class="num">' + fK(s.impressions) + '</td>' +
-        '<td class="num">' + fN(s.clicks) + '</td>' +
-        '<td class="num">' + s.leads + '</td>' +
-        '<td class="num">' + s.calls + '</td>' +
-        '<td class="num">' + s.directions + '</td>' +
-        '<td class="num">' + s.opp.toFixed(1) + '</td>' +
-        '<td class="num">' + cpo + '</td></tr>';
-    }).join('') : '<tr><td colspan="9" style="color:#8aabbf;text-align:center;padding:20px">No studio data for selected period.</td></tr>';
-  }
-
-  // ---- Asset tables (monthly, static) ----
-  const assets = data.assets || {};
-  _buildGoogleAssets(assets.headlines || [], assets.descriptions || []);
-}
-
-
-function _clearGoogleTrend() {
-  if (googleTrendChart) { googleTrendChart.destroy(); googleTrendChart = null; }
-}
-
-
-function _buildGoogleTrend(data, from, to, filterByStudio, selectedStudios) {
-  _clearGoogleTrend();
-  const ctx = document.getElementById('googleTrendChart');
-  if (!ctx) return;
-
-  const allRows = [...(data.daily || []), ...(data.monthly || [])];
-  const fTime = from.getTime();
-  const tTime = to.getTime();
-  const rangeDays = (tTime - fTime) / 86400000;
-
-  const buckets = {};
-  for (const r of allRows) {
-    const d = new Date((r.date || r.month) + 'T00:00:00Z');
-    if (d.getTime() < fTime || d.getTime() > tTime) continue;
-    if (filterByStudio && !selectedStudios.has(r.studio)) continue;
-
-    let label;
-    if (rangeDays <= 62) {
-      label = r.date || r.month;
-    } else if (rangeDays <= 180) {
-      const day = d.getUTCDay();
-      const monday = new Date(d);
-      monday.setUTCDate(d.getUTCDate() - ((day + 6) % 7));
-      label = monday.toISOString().slice(0, 10);
-    } else {
-      label = (r.date || r.month).slice(0, 7) + '-01';
-    }
-
-    if (!buckets[label]) buckets[label] = {spend:0, opportunities:0};
-    buckets[label].spend        += r.spend        || 0;
-    buckets[label].opportunities += r.opportunities || 0;
-  }
-
-  const labels = Object.keys(buckets).sort();
-  const spends = labels.map(l => Math.round(buckets[l].spend * 100) / 100);
-  const opps   = labels.map(l => Math.round(buckets[l].opportunities * 10) / 10);
-
-  const dispLabels = labels.map(l => {
-    const d = new Date(l + 'T00:00:00Z');
-    if (rangeDays <= 62)  return d.toLocaleDateString('en-US', {month:'short', day:'numeric', timeZone:'UTC'});
-    if (rangeDays <= 180) return 'Wk ' + d.toLocaleDateString('en-US', {month:'short', day:'numeric', timeZone:'UTC'});
-    return d.toLocaleDateString('en-US', {month:'short', year:'2-digit', timeZone:'UTC'});
-  });
-
-  googleTrendChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: dispLabels,
-      datasets: [
-        {label:'Spend', data:spends, backgroundColor:'rgba(52,168,83,0.25)', borderColor:'#34A853',
-         borderWidth:2, borderRadius:3, yAxisID:'ySpend', order:2},
-        {label:'Opportunities', data:opps, type:'line', borderColor:'#00A3E0', borderWidth:2.5,
-         pointRadius:3, tension:0.4, fill:false, yAxisID:'yOpp', order:1},
-      ],
-    },
-    options: {
-      responsive:true, maintainAspectRatio:false,
-      interaction:{mode:'index', intersect:false},
-      plugins:{
-        legend:{display:true, position:'top', labels:{font:{size:11}, color:'#5a7a8a', boxWidth:12}},
-        tooltip:{callbacks:{label:c => c.dataset.label==='Spend'
-          ? 'Spend: $' + c.parsed.y.toLocaleString()
-          : 'Opportunities: ' + c.parsed.y.toFixed(1)}},
-      },
-      scales:{
-        x:      {grid:{color:'rgba(0,0,0,.05)'}, ticks:{font:{size:11}, color:'#5a7a8a', maxRotation:0, maxTicksLimit:12}},
-        ySpend: {position:'left',  grid:{color:'rgba(0,0,0,.05)'}, ticks:{font:{size:11}, color:'#34A853', callback:v=>'$'+v.toLocaleString()}},
-        yOpp:   {position:'right', grid:{display:false},             ticks:{font:{size:11}, color:'#00A3E0', callback:v=>v.toFixed(0)}},
-      },
-    },
-  });
-}
-
-
+function _clearGoogleTrend(){if(googleTrendChart){googleTrendChart.destroy();googleTrendChart=null;}}
+function _buildGoogleTrend(data,from,to,fbSt,selSt){_clearGoogleTrend();const ctx=document.getElementById('googleTrendChart');if(!ctx)return;const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];const fTime=from.getTime(),tTime=to.getTime(),rDays=(tTime-fTime)/86400000;const bkts={};for(const r of allRows){const d=new Date((r.date||r.month)+'T00:00:00Z');if(d.getTime()<fTime||d.getTime()>tTime)continue;if(fbSt&&!selSt.has(r.studio))continue;let lbl;if(rDays<=62){lbl=r.date||r.month;}else if(rDays<=180){const day=d.getUTCDay();const mon=new Date(d);mon.setUTCDate(d.getUTCDate()-((day+6)%7));lbl=mon.toISOString().slice(0,10);}else{lbl=(r.date||r.month).slice(0,7)+'-01';}if(!bkts[lbl])bkts[lbl]={spend:0,opportunities:0};bkts[lbl].spend+=r.spend||0;bkts[lbl].opportunities+=r.opportunities||0;}const lbls=Object.keys(bkts).sort();const spends=lbls.map(l=>Math.round(bkts[l].spend*100)/100);const opps=lbls.map(l=>Math.round(bkts[l].opportunities*10)/10);const dL=lbls.map(l=>{const d=new Date(l+'T00:00:00Z');if(rDays<=62)return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});if(rDays<=180)return'Wk '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});});googleTrendChart=new Chart(ctx,{type:'bar',data:{labels:dL,datasets:[{label:'Spend',data:spends,backgroundColor:'rgba(52,168,83,0.25)',borderColor:'#34A853',borderWidth:2,borderRadius:3,yAxisID:'ySpend',order:2},{label:'Opportunities',data:opps,type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yOpp',order:1}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'top',labels:{font:{size:11},color:'#5a7a8a',boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Opportunities: '+c.parsed.y.toFixed(1)}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0,maxTicksLimit:12}},ySpend:{position:'left',grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#34A853',callback:v=>'$'+v.toLocaleString()}},yOpp:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0',callback:v=>v.toFixed(0)}}}}})}
 function _buildGoogleAssets(headlines, descriptions) {
-  const rb = label => {
-    const map = {BEST:['#0a8a4a','Best'], GOOD:['#b85c00','Good'], LOW:['#888','Low'], LEARNING:['#888','Learning']};
-    const [color, text] = map[label] || ['#888', label || '-'];
-    return '<span style="color:' + color + ';font-weight:600">' + text + '</span>';
-  };
-  const fK = v => Number(v) >= 1000 ? (Number(v)/1000).toFixed(0) + 'K' : String(v);
+  const rb = label => { const map={BEST:['#0a8a4a','Best'],GOOD:['#b85c00','Good'],LOW:['#888','Low'],LEARNING:['#888','Learning']}; const[color,text]=map[label]||['#888',label||'-']; return '<span style="color:'+color+';font-weight:600">'+text+'</span>'; };
+  const fK = v => Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':String(v);
   const fN = v => Number(v).toLocaleString();
-
-  const htb = document.querySelector('#google-headlines-table tbody');
-  if (htb) {
-    htb.innerHTML = headlines.length ? headlines.slice(0,20).map(h =>
-      '<tr><td>' + h.text + '</td>' +
-      '<td class="num">' + fK(h.impressions) + '</td>' +
-      '<td class="num">' + fN(h.clicks) + '</td>' +
-      '<td class="num">' + h.ctr + '%</td>' +
-      '<td class="num">' + rb(h.performance_label) + '</td></tr>'
-    ).join('') : '<tr><td colspan="5" style="color:#8aabbf;text-align:center;padding:20px">No headline data available.</td></tr>';
+  const renderAsset = (row, i) => '<tr><td class="row-num">'+i+'</td><td style="max-width:260px;white-space:normal">'+row.text+'</td><td class="num">'+fK(row.impressions)+'</td><td class="num">'+fN(row.clicks)+'</td><td class="num">'+row.ctr+'%</td><td class="num">'+rb(row.performance_label)+'</td></tr>';
+  const noData = cols => '<tr><td colspan="'+cols+'" style="color:#8aabbf;text-align:center;padding:20px">No data.</td></tr>';
+  if (headlines.length) {
+    sortableTable('google-headlines-table', headlines.slice(0,50), renderAsset, null);
+  } else {
+    const htb = document.querySelector('#google-headlines-table tbody');
+    if (htb) htb.innerHTML = noData(6);
   }
-
-  const dtb = document.querySelector('#google-desc-table tbody');
-  if (dtb) {
-    dtb.innerHTML = descriptions.length ? descriptions.slice(0,20).map(d =>
-      '<tr><td style="max-width:260px;white-space:normal">' + d.text + '</td>' +
-      '<td class="num">' + fK(d.impressions) + '</td>' +
-      '<td class="num">' + fN(d.clicks) + '</td>' +
-      '<td class="num">' + d.ctr + '%</td>' +
-      '<td class="num">' + rb(d.performance_label) + '</td></tr>'
-    ).join('') : '<tr><td colspan="5" style="color:#8aabbf;text-align:center;padding:20px">No description data available.</td></tr>';
+  if (descriptions.length) {
+    sortableTable('google-desc-table', descriptions.slice(0,50), renderAsset, null);
+  } else {
+    const dtb = document.querySelector('#google-desc-table tbody');
+    if (dtb) dtb.innerHTML = noData(6);
   }
 }
-
 
 
 

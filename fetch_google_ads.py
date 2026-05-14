@@ -81,12 +81,12 @@ CAMPAIGN_STUDIO_MAP: list[tuple[re.Pattern, str]] = [
     (re.compile(r"usic Row|Music", re.IGNORECASE), "Music Row"),
     (re.compile(r"ighland",        re.IGNORECASE), "Austin - Highland"),
     (re.compile(r"ilker|Zilker",   re.IGNORECASE), "Austin - Zilker"),
-    (re.compile(r"idtown",         re.IGNORECASE), "Midtown Miami"),
+    (re.compile(r"idtown",         re.IGNORECASE), "Miami - Midtown"),
     (re.compile(r"ulch|apitol",    re.IGNORECASE), "Capitol View"),
     (re.compile(r"cean",           re.IGNORECASE), "Ocean Township"),
-    (re.compile(r"NODA",           re.IGNORECASE), "Charlotte - NODA"),
+    (re.compile(r"NODA",           re.IGNORECASE), "Charlotte - Noda"),
     (re.compile(r"South Miami",    re.IGNORECASE), "South Miami"),
-    (re.compile(r"oconut|Coconut|Grove|FL011", re.IGNORECASE), "Coconut Grove"),
+    (re.compile(r"oconut|Coconut|Grove|FL011", re.IGNORECASE), "Miami - Coconut Grove"),
     (re.compile(r"untsville",      re.IGNORECASE), "Huntsville"),
     (re.compile(r"adison",         re.IGNORECASE), "Madison"),
     (re.compile(r"Lakes",          re.IGNORECASE), "Miami Lakes"),
@@ -96,11 +96,11 @@ CAMPAIGN_STUDIO_MAP: list[tuple[re.Pattern, str]] = [
     (re.compile(r"West Palm",      re.IGNORECASE), "West Palm Beach"),
     (re.compile(r"Wall",           re.IGNORECASE), "Wall Township"),
     (re.compile(r"astchester",     re.IGNORECASE), "Eastchester"),
-    (re.compile(r"Slope",          re.IGNORECASE), "Park Slope"),
+    (re.compile(r"Slope",          re.IGNORECASE), "NYC - Park Slope"),
     (re.compile(r"Prestonwood",    re.IGNORECASE), "Dallas - Prestonwood"),
     (re.compile(r"Reston",         re.IGNORECASE), "Reston"),
-    (re.compile(r"inecrest",       re.IGNORECASE), "Pinecrest - Palmetto Bay"),
-    (re.compile(r"Naples",         re.IGNORECASE), "Naples - Mercato"),
+    (re.compile(r"inecrest",       re.IGNORECASE), "Pinecrest"),
+    (re.compile(r"Naples",         re.IGNORECASE), "Naples Mercato"),
     (re.compile(r"Aventura",       re.IGNORECASE), "Aventura"),
     (re.compile(r"Herriman",       re.IGNORECASE), "Herriman"),
     (re.compile(r"Phillips|Dr.?\s*Phillips", re.IGNORECASE), "Dr Phillips"),
@@ -574,6 +574,19 @@ def run():
 
     headlines    = _dedup_assets(all_headlines)
     descriptions = _dedup_assets(all_descriptions)
+
+    # ---- Normalize studio names to Snowflake canonical (source of truth) ----
+    _CANONICAL = {
+        'Miami Brickell':        'Miami - Brickell',
+        'Miami Upper East Side': 'Miami - Upper East Side',
+        'Midtown Miami':         'Miami - Midtown',
+        'Coconut Grove':         'Miami - Coconut Grove',
+        'NYC Chelsea':           'NYC - Chelsea',
+        'NYC Park Slope':        'NYC - Park Slope',
+    }
+    for r in daily_rows + monthly_rows:
+        if r['studio'] in _CANONICAL:
+            r['studio'] = _CANONICAL[r['studio']]
 
     # ---- Studios list (canonical names seen in this data) ----
     studios_seen = sorted(set(

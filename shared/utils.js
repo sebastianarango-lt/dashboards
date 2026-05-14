@@ -151,16 +151,19 @@ function getSelected(menuId) {
 
 function getQuarterBounds() {
   const now = new Date();
-  const qStart = new Date(now.getFullYear(), Math.floor(now.getMonth()/3)*3, 1);
-  const prevQStart = new Date(qStart); prevQStart.setMonth(prevQStart.getMonth()-3);
+  const qMonth = Math.floor(now.getUTCMonth()/3)*3;
+  const qStart = new Date(Date.UTC(now.getUTCFullYear(), qMonth, 1));
+  const prevQStart = new Date(Date.UTC(now.getUTCFullYear(), qMonth-3, 1));
   return { dailyFrom: prevQStart, dailyTo: now };
 }
 
 function setGran(gran) {
+  const btn = document.getElementById('gran'+gran.charAt(0).toUpperCase()+gran.slice(1));
+  if (btn && btn.disabled) return;
   GRAN = gran;
   ['daily','weekly','monthly'].forEach(g => {
-    const btn = document.getElementById('gran'+g.charAt(0).toUpperCase()+g.slice(1));
-    if (btn) btn.classList.toggle('active', g === gran);
+    const b = document.getElementById('gran'+g.charAt(0).toUpperCase()+g.slice(1));
+    if (b) b.classList.toggle('active', g === gran);
   });
   _applyFilters();
 }
@@ -170,12 +173,14 @@ function updateGranButtons(from, to) {
   // We check if the requested range overlaps with our daily data window at all
   const { dailyFrom, dailyTo } = getQuarterBounds();
   // Allow daily if there's any overlap between [from,to] and [dailyFrom, dailyTo]
-  const hasDaily = from <= dailyTo && to >= dailyFrom;
-  const daysDiff = (to - from) / 86400000;
+  const hasDaily  = from <= dailyTo && to >= dailyFrom;
+  // Weekly requires the full range to be within the daily window — mixing monthly rows into weekly buckets creates misleading spikes
+  const hasWeekly = from >= dailyFrom;
+  const daysDiff  = (to - from) / 86400000;
   const btnD = document.getElementById('granDaily');
   const btnW = document.getElementById('granWeekly');
   if (btnD) btnD.disabled = !hasDaily;
-  if (btnW) btnW.disabled = daysDiff > 366;
+  if (btnW) btnW.disabled = !hasWeekly || daysDiff > 366;
   if (GRAN === 'daily'  && btnD && btnD.disabled) { GRAN = 'weekly';  setGran('weekly'); }
   if (GRAN === 'weekly' && btnW && btnW.disabled) { GRAN = 'monthly'; setGran('monthly'); }
 }
