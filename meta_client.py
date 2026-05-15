@@ -1,220 +1,200 @@
 """
 meta_client.py
-─────────────────────────────────────────────────────────────
-Cliente ligero para la Graph API de Meta (Facebook Ads).
-Solo los endpoints que necesita el dashboard — no pretende
-ser una SDK completa.
+──────────────────────────────────────────────────────────────────────
+Thin wrapper around the Meta Marketing API v20.0.
+Used by both fetch_paid_ads.py (Daniel) and fetch_meta_ads.py (Santi).
 
-Requiere:
-    META_ACCESS_TOKEN   (token long-lived o system user)
-    META_API_VERSION    (ej. v21.0)
+Public surface
+──────────────
+MetaClient
+  .get_insights(object_id, *, level, date_start, date_end,
+                time_increment=None, extra_fields=None) -> list[dict]
+  .get_daily_insights(campaign_id, *, date_start, date_end) -> list[dict]
+  .list_ad_sets(campaign_id) -> list[dict]
+  .list_ads(campaign_id) -> list[dict]
+  .list_ads_for_account(ad_account_id) -> list[dict]   ← used by fetch_meta_ads.py
+  .get_creatives_by_ids(creative_ids) -> dict[id, dict]
+
+Helper functions (imported directly by pipeline scripts)
+  leads_of(row)     -> int
+  trials_of(row)    -> int
+  purchases_of(row) -> int
 """
 from __future__ import annotations
+
+import logging
 import os
 import time
+from typing import Any
+
 import requests
-from typing import Iterable
+
+log = logging.getLogger(__name__)
+
+# ── API constants ─────────────────────────────────────────────────────
+API_VERSION = "v20.0"
+BASE_URL    = f"https://graph.facebook.com/{API_VERSION}"
+
+# Default insight fields requested for all get_insights calls
+DEFAULT_INSIGHT_FIELDS = [
+    "ad_id", "ad_name", "adset_id", "adset_name",
+    "campaign_id", "campaign_name",
+    "spend", "impressions", "clicks", "reach",
+    "actions", "action_values",
+    "date_start", "date_stop",
+]
+
+# Creative fields for get_creatives_by_ids
+CREATIVE_FIELDS = [
+    "id", "name", "object_type", "thumbnail_url", "image_url",
+    "image_hash", "video_id", "object_story_spec", "asset_feed_spec",
+]
+
+# Ad fields for list_ads / list_ads_for_account
+AD_FIELDS = "id,name,status,creative{id}"
+
+# Adset fields for list_ad_sets
+ADSET_FIELDS = "id,name,status,campaign_id"
+
+# Retry settings
+MAX_RETRIES    = 5
+RETRY_WAIT_S   = 60   # seconds to wait on rate-limit (error code 17 / 32)
+BACKOFF_BASE_S = 2    # exponential backoff base
 
 
-BASE = "https://graph.facebook.com"
+# ── helper functions ──────────────────────────────────────────────────
 
+def _action_value(row: dict, action_types: list[str]) -> int:
+    """Sum 'actions' entries whose action_type matches any of action_types."""
+    total = 0
+    for entry in (row.get("actions") or []):
+        if entry.get("action_type") in action_types:
+            try:
+                total += int(float(entry.get("value", 0)))
+            except (TypeError, ValueError):
+                pass
+    return total
+
+
+def leads_of(row: dict) -> int:
+    return _action_value(row, [
+        "lead", "onsite_conversion.lead_grouped",
+        "offsite_conversion.fb_pixel_lead",
+    ])
+
+
+def trials_of(row: dict) -> int:
+    return _action_value(row, [
+        "offsite_conversion.fb_pixel_custom",
+        "onsite_conversion.custom",
+        "trial",
+    ])
+
+
+def purchases_of(row: dict) -> int:
+    return _action_value(row, [
+        "offsite_conversion.fb_pixel_purchase",
+        "purchase",
+        "onsite_conversion.purchase",
+    ])
+
+
+# ── MetaClient ────────────────────────────────────────────────────────
 
 class MetaClient:
-    def __init__(self, access_token: str | None = None, api_version: str | None = None):
-        # Acepta META_TOKEN (convención del repo) o META_ACCESS_TOKEN (legado local)
-        self.token = (
-            access_token
-            or os.environ.get("META_TOKEN")
-            or os.environ.get("META_ACCESS_TOKEN")
-        )
-        if not self.token:
-            raise RuntimeError(
-                "Missing Meta token — set META_TOKEN (o META_ACCESS_TOKEN) en el entorno."
-            )
-        self.version = api_version or os.environ.get("META_API_VERSION", "v21.0")
+    """
+    Wraps Meta Marketing API with automatic pagination and retry logic.
+    Reads access token from META_TOKEN environment variable.
+    """
+
+    def __init__(self, token: str | None = None) -> None:
+        self.token = token or os.environ["META_TOKEN"]
         self.session = requests.Session()
+        self.session.params = {"access_token": self.token}  # type: ignore[assignment]
 
-    # ── low-level ──────────────────────────────────────────────────
+    # ── low-level ────────────────────────────────────────────────────
+
     def _get(self, path: str, params: dict | None = None) -> dict:
-        url = f"{BASE}/{self.version}/{path.lstrip('/')}"
-        params = {**(params or {}), "access_token": self.token}
-        r = self.session.get(url, params=params, timeout=60)
-
-        # Reintenta con backoff exponencial si Meta tira rate-limit.
-        # Meta usa varios códigos: 17 (user request limit), 4 (app request
-        # limit), 32 (page request limit), 613 (unknown). También responde
-        # 429 a veces, y 400 con texto "rate limit" / "too many calls".
-        retry_codes = {4, 17, 32, 613}
-        for attempt, delay in enumerate([30, 60, 120], start=1):
-            if r.status_code == 200:
-                break
-            should_retry = False
-            if r.status_code == 429:
-                should_retry = True
-            elif r.status_code == 400:
-                txt = r.text.lower()
-                if "rate limit" in txt or "too many calls" in txt or "request limit" in txt:
-                    should_retry = True
-                else:
-                    try:
-                        err = r.json().get("error", {})
-                        if err.get("code") in retry_codes:
-                            should_retry = True
-                    except Exception:
-                        pass
-            if not should_retry:
-                break
-            time.sleep(delay)
-            r = self.session.get(url, params=params, timeout=60)
-        if not r.ok:
+        """Single GET request with retry on rate-limit errors."""
+        url = f"{BASE_URL}/{path.lstrip('/')}"
+        for attempt in range(1, MAX_RETRIES + 1):
             try:
-                err = r.json().get("error", {})
-                detail = (
-                    f"Meta API {r.status_code}: "
-                    f"code={err.get('code')} subcode={err.get('error_subcode')} "
-                    f"type={err.get('type')} msg={err.get('message')!r} "
-                    f"user_msg={err.get('error_user_msg')!r} "
-                    f"fbtrace={err.get('fbtrace_id')}"
-                )
-            except Exception:
-                detail = f"Meta API {r.status_code}: {r.text[:400]}"
-            raise RuntimeError(detail)
-        return r.json()
+                resp = self.session.get(url, params=params or {}, timeout=120)
+                data = resp.json()
+                if "error" in data:
+                    err  = data["error"]
+                    code = err.get("code")
+                    # Rate limit or temporary server error — wait and retry
+                    if code in (17, 32, 4, 613) or err.get("is_transient"):
+                        wait = RETRY_WAIT_S * attempt
+                        log.warning(f"Rate limit (code {code}), waiting {wait}s (attempt {attempt}/{MAX_RETRIES})")
+                        time.sleep(wait)
+                        continue
+                    raise RuntimeError(f"Meta API error: {err.get('message')} (code {code})")
+                resp.raise_for_status()
+                return data
+            except requests.RequestException as e:
+                if attempt == MAX_RETRIES:
+                    raise
+                wait = BACKOFF_BASE_S ** attempt
+                log.warning(f"Request error: {e}, retrying in {wait}s ...")
+                time.sleep(wait)
+        raise RuntimeError(f"Exhausted {MAX_RETRIES} retries for {url}")
 
-    def _paginate(self, path: str, params: dict | None = None) -> Iterable[dict]:
+    def _paginate(self, path: str, params: dict | None = None) -> list[dict]:
+        """Follow cursor-based pagination, return all rows."""
+        results: list[dict] = []
         data = self._get(path, params)
         while True:
-            for row in data.get("data", []):
-                yield row
-            nxt = data.get("paging", {}).get("next")
-            if not nxt:
+            results.extend(data.get("data") or [])
+            paging = data.get("paging") or {}
+            next_url = paging.get("next")
+            if not next_url:
                 break
-            r = self.session.get(nxt, timeout=60)
-            r.raise_for_status()
-            data = r.json()
+            # next_url is a full URL; strip base and re-request
+            next_path = next_url.replace(BASE_URL, "").lstrip("/")
+            # next_url already contains access_token — pass no extra params
+            resp = self.session.get(next_url, timeout=120)
+            data = resp.json()
+            if "error" in data:
+                raise RuntimeError(f"Meta pagination error: {data['error'].get('message')}")
+        return results
 
-    # ── high-level helpers ────────────────────────────────────────
-    def list_ad_sets(self, campaign_id: str) -> list[dict]:
-        return list(self._paginate(
-            f"{campaign_id}/adsets",
-            params={"fields": "id,name,status,campaign_id,daily_budget,lifetime_budget",
-                    "limit": 200},
-        ))
-
-    def list_ads(self, campaign_id: str) -> list[dict]:
-        # IMPORTANTE: la expansión `creative{...}` desde este endpoint dropea
-        # silenciosamente la mayoría de los sub-fields. Aquí solo pedimos
-        # id + object_type del creative; el detalle (asset_feed_spec, etc.)
-        # se trae después con get_creatives_by_ids() en batch.
-        return list(self._paginate(
-            f"{campaign_id}/ads",
-            params={
-                "fields": "id,name,adset_id,status,creative{id,object_type}",
-                "limit": 100,
-            },
-        ))
-
-    def get_creatives_by_ids(self, creative_ids: list[str]) -> dict[str, dict]:
+    def _paginate_insights(self, path: str, params: dict) -> list[dict]:
         """
-        Batch fetch de creatives por ID. Meta acepta hasta 50 IDs por request
-        usando GET /v21.0/?ids=<id1>,<id2>,...&fields=...
-
-        Devuelve dict {creative_id: creative_dict_completo}.
-        Si un chunk falla (rate limit, etc.), se ignora ese chunk.
+        Insights endpoints use async jobs for large date ranges.
+        Uses synchronous mode (default) with cursor pagination.
         """
-        if not creative_ids:
-            return {}
-        unique_ids = list({cid for cid in creative_ids if cid})
-        out: dict[str, dict] = {}
-        # Pedimos solo los sub-fields que necesitamos para clasificar.
-        # asset_feed_spec con sub-selección {videos,images} para no traer
-        # bodies/titles/descriptions (que son enormes y no nos sirven).
-        fields = (
-            "id,object_type,video_id,image_hash,thumbnail_url,"
-            "effective_object_story_id,permalink_url,"
-            "asset_feed_spec{videos,images}"
-        )
-        chunk_size = 50
-        for i in range(0, len(unique_ids), chunk_size):
-            chunk = unique_ids[i:i + chunk_size]
-            try:
-                data = self._get(
-                    "",
-                    params={"ids": ",".join(chunk), "fields": fields},
-                )
-                # Response shape: {"id1": {...}, "id2": {...}, ...}
-                for cid, cdata in data.items():
-                    if isinstance(cdata, dict):
-                        out[cid] = cdata
-            except Exception:
-                # Si Meta rechaza un chunk completo, seguimos con los demás.
-                # Los ads cuyo creative no se pudo traer caerán al fallback.
-                pass
-        return out
+        return self._paginate(path, params)
+
+    # ── public methods ───────────────────────────────────────────────
 
     def get_insights(
         self,
         object_id: str,
         *,
-        level: str = "adset",
+        level: str,
         date_start: str,
         date_end: str,
-        breakdowns: str | None = None,
-        time_increment: int | str | None = None,
+        time_increment: int | None = None,
+        extra_fields: list[str] | None = None,
     ) -> list[dict]:
-        params = {
-            "level": level,
+        """
+        Fetch insights for any object (account, campaign, adset, ad).
+        object_id: e.g. "act_1553887681409034", "120243785513570249"
+        level: "account" | "campaign" | "adset" | "ad"
+        """
+        fields = DEFAULT_INSIGHT_FIELDS + (extra_fields or [])
+        params: dict[str, Any] = {
+            "level":      level,
+            "fields":     ",".join(fields),
             "time_range": f'{{"since":"{date_start}","until":"{date_end}"}}',
-            "fields": ",".join([
-                # date_start/date_stop sólo se llenan cuando time_increment
-                # está activo; cuando no, Meta simplemente los ignora.
-                "date_start", "date_stop",
-                "adset_id", "adset_name",
-                "ad_id", "ad_name",
-                "campaign_id", "campaign_name",
-                "impressions", "clicks", "spend", "reach",
-                "ctr", "cpm",
-                "actions",
-                # ↓ 'conversions' es DISTINTO de 'actions'. Aquí viven los
-                # eventos de conversión optimizados por Meta (incl. offline
-                # conversions como start_trial_offline / start_trial_total).
-                # Es el campo que usa la UI de Ads Manager para "Start Trial".
-                "conversions",
-            ]),
-            "use_unified_attribution_setting": "true",
-            "limit": 500,
+            "limit":      500,
         }
-        if breakdowns:
-            params["breakdowns"] = breakdowns
         if time_increment is not None:
-            # time_increment=1 → una fila por día por objeto (ad/adset/campaign).
-            params["time_increment"] = str(time_increment)
-        return list(self._paginate(f"{object_id}/insights", params=params))
+            params["time_increment"] = time_increment
 
-    def list_campaigns(
-        self,
-        ad_account_id: str,
-        name_filter: str | None = None,
-        status_filter: list[str] | None = None,
-    ) -> list[dict]:
-        """
-        List campaigns from an ad account.
-        name_filter: optional substring to match in campaign name (case-insensitive via Meta API).
-        status_filter: optional list of statuses to include (e.g. ["ACTIVE", "PAUSED"]).
-        """
-        import json as _json
-        params: dict = {
-            "fields": "id,name,status,start_time,stop_time,objective,daily_budget,lifetime_budget",
-            "limit": 200,
-        }
-        filters: list[dict] = []
-        if name_filter:
-            filters.append({"field": "name", "operator": "CONTAIN", "value": name_filter})
-        if status_filter:
-            filters.append({"field": "effective_status", "operator": "IN", "value": status_filter})
-        if filters:
-            params["filtering"] = _json.dumps(filters)
-        return list(self._paginate(f"{ad_account_id}/campaigns", params=params))
+        return self._paginate_insights(f"{object_id}/insights", params)
 
     def get_daily_insights(
         self,
@@ -223,62 +203,59 @@ class MetaClient:
         date_start: str,
         date_end: str,
     ) -> list[dict]:
-        params = {
-            "level": "campaign",
-            "time_range": f'{{"since":"{date_start}","until":"{date_end}"}}',
-            "time_increment": 1,
-            "fields": "date_start,date_stop,impressions,clicks,spend,reach,actions,conversions",
-            "use_unified_attribution_setting": "true",
-            "limit": 200,
-        }
-        return list(self._paginate(f"{campaign_id}/insights", params=params))
+        """Daily campaign-level insights. Used by Daniel's pipeline."""
+        return self.get_insights(
+            campaign_id,
+            level="campaign",
+            date_start=date_start,
+            date_end=date_end,
+            time_increment=1,
+        )
 
+    def list_ad_sets(self, campaign_id: str) -> list[dict]:
+        """List adsets under a campaign. Used by Daniel's pipeline."""
+        return self._paginate(
+            f"{campaign_id}/adsets",
+            {"fields": ADSET_FIELDS, "limit": 500},
+        )
 
-# ─── helpers para extraer "actions" ────────────────────────────────
-LEAD_ACTION_TYPES = {"onsite_conversion.lead_grouped", "leadgen_grouped", "leadgen.other"}
-PURCHASE_ACTION_TYPES = {"omni_purchase"}
+    def list_ads(self, campaign_id: str) -> list[dict]:
+        """List ads under a campaign. Used by Daniel's pipeline."""
+        return self._paginate(
+            f"{campaign_id}/ads",
+            {"fields": AD_FIELDS, "limit": 500},
+        )
 
-# Trials — SWEAT440 los trackea como OFFLINE CONVERSIONS (CRM → Meta CAPI).
-# Meta los reporta en `conversions[]`, NO en `actions[]`.
-# start_trial_total es el agregado oficial y es la cifra que muestra
-# la UI de Ads Manager en "Start Trial".
-TRIAL_ACTION_TYPES = {
-    "start_trial_total",          # agregado oficial desde conversions[]
-    "omni_start_trial",           # fallbacks (raramente disparan en SWEAT440)
-    "start_trial",
-    "offsite_conversion.fb_pixel_start_trial",
-    "onsite_conversion.start_trial",
-}
+    def list_ads_for_account(self, ad_account_id: str) -> list[dict]:
+        """
+        List all ads under an ad account (all campaigns).
+        Used by fetch_meta_ads.py (Santi's pipeline).
+        ad_account_id: e.g. "act_1553887681409034"
+        """
+        return self._paginate(
+            f"{ad_account_id}/ads",
+            {"fields": AD_FIELDS, "limit": 500},
+        )
 
+    def get_creatives_by_ids(self, creative_ids: list[str]) -> dict[str, dict]:
+        """
+        Batch-fetch creative details by ID.
+        Returns dict keyed by creative ID.
+        Meta batch API allows up to 50 per request.
+        """
+        if not creative_ids:
+            return {}
 
-def count_actions(actions: list[dict] | None, wanted: set[str]) -> int:
-    if not actions:
-        return 0
-    total = 0
-    for a in actions:
-        if a.get("action_type") in wanted:
-            try:
-                total += int(float(a.get("value", 0)))
-            except (TypeError, ValueError):
-                pass
-    return total
+        results: dict[str, dict] = {}
+        chunk_size = 50
+        fields = ",".join(CREATIVE_FIELDS)
 
+        for i in range(0, len(creative_ids), chunk_size):
+            chunk = creative_ids[i : i + chunk_size]
+            params = {"ids": ",".join(chunk), "fields": fields}
+            data = self._get("/", params)
+            for cid, cdata in data.items():
+                if isinstance(cdata, dict):
+                    results[cid] = cdata
 
-def leads_of(row: dict) -> int:
-    return count_actions(row.get("actions"), LEAD_ACTION_TYPES)
-
-
-def purchases_of(row: dict) -> int:
-    return count_actions(row.get("actions"), PURCHASE_ACTION_TYPES)
-
-
-def trials_of(row: dict) -> int:
-    """
-    Trials se leen PRIMERO de `conversions[]` (start_trial_total — incluye
-    offline conversions del CRM). Fallback a `actions[]` si `conversions[]`
-    no devuelve nada.
-    """
-    via_conversions = count_actions(row.get("conversions"), TRIAL_ACTION_TYPES)
-    if via_conversions > 0:
-        return via_conversions
-    return count_actions(row.get("actions"), TRIAL_ACTION_TYPES)
+        return results
