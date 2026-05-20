@@ -85,16 +85,6 @@ NSO_STUDIOS = [
         "location_id": "9241286551304249574",
     },
     {
-        "name": "SWEAT440 Dallas - Prestonwood",
-        "code": "TX-003",
-        "location_id": "11402535545027699120",
-    },
-    {
-        "name": "SWEAT440 Pinecrest - Palmetto Bay",
-        "code": "FL-017",
-        "location_id": "13145255458617855723",
-    },
-    {
         "name": "SWEAT440 Reston",
         "code": "VA-001",
         "location_id": "10767130387921211013",

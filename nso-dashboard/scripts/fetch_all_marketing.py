@@ -14,9 +14,12 @@ Usage:
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+
+import requests as _requests
 
 from dotenv import load_dotenv
 
@@ -55,21 +58,44 @@ def fetch_meta_ads(start_date, end_date):
     # Fetch creative metadata (thumbnail, image, preview link) keyed by ad_name
     print(f"  Fetching ad creatives...")
     creatives = {}
+    img_dir = Path(__file__).parent.parent / "ad_images"
+    img_dir.mkdir(exist_ok=True)
     try:
         ads = account.get_ads(fields=[
             "id", "name",
             "creative{thumbnail_url,image_url,object_type}",
             "preview_shareable_link",
         ])
+        downloaded = 0
         for ad in ads:
+            ad_id = ad["id"]
             creative = ad.get("creative") or {}
+            thumb_url = creative.get("thumbnail_url", "")
+            img_url   = creative.get("image_url", "")
+            cdn_url   = thumb_url or img_url
+
+            # Download image once per ad_id if not already cached
+            local_path = img_dir / f"{ad_id}.jpg"
+            local_image_url = f"ad_images/{ad_id}.jpg"
+            if not local_path.exists() and cdn_url:
+                try:
+                    r = _requests.get(cdn_url, timeout=10)
+                    if r.status_code == 200:
+                        local_path.write_bytes(r.content)
+                        downloaded += 1
+                except Exception:
+                    local_image_url = ""
+            elif not local_path.exists():
+                local_image_url = ""
+
             creatives[ad["name"]] = {
-                "thumbnail_url": creative.get("thumbnail_url", ""),
-                "image_url": creative.get("image_url", ""),
+                "thumbnail_url": thumb_url,
+                "image_url": img_url,
                 "preview_link": ad.get("preview_shareable_link", ""),
                 "object_type": creative.get("object_type", ""),
+                "local_image_url": local_image_url,
             }
-        print(f"  {len(creatives)} ad creatives fetched")
+        print(f"  {len(creatives)} ad creatives fetched, {downloaded} images downloaded")
     except Exception as e:
         print(f"  WARNING: Could not fetch ad creatives: {e}")
 
@@ -132,6 +158,7 @@ def fetch_meta_ads(start_date, end_date):
                 "image_url": creative.get("image_url", ""),
                 "preview_link": creative.get("preview_link", ""),
                 "object_type": creative.get("object_type", ""),
+                "local_image_url": creative.get("local_image_url", ""),
             })
         print(f"  {len(rows)} ad-day rows fetched")
     except Exception as e:

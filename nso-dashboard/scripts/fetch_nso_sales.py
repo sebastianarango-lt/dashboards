@@ -37,8 +37,6 @@ import snowflake.connector
 NSO_STUDIOS = {
     5751381: {"name": "SWEAT440 Naples - Mercato",        "code": "FL-019"},
     5752080: {"name": "SWEAT440 Herriman",                "code": "UT-001"},
-    5750138: {"name": "SWEAT440 Dallas - Prestonwood",    "code": "TX-003"},
-    5750128: {"name": "SWEAT440 Pinecrest - Palmetto Bay","code": "FL-017"},
     5750130: {"name": "SWEAT440 Reston",                  "code": "VA-001"},
 }
 ID_LIST = ",".join(str(i) for i in NSO_STUDIOS)

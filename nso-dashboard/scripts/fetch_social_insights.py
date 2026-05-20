@@ -40,18 +40,6 @@ STUDIOS = [
         "ig_id": None,
     },
     {
-        "name": "Dallas - Prestonwood",
-        "code": "TX-003",
-        "page_id": "845182982009071",
-        "ig_id": "17841477656432324",
-    },
-    {
-        "name": "Pinecrest - Palmetto Bay",
-        "code": "FL-017",
-        "page_id": "848877064975048",
-        "ig_id": "17841477435248000",  # stored as float in Excel — verify if needed
-    },
-    {
         "name": "Reston",
         "code": "VA-001",
         "page_id": "875200972337017",
@@ -265,7 +253,7 @@ def fetch_page_insights(page_id, studio_name, start_date, end_date, user_token):
     }
 
 
-def fetch_instagram_insights(ig_id, studio_name, start_date, end_date, user_token):
+def fetch_instagram_insights(ig_id, studio_name, start_date, end_date, user_token, post_insights_cutoff=None):
     print(f"  [{studio_name}] instagram {ig_id}...")
     daily_map = {}
 
@@ -391,17 +379,61 @@ def fetch_instagram_insights(ig_id, studio_name, start_date, end_date, user_toke
                 likes = media.get("like_count") or 0
                 comments = media.get("comments_count") or 0
                 posts.append({
+                    "_id": media.get("id", ""),
                     "date": ts,
                     "caption": (media.get("caption") or "")[:150],
                     "likes": likes,
                     "comments": comments,
+                    "shares": 0,
+                    "reach": 0,
+                    "engagement_rate": None,
                     "media_type": media.get("media_type") or "",
                     "permalink": media.get("permalink") or "",
                     "image_url": image_url,
                     "engagement": likes + comments,
                 })
-            posts.sort(key=lambda x: x["engagement"], reverse=True)
             print(f"    {len(posts)} posts in range")
+
+            # Fetch shares + reach per post via /insights (single call each)
+            posts_for_insights = [p for p in posts if post_insights_cutoff is None or p["date"] >= post_insights_cutoff]
+            skipped = len(posts) - len(posts_for_insights)
+            print(f"    Fetching shares + reach for {len(posts_for_insights)} posts ({skipped} skipped — older than cutoff)...")
+            insights_ok = 0
+            for post in posts:
+                pid = post.pop("_id", None)
+                if not pid:
+                    continue
+                if post_insights_cutoff and post["date"] < post_insights_cutoff:
+                    continue
+                try:
+                    ri = requests.get(f"{BASE}/{pid}/insights", params={
+                        "metric": "shares,reach",
+                        "access_token": user_token,
+                    })
+                    di = ri.json()
+                    if "error" not in di:
+                        for m in di.get("data", []):
+                            name = m.get("name")
+                            vals = m.get("values") or [{"value": m.get("value", 0)}]
+                            val = int(vals[0].get("value") or 0)
+                            if name == "shares":
+                                post["shares"] = val
+                            elif name == "reach":
+                                post["reach"] = val
+                        insights_ok += 1
+                    time.sleep(0.3)
+                except Exception:
+                    pass
+            print(f"    shares+reach fetched for {insights_ok}/{len(posts)} posts")
+
+            # Recalculate engagement including shares; add engagement_rate
+            for post in posts:
+                eng = post["likes"] + post["comments"] + post["shares"]
+                post["engagement"] = eng
+                reach = post.get("reach") or 0
+                post["engagement_rate"] = round(eng / reach * 100, 2) if reach > 0 else None
+
+            posts.sort(key=lambda x: x["engagement"], reverse=True)
     except Exception as e:
         print(f"    WARNING IG media: {e}")
 
@@ -418,6 +450,8 @@ def main():
     parser.add_argument("--start", help="YYYY-MM-DD")
     parser.add_argument("--end", help="YYYY-MM-DD")
     parser.add_argument("--source", choices=["facebook", "instagram", "all"], default="all")
+    parser.add_argument("--post-insights-days", type=int, default=None,
+                        help="Only fetch per-post shares/reach for posts newer than N days (default: all posts). Use 14 for daily refresh.")
     parser.add_argument("--output", default="social_insights.json")
     args = parser.parse_args()
 
@@ -426,6 +460,10 @@ def main():
     else:
         end_date = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
         start_date = (datetime.now() - timedelta(days=args.days)).strftime("%Y-%m-%d")
+
+    post_insights_cutoff = None
+    if args.post_insights_days is not None:
+        post_insights_cutoff = (datetime.now() - timedelta(days=args.post_insights_days)).strftime("%Y-%m-%d")
 
     user_token = os.environ.get("META_ACCESS_TOKEN")
     if not user_token:
@@ -474,7 +512,8 @@ def main():
             print(f"\n>> Instagram: {studio['name']}")
             try:
                 ig_data = fetch_instagram_insights(
-                    studio["ig_id"], studio["name"], start_date, end_date, user_token
+                    studio["ig_id"], studio["name"], start_date, end_date, user_token,
+                    post_insights_cutoff=post_insights_cutoff,
                 )
                 output["instagram"].append({
                     "studio": studio["name"],
