@@ -99,6 +99,47 @@ def _media_type_from_creative(creative: dict) -> str | None:
     return None
 
 
+def _extract_thumb(creative: dict) -> str:
+    """
+    Cascade through known Meta creative shapes to find a thumbnail URL.
+
+    Most ads in this account are dynamic creative / Advantage+, so the
+    top-level thumbnail_url / image_url come back empty. The actual image
+    URL is nested inside object_story_spec or asset_feed_spec.
+    """
+    if not creative:
+        return ""
+    # 1) Top-level (legacy / simple ads)
+    if creative.get("thumbnail_url"): return creative["thumbnail_url"]
+    if creative.get("image_url"):     return creative["image_url"]
+
+    # 2) object_story_spec — classic page-post ads
+    oss = creative.get("object_story_spec") or {}
+    if isinstance(oss, dict):
+        vd = oss.get("video_data") or {}
+        if isinstance(vd, dict) and vd.get("image_url"):
+            return vd["image_url"]
+        ld = oss.get("link_data") or {}
+        if isinstance(ld, dict) and ld.get("picture"):
+            return ld["picture"]
+
+    # 3) asset_feed_spec — dynamic creative / Advantage+
+    afs = creative.get("asset_feed_spec") or {}
+    if isinstance(afs, dict):
+        images = afs.get("images") or []
+        if isinstance(images, list) and images:
+            first = images[0] if isinstance(images[0], dict) else {}
+            if first.get("url"):           return first["url"]
+            if first.get("permalink_url"): return first["permalink_url"]
+        videos = afs.get("videos") or []
+        if isinstance(videos, list) and videos:
+            first = videos[0] if isinstance(videos[0], dict) else {}
+            if first.get("thumbnail_url"): return first["thumbnail_url"]
+            if first.get("url"):           return first["url"]
+
+    return ""
+
+
 def _media_type_from_name(ad_name: str) -> str:
     if not ad_name: return "Other"
     words = {w.upper() for w in re.findall(r"\w+", ad_name)}
@@ -235,6 +276,18 @@ def run():
 
     status_by_ad = {ad["id"]: ad.get("status", "UNKNOWN") for ad in all_ads if ad.get("id")}
 
+    # Meta Ads Library URL uses the page-post ID, NOT the ad ID.
+    # effective_object_story_id is formatted "{page_id}_{post_id}"; we want
+    # the post_id portion. Falls back to ad_id when missing.
+    library_id_by_ad: dict[str, str] = {}
+    for ad in all_ads:
+        ad_id = ad.get("id")
+        if not ad_id: continue
+        eosi = ad.get("effective_object_story_id") or ""
+        post_id = eosi.split("_", 1)[1] if "_" in eosi else eosi
+        if post_id:
+            library_id_by_ad[ad_id] = post_id
+
     # ── 3. Process daily ad rows → ad_daily + studio_daily ───────────
     # Index buckets keyed by (date, studio_code, ad_id) and (date, studio_code)
     ad_daily_idx:     dict[tuple, dict] = {}
@@ -344,10 +397,17 @@ def run():
     # Start from existing, then update with fresh data
     ad_meta: dict[str, dict] = dict(existing_ad_meta)
 
+    thumb_hits = 0
+    thumb_missing = 0
     for ad_id in set(list(ad_name_seen.keys()) + list(status_by_ad.keys())):
         creative   = cdetails.get(cids_per_ad.get(ad_id, ""), {})
         media_type = _media_type_from_creative(creative) or _media_type_from_name(ad_name_seen.get(ad_id, ""))
-        thumb = creative.get("thumbnail_url") or creative.get("image_url") or ""
+        thumb = _extract_thumb(creative)
+
+        if thumb:
+            thumb_hits += 1
+        elif creative:
+            thumb_missing += 1
 
         ad_meta[ad_id] = {
             "name":          ad_name_seen.get(ad_id) or (ad_meta.get(ad_id) or {}).get("name", ""),
@@ -355,10 +415,10 @@ def run():
             "media_type":    media_type,
             "studio_code":   ad_studio_seen.get(ad_id) or (ad_meta.get(ad_id) or {}).get("studio_code"),
             "thumbnail_url": thumb or (ad_meta.get(ad_id) or {}).get("thumbnail_url", ""),
-            "library_url":   f"https://www.facebook.com/ads/library/?id={ad_id}&country=US",
+            "library_url":   f"https://www.facebook.com/ads/library/?id={library_id_by_ad.get(ad_id, ad_id)}&country=US",
         }
 
-    log.info(f"  ad_meta: {len(ad_meta)} ads")
+    log.info(f"  ad_meta: {len(ad_meta)} ads (thumb hits {thumb_hits}, creatives w/ no thumb {thumb_missing})")
 
     # ── 5. Compute studio_monthly for Apr 2026+ from studio_daily ────
     monthly_fresh: dict[tuple, float] = defaultdict(float)
