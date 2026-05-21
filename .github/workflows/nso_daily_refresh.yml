@@ -39,12 +39,12 @@ jobs:
       # ── NSO SALES ──────────────────────────────────────────────────────────
       - name: Refresh NSO Sales
         env:
-          SNOWFLAKE_ACCOUNT:   ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_USER:      ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_PASSWORD:  ${{ secrets.SNOWFLAKE_PASSWORD }}
-          SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-          SNOWFLAKE_DATABASE:  ${{ secrets.SNOWFLAKE_DATABASE }}
-          SNOWFLAKE_ROLE:      ${{ secrets.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
         run: |
           python nso-dashboard/scripts/fetch_nso_sales.py \
             --start $TWO_DAYS_AGO \
@@ -76,7 +76,7 @@ jobs:
       # ── META ADS + GA4 + GOOGLE ADS ────────────────────────────────────────
       - name: Refresh Meta Ads / GA4 / Google Ads
         env:
-          META_ACCESS_TOKEN:               ${{ secrets.META_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN:               ${{ secrets.META_TOKEN }}
           META_APP_ID:                     ${{ secrets.META_APP_ID }}
           META_APP_SECRET:                 ${{ secrets.META_APP_SECRET }}
           GOOGLE_ADS_DEVELOPER_TOKEN:      ${{ secrets.GOOGLE_ADS_DEVELOPER_TOKEN }}
@@ -109,7 +109,7 @@ jobs:
       # ── SOCIAL INSIGHTS ────────────────────────────────────────────────────
       - name: Refresh Social Insights (Facebook + Instagram)
         env:
-          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_TOKEN }}
           META_APP_ID:       ${{ secrets.META_APP_ID }}
           META_APP_SECRET:   ${{ secrets.META_APP_SECRET }}
         run: |
@@ -121,12 +121,12 @@ jobs:
       # ── SCORECARD ──────────────────────────────────────────────────────────
       - name: Rebuild Scorecard
         env:
-          SNOWFLAKE_ACCOUNT:   ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_USER:      ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_PASSWORD:  ${{ secrets.SNOWFLAKE_PASSWORD }}
-          SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-          SNOWFLAKE_DATABASE:  ${{ secrets.SNOWFLAKE_DATABASE }}
-          SNOWFLAKE_ROLE:      ${{ secrets.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
           GOOGLE_SERVICE_ACCOUNT_KEY_PATH: nso-dashboard/credentials/service_account.json
         run: |
           cd nso-dashboard && python scripts/build_all_scorecards.py
