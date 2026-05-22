@@ -341,8 +341,7 @@ function renderSummary(){
 
   const cur=w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===cw)||w[cw]||{};
   const prev=w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===cw-1)||{};
-  // Use last completed week for timeline position and benchmarks (current week has no data yet)
-  const displayCw=Math.max(0,cw-1);
+  const displayCw=cw;
   const pct=Math.min(100,Math.round(displayCw/totalWeeks*100));
 
   // Opening date: use studio.opening_date from JSON, fall back to GO week data
@@ -416,10 +415,11 @@ function renderSummary(){
     return b;
   }
 
-  // Last Week data — use previous week (current week is in-progress, no data yet)
-  const lastLeads=prev.new_leads??Math.max(0,(prev.total_leads||0)-(w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===cw-2)||{}).total_leads||0);
-  const lastPresales=prev.presales_week??Math.max(0,(prev.presales_count||0)-(w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===cw-2)||{}).presales_count||0);
-  const lastSpend=prev.total_marketing_spend||0;
+  // Last 7 Days = current week's incremental data (scorecard refreshes daily)
+  const yesterdayStr=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  const lastLeads=Math.max(0,(cur.total_leads||0)-(prev.total_leads||0));
+  const lastNetPresales=Math.max(0,cur.presales_week!=null?(cur.presales_week||0)-(cur.cancellations_week||0):((cur.presales_count||0)-(prev.presales_count||0))-((cur.cancellations_count||0)-(prev.cancellations_count||0)));
+  const lastSpend=cur.total_marketing_spend||0;
   const wkLeadGoal=tgt.total_leads?Math.round(tgt.total_leads/totalWeeks):0;
   const wkPresaleGoal=tgt.presales_count?Math.round(tgt.presales_count/totalWeeks):0;
   const cumSpend=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.total_marketing_spend||0),0);
@@ -431,12 +431,13 @@ function renderSummary(){
 
   h+=`<div class="two-col" style="margin-bottom:20px">`;
 
-  // Card A — Last Week
-  h+=`<div class="chart-card summary-card"><div class="summary-card-section">Last Week (W${cw-1})</div>`;
+  // Card A — Last 7 Days (current week in-progress, data through yesterday)
+  const last7Range=cur.date_start?`${_fmtDate(cur.date_start)} – ${_fmtDate(yesterdayStr)}`:`thru ${_fmtDate(yesterdayStr)}`;
+  h+=`<div class="chart-card summary-card"><div class="summary-card-section">Last 7 Days</div><div style="font-size:10px;color:#8aaabb;margin-top:-10px;margin-bottom:10px">${last7Range}</div>`;
   h+=skRow('Leads',lastLeads,wkLeadGoal,'#00A3E0',true);
-  h+=skRow('Presales',lastPresales,wkPresaleGoal,'#00C9A7',true);
-  if(prev.blended_cpl)h+=skValRow('CPL','$'+prev.blended_cpl.toFixed(0),tgt.blended_cpl);
-  if(prev.blended_cpa)h+=skValRow('CPA','$'+prev.blended_cpa.toFixed(0),tgt.blended_cpa);
+  h+=skRow('Presales (net)',lastNetPresales,wkPresaleGoal,'#00C9A7',true);
+  const last7Cvr=lastLeads>0?Math.round(lastNetPresales/lastLeads*100):null;
+  if(last7Cvr!==null)h+=skValRow('Conversion Rate',last7Cvr+'%',null);
   // Marketing Spend row with Est. Total sub-label
   h+=`<div class="sk-row" style="margin-top:8px"><div><div class="sk-label">Mktg Spend</div></div><div class="sk-vals"><div class="sk-actual" style="font-size:18px">${lastSpend>0?'$'+lastSpend.toLocaleString():'—'}</div>${estTotalSpend>0?`<div class="sk-goal">Est. Total: $${estTotalSpend.toLocaleString()}</div>`:''}</div></div>`;
   h+=`</div>`;
