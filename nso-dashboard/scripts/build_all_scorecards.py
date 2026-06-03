@@ -35,6 +35,12 @@ CREDS_PATH = ROOT / "credentials" / "service_account.json"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 LEADTEAM_FEE = 300.0
 
+# Studios where the data.json name differs from the display name.
+# data.json uses STUDIO_NAME from Snowflake (strip_brand applied).
+DATA_NAME_OVERRIDES = {
+    "FL-020": "Orlando - Dr Phillips",
+}
+
 # Google Sheets tab config per studio code
 SHEET_CONFIG = {
     "FL-019": {
@@ -69,8 +75,8 @@ SHEET_CONFIG = {
 
 # Naples irregular week date bounds (weeks 1-10 are fixed; 11+ continue Mon-Sun from 4/20)
 NAPLES_EXPLICIT_WEEKS = {
-    0:  (None,               date(2026, 2,  9)),
-    1:  (date(2026, 2, 10),  date(2026, 2, 15)),
+    0:  (None,               date(2026, 2,  8)),
+    1:  (date(2026, 2,  9),  date(2026, 2, 15)),
     2:  (date(2026, 2, 16),  date(2026, 2, 22)),
     3:  (date(2026, 2, 23),  date(2026, 3,  1)),
     4:  (date(2026, 3,  2),  date(2026, 3,  8)),
@@ -173,7 +179,7 @@ def load_studio_config():
             "code":          code,
             "state":         state,
             "full_name":     f"SWEAT440 {name}",
-            "data_name":     name,           # name used in data.json (no "SWEAT440" prefix)
+            "data_name":     DATA_NAME_OVERRIDES.get(code, name),  # name used in data.json
             "week0_date":    week0_date,
             "week1_start":   week1_start,
             "co_date":       co_date,
@@ -303,7 +309,7 @@ def load_ig_followers(social_raw):
 
 def load_meta_spend(meta_rows):
     """Build {code: {date_str: spend}} from marketing_data.json meta_ads."""
-    # Map studio codes to spend
+    all_codes = [cfg["code"] for cfg in _STUDIO_CFG_CACHE]
     by = defaultdict(lambda: defaultdict(float))
     for r in meta_rows:
         cname = str(r.get("campaign_name", ""))
@@ -311,7 +317,7 @@ def load_meta_spend(meta_rows):
         spend = float(r.get("spend") or 0)
         if spend <= 0 or len(d) < 10:
             continue
-        for code in ("FL-019", "VA-001", "UT-001"):
+        for code in all_codes:
             if code.lower() in cname.lower():
                 by[code][d] += spend
                 break
@@ -564,7 +570,7 @@ def main():
         print(f"\n{'='*60}\n  {full}  (data_name={dname!r})\n{'='*60}")
 
         # Build week bounds
-        is_naples = cfg["week1_start"] == date(2026, 2, 10)
+        is_naples = cfg["code"] == "FL-019"
         if is_naples:
             bounds = make_naples_bounds(num_weeks)
         else:
@@ -695,6 +701,7 @@ def main():
             "name":          cfg["name"],
             "code":          code,
             "full_name":     full,
+            "data_name":     cfg["data_name"],
             "targets":       cfg["targets"],
             "co_week":       co_wk,
             "go_week":       go_wk,

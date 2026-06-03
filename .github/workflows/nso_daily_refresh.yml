@@ -28,8 +28,9 @@ jobs:
 
       - name: Set date variables
         run: |
-          echo "YESTERDAY=$(date -u -d '1 day ago' +%Y-%m-%d)"    >> $GITHUB_ENV
-          echo "TWO_DAYS_AGO=$(date -u -d '2 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
+          echo "TODAY=$(date -u +%Y-%m-%d)"                          >> $GITHUB_ENV
+          echo "YESTERDAY=$(date -u -d '1 day ago' +%Y-%m-%d)"       >> $GITHUB_ENV
+          echo "THREE_DAYS_AGO=$(date -u -d '3 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
 
       - name: Write Google service account credentials
         run: |
@@ -47,8 +48,8 @@ jobs:
           SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
         run: |
           python nso-dashboard/scripts/fetch_nso_sales.py \
-            --start $TWO_DAYS_AGO \
-            --end   $YESTERDAY \
+            --start $THREE_DAYS_AGO \
+            --end   $TODAY \
             --output nso-dashboard/nso_sales_new.json
           python nso-dashboard/scripts/merge_nso_sales.py \
             --existing nso-dashboard/nso_sales_data.json \
@@ -64,8 +65,8 @@ jobs:
           GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
         run: |
           python nso-dashboard/scripts/fetch_gbp.py \
-            --start $TWO_DAYS_AGO \
-            --end   $YESTERDAY \
+            --start $THREE_DAYS_AGO \
+            --end   $TODAY \
             --output nso-dashboard/gbp_data_new.json
           python nso-dashboard/scripts/merge_gbp.py \
             --existing nso-dashboard/gbp_data.json \
@@ -89,8 +90,8 @@ jobs:
         run: |
           python nso-dashboard/scripts/fetch_all_marketing.py \
             --source all \
-            --start $TWO_DAYS_AGO \
-            --end   $YESTERDAY \
+            --start $THREE_DAYS_AGO \
+            --end   $TODAY \
             --output nso-dashboard/marketing_all_new.json
 
           python nso-dashboard/scripts/merge_array_json.py \
@@ -132,6 +133,31 @@ jobs:
           cd nso-dashboard && python scripts/build_all_scorecards.py
         continue-on-error: true
 
+      # ── MILESTONES + PRICING FROM NSO CONFIG SHEET ────────────────────────
+      - name: Apply pricing, milestones and tier targets from NSO Config sheet
+        run: |
+          cd nso-dashboard && python scripts/fetch_sheet_milestones.py
+        continue-on-error: true
+
+      # ── RESTON HISTORICAL DATA FROM SHEET ─────────────────────────────────
+      - name: Patch Reston early weeks from Google Sheet
+        run: |
+          cd nso-dashboard && python scripts/patch_reston_early_weeks.py
+        continue-on-error: true
+
+      # ── TIER RMR (real prices from Snowflake) ──────────────────────────────
+      - name: Calculate tier RMR from actual prices
+        env:
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
+        run: |
+          cd nso-dashboard && python scripts/fetch_tier_rmr.py
+        continue-on-error: true
+
       # ── COMMIT ─────────────────────────────────────────────────────────────
       - name: Commit updated data files
         run: |
@@ -145,5 +171,5 @@ jobs:
             nso-dashboard/social_insights.json \
             nso-dashboard/nso_scorecard_data.json
           git diff --cached --quiet || \
-            git commit -m "chore: nso daily refresh $YESTERDAY"
+            git commit -m "chore: nso daily refresh $TODAY"
           git push
