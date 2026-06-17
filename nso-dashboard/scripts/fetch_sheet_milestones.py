@@ -152,10 +152,10 @@ for row in data_rows:
 
     # Scheduling dates — all via header-name lookup (column positions may vary)
     week1_start = norm_date(_hcell(row, "Week 1 Start"))
-    t2_move     = norm_date(_hcell(row, "Tier 2 Move Date"))
-    t3_move     = norm_date(_hcell(row, "Tier 3 Move Date"))
-    co_date     = norm_date(_hcell(row, "Target CO Date"))
-    open_date   = norm_date(_hcell(row, "Target Open Date"))
+    t2_move     = norm_date(_hcell(row, "Tier 2 Start Date"))
+    t3_move     = norm_date(_hcell(row, "Tier 3 Start Date"))
+    co_date     = norm_date(_hcell(row, "Target C/O Date"))
+    open_date   = norm_date(_hcell(row, "Target Opening Date"))
     goal_ann    = norm_date(_hcell(row, "Goal to Announce Opening"))
 
     cpl_raw  = (_hcell(row, "CPL Range") or "").strip() or None
@@ -172,13 +172,13 @@ for row in data_rows:
         "tier3_start_week":      date_to_week_num(t3_move, week1_start),
         "tier2_start_date":      t2_move,
         "tier3_start_date":      t3_move,
-        "tier1_members_target":  norm_price(_hcell(row, "Tier 1 Members Target")),
-        "tier2_members_target":  norm_price(_hcell(row, "Tier 2 Members Target")),
-        "tier3_members_target":  norm_price(_hcell(row, "Tier 3 Members Target")),
-        "estimated_roms_target": (_hcell(row, "Estimated ROMs Target") or "").strip() or None,
-        "total_leads_target":    norm_float(_hcell(row, "Total Leads Target")),
-        "presales_target":       norm_float(_hcell(row, "Presales Target")),
-        "day1_rmr_target":       norm_float(_hcell(row, "Day 1 RMR Target")),
+        "tier1_members_target":  norm_price(_hcell(row, "Total Tier 1 Members")),
+        "tier2_members_target":  norm_price(_hcell(row, "Total Tier 2 Members")),
+        "tier3_members_target":  norm_price(_hcell(row, "Total Tier 3 Members")),
+        "estimated_roms_target": (_hcell(row, "Estimated ROMS") or "").strip() or None,
+        "total_leads_target":    norm_float(_hcell(row, "Total Leads")),
+        "presales_target":       norm_float(_hcell(row, "Presales")),
+        "day1_rmr_target":       norm_float(_hcell(row, "Day-1 RMR")),
         "cpl_range":             f"${cpl_raw}" if cpl_raw else None,
         "cpa_range":             f"${cpa_raw}" if cpa_raw else None,
         "conversion_rate":       cr_raw,

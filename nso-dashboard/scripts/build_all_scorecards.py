@@ -238,16 +238,16 @@ def load_studio_config(gc):
             continue
 
         week1_start  = _parse_date(_ch(row, "week 1 start"))
-        co_date      = _parse_date(_ch(row, "target co date"))
-        opening_date = _parse_date(_ch(row, "target open date"))
-        tier2_move   = _parse_date(_ch(row, "tier 2 move date"))
+        co_date      = _parse_date(_ch(row, "target c/o date"))
+        opening_date = _parse_date(_ch(row, "target opening date"))
+        tier2_move   = _parse_date(_ch(row, "tier 2 start date"))
 
         co_week = _date_to_week(co_date, week1_start)
         go_week = _date_to_week(opening_date, week1_start)
 
-        total_leads  = _parse_float(_ch(row, "total leads target"))
-        presales_tgt = _parse_float(_ch(row, "presales target"))
-        rmr_tgt      = _parse_float(_ch(row, "day 1 rmr target"))
+        total_leads  = _parse_float(_ch(row, "total leads"))
+        presales_tgt = _parse_float(_ch(row, "presales"))
+        rmr_tgt      = _parse_float(_ch(row, "day-1 rmr"))
         cpl_raw      = _ch(row, "cpl range") or None
         cpa_raw      = _ch(row, "cpa range") or None
         conv_rate    = _parse_float(_ch(row, "conversion rate"))
