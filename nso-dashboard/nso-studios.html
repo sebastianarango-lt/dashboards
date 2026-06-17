@@ -14,7 +14,7 @@
 .timeline-bar{position:relative;height:28px;background:#f0f6fa;border-radius:14px;overflow:visible;margin-bottom:8px}
 .timeline-fill{height:100%;border-radius:14px;background:linear-gradient(90deg,var(--c-leads),var(--c-ft));transition:width .6s ease;position:relative;min-width:8px}
 .timeline-marker{position:absolute;top:-6px;width:2px;height:40px;background:#1a1a2e;opacity:.3}
-.timeline-marker-label{position:absolute;top:36px;font-size:9px;color:#5a7a8a;font-weight:600;white-space:nowrap;transform:translateX(-50%)}
+.timeline-marker-label{position:absolute;top:46px;font-size:10px;color:#5a7a8a;font-weight:600;white-space:nowrap;transform:translateX(-50%)}
 .timeline-marker.co{background:#f4a021;opacity:.9;width:2px}
 .timeline-marker.co .timeline-marker-label{color:#f4a021;font-weight:700}
 .timeline-marker.go .timeline-marker-label{color:#e05a5a;font-weight:700}
@@ -387,27 +387,47 @@ function renderSummary(){
   });
   h+=`</div>`;
 
-  // ── Pre-launch milestones ──────────────────────────────────────────────
+  // ── Pre-launch milestones + Goal to Announce Opening ──────────────────
   const milestones=(studio.milestones||[]).filter(m=>m.date);
-  if(milestones.length){
-    h+=`<div class="chart-card" style="padding:14px 20px;margin-bottom:12px">`;
-    h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;color:#5a7a8a;letter-spacing:1px;margin-bottom:12px">Pre-Launch Milestones</div>`;
-    h+=`<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:stretch">`;
-    milestones.forEach(m=>{
-      const isPast=m.date<=localDateStr(new Date());
-      const bg=isPast?'#e8f7f0':'#f4f9fd';
-      const border=isPast?'#00C9A7':'#c0d4df';
-      const labelColor=isPast?'#007a5e':'#5a7a8a';
-      const dateColor=isPast?'#007a5e':'#1a1a2e';
-      const d=new Date(m.date+'T00:00:00Z');
-      const fmt=d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
-      h+=`<div style="border:1.5px solid ${border};border-radius:8px;background:${bg};padding:10px 14px;min-width:160px">`;
-      h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:${labelColor};margin-bottom:2px">${m.label}</div>`;
-      h+=`<div style="font-size:15px;font-weight:600;color:${dateColor};font-family:Oswald,sans-serif;font-style:italic">${fmt}</div>`;
-      h+=`<div style="font-size:10px;color:#8aaabb;margin-top:2px">${m.subtitle}</div>`;
-      h+=`</div>`;
-    });
-    h+=`</div></div>`;
+  const _goalAnn=studio.goal_announce_date||null;
+  if(milestones.length||_goalAnn){
+    h+=`<div style="display:flex;gap:12px;align-items:stretch;flex-wrap:wrap;margin-bottom:12px">`;
+    if(milestones.length){
+      h+=`<div class="chart-card" style="padding:14px 20px;flex:1;min-width:260px;margin-bottom:0">`;
+      h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;color:#5a7a8a;letter-spacing:1px;margin-bottom:12px">Pre-Launch Milestones</div>`;
+      h+=`<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:stretch">`;
+      milestones.forEach(m=>{
+        const isPast=m.date<=localDateStr(new Date());
+        const bg=isPast?'#e8f7f0':'#f4f9fd';
+        const border=isPast?'#00C9A7':'#c0d4df';
+        const labelColor=isPast?'#007a5e':'#5a7a8a';
+        const dateColor=isPast?'#007a5e':'#1a1a2e';
+        const d=new Date(m.date+'T00:00:00Z');
+        const fmt=d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+        h+=`<div style="border:1.5px solid ${border};border-radius:8px;background:${bg};padding:10px 14px;min-width:160px">`;
+        h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:${labelColor};margin-bottom:2px">${m.label}</div>`;
+        h+=`<div style="font-size:15px;font-weight:600;color:${dateColor};font-family:Oswald,sans-serif;font-style:italic">${fmt.toUpperCase()}</div>`;
+        h+=`<div style="font-size:10px;color:#8aaabb;margin-top:2px">${m.subtitle}</div>`;
+        h+=`</div>`;
+      });
+      h+=`</div></div>`;
+    }
+    if(_goalAnn){
+      const _gaPast=_goalAnn<=localDateStr(new Date());
+      const _gaBg=_gaPast?'#e8f7f0':'#f4f9fd';
+      const _gaBorder=_gaPast?'#00C9A7':'#c0d4df';
+      const _gaLabelColor=_gaPast?'#007a5e':'#5a7a8a';
+      const _gaDateColor=_gaPast?'#007a5e':'#1a1a2e';
+      const _gaD=new Date(_goalAnn+'T00:00:00Z');
+      const _gaFmt=_gaD.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+      h+=`<div class="chart-card" style="padding:14px 20px;min-width:200px;margin-bottom:0">`;
+      h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;color:#5a7a8a;letter-spacing:1px;margin-bottom:12px">Goal to Announce Opening</div>`;
+      h+=`<div style="border:1.5px solid ${_gaBorder};border-radius:8px;background:${_gaBg};padding:10px 14px">`;
+      h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:${_gaLabelColor};margin-bottom:2px">Target Date</div>`;
+      h+=`<div style="font-size:22px;font-weight:700;color:${_gaDateColor};font-family:Oswald,sans-serif;font-style:italic">${_gaFmt}</div>`;
+      h+=`</div></div>`;
+    }
+    h+=`</div>`;
   }
 
   h+=`<div class="chart-card">`;
@@ -429,9 +449,9 @@ function renderSummary(){
   h+=`</div>`;
   // ── Timeline bar ────────────────────────────────────────────────────────
   h+=`<div class="timeline-bar"><div class="timeline-fill" style="width:${pct}%"><div class="timeline-current"></div></div>`;
-  if(studio.co_week){const coPct=Math.round(studio.co_week/totalWeeks*100);const coWkData=w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===studio.co_week);const coDate=coWkData?.date_start||null;h+=`<div class="timeline-marker co" style="left:${coPct}%"><div class="timeline-marker-label">Target C/O Date${coDate?`<div style="font-size:8px;font-weight:400;margin-top:1px">${_fmtDate(coDate)}</div>`:''}</div></div>`;}
-  if(_t2sw&&totalWeeks>0){const pct=Math.round(_t2sw/totalWeeks*100);const d=_t2date||w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===_t2sw)?.date_start||null;h+=`<div class="timeline-marker tier2" style="left:${pct}%"><div class="timeline-marker-label">Move to $${_t2p}${d?`<div style="font-size:8px;font-weight:400;margin-top:1px">${_fmtDate(d)}</div>`:''}</div></div>`;}
-  if(_t3sw&&totalWeeks>0){const pct=Math.round(_t3sw/totalWeeks*100);const d=_t3date||w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===_t3sw)?.date_start||null;h+=`<div class="timeline-marker tier3" style="left:${pct}%"><div class="timeline-marker-label">Move to $${_t3p}${d?`<div style="font-size:8px;font-weight:400;margin-top:1px">${_fmtDate(d)}</div>`:''}</div></div>`;}
+  if(studio.co_week){const coPct=Math.round(studio.co_week/totalWeeks*100);const coWkData=w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===studio.co_week);const coDate=coWkData?.date_start||null;h+=`<div class="timeline-marker co" style="left:${coPct}%"><div class="timeline-marker-label">Target C/O Date${coDate?`<div style="font-size:10px;font-weight:400;margin-top:3px">${_fmtDate(coDate)}</div>`:''}</div></div>`;}
+  if(_t2sw&&totalWeeks>0){const pct=Math.round(_t2sw/totalWeeks*100);const d=_t2date||w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===_t2sw)?.date_start||null;h+=`<div class="timeline-marker tier2" style="left:${pct}%"><div class="timeline-marker-label">Move to $${_t2p}${d?`<div style="font-size:10px;font-weight:400;margin-top:3px">${_fmtDate(d)}</div>`:''}</div></div>`;}
+  if(_t3sw&&totalWeeks>0){const pct=Math.round(_t3sw/totalWeeks*100);const d=_t3date||w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===_t3sw)?.date_start||null;h+=`<div class="timeline-marker tier3" style="left:${pct}%"><div class="timeline-marker-label">Move to $${_t3p}${d?`<div style="font-size:10px;font-weight:400;margin-top:3px">${_fmtDate(d)}</div>`:''}</div></div>`;}
   h+=`</div>`;
   // ── Row below bar: Week 0 label only ────────────────────────────────────
   h+=`<div style="position:relative;height:30px;margin-top:6px">`;
@@ -478,7 +498,7 @@ function renderSummary(){
   const wkLeadGoal=tgt.total_leads?Math.round(tgt.total_leads/totalWeeks):0;
   const wkPresaleGoal=tgt.presales_count?Math.round(tgt.presales_count/totalWeeks):0;
   const cumSpend=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.total_marketing_spend||0),0);
-  const cumSpendNoLT=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.meta_spend||0)+(x.google_spend||0)+(x.grassroots_spend||0),0);
+  const cumSpendNoLT=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.meta_spend||0)+(x.google_spend||0)+(x.grassroots_spend||0)+(x.other_spend||0),0);
   const estTotalSpend=displayCw>0?Math.round(cumSpendNoLT/displayCw*totalWeeks):0;
 
   // Pacing benchmarks (300-in-12wk and 440-in-16wk) at current week
@@ -700,7 +720,7 @@ function drawSumSourceChart(studio,metric){
    CHART BUILDERS (Funnel, Area, Ring, Rank)
    ══════════════════════════════════════════════════════════════════════════ */
 function buildTrend(s){const isMob=window.innerWidth<=768;const ls=s.map(m=>{const wl=GRAN!=='monthly'?_wkLabel(m.key):'';return wl?[m.label,wl]:m.label});const ld=s.map(m=>m.signups||0),md=s.map(m=>m.first_sales||0);if(trendChart){const hd=trendChart.data.datasets.map(d=>d.hidden);trendChart.data.labels=ls;trendChart.data.datasets[0].data=ld;trendChart.data.datasets[1].data=md;trendChart.data.datasets.forEach((d,i)=>d.hidden=hd[i]);trendChart.update();return}trendChart=new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:ls,datasets:[{label:'Leads',data:ld,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},{label:'Sales',data:md,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false,borderDash:[2,3]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:12,maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a'}}}}})}
-function buildArea(id,tid,series,srcList,vk){const ctx=document.getElementById(id);if(!ctx)return;if(_ch[id]){_ch[id].destroy();_ch[id]=null}const tk=[...new Set(series.map(r=>r.key))].sort();const st=srcList.map(s=>series.filter(r=>r.source===s).reduce((a,r)=>a+(r[vk]||0),0));const sorted=[...srcList.keys()].sort((a,b)=>st[b]-st[a]).map(i=>srcList[i]);const ds=sorted.map(s=>{const c=srcColor(s,srcList.indexOf(s));return{label:s,data:tk.map(t=>series.filter(r=>r.key===t&&r.source===s).reduce((a,r)=>a+(r[vk]||0),0)),borderColor:c,backgroundColor:c+'cc',borderWidth:1,pointRadius:0,tension:.35,fill:true}});const isMob=window.innerWidth<=768;_ch[id]=new Chart(ctx,{type:'line',data:{labels:tk.map(k=>GRAN==='monthly'?fmMo(k):(wl=>wl?[fmDay(k),wl]:fmDay(k))(_wkLabel(k))),datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:12,maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a'},stacked:true,min:0}}}});const tg=document.getElementById(tid);if(tg){tg.innerHTML='';sorted.forEach((s,bi)=>{const c=srcColor(s,srcList.indexOf(s));const btn=document.createElement('button');btn.className='tog-btn on';btn.style.cssText='border-color:'+c+';background:'+c+';color:#fff;font-size:11px;padding:4px 10px';btn.innerHTML='<span class="dot" style="background:#fff"></span>'+s;btn.onclick=function(){const ch=_ch[id];if(!ch)return;ch.data.datasets[bi].hidden=!ch.data.datasets[bi].hidden;this.classList.toggle('on');if(this.classList.contains('on')){this.style.background=c;this.style.borderColor=c;this.style.color='#fff'}else{this.style.background='#f4f9fd';this.style.borderColor='#c0d4df';this.style.color='#5a7a8a'}ch.update()};tg.appendChild(btn)})}}
+function buildArea(id,tid,series,srcList,vk){const ctx=document.getElementById(id);if(!ctx)return;if(_ch[id]){_ch[id].destroy();_ch[id]=null}const tk=[...new Set(series.map(r=>r.key))].sort();const st=srcList.map(s=>series.filter(r=>r.source===s).reduce((a,r)=>a+(r[vk]||0),0));const sorted=[...srcList.keys()].sort((a,b)=>st[b]-st[a]).map(i=>srcList[i]);const ds=sorted.map(s=>{const c=srcColor(s,srcList.indexOf(s));return{label:s,data:tk.map(t=>series.filter(r=>r.key===t&&r.source===s).reduce((a,r)=>a+(r[vk]||0),0)),borderColor:c,backgroundColor:c+'cc',borderWidth:1,pointRadius:0,tension:.35,fill:true}});const isMob=window.innerWidth<=768;_ch[id]=new Chart(ctx,{type:'line',data:{labels:tk.map(k=>GRAN==='monthly'?fmMo(k):(wl=>wl?[fmDay(k),wl]:fmDay(k))(_wkLabel(k))),datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:12,maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a'},stacked:true,min:0}}}});const tg=document.getElementById(tid);if(tg){tg.innerHTML='';sorted.forEach((s,bi)=>{const c=srcColor(s,srcList.indexOf(s));const btn=document.createElement('button');btn.className='tog-btn on';btn.style.cssText='border-color:'+c+';background:'+c+';color:#fff;font-size:11px;padding:4px 10px';btn.innerHTML='<span class="dot" style="background:#fff"></span>'+s.toUpperCase();btn.onclick=function(){const ch=_ch[id];if(!ch)return;ch.data.datasets[bi].hidden=!ch.data.datasets[bi].hidden;this.classList.toggle('on');if(this.classList.contains('on')){this.style.background=c;this.style.borderColor=c;this.style.color='#fff'}else{this.style.background='#f4f9fd';this.style.borderColor='#c0d4df';this.style.color='#5a7a8a'}ch.update()};tg.appendChild(btn)})}}
 function buildRing(cid,lid,rows,vk){const byS={};rows.forEach(r=>{byS[r.source]=(byS[r.source]||0)+(r[vk]||0)});const sorted=Object.entries(byS).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);const labels=sorted.map(s=>s[0]),values=sorted.map(s=>s[1]);const ctx=document.getElementById(cid);if(!ctx)return;if(_ch[cid]){_ch[cid].destroy();_ch[cid]=null}const total=values.reduce((s,v)=>s+v,0);const colors=labels.map((l,i)=>srcColor(l,i));_ch[cid]=new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data:values,backgroundColor:colors,borderColor:'#fff',borderWidth:2,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},cutout:'65%'}});const leg=document.getElementById(lid);if(leg)leg.innerHTML=labels.map((l,i)=>{const p=total?(values[i]/total*100).toFixed(1):0;return`<div class="ring-legend-item"><span class="ring-legend-dot" style="background:${colors[i]}"></span><span>${l}</span><span style="margin-left:auto;font-weight:600;color:#1a1a2e">${p}%</span></div>`}).join('')}
 function buildRank(tid,rows,vk){const tb=document.querySelector('#'+tid+' tbody');if(!tb)return;const byS={};rows.forEach(r=>{byS[r.studio]=(byS[r.studio]||0)+(r[vk]||0)});const sorted=Object.entries(byS).sort((a,b)=>b[1]-a[1]);const total=sorted.reduce((s,[,v])=>s+v,0);tb.innerHTML=sorted.map(([st,v])=>{const p=total?(v/total*100).toFixed(1):0;const bw=total?Math.round(v/total*80):0;return`<tr><td><span class="bar-mini" style="width:${bw}px"></span>${st.replace('SWEAT440 ','')}</td><td class="num">${v.toLocaleString('en-US')}</td><td class="pct">${p}%</td></tr>`}).join('')}
 
@@ -942,12 +962,12 @@ function renderScorecard(){
   const tgt=sc.targets||{};
 
   // Build week list with running cumulative spend/ig
-  let _cMs=0,_cGs=0,_cGrs=0,_cLtf=0,_cTs=0,_cDs=0,_cIg=0,_cNl=0,_cDl=0,_cDp=0;
+  let _cMs=0,_cGs=0,_cGrs=0,_cOth=0,_cLtf=0,_cTs=0,_cDs=0,_cIg=0,_cNl=0,_cDl=0,_cDp=0;
   const weeks=sc.weeks.map(w=>{
     const wn=parseInt(String(w.week).replace(/[^0-9]/g,''))||0;
     const nl=w.new_leads??null, np=w.presales_week??null;
     const crRaw=w.conversion_rate;
-    _cMs+=w.meta_spend||0;_cGs+=w.google_spend||0;_cGrs+=w.grassroots_spend||0;
+    _cMs+=w.meta_spend||0;_cGs+=w.google_spend||0;_cGrs+=w.grassroots_spend||0;_cOth+=w.other_spend||0;
     _cLtf+=w.leadteam_fee||0;_cTs+=w.total_marketing_spend||0;_cDs+=(w.meta_spend||0)+(w.google_spend||0);_cIg+=w.ig_new_followers||0;_cNl+=w.new_leads||0;
     _cDl+=w.digital_leads_week||0;_cDp+=w.digital_presales_week||0;
     return{
@@ -962,12 +982,12 @@ function renderScorecard(){
       rmr:w.estimated_day1_rmr||null,
       t0m:w.tier0_members??null, t1m:w.tier1_members??null, t2m:w.tier2_members??null,
       ms:w.meta_spend??null, gs:w.google_spend??null,
-      grs:w.grassroots_spend??null, ltf:w.leadteam_fee??null,
+      grs:w.grassroots_spend??null, oth:w.other_spend??null, ltf:w.leadteam_fee??null,
       ts:w.total_marketing_spend??null,
       dsp:(w.meta_spend!=null||w.google_spend!=null)?(w.meta_spend||0)+(w.google_spend||0):null,
       dlw:w.digital_leads_week??null, dpw:w.digital_presales_week??null,
       ig:w.ig_new_followers??null,
-      cumMs:_cMs, cumGs:_cGs, cumGrs:_cGrs, cumLtf:_cLtf, cumTs:_cTs, cumDsp:_cDs, cumIg:_cIg, cumNl:_cNl,
+      cumMs:_cMs, cumGs:_cGs, cumGrs:_cGrs, cumOth:_cOth, cumLtf:_cLtf, cumTs:_cTs, cumDsp:_cDs, cumIg:_cIg, cumNl:_cNl,
       cumDl:_cDl, cumDp:_cDp,
       cumCr:(w.total_leads>0&&w.presales_count!=null)?w.presales_count/w.total_leads:null,
     };
@@ -994,6 +1014,7 @@ function renderScorecard(){
     {label:'Meta Spend',          key:'ms',  req:null,       fmt:$v,   color:false, spendSubSub:true},
     {label:'Google Spend',        key:'gs',  req:null,       fmt:$v,   color:false, spendSubSub:true},
     {label:'Grassroots Spend',    key:'grs', req:null,       fmt:$v,   color:false, spendSub:true},
+    {label:'Other Marketing Spend', key:'oth', req:null,     fmt:$v,   color:false, spendSub:true},
     {label:'LeadTeam Fee',        key:'ltf', req:null,       fmt:$v,   color:false, spendSub:true},
     {label:'▶ Blended CPL', computed:wk=>wk.ts&&((wk.nl||0)+(wk.gl||0))>0?wk.ts/((wk.nl||0)+(wk.gl||0)):null, fmt:fCur, reqLabel:'$28 – $41', color:false, cplParent:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
@@ -1024,6 +1045,7 @@ function renderScorecard(){
     {label:'Meta Spend',          key:'cumMs', req:null, fmt:$v, color:false, spendSubSub:true},
     {label:'Google Spend',        key:'cumGs', req:null, fmt:$v, color:false, spendSubSub:true},
     {label:'Grassroots Spend',    key:'cumGrs',req:null, fmt:$v, color:false, spendSub:true},
+    {label:'Other Marketing Spend', key:'cumOth',req:null, fmt:$v, color:false, spendSub:true},
     {label:'LeadTeam Fee',        key:'cumLtf',req:null, fmt:$v, color:false, spendSub:true},
     {label:'▶ Blended CPL', computed:wk=>wk.cumTs&&wk.tl>0?wk.cumTs/wk.tl:null, fmt:fCur, reqLabel:'$28 – $41', color:false, cplParent:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
