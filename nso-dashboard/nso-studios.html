@@ -2017,7 +2017,10 @@ async function init(){
   const allKeys=nsoRows.map(r=>r.date||r.month).filter(Boolean).sort();
   if(allKeys.length){const lk=allKeys[allKeys.length-1].slice(0,7);const df=document.getElementById('fFrom').value.slice(0,7);const has=allKeys.some(k=>k>=df+'-01'&&k<=df+'-31');if(!has){const ld=new Date(lk+'-01T00:00:00Z');document.getElementById('fFrom').value=new Date(Date.UTC(ld.getUTCFullYear(),ld.getUTCMonth(),1)).toISOString().slice(0,10);document.getElementById('fTo').value=new Date(Date.UTC(ld.getUTCFullYear(),ld.getUTCMonth()+1,0)).toISOString().slice(0,10)}}
 
-  const _lastD=(RAW.daily_detail||[]).map(r=>r.date).filter(Boolean).sort().pop();
+  // Cap leads data to NSO_SALES end date (both use 2-day lag; data.json may lag behind)
+  const _salesEnd=NSO_SALES&&NSO_SALES.date_range&&NSO_SALES.date_range.end||null;
+  if(_salesEnd&&RAW.daily_detail){RAW.daily_detail=RAW.daily_detail.filter(r=>!r.date||r.date<=_salesEnd);}
+  const _lastD=_salesEnd||(RAW.daily_detail||[]).map(r=>r.date).filter(Boolean).sort().pop();
   if(_lastD){const _ld=new Date(_lastD+'T00:00:00Z');_dataThruLabel='Data until '+(_ld.getUTCMonth()+1)+'/'+_ld.getUTCDate()+'/'+_ld.getUTCFullYear();}
   document.querySelectorAll('.data-thru-label').forEach(el=>el.textContent=_dataThruLabel);
   document.querySelector('.controls-bar').style.display='none';
