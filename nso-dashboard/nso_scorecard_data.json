@@ -1161,7 +1161,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2026-02-10"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     },
     {
       "name": "Reston",
@@ -1177,7 +1178,7 @@
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": 12,
+      "co_week": 11,
       "go_week": 28,
       "opening_date": null,
       "current_week": 36,
@@ -2360,8 +2361,7 @@
         "tier2_price": 149,
         "tier1_members_target": 100,
         "tier2_members_target": 225,
-        "estimated_roms_target": "5x",
-        "tier0_price": 99
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -2376,7 +2376,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2025-11-11"
         }
-      ]
+      ],
+      "goal_announce_target": 250.0
     },
     {
       "name": "Herriman",
@@ -3502,7 +3503,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2026-06-09"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     },
     {
       "name": "Old Bridge",
@@ -4562,7 +4564,8 @@
           "subtitle": "Meta / Google paid ads begin",
           "date": "2026-07-01"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     },
     {
       "name": "Dr Phillips",
@@ -5616,7 +5619,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2026-05-26"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     },
     {
       "name": "Aventura",
@@ -6668,7 +6672,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2026-05-27"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     },
     {
       "name": "North Miami",
@@ -7720,7 +7725,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2026-05-27"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     },
     {
       "name": "Dallas - Uptown",
@@ -8774,7 +8780,8 @@
           "subtitle": "Presales campaign begins",
           "date": "2026-06-09"
         }
-      ]
+      ],
+      "goal_announce_target": 300.0
     }
   ]
 }

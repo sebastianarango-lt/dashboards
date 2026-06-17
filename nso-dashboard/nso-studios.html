@@ -150,7 +150,7 @@
   <!-- FUNNEL TAB -->
   <div class="tab-content" id="tab-funnel">
     <div id="funnel-kpis" class="kpi-grid"></div>
-    <div class="chart-card"><div class="chart-card-title">Funnel Over Time</div>
+    <div class="chart-card"><div class="chart-card-title">Funnel Over Time</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:-6px;margin-bottom:12px"></div>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
         <div class="toggle-group" style="margin-bottom:0">
           <button class="tog-btn on" onclick="toggleDs(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Leads</button>
@@ -171,7 +171,7 @@
     <div id="leads-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <div class="chart-card-title" style="margin-bottom:0">Leads Over Time by Source</div>
+        <div><div class="chart-card-title" style="margin-bottom:0">Leads Over Time by Source</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:2px"></div></div>
         <div class="gran-group">
           <button class="gran-btn active" id="granDailyL" onclick="setGran('daily')">Daily</button>
           <button class="gran-btn" id="granWeeklyL" onclick="setGran('weekly')">Weekly</button>
@@ -181,7 +181,7 @@
       <div class="toggle-group" id="leads-toggles"></div>
       <div style="position:relative;width:100%;height:260px"><canvas id="leadsChart"></canvas></div>
     </div>
-    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="leadsRing"></canvas></div><div class="ring-legend" id="leadsRingLeg"></div></div></div>
+    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:-6px;margin-bottom:8px"></div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="leadsRing"></canvas></div><div class="ring-legend" id="leadsRingLeg"></div></div></div>
   </div>
 
   <!-- META ADS -->
@@ -215,7 +215,7 @@
     <div id="mem-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <div class="chart-card-title" style="margin-bottom:0">Sales Over Time by Source</div>
+        <div><div class="chart-card-title" style="margin-bottom:0">Sales Over Time by Source</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:2px"></div></div>
         <div class="gran-group">
           <button class="gran-btn active" id="granDailyS" onclick="setGran('daily')">Daily</button>
           <button class="gran-btn" id="granWeeklyS" onclick="setGran('weekly')">Weekly</button>
@@ -225,7 +225,7 @@
       <div class="toggle-group" id="mem-toggles"></div>
       <div style="position:relative;width:100%;height:260px"><canvas id="memChart"></canvas></div>
     </div>
-    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="memRing"></canvas></div><div class="ring-legend" id="memRingLeg"></div></div></div>
+    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:-6px;margin-bottom:8px"></div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="memRing"></canvas></div><div class="ring-legend" id="memRingLeg"></div></div></div>
   </div>
 </div>
 
@@ -241,7 +241,7 @@ const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SW
 const EXCL_SRC=['ClassPass / Platforms','Grassroots','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null;const _ch={};
-let _sumView='cum',_sumStudio=null,_scStudio=null;
+let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='';
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
 function lds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 document.getElementById('fFrom').value=lds(fpm);document.getElementById('fTo').value=lds(lpm);
@@ -260,6 +260,7 @@ function switchTab(id,btn){
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
   document.getElementById('navTabs').classList.remove('open');
+  document.querySelector('.controls-bar').style.display=(id==='summary'||id==='scorecard')?'none':'';
   if(id==='summary')renderSummary();
   else if(id==='scorecard')renderScorecard();
   else if(id==='gbp')renderGBP();
@@ -389,7 +390,7 @@ function renderSummary(){
 
   // ── Pre-launch milestones + Goal to Announce Opening ──────────────────
   const milestones=(studio.milestones||[]).filter(m=>m.date);
-  const _goalAnn=studio.goal_announce_date||null;
+  const _goalAnn=studio.goal_announce_target||null;
   if(milestones.length||_goalAnn){
     h+=`<div style="display:flex;gap:12px;align-items:stretch;flex-wrap:wrap;margin-bottom:12px">`;
     if(milestones.length){
@@ -413,19 +414,22 @@ function renderSummary(){
       h+=`</div></div>`;
     }
     if(_goalAnn){
-      const _gaPast=_goalAnn<=localDateStr(new Date());
-      const _gaBg=_gaPast?'#e8f7f0':'#f4f9fd';
-      const _gaBorder=_gaPast?'#00C9A7':'#c0d4df';
-      const _gaLabelColor=_gaPast?'#007a5e':'#5a7a8a';
-      const _gaDateColor=_gaPast?'#007a5e':'#1a1a2e';
-      const _gaD=new Date(_goalAnn+'T00:00:00Z');
-      const _gaFmt=_gaD.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+      const _gaActual=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
+      const _gaPct=Math.min(100,Math.round(_gaActual/_goalAnn*100));
+      const _gaMet=_gaActual>=_goalAnn;
       h+=`<div class="chart-card" style="padding:14px 20px;min-width:200px;margin-bottom:0">`;
       h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;color:#5a7a8a;letter-spacing:1px;margin-bottom:12px">Goal to Announce Opening</div>`;
-      h+=`<div style="border:1.5px solid ${_gaBorder};border-radius:8px;background:${_gaBg};padding:10px 14px">`;
-      h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:${_gaLabelColor};margin-bottom:2px">Target Date</div>`;
-      h+=`<div style="font-size:22px;font-weight:700;color:${_gaDateColor};font-family:Oswald,sans-serif;font-style:italic">${_gaFmt}</div>`;
-      h+=`</div></div>`;
+      h+=`<div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Presales Needed</div>`;
+      h+=`<div style="display:flex;align-items:baseline;gap:6px;margin-bottom:10px">`;
+      h+=`<span style="font-family:Oswald,sans-serif;font-style:italic;font-size:32px;font-weight:700;color:${_gaMet?'#00C9A7':'#1a1a2e'};line-height:1">${_gaActual}</span>`;
+      h+=`<span style="font-size:13px;color:#8aaabb">/ ${_goalAnn}</span>`;
+      if(_gaMet)h+=`<span style="font-size:13px;color:#00C9A7;font-weight:700">✓</span>`;
+      h+=`</div>`;
+      h+=`<div style="height:8px;background:#f0f6fa;border-radius:4px;overflow:hidden">`;
+      h+=`<div style="height:100%;width:${_gaPct}%;background:${_gaMet?'#00C9A7':'#00A3E0'};border-radius:4px;transition:width .6s ease"></div>`;
+      h+=`</div>`;
+      h+=`<div style="font-size:10px;color:#8aaabb;margin-top:4px">${_gaPct}% to goal</div>`;
+      h+=`</div>`;
     }
     h+=`</div>`;
   }
@@ -531,7 +535,7 @@ function renderSummary(){
   h+=`</div>`;
 
   // Card B — Total to Date with progress bars
-  h+=`<div class="chart-card summary-card"><div class="summary-card-section">Total to Date</div>`;
+  h+=`<div class="chart-card summary-card"><div class="summary-card-section">Total to Date</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:-8px;margin-bottom:10px">${_dataThruLabel}</div>`:''}`;
   h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',Math.round((tgt.total_leads||0)/totalWeeks*displayCw),'W'+displayCw+' Pace');
   const netPresales=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
   h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',Math.round((tgt.presales_count||0)/totalWeeks*displayCw),'W'+displayCw+' Pace');
@@ -551,7 +555,7 @@ function renderSummary(){
 
   // Charts
   _sumStudio=studio;_sumView='cum';_sumSrcMetric='leads';
-  h+=`<div class="chart-card"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px"><div class="chart-card-title" style="margin-bottom:0">Leads &amp; Presales</div><div class="gran-group"><button class="gran-btn active" id="sumCumBtn" onclick="setSumView('cum')">Cumulative</button><button class="gran-btn" id="sumWeekBtn" onclick="setSumView('weekly')">Weekly</button></div></div><div style="position:relative;width:100%;height:320px"><canvas id="sumChartCanvas"></canvas></div></div>`;
+  h+=`<div class="chart-card"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px"><div><div class="chart-card-title" style="margin-bottom:0">Leads &amp; Presales</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:2px">${_dataThruLabel}</div>`:''}</div><div class="gran-group"><button class="gran-btn active" id="sumCumBtn" onclick="setSumView('cum')">Cumulative</button><button class="gran-btn" id="sumWeekBtn" onclick="setSumView('weekly')">Weekly</button></div></div><div style="position:relative;width:100%;height:320px"><canvas id="sumChartCanvas"></canvas></div></div>`;
   h+=`<div class="chart-card"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:4px"><div><div class="chart-card-title" style="margin-bottom:0">Last 7 Full Days by Source</div><div style="font-size:10px;color:#8aaabb;margin-top:2px">${last7Range}</div></div><div class="gran-group"><button class="gran-btn active" id="sumSrcLeadsBtn" onclick="setSumSrcMetric('leads')">Leads</button><button class="gran-btn" id="sumSrcSalesBtn" onclick="setSumSrcMetric('sales')">Sales</button></div></div><div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:14px"><div style="width:180px;height:180px;flex-shrink:0"><canvas id="sumSrcCanvas"></canvas></div><div id="sumSrcLegend" style="min-width:160px;max-width:260px"></div></div></div>`;
 
   document.getElementById('summaryContent').innerHTML=h;
@@ -1124,7 +1128,7 @@ function renderScorecard(){
   const _tierSubtitle=t0p
     ?`Founders $${t0p} + Tier 1 $${t1p}`+(t2sw<99?` → Tier 2 $${t2p} from W${t2sw}`:'')+(t3p&&t3sw?` → Tier 3 $${t3p} from W${t3sw}`:'')
     :`Tier 1 $${t1p} → Tier 2 $${t2p} from W${t2sw}`+(t3p&&t3sw?` → Tier 3 $${t3p} from W${t3sw}`:'');
-  h+=`RMR Breakdown &nbsp;<span style="font-weight:400;font-size:10px;color:#aabbc8">${_tierSubtitle}</span></div>`;
+  h+=`RMR Breakdown &nbsp;<span style="font-weight:400;font-size:10px;color:#aabbc8">${_tierSubtitle}</span></div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:-4px;margin-bottom:8px">${_dataThruLabel}</div>`:''}`;
   // Target column values — read from NSO Config sheet via pricing block, fallback to calculation
   const _t0tgt=pricing.tier0_members_target||null;
   const _t1tgt=pricing.tier1_members_target||(()=>{
@@ -1187,12 +1191,12 @@ function renderScorecard(){
   });
   h+=`</tbody></table></div></div>`;
 
-  h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">`;
-  h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;color:#8aaabb;font-weight:500;text-transform:uppercase">${sc.full_name.replace('SWEAT440 ','')} — W${cw} current</div>`;
+  h+=`<div class="chart-card" style="padding:20px 24px">`;
+  h+=`<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">`;
+  h+=`<div><div style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;color:#8aaabb;font-weight:500;text-transform:uppercase">${sc.full_name.replace('SWEAT440 ','')} — W${cw} current</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:2px">${_dataThruLabel}</div>`:''}</div>`;
   h+=`<div class="gran-group"><button class="gran-btn${_scView==='weekly'?' active':''}" id="scWeeklyBtn" onclick="setScView('weekly')">Weekly</button><button class="gran-btn${_scView==='cum'?' active':''}" id="scCumBtn" onclick="setScView('cum')">Cumulative</button></div>`;
   h+=`</div>`;
-
-  h+=`<div class="chart-card" style="padding:20px 24px"><div id="scScrollWrap" style="overflow-x:auto"><table class="data-table sc-table" style="font-size:13px"><thead><tr>`;
+  h+=`<div id="scScrollWrap" style="overflow-x:auto"><table class="data-table sc-table" style="font-size:13px"><thead><tr>`;
   h+=`<th style="min-width:200px;font-size:13px;position:sticky;left:0;z-index:3;background:#fff">KPI</th>`;
   h+=`<th class="num" style="background:#f8f4ec;color:#b8860b;min-width:70px;position:sticky;left:200px;z-index:3">${_scView==='weekly'?'Req/Wk':'Target'}</th>`;
   pastWeeks.forEach(wk=>{
@@ -1266,7 +1270,7 @@ function renderScorecard(){
     });
     h+=`</tr>`;
   });
-  h+=`</tbody></table></div></div>`;
+  h+=`</tbody></table></div></div></div>`;
 
   el.innerHTML=h;
   const scWrap=document.getElementById('scScrollWrap');
@@ -2014,6 +2018,10 @@ async function init(){
   const allKeys=nsoRows.map(r=>r.date||r.month).filter(Boolean).sort();
   if(allKeys.length){const lk=allKeys[allKeys.length-1].slice(0,7);const df=document.getElementById('fFrom').value.slice(0,7);const has=allKeys.some(k=>k>=df+'-01'&&k<=df+'-31');if(!has){const ld=new Date(lk+'-01T00:00:00Z');document.getElementById('fFrom').value=new Date(Date.UTC(ld.getUTCFullYear(),ld.getUTCMonth(),1)).toISOString().slice(0,10);document.getElementById('fTo').value=new Date(Date.UTC(ld.getUTCFullYear(),ld.getUTCMonth()+1,0)).toISOString().slice(0,10)}}
 
+  const _lastD=(RAW.daily_detail||[]).map(r=>r.date).filter(Boolean).sort().pop();
+  if(_lastD){const _ld=new Date(_lastD+'T00:00:00Z');_dataThruLabel='Data until '+(_ld.getUTCMonth()+1)+'/'+_ld.getUTCDate()+'/'+_ld.getUTCFullYear();}
+  document.querySelectorAll('.data-thru-label').forEach(el=>el.textContent=_dataThruLabel);
+  document.querySelector('.controls-bar').style.display='none';
   renderSummary();
   renderFunnel();
   applyFilters();
