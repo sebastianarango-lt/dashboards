@@ -6,17 +6,17 @@
       "full_name": "SWEAT440 Naples - Mercato",
       "data_name": "Naples - Mercato",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 58560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
+      "co_week": 24,
       "go_week": 28,
-      "opening_date": null,
+      "opening_date": "2026-08-22",
       "current_week": 19,
       "weeks": [
         {
@@ -1138,7 +1138,15 @@
       "pricing": {
         "tier1_price": 99,
         "tier2_price": 129,
-        "tier3_price": 149
+        "tier3_price": 149,
+        "tier2_start_week": 4,
+        "tier3_start_week": 16,
+        "tier2_start_date": "2026-03-03",
+        "tier3_start_date": "2026-05-26",
+        "tier1_members_target": 100,
+        "tier2_members_target": 100,
+        "tier3_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -1161,15 +1169,15 @@
       "full_name": "SWEAT440 Reston",
       "data_name": "Reston",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 929.0,
+        "presales_count": 325.0,
+        "estimated_day1_rmr": 46425.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": 12,
+      "co_week": 11,
       "go_week": 28,
       "opening_date": null,
       "current_week": 36,
@@ -2350,7 +2358,9 @@
       "pricing": {
         "tier1_price": 129,
         "tier2_price": 149,
-        "tier0_price": 99
+        "tier1_members_target": 100,
+        "tier2_members_target": 225,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -2373,17 +2383,17 @@
       "full_name": "SWEAT440 Herriman",
       "data_name": "Herriman",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 58560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
-      "go_week": 28,
-      "opening_date": null,
+      "co_week": 24,
+      "go_week": 27,
+      "opening_date": "2026-09-12",
       "current_week": 15,
       "weeks": [
         {
@@ -3505,7 +3515,13 @@
       "pricing": {
         "tier1_price": 99,
         "tier2_price": 129,
-        "tier3_price": 149
+        "tier3_price": 149,
+        "tier2_start_week": 15,
+        "tier2_start_date": "2026-06-22",
+        "tier1_members_target": 100,
+        "tier2_members_target": 100,
+        "tier3_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -3528,17 +3544,17 @@
       "full_name": "SWEAT440 Old Bridge",
       "data_name": "Old Bridge",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 58560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
-      "go_week": 28,
-      "opening_date": null,
+      "co_week": 14,
+      "go_week": 17,
+      "opening_date": "2026-11-21",
       "current_week": 0,
       "weeks": [
         {
@@ -4660,7 +4676,11 @@
       "pricing": {
         "tier1_price": 99,
         "tier2_price": 129,
-        "tier3_price": 149
+        "tier3_price": 149,
+        "tier1_members_target": 100,
+        "tier2_members_target": 100,
+        "tier3_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -4689,17 +4709,17 @@
       "full_name": "SWEAT440 Dr Phillips",
       "data_name": "Orlando - Dr Phillips",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 58560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
-      "go_week": 28,
-      "opening_date": null,
+      "co_week": 17,
+      "go_week": 21,
+      "opening_date": "2026-09-26",
       "current_week": 7,
       "weeks": [
         {
@@ -5821,7 +5841,11 @@
       "pricing": {
         "tier1_price": 99,
         "tier2_price": 129,
-        "tier3_price": 149
+        "tier3_price": 149,
+        "tier1_members_target": 100,
+        "tier2_members_target": 100,
+        "tier3_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -5844,17 +5868,17 @@
       "full_name": "SWEAT440 Aventura",
       "data_name": "Aventura",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 61560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
-      "go_week": 28,
-      "opening_date": null,
+      "co_week": 11,
+      "go_week": 14,
+      "opening_date": "2026-08-29",
       "current_week": 4,
       "weeks": [
         {
@@ -6975,7 +6999,10 @@
       ],
       "pricing": {
         "tier1_price": 129,
-        "tier2_price": 149
+        "tier2_price": 149,
+        "tier1_members_target": 200,
+        "tier2_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -6998,17 +7025,17 @@
       "full_name": "SWEAT440 North Miami",
       "data_name": "North Miami",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 61560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
-      "go_week": 28,
-      "opening_date": null,
+      "co_week": 14,
+      "go_week": 17,
+      "opening_date": "2026-09-19",
       "current_week": 4,
       "weeks": [
         {
@@ -8129,7 +8156,10 @@
       ],
       "pricing": {
         "tier1_price": 129,
-        "tier2_price": 149
+        "tier2_price": 149,
+        "tier1_members_target": 200,
+        "tier2_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
@@ -8152,17 +8182,17 @@
       "full_name": "SWEAT440 Dallas - Uptown",
       "data_name": "Dallas - Uptown",
       "targets": {
-        "total_leads": null,
-        "presales_count": null,
-        "estimated_day1_rmr": null,
+        "total_leads": 1257.0,
+        "presales_count": 440.0,
+        "estimated_day1_rmr": 58560.0,
         "blended_cpl": "$28 - 41",
         "blended_cpa": "$80 - 116",
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": null,
-      "go_week": 28,
-      "opening_date": null,
+      "co_week": 17,
+      "go_week": 21,
+      "opening_date": "2026-10-03",
       "current_week": 6,
       "weeks": [
         {
@@ -9284,7 +9314,11 @@
       "pricing": {
         "tier1_price": 99,
         "tier2_price": 129,
-        "tier3_price": 149
+        "tier3_price": 149,
+        "tier1_members_target": 100,
+        "tier2_members_target": 100,
+        "tier3_members_target": 240,
+        "estimated_roms_target": "5x"
       },
       "milestones": [
         {
