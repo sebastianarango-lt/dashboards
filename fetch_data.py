@@ -45,7 +45,7 @@ cur.execute("""
         SUM(FIRST_SALES)        AS first_sales
     FROM MARKETING_REPORTS.PUBLIC.LEADS
     WHERE EVENT_DATE >= DATEADD('quarter', -1, DATE_TRUNC('quarter', CURRENT_DATE()))
-      AND EVENT_DATE <= CURRENT_DATE()
+      AND EVENT_DATE <= DATEADD('day', -2, CURRENT_DATE())
     GROUP BY 1, 2, 3
     ORDER BY 1, 2, 3
 """)

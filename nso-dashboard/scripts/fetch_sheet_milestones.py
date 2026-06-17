@@ -156,7 +156,7 @@ for row in data_rows:
     t3_move     = norm_date(_hcell(row, "Tier 3 Start Date"))
     co_date     = norm_date(_hcell(row, "Target C/O Date"))
     open_date   = norm_date(_hcell(row, "Target Opening Date"))
-    goal_ann    = norm_date(_hcell(row, "Goal to Announce Opening"))
+    goal_ann    = norm_float(_hcell(row, "Goal to Announce Opening"))
 
     cpl_raw  = (_hcell(row, "CPL Range") or "").strip() or None
     cpa_raw  = (_hcell(row, "CPA Range") or "").strip() or None
@@ -186,7 +186,7 @@ for row in data_rows:
         "co_week":               date_to_week_num(co_date, week1_start),
         "opening_date":          open_date,
         "go_week":               date_to_week_num(open_date, week1_start),
-        "goal_announce_date":    goal_ann,
+        "goal_announce_target":  goal_ann,
     }
 
 # ── Patch scorecard JSON ────────────────────────────────────────────────────
@@ -246,8 +246,8 @@ for studio in sc.get("studios", []):
         studio["co_week"] = info["co_week"]
     if info.get("go_week") is not None:
         studio["go_week"] = info["go_week"]
-    if info.get("goal_announce_date"):
-        studio["goal_announce_date"] = info["goal_announce_date"]
+    if info.get("goal_announce_target") is not None:
+        studio["goal_announce_target"] = info["goal_announce_target"]
 
     updated += 1
     print(f"  {code} ({studio['name']}): "

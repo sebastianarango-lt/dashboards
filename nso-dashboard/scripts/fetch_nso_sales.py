@@ -224,7 +224,7 @@ def main():
     parser.add_argument("--output", default="nso_sales_data.json")
     args = parser.parse_args()
 
-    end_date   = args.end or (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    end_date   = args.end or (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
     start_date = args.start
 
     print("=" * 60)
