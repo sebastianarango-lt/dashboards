@@ -793,6 +793,9 @@ def main():
         is_naples = cfg["code"] == "FL-019"
         if is_naples:
             bounds = make_naples_bounds(num_weeks)
+        elif not cfg["week1_start"]:
+            print(f"  Skipping {full}: no week1_start configured in NSO Config sheet")
+            continue
         else:
             bounds = make_mon_sun_bounds(cfg["week1_start"], num_weeks)
 
