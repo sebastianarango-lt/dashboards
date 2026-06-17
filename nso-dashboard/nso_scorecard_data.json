@@ -1162,7 +1162,12 @@
           "date": "2026-02-10"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": "Pre Sale Membership",
+        "price_129": "Pre Sales Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "Reston",
@@ -2377,7 +2382,12 @@
           "date": "2025-11-11"
         }
       ],
-      "goal_announce_target": 250.0
+      "goal_announce_target": 250.0,
+      "sku_map": {
+        "price_99": "Pre Sale Membership",
+        "price_129": "Pre Sales Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "Herriman",
@@ -3504,7 +3514,12 @@
           "date": "2026-06-09"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": "Pre Sales Membership",
+        "price_129": "Pre Sale Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "Old Bridge",
@@ -4565,7 +4580,12 @@
           "date": "2026-07-01"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": "Pre Sale Membership",
+        "price_129": "Pre Sales Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "Dr Phillips",
@@ -5620,7 +5640,12 @@
           "date": "2026-05-26"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": "Pre Sale Membership",
+        "price_129": "Pre Sales Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "Aventura",
@@ -6673,7 +6698,12 @@
           "date": "2026-05-27"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": null,
+        "price_129": "Pre Sale Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "North Miami",
@@ -7726,7 +7756,12 @@
           "date": "2026-05-27"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": null,
+        "price_129": "Pre Sale Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     },
     {
       "name": "Dallas - Uptown",
@@ -8781,7 +8816,12 @@
           "date": "2026-06-09"
         }
       ],
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "sku_map": {
+        "price_99": "Pre Sales Membership",
+        "price_129": "Pre Sale Membership",
+        "price_149": "Pre-Sales Membership"
+      }
     }
   ]
 }

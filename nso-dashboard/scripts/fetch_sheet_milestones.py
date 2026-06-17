@@ -116,6 +116,45 @@ res  = svc.spreadsheets().values().get(
 ).execute()
 rows = res.get("values", [])
 
+# ── Read SKU Mapping tab ─────────────────────────────────────────────────────
+print("Reading SKU Mapping for early NSO tab...")
+sku_res = svc.spreadsheets().values().get(
+    spreadsheetId=SPREADSHEET_ID, range="SKU Mapping for early NSO"
+).execute()
+sku_rows = sku_res.get("values", [])
+
+# Row 0-1 are headers; row 2 is STANDARD (applies to all studios not listed)
+_standard_sku = None
+_sku_overrides = {}  # studio_name_lower → {price_99, price_129, price_149}
+
+def _clean_sku(v):
+    """Return SKU string or None if blank/n/a."""
+    v = (v or "").strip()
+    return v if v and v.lower() not in ("n/a", "-", "") else None
+
+for sku_row in sku_rows[2:]:
+    sname = sku_row[0].strip() if sku_row else ""
+    entry = {
+        "price_99":  _clean_sku(sku_row[1] if len(sku_row) > 1 else ""),
+        "price_129": _clean_sku(sku_row[2] if len(sku_row) > 2 else ""),
+        "price_149": _clean_sku(sku_row[3] if len(sku_row) > 3 else ""),
+    }
+    if sname.upper().startswith("STANDARD"):
+        _standard_sku = entry
+    elif sname:
+        _sku_overrides[sname.lower()] = entry
+
+
+def _match_sku_map(studio_name_raw):
+    """Return SKU map for a studio name, falling back to _standard."""
+    name = studio_name_raw.strip().lower()
+    if name.startswith("sweat440 "):
+        name = name[9:]
+    for override_name, sku_data in _sku_overrides.items():
+        if override_name in name or name in override_name:
+            return sku_data
+    return _standard_sku or {}
+
 # Build header-name lookup from row 1 (row 0 = group headers).
 hdr_row = rows[1] if len(rows) > 1 else []
 hdr_map = {h.strip().lower(): i for i, h in enumerate(hdr_row)}
@@ -162,8 +201,10 @@ for row in data_rows:
     cpa_raw  = (_hcell(row, "CPA Range") or "").strip() or None
     cr_raw   = norm_float(_hcell(row, "Conversion Rate"))
 
+    studio_name_raw = cell(row, _COL_NAME)
     sheet_map[code] = {
         "milestones":            milestones,
+        "sku_map":               _match_sku_map(studio_name_raw),
         "tier1_price":           norm_price(cell(row, _COL_TIER1)),
         "tier2_price":           norm_price(cell(row, _COL_TIER2)),
         "tier3_price":           norm_price(cell(row, _COL_TIER3)),
@@ -202,6 +243,7 @@ for studio in sc.get("studios", []):
         continue
 
     studio["milestones"] = info["milestones"]
+    studio["sku_map"]    = info["sku_map"]
 
     # Patch Week 1 date_start to match "Week 1 Start" from sheet
     w1_start = info.get("week1_start")

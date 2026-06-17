@@ -14,11 +14,11 @@ load_dotenv()
 import snowflake.connector
 
 SCORECARD_FILE = "nso_scorecard_data.json"
-YESTERDAY = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+YESTERDAY = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
 
 # Per-studio pricing config (source: NSO Config Google Sheet).
 # tier0_price is a special founders tier below the normal T1 (Reston only).
-# These values are the source of truth — do NOT read pricing from the JSON.
+# Used only for RMR estimation — tier assignment uses SKU_TIER_MAP below.
 STUDIO_PRICING = {
     "FL-019": {"tier1_price": 99,  "tier2_price": 129, "tier3_price": 149},  # Naples
     "VA-001": {"tier0_price": 99,  "tier1_price": 129, "tier2_price": 149},  # Reston: founders=$99
@@ -29,6 +29,50 @@ STUDIO_PRICING = {
     "TX-004": {"tier1_price": 129, "tier2_price": 149},                       # Dallas Uptown
     "NJ-004": {"tier1_price": 99,  "tier2_price": 129},                       # Old Bridge
 }
+
+_STANDARD_SKU_TIERS = {
+    "pre sale membership":  "t1",
+    "pre sales membership": "t2",
+    "pre-sales membership": "t3",
+}
+
+
+def build_sku_tier_map(sku_map, pricing):
+    """Compute {sku_name_lower: tier_key} from the sheet's sku_map + studio pricing.
+
+    sku_map keys are price_99 / price_129 / price_149 (from fetch_sheet_milestones).
+    pricing maps tier0_price / tier1_price / tier2_price / tier3_price → int.
+    SKU at price_X is assigned the tier whose tier?_price == X.
+    Falls back to _STANDARD_SKU_TIERS if sku_map is empty.
+    """
+    if not sku_map:
+        return dict(_STANDARD_SKU_TIERS)
+
+    price_to_tier = {}
+    for tier_key in ("t0", "t1", "t2", "t3"):
+        p = pricing.get(f"tier{tier_key[1:]}_price")
+        if p:
+            price_to_tier[int(p)] = tier_key
+
+    result = {}
+    for col_key, sku_name in sku_map.items():
+        if not sku_name:
+            continue
+        try:
+            price_num = int(col_key.replace("price_", ""))
+        except ValueError:
+            continue
+        tier = price_to_tier.get(price_num)
+        if tier:
+            result[sku_name.strip().lower()] = tier
+
+    return result or dict(_STANDARD_SKU_TIERS)
+
+
+def sku_to_tier(prod_desc, sku_tier_map):
+    """Assign tier by SKU name using a pre-computed map. Defaults to 't1'."""
+    return sku_tier_map.get(prod_desc.strip().lower(), "t1")
+
 
 # Map Snowflake studio_id from scorecard JSON
 SNOWFLAKE_IDS = {
@@ -142,7 +186,7 @@ def fetch_daily_sales(cur, studio_id, end_date):
 
     # ── Build time-series events in Python ────────────────────────────────
     from collections import defaultdict
-    daily = defaultdict(float)  # (date_str, price) → net delta
+    daily = defaultdict(float)  # (date_str, prod_desc) → net delta
 
     for client_id, prod_desc, price, total_buys, first_buy in buy_rows:
         key_cp = (str(client_id), str(prod_desc))
@@ -151,25 +195,26 @@ def fetch_daily_sales(cur, studio_id, end_date):
         last_cancel   = c_info["date"]
 
         net = int(total_buys) - total_cancels
-        p   = float(price)
         d0  = str(first_buy)
 
         if net > 0:
-            daily[(d0, p)] += 1
+            daily[(d0, prod_desc)] += 1
         elif net == 0 and last_cancel:
-            daily[(d0, p)]          += 1
-            daily[(last_cancel, p)] -= 1
+            daily[(d0, prod_desc)]          += 1
+            daily[(last_cancel, prod_desc)] -= 1
         # net < 0 is a data anomaly — skip
 
-    return [(d, p, int(n)) for (d, p), n in sorted(daily.items()) if n != 0]
+    return [(d, pd, int(n)) for (d, pd), n in sorted(daily.items()) if n != 0]
 
 
-def build_tier_rmr(daily_sales, weeks, pricing):
+def build_tier_rmr(daily_sales, weeks, pricing, sku_map=None, code=""):
     """
     For each week in `weeks`, compute cumulative net tier counts
-    using actual prices paid.
+    using SKU name (not price) so discounted members stay in correct tier.
+    sku_map comes from the scorecard JSON (written by fetch_sheet_milestones.py).
     Returns list of {week, t0, t1, t2, t3} dicts (only for weeks w > 0).
     """
+    sku_tier_map = build_sku_tier_map(sku_map or {}, pricing)
     # Cumulative running totals (can go negative during the loop, floor at 0)
     cum = {"t0": 0, "t1": 0, "t2": 0, "t3": 0}
     result = []
@@ -191,11 +236,11 @@ def build_tier_rmr(daily_sales, weeks, pricing):
 
         # Absorb all sales up to date_end
         while sale_idx < len(sorted_sales):
-            sd, price, net = sorted_sales[sale_idx]
+            sd, prod_desc, net = sorted_sales[sale_idx]
             sd_str = sd.isoformat() if hasattr(sd, "isoformat") else str(sd)
             if sd_str > date_end:
                 break
-            tier = price_to_tier(float(price), pricing)
+            tier = sku_to_tier(prod_desc, sku_tier_map)
             cum[tier] = max(0, cum[tier] + int(net))
             sale_idx += 1
 
@@ -226,12 +271,13 @@ for studio in sc.get("studios", []):
         continue
 
     pricing = STUDIO_PRICING.get(code) or {}
+    sku_map = studio.get("sku_map") or {}
     weeks   = studio.get("weeks", [])
 
     print(f"  Fetching {studio['name']} (id={sid}) up to {YESTERDAY}...")
     daily = fetch_daily_sales(cur, sid, YESTERDAY)
 
-    tier_rmr = build_tier_rmr(daily, weeks, pricing)
+    tier_rmr = build_tier_rmr(daily, weeks, pricing, sku_map, code)
     studio["tier_rmr_by_week"] = tier_rmr
 
     # Summary
