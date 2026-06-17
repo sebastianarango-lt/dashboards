@@ -25,9 +25,9 @@ const USERS = {
     studios: null,
     role: 'admin'
   },
-  'sabastian.arango@leadteam.com': {
+  'sebastian.arango@leadteam.com': {
     passwordHash: '82251cee9a5262e36d13362d1b86e38fb0fb3314570ace33171d7aa3f08c33de',
-    name: 'Sabastian Arango',
+    name: 'Sebastian Arango',
     studios: null,
     role: 'admin'
   },
