@@ -39,23 +39,11 @@ NSO_CONFIG_SHEET_URL = "https://docs.google.com/spreadsheets/d/1Ku0VSwOY6HVXuquc
 # Calendar week 1 = Dec 29, 2025 (Mon); week N Monday = CAL_WEEK1_START + (N-1) weeks
 CAL_WEEK1_START = date(2025, 12, 29)
 
-# NSO Config sheet column indices (0-based).
-# Row 0 = group headers, Row 1 = column headers, Row 2+ = data.
+# NSO Config sheet fixed column indices (0-based) — only for columns that never shift.
+# Scheduling and targets columns use header-name lookup via _ch() in load_studio_config().
 NSO_CFG_COL = {
-    "name":                  0,
-    "code":                  1,
-    "week1_start":           9,
-    "target_co_date":        10,
-    "target_open_date":      11,
-    "tier2_move_date":       12,
-    "total_leads_target":    14,
-    "presales_target":       15,
-    "day1_rmr_target":       16,
-    "cpl_range":             18,
-    "cpa_range":             19,
-    "conversion_rate":       20,
-    "marketing_budget":      24,
-    # Platform IDs: found by header-name lookup (columns 25+)
+    "name": 0,
+    "code": 1,
 }
 
 # Maps studio display names (lowercase) in "Weekly Events & Spend" tab to studio codes
@@ -249,21 +237,21 @@ def load_studio_config(gc):
         if not name or not code:
             continue
 
-        week1_start  = _parse_date(_c(row, NSO_CFG_COL["week1_start"]))
-        co_date      = _parse_date(_c(row, NSO_CFG_COL["target_co_date"]))
-        opening_date = _parse_date(_c(row, NSO_CFG_COL["target_open_date"]))
-        tier2_move   = _parse_date(_c(row, NSO_CFG_COL["tier2_move_date"]))
+        week1_start  = _parse_date(_ch(row, "week 1 start"))
+        co_date      = _parse_date(_ch(row, "target co date"))
+        opening_date = _parse_date(_ch(row, "target open date"))
+        tier2_move   = _parse_date(_ch(row, "tier 2 move date"))
 
         co_week = _date_to_week(co_date, week1_start)
         go_week = _date_to_week(opening_date, week1_start)
 
-        total_leads  = _parse_float(_c(row, NSO_CFG_COL["total_leads_target"]))
-        presales_tgt = _parse_float(_c(row, NSO_CFG_COL["presales_target"]))
-        rmr_tgt      = _parse_float(_c(row, NSO_CFG_COL["day1_rmr_target"]))
-        cpl_raw      = _c(row, NSO_CFG_COL["cpl_range"]) or None
-        cpa_raw      = _c(row, NSO_CFG_COL["cpa_range"]) or None
-        conv_rate    = _parse_float(_c(row, NSO_CFG_COL["conversion_rate"]))
-        mkt_budget   = _parse_float(_c(row, NSO_CFG_COL["marketing_budget"]))
+        total_leads  = _parse_float(_ch(row, "total leads target"))
+        presales_tgt = _parse_float(_ch(row, "presales target"))
+        rmr_tgt      = _parse_float(_ch(row, "day 1 rmr target"))
+        cpl_raw      = _ch(row, "cpl range") or None
+        cpa_raw      = _ch(row, "cpa range") or None
+        conv_rate    = _parse_float(_ch(row, "conversion rate"))
+        mkt_budget   = _parse_float(_ch(row, "marketing budget"))
 
         # Platform IDs — found by header name (columns may vary)
         ig_id      = _ch(row, "instagram id") or None
@@ -476,7 +464,8 @@ def load_google_spend(gads_rows):
 
 def load_events_spend_from_nso_config(gc):
     """Read 'Weekly Events & Spend' tab from NSO Config sheet.
-    Returns {code: (spend_by_date, events_by_date)} keyed by ISO date string (Monday of each cal week)."""
+    Returns {code: (spend_by_week, events_by_week, other_by_week)} keyed by studio week number (int).
+    'Week 1' in the sheet = studio Week 1, mapped directly without date conversion."""
     result = {}
     if not gc:
         return result
@@ -491,14 +480,13 @@ def load_events_spend_from_nso_config(gc):
     if len(all_rows) < 3:
         return result
 
-    # Row index 1 = column headers: "Name", "Metric", "Week 1\nDec 29...", ..., "Total"
+    # Row index 1 = column headers: "Name", "Metric", "Week 1", "Week 2", ..., "Total"
     header_row = all_rows[1]
-    col_to_monday = {}
+    col_to_week_num = {}
     for col_i, hdr in enumerate(header_row):
         m = re.match(r"Week\s+(\d+)", str(hdr).strip(), re.IGNORECASE)
         if m:
-            wk_num = int(m.group(1))
-            col_to_monday[col_i] = CAL_WEEK1_START + timedelta(weeks=wk_num - 1)
+            col_to_week_num[col_i] = int(m.group(1))
 
     current_code = None
     for row in all_rows[2:]:
@@ -510,37 +498,41 @@ def load_events_spend_from_nso_config(gc):
         if name_cell:
             current_code = EVENTS_SPEND_STUDIO_MAP.get(name_cell)
             if current_code and current_code not in result:
-                result[current_code] = (defaultdict(float), defaultdict(int))
+                result[current_code] = (defaultdict(float), defaultdict(int), defaultdict(float))
 
         if not current_code or current_code not in result:
             continue
 
-        spend_d, events_d = result[current_code]
-        is_spend  = "grassroots" in metric_cell or "$" in metric_cell
-        is_events = "events" in metric_cell or "#" in metric_cell
+        spend_d, events_d, other_d = result[current_code]
+        is_spend       = "grassroots" in metric_cell
+        is_other_spend = "other" in metric_cell and "$" in metric_cell
+        is_events      = "events" in metric_cell or "#" in metric_cell
 
-        for col_i, monday in col_to_monday.items():
+        for col_i, wk_num in col_to_week_num.items():
             if col_i >= len(row):
                 continue
             val = str(row[col_i]).strip()
             if not val or val == "-":
                 continue
-            date_key = monday.isoformat()
             if is_spend:
                 amt = _parse_amount(val)
                 if amt > 0:
-                    spend_d[date_key] += amt
+                    spend_d[wk_num] += amt
+            elif is_other_spend:
+                amt = _parse_amount(val)
+                if amt > 0:
+                    other_d[wk_num] += amt
             elif is_events:
                 try:
                     cnt = int(re.sub(r"[^\d]", "", val))
                     if cnt > 0:
-                        events_d[date_key] += cnt
+                        events_d[wk_num] += cnt
                 except (ValueError, TypeError):
                     pass
 
-    for code, (sp, ev) in result.items():
-        print(f"  NSO Config Events&Spend [{code}]: {len(sp)} spend entries, "
-              f"{sum(ev.values())} total events")
+    for code, (sp, ev, ot) in result.items():
+        print(f"  NSO Config Events&Spend [{code}]: {len(sp)} grassroots weeks, "
+              f"{sum(ev.values())} total events, {len(ot)} other spend weeks")
     return result
 
 
@@ -597,16 +589,26 @@ def load_grassroots_data(gc, sheet_url, code):
 def sum_week_data(wn, ws_date, we_date, data_name, full_name,
                   leads_by_date, sales_by_date, ig_fc,
                   meta_spend_by_date, gads_spend_by_date,
-                  gr_spend_by_date, events_by_date):
-    """Sum all per-week metrics for a single week bound."""
+                  gr_spend_by_week=None, events_by_week=None,
+                  other_spend_by_week=None):
+    """Sum all per-week metrics for a single week bound.
+    Meta/Google spend are date-keyed (from APIs); grassroots/events/other are week-number-keyed
+    (directly from 'Weekly Events & Spend' sheet where 'Week N' = studio Week N)."""
+    if gr_spend_by_week is None:
+        gr_spend_by_week = {}
+    if events_by_week is None:
+        events_by_week = {}
+    if other_spend_by_week is None:
+        other_spend_by_week = {}
+
     leads = gr_leads = digital_leads = 0
     presales = cancellations = gr_presales = digital_presales = 0
     ig_sum = 0; has_ig = False
-    meta_spend = gads_spend = gr_spend = comm_events = 0.0
+    meta_spend = gads_spend = 0.0
 
     def _add_day(d_str):
         nonlocal leads, gr_leads, digital_leads, presales, cancellations, gr_presales, digital_presales
-        nonlocal ig_sum, has_ig, meta_spend, gads_spend, gr_spend, comm_events
+        nonlocal ig_sum, has_ig, meta_spend, gads_spend
 
         # Leads from data.json (keyed by short name)
         lv = leads_by_date.get(data_name, {}).get(d_str, {})
@@ -626,14 +628,12 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
         if fc is not None:
             ig_sum += fc; has_ig = True
 
-        # Ad spend
+        # Ad spend (date-keyed, from APIs)
         meta_spend  += meta_spend_by_date.get(d_str, 0.0)
         gads_spend  += gads_spend_by_date.get(d_str, 0.0)
-        gr_spend    += gr_spend_by_date.get(d_str, 0.0)
-        comm_events += events_by_date.get(d_str, 0)
 
     if ws_date is None:
-        # Week 0: all data up to and including we_date
+        # Week 0: all date-keyed data up to and including we_date
         all_dates = set()
         for lookup in (leads_by_date.get(data_name, {}),
                        sales_by_date.get(full_name, {})):
@@ -641,8 +641,6 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
         all_dates.update(ig_fc.keys())
         all_dates.update(meta_spend_by_date.keys())
         all_dates.update(gads_spend_by_date.keys())
-        all_dates.update(gr_spend_by_date.keys())
-        all_dates.update(events_by_date.keys())
         we_str = we_date.isoformat()
         for d_str in sorted(all_dates):
             if d_str <= we_str:
@@ -652,6 +650,11 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
         while day <= we_date:
             _add_day(day.isoformat())
             day += timedelta(days=1)
+
+    # Grassroots spend, other spend, and events are week-number-keyed (not date-keyed)
+    gr_spend    = round(gr_spend_by_week.get(wn, 0.0), 2)
+    other_spend = round(other_spend_by_week.get(wn, 0.0), 2)
+    comm_events = int(events_by_week.get(wn, 0))
 
     return {
         "leads":            leads,
@@ -664,8 +667,9 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
         "ig":               ig_sum if has_ig else None,
         "meta_spend":       round(meta_spend, 2),
         "gads_spend":       round(gads_spend, 2),
-        "gr_spend":         round(gr_spend, 2),
-        "comm_events":      int(comm_events),
+        "gr_spend":         gr_spend,
+        "other_spend":      other_spend,
+        "comm_events":      comm_events,
     }
 
 
@@ -761,20 +765,22 @@ def main():
     meta_by_code  = load_meta_spend(meta_rows)
     gads_by_code  = load_google_spend(gads_rows)
 
-    # Load grassroots spend + community events from NSO Config "Weekly Events & Spend" tab.
-    print("\nLoading grassroots/events data from NSO Config sheet...")
+    # Load grassroots spend + community events + other spend from NSO Config "Weekly Events & Spend" tab.
+    print("\nLoading grassroots/events/other spend data from NSO Config sheet...")
     nso_config_gr = load_events_spend_from_nso_config(gc)
 
-    gr_spend_by_code = {}
-    events_by_code   = {}
+    gr_spend_by_code    = {}
+    events_by_code      = {}
+    other_spend_by_code = {}
     for cfg in studio_cfgs:
         code = cfg["code"]
         if code in nso_config_gr:
-            sp, ev = nso_config_gr[code]
+            sp, ev, ot = nso_config_gr[code]
         else:
-            sp, ev = defaultdict(float), defaultdict(int)
-        gr_spend_by_code[code] = sp
-        events_by_code[code]   = ev
+            sp, ev, ot = defaultdict(float), defaultdict(int), defaultdict(float)
+        gr_spend_by_code[code]    = sp
+        events_by_code[code]      = ev
+        other_spend_by_code[code] = ot
 
     # -- Build scorecard per studio
     output_studios = []
@@ -793,6 +799,9 @@ def main():
         is_naples = cfg["code"] == "FL-019"
         if is_naples:
             bounds = make_naples_bounds(num_weeks)
+        elif not cfg["week1_start"]:
+            print(f"  Skipping {full}: no week1_start configured in NSO Config sheet")
+            continue
         else:
             bounds = make_mon_sun_bounds(cfg["week1_start"], num_weeks)
 
@@ -801,6 +810,7 @@ def main():
         gads_spend_d    = gads_by_code.get(code, {})
         gr_spend_d      = gr_spend_by_code.get(code, defaultdict(float))
         events_d        = events_by_code.get(code, defaultdict(int))
+        other_spend_d   = other_spend_by_code.get(code, defaultdict(float))
 
         cw_num = current_week_num(bounds)
         print(f"  current_week: {cw_num}  (today={TODAY})")
@@ -812,7 +822,10 @@ def main():
             w = sum_week_data(
                 wn, ws_date, we_date, dname, full,
                 leads_by_date, sales_by_date, ig_fc_studio,
-                meta_spend_d, gads_spend_d, gr_spend_d, events_d,
+                meta_spend_d, gads_spend_d,
+                gr_spend_by_week=gr_spend_d,
+                events_by_week=events_d,
+                other_spend_by_week=other_spend_d,
             )
 
             cum_leads    += w["leads"]
@@ -873,10 +886,11 @@ def main():
             meta_sp  = _weekly_float(w["meta_spend"])
             gads_sp  = _weekly_float(w["gads_spend"])
             gr_sp    = _weekly_float(w["gr_spend"])
+            other_sp = _weekly_float(w["other_spend"])
 
             if lt_fee or (is_active and wn >= 1):
                 total_spend = round(
-                    (meta_sp or 0) + (gads_sp or 0) + (gr_sp or 0) + (lt_fee or 0), 2
+                    (meta_sp or 0) + (gads_sp or 0) + (gr_sp or 0) + (other_sp or 0) + (lt_fee or 0), 2
                 ) or None
             else:
                 total_spend = None
@@ -909,6 +923,7 @@ def main():
                 "meta_spend":         meta_sp if (is_active and wn >= 1) else None,
                 "google_spend":       gads_sp if (is_active and wn >= 1) else None,
                 "grassroots_spend":   gr_sp if (is_active and wn >= 1) else None,
+                "other_spend":        other_sp if (is_active and wn >= 1) else None,
                 "leadteam_fee":       leadteam_fee,
                 "total_marketing_spend": total_spend,
             }
@@ -916,14 +931,15 @@ def main():
             # Apply manual spend overrides (fixed values that won't be overwritten)
             ov = spend_overrides.get(code, {})
             wk_str = str(wn)
-            for spend_key in ("meta_spend", "google_spend", "grassroots_spend"):
+            for spend_key in ("meta_spend", "google_spend", "grassroots_spend", "other_spend"):
                 if wk_str in ov.get(spend_key, {}):
                     entry[spend_key] = ov[spend_key][wk_str]
-            if any(wk_str in ov.get(k, {}) for k in ("meta_spend", "google_spend", "grassroots_spend")):
+            if any(wk_str in ov.get(k, {}) for k in ("meta_spend", "google_spend", "grassroots_spend", "other_spend")):
                 new_total = (
                     (entry.get("meta_spend") or 0) +
                     (entry.get("google_spend") or 0) +
                     (entry.get("grassroots_spend") or 0) +
+                    (entry.get("other_spend") or 0) +
                     (entry.get("leadteam_fee") or 0)
                 )
                 entry["total_marketing_spend"] = new_total or None

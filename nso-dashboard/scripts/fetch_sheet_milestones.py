@@ -17,43 +17,35 @@ SPREADSHEET_ID = "1Ku0VSwOY6HVXuqucduWlsbKIiNzb0ojL21rozaPpHHU"
 CREDS_FILE     = "credentials/service_account.json"
 SCORECARD_FILE = "nso_scorecard_data.json"
 
-# Column indices (0-based). Row 0 = group headers, Row 1 = column headers, Row 2+ = data.
-COL = {
-    "name":                  0,
-    "code":                  1,
-    "tier1_price":           3,
-    "tier2_price":           4,
-    "tier3_price":           5,
-    "early_lead_date":       6,
-    "mbo_date":              7,
-    "paid_lead_gen_date":    8,
-    "week1_start":           9,
-    "target_co_date":        10,
-    "target_open_date":      11,
-    "tier2_move_date":       12,
-    "tier3_move_date":       13,
-    "total_leads_target":    14,
-    "presales_target":       15,
-    "day1_rmr_target":       16,
-    "estimated_roms_target": 17,
-    "cpl_range":             18,
-    "cpa_range":             19,
-    "conversion_rate":       20,
-    "tier1_members_target":  21,
-    "tier2_members_target":  22,
-    "tier3_members_target":  23,
-}
+# Fixed column indices — only name/code/pricing are stable (left of scheduling section).
+# All scheduling columns use header-name lookup via hdr_map (see below).
+_COL_NAME  = 0
+_COL_CODE  = 1
+_COL_TIER1 = 3
+_COL_TIER2 = 4
+_COL_TIER3 = 5
+
+# Pre-launch milestone columns (ordered by appearance in the pre-launch timeline).
+# Each entry: (key, sheet_header_name)
+MILESTONE_COLS = [
+    ("early_lead_date",          "Early Lead Date"),
+    ("mbo_date",                 "Full Marketing Build Out Complete"),
+    ("paid_lead_gen_date",       "Paid Lead Gen Date"),
+    ("paid_presales_start_date", "Paid Presales Start Date"),
+]
 
 MILESTONE_LABELS = {
-    "early_lead_date":    "Early Lead Date",
-    "mbo_date":           "MBO Date",
-    "paid_lead_gen_date": "Paid Lead Gen Start",
+    "early_lead_date":           "Early Lead Date",
+    "mbo_date":                  "Full Marketing Build Out Complete",
+    "paid_lead_gen_date":        "Paid Lead Gen Start",
+    "paid_presales_start_date":  "Paid Presales Start Date",
 }
 
 MILESTONE_SUBTITLES = {
-    "early_lead_date":    "Landing page & early interest list",
-    "mbo_date":           "Lead form live on website",
-    "paid_lead_gen_date": "Meta / Google paid ads begin",
+    "early_lead_date":           "Landing page & early interest list",
+    "mbo_date":                  "Lead form live on website",
+    "paid_lead_gen_date":        "Meta / Google paid ads begin",
+    "paid_presales_start_date":  "Presales campaign begins",
 }
 
 
@@ -123,19 +115,32 @@ res  = svc.spreadsheets().values().get(
     spreadsheetId=SPREADSHEET_ID, range="NSO Config"
 ).execute()
 rows = res.get("values", [])
+
+# Build header-name lookup from row 1 (row 0 = group headers).
+hdr_row = rows[1] if len(rows) > 1 else []
+hdr_map = {h.strip().lower(): i for i, h in enumerate(hdr_row)}
+
+def _hi(name):
+    """Column index by header name (case-insensitive). Returns -1 if not found."""
+    return hdr_map.get(name.strip().lower(), -1)
+
+def _hcell(row, name):
+    i = _hi(name)
+    return cell(row, i) if i >= 0 else ""
+
 data_rows = rows[2:]  # skip group-header row and column-header row
 
 # Build lookup: code -> {milestones, pricing_raw}
 sheet_map = {}
 for row in data_rows:
-    code = cell(row, COL["code"]).strip()
+    code = cell(row, _COL_CODE).strip()
     if not code:
         continue
 
-    # Milestones
+    # Pre-launch milestones
     milestones = []
-    for key in ("early_lead_date", "mbo_date", "paid_lead_gen_date"):
-        d = norm_date(cell(row, COL[key]))
+    for key, header in MILESTONE_COLS:
+        d = norm_date(_hcell(row, header))
         if d:
             milestones.append({
                 "key":      key,
@@ -145,35 +150,35 @@ for row in data_rows:
             })
     milestones.sort(key=lambda m: m["date"])
 
-    # Pricing (prices + move dates — week numbers resolved later against scorecard)
-    week1_start = norm_date(cell(row, COL["week1_start"]))  # treated as Week 0 base
-    t2_move     = norm_date(cell(row, COL["tier2_move_date"]))
-    t3_move     = norm_date(cell(row, COL["tier3_move_date"]))
+    # Scheduling dates — all via header-name lookup (column positions may vary)
+    week1_start = norm_date(_hcell(row, "Week 1 Start"))
+    t2_move     = norm_date(_hcell(row, "Tier 2 Move Date"))
+    t3_move     = norm_date(_hcell(row, "Tier 3 Move Date"))
+    co_date     = norm_date(_hcell(row, "Target CO Date"))
+    open_date   = norm_date(_hcell(row, "Target Open Date"))
+    goal_ann    = norm_date(_hcell(row, "Goal to Announce Opening"))
 
-    co_date   = norm_date(cell(row, COL["target_co_date"]))
-    open_date = norm_date(cell(row, COL["target_open_date"]))
-    cpl_raw   = (cell(row, COL["cpl_range"]) or "").strip() or None
-    cpa_raw   = (cell(row, COL["cpa_range"]) or "").strip() or None
-    cr_raw    = norm_float(cell(row, COL["conversion_rate"]))
+    cpl_raw  = (_hcell(row, "CPL Range") or "").strip() or None
+    cpa_raw  = (_hcell(row, "CPA Range") or "").strip() or None
+    cr_raw   = norm_float(_hcell(row, "Conversion Rate"))
 
     sheet_map[code] = {
         "milestones":            milestones,
-        "tier1_price":           norm_price(cell(row, COL["tier1_price"])),
-        "tier2_price":           norm_price(cell(row, COL["tier2_price"])),
-        "tier3_price":           norm_price(cell(row, COL["tier3_price"])),
+        "tier1_price":           norm_price(cell(row, _COL_TIER1)),
+        "tier2_price":           norm_price(cell(row, _COL_TIER2)),
+        "tier3_price":           norm_price(cell(row, _COL_TIER3)),
         "week1_start":           week1_start,
         "tier2_start_week":      date_to_week_num(t2_move, week1_start),
         "tier3_start_week":      date_to_week_num(t3_move, week1_start),
         "tier2_start_date":      t2_move,
         "tier3_start_date":      t3_move,
-        "tier1_members_target":  norm_price(cell(row, COL["tier1_members_target"])),
-        "tier2_members_target":  norm_price(cell(row, COL["tier2_members_target"])),
-        "tier3_members_target":  norm_price(cell(row, COL["tier3_members_target"])),
-        "estimated_roms_target": (cell(row, COL["estimated_roms_target"]) or "").strip() or None,
-        # Studio-level targets & dates
-        "total_leads_target":    norm_float(cell(row, COL["total_leads_target"])),
-        "presales_target":       norm_float(cell(row, COL["presales_target"])),
-        "day1_rmr_target":       norm_float(cell(row, COL["day1_rmr_target"])),
+        "tier1_members_target":  norm_price(_hcell(row, "Tier 1 Members Target")),
+        "tier2_members_target":  norm_price(_hcell(row, "Tier 2 Members Target")),
+        "tier3_members_target":  norm_price(_hcell(row, "Tier 3 Members Target")),
+        "estimated_roms_target": (_hcell(row, "Estimated ROMs Target") or "").strip() or None,
+        "total_leads_target":    norm_float(_hcell(row, "Total Leads Target")),
+        "presales_target":       norm_float(_hcell(row, "Presales Target")),
+        "day1_rmr_target":       norm_float(_hcell(row, "Day 1 RMR Target")),
         "cpl_range":             f"${cpl_raw}" if cpl_raw else None,
         "cpa_range":             f"${cpa_raw}" if cpa_raw else None,
         "conversion_rate":       cr_raw,
@@ -181,6 +186,7 @@ for row in data_rows:
         "co_week":               date_to_week_num(co_date, week1_start),
         "opening_date":          open_date,
         "go_week":               date_to_week_num(open_date, week1_start),
+        "goal_announce_date":    goal_ann,
     }
 
 # ── Patch scorecard JSON ────────────────────────────────────────────────────
@@ -240,6 +246,8 @@ for studio in sc.get("studios", []):
         studio["co_week"] = info["co_week"]
     if info.get("go_week") is not None:
         studio["go_week"] = info["go_week"]
+    if info.get("goal_announce_date"):
+        studio["goal_announce_date"] = info["goal_announce_date"]
 
     updated += 1
     print(f"  {code} ({studio['name']}): "
