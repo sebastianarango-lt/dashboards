@@ -1967,7 +1967,7 @@ function renderInstagram(){
         ?`<a href="${p.permalink}" target="_blank" rel="noopener" style="color:#1a4d6e;text-decoration:none">${(p.caption||'').slice(0,90)||'(no caption)'}</a>`
         :((p.caption||'').slice(0,90)||'(no caption)');
       const typeLabel=p.media_type==='CAROUSEL_ALBUM'?'CAROUSEL':(p.media_type||'—');
-      const er=p.engagement_rate!=null?p.engagement_rate.toFixed(2)+'%':'—';
+      const er=p.engagement_rate!=null?parseFloat(p.engagement_rate).toFixed(2)+'%':'—';
       return`<tr>
         <td>${img}</td>
         <td style="white-space:nowrap;color:#8aaabb;font-size:12px">${fmDay(p.date)}</td>
