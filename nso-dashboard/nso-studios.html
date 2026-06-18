@@ -1819,14 +1819,9 @@ let SOCIAL_RAW=null;
 function _socialStudios(key){
   const sel=_getSel('studioMenu');
   const data=(SOCIAL_RAW&&SOCIAL_RAW[key])||[];
-  // Match by studio code: 'SWEAT440 Herriman' → 'UT-001'
-  const CODE_MAP={
-    'SWEAT440 Herriman':'UT-001','SWEAT440 Dallas - Prestonwood':'TX-003',
-    'SWEAT440 Naples - Mercato':'FL-019','SWEAT440 Pinecrest - Palmetto Bay':'FL-017',
-    'SWEAT440 Reston':'VA-001'
-  };
-  const activeCodes=sel.map(s=>CODE_MAP[s]).filter(Boolean);
-  return data.filter(s=>activeCodes.includes(s.code));
+  // Match by short studio name: social data uses short names (e.g. "Herriman")
+  const selShort=new Set(sel.map(s=>s.replace(/^SWEAT440\s+/i,'')));
+  return data.filter(s=>selShort.has(s.studio));
 }
 
 const _C2S={'UT-001':'SWEAT440 Herriman','TX-003':'SWEAT440 Dallas - Prestonwood','FL-019':'SWEAT440 Naples - Mercato','FL-017':'SWEAT440 Pinecrest - Palmetto Bay','VA-001':'SWEAT440 Reston'};
