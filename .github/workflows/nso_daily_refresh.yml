@@ -118,16 +118,18 @@ jobs:
           python nso-dashboard/scripts/build_all_scorecards.py
         continue-on-error: true
 
+      # ── RESTON HISTORICAL DATA FROM SHEET ──────────────────────────────────
+      # Must run BEFORE fetch_sheet_milestones so the static weeks (W0-W29)
+      # are in place before the sheet patches grassroots/other spend on them.
+      - name: Patch Reston early weeks from Google Sheet
+        run: |
+          cd nso-dashboard && python scripts/patch_reston_early_weeks.py
+        continue-on-error: true
+
       # ── MILESTONES + PRICING + TARGETS FROM NSO CONFIG SHEET ───────────────
       - name: Apply pricing, milestones, targets and dates from NSO Config sheet
         run: |
           cd nso-dashboard && python scripts/fetch_sheet_milestones.py
-        continue-on-error: true
-
-      # ── RESTON HISTORICAL DATA FROM SHEET ──────────────────────────────────
-      - name: Patch Reston early weeks from Google Sheet
-        run: |
-          cd nso-dashboard && python scripts/patch_reston_early_weeks.py
         continue-on-error: true
 
       # ── TIER RMR (real prices from Snowflake) ───────────────────────────────
