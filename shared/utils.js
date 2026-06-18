@@ -7,6 +7,43 @@ function _applyFilters() {
 }
 
 
+// -- Sortable table utility -------------------------------------------------
+const _sortState = {};
+function sortableTable(tableId, data, renderRow, totalsRow) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const ths = table.querySelectorAll('thead th[data-sort]');
+  const tbody = table.querySelector('tbody');
+  const tfoot = table.querySelector('tfoot') || (() => {
+    const tf = document.createElement('tfoot'); table.appendChild(tf); return tf;
+  })();
+  if (!_sortState[tableId]) _sortState[tableId] = {col: null, asc: true};
+  const state = _sortState[tableId];
+  function render() {
+    const sorted = state.col === null ? [...data] : [...data].sort((a, b) => {
+      const va = a[state.col], vb = b[state.col];
+      if (va == null) return 1; if (vb == null) return -1;
+      const cmp = typeof va === 'string' ? va.localeCompare(vb) : va - vb;
+      return state.asc ? cmp : -cmp;
+    });
+    tbody.innerHTML = sorted.map((row, i) => renderRow(row, i + 1)).join('');
+    ths.forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === state.col) th.classList.add(state.asc ? 'sort-asc' : 'sort-desc');
+    });
+    if (totalsRow) tfoot.innerHTML = totalsRow(sorted);
+  }
+  ths.forEach(th => {
+    th.classList.add('sortable');
+    th.addEventListener('click', () => {
+      const col = th.dataset.sort;
+      if (state.col === col) { state.asc = !state.asc; } else { state.col = col; state.asc = true; }
+      render();
+    });
+  });
+  render();
+}
+
 // -- Chart instance registry ------------------------------------------------
 const _areaCharts = {};
 
