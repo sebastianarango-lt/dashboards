@@ -45,7 +45,7 @@ jobs:
           SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
         run: |
           python nso-dashboard/scripts/fetch_nso_sales.py \
-            --end $YESTERDAY \
+            --end $TWO_DAYS_AGO \
             --output nso-dashboard/nso_sales_data.json
         continue-on-error: true
 
