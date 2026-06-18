@@ -331,6 +331,11 @@ for studio in sc.get("studios", []):
         if info.get(key) is not None:
             pricing[key] = info[key]
 
+    # Preserve tier0_price if already set (founders/special tier not in NSO Config sheet)
+    existing_t0 = (studio.get("pricing") or {}).get("tier0_price")
+    if existing_t0 is not None:
+        pricing["tier0_price"] = existing_t0
+
     studio["pricing"] = pricing if pricing else None
 
     # Update studio-level targets from sheet
