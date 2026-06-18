@@ -2,15 +2,13 @@
 patch_reston_early_weeks.py
 
 For Reston (VA-001):
-  1. Replaces weeks 0-34 with frozen data from reston_static_weeks.json
-  2. For weeks 35+ (date_start >= 2026-06-08), applies Reston's pause-week numbering
+  1. Replaces weeks 0-29 with frozen data from reston_static_weeks.json
+  2. For weeks 30+ (date_start >= 2026-06-08), assigns sequential week numbers
      and keeps Snowflake/API data from build_all_scorecards.py
   3. Recalculates cumulative total_leads from new_leads across all weeks
   4. Calibrates IG Week 0 so cumulative total = current_followers
 
-Pause week pattern: W13, W18, W23, W28, W33, W38, W43...
-Formula: reston_wk = cal_wk + floor((cal_wk - 13) / 4) + 1  for cal_wk >= 13
-         reston_wk = cal_wk                                   for cal_wk <= 12
+Reston weeks are sequential (no pause weeks).
 """
 import json
 import calendar as cal_mod
@@ -22,18 +20,12 @@ SCORECARD_FILE = ROOT / "nso_scorecard_data.json"
 STATIC_FILE    = ROOT / "reston_static_weeks.json"
 RESTON_CODE    = "VA-001"
 WEEK1_START    = date(2025, 11, 17)   # Reston Week 1 Monday
-STATIC_CUTOFF  = "2026-06-07"         # date_end of last static week (W34)
+STATIC_CUTOFF  = "2026-06-07"         # date_end of last static week (W29)
 
 
 def cal_wk_to_reston_wk(cal_wk):
-    """Map a sequential calendar week number to Reston's week number.
-    Pause weeks (W13, W18, W23, W28, W33, W38...) are skipped in Reston's scheme."""
-    if cal_wk <= 0:
-        return 0
-    if cal_wk <= 12:
-        return cal_wk
-    n_pauses = (cal_wk - 13) // 4 + 1
-    return cal_wk + n_pauses
+    """Reston weeks are sequential — no pause weeks."""
+    return max(0, cal_wk)
 
 
 def date_to_cal_wk(date_start_str):
@@ -51,7 +43,7 @@ def date_to_cal_wk(date_start_str):
 print("Loading reston_static_weeks.json ...")
 with open(STATIC_FILE) as f:
     static_weeks = json.load(f)
-print(f"  {len(static_weeks)} static weeks (W0-W34)")
+print(f"  {len(static_weeks)} static weeks (W0-W29)")
 
 # ── Load current scorecard ──────────────────────────────────────────────────────
 with open(SCORECARD_FILE) as f:
@@ -62,16 +54,16 @@ if not reston:
     print("ERROR: Reston not found in scorecard")
     raise SystemExit(1)
 
-# ── Extract dynamic weeks (W35+) from build_all_scorecards.py output ──────────
+# ── Extract dynamic weeks (W30+) from build_all_scorecards.py output ──────────
 dynamic_weeks = [
     wk for wk in reston["weeks"]
     if wk.get("date_start") and wk.get("date_start") > STATIC_CUTOFF
 ]
-print(f"\nDynamic weeks (W35+): {len(dynamic_weeks)}")
+print(f"\nDynamic weeks (W30+): {len(dynamic_weeks)}")
 
-# ── Relabel dynamic weeks with correct Reston week numbers ────────────────────
+# ── Relabel dynamic weeks with correct sequential Reston week numbers ──────────
 today_str = date.today().isoformat()
-new_current = 34  # last confirmed static week
+new_current = 29  # last confirmed static week
 
 for wk in dynamic_weeks:
     cal_wk = date_to_cal_wk(wk.get("date_start"))
@@ -138,4 +130,4 @@ except FileNotFoundError:
 with open(SCORECARD_FILE, "w") as f:
     json.dump(sc, f, indent=2)
 
-print("\nDone. W0-W34 frozen from static file. W35+ from Snowflake with pause-week numbering.")
+print("\nDone. W0-W29 frozen from static file. W30+ from Snowflake with sequential week numbering.")
