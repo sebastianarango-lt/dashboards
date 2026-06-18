@@ -57,6 +57,7 @@ jobs:
           cp paid-ads-data.json ../paid-ads-data.json
 
       - name: Run AI Analysis (paid-ads-analysis.json)
+        continue-on-error: true        # si falla, el ETL data igual se commitea
         run: |
           cd paid-ads-dashboards
           python analyze_ads.py
