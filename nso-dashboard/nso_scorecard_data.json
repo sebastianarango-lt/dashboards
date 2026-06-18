@@ -2367,7 +2367,8 @@
         "tier2_price": 149,
         "tier1_members_target": 100,
         "tier2_members_target": 225,
-        "estimated_roms_target": "5x"
+        "estimated_roms_target": "5x",
+        "tier0_price": 99
       },
       "milestones": [
         {
