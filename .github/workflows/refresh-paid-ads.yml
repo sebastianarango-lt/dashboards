@@ -72,5 +72,6 @@ jobs:
             echo "No changes in data files"
           else
             git commit -m "chore(paid-ads): refresh data $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase origin main
             git push
           fi
