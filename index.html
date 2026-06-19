@@ -2015,6 +2015,26 @@ function _socSort(key, colIdx) {
 }
 function _scCls(key, col) { return _SOC_SORTS[key].col === col ? 'sc' : ''; }
 
+// Social data uses shorter/different studio names — map them to data.json names
+const _SOCIAL_ALIAS = {
+  'south beach':            'miami beach',
+  'brickell':               'miami - brickell',
+  'coconut grove':          'miami - coconut grove',
+  'midtown miami':          'miami - midtown',
+  'upper east side':        'miami - upper east side',
+  'las olas':               'fort lauderdale - las olas',
+  'chelsea':                'nyc - chelsea',
+  'fidi':                   'nyc - fidi',
+  'brooklyn - park slope':  'nyc - park slope',
+  'pinecrest':              'pinecrest - palmetto bay',
+  'wall nj':                'wall township',
+  'orlando - dr. phillips': 'orlando - dr phillips',
+};
+function _socialMatch(socialName, selLower) {
+  const n = (socialName || '').toLowerCase();
+  return selLower.has(n) || selLower.has(_SOCIAL_ALIAS[n] || '\x00');
+}
+
 // ---- Facebook ------------------------------------------------------------
 function renderFacebook() {
   const el = document.getElementById('facebook-content');
@@ -2029,7 +2049,7 @@ function renderFacebook() {
   }
 
   const selLower = new Set(selStudios.map(s => s.toLowerCase()));
-  const studios = (SOCIAL_RAW.facebook || []).filter(s => selLower.has((s.studio || '').toLowerCase()));
+  const studios = (SOCIAL_RAW.facebook || []).filter(s => _socialMatch(s.studio, selLower));
 
   if (!studios.length) {
     el.innerHTML = _orgEmpty('No Facebook data for selected studios.');
@@ -2103,7 +2123,7 @@ function renderInstagram() {
   }
 
   const selLower = new Set(selStudios.map(s => s.replace(/^SWEAT440\s+/i, '').toLowerCase()));
-  const studios  = (SOCIAL_RAW.instagram || []).filter(s => selLower.has((s.studio || '').toLowerCase()));
+  const studios  = (SOCIAL_RAW.instagram || []).filter(s => _socialMatch(s.studio, selLower));
 
   if (!studios.length) {
     el.innerHTML = _orgEmpty('No Instagram data for selected studios.');
