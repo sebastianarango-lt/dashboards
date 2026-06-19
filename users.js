@@ -87,6 +87,12 @@ const USERS = {
     studios: null,
     role: 'corporate'
   },
+  'corporate@sweat440.com': {
+    passwordHash: 'ddd5c9061082705dc210837bf37f3bce4a7da96bd49915edd7ad99651d65be3b',
+    name: 'SWEAT440 Corporate',
+    studios: ['Miami Beach', 'Miami - Brickell'],
+    role: 'corporate'
+  },
 
   // ── Franchisees ───────────────────────────────────────────────────────────
 
