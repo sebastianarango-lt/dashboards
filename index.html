@@ -1800,7 +1800,7 @@ const GA4_SLUGS = {
   'Austin - Zilker':         ['zilker'],
 };
 
-const GA4_COLORS = ['#00A3E0','#DDFF00','#00FFC2','#f4a021','#e05a5a','#a78bfa','#34d399','#fb923c','#4285F4','#0084B5'];
+// Studio colors come from studioColor() defined in shared/utils.js
 
 // Helper: no-data placeholder
 function _orgEmpty(msg) {
@@ -1967,7 +1967,7 @@ function _drawGA4Trend(from, to, activeStudios) {
     const rows   = _ga4StudioRows(studio, from, to);
     const byDate = {};
     rows.forEach(r => { byDate[r.date] = (byDate[r.date] || 0) + (r.sessions || 0); });
-    return { studio, byDate, color: GA4_COLORS[i % GA4_COLORS.length] };
+    return { studio, byDate, color: studioColor(studio) };
   });
   const allDates = [...new Set(datasets.flatMap(d => Object.keys(d.byDate)))].sort();
   const isMob    = window.innerWidth <= 768;

@@ -52,19 +52,99 @@ const SRC_COLORS = ['#00A3E0','#00C9A7','#9aab00','#f4a021','#e05a5a','#7c5cbf',
   '#00bcd4','#8bc34a','#ff7043','#5c6bc0','#26a69a','#ef5350','#ab47bc','#78909c'];
 
 const SRC_COLOR_MAP = {
-  'Website (unattributed)': '#2ECC71',
-  'Business Mode':          '#E74C3C',
-  'Meta Ads':               '#1877F2',
-  'SWEAT440 App':           '#F39C12',
-  'N/A':                    '#7F8C8D',
-  'MindBody App':           '#8E44AD',
-  'Google Ads':             '#E91E63',
-  'Local Listings':         '#16A085',
-  'Other':                  '#BDC3C7',
-  'Social Media Organic':   '#D35400',
-  'Word of Mouth':          '#27AE60',
-  'Print Ads / Signs':      '#2980B9',
+  'Meta Ads':                '#1877F2',  // Facebook/Meta blue
+  'Google Ads':              '#34A853',  // Google green
+  'Local Listings':          '#FBBC05',  // Google yellow (maps/local)
+  'ClassPass / Platforms':   '#7B68EE',  // ClassPass medium-purple
+  'Grassroots':              '#8BC34A',  // organic lime-green
+  'Social Media Organic':    '#E1306C',  // Instagram pink
+  'Word of Mouth':           '#27AE60',  // referral green
+  'Website (unattributed)':  '#2ECC71',  // web green
+  'SWEAT440 App':            '#F39C12',  // app amber
+  'MindBody App':            '#8E44AD',  // MindBody purple
+  'Business Mode':           '#E74C3C',  // red
+  'Print Ads / Signs':       '#2980B9',  // print blue
+  'N/A':                     '#7F8C8D',  // grey
+  'Other':                   '#BDC3C7',  // light grey
 };
+
+// -- Studio color map — consistent across all tabs and both dashboards -------
+// Keys are short names WITHOUT the "SWEAT440 " prefix.
+// Organized by franchisee so colors within each portfolio are maximally distinct.
+const STUDIO_COLOR_MAP = {
+  // SWEAT440 flagship / corporate
+  'Miami Beach':                '#00A3E0',  // brand blue
+  'Miami - Brickell':           '#0071BC',  // deep brand blue
+
+  // Marc Gralnick (5 studios) — warm family
+  'Coral Springs':              '#C62828',  // dark red
+  'Deerfield Beach':            '#EF6C00',  // deep orange
+  'Fort Lauderdale - Las Olas': '#C2185B',  // dark pink-red
+  'Miami - Coconut Grove':      '#6D4C41',  // warm brown
+  'Miami - Upper East Side':    '#FF7043',  // coral-orange
+
+  // Carlos de Varona (3) — teals/greens
+  'Miami Lakes':                '#00897B',  // teal
+  'Miramar':                    '#558B2F',  // olive
+  'Pembroke Pines':             '#00ACC1',  // cyan-blue
+
+  // Mark Cacciaguida (2) — deep warm
+  'Doral':                      '#E64A19',  // burnt orange
+  'Miami - Midtown':            '#9E9D24',  // dark lime/olive
+
+  // Erika Sanchez (2) — magentas
+  'Coral Gables':               '#880E4F',  // dark magenta
+  'Naples - Mercato':           '#F06292',  // medium pink (NSO)
+
+  // Max Gelrud (1)
+  'South Miami':                '#4E342E',  // dark brown
+
+  // Alex Avila (7) — blues/purples/teals (widest spread)
+  'Aventura':                   '#1565C0',  // deep blue (NSO)
+  'North Miami':                '#9C27B0',  // purple (NSO)
+  'Boca Raton':                 '#5E35B1',  // deep purple
+  'West Palm Beach':            '#0288D1',  // medium blue
+  'NYC - Chelsea':              '#00695C',  // dark teal
+  'NYC - Park Slope':           '#AD1457',  // dark pink
+  'NYC - FiDi':                 '#37474F',  // blue-grey
+
+  // Kristen Albert (1)
+  'Eastchester':                '#546E7A',  // steel blue-grey
+
+  // Nick Marco (5) — varied to maximise intra-group distinction
+  'Toms River':                 '#2E7D32',  // dark green
+  'Ocean Township':             '#283593',  // dark indigo
+  'Wall Township':              '#6A1B9A',  // dark purple
+  'Middletown':                 '#BF360C',  // dark burnt-orange
+  'Old Bridge':                 '#455A64',  // dark slate (NSO)
+
+  // Paul Marcus (2) — Austin
+  'Austin - Zilker':            '#FF8F00',  // amber
+  'Austin - Highland':          '#795548',  // medium brown
+
+  // Single-studio franchisees / NSO
+  'Dallas - Prestonwood':       '#78909C',  // blue-grey
+  'Dallas - Uptown':            '#00BFA5',  // bright teal (NSO)
+  'Pinecrest - Palmetto Bay':   '#304FFE',  // electric indigo
+  'Pinecrest':                  '#304FFE',  // short-name alias
+  'Orlando - Dr Phillips':      '#1B5E20',  // very dark green (NSO)
+  'Charlotte - NoDa':           '#33691E',  // dark olive-green
+  'Nashville - Capitol View':   '#263238',  // very dark blue-grey
+  'Nashville - Music Row':      '#263238',
+  'Music Row':                  '#263238',
+  'Herriman':                   '#B71C1C',  // dark red (NSO)
+  'Reston':                     '#311B92',  // very dark purple (NSO)
+  'Madison':                    '#F9A825',  // amber-yellow
+};
+
+function studioColor(name){
+  const short = (name||'').replace(/^SWEAT440\s+/,'').trim();
+  if(STUDIO_COLOR_MAP[short]) return STUDIO_COLOR_MAP[short];
+  // Fallback: deterministic hash so the same studio always gets the same color
+  let h=0; for(let i=0;i<short.length;i++) h=(h*31+short.charCodeAt(i))&0xFFFFFF;
+  const hue=h%360, sat=55+h%25, lit=38+h%18;
+  return `hsl(${hue},${sat}%,${lit}%)`;
+}
 
 // -- Default exclusions (can be overridden per dashboard) -------------------
 const DEFAULT_EXCL_SOURCES = ['ClassPass / Platforms','Grassroots'];
