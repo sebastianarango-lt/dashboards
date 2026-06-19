@@ -412,7 +412,7 @@ function _isFullMonths(from, to) {
   return firstOfMonth && lastOfMonth;
 }
 
-function kpiCard(label,val,pp,py,fmt){
+function kpiCard(label,val,pp,py,fmt,info){
   const f=fmt||(v=>Number.isFinite(v)?v.toLocaleString():v);
   const dpp=pp!=null&&pp!==0?(val-pp)/pp*100:null;
   const dpy=py!=null&&py!==0?(val-py)/py*100:null;
@@ -424,8 +424,10 @@ function kpiCard(label,val,pp,py,fmt){
   const pyH = _partialPeriod.py
     ? (dpy!=null ? warnPY : '')
     : (dpy!=null?'<div class="kpi-card-delta '+(dpy>=0?'pos':'neg')+'">'+(dpy>=0?'&#9650;':'&#9660;')+' '+Math.abs(dpy).toFixed(1)+'% prev year</div>':'');
-  return '<div class="kpi-card"><div class="kpi-card-label">'+label+'</div><div class="kpi-card-val">'+f(val)+'</div>'+ppH+pyH+'</div>';
+  const infoBtn = info ? '<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="'+_esc(info.title||label)+'" data-desc="'+_esc(info.desc)+'" data-date="'+_esc(info.date||'')+'">i</button>' : '';
+  return '<div class="kpi-card">'+infoBtn+'<div class="kpi-card-label">'+label+'</div><div class="kpi-card-val">'+f(val)+'</div>'+ppH+pyH+'</div>';
 }
+function _esc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 function toSourceTimeSeries(dailyRows,monthlyRows,gran){
   const g=gran||GRAN;
@@ -443,7 +445,7 @@ function toSourceTimeSeries(dailyRows,monthlyRows,gran){
   return Object.values(map).sort((a,b)=>a.key.localeCompare(b.key));
 }
 
-function cprKpiCard(label,val,pp,py,fmt){
+function cprKpiCard(label,val,pp,py,fmt,info){
   const f=fmt||(v=>Number.isFinite(v)?v.toLocaleString():v);
   const dpp=pp!=null&&pp!==0?(val-pp)/pp*100:null;
   const dpy=py!=null&&py!==0?(val-py)/py*100:null;
@@ -455,7 +457,8 @@ function cprKpiCard(label,val,pp,py,fmt){
   const pyH=_partialPeriod.py
     ? (dpy!=null ? warnPY : '')
     : (dpy!=null?'<div class="kpi-card-delta '+(dpy<=0?'pos':'neg')+'">'+(dpy<=0?'&#9660;':'&#9650;')+' '+Math.abs(dpy).toFixed(1)+'% prev year</div>':'');
-  return '<div class="kpi-card"><div class="kpi-card-label">'+label+'</div><div class="kpi-card-val">'+f(val)+'</div>'+ppH+pyH+'</div>';
+  const infoBtn = info ? '<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="'+_esc(info.title||label)+'" data-desc="'+_esc(info.desc)+'" data-date="'+_esc(info.date||'')+'">i</button>' : '';
+  return '<div class="kpi-card">'+infoBtn+'<div class="kpi-card-label">'+label+'</div><div class="kpi-card-val">'+f(val)+'</div>'+ppH+pyH+'</div>';
 }
 
 function getMock() {
