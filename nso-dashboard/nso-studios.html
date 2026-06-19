@@ -1324,6 +1324,10 @@ function metaFilter(studio,from,to){
   });
 }
 
+function _metaCreativeName(adName){
+  return (adName||'').replace(/^\d+\-[A-Z]{2}\-\d+\-\d+\s*-\s*/i,'').trim()||adName||'';
+}
+
 function renderMeta(){
   const el=document.getElementById('meta-content');if(!el)return;
   if(!META_RAW||!META_RAW.length){el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">No Meta Ads data available.</div>';return;}
@@ -1338,62 +1342,149 @@ function renderMeta(){
   const totalImp=allRows.reduce((s,r)=>s+(r.impressions||0),0);
   const totalClicks=allRows.reduce((s,r)=>s+(r.clicks||0),0);
   const totalLeads=allRows.reduce((s,r)=>s+(r.leads||0),0);
-  const avgCPL=totalLeads>0?(totalSpend/totalLeads):0;
+  const cpl=totalLeads>0?totalSpend/totalLeads:0;
+  const f$=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+  const f$2=v=>'$'+Number(v).toFixed(2);
+  const fN=v=>Number(v).toLocaleString();
+  const fK=v=>Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':fN(v);
 
   let h='';
 
-  // Aggregate KPI cards (matching index.html)
+  // KPI cards
   h+=`<div class="kpi-grid">`;
-  h+=`<div class="kpi-card"><div class="kpi-card-label">Total Spend</div><div class="kpi-card-val">$${totalSpend.toLocaleString('en-US',{maximumFractionDigits:0})}</div></div>`;
-  h+=`<div class="kpi-card"><div class="kpi-card-label">Impressions</div><div class="kpi-card-val">${totalImp.toLocaleString('en-US')}</div></div>`;
-  h+=`<div class="kpi-card"><div class="kpi-card-label">Clicks</div><div class="kpi-card-val">${totalClicks.toLocaleString('en-US')}</div></div>`;
-  h+=`<div class="kpi-card"><div class="kpi-card-label">Cost per Lead</div><div class="kpi-card-val">${avgCPL>0?'$'+avgCPL.toFixed(2):'—'}</div></div>`;
+  h+=kpiCard('Spend',totalSpend,null,null,f$);
+  h+=kpiCard('Impressions',totalImp,null,null,v=>fK(v));
+  h+=kpiCard('Clicks',totalClicks,null,null,v=>fN(v));
+  h+=kpiCard('Leads',totalLeads,null,null,v=>v);
+  h+=kpiCard('Cost / Lead',cpl,null,null,f$2);
   h+=`</div>`;
 
-  // Active ads table (grouped by ad_name, preserving creative metadata)
-  const byAd={};
+  // Creative ads table — grouped by creative short name
+  const creativeMap={};
   allRows.forEach(r=>{
-    const k=r.ad_name||r.campaign_name;
-    if(!byAd[k]){byAd[k]={imp:0,clicks:0,spend:0,leads:0,camp:r.campaign_name,
-      thumb:r.local_image_url||r.thumbnail_url||r.image_url||'',
-      preview:r.preview_link||'',obj:r.object_type||''};}
-    byAd[k].imp+=r.impressions||0;byAd[k].clicks+=r.clicks||0;
-    byAd[k].spend+=r.spend||0;byAd[k].leads+=r.leads||0;
-    if(!byAd[k].thumb&&(r.local_image_url||r.thumbnail_url||r.image_url))byAd[k].thumb=r.local_image_url||r.thumbnail_url||r.image_url;
-    if(!byAd[k].preview&&r.preview_link)byAd[k].preview=r.preview_link;
+    const name=_metaCreativeName(r.ad_name||r.campaign_name);
+    if(!name)return;
+    if(!creativeMap[name]){creativeMap[name]={name,impressions:0,clicks:0,spend:0,leads:0,
+      media_type:r.object_type||'Other',thumb:'',preview:'',campaign:r.campaign_name||''};}
+    const g=creativeMap[name];
+    g.impressions+=r.impressions||0;g.clicks+=r.clicks||0;
+    g.spend+=r.spend||0;g.leads+=r.leads||0;
+    if(!g.thumb)g.thumb=r.local_image_url||r.thumbnail_url||r.image_url||'';
+    if(!g.preview)g.preview=r.preview_link||'';
   });
-  const adRows=Object.entries(byAd).map(([name,v])=>({
-    name,camp:v.camp,imp:v.imp,clicks:v.clicks,spend:v.spend,leads:v.leads,
-    thumb:v.thumb,preview:v.preview,obj:v.obj,
-    ctr:v.imp>0?(v.clicks/v.imp*100):0,
-    cpl:v.leads>0?(v.spend/v.leads):0
-  })).sort((a,b)=>b.spend-a.spend);
+  const creativeRows=Object.values(creativeMap).map(g=>({
+    ...g,ctr_num:g.impressions>0?g.clicks/g.impressions*100:0,
+    cpl_num:g.leads>0?g.spend/g.leads:null
+  }));
 
-  h+=`<div class="chart-card"><div class="chart-card-title">Active Ads</div><div style="overflow-x:auto">`;
-  h+=`<table class="data-table"><thead><tr><th>Ad</th><th class="num">Impressions</th><th class="num">Clicks</th><th class="num">CTR</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">CPL</th></tr></thead><tbody>`;
-  if(adRows.length){
-    adRows.forEach(a=>{
-      const isVid=(a.obj||'').toLowerCase().includes('video')||a.name.toLowerCase().includes('reel');
-      const thumbHtml=a.thumb
-        ?`<a href="${a.preview||a.thumb}" target="_blank" rel="noopener" title="View ad"><img src="${a.thumb}" style="width:52px;height:52px;object-fit:cover;border-radius:6px;display:block;border:1px solid #d0e4ef"></a>`
-        :`<div class="ad-thumb">${isVid?'&#9654;':'&#128444;'}</div>`;
-      const nameHtml=a.preview
-        ?`<a href="${a.preview}" target="_blank" rel="noopener" style="color:#1a4d6e;text-decoration:none;font-weight:600;font-size:13px" title="Preview ad">${a.name}</a>`
-        :`<div class="ad-title">${a.name}</div>`;
-      h+=`<tr><td><div style="display:flex;align-items:center;gap:10px">${thumbHtml}<div>${nameHtml}<div class="pill-bar"><span class="pill">${a.camp}</span></div></div></div></td><td class="num">${a.imp.toLocaleString('en-US')}</td><td class="num">${a.clicks.toLocaleString('en-US')}</td><td class="num">${a.ctr.toFixed(2)}%</td><td class="num">$${a.spend.toFixed(0)}</td><td class="num">${a.leads}</td><td class="num">${a.cpl>0?'$'+a.cpl.toFixed(0):'—'}</td></tr>`;
-    });
-  } else {
-    h+=`<tr><td colspan="7" style="text-align:center;color:#8aaabb;font-style:italic;padding:24px">No ad data for selected period</td></tr>`;
-  }
-  h+=`</tbody></table></div></div>`;
+  h+=`<div class="chart-card">
+    <div class="chart-card-title">Active Ads</div>
+    <div style="overflow-x:auto">
+      <table class="data-table" id="meta-ads-table">
+        <thead><tr>
+          <th style="width:54px"></th>
+          <th data-sort="name">Creative</th>
+          <th class="num" data-sort="impressions">Impressions</th>
+          <th class="num" data-sort="clicks">Clicks</th>
+          <th class="num" data-sort="ctr_num">CTR</th>
+          <th class="num" data-sort="spend">Spend</th>
+          <th class="num" data-sort="leads">Leads</th>
+          <th class="num" data-sort="cpl_num">CPL</th>
+        </tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </div>`;
 
-  // Spend over time chart
+  // Studio breakdown table
+  const studioRows=activeStudios.map(studio=>{
+    const rows=metaFilter(studio,from,to);
+    const imp=rows.reduce((s,r)=>s+(r.impressions||0),0);
+    const clk=rows.reduce((s,r)=>s+(r.clicks||0),0);
+    const spd=rows.reduce((s,r)=>s+(r.spend||0),0);
+    const lds=rows.reduce((s,r)=>s+(r.leads||0),0);
+    return{name:studio.replace('SWEAT440 ',''),impressions:imp,clicks:clk,spend:spd,leads:lds,
+      ctr:imp>0?clk/imp*100:0,cpl:lds>0?spd/lds:null};
+  }).filter(s=>s.impressions>0||s.spend>0);
+
+  h+=`<div class="chart-card">
+    <div class="chart-card-title">By Studio</div>
+    <div style="overflow-x:auto">
+      <table class="data-table" id="meta-studio-table">
+        <thead><tr>
+          <th class="row-num">#</th>
+          <th data-sort="name">Studio</th>
+          <th class="num" data-sort="impressions">Impressions</th>
+          <th class="num" data-sort="clicks">Clicks</th>
+          <th class="num" data-sort="ctr">CTR</th>
+          <th class="num" data-sort="spend">Spend</th>
+          <th class="num" data-sort="leads">Leads</th>
+          <th class="num" data-sort="cpl">CPL</th>
+        </tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </div>`;
+
+  // Daily spend chart
   h+=`<div class="chart-card"><div class="chart-card-title">Daily Spend Over Time</div><div style="position:relative;width:100%;height:260px"><canvas id="metaSpendChart"></canvas></div></div>`;
 
-  // Brand Awareness placeholder (matching index.html)
-  h+=`<div class="chart-card" style="margin-top:20px"><div class="chart-card-title" style="margin-bottom:12px">Brand Awareness</div><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;border:1.5px dashed #c0d4df;border-radius:10px;gap:8px"><div style="font-size:24px">📢</div><div style="font-size:12px;color:#8aaabb;font-style:italic">Reach, impressions, frequency and brand lift campaigns — coming soon</div></div></div>`;
-
   el.innerHTML=h;
+
+  // Populate creative ads table
+  if(creativeRows.length){
+    sortableTable('meta-ads-table',creativeRows,(g,i)=>{
+      const isVid=(g.media_type||'').toLowerCase().includes('video')||g.name.toLowerCase().includes('reel');
+      const fallback=`<div style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px">${isVid?'&#9654;':'&#128444;'}</div>`;
+      const thumbCell=g.thumb
+        ?`<a href="${g.preview||g.thumb}" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2)"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.outerHTML=${JSON.stringify(fallback)}"/></a>`
+        :`<a href="${g.preview||'#'}" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">${isVid?'&#9654;':'&#128444;'}</a>`;
+      const nameCell=g.preview
+        ?`<a href="${g.preview}" target="_blank" rel="noopener" style="color:#1a4d6e;text-decoration:none;font-weight:600;font-size:13px">${g.name}</a>`
+        :`<span style="font-weight:600;font-size:13px">${g.name}</span>`;
+      const ctrStr=g.impressions>0?(g.clicks/g.impressions*100).toFixed(2)+'%':'—';
+      const cplStr=g.leads>0?f$2(g.spend/g.leads):'—';
+      return`<tr>
+        <td style="padding:8px 6px">${thumbCell}</td>
+        <td><div>${nameCell}</div><div style="font-size:11px;color:#8aabbf;margin-top:2px">${g.media_type||'Other'}</div></td>
+        <td class="num">${fK(g.impressions)}</td>
+        <td class="num">${fN(g.clicks)}</td>
+        <td class="num">${ctrStr}</td>
+        <td class="num">${f$(g.spend)}</td>
+        <td class="num">${g.leads}</td>
+        <td class="num">${cplStr}</td>
+      </tr>`;
+    },(sorted)=>{
+      const tI=sorted.reduce((s,r)=>s+r.impressions,0);
+      const tC=sorted.reduce((s,r)=>s+r.clicks,0);
+      const tS=sorted.reduce((s,r)=>s+r.spend,0);
+      const tL=sorted.reduce((s,r)=>s+r.leads,0);
+      return`<tr><td></td><td>Total (${sorted.length} creatives)</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${f$(tS)}</td><td class="num">${tL}</td><td class="num">${tL>0?f$2(tS/tL):'—'}</td></tr>`;
+    });
+  }
+
+  // Populate studio breakdown table
+  if(studioRows.length){
+    sortableTable('meta-studio-table',studioRows,(s,i)=>`<tr>
+      <td class="row-num">${i}</td>
+      <td>${s.name}</td>
+      <td class="num">${fK(s.impressions)}</td>
+      <td class="num">${fN(s.clicks)}</td>
+      <td class="num">${s.ctr.toFixed(2)}%</td>
+      <td class="num">${f$(s.spend)}</td>
+      <td class="num">${s.leads}</td>
+      <td class="num">${s.cpl!=null?f$2(s.cpl):'—'}</td>
+    </tr>`,(sorted)=>{
+      const tI=sorted.reduce((s,r)=>s+r.impressions,0);
+      const tC=sorted.reduce((s,r)=>s+r.clicks,0);
+      const tS=sorted.reduce((s,r)=>s+r.spend,0);
+      const tL=sorted.reduce((s,r)=>s+r.leads,0);
+      return`<tr><td class="row-num"></td><td>Total (${sorted.length})</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${f$(tS)}</td><td class="num">${tL}</td><td class="num">${tL>0?f$2(tS/tL):'—'}</td></tr>`;
+    });
+  }
+
   setTimeout(()=>drawMetaTrend(from,to,activeStudios),50);
 }
 
