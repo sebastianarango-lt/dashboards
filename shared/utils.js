@@ -395,9 +395,12 @@ function buildAreaChart(canvasId, togglesId, series, srcList, valueKey){
 
   const timeKeys = [...new Set(series.map(r=>r.key))].sort();
 
-  // Sort biggest first = bottom of stack
+  // Sort biggest first = bottom of stack; exclude sources with no data in this period
   const srcTotals = srcList.map(src => series.filter(r=>r.source===src).reduce((s,r)=>s+(r[valueKey]||0),0));
-  const sortedSrcs = [...srcList.keys()].sort((a,b)=>srcTotals[b]-srcTotals[a]).map(i=>srcList[i]);
+  const sortedSrcs = [...srcList.keys()]
+    .filter(i => srcTotals[i] > 0)
+    .sort((a,b)=>srcTotals[b]-srcTotals[a])
+    .map(i=>srcList[i]);
 
   const datasets = sortedSrcs.map(src => {
     const c = srcColor(src, srcList.indexOf(src));
