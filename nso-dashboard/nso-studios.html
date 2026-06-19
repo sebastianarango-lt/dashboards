@@ -355,7 +355,48 @@ const GLOSSARY={
   gbp_desktop_maps:{title:'GBP — Desktop Maps',desc:'Views of the business profile from Google Maps on desktop devices.'},
   gbp_directions:{title:'GBP — Direction Requests',desc:'Number of times users clicked "Get Directions" from the Google Business Profile. A strong indicator of intent to visit the studio.'},
   gbp_website:{title:'GBP — Website Clicks',desc:'Number of times users clicked the website link on the Google Business Profile. Indicates users moving from discovery to research.'},
-  gbp_calls:{title:'GBP — Calls',desc:'Number of times users clicked the phone number on the Google Business Profile to initiate a call. Tracked by Google and may not capture all calls if users dial manually.'}
+  gbp_calls:{title:'GBP — Calls',desc:'Number of times users clicked the phone number on the Google Business Profile to initiate a call. Tracked by Google and may not capture all calls if users dial manually.'},
+
+  // ── Summary tab ───────────────────────────────────────────────────────────
+  sum_leads_7d:{title:'Leads — Last 7 Full Days',desc:'Number of new leads generated in the 7 most recent complete calendar days. The window ends 2 days ago to ensure all sources have reported. The weekly goal is the total leads target divided equally across all pre-opening weeks.'},
+  sum_presales_7d:{title:'Net Presales — Last 7 Full Days',desc:'Net new recurring memberships sold in the 7 most recent complete calendar days, counted by purchase date. Net = gross presales minus cancellations processed in the same window. The weekly goal is the total presales target divided equally across all pre-opening weeks.'},
+  sum_cvr_7d:{title:'Conversion Rate — Last 7 Full Days',desc:'Percentage of leads in the last 7 days who also purchased a membership in that same window. Note: this compares two independent pools — some buyers may have come in as leads before this window, so the rate reflects recent activity patterns rather than a true cohort funnel.'},
+  sum_leads_total:{title:'Total Leads to Date',desc:'Cumulative count of all leads generated since Week 0. The benchmark marker shows where you should be at the current week if leads were acquired evenly across the pre-opening period (total target ÷ total weeks × current week).'},
+  sum_presales_total:{title:'Total Net Presales to Date',desc:'Cumulative net recurring memberships sold since Week 0, counted by purchase date. Net = gross presales minus all cancellations to date. Pacing benchmark assumes an even distribution of the total presales target across all pre-opening weeks.'},
+  sum_rmr:{title:'Estimated Day-1 RMR',desc:'Projected recurring monthly revenue on opening day, calculated by multiplying active presales by their tier price (Founders / Tier 1 / Tier 2 / Tier 3). Cancellations reduce the count. This estimate assumes all presales that have not cancelled remain active through opening.'},
+  sum_spend:{title:'Marketing Spend (excl. LeadTeam Fee)',desc:'Cumulative marketing spend to date excluding the LeadTeam management fee. Includes Meta Ads, Google Ads, Grassroots, and other direct marketing costs. The pacing benchmark is the total budget pro-rated to the current week. The full budget is derived from the NSO Config targets.'},
+  sum_goal_announce:{title:'Goal to Announce Opening',desc:'The minimum number of net presales required before an opening date can be announced publicly. This threshold is set in the NSO Config. Once reached, the studio has sufficient committed members to justify locking in a date and beginning operational ramp-up.'},
+
+  // ── Scorecard tab — weekly ────────────────────────────────────────────────
+  sc_new_leads:{title:'New Leads (weekly)',desc:'Number of new leads created during this calendar week. Sourced from the NSO Scorecard Google Sheet (auto-populated from data systems). The required pace is the total leads target divided by the total number of pre-opening weeks.'},
+  sc_new_presales:{title:'New Presales (weekly)',desc:'Number of new recurring memberships sold during this calendar week, counted by purchase date. The required pace is the total presales target divided by the total number of pre-opening weeks.'},
+  sc_cvr:{title:'Conversion Rate (weekly)',desc:'Percentage of new leads this week who also purchased a membership in the same week. Note: this compares independent weekly pools — some buyers may have entered as leads in a prior week, so it reflects current momentum rather than a strict cohort conversion. Benchmark is 35%.'},
+  sc_cancellations:{title:'Cancellations (weekly)',desc:'Number of presale memberships cancelled during this calendar week. Cancellations reduce net presales and directly affect estimated Day-1 RMR. No weekly target is set; trend is monitored as a health signal.'},
+  sc_grassroots_leads:{title:'Grassroots Leads (weekly)',desc:'Leads generated through in-person community outreach — events, pop-ups, gym tours, and direct referrals — rather than digital advertising. Benchmark is 40 per week. Grassroots leads often convert at higher rates than digital leads.'},
+  sc_grassroots_presales:{title:'Grassroots Presales (weekly)',desc:'Memberships sold directly through grassroots outreach activities during the week. Benchmark is 20 per week. Tracked separately from digital presales to measure the effectiveness of community-based sales efforts.'},
+  sc_comm_events:{title:'Community Events (weekly)',desc:'Number of community engagement events held during the week — fitness pop-ups, partner events, studio tours, and similar in-person activations. Benchmark is 6 per week. Events drive grassroots leads and brand awareness in the local market.'},
+  sc_ig_followers:{title:'Instagram New Followers (weekly)',desc:'Net new Instagram followers gained during the week. Benchmark is 30 per week. Used as a proxy for local digital brand awareness and organic content reach during the pre-opening period.'},
+  sc_total_spend:{title:'Total Marketing Spend (weekly)',desc:'Total marketing dollars spent during the week across all channels: Meta Ads, Google Ads, Grassroots, Other, and the LeadTeam management fee. No weekly target is set; spend is tracked against the total campaign budget.'},
+  sc_digital_spend:{title:'Total Digital Ad Spend — Meta & Google (weekly)',desc:'Combined Meta Ads and Google Ads spend for the week. Excludes grassroots, other, and LeadTeam fee. Tracked separately to evaluate paid digital channel efficiency.'},
+  sc_grassroots_spend:{title:'Grassroots Spend (weekly)',desc:'Dollars spent on grassroots and in-person outreach activities during the week — event materials, promotional items, venue costs, etc.'},
+  sc_other_spend:{title:'Other Marketing Spend (weekly)',desc:'Any marketing spend not classified as Meta Ads, Google Ads, Grassroots, or the LeadTeam fee. May include print, signage, local sponsorships, or miscellaneous promotional costs.'},
+  sc_leadteam_fee:{title:'LeadTeam Management Fee (weekly)',desc:'Weekly fee paid to LeadTeam for managing digital advertising campaigns (Meta and Google). This is a management cost separate from the actual ad spend placed on the platforms.'},
+  sc_blended_cpl:{title:'Blended CPL (weekly)',desc:'Total marketing spend divided by total leads (digital + grassroots) for the week. Target range is $28–$41. Blended CPL accounts for all acquisition costs and all lead sources, giving a full-funnel cost view.'},
+  sc_ads_cpl:{title:'Ads CPL (weekly)',desc:'Digital ad spend (Meta + Google only) divided by digital leads for the week. Excludes grassroots leads and non-digital spend. Useful for evaluating paid channel efficiency in isolation.'},
+  sc_blended_cpa:{title:'Blended CPA (weekly)',desc:'Total marketing spend divided by new presales for the week. Target range is $80–$116. Cost Per Acquisition measures how much is spent across all channels to acquire one new paying member.'},
+  sc_ads_cpa:{title:'Ads CPA (weekly)',desc:'Digital ad spend (Meta + Google only) divided by digital presales for the week. Isolates the cost efficiency of paid digital advertising for member acquisition.'},
+
+  // ── Scorecard tab — cumulative ────────────────────────────────────────────
+  sc_total_leads:{title:'Total Leads (cumulative)',desc:'Running total of all leads generated since Week 0. The pacing benchmark is the total leads target pro-rated to the current week, assuming even distribution. The final column target is the overall goal for the full pre-opening period.'},
+  sc_presales_gross:{title:'Presales — Gross (cumulative)',desc:'Running total of all memberships sold since Week 0, before subtracting cancellations. Counted by purchase date. Target is 440 members at the target opening date. Pacing benchmark assumes even weekly distribution toward this goal.'},
+  sc_net_presales:{title:'Net Presales (cumulative)',desc:'Running total of memberships sold minus all cancellations to date. This is the true active presales count — the number of people committed to a membership as of the current week. Target is 440 net presales at the target opening date. Pacing benchmark is pro-rated evenly to the current week.'},
+  sc_cum_cvr:{title:'Conversion Rate (cumulative)',desc:'Cumulative presales (gross) divided by cumulative total leads. Reflects the overall lead-to-sale efficiency since Week 0. Note: this is not a strict cohort rate — some presales may have come from leads acquired before the tracked period. Benchmark is 35%.'},
+  sc_cum_cancellations:{title:'Cancellations (cumulative)',desc:'Total number of presale memberships cancelled since Week 0. High cumulative cancellations reduce net presales and Day-1 RMR. No target is set; this is a health indicator.'},
+  sc_ig_cum:{title:'Instagram Followers (cumulative)',desc:'Total net new Instagram followers gained since Week 0. Tracks growth in local digital brand awareness over the full pre-opening period. No formal cumulative target is set.'},
+
+  // ── RMR breakdown table ───────────────────────────────────────────────────
+  sc_rmr:{title:'Estimated Day-1 RMR',desc:'Projected recurring monthly revenue on the opening date. Calculated by multiplying active members in each pricing tier by their monthly rate (Tier 1 × $99, Tier 2 × $129, etc.). Reflects net presales after cancellations, assigned to the tier active when they purchased. Target is set in the NSO Config.'},
+  sc_roms:{title:'Estimated ROMS',desc:'Return on Marketing Spend. Calculated as (total active members × $640 estimated annual value) ÷ cumulative marketing spend to date. $640 is a conservative estimated annual revenue per member. A ROMS above 1.0x means the estimated lifetime value of acquired members already exceeds total marketing spend.'}
 };
 function showKpiInfo(btn,evt){evt.stopPropagation();const t=btn.dataset.title,d=btn.dataset.desc,dt=btn.dataset.date;document.getElementById('kpiInfoTitle').textContent=t;document.getElementById('kpiInfoDesc').textContent=d;const dl=document.getElementById('kpiInfoDateLabel'),dd=document.getElementById('kpiInfoDate');if(dt){dl.style.display='block';dd.textContent=dt}else{dl.style.display='none';dd.textContent='';}document.getElementById('kpiInfoOverlay').classList.add('active');document.getElementById('kpiInfoBox').classList.add('active');}
 function closeKpiInfo(){document.getElementById('kpiInfoOverlay').classList.remove('active');document.getElementById('kpiInfoBox').classList.remove('active');}
@@ -459,7 +500,7 @@ function renderSummary(){
       const _gaActual=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
       const _gaPct=Math.min(100,Math.round(_gaActual/_goalAnn*100));
       const _gaMet=_gaActual>=_goalAnn;
-      h+=`<div class="chart-card" style="padding:14px 20px;min-width:200px;margin-bottom:0">`;
+      h+=`<div class="chart-card" style="padding:14px 20px;min-width:200px;margin-bottom:0;position:relative">${_infoBtn('sum_goal_announce')}`;
       h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;color:#5a7a8a;letter-spacing:1px;margin-bottom:12px">Goal to Announce Opening</div>`;
       h+=`<div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Presales Needed</div>`;
       h+=`<div style="display:flex;align-items:baseline;gap:6px;margin-bottom:10px">`;
@@ -508,14 +549,15 @@ function renderSummary(){
   h+=`</div></div>`;
 
   // Progress bar helper for Total to Date
-  function _progBar(label,actual,target,color,benchVal,benchLabel,fmtFn,targetLabel){
+  function _progBar(label,actual,target,color,benchVal,benchLabel,fmtFn,targetLabel,infoKey){
     const fmt=fmtFn||(v=>typeof v==='number'?v.toLocaleString('en-US'):v);
     const t=typeof target==='number'&&target>0?target:1;
     const fillPct=Math.min(100,Math.round(Math.max(0,actual)/t*100));
     const benchPct=benchVal!=null?Math.min(100,Math.round(Math.max(0,benchVal)/t*100)):null;
-    let b=`<div style="margin-bottom:18px">`;
+    const infoHtml=infoKey&&GLOSSARY[infoKey]?_infoBtn(infoKey):'';
+    let b=`<div style="margin-bottom:18px;position:relative">`;
     b+=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">`;
-    b+=`<div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">${label}</div>`;
+    b+=`<div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">${infoHtml}${label}</div>`;
     b+=`<div style="text-align:right"><span style="font-size:20px;font-weight:700;color:#1a1a2e;font-family:'Oswald',sans-serif">${fmt(actual)}</span><span style="font-size:10px;color:#8aaabb;margin-left:6px">/ ${fmt(target)}</span></div>`;
     b+=`</div>`;
     b+=`<div style="position:relative;height:14px;background:#f0f6fa;border-radius:7px;overflow:visible">`;
@@ -556,15 +598,15 @@ function renderSummary(){
   // Card A — Last 7 Full Days
   const last7Range=`${_fmtDate(d7ago)} – ${_fmtDate(d7end)}`;
   h+=`<div class="chart-card summary-card"><div class="summary-card-section">Last 7 Full Days</div><div style="font-size:10px;color:#8aaabb;margin-top:-10px;margin-bottom:10px">${last7Range}</div>`;
-  h+=skRow('Leads',lastLeads,wkLeadGoal,'#00A3E0',true);
-  h+=skRow('Presales (net)',lastNetPresales,wkPresaleGoal,'#00C9A7',true);
+  h+=skRow('Leads',lastLeads,wkLeadGoal,'#00A3E0',true,'sum_leads_7d');
+  h+=skRow('Presales (net)',lastNetPresales,wkPresaleGoal,'#00C9A7',true,'sum_presales_7d');
   const last7Cvr=lastLeads>0?Math.round(lastNetPresales/lastLeads*100):null;
   const goalCvr=tgt.presales_count&&tgt.total_leads?Math.round(tgt.presales_count/tgt.total_leads*100):null;
   if(last7Cvr!==null){
     const cvrRatio=goalCvr>0?last7Cvr/goalCvr:0;
     const cvrFillPct=Math.min(100,Math.round(cvrRatio*100));
     const cvrOverPct=cvrRatio>1?Math.min(60,Math.round((cvrRatio-1)*100)):0;
-    h+=`<div class="sk-row"><div><div class="sk-label">Conversion Rate</div></div><div class="sk-vals"><div class="sk-actual">${last7Cvr}%</div>${goalCvr!=null?`<div class="sk-goal">Goal: ${goalCvr}%</div>`:''}</div></div>`;
+    h+=`<div class="sk-row" style="position:relative">${_infoBtn('sum_cvr_7d')}<div><div class="sk-label">Conversion Rate</div></div><div class="sk-vals"><div class="sk-actual">${last7Cvr}%</div>${goalCvr!=null?`<div class="sk-goal">Goal: ${goalCvr}%</div>`:''}</div></div>`;
     if(goalCvr>0){
       if(cvrRatio>1){
         const goalLinePct=Math.round(goalCvr/last7Cvr*100);
@@ -578,10 +620,10 @@ function renderSummary(){
 
   // Card B — Total to Date with progress bars
   h+=`<div class="chart-card summary-card"><div class="summary-card-section">Total to Date</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:-8px;margin-bottom:10px">${_dataThruLabel}</div>`:''}`;
-  h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',Math.round((tgt.total_leads||0)/totalWeeks*displayCw),'W'+displayCw+' Pace');
+  h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',Math.round((tgt.total_leads||0)/totalWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_leads_total');
   const netPresales=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
-  h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',Math.round((tgt.presales_count||0)/totalWeeks*displayCw),'W'+displayCw+' Pace');
-  if((cur.estimated_day1_rmr||0)>0){const _rmrA=cur.estimated_day1_rmr||0,_rmrT=tgt.estimated_day1_rmr||0,_rmrPct=_rmrT>0?Math.min(100,Math.round(_rmrA/_rmrT*100)):0;h+=`<div style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Est. Day-1 RMR</div><div style="text-align:right"><span style="font-size:20px;font-weight:700;color:#1a1a2e;font-family:'Oswald',sans-serif">$${_rmrA.toLocaleString('en-US')}</span><span style="font-size:10px;color:#8aaabb;margin-left:6px">/ $${_rmrT.toLocaleString('en-US')}</span></div></div><div style="position:relative;height:14px;background:#f0f6fa;border-radius:7px"><div style="position:absolute;left:0;top:0;height:100%;width:${_rmrPct}%;background:#f4a021;border-radius:7px;min-width:${_rmrPct>0?4:0}px"></div></div></div>`;}
+  h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',Math.round((tgt.presales_count||0)/totalWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_presales_total');
+  if((cur.estimated_day1_rmr||0)>0){const _rmrA=cur.estimated_day1_rmr||0,_rmrT=tgt.estimated_day1_rmr||0,_rmrPct=_rmrT>0?Math.min(100,Math.round(_rmrA/_rmrT*100)):0;h+=`<div style="margin-bottom:18px;position:relative">${_infoBtn('sum_rmr')}<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Est. Day-1 RMR</div><div style="text-align:right"><span style="font-size:20px;font-weight:700;color:#1a1a2e;font-family:'Oswald',sans-serif">$${_rmrA.toLocaleString('en-US')}</span><span style="font-size:10px;color:#8aaabb;margin-left:6px">/ $${_rmrT.toLocaleString('en-US')}</span></div></div><div style="position:relative;height:14px;background:#f0f6fa;border-radius:7px"><div style="position:absolute;left:0;top:0;height:100%;width:${_rmrPct}%;background:#f4a021;border-radius:7px;min-width:${_rmrPct>0?4:0}px"></div></div></div>`;}
   if(estTotalSpend>0||cumSpendNoLT>0){
     const _fmtS=v=>v!=null?'$'+Math.round(v).toLocaleString('en-US'):'—';
     const _parseCpl=s=>{if(typeof s==='number')return s;if(typeof s==='string'){const ns=s.replace(/[^0-9.]/g,' ').trim().split(/\s+/).map(Number).filter(n=>!isNaN(n)&&n>0);if(ns.length>=2)return(ns[0]+ns[ns.length-1])/2;if(ns.length===1)return ns[0];}return null;};
@@ -589,7 +631,7 @@ function renderSummary(){
     // Budget: explicit value from NSO Config sheet takes priority, then CPL-based estimate
     const budgetTarget=tgt.marketing_budget||( cplMid&&tgt.total_leads?Math.round(cplMid*tgt.total_leads):estTotalSpend );
     const spendBench=Math.round(budgetTarget/totalWeeks*displayCw);
-    h+=_progBar('Mktg Spend (without Leadteam Fee)',Math.round(cumSpendNoLT),budgetTarget,'#9b59b6',spendBench,'W'+displayCw+' Pace',_fmtS,'Budget');
+    h+=_progBar('Mktg Spend (without Leadteam Fee)',Math.round(cumSpendNoLT),budgetTarget,'#9b59b6',spendBench,'W'+displayCw+' Pace',_fmtS,'Budget','sum_spend');
   }
   h+=`</div>`;
 
@@ -604,12 +646,13 @@ function renderSummary(){
   setTimeout(()=>{drawCumChart(studio);drawSumSourceChart(studio,'leads')},50);
 }
 
-function skRow(label,actual,goal,color,noCheck){
+function skRow(label,actual,goal,color,noCheck,infoKey){
   const numActual=typeof actual==='string'?actual:actual.toLocaleString('en-US');
   const numGoal=goal!=null?(typeof goal==='string'?goal:goal.toLocaleString('en-US')):null;
   const met=!noCheck&&typeof actual==='number'&&typeof goal==='number'&&actual>=goal;
   const miss=!noCheck&&typeof actual==='number'&&typeof goal==='number'&&actual<goal;
-  let h=`<div class="sk-row"><div><div class="sk-label">${label}</div></div><div class="sk-vals"><div class="sk-actual">${numActual}`;
+  const infoHtml=infoKey&&GLOSSARY[infoKey]?_infoBtn(infoKey):'';
+  let h=`<div class="sk-row" style="position:relative">${infoHtml}<div><div class="sk-label">${label}</div></div><div class="sk-vals"><div class="sk-actual">${numActual}`;
   if(met)h+=`<span class="sk-check">✓</span>`;
   h+=`</div>`;
   if(numGoal!=null)h+=`<div class="sk-goal">Goal: ${numGoal}</div>`;
@@ -1046,60 +1089,61 @@ function renderScorecard(){
   const reqLeads=tgt.total_leads&&sc.go_week?+(tgt.total_leads/sc.go_week).toFixed(1):null;
   const reqPresales=tgt.presales_count&&sc.go_week?+(tgt.presales_count/sc.go_week).toFixed(1):null;
 
+  const _ib=k=>_infoBtn(k);
   const weeklyDefs=[
-    {label:'New Leads',           key:'nl',  req:reqLeads,   fmt:fInt, color:true},
-    {label:'New Presales',        key:'np',  req:reqPresales,fmt:fInt, color:true},
-    {label:'Conversion Rate',     key:'cr',  req:.35,        fmt:fPct, color:true},
-    {label:'Cancellations',       key:'canc',req:null,       fmt:fInt, color:false},
-    {label:'Grassroots Leads',    key:'gl',  req:40,         fmt:fInt, color:true},
-    {label:'Grassroots Presales', key:'gp',  req:20,         fmt:fInt, color:true},
-    {label:'Comm. Events',        key:'ev',  req:6,          fmt:fInt, color:true},
-    {label:'IG New Followers',    key:'ig',  req:30,         fmt:fInt, color:true},
-    {label:'▶ Total Mktg Spend',                      key:'ts',  req:null, fmt:$v, color:false, spendParent:true},
-    {label:'▶ Total Digital Ad Spend (Meta & Google)', key:'dsp', req:null, fmt:$v, color:false, spendSub:true, spendSubParent:true},
+    {label:_ib('sc_new_leads')+'New Leads',           key:'nl',  req:reqLeads,   fmt:fInt, color:true},
+    {label:_ib('sc_new_presales')+'New Presales',     key:'np',  req:reqPresales,fmt:fInt, color:true},
+    {label:_ib('sc_cvr')+'Conversion Rate',           key:'cr',  req:.35,        fmt:fPct, color:true},
+    {label:_ib('sc_cancellations')+'Cancellations',   key:'canc',req:null,       fmt:fInt, color:false},
+    {label:_ib('sc_grassroots_leads')+'Grassroots Leads',    key:'gl',  req:40,  fmt:fInt, color:true},
+    {label:_ib('sc_grassroots_presales')+'Grassroots Presales', key:'gp', req:20, fmt:fInt, color:true},
+    {label:_ib('sc_comm_events')+'Comm. Events',      key:'ev',  req:6,          fmt:fInt, color:true},
+    {label:_ib('sc_ig_followers')+'IG New Followers',  key:'ig',  req:30,        fmt:fInt, color:true},
+    {label:_ib('sc_total_spend')+'▶ Total Mktg Spend',                           key:'ts',  req:null, fmt:$v, color:false, spendParent:true},
+    {label:_ib('sc_digital_spend')+'▶ Total Digital Ad Spend (Meta & Google)',   key:'dsp', req:null, fmt:$v, color:false, spendSub:true, spendSubParent:true},
     {label:'Meta Spend',          key:'ms',  req:null,       fmt:$v,   color:false, spendSubSub:true},
     {label:'Google Spend',        key:'gs',  req:null,       fmt:$v,   color:false, spendSubSub:true},
-    {label:'Grassroots Spend',    key:'grs', req:null,       fmt:$v,   color:false, spendSub:true},
-    {label:'Other Marketing Spend', key:'oth', req:null,     fmt:$v,   color:false, spendSub:true},
-    {label:'LeadTeam Fee',        key:'ltf', req:null,       fmt:$v,   color:false, spendSub:true},
-    {label:'▶ Blended CPL', computed:wk=>wk.ts&&((wk.nl||0)+(wk.gl||0))>0?wk.ts/((wk.nl||0)+(wk.gl||0)):null, fmt:fCur, reqLabel:'$28 – $41', color:false, cplParent:true,
+    {label:_ib('sc_grassroots_spend')+'Grassroots Spend',   key:'grs', req:null, fmt:$v, color:false, spendSub:true},
+    {label:_ib('sc_other_spend')+'Other Marketing Spend',   key:'oth', req:null, fmt:$v, color:false, spendSub:true},
+    {label:_ib('sc_leadteam_fee')+'LeadTeam Fee',     key:'ltf', req:null,       fmt:$v,   color:false, spendSub:true},
+    {label:_ib('sc_blended_cpl')+'▶ Blended CPL', computed:wk=>wk.ts&&((wk.nl||0)+(wk.gl||0))>0?wk.ts/((wk.nl||0)+(wk.gl||0)):null, fmt:fCur, reqLabel:'$28 – $41', color:false, cplParent:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:'Ads CPL', computed:wk=>wk.dsp&&wk.dlw>0?wk.dsp/wk.dlw:null, fmt:fCur, reqLabel:'—', color:false, cplSub:true,
+    {label:_ib('sc_ads_cpl')+'Ads CPL', computed:wk=>wk.dsp&&wk.dlw>0?wk.dsp/wk.dlw:null, fmt:fCur, reqLabel:'—', color:false, cplSub:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:'▶ Blended CPA', computed:wk=>wk.ts&&wk.np>0?wk.ts/wk.np:null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
+    {label:_ib('sc_blended_cpa')+'▶ Blended CPA', computed:wk=>wk.ts&&wk.np>0?wk.ts/wk.np:null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:'Ads CPA', computed:wk=>wk.dsp&&wk.dpw>0?wk.dsp/wk.dpw:null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
+    {label:_ib('sc_ads_cpa')+'Ads CPA', computed:wk=>wk.dsp&&wk.dpw>0?wk.dsp/wk.dpw:null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
   ];
 
   const cumDefs=[
-    {label:'Total Leads',         key:'tl',  fmt:fInt, color:true,
+    {label:_ib('sc_total_leads')+'Total Leads',         key:'tl',  fmt:fInt, color:true,
      cumReqFn:wk=>tgt.total_leads&&sc.go_week?Math.round(tgt.total_leads/sc.go_week*wk.w):null,
      cumReqDisplay:tgt.total_leads||null},
-    {label:'Presales (gross)',    key:'pc',  fmt:fInt, color:true,
+    {label:_ib('sc_presales_gross')+'Presales (gross)', key:'pc',  fmt:fInt, color:true,
      cumReqFn:wk=>tgt.presales_count&&sc.go_week?Math.round(tgt.presales_count/sc.go_week*wk.w):null,
      cumReqDisplay:tgt.presales_count||null},
-    {label:'Net Presales',        key:null, computed:wk=>Math.max(0,(wk.pc||0)-(wk.cancTot||0)), fmt:fInt, color:true,
+    {label:_ib('sc_net_presales')+'Net Presales',       key:null, computed:wk=>Math.max(0,(wk.pc||0)-(wk.cancTot||0)), fmt:fInt, color:true,
      cumReqFn:wk=>tgt.presales_count&&sc.go_week?Math.round(tgt.presales_count/sc.go_week*wk.w):null,
      cumReqDisplay:tgt.presales_count||null},
-    {label:'Conversion Rate',     key:'cumCr', fmt:fPct, color:true,
+    {label:_ib('sc_cum_cvr')+'Conversion Rate',         key:'cumCr', fmt:fPct, color:true,
      cumReqFn:_=>0.35, cumReqDisplay:0.35},
-    {label:'Cancellations',       key:'cancTot', req:null, fmt:fInt, color:false},
-    {label:'IG Followers (cum.)', key:'cumIg',   req:null, fmt:fInt, color:false},
-    {label:'▶ Total Mktg Spend',                      key:'cumTs',  req:null, fmt:$v, color:false, spendParent:true},
-    {label:'▶ Total Digital Ad Spend (Meta & Google)', key:'cumDsp', req:null, fmt:$v, color:false, spendSub:true, spendSubParent:true},
+    {label:_ib('sc_cum_cancellations')+'Cancellations', key:'cancTot', req:null, fmt:fInt, color:false},
+    {label:_ib('sc_ig_cum')+'IG Followers (cum.)',       key:'cumIg',   req:null, fmt:fInt, color:false},
+    {label:_ib('sc_total_spend')+'▶ Total Mktg Spend',                            key:'cumTs',  req:null, fmt:$v, color:false, spendParent:true},
+    {label:_ib('sc_digital_spend')+'▶ Total Digital Ad Spend (Meta & Google)',    key:'cumDsp', req:null, fmt:$v, color:false, spendSub:true, spendSubParent:true},
     {label:'Meta Spend',          key:'cumMs', req:null, fmt:$v, color:false, spendSubSub:true},
     {label:'Google Spend',        key:'cumGs', req:null, fmt:$v, color:false, spendSubSub:true},
-    {label:'Grassroots Spend',    key:'cumGrs',req:null, fmt:$v, color:false, spendSub:true},
-    {label:'Other Marketing Spend', key:'cumOth',req:null, fmt:$v, color:false, spendSub:true},
-    {label:'LeadTeam Fee',        key:'cumLtf',req:null, fmt:$v, color:false, spendSub:true},
-    {label:'▶ Blended CPL', computed:wk=>wk.cumTs&&wk.tl>0?wk.cumTs/wk.tl:null, fmt:fCur, reqLabel:'$28 – $41', color:false, cplParent:true,
+    {label:_ib('sc_grassroots_spend')+'Grassroots Spend',   key:'cumGrs',req:null, fmt:$v, color:false, spendSub:true},
+    {label:_ib('sc_other_spend')+'Other Marketing Spend',   key:'cumOth',req:null, fmt:$v, color:false, spendSub:true},
+    {label:_ib('sc_leadteam_fee')+'LeadTeam Fee',       key:'cumLtf',req:null, fmt:$v, color:false, spendSub:true},
+    {label:_ib('sc_blended_cpl')+'▶ Blended CPL', computed:wk=>wk.cumTs&&wk.tl>0?wk.cumTs/wk.tl:null, fmt:fCur, reqLabel:'$28 – $41', color:false, cplParent:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:'Ads CPL', computed:wk=>wk.cumDsp&&wk.cumDl>0?wk.cumDsp/wk.cumDl:null, fmt:fCur, reqLabel:'—', color:false, cplSub:true,
+    {label:_ib('sc_ads_cpl')+'Ads CPL', computed:wk=>wk.cumDsp&&wk.cumDl>0?wk.cumDsp/wk.cumDl:null, fmt:fCur, reqLabel:'—', color:false, cplSub:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:'▶ Blended CPA', computed:wk=>wk.cumTs&&wk.pc>0?wk.cumTs/wk.pc:null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
+    {label:_ib('sc_blended_cpa')+'▶ Blended CPA', computed:wk=>wk.cumTs&&wk.pc>0?wk.cumTs/wk.pc:null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:'Ads CPA', computed:wk=>wk.cumDsp&&wk.cumDp>0?wk.cumDsp/wk.cumDp:null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
+    {label:_ib('sc_ads_cpa')+'Ads CPA', computed:wk=>wk.cumDsp&&wk.cumDp>0?wk.cumDsp/wk.cumDp:null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
   ];
 
@@ -1212,8 +1256,8 @@ function renderScorecard(){
     {label:`Tier 2 Members ($${t2p})`,key:'t2',target:_t2tgt},
     ...(t3p?[{label:`Tier 3 Members ($${t3p})`,key:'t3',target:_t3tgt}]:[]),
     {label:'Total Members',key:null,computed:wk=>(wk.t0||0)+(wk.t1||0)+(wk.t2||0)+(wk.t3||0),target:_totalMembersTgt,style:'font-weight:700;border-top:1px solid #e0ecf4'},
-    {label:'Est. Day 1 RMR',key:'rmr',fmt:v=>`$${v.toLocaleString('en-US')}`,target:_rmrTgt,tgtFmt:v=>`$${Math.round(v).toLocaleString('en-US')}`,style:'border-top:1px solid #e0ecf4'},
-    {label:'Est. ROMS',key:'roms',fmt:v=>v.toFixed(1)+'x',target:_romsTgt,tgtFmt:v=>typeof v==='string'?v:(+v).toFixed(1)+'x'},
+    {label:_ib('sc_rmr')+'Est. Day 1 RMR',key:'rmr',fmt:v=>`$${v.toLocaleString('en-US')}`,target:_rmrTgt,tgtFmt:v=>`$${Math.round(v).toLocaleString('en-US')}`,style:'border-top:1px solid #e0ecf4'},
+    {label:_ib('sc_roms')+'Est. ROMS',key:'roms',fmt:v=>v.toFixed(1)+'x',target:_romsTgt,tgtFmt:v=>typeof v==='string'?v:(+v).toFixed(1)+'x'},
   ];
   rmrRows2.forEach(row=>{
     const labelCell=row.sublabel
