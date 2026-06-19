@@ -1536,12 +1536,7 @@ function renderGoogle(){
   const allRows=activeStudios.flatMap(s=>googleFilter(s,from,to));
   const totalSpend=allRows.reduce((s,r)=>s+(r.spend||0),0);
   const totalLeads=allRows.reduce((s,r)=>s+(r.conversions||0),0);
-  const totalClicks=allRows.reduce((s,r)=>s+(r.clicks||0),0);
-  const totalImpressions=allRows.reduce((s,r)=>s+(r.impressions||0),0);
-  const totalCalls=allRows.reduce((s,r)=>s+(r.calls||0),0);
-  const totalDir=allRows.reduce((s,r)=>s+(r.directions||0),0);
-  const totalOpp=totalLeads+totalCalls+totalDir||totalClicks;
-  const cpo=totalOpp>0?totalSpend/totalOpp:0;
+  const cpl=totalLeads>0?totalSpend/totalLeads:0;
 
   const f$=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
   const f$2=v=>'$'+Number(v).toFixed(2);
@@ -1552,29 +1547,24 @@ function renderGoogle(){
   let h='';
 
   // KPI cards
-  h+=`<div class="kpi-grid">`;
+  h+=`<div class="kpi-grid three">`;
   h+=kpiCard('Spend',totalSpend,null,null,f$);
-  h+=kpiCard('Opportunities',totalOpp,null,null,v=>Number(v).toFixed(0));
-  h+=kpiCard('Cost / Opp',cpo,null,null,f$2);
   h+=kpiCard('Leads',totalLeads,null,null,fN);
-  h+=kpiCard('Calls',totalCalls,null,null,fN);
-  h+=kpiCard('Directions',totalDir,null,null,fN);
+  h+=kpiCard('Cost / Lead',cpl,null,null,f$2);
   h+=`</div>`;
 
-  // Spend + opportunities trend chart
-  h+=`<div class="chart-card"><div class="chart-card-title">Spend &amp; Opportunities Over Time</div><div style="position:relative;width:100%;height:260px"><canvas id="googleTrendChart"></canvas></div></div>`;
+  // Spend + leads trend chart
+  h+=`<div class="chart-card"><div class="chart-card-title">Spend &amp; Leads Over Time</div><div style="position:relative;width:100%;height:260px"><canvas id="googleTrendChart"></canvas></div></div>`;
 
   // Campaigns table
   const byCamp={};
   allRows.forEach(r=>{
     const k=r.campaign_name;if(!k)return;
-    if(!byCamp[k])byCamp[k]={name:k,spend:0,impressions:0,clicks:0,leads:0,calls:0,directions:0};
+    if(!byCamp[k])byCamp[k]={name:k,spend:0,impressions:0,clicks:0,leads:0};
     byCamp[k].spend+=r.spend||0;byCamp[k].impressions+=r.impressions||0;
     byCamp[k].clicks+=r.clicks||0;byCamp[k].leads+=r.conversions||0;
-    byCamp[k].calls+=r.calls||0;byCamp[k].directions+=r.directions||0;
   });
   const campRows=Object.values(byCamp).map(v=>({...v,
-    opp:v.leads+v.calls+v.directions||v.clicks,
     ctr:v.impressions>0?v.clicks/v.impressions*100:0,
     cpl:v.leads>0?v.spend/v.leads:null
   }));
@@ -1591,8 +1581,6 @@ function renderGoogle(){
           <th class="num" data-sort="clicks">Clicks</th>
           <th class="num" data-sort="ctr">CTR</th>
           <th class="num" data-sort="leads">Leads</th>
-          <th class="num" data-sort="calls">Calls</th>
-          <th class="num" data-sort="opp">Opp.</th>
           <th class="num" data-sort="cpl">CPL</th>
         </tr></thead>
         <tbody></tbody><tfoot></tfoot>
@@ -1607,11 +1595,9 @@ function renderGoogle(){
     const im=rows.reduce((s,r)=>s+(r.impressions||0),0);
     const cl=rows.reduce((s,r)=>s+(r.clicks||0),0);
     const ld=rows.reduce((s,r)=>s+(r.conversions||0),0);
-    const ca=rows.reduce((s,r)=>s+(r.calls||0),0);
-    const di=rows.reduce((s,r)=>s+(r.directions||0),0);
-    const op=ld+ca+di||cl;
-    return{name:studio.replace('SWEAT440 ',''),spend:sp,impressions:im,clicks:cl,leads:ld,calls:ca,directions:di,opp:op,cpo:op>0?sp/op:null};
-  }).filter(s=>s.spend>0||s.opp>0);
+    return{name:studio.replace('SWEAT440 ',''),spend:sp,impressions:im,clicks:cl,leads:ld,
+      ctr:im>0?cl/im*100:0,cpl:ld>0?sp/ld:null};
+  }).filter(s=>s.spend>0||s.leads>0);
 
   h+=`<div class="chart-card">
     <div class="chart-card-title">By Studio</div>
@@ -1623,11 +1609,9 @@ function renderGoogle(){
           <th class="num" data-sort="spend">Spend</th>
           <th class="num" data-sort="impressions">Impressions</th>
           <th class="num" data-sort="clicks">Clicks</th>
+          <th class="num" data-sort="ctr">CTR</th>
           <th class="num" data-sort="leads">Leads</th>
-          <th class="num" data-sort="calls">Calls</th>
-          <th class="num" data-sort="directions">Directions</th>
-          <th class="num" data-sort="opp">Opp.</th>
-          <th class="num" data-sort="cpo">CPO</th>
+          <th class="num" data-sort="cpl">CPL</th>
         </tr></thead>
         <tbody></tbody><tfoot></tfoot>
       </table>
@@ -1668,12 +1652,10 @@ function renderGoogle(){
       <td class="num">${fN(c.clicks)}</td>
       <td class="num">${c.ctr.toFixed(2)}%</td>
       <td class="num">${c.leads}</td>
-      <td class="num">${c.calls}</td>
-      <td class="num">${c.opp.toFixed(1)}</td>
       <td class="num">${c.cpl!=null?f$2(c.cpl):'—'}</td>
     </tr>`,(sorted)=>{
-      const tS=sorted.reduce((s,r)=>s+r.spend,0),tI=sorted.reduce((s,r)=>s+r.impressions,0),tC=sorted.reduce((s,r)=>s+r.clicks,0),tL=sorted.reduce((s,r)=>s+r.leads,0),tCa=sorted.reduce((s,r)=>s+r.calls,0),tO=sorted.reduce((s,r)=>s+r.opp,0);
-      return`<tr><td class="row-num"></td><td>Total (${sorted.length})</td><td class="num">${f$(tS)}</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${tL}</td><td class="num">${tCa}</td><td class="num">${tO.toFixed(1)}</td><td class="num">${tO>0?f$2(tS/tO):'—'}</td></tr>`;
+      const tS=sorted.reduce((s,r)=>s+r.spend,0),tI=sorted.reduce((s,r)=>s+r.impressions,0),tC=sorted.reduce((s,r)=>s+r.clicks,0),tL=sorted.reduce((s,r)=>s+r.leads,0);
+      return`<tr><td class="row-num"></td><td>Total (${sorted.length})</td><td class="num">${f$(tS)}</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${tL}</td><td class="num">${tL>0?f$2(tS/tL):'—'}</td></tr>`;
     });
   }
 
@@ -1685,14 +1667,12 @@ function renderGoogle(){
       <td class="num">${f$(s.spend)}</td>
       <td class="num">${fK(s.impressions)}</td>
       <td class="num">${fN(s.clicks)}</td>
+      <td class="num">${s.ctr.toFixed(2)}%</td>
       <td class="num">${s.leads}</td>
-      <td class="num">${s.calls}</td>
-      <td class="num">${s.directions}</td>
-      <td class="num">${s.opp.toFixed(1)}</td>
-      <td class="num">${s.cpo!=null?f$2(s.cpo):'—'}</td>
+      <td class="num">${s.cpl!=null?f$2(s.cpl):'—'}</td>
     </tr>`,(sorted)=>{
-      const tS=sorted.reduce((s,r)=>s+r.spend,0),tI=sorted.reduce((s,r)=>s+r.impressions,0),tC=sorted.reduce((s,r)=>s+r.clicks,0),tL=sorted.reduce((s,r)=>s+r.leads,0),tCa=sorted.reduce((s,r)=>s+r.calls,0),tD=sorted.reduce((s,r)=>s+r.directions,0),tO=sorted.reduce((s,r)=>s+r.opp,0);
-      return`<tr><td class="row-num"></td><td>Total (${sorted.length})</td><td class="num">${f$(tS)}</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tL}</td><td class="num">${tCa}</td><td class="num">${tD}</td><td class="num">${tO.toFixed(1)}</td><td class="num">${tO>0?f$2(tS/tO):'—'}</td></tr>`;
+      const tS=sorted.reduce((s,r)=>s+r.spend,0),tI=sorted.reduce((s,r)=>s+r.impressions,0),tC=sorted.reduce((s,r)=>s+r.clicks,0),tL=sorted.reduce((s,r)=>s+r.leads,0);
+      return`<tr><td class="row-num"></td><td>Total (${sorted.length})</td><td class="num">${f$(tS)}</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${tL}</td><td class="num">${tL>0?f$2(tS/tL):'—'}</td></tr>`;
     });
   }
 
@@ -1710,22 +1690,22 @@ function _drawGoogleTrend(allRows,from,to){
   const byDate={};
   allRows.forEach(r=>{
     if(!r.date)return;
-    if(!byDate[r.date])byDate[r.date]={spend:0,opp:0};
+    if(!byDate[r.date])byDate[r.date]={spend:0,leads:0};
     byDate[r.date].spend+=r.spend||0;
-    byDate[r.date].opp+=(r.conversions||0)+(r.calls||0)+(r.directions||0);
+    byDate[r.date].leads+=r.conversions||0;
   });
   const dates=Object.keys(byDate).sort();
   if(!dates.length)return;
   const isMob=window.innerWidth<=768;
   _ch.google=new Chart(ctx,{type:'bar',data:{labels:dates.map(d=>fmDay(d)),datasets:[
     {label:'Spend',data:dates.map(d=>+(byDate[d].spend).toFixed(2)),backgroundColor:'rgba(52,168,83,0.25)',borderColor:'#34A853',borderWidth:2,borderRadius:3,yAxisID:'ySpend',order:2},
-    {label:'Opportunities',data:dates.map(d=>+(byDate[d].opp).toFixed(1)),type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yOpp',order:1}
+    {label:'Leads',data:dates.map(d=>byDate[d].leads),type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yLeads',order:1}
   ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{display:true,position:'top',labels:{font:{size:11},color:'#5a7a8a',boxWidth:12}},
-      tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Opportunities: '+c.parsed.y.toFixed(1)}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Leads: '+c.parsed.y}}},
     scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:14,maxRotation:0}},
       ySpend:{position:'left',grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#34A853',callback:v=>'$'+v.toLocaleString()}},
-      yOpp:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0'}}}
+      yLeads:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0'}}}
   }});
 }
 
