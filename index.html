@@ -389,6 +389,9 @@ const GLOSSARY = {
   cpl:      { title:'Blended Cost per Lead (CPL)', desc:'The average total marketing cost required to generate one new lead. Calculated by dividing Total Marketing Spend by the number of Leads generated during the same period. A lower CPL indicates more efficient top-of-funnel marketing performance.', date:'Both spend and leads are measured over the same selected date range.' },
   cpft:     { title:'Blended Cost per First Timer (CPFT)', desc:'The average total marketing cost associated with bringing one person in for their first class. Calculated by dividing Total Marketing Spend by the number of First Timers who attended during the same period. Reflects the efficiency of converting leads into in-studio visits.', date:'Both spend and first timers are measured over the same selected date range.' },
   cpa:      { title:'Blended Cost per Acquisition (CPA)', desc:'The average total marketing cost required to acquire one new paying member. Calculated by dividing Total Marketing Spend by the number of New Members who activated their first recurring membership during the same period. The primary metric for evaluating the return on marketing investment.', date:'Both spend and new member activations are measured over the same selected date range.' },
+  conv_l_ft:  { title:'Lead → First Timer Conversion Rate', desc:'The percentage of leads who went on to attend their first class at the studio. Calculated as (First Timers ÷ Leads) × 100. A higher rate indicates that the studio is successfully converting new sign-ups into actual in-studio visits.', date:'Both leads and first timers are counted within the same selected date range.' },
+  conv_ft_mem:{ title:'First Timer → Member Conversion Rate', desc:'The percentage of first-time visitors who activated a recurring membership. Calculated as (New Members ÷ First Timers) × 100. This rate reflects how effectively the in-studio experience converts trial visitors into paying members.', date:'Both first timers and new member activations are counted within the same selected date range.' },
+  conv_l_mem: { title:'Lead → Member Conversion Rate', desc:'The overall percentage of leads who ultimately became paying members. Calculated as (New Members ÷ Leads) × 100. This end-to-end funnel rate captures the combined efficiency of converting a new sign-up all the way through to a recurring membership.', date:'Both leads and new member activations are counted within the same selected date range.' },
 };
 
 function showKpiInfo(btn, evt) {
@@ -707,22 +710,23 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
   const currConvFT  = leadsTotal ? ftTotal /leadsTotal*100 : null;
   const currConvMem = ftTotal    ? memTotal/ftTotal  *100  : null;
   const currConvMemLead = leadsTotal ? memTotal/leadsTotal*100 : null;
-  function convCard(label, curr, ppRate, pyRate) {
-    if (curr === null) return kpiCard(label, '--', null, null, v=>v);
+  function convCard(label, curr, ppRate, pyRate, info) {
+    if (curr === null) return kpiCard(label, '--', null, null, v=>v, info);
     const fmt = v => typeof v==='number' ? v.toFixed(1)+'%' : v;
     const dpp = ppRate != null ? (curr - ppRate) / ppRate * 100 : null;
     const dpy = pyRate != null ? (curr - pyRate) / pyRate * 100 : null;
     const ppH = _partialPeriod.pp ? (dpp!=null ? '<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>' : '') : (dpp!=null ? '<div class="kpi-card-delta '+(dpp>=0?'pos':'neg')+'">'+(dpp>=0?'&#9650;':'&#9660;')+' '+Math.abs(dpp).toFixed(1)+'% prev period</div>' : '');
     const pyH = _partialPeriod.py ? (dpy!=null ? '<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>' : '') : (dpy!=null ? '<div class="kpi-card-delta '+(dpy>=0?'pos':'neg')+'">'+(dpy>=0?'&#9650;':'&#9660;')+' '+Math.abs(dpy).toFixed(1)+'% prev year</div>' : '');
-    return '<div class="kpi-card"><div class="kpi-card-label">'+label+'</div><div class="kpi-card-val">'+curr.toFixed(1)+'%</div>'+ppH+pyH+'</div>';
+    const infoBtn = info ? '<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="'+_esc(info.title||label)+'" data-desc="'+_esc(info.desc)+'" data-date="'+_esc(info.date||'')+'">i</button>' : '';
+    return '<div class="kpi-card">'+infoBtn+'<div class="kpi-card-label">'+label+'</div><div class="kpi-card-val">'+curr.toFixed(1)+'%</div>'+ppH+pyH+'</div>';
   }
 
-  //  LEADS TAB 
+  //  LEADS TAB
   const el1 = document.getElementById('leads-kpis');
   if(el1) el1.innerHTML =
-    kpiCard('Total Leads', leadsTotal, ppLeads||null, pyLeads||null) +
-    convCard('Conv → 1st Visit', currConvFT,  ppConvFT,  pyConvFT) +
-    convCard('Conv → Member',    currConvMem, ppConvMem, pyConvMem);
+    kpiCard('Total Leads', leadsTotal, ppLeads||null, pyLeads||null, null, GLOSSARY.leads) +
+    convCard('Conv → 1st Visit', currConvFT,  ppConvFT,  pyConvFT,  GLOSSARY.conv_l_ft) +
+    convCard('Conv → Member',    currConvMem, ppConvMem, pyConvMem, GLOSSARY.conv_ft_mem);
 
   buildAreaChart('leadsAreaChart','leads-src-toggles',
     toSourceTimeSeries(currFiltered.daily, currFiltered.monthly, AREA_GRAN['leadsAreaChart']),
@@ -731,12 +735,12 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     srcList.map(s=>currFiltered.all.filter(r=>r.source===s).reduce((sum,r)=>sum+r.signups,0)));
   _buildFunnelRankTable('leadsStudioTable', currFiltered.all, 'signups');
 
-  //  FIRST TIMERS TAB 
+  //  FIRST TIMERS TAB
   const el2 = document.getElementById('ft-kpis');
   if(el2) el2.innerHTML =
-    kpiCard('Total First Timers', ftTotal, ppFT||null, pyFT||null) +
-    convCard('Conv Rate (Lead→FT)', currConvFT,  ppConvFT,  pyConvFT) +
-    convCard('Conv → Member',       currConvMem, ppConvMem, pyConvMem);
+    kpiCard('Total First Timers', ftTotal, ppFT||null, pyFT||null, null, GLOSSARY.ft) +
+    convCard('Conv Rate (Lead→FT)', currConvFT,  ppConvFT,  pyConvFT,  GLOSSARY.conv_l_ft) +
+    convCard('Conv → Member',       currConvMem, ppConvMem, pyConvMem, GLOSSARY.conv_ft_mem);
 
   buildAreaChart('ftAreaChart','ft-src-toggles',
     toSourceTimeSeries(currFiltered.daily, currFiltered.monthly, AREA_GRAN['ftAreaChart']),
@@ -745,12 +749,12 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     srcList.map(s=>currFiltered.all.filter(r=>r.source===s).reduce((sum,r)=>sum+r.first_visits,0)));
   _buildFunnelRankTable('ftStudioTable', currFiltered.all, 'first_visits');
 
-  //  NEW MEMBERS TAB 
+  //  NEW MEMBERS TAB
   const el3 = document.getElementById('mem-kpis');
   if(el3) el3.innerHTML =
-    kpiCard('Total New Members', memTotal, ppMem||null, pyMem||null) +
-    convCard('Conv Rate (FT→Mbr)', currConvMem,      ppConvMem, pyConvMem) +
-    convCard('Conv Rate (Lead→Mbr)',currConvMemLead,  ppConvFT!=null&&ppConvMem!=null?ppConvFT*ppConvMem/100:null, pyConvFT!=null&&pyConvMem!=null?pyConvFT*pyConvMem/100:null);
+    kpiCard('Total New Members', memTotal, ppMem||null, pyMem||null, null, GLOSSARY.mem) +
+    convCard('Conv Rate (FT→Mbr)',  currConvMem,     ppConvMem, pyConvMem, GLOSSARY.conv_ft_mem) +
+    convCard('Conv Rate (Lead→Mbr)',currConvMemLead, ppConvFT!=null&&ppConvMem!=null?ppConvFT*ppConvMem/100:null, pyConvFT!=null&&pyConvMem!=null?pyConvFT*pyConvMem/100:null, GLOSSARY.conv_l_mem);
 
   buildAreaChart('memAreaChart','mem-src-toggles',
     toSourceTimeSeries(currFiltered.daily, currFiltered.monthly, AREA_GRAN['memAreaChart']),
@@ -1073,9 +1077,11 @@ function buildCPRTab() {
   const cpl_curr=curr.leads>0?spCurr.total/curr.leads:0,cpl_pp=pp.leads>0?spPp.total/pp.leads:null,cpl_py=py.leads>0?spPy.total/py.leads:null;
   const cpft_curr=curr.ft>0?spCurr.total/curr.ft:0,cpft_pp=pp.ft>0?spPp.total/pp.ft:null,cpft_py=py.ft>0?spPy.total/py.ft:null;
   const cpa_curr=curr.mem>0?spCurr.total/curr.mem:0,cpa_pp=pp.mem>0?spPp.total/pp.mem:null,cpa_py=py.mem>0?spPy.total/py.mem:null;
-  el.innerHTML=cprKpiCard('Blended CPL',cpl_curr,cpl_pp,cpl_py,f$2)+cprKpiCard('Blended CPFT',cpft_curr,cpft_pp,cpft_py,f$2)+cprKpiCard('Blended CPA',cpa_curr,cpa_pp,cpa_py,f$2);
+  el.innerHTML=cprKpiCard('Blended CPL',cpl_curr,cpl_pp,cpl_py,f$2,GLOSSARY.cpl)+cprKpiCard('Blended CPFT',cpft_curr,cpft_pp,cpft_py,f$2,GLOSSARY.cpft)+cprKpiCard('Blended CPA',cpa_curr,cpa_pp,cpa_py,f$2,GLOSSARY.cpa);
   const bdEl=document.getElementById('cpr-spend-breakdown');
-  if(bdEl){const parts=[];const bLabels={google:'Google Ads',meta:'Meta Ads',leadteam:'Leadteam Fee'};const bColors={google:'#34A853',meta:'#1877F2',leadteam:'#FF6B35'};let first=true;['google','meta','leadteam'].forEach(k=>{if(!CPR_COSTS_ACTIVE[k])return;const v=spCurr[k],vPp=spPp[k],vPy=spPy[k];if(!first)parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">+</span>');const dpp=vPp>0?((v-vPp)/vPp*100).toFixed(1):null,dpy=vPy>0?((v-vPy)/vPy*100).toFixed(1):null;const ppH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpp!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpp)+'% prev period</div>':'');const pyH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpy!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpy)+'% prev year</div>':'');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid '+bColors[k]+'"><div class="kpi-card-label">'+bLabels[k]+'</div><div class="kpi-card-val">'+f$(v)+'</div>'+ppH+pyH+'</div>');first=false;});if(parts.length>0){const totV=spCurr.total,totPp=spPp.total,totPy=spPy.total;const dppT=totPp>0?((totV-totPp)/totPp*100).toFixed(1):null,dpyT=totPy>0?((totV-totPy)/totPy*100).toFixed(1):null;const ppTH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dppT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dppT)+'% prev period</div>':'');const pyTH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpyT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpyT)+'% prev year</div>':'');parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">=</span>');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid #1a1a2e"><div class="kpi-card-label">Total Spend</div><div class="kpi-card-val">'+f$(totV)+'</div>'+ppTH+pyTH+'</div>');}bdEl.innerHTML=parts.join('');}
+  const _gIb=k=>{const g=GLOSSARY[k];return'<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="'+_esc(g.title)+'" data-desc="'+_esc(g.desc)+'" data-date="'+_esc(g.date)+'">i</button>';};
+  const _gIbSpend=()=>{const g=GLOSSARY.spend;return'<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="'+_esc(g.title)+'" data-desc="'+_esc(g.desc)+'" data-date="'+_esc(g.date)+'">i</button>';};
+  if(bdEl){const parts=[];const bLabels={google:'Google Ads',meta:'Meta Ads',leadteam:'Leadteam Fee'};const bGlossaryKeys={google:'google',meta:'meta',leadteam:'leadteam'};const bColors={google:'#34A853',meta:'#1877F2',leadteam:'#FF6B35'};let first=true;['google','meta','leadteam'].forEach(k=>{if(!CPR_COSTS_ACTIVE[k])return;const v=spCurr[k],vPp=spPp[k],vPy=spPy[k];if(!first)parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">+</span>');const dpp=vPp>0?((v-vPp)/vPp*100).toFixed(1):null,dpy=vPy>0?((v-vPy)/vPy*100).toFixed(1):null;const ppH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpp!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpp)+'% prev period</div>':'');const pyH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpy!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpy)+'% prev year</div>':'');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid '+bColors[k]+'">'+_gIb(bGlossaryKeys[k])+'<div class="kpi-card-label">'+bLabels[k]+'</div><div class="kpi-card-val">'+f$(v)+'</div>'+ppH+pyH+'</div>');first=false;});if(parts.length>0){const totV=spCurr.total,totPp=spPp.total,totPy=spPy.total;const dppT=totPp>0?((totV-totPp)/totPp*100).toFixed(1):null,dpyT=totPy>0?((totV-totPy)/totPy*100).toFixed(1):null;const ppTH=_partialPeriod.pp?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dppT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dppT)+'% prev period</div>':'');const pyTH=_partialPeriod.py?'<div class="kpi-card-delta neu" title="Select complete calendar months">&#9651; partial period</div>':(dpyT!==null?'<div class="kpi-card-delta neu">&#9650; '+Math.abs(dpyT)+'% prev year</div>':'');parts.push('<span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:600;color:#5a7a8a;padding:0 4px">=</span>');parts.push('<div class="kpi-card" style="flex:1;min-width:140px;border-top:3px solid #1a1a2e">'+_gIbSpend()+'<div class="kpi-card-label">Total Spend</div><div class="kpi-card-val">'+f$(totV)+'</div>'+ppTH+pyTH+'</div>');}bdEl.innerHTML=parts.join('');}
   if(cprChart){cprChart.destroy();cprChart=null;}
   const ctx=document.getElementById('cprChart');if(!ctx)return;
   // Build Google rows: use daily where available, monthly only for months with no daily data
