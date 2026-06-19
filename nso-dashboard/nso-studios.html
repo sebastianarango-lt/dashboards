@@ -1080,7 +1080,7 @@ function renderScorecard(){
       cumDl:_cDl, cumDp:_cDp,
       cumCr:(w.total_leads>0&&w.presales_count!=null)?w.presales_count/w.total_leads:null,
     };
-  }).filter(w=>w.w<=cw+1);
+  }).filter(w=>w.w<=cw);
 
   const $v=v=>v!=null?'$'+Math.round(v).toLocaleString('en-US'):'—';
   const fInt=v=>v!=null?v:'—';
