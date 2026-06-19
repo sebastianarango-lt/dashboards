@@ -389,9 +389,45 @@ const GLOSSARY = {
   cpl:      { title:'Blended Cost per Lead (CPL)', desc:'The average total marketing cost required to generate one new lead. Calculated by dividing Total Marketing Spend by the number of Leads generated during the same period. A lower CPL indicates more efficient top-of-funnel marketing performance.', date:'Both spend and leads are measured over the same selected date range.' },
   cpft:     { title:'Blended Cost per First Timer (CPFT)', desc:'The average total marketing cost associated with bringing one person in for their first class. Calculated by dividing Total Marketing Spend by the number of First Timers who attended during the same period. Reflects the efficiency of converting leads into in-studio visits.', date:'Both spend and first timers are measured over the same selected date range.' },
   cpa:      { title:'Blended Cost per Acquisition (CPA)', desc:'The average total marketing cost required to acquire one new paying member. Calculated by dividing Total Marketing Spend by the number of New Members who activated their first recurring membership during the same period. The primary metric for evaluating the return on marketing investment.', date:'Both spend and new member activations are measured over the same selected date range.' },
-  conv_l_ft:  { title:'Lead → First Timer Conversion Rate', desc:'The percentage of leads who went on to attend their first class at the studio. Calculated as (First Timers ÷ Leads) × 100. A higher rate indicates that the studio is successfully converting new sign-ups into actual in-studio visits.', date:'Both leads and first timers are counted within the same selected date range.' },
-  conv_ft_mem:{ title:'First Timer → Member Conversion Rate', desc:'The percentage of first-time visitors who activated a recurring membership. Calculated as (New Members ÷ First Timers) × 100. This rate reflects how effectively the in-studio experience converts trial visitors into paying members.', date:'Both first timers and new member activations are counted within the same selected date range.' },
-  conv_l_mem: { title:'Lead → Member Conversion Rate', desc:'The overall percentage of leads who ultimately became paying members. Calculated as (New Members ÷ Leads) × 100. This end-to-end funnel rate captures the combined efficiency of converting a new sign-up all the way through to a recurring membership.', date:'Both leads and new member activations are counted within the same selected date range.' },
+  conv_l_ft:  { title:'Lead → First Timer Conversion Rate', desc:'The percentage of First Timers relative to Leads within the same date range. Calculated as (First Timers ÷ Leads) × 100.\n\n⚠ Period-based metric: this compares two independent pools within the same window, not the same group of people through their journey. A First Timer who created their Mindbody account before the selected date range will add to the First Timer count but not the Lead count — and vice versa. Use this as a directional efficiency signal, not a true cohort conversion rate.', date:'Both leads and first timers are counted within the same selected date range, independently.' },
+  conv_ft_mem:{ title:'First Timer → Member Conversion Rate', desc:'The percentage of New Members relative to First Timers within the same date range. Calculated as (New Members ÷ First Timers) × 100.\n\n⚠ Period-based metric: this compares two independent pools, not a cohort. Someone who attended their first class before the selected period but joined as a member within it will add to the member count but not the first timer count. Use as a directional efficiency signal.', date:'Both first timers and new member activations are counted within the same selected date range, independently.' },
+  conv_l_mem: { title:'Lead → Member Conversion Rate', desc:'The overall percentage of New Members relative to Leads within the same date range. Calculated as (New Members ÷ Leads) × 100.\n\n⚠ Period-based metric: this compares two independent pools, not a cohort tracking the same people from sign-up through to membership. Use as a directional end-to-end efficiency signal.', date:'Both leads and new member activations are counted within the same selected date range, independently.' },
+
+  // -- Meta Ads metrics --
+  meta_impressions: { title:'Impressions (Meta Ads)', desc:'The number of times your Meta ads were displayed on screen. An impression is counted each time the ad appears in a feed or story, regardless of whether the user interacted with it. High impressions with low clicks may indicate the creative needs refreshing.', date:'Attributed to the date the ad was shown.' },
+  meta_clicks:      { title:'Clicks (Meta Ads)', desc:'The total number of times users clicked on your Meta ad. Includes clicks to the landing page, the Facebook/Instagram page, or other interactive elements within the ad unit.', date:'Attributed to the date the click occurred.' },
+  meta_ctr:         { title:'Click-Through Rate (Meta Ads)', desc:'The percentage of impressions that resulted in a click. Calculated as (Clicks ÷ Impressions) × 100. A higher CTR generally indicates the ad creative and targeting are resonating with the audience.', date:'Calculated from clicks and impressions over the same selected date range.' },
+  meta_trials:      { title:'Trials (Meta Ads)', desc:'The number of people who completed a free trial class booking through a Meta ad. Tracked as a conversion event when a user completes the trial registration form after clicking the ad. Trials are a deeper funnel signal than leads — they indicate the person took an active step toward visiting the studio.', date:'Counted on the date the trial booking conversion was recorded in Meta Ads.' },
+  meta_cpl:         { title:'Cost per Lead (Meta Ads)', desc:'The average amount spent on Meta Ads to generate one lead (form submission). Calculated as Meta Ads Spend ÷ Leads. Note: this reflects only Meta Ads spend, unlike the Blended CPL on the Summary tab which includes all marketing costs.', date:'Both spend and leads are measured over the same selected date range.' },
+
+  // -- Google Ads metrics --
+  google_spend_kpi: { title:'Spend (Google Ads)', desc:"The total dollar amount spent on Google Ads campaigns for the selected period. Includes all placements (Search, Maps, Display) associated with each studio's account.", date:'Attributed to the date the ads were served.' },
+  google_opp:       { title:'Opportunities (Google Ads)', desc:'A blended estimate of total intent signals generated by Google Ads, combining directly attributable leads with weighted credit for calls and direction requests.\n\nFormula: Leads + (0.4 × Calls) + (0.3 × Directions)\n\nRationale: Google Ads run on local searches ("gym near me", "fitness studio [city]") generate actions beyond trackable form submissions — phone calls and direction requests are strong signals of intent. Branded searches are excluded from campaigns, so these users are verified non-members. Calls receive 0.4 weight (direct contact, strong intent) and direction requests receive 0.3 weight (physical intent to visit, lower conversion rate than calls). The result is a single number that better reflects the full impact of local search advertising.', date:'Calculated from leads, calls, and directions recorded within the selected date range.' },
+  google_cpo:       { title:'Cost per Opportunity (Google Ads)', desc:'The average Google Ads spend per Opportunity. Calculated as Google Ads Spend ÷ Opportunities. Since Opportunities blend leads, calls, and directions with different weights, Cost/Opp is a more complete efficiency metric than cost per lead alone for local search campaigns.', date:'Both spend and opportunities are measured over the same selected date range.' },
+  google_leads:     { title:'Leads (Google Ads)', desc:'Form submissions directly attributed to Google Ads campaigns — tracked as lead conversion events in the Google Ads platform. These are the fully-attributable component of the Opportunity count. Note: this reflects only Google-attributed leads, not total leads across all sources shown on the Funnel tabs.', date:'Attributed to the date the form submission was recorded in Google Ads.' },
+  google_calls:     { title:'Calls (Google Ads)', desc:'Phone calls initiated directly from the Google Ad via the call extension. Counted when a user taps the phone number shown in the ad. Calls receive a 0.4 weight in the Opportunities formula, reflecting strong purchase intent but accounting for the fact that not every call converts to a new member.', date:'Attributed to the date the call occurred.' },
+  google_directions:{ title:'Directions (Google Ads)', desc:'"Get Directions" clicks triggered by the studio\'s Google Ads placement on Google Maps. Counted when a user taps the directions button on the ad or Maps listing promoted by the campaign. Directions receive a 0.3 weight in the Opportunities formula, reflecting physical intent to visit but a lower conversion rate than a phone call.', date:'Attributed to the date the directions click occurred.' },
+
+  // -- GA4 metrics --
+  ga4_sessions: { title:'Sessions (Google Analytics)', desc:'A session is a group of interactions a user has with the website within a given time frame. A new session begins when a user arrives at the site, and ends after 30 minutes of inactivity or at midnight. One user can have multiple sessions.', date:'Counted over the selected date range based on session start time.' },
+  ga4_users:    { title:'Users (Google Analytics)', desc:'The total number of unique users who visited the website during the selected period, including both new and returning visitors. Google Analytics identifies users using a browser cookie or device ID.', date:'Counted over the selected date range.' },
+  ga4_new_users:{ title:'New Users (Google Analytics)', desc:'Users who visited the website for the very first time during the selected period — no prior sessions detected on that browser or device. A high proportion of new users relative to total users indicates strong top-of-funnel website traffic.', date:'Counted on the date of their first visit within the selected range.' },
+
+  // -- GBP metrics --
+  gbp_total_views:   { title:'Total Profile Views (GBP)', desc:'The total number of times the studio\'s Google Business Profile appeared to users across Google Search and Google Maps during the selected period. A view is counted when the profile is displayed in search results or on Maps, whether or not the user clicks through.', date:'Attributed to the date the view occurred.' },
+  gbp_search_views:  { title:'Google Search Views (GBP)', desc:'The number of times the studio\'s Google Business Profile appeared in Google Search results specifically. Includes both branded searches (studio name) and local intent searches (e.g., "gym near me"). Branded searches here may include existing members — unlike Google Ads, this is organic and unfiltered.', date:'Attributed to the date of the search impression.' },
+  gbp_maps_views:    { title:'Google Maps Views (GBP)', desc:'The number of times the studio\'s listing appeared in Google Maps results. Maps views often have higher commercial intent as users are actively looking for nearby locations to visit.', date:'Attributed to the date the Maps impression occurred.' },
+  gbp_directions:    { title:'Direction Requests (GBP)', desc:'The number of times users clicked "Get Directions" to the studio from its Google Business Profile. A strong indicator of physical intent — the user is planning to visit the location. Unlike directions from Google Ads, these are organic requests from the profile listing.', date:'Attributed to the date the direction request was made.' },
+  gbp_website_clicks:{ title:'Website Clicks (GBP)', desc:'The number of times users clicked the website link on the studio\'s Google Business Profile. These visits arrive at the website already aware of the specific studio, making them higher-intent than typical organic web traffic.', date:'Attributed to the date the click occurred.' },
+  gbp_calls:         { title:'Calls (GBP)', desc:'The number of times users called the studio directly from its Google Business Profile. These are organic phone calls initiated through the profile listing, distinct from call extension clicks tracked through Google Ads campaigns.', date:'Attributed to the date the call was initiated.' },
+
+  // -- Instagram metrics --
+  ig_followers:       { title:'Total Followers (Instagram)', desc:'The current number of accounts following the studio\'s Instagram profile. This is a real-time snapshot of the follower count, not a count of followers gained during the selected period.', date:'Reflects the follower count at the time of the most recent data sync.' },
+  ig_total_reach:     { title:'Total Reach (Instagram)', desc:'The total number of unique accounts that saw any content from this studio\'s Instagram profile during the selected period. Reach counts each account only once regardless of how many times they saw the content. Unlike impressions, reach does not count repeat views by the same account.', date:'Summed across all days in the selected date range.' },
+  ig_avg_daily_reach: { title:'Avg Daily Reach (Instagram)', desc:'The average number of unique accounts reached per day during the selected period. Calculated as Total Reach ÷ Number of days. Useful for normalizing reach across periods of different lengths.', date:'Calculated from daily reach figures over the selected date range.' },
+  ig_median_reach:    { title:'Median Reach per Post (Instagram)', desc:'The median estimated reach for individual posts published during the selected period. Estimated by distributing the day\'s total reach evenly across all posts published that day. The median is used rather than the average to reduce the distortion caused by occasional viral posts.', date:'Estimated from posts published within the selected date range.' },
+  ig_median_likes:    { title:'Median Likes per Post (Instagram)', desc:'The median number of likes received by individual posts published during the selected period. Like count is a direct engagement signal — users actively choosing to react to the content. The median is used rather than the average to reduce skew from outlier posts.', date:'Based on posts published within the selected date range.' },
+  ig_posts:           { title:'Posts in Period (Instagram)', desc:'The total number of Instagram posts (feed photos, carousels, and Reels) published by the studio during the selected period. Volume of posting is a leading indicator — consistent posting tends to sustain reach and engagement over time.', date:'Counted by publication date within the selected date range.' },
 };
 
 function showKpiInfo(btn, evt) {
@@ -416,6 +452,11 @@ function closeKpiInfo() {
   document.getElementById('kpiInfoBox').classList.remove('active');
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeKpiInfo(); });
+
+function _infoBtn(key) {
+  const g = GLOSSARY[key]; if (!g) return '';
+  return '<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="'+_esc(g.title)+'" data-desc="'+_esc(g.desc)+'" data-date="'+_esc(g.date||'')+'">i</button>';
+}
 
 // -- Dashboard state -------------------------------------------------------
 let RAW = null;
@@ -1338,12 +1379,12 @@ async function buildMetaTab() {
 
   // ---- KPI cards ----
   kpisEl.innerHTML =
-    kpiCard('Spend',        spend,        null, null, f$)  +
-    kpiCard('Impressions',  impressions,  null, null, v=>fK(v)) +
-    kpiCard('Clicks',       clicks,       null, null, v=>fN(v)) +
-    kpiCard('Leads',        leads,        null, null, v=>v) +
-    kpiCard('Trials',       trials,       null, null, v=>v) +
-    kpiCard('Cost / Lead',  cpl,          null, null, f$2);
+    kpiCard('Spend',        spend,        null, null, f$,        GLOSSARY.meta) +
+    kpiCard('Impressions',  impressions,  null, null, v=>fK(v),  GLOSSARY.meta_impressions) +
+    kpiCard('Clicks',       clicks,       null, null, v=>fN(v),  GLOSSARY.meta_clicks) +
+    kpiCard('Leads',        leads,        null, null, v=>v,      GLOSSARY.leads) +
+    kpiCard('Trials',       trials,       null, null, v=>v,      GLOSSARY.meta_trials) +
+    kpiCard('Cost / Lead',  cpl,          null, null, f$2,       GLOSSARY.meta_cpl);
 
   // ---- Active Ads table — metrics from ad_daily, metadata from ad_meta ----
   const adMeta    = data.ad_meta || {};
@@ -1530,7 +1571,7 @@ function buildGoogleTab() {
   if(!hasData){kpisEl.innerHTML='<div style="color:#888;padding:20px;grid-column:1/-1">No Google Ads data for selected period.</div>';if(stTb)stTb.innerHTML='<tr><td colspan="9" style="color:#8aabbf;text-align:center;padding:20px">No data.</td></tr>';_clearGoogleTrend();return;}
   const f$=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});const f$2=v=>'$'+Number(v).toFixed(2);const fN=v=>Number(v).toLocaleString();const fK=v=>Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':fN(v);
   const cpo_c=curr.opportunities>0?curr.spend/curr.opportunities:0,cpo_p=pp.opportunities>0?pp.spend/pp.opportunities:null,cpo_y=py.opportunities>0?py.spend/py.opportunities:null;
-  kpisEl.innerHTML=kpiCard('Spend',curr.spend,pp.spend||null,py.spend||null,f$)+kpiCard('Opportunities',curr.opportunities,pp.opportunities||null,py.opportunities||null,v=>Number(v).toFixed(0))+kpiCard('Cost / Opp',cpo_c,cpo_p,cpo_y,f$2)+kpiCard('Leads',curr.leads,pp.leads||null,py.leads||null,fN)+kpiCard('Calls',curr.calls,pp.calls||null,py.calls||null,fN)+kpiCard('Directions',curr.directions,pp.directions||null,py.directions||null,fN);
+  kpisEl.innerHTML=kpiCard('Spend',curr.spend,pp.spend||null,py.spend||null,f$,GLOSSARY.google_spend_kpi)+kpiCard('Opportunities',curr.opportunities,pp.opportunities||null,py.opportunities||null,v=>Number(v).toFixed(0),GLOSSARY.google_opp)+kpiCard('Cost / Opp',cpo_c,cpo_p,cpo_y,f$2,GLOSSARY.google_cpo)+kpiCard('Leads',curr.leads,pp.leads||null,py.leads||null,fN,GLOSSARY.google_leads)+kpiCard('Calls',curr.calls,pp.calls||null,py.calls||null,fN,GLOSSARY.google_calls)+kpiCard('Directions',curr.directions,pp.directions||null,py.directions||null,fN,GLOSSARY.google_directions);
   _buildGoogleTrend(data,from,to,fbSt,selSt);
   const smap={};for(const r of fgr(allRows,from,to)){const s=r.studio;if(!smap[s])smap[s]={spend:0,impressions:0,clicks:0,leads:0,calls:0,directions:0,opp:0};smap[s].spend+=r.spend||0;smap[s].impressions+=r.impressions||0;smap[s].clicks+=r.clicks||0;smap[s].leads+=r.leads||0;smap[s].calls+=r.calls||0;smap[s].directions+=r.directions||0;smap[s].opp+=r.opportunities||0;}
   const srows=Object.entries(smap).map(([name,m])=>({name,...m,cpo:m.opp>0?m.spend/m.opp:null})).sort((a,b)=>b.opp-a.opp);
@@ -1767,8 +1808,9 @@ function _orgEmpty(msg) {
 }
 
 // Helper: kpi card for organic tabs (no deltas needed)
-function _orgKpi(label, value, icon) {
-  return `<div class="kpi-card"><div class="kpi-card-label">${icon ? icon + ' ' : ''}${label}</div><div class="kpi-card-val">${value}</div></div>`;
+function _orgKpi(label, value, icon, infoKey) {
+  const ib = infoKey ? _infoBtn(infoKey) : '';
+  return `<div class="kpi-card">${ib}<div class="kpi-card-label">${icon ? icon + ' ' : ''}${label}</div><div class="kpi-card-val">${value}</div></div>`;
 }
 
 // ---- GBP ---------------------------------------------------------------
@@ -1788,22 +1830,22 @@ function renderGBP() {
     h += '<div class="chart-card">';
     h += sec('Profile Views');
     h += `<div class="kpi-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-bottom:4px">`;
-    h += _orgKpi('Total Views',       totalViews.toLocaleString(), '');
-    h += _orgKpi('Google Search',     (agg('search_mobile') + agg('search_desktop')).toLocaleString(), '🔍');
-    h += _orgKpi('Google Maps',       (agg('maps_mobile')   + agg('maps_desktop')).toLocaleString(),   '📍');
+    h += _orgKpi('Total Views',       totalViews.toLocaleString(), '',    'gbp_total_views');
+    h += _orgKpi('Google Search',     (agg('search_mobile') + agg('search_desktop')).toLocaleString(), '🔍', 'gbp_search_views');
+    h += _orgKpi('Google Maps',       (agg('maps_mobile')   + agg('maps_desktop')).toLocaleString(),   '📍', 'gbp_maps_views');
     h += `</div>`;
     h += sec('Search Detail');
     h += `<div class="kpi-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-bottom:4px">`;
-    h += _orgKpi('Search — Mobile',   agg('search_mobile').toLocaleString(),  '📱');
-    h += _orgKpi('Search — Desktop',  agg('search_desktop').toLocaleString(), '🖥️');
-    h += _orgKpi('Maps — Mobile',     agg('maps_mobile').toLocaleString(),    '📱');
-    h += _orgKpi('Maps — Desktop',    agg('maps_desktop').toLocaleString(),   '🖥️');
+    h += _orgKpi('Search — Mobile',   agg('search_mobile').toLocaleString(),  '📱', 'gbp_search_views');
+    h += _orgKpi('Search — Desktop',  agg('search_desktop').toLocaleString(), '🖥️', 'gbp_search_views');
+    h += _orgKpi('Maps — Mobile',     agg('maps_mobile').toLocaleString(),    '📱', 'gbp_maps_views');
+    h += _orgKpi('Maps — Desktop',    agg('maps_desktop').toLocaleString(),   '🖥️', 'gbp_maps_views');
     h += `</div>`;
     h += sec('Customer Actions');
     h += `<div class="kpi-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-bottom:4px">`;
-    h += _orgKpi('Direction Requests', agg('direction_requests').toLocaleString(), '🧭');
-    h += _orgKpi('Website Clicks',     agg('website_clicks').toLocaleString(),     '🌐');
-    h += _orgKpi('Calls',              agg('calls').toLocaleString(),              '📞');
+    h += _orgKpi('Direction Requests', agg('direction_requests').toLocaleString(), '🧭', 'gbp_directions');
+    h += _orgKpi('Website Clicks',     agg('website_clicks').toLocaleString(),     '🌐', 'gbp_website_clicks');
+    h += _orgKpi('Calls',              agg('calls').toLocaleString(),              '📞', 'gbp_calls');
     h += `</div>`;
     h += '</div>';
     h += '<div class="chart-card"><div class="chart-card-title">By Studio</div>';
@@ -1880,9 +1922,9 @@ function renderGA4() {
   h += '<div class="chart-card">';
   h += '<div class="chart-card-title" style="margin-bottom:16px">ENTIRE WEBSITE</div>';
   h += '<div class="kpi-grid three">';
-  h += `<div class="kpi-card"><div class="kpi-card-label">Sessions</div><div class="kpi-card-val">${fmt(site.sessions)}</div></div>`;
-  h += `<div class="kpi-card"><div class="kpi-card-label">Users</div><div class="kpi-card-val">${fmt(site.users)}</div></div>`;
-  h += `<div class="kpi-card"><div class="kpi-card-label">New Users</div><div class="kpi-card-val">${fmt(site.newUsers)}</div></div>`;
+  h += `<div class="kpi-card">${_infoBtn('ga4_sessions')}<div class="kpi-card-label">Sessions</div><div class="kpi-card-val">${fmt(site.sessions)}</div></div>`;
+  h += `<div class="kpi-card">${_infoBtn('ga4_users')}<div class="kpi-card-label">Users</div><div class="kpi-card-val">${fmt(site.users)}</div></div>`;
+  h += `<div class="kpi-card">${_infoBtn('ga4_new_users')}<div class="kpi-card-label">New Users</div><div class="kpi-card-val">${fmt(site.newUsers)}</div></div>`;
   h += '</div></div>';
 
   if (activeStudios.length) {
@@ -1894,9 +1936,9 @@ function renderGA4() {
     h += '<div class="chart-card">';
     h += '<div class="chart-card-title" style="margin-bottom:16px">LOCATION PAGES — SELECTED STUDIOS</div>';
     h += '<div class="kpi-grid three">';
-    h += `<div class="kpi-card"><div class="kpi-card-label">Sessions</div><div class="kpi-card-val">${fmt(loc.sessions)}</div></div>`;
-    h += `<div class="kpi-card"><div class="kpi-card-label">Users</div><div class="kpi-card-val">${fmt(loc.users)}</div></div>`;
-    h += `<div class="kpi-card"><div class="kpi-card-label">New Users</div><div class="kpi-card-val">${fmt(loc.newUsers)}</div></div>`;
+    h += `<div class="kpi-card">${_infoBtn('ga4_sessions')}<div class="kpi-card-label">Sessions</div><div class="kpi-card-val">${fmt(loc.sessions)}</div></div>`;
+    h += `<div class="kpi-card">${_infoBtn('ga4_users')}<div class="kpi-card-label">Users</div><div class="kpi-card-val">${fmt(loc.users)}</div></div>`;
+    h += `<div class="kpi-card">${_infoBtn('ga4_new_users')}<div class="kpi-card-label">New Users</div><div class="kpi-card-val">${fmt(loc.newUsers)}</div></div>`;
     h += '</div>';
     h += '<div style="position:relative;width:100%;height:260px;margin-top:20px"><canvas id="ga4TrendChart"></canvas></div>';
     h += '</div>';
@@ -2148,18 +2190,19 @@ function renderInstagram() {
     const arrow = d >= 0 ? '&#9650;' : '&#9660;';
     return `<div class="kpi-card-delta ${cls}">${arrow} ${Math.abs(d).toFixed(1)}% prev period</div>`;
   }
-  function _igKpi(label, value, delta) {
-    return `<div class="kpi-card"><div class="kpi-card-label">${label}</div><div class="kpi-card-val">${value}</div>${delta}</div>`;
+  function _igKpi(label, value, delta, infoKey) {
+    const ib = infoKey ? _infoBtn(infoKey) : '';
+    return `<div class="kpi-card">${ib}<div class="kpi-card-label">${label}</div><div class="kpi-card-val">${value}</div>${delta}</div>`;
   }
 
   let h = '';
   h += `<div class="kpi-grid">`;
-  if (hasFollowers) h += _orgKpi('Total Followers', totalFollowers.toLocaleString(), '');
-  h += _igKpi('Total Reach',         totalReach.toLocaleString(),   _igDelta(totalReach,   ppTotalReach));
-  h += _igKpi('Avg Daily Reach',     avgReach.toLocaleString(),     _igDelta(avgReach,     ppAvgReach));
-  h += _igKpi('Median Reach / Post', medianReach.toLocaleString(),  _igDelta(medianReach,  ppMedianReach));
-  h += _igKpi('Median Likes',        medianLikes.toLocaleString(),  _igDelta(medianLikes,  ppMedianLikes));
-  h += _igKpi('Posts in Period',     allPosts.length.toString(),    _igDelta(allPosts.length, ppAllPosts.length));
+  if (hasFollowers) h += _orgKpi('Total Followers', totalFollowers.toLocaleString(), '', 'ig_followers');
+  h += _igKpi('Total Reach',         totalReach.toLocaleString(),   _igDelta(totalReach,   ppTotalReach),  'ig_total_reach');
+  h += _igKpi('Avg Daily Reach',     avgReach.toLocaleString(),     _igDelta(avgReach,     ppAvgReach),    'ig_avg_daily_reach');
+  h += _igKpi('Median Reach / Post', medianReach.toLocaleString(),  _igDelta(medianReach,  ppMedianReach), 'ig_median_reach');
+  h += _igKpi('Median Likes',        medianLikes.toLocaleString(),  _igDelta(medianLikes,  ppMedianLikes), 'ig_median_likes');
+  h += _igKpi('Posts in Period',     allPosts.length.toString(),    _igDelta(allPosts.length, ppAllPosts.length), 'ig_posts');
   h += `</div>`;
 
   if (allPosts.length) {
