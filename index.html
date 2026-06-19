@@ -1836,10 +1836,10 @@ function renderGBP() {
     h += `</div>`;
     h += sec('Search Detail');
     h += `<div class="kpi-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-bottom:4px">`;
-    h += _orgKpi('Search — Mobile',   agg('search_mobile').toLocaleString(),  '📱', 'gbp_search_views');
-    h += _orgKpi('Search — Desktop',  agg('search_desktop').toLocaleString(), '🖥️', 'gbp_search_views');
-    h += _orgKpi('Maps — Mobile',     agg('maps_mobile').toLocaleString(),    '📱', 'gbp_maps_views');
-    h += _orgKpi('Maps — Desktop',    agg('maps_desktop').toLocaleString(),   '🖥️', 'gbp_maps_views');
+    h += _orgKpi('Mobile Search',   agg('search_mobile').toLocaleString(),  '📱', 'gbp_search_views');
+    h += _orgKpi('Desktop Search',  agg('search_desktop').toLocaleString(), '🖥️', 'gbp_search_views');
+    h += _orgKpi('Mobile Maps',     agg('maps_mobile').toLocaleString(),    '📱', 'gbp_maps_views');
+    h += _orgKpi('Desktop Maps',    agg('maps_desktop').toLocaleString(),   '🖥️', 'gbp_maps_views');
     h += `</div>`;
     h += sec('Customer Actions');
     h += `<div class="kpi-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-bottom:4px">`;
