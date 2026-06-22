@@ -248,7 +248,7 @@
    NSO STUDIOS DASHBOARD — Self-contained
    ══════════════════════════════════════════════════════════════════════════ */
 const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge'];
-const EXCL_SRC=['ClassPass / Platforms','Grassroots','N/A'];
+const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null;const _ch={};
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='';
@@ -939,12 +939,15 @@ function applyFilters(){
   buildTrend(toTS(curr.daily,curr.monthly));
   const fkpi=document.getElementById('funnel-kpis');
   if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads)+kpiCard('Total Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
-  const srcList=sr||[];
   document.getElementById('leads-kpis').innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads);
-  buildArea('leadsChart','leads-toggles',toSrcTSGran(curr.daily,curr.monthly),srcList,'signups');
+  const leadsSeries=toSrcTSGran(curr.daily,curr.monthly);
+  const activeSrcLeads=(sr||[]).filter(s=>leadsSeries.some(r=>r.source===s&&(r.signups||0)>0));
+  buildArea('leadsChart','leads-toggles',leadsSeries,activeSrcLeads,'signups');
   buildRing('leadsRing','leadsRingLeg',curr.all,'signups');
   document.getElementById('mem-kpis').innerHTML=kpiCard('Total Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
-  buildArea('memChart','mem-toggles',toSrcTSGran(sCurr,[]),srcList,'first_sales');
+  const salesSeries=toSrcTSGran(sCurr,[]);
+  const activeSrcSales=(sr||[]).filter(s=>salesSeries.some(r=>r.source===s&&(r.first_sales||0)>0));
+  buildArea('memChart','mem-toggles',salesSeries,activeSrcSales,'first_sales');
   buildRing('memRing','memRingLeg',sCurr,'first_sales');
   if(document.getElementById('tab-meta').classList.contains('active'))renderMeta();
   if(document.getElementById('tab-ga4').classList.contains('active'))renderGA4();

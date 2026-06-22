@@ -278,6 +278,15 @@ for studio in sc.get("studios", []):
     daily = fetch_daily_sales(cur, sid, YESTERDAY)
 
     tier_rmr = build_tier_rmr(daily, weeks, pricing, sku_map, code)
+
+    # Manual corrections for known Snowflake discrepancies
+    if code == "VA-001":
+        # W25 (5/4-5/10): one T1 ($129) member confirmed but excluded by deduplication
+        for r in tier_rmr:
+            if r["week"] == 25:
+                r["t1"] = 89
+                break
+
     studio["tier_rmr_by_week"] = tier_rmr
 
     # Summary
