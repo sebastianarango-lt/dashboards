@@ -154,19 +154,8 @@ def fetch_daily_sales(cur, studio_id, end_date):
     """)
     buy_rows_raw = cur.fetchall()  # [(client_id, email, prod_desc, price, total_buys, first_buy), ...]
 
-    # Deduplicate by email: same email = same person, keep earliest purchase per email+product
-    _seen_email_prod = {}
-    buy_rows = []
-    for row in sorted(buy_rows_raw, key=lambda r: r[5]):  # sort by first_buy
-        client_id, email_id, prod_desc = str(row[0]), (row[1] or '').lower().strip(), str(row[2])
-        key = (email_id, prod_desc)
-        if email_id and key in _seen_email_prod:
-            continue
-        if email_id:
-            _seen_email_prod[key] = True
-        buy_rows.append((client_id, prod_desc, row[3], row[4], row[5]))  # drop email_id
-
-    # ── Query 2: per-client, per-product cancel — raw count, first cancel date
+    # ── Query 2: cancel counts per (client, product) — used for both email dedup
+    #    ordering and time-series event building (single query, no duplicate fetch)
     cur.execute(f"""
         SELECT CLIENT_ID, PRODUCT_DESCRIPTION,
                COUNT(*)             AS total_cancels,
@@ -183,6 +172,25 @@ def fetch_daily_sales(cur, studio_id, end_date):
         (str(r[0]), str(r[1])): {"n": int(r[2]), "date": str(r[3])}
         for r in cur.fetchall()
     }
+
+    # Deduplicate by email: same email = same person, keep ACTIVE record first,
+    # then earliest first_buy. Fixes duplicate-CLIENT_ID cases where the older
+    # account was cancelled but the newer one is still active.
+    def _is_cancelled(client_id, prod_desc, total_buys):
+        return cancel_map.get((client_id, prod_desc), {"n": 0})["n"] >= total_buys
+
+    _seen_email_prod = {}
+    buy_rows = []
+    # Sort: active first (0), then by first_buy ascending
+    for row in sorted(buy_rows_raw,
+                      key=lambda r: (_is_cancelled(str(r[0]), str(r[2]), int(r[4])), r[5])):
+        client_id, email_id, prod_desc = str(row[0]), (row[1] or '').lower().strip(), str(row[2])
+        key = (email_id, prod_desc)
+        if email_id and key in _seen_email_prod:
+            continue
+        if email_id:
+            _seen_email_prod[key] = True
+        buy_rows.append((client_id, prod_desc, row[3], row[4], row[5]))  # drop email_id
 
     # ── Build time-series events in Python ────────────────────────────────
     from collections import defaultdict
