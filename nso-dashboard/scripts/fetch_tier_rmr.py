@@ -147,9 +147,11 @@ def fetch_daily_sales(cur, studio_id, end_date):
           AND LOWER(PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
           AND QUANTITY = 1 AND IS_RETURN = 0
           AND SALE_DATE::DATE <= '{end_date}'
-          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
-          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
-          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
+          AND (EMAIL_ID IS NULL OR (
+              LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
+              AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
+              AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
+          ))
         GROUP BY 1, 2, 3
     """)
     buy_rows_raw = cur.fetchall()  # [(client_id, email, prod_desc, price, total_buys, first_buy), ...]
