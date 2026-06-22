@@ -112,10 +112,14 @@ def fetch_sales(cur, start_date, end_date):
         ),
         client_buys_with_cancel AS (
             -- Join cancel status BEFORE email dedup so we know which CLIENT_ID is active.
+            -- Keep total_cancels and first_cancel_date so the final SELECT can emit
+            -- actual instance counts (one person buying 2 presales = 2 net presales).
             SELECT b.STUDIO_ID, b.CLIENT_ID, b.EMAIL_ID, b.PRODUCT_DESCRIPTION,
                    b.first_buy,
                    b.total_buys,
                    b.total_revenue,
+                   COALESCE(c.total_cancels, 0)     AS total_cancels,
+                   c.first_cancel                   AS first_cancel_date,
                    CASE WHEN COALESCE(c.total_cancels, 0) >= b.total_buys
                         THEN c.first_cancel ELSE NULL END AS cancel_date
             FROM client_buys_raw b
@@ -175,20 +179,20 @@ def fetch_sales(cur, start_date, end_date):
         FROM (
             SELECT cs.STUDIO_ID, cs.first_buy AS date,
                    COALESCE({_SOURCE_CASE}, 'N/A') AS source,
-                   1 AS presales, 0 AS cancellations,
-                   ROUND(cs.total_revenue / cs.total_buys, 2) AS presale_gross_revenue
+                   cs.total_buys AS presales, 0 AS cancellations,
+                   cs.total_revenue AS presale_gross_revenue
             FROM client_status_final cs
             LEFT JOIN leads_dedup l ON l.email=LOWER(TRIM(cs.EMAIL_ID)) AND l.STUDIO_ID=cs.STUDIO_ID AND l.rn=1
             LEFT JOIN clients   c ON c.email=LOWER(TRIM(cs.EMAIL_ID)) AND c.STUDIO_ID=cs.STUDIO_ID AND c.rn=1
             WHERE cs.person_rn = 1
               AND cs.first_buy BETWEEN '{start_date}' AND '{end_date}'
             UNION ALL
-            SELECT cs.STUDIO_ID, cs.cancel_date AS date, 'N/A' AS source,
-                   0 AS presales, 1 AS cancellations, 0 AS presale_gross_revenue
+            SELECT cs.STUDIO_ID, cs.first_cancel_date AS date, 'N/A' AS source,
+                   0 AS presales, cs.total_cancels AS cancellations, 0 AS presale_gross_revenue
             FROM client_status_final cs
             WHERE cs.person_rn = 1
-              AND cs.cancel_date IS NOT NULL
-              AND cs.cancel_date BETWEEN '{start_date}' AND '{end_date}'
+              AND cs.total_cancels > 0
+              AND cs.first_cancel_date BETWEEN '{start_date}' AND '{end_date}'
         ) t
         GROUP BY 1, 2, 3
         ORDER BY 1, 2, 3
