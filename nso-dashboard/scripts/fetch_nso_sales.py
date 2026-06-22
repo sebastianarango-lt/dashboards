@@ -99,15 +99,6 @@ def fetch_sales(cur, start_date, end_date):
               AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
             GROUP BY 1, 2, 3, 4
         ),
-        client_buys AS (
-            -- Deduplicate: same email = same person; keep the earliest record per studio+product
-            SELECT *,
-                   ROW_NUMBER() OVER (
-                       PARTITION BY LOWER(TRIM(EMAIL_ID)), STUDIO_ID, PRODUCT_DESCRIPTION
-                       ORDER BY first_buy ASC
-                   ) AS email_rn
-            FROM client_buys_raw
-        ),
         client_cancels AS (
             SELECT STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
                    COUNT(*)               AS total_cancels,
@@ -119,17 +110,30 @@ def fetch_sales(cur, start_date, end_date):
               AND (QUANTITY = -1 OR IS_RETURN = 1)
             GROUP BY 1, 2, 3
         ),
-        client_status AS (
+        client_buys_with_cancel AS (
+            -- Join cancel status BEFORE email dedup so we know which CLIENT_ID is active.
             SELECT b.STUDIO_ID, b.CLIENT_ID, b.EMAIL_ID, b.PRODUCT_DESCRIPTION,
                    b.first_buy,
-                   ROUND(b.total_revenue / b.total_buys, 2) AS unit_revenue,
+                   b.total_buys,
+                   b.total_revenue,
                    CASE WHEN COALESCE(c.total_cancels, 0) >= b.total_buys
                         THEN c.first_cancel ELSE NULL END AS cancel_date
-            FROM client_buys b
+            FROM client_buys_raw b
             LEFT JOIN client_cancels c
                 ON b.STUDIO_ID=c.STUDIO_ID AND b.CLIENT_ID=c.CLIENT_ID
                AND b.PRODUCT_DESCRIPTION=c.PRODUCT_DESCRIPTION
-            WHERE b.email_rn = 1   -- one record per email per product
+        ),
+        client_dedup AS (
+            -- Email dedup with cancel status known: prefer ACTIVE over cancelled,
+            -- then earliest first_buy. Fixes duplicate-CLIENT_ID cases where the
+            -- older account was cancelled but the newer one is still active.
+            SELECT *,
+                   ROW_NUMBER() OVER (
+                       PARTITION BY LOWER(TRIM(EMAIL_ID)), STUDIO_ID, PRODUCT_DESCRIPTION
+                       ORDER BY CASE WHEN cancel_date IS NULL THEN 0 ELSE 1 END,
+                                first_buy ASC
+                   ) AS email_rn
+            FROM client_buys_with_cancel
         ),
         client_status_final AS (
             -- Deduplicate to one row per real person per studio.
@@ -141,7 +145,8 @@ def fetch_sales(cur, start_date, end_date):
                        ORDER BY CASE WHEN cancel_date IS NULL THEN 0 ELSE 1 END,
                                 first_buy ASC
                    ) AS person_rn
-            FROM client_status
+            FROM client_dedup
+            WHERE email_rn = 1
         ),
         leads_dedup AS (
             SELECT LOWER(TRIM(CLIENT_EMAIL)) AS email, STUDIO_ID, LEAD_SOURCE,
@@ -170,7 +175,8 @@ def fetch_sales(cur, start_date, end_date):
         FROM (
             SELECT cs.STUDIO_ID, cs.first_buy AS date,
                    COALESCE({_SOURCE_CASE}, 'N/A') AS source,
-                   1 AS presales, 0 AS cancellations, cs.unit_revenue AS presale_gross_revenue
+                   1 AS presales, 0 AS cancellations,
+                   ROUND(cs.total_revenue / cs.total_buys, 2) AS presale_gross_revenue
             FROM client_status_final cs
             LEFT JOIN leads_dedup l ON l.email=LOWER(TRIM(cs.EMAIL_ID)) AND l.STUDIO_ID=cs.STUDIO_ID AND l.rn=1
             LEFT JOIN clients   c ON c.email=LOWER(TRIM(cs.EMAIL_ID)) AND c.STUDIO_ID=cs.STUDIO_ID AND c.rn=1
