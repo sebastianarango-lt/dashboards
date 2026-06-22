@@ -129,7 +129,19 @@ def fetch_sales(cur, start_date, end_date):
             LEFT JOIN client_cancels c
                 ON b.STUDIO_ID=c.STUDIO_ID AND b.CLIENT_ID=c.CLIENT_ID
                AND b.PRODUCT_DESCRIPTION=c.PRODUCT_DESCRIPTION
-            WHERE b.email_rn = 1   -- one record per real person
+            WHERE b.email_rn = 1   -- one record per email per product
+        ),
+        client_status_final AS (
+            -- Deduplicate to one row per real person per studio.
+            -- Tier upgrades (same person buys T1 then T2) count as 1 member, not 2.
+            -- Prefer the active record; among ties pick the earliest purchase.
+            SELECT *,
+                   ROW_NUMBER() OVER (
+                       PARTITION BY LOWER(TRIM(EMAIL_ID)), STUDIO_ID
+                       ORDER BY CASE WHEN cancel_date IS NULL THEN 0 ELSE 1 END,
+                                first_buy ASC
+                   ) AS person_rn
+            FROM client_status
         ),
         leads_dedup AS (
             SELECT LOWER(TRIM(CLIENT_EMAIL)) AS email, STUDIO_ID, LEAD_SOURCE,
@@ -138,6 +150,7 @@ def fetch_sales(cur, start_date, end_date):
                        ORDER BY IFF(LEAD_SOURCE IS NULL, 1, 0), STAGE_START ASC
                    ) AS rn
             FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_LEADS_LOG
+            WHERE STUDIO_ID IN ({ID_LIST})
         ),
         clients AS (
             SELECT LOWER(TRIM(EMAIL_ID)) AS email, STUDIO_ID, REFERRED_BY,
@@ -146,7 +159,8 @@ def fetch_sales(cur, start_date, end_date):
                        ORDER BY SIGNEDUP_DATE ASC
                    ) AS rn
             FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_CLIENTS
-            WHERE LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
+            WHERE STUDIO_ID IN ({ID_LIST})
+              AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
               AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
               AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
         )
@@ -157,15 +171,17 @@ def fetch_sales(cur, start_date, end_date):
             SELECT cs.STUDIO_ID, cs.first_buy AS date,
                    COALESCE({_SOURCE_CASE}, 'N/A') AS source,
                    1 AS presales, 0 AS cancellations, cs.unit_revenue AS presale_gross_revenue
-            FROM client_status cs
+            FROM client_status_final cs
             LEFT JOIN leads_dedup l ON l.email=LOWER(TRIM(cs.EMAIL_ID)) AND l.STUDIO_ID=cs.STUDIO_ID AND l.rn=1
             LEFT JOIN clients   c ON c.email=LOWER(TRIM(cs.EMAIL_ID)) AND c.STUDIO_ID=cs.STUDIO_ID AND c.rn=1
-            WHERE cs.first_buy BETWEEN '{start_date}' AND '{end_date}'
+            WHERE cs.person_rn = 1
+              AND cs.first_buy BETWEEN '{start_date}' AND '{end_date}'
             UNION ALL
             SELECT cs.STUDIO_ID, cs.cancel_date AS date, 'N/A' AS source,
                    0 AS presales, 1 AS cancellations, 0 AS presale_gross_revenue
-            FROM client_status cs
-            WHERE cs.cancel_date IS NOT NULL
+            FROM client_status_final cs
+            WHERE cs.person_rn = 1
+              AND cs.cancel_date IS NOT NULL
               AND cs.cancel_date BETWEEN '{start_date}' AND '{end_date}'
         ) t
         GROUP BY 1, 2, 3
