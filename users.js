@@ -19,6 +19,12 @@ const USERS = {
     studios: null,
     role: 'admin'
   },
+  'santiago.estrada@sweat440.com': {
+    passwordHash: '32620a96dfe2cf41f26c5751dd0197ff0235421dec2bd8b3f503f187a2665c76',
+    name: 'Santiago Estrada',
+    studios: null,
+    role: 'admin'
+  },
   'jamie.westall@leadteam.com': {
     passwordHash: 'd51efb736aca536431204927a0dc30e4909d49b809733b7ac6b1227610b6e679',
     name: 'Jamie Westall',
