@@ -84,7 +84,8 @@ def fetch_sales(cur, start_date, end_date):
     sql = f"""
         WITH
         client_buys_raw AS (
-            -- Exclude test/internal emails before any counting
+            -- Include NULL-email clients (NULL NOT LIKE returns NULL=falsy, silently
+            -- excluding real members). Only filter known internal/test email patterns.
             SELECT STUDIO_ID, CLIENT_ID, EMAIL_ID, PRODUCT_DESCRIPTION,
                    COUNT(*)               AS total_buys,
                    MIN(SALE_DATE::DATE)   AS first_buy,
@@ -94,9 +95,11 @@ def fetch_sales(cur, start_date, end_date):
               AND ITEM_TYPE = 'Pricing Option'
               AND LOWER(PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
               AND QUANTITY = 1 AND IS_RETURN = 0
-              AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
-              AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
-              AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
+              AND (EMAIL_ID IS NULL OR (
+                  LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
+                  AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
+                  AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
+              ))
             GROUP BY 1, 2, 3, 4
         ),
         client_cancels AS (
@@ -131,9 +134,11 @@ def fetch_sales(cur, start_date, end_date):
             -- Email dedup with cancel status known: prefer ACTIVE over cancelled,
             -- then earliest first_buy. Fixes duplicate-CLIENT_ID cases where the
             -- older account was cancelled but the newer one is still active.
+            -- NULL emails use CLIENT_ID as dedup key so each is treated as unique.
             SELECT *,
                    ROW_NUMBER() OVER (
-                       PARTITION BY LOWER(TRIM(EMAIL_ID)), STUDIO_ID, PRODUCT_DESCRIPTION
+                       PARTITION BY COALESCE(LOWER(TRIM(EMAIL_ID)), CAST(CLIENT_ID AS VARCHAR)),
+                                    STUDIO_ID, PRODUCT_DESCRIPTION
                        ORDER BY CASE WHEN cancel_date IS NULL THEN 0 ELSE 1 END,
                                 first_buy ASC
                    ) AS email_rn
@@ -145,7 +150,8 @@ def fetch_sales(cur, start_date, end_date):
             -- Prefer the active record; among ties pick the earliest purchase.
             SELECT *,
                    ROW_NUMBER() OVER (
-                       PARTITION BY LOWER(TRIM(EMAIL_ID)), STUDIO_ID
+                       PARTITION BY COALESCE(LOWER(TRIM(EMAIL_ID)), CAST(CLIENT_ID AS VARCHAR)),
+                                    STUDIO_ID
                        ORDER BY CASE WHEN cancel_date IS NULL THEN 0 ELSE 1 END,
                                 first_buy ASC
                    ) AS person_rn
