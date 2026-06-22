@@ -173,6 +173,9 @@
 .nav-user-name{font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.7);white-space:nowrap}
 .logout-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:5px 12px;border-radius:6px;cursor:pointer;transition:all .15s;white-space:nowrap}
 .logout-btn:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5)}
+.refresh-all-btn{background:#DDFF00;border:none;color:#0084B5;font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .15s;white-space:nowrap;margin-right:4px}
+.refresh-all-btn:hover{background:#c8e800;transform:translateY(-1px)}
+.refresh-all-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
 /* ── Nav groups & submenus (desktop) ────────────────────────────────────── */
 .nav-group{position:relative;height:100%;display:flex;align-items:center}
