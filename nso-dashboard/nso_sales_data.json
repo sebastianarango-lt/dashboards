@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-21T13:03:43.562740",
+  "generated_at": "2026-06-22T15:32:08.905965",
   "date_range": {
     "start": "2025-01-01",
-    "end": "2026-06-19"
+    "end": "2026-06-20"
   },
   "studios": {
     "5751381": {
@@ -1076,16 +1076,16 @@
         {
           "date": "2026-06-04",
           "source": "Business Mode",
-          "presales": 1,
+          "presales": 2,
           "cancellations": 0,
-          "gross_revenue": 149.0
+          "gross_revenue": 298.0
         },
         {
           "date": "2026-06-04",
           "source": "Grassroots",
-          "presales": 6,
+          "presales": 5,
           "cancellations": 0,
-          "gross_revenue": 894.0
+          "gross_revenue": 745.0
         },
         {
           "date": "2026-06-04",
@@ -1205,13 +1205,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 149.0
+        },
+        {
+          "date": "2026-06-20",
+          "source": "Grassroots",
+          "presales": 5,
+          "cancellations": 0,
+          "gross_revenue": 745.0
         }
       ],
       "totals": {
-        "presales": 272,
+        "presales": 277,
         "cancellations": 19,
-        "net_presales": 253,
-        "gross_revenue": 32778.0
+        "net_presales": 258,
+        "gross_revenue": 33523.0
       }
     },
     "5752080": {
@@ -2629,13 +2636,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-06-20",
+          "source": "Grassroots",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         }
       ],
       "totals": {
-        "presales": 155,
+        "presales": 156,
         "cancellations": 15,
-        "net_presales": 140,
-        "gross_revenue": 17904.0
+        "net_presales": 141,
+        "gross_revenue": 18033.0
       }
     },
     "5753281": {
@@ -2728,7 +2742,7 @@
         },
         {
           "date": "2026-06-15",
-          "source": "Local Listings",
+          "source": "Business Mode",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
@@ -3050,13 +3064,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-06-20",
+          "source": "Google Ads",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         }
       ],
       "totals": {
-        "presales": 29,
+        "presales": 30,
         "cancellations": 0,
-        "net_presales": 29,
-        "gross_revenue": 3741.0
+        "net_presales": 30,
+        "gross_revenue": 3870.0
       }
     },
     "5753491": {
@@ -3349,13 +3370,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-06-20",
+          "source": "Grassroots",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
         }
       ],
       "totals": {
-        "presales": 68,
+        "presales": 69,
         "cancellations": 1,
-        "net_presales": 67,
-        "gross_revenue": 6762.0
+        "net_presales": 68,
+        "gross_revenue": 6861.0
       }
     },
     "5753073": {
