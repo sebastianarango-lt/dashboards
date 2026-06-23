@@ -250,7 +250,7 @@
 const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge'];
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
-let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null;const _ch={};
+let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='';
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
 function lds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -1455,12 +1455,20 @@ function renderMeta(){
     const name=_metaCreativeName(r.ad_name||r.campaign_name);
     if(!name)return;
     if(!creativeMap[name]){creativeMap[name]={name,impressions:0,clicks:0,spend:0,leads:0,
-      media_type:r.object_type||'Other',thumb:'',preview:'',campaign:r.campaign_name||''};}
+      media_type:r.object_type||'Other',thumb:'',preview:'',campaign:r.campaign_name||'',
+      ad_name:r.ad_name||''};}
     const g=creativeMap[name];
     g.impressions+=r.impressions||0;g.clicks+=r.clicks||0;
     g.spend+=r.spend||0;g.leads+=r.leads||0;
     if(!g.thumb)g.thumb=r.local_image_url||r.thumbnail_url||r.image_url||'';
     if(!g.preview)g.preview=r.preview_link||'';
+  });
+  // Override thumbnails with fresh URLs from nso_ad_meta.json (regenerated daily)
+  // Rows in marketing_data.json are append-only — their thumbnail URLs expire after ~30 days.
+  Object.values(creativeMap).forEach(g=>{
+    const meta=AD_META[g.ad_name];
+    if(meta&&meta.thumbnail_url)g.thumb=meta.thumbnail_url;
+    if(meta&&meta.preview_link&&!g.preview)g.preview=meta.preview_link;
   });
   const creativeRows=Object.values(creativeMap).map(g=>({
     ...g,ctr_num:g.impressions>0?g.clicks/g.impressions*100:0,
@@ -2301,7 +2309,7 @@ async function init(){
   const _allowedStudios = getAuthStudios(_authUser);
 
   // Load all data files
-  const [dataRes,scRes,mktRes,dashRes,gadsRes,socialRes,salesRes,gbpRes]=await Promise.allSettled([
+  const [dataRes,scRes,mktRes,dashRes,gadsRes,socialRes,salesRes,gbpRes,adMetaRes]=await Promise.allSettled([
     fetch('../data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('nso_scorecard_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('marketing_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
@@ -2309,7 +2317,8 @@ async function init(){
     fetch('nso_google_ads.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('social_insights.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('nso_sales_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
-    fetch('gbp_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject())
+    fetch('gbp_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
+    fetch('nso_ad_meta.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject())
   ]);
 
   if(dataRes.status==='fulfilled'){RAW=dataRes.value;if(!RAW.daily_detail)RAW.daily_detail=[];if(!RAW.monthly_detail)RAW.monthly_detail=[]
@@ -2352,6 +2361,9 @@ async function init(){
 
   if(gbpRes.status==='fulfilled'){GBP_RAW=gbpRes.value}
   else{console.warn('gbp_data.json not found');GBP_RAW=null}
+
+  if(adMetaRes.status==='fulfilled'){AD_META=adMetaRes.value.ad_meta||{}}
+  else{console.warn('nso_ad_meta.json not found — thumbnails may be stale')}
 
   // Build multi-selects (filter NSO list to allowed studios if franchisee)
   // NSO names have "SWEAT440 " prefix; users.js stores names without it (matching data.json)
