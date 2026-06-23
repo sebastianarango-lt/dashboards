@@ -137,7 +137,7 @@ def fetch_meta_ads(start_date, end_date):
     except Exception as e:
         print(f"  ERROR: Meta Ads error: {e}")
 
-    return rows
+    return rows, creatives
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -494,6 +494,8 @@ def main():
     parser.add_argument("--location", default=None,
                         help="Filter GA4 to pages containing this slug, e.g. 'pinecrest' or 'florida-pinecrest'")
     parser.add_argument("--output", default="marketing_data.json")
+    parser.add_argument("--ad-meta-output", default=None,
+                        help="If set, write ad creative metadata (fresh thumbnail URLs) to this separate file")
     args = parser.parse_args()
 
     if args.start and args.end:
@@ -517,7 +519,10 @@ def main():
     }
 
     if args.source in ("meta", "all"):
-        output["meta_ads"] = fetch_meta_ads(start_date, end_date)
+        output["meta_ads"], ad_meta = fetch_meta_ads(start_date, end_date)
+        output["ad_meta"] = ad_meta
+    else:
+        ad_meta = {}
 
     if args.source in ("google_ads", "all"):
         output["google_ads"] = fetch_google_ads(start_date, end_date)
@@ -583,13 +588,25 @@ def main():
         print(f"  Snowflake Memberships: {len(sf.get('memberships', []))} rows")
         print(f"  Snowflake Sales: {len(sf.get('sales', []))} rows")
 
-    # Write
+    # Write main output
     out_path = Path(args.output)
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2, default=str)
 
     size_mb = out_path.stat().st_size / 1_000_000
     print(f"\nDone. Written to {out_path} ({size_mb:.1f} MB)")
+
+    # Write ad_meta to a separate file (always fully regenerated — fresh thumbnail URLs)
+    if args.ad_meta_output:
+        ad_meta_path = Path(args.ad_meta_output)
+        ad_meta_out = {
+            "generated_at": output["generated_at"],
+            "ad_meta": ad_meta,
+        }
+        with open(ad_meta_path, "w") as f:
+            json.dump(ad_meta_out, f, indent=2, default=str)
+        print(f"Ad meta written to {ad_meta_path} ({len(ad_meta)} creatives)")
+
     print("=" * 60)
 
 
