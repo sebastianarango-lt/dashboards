@@ -2,7 +2,7 @@ name: NSO Dashboard Daily Refresh
 
 on:
   schedule:
-    - cron: '30 8 * * *'   # 4:30 AM Miami (30 min after general refresh at 8:00 UTC)
+    - cron: '0 9 * * *'    # 5:00 AM Miami (1 hour after general refresh at 8:00 UTC)
   workflow_dispatch:        # Allow manual trigger from GitHub UI
 
 permissions:
@@ -49,23 +49,6 @@ jobs:
             --output nso-dashboard/nso_sales_data.json
         continue-on-error: true
 
-      # ── GBP ────────────────────────────────────────────────────────────────
-      - name: Refresh Google Business Profile (yesterday + 2 days ago)
-        env:
-          GBP_CLIENT_ID:     ${{ secrets.GBP_CLIENT_ID }}
-          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
-          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
-        run: |
-          python nso-dashboard/scripts/fetch_gbp.py \
-            --start $TWO_DAYS_AGO \
-            --end   $YESTERDAY \
-            --output nso-dashboard/gbp_data_new.json
-          python nso-dashboard/scripts/merge_gbp.py \
-            --existing nso-dashboard/gbp_data.json \
-            --new      nso-dashboard/gbp_data_new.json
-          rm -f nso-dashboard/gbp_data_new.json
-        continue-on-error: true
-
       # ── META ADS + GA4 + GOOGLE ADS ────────────────────────────────────────
       - name: Refresh Meta Ads / GA4 / Google Ads (yesterday + 2 days ago)
         env:
@@ -93,17 +76,6 @@ jobs:
             --new      nso-dashboard/marketing_all_new.json \
             --keys     google_ads
           rm -f nso-dashboard/marketing_all_new.json
-        continue-on-error: true
-
-      # ── SOCIAL INSIGHTS ────────────────────────────────────────────────────
-      - name: Refresh Social Insights
-        env:
-          META_ACCESS_TOKEN: ${{ secrets.META_TOKEN }}
-          META_APP_ID:       ${{ secrets.META_APP_ID }}
-          META_APP_SECRET:   ${{ secrets.META_APP_SECRET }}
-        run: |
-          python nso-dashboard/scripts/fetch_social_insights.py \
-            --output nso-dashboard/social_insights.json
         continue-on-error: true
 
       # ── SCORECARD ──────────────────────────────────────────────────────────
@@ -151,17 +123,15 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
           git add \
             nso-dashboard/nso_sales_data.json \
-            nso-dashboard/gbp_data.json \
             nso-dashboard/marketing_data.json \
             nso-dashboard/nso_google_ads.json \
-            nso-dashboard/social_insights.json \
             nso-dashboard/nso_scorecard_data.json \
             nso-dashboard/nso_ad_meta.json
           find nso-dashboard/thumbnails -type f 2>/dev/null | grep -q . && \
             git add nso-dashboard/thumbnails/ || true
           git diff --cached --quiet || \
             git commit -m "chore: nso daily refresh $YESTERDAY"
-          git pull --rebase origin main
           git push
