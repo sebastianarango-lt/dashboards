@@ -123,7 +123,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
           git add \
             nso-dashboard/nso_sales_data.json \
             nso-dashboard/marketing_data.json \
@@ -134,4 +133,5 @@ jobs:
             git add nso-dashboard/thumbnails/ || true
           git diff --cached --quiet || \
             git commit -m "chore: nso daily refresh $YESTERDAY"
+          git pull --rebase origin main
           git push
