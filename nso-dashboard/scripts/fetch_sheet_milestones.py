@@ -355,6 +355,8 @@ for studio in sc.get("studios", []):
     # Update CO / GO dates and week numbers
     if info.get("opening_date"):
         studio["opening_date"] = info["opening_date"]
+    if info.get("co_date"):
+        studio["co_date"] = info["co_date"]
     if info.get("co_week") is not None:
         studio["co_week"] = info["co_week"]
     if info.get("go_week") is not None:
