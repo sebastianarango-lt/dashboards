@@ -208,10 +208,10 @@ def fetch_daily_sales(cur, studio_id, end_date):
         d0  = str(first_buy)
 
         if net > 0:
-            daily[(d0, prod_desc)] += 1
+            daily[(d0, prod_desc)] += net          # count all active instances, not just 1
         elif net == 0 and last_cancel:
-            daily[(d0, prod_desc)]          += 1
-            daily[(last_cancel, prod_desc)] -= 1
+            daily[(d0, prod_desc)]          += int(total_buys)
+            daily[(last_cancel, prod_desc)] -= total_cancels
         # net < 0 is a data anomaly — skip
 
     return [(d, pd, int(n)) for (d, pd), n in sorted(daily.items()) if n != 0]
