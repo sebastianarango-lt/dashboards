@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-23T19:48:19.363286",
+  "generated_at": "2026-06-24T11:38:13.657328",
   "date_range": {
     "start": "2025-01-01",
-    "end": "2026-06-21"
+    "end": "2026-06-22"
   },
   "studios": {
     "5751381": {
@@ -1076,16 +1076,16 @@
         {
           "date": "2026-06-04",
           "source": "Business Mode",
-          "presales": 2,
+          "presales": 3,
           "cancellations": 0,
-          "gross_revenue": 298.0
+          "gross_revenue": 447.0
         },
         {
           "date": "2026-06-04",
           "source": "Grassroots",
-          "presales": 4,
+          "presales": 3,
           "cancellations": 0,
-          "gross_revenue": 596.0
+          "gross_revenue": 447.0
         },
         {
           "date": "2026-06-04",
@@ -1219,13 +1219,20 @@
           "presales": 4,
           "cancellations": 0,
           "gross_revenue": 596.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 149.0
         }
       ],
       "totals": {
-        "presales": 279,
+        "presales": 280,
         "cancellations": 17,
-        "net_presales": 262,
-        "gross_revenue": 33611.0
+        "net_presales": 263,
+        "gross_revenue": 33760.0
       }
     },
     "5752080": {
@@ -1756,13 +1763,20 @@
           "presales": 3,
           "cancellations": 0,
           "gross_revenue": 297.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
         }
       ],
       "totals": {
-        "presales": 134,
+        "presales": 135,
         "cancellations": 7,
-        "net_presales": 127,
-        "gross_revenue": 13266.0
+        "net_presales": 128,
+        "gross_revenue": 13365.0
       }
     },
     "5750130": {
@@ -2629,13 +2643,27 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Grassroots",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
         }
       ],
       "totals": {
-        "presales": 154,
+        "presales": 156,
         "cancellations": 11,
-        "net_presales": 143,
-        "gross_revenue": 17745.0
+        "net_presales": 145,
+        "gross_revenue": 17943.0
       }
     },
     "5753281": {
@@ -2933,13 +2961,20 @@
           "presales": 2,
           "cancellations": 0,
           "gross_revenue": 258.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Business Mode",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 258.0
         }
       ],
       "totals": {
-        "presales": 34,
+        "presales": 36,
         "cancellations": 2,
-        "net_presales": 32,
-        "gross_revenue": 4386.0
+        "net_presales": 34,
+        "gross_revenue": 4644.0
       }
     },
     "5753608": {
@@ -3085,13 +3120,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         }
       ],
       "totals": {
-        "presales": 35,
+        "presales": 36,
         "cancellations": 0,
-        "net_presales": 35,
-        "gross_revenue": 4515.0
+        "net_presales": 36,
+        "gross_revenue": 4644.0
       }
     },
     "5753491": {
@@ -3384,13 +3426,20 @@
           "presales": 6,
           "cancellations": 0,
           "gross_revenue": 594.0
+        },
+        {
+          "date": "2026-06-22",
+          "source": "Business Mode",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 198.0
         }
       ],
       "totals": {
-        "presales": 75,
+        "presales": 77,
         "cancellations": 0,
-        "net_presales": 75,
-        "gross_revenue": 7425.0
+        "net_presales": 77,
+        "gross_revenue": 7623.0
       }
     },
     "5753073": {
