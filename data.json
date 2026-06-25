@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T10:47:30.925812Z",
+  "generated_at": "2026-06-25T10:40:02.016214Z",
   "studios": [
     "Austin - Highland",
     "Austin - Zilker",
@@ -7617,7 +7617,7 @@
       "signups": 9,
       "first_visits": 11,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-07",
@@ -26940,7 +26940,7 @@
       "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-23",
@@ -45684,15 +45684,6 @@
       "date": "2026-02-07",
       "studio": "Coral Springs",
       "source": "Website (unattributed)",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-02-07",
-      "studio": "Dallas - Prestonwood",
-      "source": "Business Mode",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -112467,7 +112458,7 @@
       "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-04-03",
@@ -130394,7 +130385,7 @@
       "source": "N/A",
       "signups": 1,
       "first_visits": 0,
-      "first_activations": 1,
+      "first_activations": 0,
       "first_sales": 0
     },
     {
@@ -138108,7 +138099,7 @@
       "signups": 4,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-04-22",
@@ -146340,7 +146331,7 @@
       "date": "2026-04-29",
       "studio": "Doral",
       "source": "ClassPass / Platforms",
-      "signups": 5,
+      "signups": 6,
       "first_visits": 6,
       "first_activations": 0,
       "first_sales": 0
@@ -160038,7 +160029,7 @@
       "date": "2026-05-09",
       "studio": "South Miami",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
@@ -161787,7 +161778,7 @@
       "signups": 1,
       "first_visits": 1,
       "first_activations": 1,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-05-11",
@@ -164484,7 +164475,7 @@
       "date": "2026-05-13",
       "studio": "Deerfield Beach",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -166394,7 +166385,7 @@
       "source": "N/A",
       "signups": 0,
       "first_visits": 1,
-      "first_activations": 0,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -183693,7 +183684,7 @@
       "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-05-28",
@@ -185417,6 +185408,15 @@
     {
       "date": "2026-05-29",
       "studio": "Miami - Midtown",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-05-29",
+      "studio": "Miami - Midtown",
       "source": "Website (unattributed)",
       "signups": 1,
       "first_visits": 1,
@@ -186672,7 +186672,7 @@
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-05-30",
@@ -187005,6 +187005,15 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-30",
+      "studio": "Miami Lakes",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -194358,7 +194367,7 @@
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-06-04",
@@ -195717,7 +195726,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-05",
@@ -209825,6 +209834,15 @@
     {
       "date": "2026-06-15",
       "studio": "Ocean Township",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-15",
+      "studio": "Ocean Township",
       "source": "SWEAT440 App",
       "signups": 0,
       "first_visits": 0,
@@ -211122,7 +211140,7 @@
       "date": "2026-06-16",
       "studio": "Miramar",
       "source": "N/A",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -211746,7 +211764,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-17",
@@ -211953,7 +211971,7 @@
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-06-17",
@@ -211980,7 +211998,7 @@
       "signups": 9,
       "first_visits": 4,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-17",
@@ -213501,7 +213519,7 @@
       "signups": 2,
       "first_visits": 2,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-18",
@@ -214965,7 +214983,7 @@
       "date": "2026-06-19",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -214983,7 +215001,7 @@
       "date": "2026-06-19",
       "studio": "Miami Lakes",
       "source": "Website (unattributed)",
-      "signups": 0,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -216669,7 +216687,7 @@
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-20",
@@ -217344,7 +217362,7 @@
       "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-21",
@@ -218055,7 +218073,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-21",
@@ -218460,7 +218478,7 @@
       "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-22",
@@ -218502,7 +218520,7 @@
       "date": "2026-06-22",
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
-      "signups": 6,
+      "signups": 7,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -218520,15 +218538,6 @@
       "date": "2026-06-22",
       "studio": "Dallas - Prestonwood",
       "source": "N/A",
-      "signups": 1,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-22",
-      "studio": "Dallas - Prestonwood",
-      "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
@@ -218582,6 +218591,15 @@
     {
       "date": "2026-06-22",
       "studio": "Deerfield Beach",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-22",
+      "studio": "Deerfield Beach",
       "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 0,
@@ -218604,7 +218622,7 @@
       "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-22",
@@ -218682,7 +218700,7 @@
       "date": "2026-06-22",
       "studio": "Eastchester",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 1,
       "first_sales": 0
@@ -218802,7 +218820,7 @@
       "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-22",
@@ -219430,7 +219448,7 @@
       "studio": "South Miami",
       "source": "Website (unattributed)",
       "signups": 2,
-      "first_visits": 1,
+      "first_visits": 0,
       "first_activations": 1,
       "first_sales": 0
     },
@@ -219540,13 +219558,1444 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-22",
       "studio": "West Palm Beach",
       "source": "Website (unattributed)",
       "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Austin - Highland",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Austin - Highland",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Austin - Highland",
+      "source": "Google Ads",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Austin - Zilker",
+      "source": "Business Mode",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Austin - Zilker",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Austin - Zilker",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Aventura",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Aventura",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Aventura",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Boca Raton",
+      "source": "Business Mode",
+      "signups": 37,
+      "first_visits": 36,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Boca Raton",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Boca Raton",
+      "source": "Grassroots",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Boca Raton",
+      "source": "Local Listings",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Boca Raton",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Boca Raton",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Charlotte - Noda",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Charlotte - Noda",
+      "source": "ClassPass / Platforms",
+      "signups": 6,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Charlotte - Noda",
+      "source": "Grassroots",
+      "signups": 6,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Charlotte - Noda",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Gables",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Gables",
+      "source": "ClassPass / Platforms",
+      "signups": 8,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Gables",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Gables",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Gables",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Springs",
+      "source": "Business Mode",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Springs",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Springs",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Springs",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Coral Springs",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Prestonwood",
+      "source": "Business Mode",
+      "signups": 3,
+      "first_visits": 3,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Prestonwood",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Prestonwood",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Prestonwood",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Uptown",
+      "source": "Business Mode",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 4
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Uptown",
+      "source": "Grassroots",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Uptown",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dallas - Uptown",
+      "source": "Social Media Organic",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Deerfield Beach",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Deerfield Beach",
+      "source": "ClassPass / Platforms",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Deerfield Beach",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Deerfield Beach",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 7,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "MindBody App",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Doral",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dunwoody",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Dunwoody",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Eastchester",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 3,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Eastchester",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Eastchester",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Eastchester",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Eastchester",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 3,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 4,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Herriman",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Herriman",
+      "source": "Grassroots",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Madison",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 1,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "Local Listings",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 2,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Brickell",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Coconut Grove",
+      "source": "Business Mode",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Coconut Grove",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Coconut Grove",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "ClassPass / Platforms",
+      "signups": 7,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "Grassroots",
+      "signups": 3,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Midtown",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Upper East Side",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Upper East Side",
+      "source": "ClassPass / Platforms",
+      "signups": 5,
+      "first_visits": 5,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Upper East Side",
+      "source": "Local Listings",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Upper East Side",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami - Upper East Side",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Beach",
+      "source": "Business Mode",
+      "signups": 5,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Beach",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Beach",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Beach",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Beach",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Lakes",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Lakes",
+      "source": "ClassPass / Platforms",
+      "signups": 7,
+      "first_visits": 7,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Lakes",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miami Lakes",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miramar",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miramar",
+      "source": "ClassPass / Platforms",
+      "signups": 6,
+      "first_visits": 5,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miramar",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miramar",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miramar",
+      "source": "N/A",
+      "signups": 4,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Miramar",
+      "source": "Website (unattributed)",
+      "signups": 6,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "Business Mode",
+      "signups": 4,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "ClassPass / Platforms",
+      "signups": 12,
+      "first_visits": 11,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "Local Listings",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Chelsea",
+      "source": "Website (unattributed)",
+      "signups": 8,
+      "first_visits": 7,
+      "first_activations": 2,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - FiDi",
+      "source": "Business Mode",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - FiDi",
+      "source": "ClassPass / Platforms",
+      "signups": 10,
+      "first_visits": 11,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - FiDi",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - FiDi",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - FiDi",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Park Slope",
+      "source": "Business Mode",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Park Slope",
+      "source": "ClassPass / Platforms",
+      "signups": 6,
+      "first_visits": 5,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Park Slope",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Park Slope",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "NYC - Park Slope",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Naples - Mercato",
+      "source": "Business Mode",
+      "signups": 4,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Naples - Mercato",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Naples - Mercato",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "North Miami",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "North Miami",
+      "source": "Meta Ads",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "North Miami",
+      "source": "Social Media Organic",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "Local Listings",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 3,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Ocean Township",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Old Bridge",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Orlando - Dr Phillips",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pembroke Pines",
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pembroke Pines",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 3,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pembroke Pines",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Business Mode",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Reston",
+      "source": "Grassroots",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "South Miami",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "South Miami",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "South Miami",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "South Miami",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "South Miami",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Toms River",
+      "source": "Business Mode",
+      "signups": 5,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Toms River",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Toms River",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Wall Township",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Wall Township",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "Wall Township",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "Grassroots",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "Local Listings",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "West Palm Beach",
+      "source": "N/A",
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -219557,8 +221006,8 @@
       "month": "2023-06-01",
       "studio": "Austin - Highland",
       "source": "N/A",
-      "signups": 40,
-      "first_visits": 28,
+      "signups": 33,
+      "first_visits": 20,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219566,7 +221015,7 @@
       "month": "2023-06-01",
       "studio": "Austin - Zilker",
       "source": "N/A",
-      "signups": 21,
+      "signups": 18,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219575,8 +221024,8 @@
       "month": "2023-06-01",
       "studio": "Charlotte - Noda",
       "source": "N/A",
-      "signups": 37,
-      "first_visits": 79,
+      "signups": 30,
+      "first_visits": 62,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219584,8 +221033,8 @@
       "month": "2023-06-01",
       "studio": "Coral Gables",
       "source": "N/A",
-      "signups": 72,
-      "first_visits": 58,
+      "signups": 62,
+      "first_visits": 53,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219593,8 +221042,8 @@
       "month": "2023-06-01",
       "studio": "Coral Springs",
       "source": "N/A",
-      "signups": 42,
-      "first_visits": 20,
+      "signups": 38,
+      "first_visits": 17,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219602,8 +221051,8 @@
       "month": "2023-06-01",
       "studio": "Deerfield Beach",
       "source": "N/A",
-      "signups": 39,
-      "first_visits": 34,
+      "signups": 37,
+      "first_visits": 26,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219611,8 +221060,8 @@
       "month": "2023-06-01",
       "studio": "Doral",
       "source": "N/A",
-      "signups": 65,
-      "first_visits": 53,
+      "signups": 48,
+      "first_visits": 41,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219638,8 +221087,8 @@
       "month": "2023-06-01",
       "studio": "Miami - Brickell",
       "source": "N/A",
-      "signups": 107,
-      "first_visits": 59,
+      "signups": 88,
+      "first_visits": 52,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219647,7 +221096,7 @@
       "month": "2023-06-01",
       "studio": "Miami - Coconut Grove",
       "source": "N/A",
-      "signups": 5,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219656,7 +221105,7 @@
       "month": "2023-06-01",
       "studio": "Miami - Midtown",
       "source": "N/A",
-      "signups": 18,
+      "signups": 14,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219665,8 +221114,8 @@
       "month": "2023-06-01",
       "studio": "Miami - Upper East Side",
       "source": "N/A",
-      "signups": 40,
-      "first_visits": 47,
+      "signups": 36,
+      "first_visits": 41,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219674,8 +221123,8 @@
       "month": "2023-06-01",
       "studio": "Miami Beach",
       "source": "N/A",
-      "signups": 46,
-      "first_visits": 44,
+      "signups": 36,
+      "first_visits": 28,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219701,8 +221150,8 @@
       "month": "2023-06-01",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 58,
-      "first_visits": 39,
+      "signups": 48,
+      "first_visits": 34,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219710,7 +221159,7 @@
       "month": "2023-06-01",
       "studio": "Miramar",
       "source": "N/A",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219719,8 +221168,8 @@
       "month": "2023-06-01",
       "studio": "NYC - Chelsea",
       "source": "N/A",
-      "signups": 78,
-      "first_visits": 55,
+      "signups": 65,
+      "first_visits": 45,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219728,17 +221177,8 @@
       "month": "2023-06-01",
       "studio": "NYC - FiDi",
       "source": "N/A",
-      "signups": 34,
-      "first_visits": 20,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "month": "2023-06-01",
-      "studio": "NYC - Park Slope",
-      "source": "N/A",
-      "signups": 1,
-      "first_visits": 0,
+      "signups": 27,
+      "first_visits": 19,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -219764,7 +221204,7 @@
       "month": "2023-06-01",
       "studio": "Pembroke Pines",
       "source": "N/A",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219782,7 +221222,7 @@
       "month": "2023-06-01",
       "studio": "South Miami",
       "source": "N/A",
-      "signups": 18,
+      "signups": 13,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219791,8 +221231,8 @@
       "month": "2023-06-01",
       "studio": "Toms River",
       "source": "N/A",
-      "signups": 74,
-      "first_visits": 61,
+      "signups": 65,
+      "first_visits": 47,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -220386,7 +221826,7 @@
       "studio": "Miami - Brickell",
       "source": "ClassPass / Platforms",
       "signups": 0,
-      "first_visits": 1,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -220395,7 +221835,7 @@
       "studio": "Miami - Brickell",
       "source": "N/A",
       "signups": 337,
-      "first_visits": 245,
+      "first_visits": 244,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -221897,7 +223337,7 @@
       "month": "2023-12-01",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 108,
+      "signups": 109,
       "first_visits": 94,
       "first_activations": 0,
       "first_sales": 0
@@ -222769,9 +224209,18 @@
     {
       "month": "2024-02-01",
       "studio": "Miami Beach",
+      "source": "Business Mode",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "month": "2024-02-01",
+      "studio": "Miami Beach",
       "source": "N/A",
-      "signups": 288,
-      "first_visits": 220,
+      "signups": 287,
+      "first_visits": 219,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -223013,7 +224462,7 @@
       "month": "2024-03-01",
       "studio": "Charlotte - Noda",
       "source": "N/A",
-      "signups": 218,
+      "signups": 219,
       "first_visits": 123,
       "first_activations": 0,
       "first_sales": 0
@@ -223112,7 +224561,7 @@
       "month": "2024-03-01",
       "studio": "Miami - Brickell",
       "source": "N/A",
-      "signups": 427,
+      "signups": 428,
       "first_visits": 260,
       "first_activations": 1,
       "first_sales": 1
@@ -223697,7 +225146,7 @@
       "month": "2024-04-01",
       "studio": "NYC - Chelsea",
       "source": "N/A",
-      "signups": 379,
+      "signups": 380,
       "first_visits": 243,
       "first_activations": 0,
       "first_sales": 0
@@ -225335,7 +226784,7 @@
       "month": "2024-08-01",
       "studio": "Fort Lauderdale - Las Olas",
       "source": "N/A",
-      "signups": 141,
+      "signups": 142,
       "first_visits": 0,
       "first_activations": 1,
       "first_sales": 1
@@ -230591,7 +232040,7 @@
       "month": "2025-06-01",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 284,
+      "signups": 285,
       "first_visits": 199,
       "first_activations": 4,
       "first_sales": 3
@@ -231230,7 +232679,7 @@
       "month": "2025-07-01",
       "studio": "Ocean Township",
       "source": "N/A",
-      "signups": 303,
+      "signups": 302,
       "first_visits": 222,
       "first_activations": 7,
       "first_sales": 7
@@ -231248,7 +232697,7 @@
       "month": "2025-07-01",
       "studio": "Ocean Township",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -233129,7 +234578,7 @@
       "month": "2025-10-01",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 197,
+      "signups": 198,
       "first_visits": 166,
       "first_activations": 1,
       "first_sales": 1
