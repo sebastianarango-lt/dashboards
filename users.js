@@ -87,6 +87,12 @@ const USERS = {
     studios: null,
     role: 'corporate'
   },
+    'jose.vera@sweat440.com': {
+    passwordHash: '109622880505b23e67fd78f3525ba1ecadfa8733e550c06521b738b1f87d82a2',
+    name: 'Jose Vera',
+    studios: null,
+    role: 'corporate'
+  },
   'jose@sweat440.com': {
     passwordHash: '296a0b062b2c363b5dc4264c2cc465376db6b43836be03207891ec9c78dec70b',
     name: 'Jose Vera',
