@@ -428,6 +428,8 @@ function renderSummary(){
 
   const w=studio.weeks,tgt=studio.targets;
   const totalWeeks=studio.go_week||(w.length-1);
+  // paceWeeks: use co_week as the goal denominator so pace/benchmarks target C/O date, not GO
+  const paceWeeks=studio.co_week||totalWeeks;
 
   // Compute current week from today vs week bounds (JS-side, for display accuracy)
   const todayStr=new Date().toISOString().slice(0,10);
@@ -584,11 +586,11 @@ function renderSummary(){
   const sales7=NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
   const lastNetPresales=Math.max(0,sales7.reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
   const lastSpend=cur.total_marketing_spend||0;
-  const wkLeadGoal=tgt.total_leads?Math.round(tgt.total_leads/totalWeeks):0;
-  const wkPresaleGoal=tgt.presales_count?Math.round(tgt.presales_count/totalWeeks):0;
+  const wkLeadGoal=tgt.total_leads?Math.round(tgt.total_leads/paceWeeks):0;
+  const wkPresaleGoal=tgt.presales_count?Math.round(tgt.presales_count/paceWeeks):0;
   const cumSpend=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.total_marketing_spend||0),0);
   const cumSpendNoLT=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.meta_spend||0)+(x.google_spend||0)+(x.grassroots_spend||0)+(x.other_spend||0),0);
-  const estTotalSpend=displayCw>0?Math.round(cumSpendNoLT/displayCw*totalWeeks):0;
+  const estTotalSpend=displayCw>0?Math.round(cumSpendNoLT/displayCw*paceWeeks):0;
 
   // Pacing benchmarks (300-in-12wk and 440-in-16wk) at current week
   const pace300=Math.round(300/12*cw);
@@ -621,9 +623,9 @@ function renderSummary(){
 
   // Card B — Total to Date with progress bars
   h+=`<div class="chart-card summary-card"><div class="summary-card-section">Total to Date</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:-8px;margin-bottom:10px">${_dataThruLabel}</div>`:''}`;
-  h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',Math.round((tgt.total_leads||0)/totalWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_leads_total');
+  h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',Math.round((tgt.total_leads||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_leads_total');
   const netPresales=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
-  h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',Math.round((tgt.presales_count||0)/totalWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_presales_total');
+  h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',Math.round((tgt.presales_count||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_presales_total');
   if((cur.estimated_day1_rmr||0)>0){const _rmrA=cur.estimated_day1_rmr||0,_rmrT=tgt.estimated_day1_rmr||0,_rmrPct=_rmrT>0?Math.min(100,Math.round(_rmrA/_rmrT*100)):0;h+=`<div style="margin-bottom:18px;position:relative">${_infoBtn('sum_rmr')}<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Est. Day-1 RMR</div><div style="text-align:right"><span style="font-size:20px;font-weight:700;color:#1a1a2e;font-family:'Oswald',sans-serif">$${_rmrA.toLocaleString('en-US')}</span><span style="font-size:10px;color:#8aaabb;margin-left:6px">/ $${_rmrT.toLocaleString('en-US')}</span></div></div><div style="position:relative;height:14px;background:#f0f6fa;border-radius:7px"><div style="position:absolute;left:0;top:0;height:100%;width:${_rmrPct}%;background:#f4a021;border-radius:7px;min-width:${_rmrPct>0?4:0}px"></div></div></div>`;}
   if(estTotalSpend>0||cumSpendNoLT>0){
     const _fmtS=v=>v!=null?'$'+Math.round(v).toLocaleString('en-US'):'—';
@@ -631,7 +633,7 @@ function renderSummary(){
     const cplMid=_parseCpl(tgt.blended_cpl);
     // Budget: explicit value from NSO Config sheet takes priority, then CPL-based estimate
     const budgetTarget=tgt.marketing_budget||( cplMid&&tgt.total_leads?Math.round(cplMid*tgt.total_leads):estTotalSpend );
-    const spendBench=Math.round(budgetTarget/totalWeeks*displayCw);
+    const spendBench=Math.round(budgetTarget/paceWeeks*displayCw);
     h+=_progBar('Mktg Spend (without Leadteam Fee)',Math.round(cumSpendNoLT),budgetTarget,'#9b59b6',spendBench,'W'+displayCw+' Pace',_fmtS,'Budget','sum_spend');
   }
   h+=`</div>`;
@@ -1090,8 +1092,9 @@ function renderScorecard(){
   const fInt=v=>v!=null?v:'—';
   const fPct=v=>v!=null?(v*100).toFixed(1)+'%':'—';
   const fCur=v=>v!=null?'$'+v.toFixed(2):'—';
-  const reqLeads=tgt.total_leads&&sc.go_week?+(tgt.total_leads/sc.go_week).toFixed(1):null;
-  const reqPresales=tgt.presales_count&&sc.go_week?+(tgt.presales_count/sc.go_week).toFixed(1):null;
+  const scPaceWeeks=sc.co_week||sc.go_week;
+  const reqLeads=tgt.total_leads&&scPaceWeeks?+(tgt.total_leads/scPaceWeeks).toFixed(1):null;
+  const reqPresales=tgt.presales_count&&scPaceWeeks?+(tgt.presales_count/scPaceWeeks).toFixed(1):null;
 
   const _ib=k=>_infoBtn(k);
   const weeklyDefs=[
@@ -1122,13 +1125,13 @@ function renderScorecard(){
 
   const cumDefs=[
     {label:_ib('sc_total_leads')+'Total Leads',         key:'tl',  fmt:fInt, color:true,
-     cumReqFn:wk=>tgt.total_leads&&sc.go_week?Math.round(tgt.total_leads/sc.go_week*wk.w):null,
+     cumReqFn:wk=>tgt.total_leads&&scPaceWeeks?Math.round(tgt.total_leads/scPaceWeeks*wk.w):null,
      cumReqDisplay:tgt.total_leads||null},
     {label:_ib('sc_presales_gross')+'Presales (gross)', key:'pc',  fmt:fInt, color:true,
-     cumReqFn:wk=>tgt.presales_count&&sc.go_week?Math.round(tgt.presales_count/sc.go_week*wk.w):null,
+     cumReqFn:wk=>tgt.presales_count&&scPaceWeeks?Math.round(tgt.presales_count/scPaceWeeks*wk.w):null,
      cumReqDisplay:tgt.presales_count||null},
     {label:_ib('sc_net_presales')+'Net Presales',       key:null, computed:wk=>Math.max(0,(wk.pc||0)-(wk.cancTot||0)), fmt:fInt, color:true,
-     cumReqFn:wk=>tgt.presales_count&&sc.go_week?Math.round(tgt.presales_count/sc.go_week*wk.w):null,
+     cumReqFn:wk=>tgt.presales_count&&scPaceWeeks?Math.round(tgt.presales_count/scPaceWeeks*wk.w):null,
      cumReqDisplay:tgt.presales_count||null},
     {label:_ib('sc_cum_cvr')+'Conversion Rate',         key:'cumCr', fmt:fPct, color:true,
      cumReqFn:_=>0.35, cumReqDisplay:0.35},
@@ -1222,7 +1225,7 @@ function renderScorecard(){
   // Target column values — read from NSO Config sheet via pricing block, fallback to calculation
   const _t0tgt=pricing.tier0_members_target||null;
   const _t1tgt=pricing.tier1_members_target||(()=>{
-    const _reqPs=tgt.presales_count&&sc.go_week?tgt.presales_count/sc.go_week:0;
+    const _reqPs=tgt.presales_count&&scPaceWeeks?tgt.presales_count/scPaceWeeks:0;
     return t2sw>1?Math.round(_reqPs*(t2sw-1)):0;
   })();
   let _t2tgt,_t3tgt=0;
@@ -1230,11 +1233,11 @@ function renderScorecard(){
     _t2tgt=pricing.tier2_members_target;
     _t3tgt=pricing.tier3_members_target||0;
   } else if(t3sw&&t3p){
-    const _reqPs=tgt.presales_count&&sc.go_week?tgt.presales_count/sc.go_week:0;
+    const _reqPs=tgt.presales_count&&scPaceWeeks?tgt.presales_count/scPaceWeeks:0;
     _t2tgt=Math.round(_reqPs*(t3sw-t2sw));
     _t3tgt=Math.max(0,Math.round(tgt.presales_count||0)-_t1tgt-_t2tgt);
   } else {
-    const _reqPs=tgt.presales_count&&sc.go_week?tgt.presales_count/sc.go_week:0;
+    const _reqPs=tgt.presales_count&&scPaceWeeks?tgt.presales_count/scPaceWeeks:0;
     _t2tgt=Math.max(0,Math.round(tgt.presales_count||0)-_t1tgt);
   }
   const _totalMembersTgt=(_t0tgt||0)+_t1tgt+_t2tgt+_t3tgt;
