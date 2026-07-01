@@ -37,7 +37,7 @@ CREATIVE_FIELDS = [
     "asset_feed_spec{images{url},videos{thumbnail_url}}",
 ]
 
-AD_FIELDS = "id,name,status,creative{id},effective_object_story_id"
+AD_FIELDS = "id,name,status,creative{id},effective_object_story_id,preview_shareable_link"
 ADSET_FIELDS = "id,name,status,campaign_id"
 
 MAX_RETRIES    = 5
@@ -119,10 +119,21 @@ class MetaClient:
             next_url = paging.get("next")
             if not next_url:
                 break
-            resp = self.session.get(next_url, timeout=120)
-            data = resp.json()
-            if "error" in data:
-                raise RuntimeError(f"Meta pagination error: {data['error'].get('message')}")
+            for attempt in range(1, MAX_RETRIES + 1):
+                resp = self.session.get(next_url, timeout=120)
+                data = resp.json()
+                if "error" in data:
+                    err = data["error"]
+                    code = err.get("code")
+                    if code in (17, 32, 4, 613) or err.get("is_transient"):
+                        wait = RETRY_WAIT_S * attempt
+                        log.warning(f"Rate limit on pagination (code {code}), waiting {wait}s")
+                        time.sleep(wait)
+                        continue
+                    raise RuntimeError(f"Meta pagination error: {err.get('message')} (code {code})")
+                break
+            else:
+                raise RuntimeError(f"Exhausted {MAX_RETRIES} retries on pagination next_url")
         return results
 
     def _paginate_insights(self, path: str, params: dict) -> list[dict]:
