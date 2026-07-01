@@ -47,8 +47,9 @@ CONFIG_PATH    = REPO_ROOT / "config-meta.yaml"
 OUT_PATH       = REPO_ROOT / "meta-ads-data.json"
 PAID_ADS_PATH  = REPO_ROOT / "meta-ads-baked.json"  # static baked monthly spend, never overwritten
 
-# Earliest date we want daily data for (grows forward from here indefinitely)
-DAILY_START = "2026-04-01"
+# How many days back to re-fetch on each daily run.
+# Historical data outside this window is preserved via upsert from the existing file.
+DAILY_LOOKBACK_DAYS = 21
 
 logging.basicConfig(
     level=logging.INFO,
@@ -197,8 +198,9 @@ def run():
     today_iso = today.isoformat()
 
     # ── date windows ─────────────────────────────────────────────────
-    # ad_daily + studio_daily: DAILY_START → today
-    daily_start = DAILY_START
+    # Fetch only the last DAILY_LOOKBACK_DAYS days each run.
+    # Older data is preserved via upsert from the existing file.
+    daily_start = (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
     daily_end   = today_iso
 
     # ── load existing output (for upsert + baked monthly) ────────────
@@ -276,13 +278,17 @@ def run():
 
     status_by_ad = {ad["id"]: ad.get("status", "UNKNOWN") for ad in all_ads if ad.get("id")}
 
-    # Meta Ads Library URL uses the page-post ID, NOT the ad ID.
-    # effective_object_story_id is formatted "{page_id}_{post_id}"; we want
-    # the post_id portion. Falls back to ad_id when missing.
+    # Collect preview_shareable_link and Ads Library URL per ad.
+    # preview_shareable_link works for all ad types (including Lead Gen forms).
+    # library_url is kept as a fallback using effective_object_story_id.
+    preview_link_by_ad: dict[str, str] = {}
     library_id_by_ad: dict[str, str] = {}
     for ad in all_ads:
         ad_id = ad.get("id")
         if not ad_id: continue
+        psl = ad.get("preview_shareable_link") or ""
+        if psl:
+            preview_link_by_ad[ad_id] = psl
         eosi = ad.get("effective_object_story_id") or ""
         post_id = eosi.split("_", 1)[1] if "_" in eosi else eosi
         if post_id:
@@ -415,6 +421,7 @@ def run():
             "media_type":    media_type,
             "studio_code":   ad_studio_seen.get(ad_id) or (ad_meta.get(ad_id) or {}).get("studio_code"),
             "thumbnail_url": thumb or (ad_meta.get(ad_id) or {}).get("thumbnail_url", ""),
+            "preview_link":  preview_link_by_ad.get(ad_id) or (ad_meta.get(ad_id) or {}).get("preview_link", ""),
             "library_url":   f"https://www.facebook.com/ads/library/?id={library_id_by_ad.get(ad_id, ad_id)}&country=US",
         }
 

@@ -1417,6 +1417,7 @@ async function buildMetaTab() {
         spend:0, impressions:0, clicks:0, leads:0, trials:0,
         isActive:    false,
         thumbnail:   '',
+        preview_link: '',
         library_url: '',
         _adIds:      [],
       };
@@ -1429,7 +1430,8 @@ async function buildMetaTab() {
     g.trials      += metrics.trials;
     if (meta?.status === 'ACTIVE') g.isActive = true;
     if (!g.thumbnail   && meta?.thumbnail_url) g.thumbnail   = meta.thumbnail_url;
-    if (!g.library_url && meta?.library_url)   g.library_url = meta.library_url;
+    if (!g.preview_link && meta?.preview_link) g.preview_link = meta.preview_link;
+    if (!g.library_url  && meta?.library_url)  g.library_url  = meta.library_url;
     g._adIds.push(ad_id);
   }
   // Clean up _adIds
@@ -1456,10 +1458,11 @@ async function buildMetaTab() {
           const ctrStr = g.impressions > 0 ? (g.clicks/g.impressions*100).toFixed(2)+'%' : '—';
           const adCpl  = g.leads > 0 ? f$2(g.spend/g.leads) : '—';
           const thumbFallback = '<div style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px">&#9654;</div>';
+          const adLink = g.preview_link || g.library_url || '#';
           const thumbCell = g.thumbnail
-            ? '<a href="' + g.library_url + '" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2);flex-shrink:0">'
+            ? '<a href="' + adLink + '" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2);flex-shrink:0">'
               + '<img src="' + g.thumbnail + '" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.innerHTML=this.dataset.fb" data-fb="' + thumbFallback.replace(/"/g, '&quot;') + '"/></a>'
-            : '<a href="' + g.library_url + '" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">&#9654;</a>';
+            : '<a href="' + adLink + '" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">&#9654;</a>';
           const mediaIcon = g.media_type==='Video'?'▶':g.media_type==='Static'?'🖼':'⊞';
           return `<tr>
             <td class="row-num">${i}</td>
