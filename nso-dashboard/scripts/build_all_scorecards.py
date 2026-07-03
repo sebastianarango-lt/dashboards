@@ -61,6 +61,8 @@ EVENTS_SPEND_STUDIO_MAP = {
     "uptown": "TX-004",
     "dallas uptown": "TX-004",
     "dallas - uptown": "TX-004",
+    "dunwoody": "GA-001",
+    "middletown": "NJ-005",
 }
 
 
