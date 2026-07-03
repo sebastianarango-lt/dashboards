@@ -442,6 +442,8 @@ function renderSummary(){
 
   const cur=w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===cw)||w[cw]||{};
   const prev=w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===cw-1)||{};
+  const _sumTierLookup={};(studio.tier_rmr_by_week||[]).forEach(r=>{_sumTierLookup[r.week]=r;});
+  const _sumCurTier=_sumTierLookup[cw];
   const displayCw=cw;
   const pct=Math.min(100,Math.round(displayCw/totalWeeks*100));
 
@@ -507,7 +509,7 @@ function renderSummary(){
       h+=`</div></div>`;
     }
     if(_goalAnn){
-      const _gaActual=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
+      const _gaActual=_sumCurTier?(_sumCurTier.t0||0)+(_sumCurTier.t1||0)+(_sumCurTier.t2||0)+(_sumCurTier.t3||0):Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
       const _gaPct=Math.min(100,Math.round(_gaActual/_goalAnn*100));
       const _gaMet=_gaActual>=_goalAnn;
       h+=`<div class="chart-card" style="padding:14px 20px;min-width:200px;margin-bottom:0">`;
@@ -632,7 +634,7 @@ function renderSummary(){
   // Card B — Total to Date with progress bars
   h+=`<div class="chart-card summary-card"><div class="summary-card-section">Total to Date</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:-8px;margin-bottom:10px">${_dataThruLabel}</div>`:''}`;
   h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',_isReston?null:Math.round((tgt.total_leads||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_leads_total');
-  const netPresales=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
+  const netPresales=_sumCurTier?(_sumCurTier.t0||0)+(_sumCurTier.t1||0)+(_sumCurTier.t2||0)+(_sumCurTier.t3||0):Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
   h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',_isReston?null:Math.round((tgt.presales_count||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_presales_total');
   if((cur.estimated_day1_rmr||0)>0){const _rmrA=cur.estimated_day1_rmr||0,_rmrT=tgt.estimated_day1_rmr||0,_rmrPct=_rmrT>0?Math.min(100,Math.round(_rmrA/_rmrT*100)):0;h+=`<div style="margin-bottom:18px;position:relative">${_infoBtn('sum_rmr')}<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Est. Day-1 RMR</div><div style="text-align:right"><span style="font-size:20px;font-weight:700;color:#1a1a2e;font-family:'Oswald',sans-serif">$${_rmrA.toLocaleString('en-US')}</span><span style="font-size:10px;color:#8aaabb;margin-left:6px">/ $${_rmrT.toLocaleString('en-US')}</span></div></div><div style="position:relative;height:14px;background:#f0f6fa;border-radius:7px"><div style="position:absolute;left:0;top:0;height:100%;width:${_rmrPct}%;background:#f4a021;border-radius:7px;min-width:${_rmrPct>0?4:0}px"></div></div></div>`;}
   if(estTotalSpend>0||cumSpendNoLT>0){
@@ -705,7 +707,8 @@ function drawCumChart(studio){
   const w=studio.weeks.filter((_,i)=>i<=Math.max(cw+2,totalW));
   const labels=w.map(x=>x.week.replace('WEEK ','W'));
   const leadsD=w.map((x,i)=>i<=cw?x.total_leads||0:null);
-  const presD=w.map((x,i)=>i<=cw?Math.max(0,(x.presales_count||0)-(x.cancellations_count||0)):null);
+  const _cumTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_cumTierMap[r.week]=r;});
+  const presD=w.map((x,i)=>{if(i>cw)return null;const tr=_cumTierMap[i];return tr?(tr.t0||0)+(tr.t1||0)+(tr.t2||0)+(tr.t3||0):Math.max(0,(x.presales_count||0)-(x.cancellations_count||0));});
   const leadsPace=w.map((_,i)=>Math.round(wkLeadPace*i));
   const presPace=w.map((_,i)=>Math.round(wkPresPace*i));
   _ch.sum=new Chart(ctx,{type:'line',data:{labels,datasets:[
@@ -730,7 +733,8 @@ function drawWeeklyChart(studio){
   const wkLeadPace=_isRest?60:(tLeads&&totalW?+(tLeads/totalW).toFixed(1):0);
   const w=studio.weeks.filter((_,i)=>i<=Math.max(cw+2,totalW));
   const labels=w.map(x=>x.week.replace('WEEK ','W'));
-  const presD=w.map((x,i)=>i<=cw?Math.max(0,(x.presales_count||0)-(x.cancellations_count||0)):null);
+  const _wkTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_wkTierMap[r.week]=r;});
+  const presD=w.map((x,i)=>{if(i>cw)return null;const tr=_wkTierMap[i];return tr?(tr.t0||0)+(tr.t1||0)+(tr.t2||0)+(tr.t3||0):Math.max(0,(x.presales_count||0)-(x.cancellations_count||0));});
   const leadsD=w.map((x,i)=>i<=cw?x.total_leads||0:null);
   const presDelta=presD.map((v,i)=>v===null?null:(i===0?0:Math.max(0,v-(presD[i-1]||0))));
   const leadsDelta=leadsD.map((v,i)=>v===null?null:(i===0?0:Math.max(0,v-(leadsD[i-1]||0))));
@@ -861,7 +865,9 @@ function renderFunnel(){
     const cumLeads=curWk.total_leads||0;
     const cumPres=curWk.presales_count||0;
     const cumCanc=curWk.cancellations_count||0;
-    const netActive=Math.max(0,cumPres-cumCanc);
+    const _fTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_fTierMap[r.week]=r;});
+    const _fCurTier=_fTierMap[cw];
+    const netActive=_fCurTier?(_fCurTier.t0||0)+(_fCurTier.t1||0)+(_fCurTier.t2||0)+(_fCurTier.t3||0):Math.max(0,cumPres-cumCanc);
     const newLeads=curWk.new_leads||0;
     const newPres=curWk.presales_week||0;
     const convRateCum=cumLeads>0?cumPres/cumLeads*100:null;
@@ -949,7 +955,19 @@ function applyFilters(){
   const sPP=wins.ppFrom?fR(NSO_SALES_ROWS,wins.ppFrom,wins.ppTo,st,sr):[];
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
-  const smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
+  let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
+  // When no date filter (all-time view), override with tier data to match RMR/scorecard
+  if(!from&&SC&&SC.studios){
+    const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
+    let tierTotal=0,hasTier=false;
+    selSt.forEach(sel=>{
+      if(sel.tier_rmr_by_week&&sel.current_week){
+        const te=sel.tier_rmr_by_week.find(r=>r.week===sel.current_week);
+        if(te){tierTotal+=(te.t0||0)+(te.t1||0)+(te.t2||0)+(te.t3||0);hasTier=true;}
+      }
+    });
+    if(hasTier)smC=tierTotal;
+  }
   buildTrend(toTS(curr.daily,curr.monthly));
   const fkpi=document.getElementById('funnel-kpis');
   if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads)+kpiCard('Total Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
@@ -1104,6 +1122,12 @@ function renderScorecard(){
   const fInt=v=>v!=null?v:'—';
   const fPct=v=>v!=null?(v*100).toFixed(1)+'%':'—';
   const fCur=v=>v!=null?'$'+v.toFixed(2):'—';
+
+  // Build tier lookup early so it can be used throughout (RMR table and Net Presales row)
+  const _tierReal={};
+  (sc.tier_rmr_by_week||[]).forEach(r=>{_tierReal[r.week]=r;});
+  const _hasReal=Object.keys(_tierReal).length>0;
+
   const scPaceWeeks=sc.co_week||sc.go_week;
   const reqLeads=tgt.total_leads&&scPaceWeeks?+(tgt.total_leads/scPaceWeeks).toFixed(1):null;
   const reqPresales=tgt.presales_count&&scPaceWeeks?+(tgt.presales_count/scPaceWeeks).toFixed(1):null;
@@ -1142,7 +1166,7 @@ function renderScorecard(){
     {label:_ib('sc_presales_gross')+'Presales (gross)', key:'pc',  fmt:fInt, color:true,
      cumReqFn:wk=>tgt.presales_count&&scPaceWeeks?Math.round(tgt.presales_count/scPaceWeeks*wk.w):null,
      cumReqDisplay:tgt.presales_count||null},
-    {label:_ib('sc_net_presales')+'Net Presales',       key:null, computed:wk=>Math.max(0,(wk.pc||0)-(wk.cancTot||0)), fmt:fInt, color:true,
+    {label:_ib('sc_net_presales')+'Net Presales',       key:null, computed:wk=>{const td=_tierReal[wk.w];return td?(td.t0||0)+(td.t1||0)+(td.t2||0)+(td.t3||0):Math.max(0,(wk.pc||0)-(wk.cancTot||0));}, fmt:fInt, color:true,
      cumReqFn:wk=>tgt.presales_count&&scPaceWeeks?Math.round(tgt.presales_count/scPaceWeeks*wk.w):null,
      cumReqDisplay:tgt.presales_count||null},
     {label:_ib('sc_cum_cvr')+'Conversion Rate',         key:'cumCr', fmt:fPct, color:true,
@@ -1181,11 +1205,6 @@ function renderScorecard(){
   const t3p=pricing.tier3_price||null;
   const t2sw=pricing.tier2_start_week||99;
   const t3sw=pricing.tier3_start_week||null;
-  // Build lookup from real Snowflake tier data (week → {t0,t1,t2,t3})
-  const _tierReal={};
-  (sc.tier_rmr_by_week||[]).forEach(r=>{_tierReal[r.week]=r;});
-  const _hasReal=Object.keys(_tierReal).length>0;
-
   let _t0=0,_t1=0,_t2=0,_t3=0;
   // Seed from W0 only when using week-based accumulation fallback
   if(!_hasReal){
