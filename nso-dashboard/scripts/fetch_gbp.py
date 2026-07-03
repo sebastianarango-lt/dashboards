@@ -140,7 +140,7 @@ ALL_STUDIOS = [
     {"name": "SWEAT440 Deerfield Beach",           "code": "S440-Deerfield",    "location_id": "10754559321713930787"},
     {"name": "SWEAT440 Doral",                     "code": "S440-Doral",        "location_id": "5492541826748651334"},
     {"name": "SWEAT440 Fort Lauderdale - Las Olas","code": "S440-LasOlas",      "location_id": "15716475017336552276"},
-    {"name": "SWEAT440 Fort Myers",                "code": "",                  "location_id": ""},
+    {"name": "SWEAT440 Fort Myers",                "code": "S440-FortMyers",    "location_id": "2005684758562901799"},
     {"name": "SWEAT440 Miami Beach",               "code": "S440-SOBE",         "location_id": "7903117717083019565"},
     {"name": "SWEAT440 Miami - Brickell",          "code": "S440-Brickell",     "location_id": "14204655201727465322"},
     {"name": "SWEAT440 Miami - Coconut Grove",     "code": "S440-Grove",        "location_id": "13239535872064474502"},
@@ -162,7 +162,7 @@ ALL_STUDIOS = [
     {"name": "SWEAT440 NYC - Park Slope",          "code": "S440-ParkSlope",    "location_id": "17704049939806391312"},
     {"name": "SWEAT440 Eastchester",               "code": "S440-Eastchester",  "location_id": "9100379360747055617"},
     # -- New Jersey ------------------------------------------------------------
-    {"name": "SWEAT440 Middletown",                "code": "",                  "location_id": ""},
+    {"name": "SWEAT440 Middletown",                "code": "S440-Middletown",   "location_id": "9688833394650228159"},
     {"name": "SWEAT440 Ocean Township",            "code": "S440-OceanTownship","location_id": "14043102866859948554"},
     {"name": "SWEAT440 Old Bridge",                "code": "",                  "location_id": ""},
     {"name": "SWEAT440 Toms River",                "code": "S440-TomsRiver",    "location_id": "11096005039049334458"},
@@ -183,7 +183,7 @@ ALL_STUDIOS = [
     {"name": "SWEAT440 Nashville - Capitol View",  "code": "S440-CapitolView",  "location_id": ""},
     {"name": "SWEAT440 Nashville - Music Row",     "code": "",                  "location_id": ""},
     # -- Georgia ---------------------------------------------------------------
-    {"name": "SWEAT440 Dunwoody",                  "code": "",                  "location_id": ""},
+    {"name": "SWEAT440 Dunwoody",                  "code": "S440-Dunwoody",     "location_id": "14348234584447062751"},
     {"name": "SWEAT440 Roswell",                   "code": "",                  "location_id": ""},
     # -- Oklahoma --------------------------------------------------------------
     {"name": "SWEAT440 OKC - Rose Creek",          "code": "",                  "location_id": ""},

@@ -247,7 +247,7 @@
 /* ══════════════════════════════════════════════════════════════════════════
    NSO STUDIOS DASHBOARD — Self-contained
    ══════════════════════════════════════════════════════════════════════════ */
-const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge'];
+const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge','SWEAT440 Dunwoody','SWEAT440 Middletown'];
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
@@ -433,6 +433,8 @@ function renderSummary(){
 
   // Compute current week from today vs week bounds (JS-side, for display accuracy)
   const todayStr=new Date().toISOString().slice(0,10);
+  const d7end=new Date(Date.now()-2*864e5).toISOString().slice(0,10);
+  const d7ago=new Date(Date.now()-8*864e5).toISOString().slice(0,10);
   let cw=0;
   for(const wk of w){
     if(wk.date_start&&wk.date_start<=todayStr)cw=parseInt(String(wk.week).replace(/[^0-9]/g,''))||0;
@@ -448,7 +450,7 @@ function renderSummary(){
     (w[totalWeeks]?w[totalWeeks].date_start||w[totalWeeks].date_end:null)||
     (w[w.length-1]?w[w.length-1].date_end:null);
 
-  // Days to open from actual opening_date vs today
+  // Days to open from actual opening_date vs today (used only for pct/timeline internals)
   let daysToOpen=null;
   if(openDate){
     const msLeft=new Date(openDate+'T00:00:00Z')-new Date(todayStr+'T00:00:00Z');
@@ -456,6 +458,11 @@ function renderSummary(){
   }else{
     daysToOpen=(totalWeeks-cw)*7;
   }
+  // C/O countdown (shown at top of timeline card — measures to C/O, not GO)
+  const _coWkNum=studio.co_week||null;
+  const _coWkData=_coWkNum?w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===_coWkNum):null;
+  const coDateStr=_coWkData?(_coWkData.date_start||_coWkData.date_end||null):null;
+  const daysToCO=coDateStr?Math.max(0,Math.round((new Date(coDateStr+'T00:00:00Z')-new Date(todayStr+'T00:00:00Z'))/864e5)):daysToOpen;
 
   const presPct=tgt.presales_count?Math.min(100,Math.round((cur.presales_count||0)/tgt.presales_count*100)):0;
 
@@ -520,10 +527,11 @@ function renderSummary(){
     h+=`</div>`;
   }
 
+  if(studio.name!=='SWEAT440 Reston'){
   h+=`<div class="chart-card">`;
   h+=`<div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:18px">`;
   h+=`<div class="chart-card-title" style="margin-bottom:0">Presale Timeline — ${studio.name}</div>`;
-  h+=`<div style="font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;color:#5a7a8a;font-weight:500;text-transform:uppercase;letter-spacing:.5px;text-align:right"><span style="font-size:22px;font-weight:700;color:#e05a5a;font-family:'Oswald',sans-serif">${daysToOpen!=null?daysToOpen:'—'}</span>&nbsp;Days to Target Opening Date${openDate?`<div style="font-size:10px;font-weight:400;color:#e05a5a;text-transform:none;letter-spacing:0;margin-top:1px">${_fmtDate(openDate)}</div>`:''}</div>`;
+  h+=`<div style="font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;color:#5a7a8a;font-weight:500;text-transform:uppercase;letter-spacing:.5px;text-align:right"><span style="font-size:22px;font-weight:700;color:#e05a5a;font-family:'Oswald',sans-serif">${daysToCO!=null?daysToCO:'—'}</span>&nbsp;Days to Target C/O<div style="font-size:10px;font-weight:400;color:#e05a5a;text-transform:none;letter-spacing:0;margin-top:1px">${_fmtDate(d7end)}</div></div>`;
   h+=`</div>`;
   // Tier pricing vars for markers
   const _pricing=studio.pricing||{};
@@ -550,6 +558,7 @@ function renderSummary(){
   h+=`</div>`;
   h+=`<div style="text-align:right;white-space:nowrap;flex-shrink:0"><div style="font-size:9px;color:#8aaabb;font-weight:600;text-transform:uppercase;letter-spacing:.5px">GO W${totalWeeks}</div>${openDate?`<div style="font-size:9px;color:#e05a5a;margin-top:2px">${_fmtDate(openDate)}</div>`:''}</div>`;
   h+=`</div></div>`;
+  } // end if not Reston
 
   // Progress bar helper for Total to Date
   function _progBar(label,actual,target,color,benchVal,benchLabel,fmtFn,targetLabel,infoKey){
@@ -576,9 +585,7 @@ function renderSummary(){
     return b;
   }
 
-  // Last 7 Full Days — window ends 2 days ago to ensure complete data
-  const d7end=new Date(Date.now()-2*864e5).toISOString().slice(0,10);
-  const d7ago=new Date(Date.now()-8*864e5).toISOString().slice(0,10);
+  // Last 7 Full Days — window ends 2 days ago to ensure complete data (d7end/d7ago declared above)
   const _strip=s=>(s||'').replace(/^SWEAT440\s+/,'');
   const _sname=studio.data_name||studio.name;
   const raw7=(RAW&&RAW.daily_detail||[]).filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
@@ -586,8 +593,9 @@ function renderSummary(){
   const sales7=NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
   const lastNetPresales=Math.max(0,sales7.reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
   const lastSpend=cur.total_marketing_spend||0;
-  const wkLeadGoal=tgt.total_leads?Math.round(tgt.total_leads/paceWeeks):0;
-  const wkPresaleGoal=tgt.presales_count?Math.round(tgt.presales_count/paceWeeks):0;
+  const _isReston=studio.name==='SWEAT440 Reston';
+  const wkLeadGoal=_isReston?60:(tgt.total_leads?Math.round(tgt.total_leads/paceWeeks):0);
+  const wkPresaleGoal=_isReston?21:(tgt.presales_count?Math.round(tgt.presales_count/paceWeeks):0);
   const cumSpend=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.total_marketing_spend||0),0);
   const cumSpendNoLT=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.meta_spend||0)+(x.google_spend||0)+(x.grassroots_spend||0)+(x.other_spend||0),0);
   const estTotalSpend=displayCw>0?Math.round(cumSpendNoLT/displayCw*paceWeeks):0;
@@ -604,7 +612,7 @@ function renderSummary(){
   h+=skRow('Leads',lastLeads,wkLeadGoal,'#00A3E0',true,'sum_leads_7d');
   h+=skRow('Presales (net)',lastNetPresales,wkPresaleGoal,'#00C9A7',true,'sum_presales_7d');
   const last7Cvr=lastLeads>0?Math.round(lastNetPresales/lastLeads*100):null;
-  const goalCvr=tgt.presales_count&&tgt.total_leads?Math.round(tgt.presales_count/tgt.total_leads*100):null;
+  const goalCvr=_isReston?35:(tgt.presales_count&&tgt.total_leads?Math.round(tgt.presales_count/tgt.total_leads*100):null);
   if(last7Cvr!==null){
     const cvrRatio=goalCvr>0?last7Cvr/goalCvr:0;
     const cvrFillPct=Math.min(100,Math.round(cvrRatio*100));
@@ -623,9 +631,9 @@ function renderSummary(){
 
   // Card B — Total to Date with progress bars
   h+=`<div class="chart-card summary-card"><div class="summary-card-section">Total to Date</div>${_dataThruLabel?`<div style="font-size:10px;color:#8aaabb;margin-top:-8px;margin-bottom:10px">${_dataThruLabel}</div>`:''}`;
-  h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',Math.round((tgt.total_leads||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_leads_total');
+  h+=_progBar('Leads',cur.total_leads||0,tgt.total_leads||0,'#00A3E0',_isReston?null:Math.round((tgt.total_leads||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_leads_total');
   const netPresales=Math.max(0,(cur.presales_count||0)-(cur.cancellations_count||0));
-  h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',Math.round((tgt.presales_count||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_presales_total');
+  h+=_progBar('Presales (net)',netPresales,tgt.presales_count||0,'#00C9A7',_isReston?null:Math.round((tgt.presales_count||0)/paceWeeks*displayCw),'W'+displayCw+' Pace',null,null,'sum_presales_total');
   if((cur.estimated_day1_rmr||0)>0){const _rmrA=cur.estimated_day1_rmr||0,_rmrT=tgt.estimated_day1_rmr||0,_rmrPct=_rmrT>0?Math.min(100,Math.round(_rmrA/_rmrT*100)):0;h+=`<div style="margin-bottom:18px;position:relative">${_infoBtn('sum_rmr')}<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Est. Day-1 RMR</div><div style="text-align:right"><span style="font-size:20px;font-weight:700;color:#1a1a2e;font-family:'Oswald',sans-serif">$${_rmrA.toLocaleString('en-US')}</span><span style="font-size:10px;color:#8aaabb;margin-left:6px">/ $${_rmrT.toLocaleString('en-US')}</span></div></div><div style="position:relative;height:14px;background:#f0f6fa;border-radius:7px"><div style="position:absolute;left:0;top:0;height:100%;width:${_rmrPct}%;background:#f4a021;border-radius:7px;min-width:${_rmrPct>0?4:0}px"></div></div></div>`;}
   if(estTotalSpend>0||cumSpendNoLT>0){
     const _fmtS=v=>v!=null?'$'+Math.round(v).toLocaleString('en-US'):'—';
@@ -689,14 +697,17 @@ function drawCumChart(studio){
   if(_ch.sum){_ch.sum.destroy();_ch.sum=null}
   const totalW=studio.go_week||studio.weeks.length-1;
   const cw=studio.current_week||0;
-  const tPres=studio.targets.presales_count||0;
-  const tLeads=studio.targets.total_leads||0;
+  const _isRest=studio.name==='SWEAT440 Reston';
+  const tPres=_isRest?21*totalW:(studio.targets.presales_count||0);
+  const tLeads=_isRest?60*totalW:(studio.targets.total_leads||0);
+  const wkLeadPace=_isRest?60:(totalW?tLeads/totalW:0);
+  const wkPresPace=_isRest?21:(totalW?tPres/totalW:0);
   const w=studio.weeks.filter((_,i)=>i<=Math.max(cw+2,totalW));
   const labels=w.map(x=>x.week.replace('WEEK ','W'));
   const leadsD=w.map((x,i)=>i<=cw?x.total_leads||0:null);
   const presD=w.map((x,i)=>i<=cw?Math.max(0,(x.presales_count||0)-(x.cancellations_count||0)):null);
-  const leadsPace=w.map((_,i)=>Math.round(tLeads/totalW*i));
-  const presPace=w.map((_,i)=>Math.round(tPres/totalW*i));
+  const leadsPace=w.map((_,i)=>Math.round(wkLeadPace*i));
+  const presPace=w.map((_,i)=>Math.round(wkPresPace*i));
   _ch.sum=new Chart(ctx,{type:'line',data:{labels,datasets:[
     {label:'LEADS',data:leadsD,borderColor:'#00A3E0',backgroundColor:'rgba(0,163,224,0.08)',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.3,fill:true,spanGaps:false},
     {label:'PRESALES (NET)',data:presD,borderColor:'#DDFF00',backgroundColor:'rgba(221,255,0,0.08)',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.3,fill:true,spanGaps:false},
@@ -712,10 +723,11 @@ function drawWeeklyChart(studio){
   if(_ch.sum){_ch.sum.destroy();_ch.sum=null}
   const totalW=studio.go_week||studio.weeks.length-1;
   const cw=studio.current_week||0;
-  const tPres=studio.targets.presales_count||0;
-  const tLeads=studio.targets.total_leads||0;
-  const wkPresPace=tPres&&totalW?+(tPres/totalW).toFixed(1):0;
-  const wkLeadPace=tLeads&&totalW?+(tLeads/totalW).toFixed(1):0;
+  const _isRest=studio.name==='SWEAT440 Reston';
+  const tPres=_isRest?21*totalW:(studio.targets.presales_count||0);
+  const tLeads=_isRest?60*totalW:(studio.targets.total_leads||0);
+  const wkPresPace=_isRest?21:(tPres&&totalW?+(tPres/totalW).toFixed(1):0);
+  const wkLeadPace=_isRest?60:(tLeads&&totalW?+(tLeads/totalW).toFixed(1):0);
   const w=studio.weeks.filter((_,i)=>i<=Math.max(cw+2,totalW));
   const labels=w.map(x=>x.week.replace('WEEK ','W'));
   const presD=w.map((x,i)=>i<=cw?Math.max(0,(x.presales_count||0)-(x.cancellations_count||0)):null);
@@ -1057,14 +1069,14 @@ function renderScorecard(){
   const tgt=sc.targets||{};
 
   // Build week list with running cumulative spend/ig
-  let _cMs=0,_cGs=0,_cGrs=0,_cOth=0,_cLtf=0,_cTs=0,_cDs=0,_cIg=0,_cNl=0,_cDl=0,_cDp=0;
+  let _cMs=0,_cGs=0,_cGrs=0,_cOth=0,_cLtf=0,_cTs=0,_cDs=0,_cIg=0,_cNl=0,_cDl=0,_cDp=0,_cGl=0,_cGp=0,_cEv=0;
   const weeks=sc.weeks.map(w=>{
     const wn=parseInt(String(w.week).replace(/[^0-9]/g,''))||0;
     const nl=w.new_leads??null, np=w.presales_week??null;
     const crRaw=w.conversion_rate;
     _cMs+=w.meta_spend||0;_cGs+=w.google_spend||0;_cGrs+=w.grassroots_spend||0;_cOth+=w.other_spend||0;
     _cLtf+=w.leadteam_fee||0;_cTs+=w.total_marketing_spend||0;_cDs+=(w.meta_spend||0)+(w.google_spend||0);_cIg+=w.ig_new_followers||0;_cNl+=w.new_leads||0;
-    _cDl+=w.digital_leads_week||0;_cDp+=w.digital_presales_week||0;
+    _cDl+=w.digital_leads_week||0;_cDp+=w.digital_presales_week||0;_cGl+=w.grassroots_leads||0;_cGp+=w.grassroots_presales||0;_cEv+=w.comm_events||0;
     return{
       w:wn, date:w.date_range||'', isCur:wn===cw,
       ds:w.date_start||null, de:w.date_end||null,
@@ -1083,7 +1095,7 @@ function renderScorecard(){
       dlw:w.digital_leads_week??null, dpw:w.digital_presales_week??null,
       ig:w.ig_new_followers??null,
       cumMs:_cMs, cumGs:_cGs, cumGrs:_cGrs, cumOth:_cOth, cumLtf:_cLtf, cumTs:_cTs, cumDsp:_cDs, cumIg:_cIg, cumNl:_cNl,
-      cumDl:_cDl, cumDp:_cDp,
+      cumDl:_cDl, cumDp:_cDp, cumGl:_cGl, cumGp:_cGp, cumEv:_cEv,
       cumCr:(w.total_leads>0&&w.presales_count!=null)?w.presales_count/w.total_leads:null,
     };
   }).filter(w=>w.w<=cw);
@@ -1136,6 +1148,9 @@ function renderScorecard(){
     {label:_ib('sc_cum_cvr')+'Conversion Rate',         key:'cumCr', fmt:fPct, color:true,
      cumReqFn:_=>0.35, cumReqDisplay:0.35},
     {label:_ib('sc_cum_cancellations')+'Cancellations', key:'cancTot', req:null, fmt:fInt, color:false},
+    {label:_ib('sc_grassroots_leads')+'Grassroots Leads',    key:'cumGl', req:null, fmt:fInt, color:true},
+    {label:_ib('sc_grassroots_presales')+'Grassroots Presales', key:'cumGp', req:null, fmt:fInt, color:true},
+    {label:_ib('sc_comm_events')+'Comm. Events',        key:'cumEv', req:null, fmt:fInt, color:true},
     {label:_ib('sc_ig_cum')+'IG Followers (cum.)',       key:'cumIg',   req:null, fmt:fInt, color:false},
     {label:_ib('sc_total_spend')+'▶ Total Mktg Spend',                            key:'cumTs',  req:null, fmt:$v, color:false, spendParent:true},
     {label:_ib('sc_digital_spend')+'▶ Total Digital Ad Spend (Meta & Google)',    key:'cumDsp', req:null, fmt:$v, color:false, spendSub:true, spendSubParent:true},
@@ -1452,6 +1467,11 @@ function renderMeta(){
   h+=kpiCard('Cost / Lead',cpl,null,null,f$2,GLOSSARY.meta_cpl);
   h+=`</div>`;
 
+  h+=`<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
+    <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
+    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown elsewhere in this report. This is expected, as Meta uses a different attribution methodology than SWEAT440's standardized lead reporting.</p>
+  </div>`;
+
   // Creative ads table — grouped by creative short name
   const creativeMap={};
   allRows.forEach(r=>{
@@ -1480,6 +1500,10 @@ function renderMeta(){
 
   h+=`<div class="chart-card">
     <div class="chart-card-title">Active Ads</div>
+    <div style="display:flex;align-items:flex-start;gap:10px;background:#f0f6fa;border-left:3px solid #99DAF3;border-radius:6px;padding:10px 14px;margin-bottom:16px">
+      <span style="font-size:15px;line-height:1;color:#0084B5;flex-shrink:0;margin-top:1px">ⓘ</span>
+      <p style="margin:0;font-size:12px;color:#1a4d6e;line-height:1.55">If you want to preview the ads below, you must be logged into your Facebook account that is connected to Meta Business for your studio. If you do not have access to your studio's Meta Business, reach out to your Marketing Manager for assistance.</p>
+    </div>
     <div style="overflow-x:auto">
       <table class="data-table" id="meta-ads-table">
         <thead><tr>
@@ -2327,7 +2351,7 @@ async function init(){
 
   if(dataRes.status==='fulfilled'){RAW=dataRes.value;if(!RAW.daily_detail)RAW.daily_detail=[];if(!RAW.monthly_detail)RAW.monthly_detail=[]
     // data.json stores studio names without "SWEAT440 " prefix — normalize to match NSO array
-    const _nsoShort=['Dallas - Prestonwood','Herriman','Naples - Mercato','Pinecrest - Palmetto Bay','Reston','Dr Phillips','Orlando - Dr Phillips','Aventura','North Miami','Dallas - Uptown','Old Bridge'];
+    const _nsoShort=['Dallas - Prestonwood','Herriman','Naples - Mercato','Pinecrest - Palmetto Bay','Reston','Dr Phillips','Orlando - Dr Phillips','Aventura','North Miami','Dallas - Uptown','Old Bridge','Dunwoody','Middletown'];
     function _normStudio(arr){return arr.map(r=>_nsoShort.includes(r.studio)?{...r,studio:'SWEAT440 '+r.studio}:r)}
     RAW.daily_detail=_normStudio(RAW.daily_detail);RAW.monthly_detail=_normStudio(RAW.monthly_detail);}
   else{console.error('data.json failed');RAW={daily_detail:[],monthly_detail:[],sources:[],studios:[]}}
