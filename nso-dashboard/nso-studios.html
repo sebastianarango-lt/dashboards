@@ -956,15 +956,26 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // Always use tier data for Total Sales KPI — active presale members is cumulative, not period-based
+  // Use tier data for Total Sales KPI — same methodology as scorecard/RMR.
+  // With a date range, compute net delta between tier count at end of range vs start of range.
+  function _wkForDate(weeks,d){
+    if(!weeks||!d)return null;
+    const ds=d.toISOString().slice(0,10);let best=null;
+    for(const wk of weeks){const wn=parseInt(String(wk.week).replace(/[^0-9]/g,''))||0;if(wk.date_start&&wk.date_start<=ds)best=wn;}
+    return best;
+  }
+  function _tierSum(te){return te?(te.t0||0)+(te.t1||0)+(te.t2||0)+(te.t3||0):0;}
   if(SC&&SC.studios){
     const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
     let tierTotal=0,hasTier=false;
     selSt.forEach(sel=>{
-      if(sel.tier_rmr_by_week&&sel.current_week){
-        const te=sel.tier_rmr_by_week.find(r=>r.week===sel.current_week);
-        if(te){tierTotal+=(te.t0||0)+(te.t1||0)+(te.t2||0)+(te.t3||0);hasTier=true;}
-      }
+      if(!sel.tier_rmr_by_week||!sel.current_week)return;
+      const tm={};(sel.tier_rmr_by_week).forEach(r=>{tm[r.week]=r;});
+      const toWk=to?_wkForDate(sel.weeks,to):sel.current_week;
+      const endTotal=_tierSum(tm[toWk||sel.current_week]);
+      let startTotal=0;
+      if(from){const fw=_wkForDate(sel.weeks,from);if(fw>0)startTotal=_tierSum(tm[fw-1]);}
+      tierTotal+=Math.max(0,endTotal-startTotal);hasTier=true;
     });
     if(hasTier)smC=tierTotal;
   }
