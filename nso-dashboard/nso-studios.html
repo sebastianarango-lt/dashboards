@@ -956,8 +956,9 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // When no date filter (all-time view), override with tier data to match RMR/scorecard
-  if(!from&&SC&&SC.studios){
+  // Always override "Total Sales" with tier data — presales is a cumulative active-member count,
+  // not a period metric, so it shouldn't change based on the date filter.
+  if(SC&&SC.studios){
     const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
     let tierTotal=0,hasTier=false;
     selSt.forEach(sel=>{
@@ -2419,7 +2420,7 @@ async function init(){
     : NSO;
   _buildMS('studioMenu','studioLabel',_nsoVisible,[]);
   // Canonical source list from MARKETING_REPORTS.PUBLIC.LEADS_LIST
-  const _allSrc=['Meta Ads','Google Ads','Local Listings','Social Media Organic','Website (unattributed)','Word of Mouth','SWEAT440 App','MindBody App','ClassPass / Platforms','Grassroots','Business Mode','Print Ads / Signs','Other','N/A'];
+  const _allSrc=['Meta Ads','Google Ads','Local Listings','Social Media Organic','Website (unattributed)','Word of Mouth','SWEAT440 App','MindBody App','ClassPass / Platforms','Grassroots','Business Mode','Print Ads / Signs','Internet / AI Search','Other','N/A'];
   _buildMS('sourceMenu','sourceLabel',_allSrc,EXCL_SRC);
 
   // Fallback dates
