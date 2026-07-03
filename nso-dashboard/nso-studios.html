@@ -527,7 +527,7 @@ function renderSummary(){
     h+=`</div>`;
   }
 
-  if(studio.name!=='SWEAT440 Reston'){
+  if(studio.code!=='VA-001'){
   h+=`<div class="chart-card">`;
   h+=`<div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:18px">`;
   h+=`<div class="chart-card-title" style="margin-bottom:0">Presale Timeline — ${studio.name}</div>`;
@@ -593,7 +593,7 @@ function renderSummary(){
   const sales7=NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
   const lastNetPresales=Math.max(0,sales7.reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
   const lastSpend=cur.total_marketing_spend||0;
-  const _isReston=studio.name==='SWEAT440 Reston';
+  const _isReston=studio.code==='VA-001';
   const wkLeadGoal=_isReston?60:(tgt.total_leads?Math.round(tgt.total_leads/paceWeeks):0);
   const wkPresaleGoal=_isReston?21:(tgt.presales_count?Math.round(tgt.presales_count/paceWeeks):0);
   const cumSpend=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.total_marketing_spend||0),0);
@@ -697,7 +697,7 @@ function drawCumChart(studio){
   if(_ch.sum){_ch.sum.destroy();_ch.sum=null}
   const totalW=studio.go_week||studio.weeks.length-1;
   const cw=studio.current_week||0;
-  const _isRest=studio.name==='SWEAT440 Reston';
+  const _isRest=studio.code==='VA-001';
   const tPres=_isRest?21*totalW:(studio.targets.presales_count||0);
   const tLeads=_isRest?60*totalW:(studio.targets.total_leads||0);
   const wkLeadPace=_isRest?60:(totalW?tLeads/totalW:0);
@@ -723,7 +723,7 @@ function drawWeeklyChart(studio){
   if(_ch.sum){_ch.sum.destroy();_ch.sum=null}
   const totalW=studio.go_week||studio.weeks.length-1;
   const cw=studio.current_week||0;
-  const _isRest=studio.name==='SWEAT440 Reston';
+  const _isRest=studio.code==='VA-001';
   const tPres=_isRest?21*totalW:(studio.targets.presales_count||0);
   const tLeads=_isRest?60*totalW:(studio.targets.total_leads||0);
   const wkPresPace=_isRest?21:(tPres&&totalW?+(tPres/totalW).toFixed(1):0);
