@@ -956,8 +956,8 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // When no date filter (all-time view), override with tier data to match RMR/scorecard
-  if(!from&&SC&&SC.studios){
+  // Always use tier data for Total Sales KPI — active presale members is cumulative, not period-based
+  if(SC&&SC.studios){
     const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
     let tierTotal=0,hasTier=false;
     selSt.forEach(sel=>{
