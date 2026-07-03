@@ -279,16 +279,19 @@ def main():
                         help="Full rebuild from DEFAULT_START (overwrites existing data)")
     parser.add_argument("--start",  default=None,
                         help="Override start date for --full mode (YYYY-MM-DD)")
+    parser.add_argument("--end",    default=None,
+                        help="Override end date (YYYY-MM-DD), defaults to yesterday")
     parser.add_argument("--output", default="nso_sales_data.json")
     args = parser.parse_args()
 
     out_path = Path(args.output)
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    end_override = args.end or yesterday
 
     # ── Determine query window & existing data to keep ──────────────────────
     if args.full:
         start_date = args.start or DEFAULT_START
-        end_date   = yesterday
+        end_date   = end_override
         existing_daily = {str(sid): [] for sid in NSO_STUDIOS}   # discard all
         cutoff         = start_date
         mode           = "FULL REBUILD"
@@ -297,7 +300,7 @@ def main():
         if existing is None or max_date is None:
             # No usable existing file → full rebuild
             start_date = DEFAULT_START
-            end_date   = yesterday
+            end_date   = end_override
             existing_daily = {str(sid): [] for sid in NSO_STUDIOS}
             cutoff         = start_date
             mode           = "FULL REBUILD (no existing file)"
@@ -305,7 +308,7 @@ def main():
             cutoff     = (datetime.strptime(max_date, "%Y-%m-%d")
                           - timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
             start_date = cutoff
-            end_date   = yesterday
+            end_date   = end_override
             # Keep rows that predate the lookback window
             existing_daily = {}
             for sid_str, s in existing.get("studios", {}).items():
