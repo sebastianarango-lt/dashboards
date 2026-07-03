@@ -956,18 +956,6 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // When no date filter (all-time view), override with tier data to match RMR/scorecard
-  if(!from&&SC&&SC.studios){
-    const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
-    let tierTotal=0,hasTier=false;
-    selSt.forEach(sel=>{
-      if(sel.tier_rmr_by_week&&sel.current_week){
-        const te=sel.tier_rmr_by_week.find(r=>r.week===sel.current_week);
-        if(te){tierTotal+=(te.t0||0)+(te.t1||0)+(te.t2||0)+(te.t3||0);hasTier=true;}
-      }
-    });
-    if(hasTier)smC=tierTotal;
-  }
   buildTrend(toTS(curr.daily,curr.monthly));
   const fkpi=document.getElementById('funnel-kpis');
   if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads)+kpiCard('Total Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
