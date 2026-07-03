@@ -156,8 +156,7 @@ def fetch_daily_sales(cur, studio_id, end_date):
     """)
     buy_rows_raw = cur.fetchall()  # [(client_id, email, prod_desc, price, total_buys, first_buy), ...]
 
-    # ── Query 2: cancel counts per (client, product) — used for both email dedup
-    #    ordering and time-series event building (single query, no duplicate fetch)
+    # ── Query 2: cancel counts per (client, product) ──────────────────────────
     cur.execute(f"""
         SELECT CLIENT_ID, PRODUCT_DESCRIPTION,
                COUNT(*)             AS total_cancels,
