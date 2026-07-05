@@ -92,6 +92,8 @@ IG_SOCIAL_CODE = {
     "FL-021": "northmiami",
     "TX-004": "uptown",
     "NJ-004": "oldbridge",
+    "GA-001": "dunwoody",
+    "NJ-005": "middletown",
 }
 
 # Google Sheets tab config per studio code

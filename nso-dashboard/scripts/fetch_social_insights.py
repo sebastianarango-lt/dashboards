@@ -67,6 +67,8 @@ STUDIOS = [
     {"name": "FiDi",                  "code": "fidi",          "page_id": "149250091597748",    "ig_id": None},
     {"name": "Madison",               "code": "madison",       "page_id": "111726744769276",    "ig_id": None},
     {"name": "Old Bridge",            "code": "oldbridge",     "page_id": None,                  "ig_id": "17841439161726674"},
+    {"name": "Dunwoody",              "code": "dunwoody",      "page_id": "1119194191285831",    "ig_id": None},
+    {"name": "Middletown",            "code": "middletown",    "page_id": "1138263712703066",    "ig_id": None},
 ]
 
 
