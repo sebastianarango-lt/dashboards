@@ -433,8 +433,10 @@ function renderSummary(){
 
   // Compute current week from today vs week bounds (JS-side, for display accuracy)
   const todayStr=new Date().toISOString().slice(0,10);
-  const d7end=new Date(Date.now()-2*864e5).toISOString().slice(0,10);
-  const d7ago=new Date(Date.now()-8*864e5).toISOString().slice(0,10);
+  const _dnow=new Date(),_dy=_dnow.getFullYear(),_dm=_dnow.getMonth(),_dd=_dnow.getDate();
+  function _liso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+  const d7end=_liso(new Date(_dy,_dm,_dd-2));
+  const d7ago=_liso(new Date(_dy,_dm,_dd-8));
   let cw=0;
   for(const wk of w){
     if(wk.date_start&&wk.date_start<=todayStr)cw=parseInt(String(wk.week).replace(/[^0-9]/g,''))||0;
