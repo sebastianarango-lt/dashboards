@@ -251,7 +251,7 @@ const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SW
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
-let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='';
+let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='',_sumD7End=null;
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
 function lds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 document.getElementById('fFrom').value=lds(fpm);document.getElementById('fTo').value=lds(lpm);
@@ -433,10 +433,15 @@ function renderSummary(){
 
   // Compute current week from today vs week bounds (JS-side, for display accuracy)
   const todayStr=new Date().toISOString().slice(0,10);
-  const _dnow=new Date(),_dy=_dnow.getFullYear(),_dm=_dnow.getMonth(),_dd=_dnow.getDate();
   function _liso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-  const d7end=_liso(new Date(_dy,_dm,_dd-2));
-  const d7ago=_liso(new Date(_dy,_dm,_dd-8));
+  const _sn7=studio.data_name||studio.name;
+  const _stpFn=s=>(s||'').replace(/^SWEAT440\s+/,'');
+  const _d7dates=(RAW&&RAW.daily_detail||[]).filter(r=>_stpFn(r.studio)===_sn7&&r.date).map(r=>r.date).sort();
+  const _d7endStr=_d7dates.length?_d7dates[_d7dates.length-1]:null;
+  const _d7endDate=_d7endStr?new Date(_d7endStr+'T12:00:00Z'):(()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate()-2);})();
+  const d7end=_liso(_d7endDate);
+  const d7ago=_liso(new Date(_d7endDate.getTime()-6*864e5));
+  _sumD7End=d7end;
   let cw=0;
   for(const wk of w){
     if(wk.date_start&&wk.date_start<=todayStr)cw=parseInt(String(wk.week).replace(/[^0-9]/g,''))||0;
@@ -773,9 +778,9 @@ function setSumSrcMetric(m){
 function drawSumSourceChart(studio,metric){
   const ctx=document.getElementById('sumSrcCanvas');if(!ctx)return;
   if(_ch.sumSrc){_ch.sumSrc.destroy();_ch.sumSrc=null}
-  const _d7base=new Date(Date.now()-2*864e5);
+  const _d7baseD=_sumD7End?new Date(_sumD7End+'T12:00:00Z'):(()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate()-2,12);})();
   const days=[];
-  for(let i=6;i>=0;i--){const d=new Date(_d7base.getTime()-i*864e5);days.push(d.toISOString().slice(0,10));}
+  for(let i=6;i>=0;i--){const d=new Date(_d7baseD.getTime()-i*864e5);days.push(`${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`);}
   const _stripS=s=>(s||'').replace(/^SWEAT440\s+/,'');
   const _snameS=studio.data_name||studio.name;
   let rows,netFn;
