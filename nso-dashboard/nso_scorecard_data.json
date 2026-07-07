@@ -653,12 +653,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 77.08,
+          "meta_spend": 77.17,
           "google_spend": 23.96,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 372.01,
+          "total_marketing_spend": 372.1,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -1168,7 +1168,413 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-07-23",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-02-11",
+          "count": 6
+        },
+        {
+          "date": "2026-02-12",
+          "count": 2
+        },
+        {
+          "date": "2026-02-13",
+          "count": -1
+        },
+        {
+          "date": "2026-02-14",
+          "count": 2
+        },
+        {
+          "date": "2026-02-15",
+          "count": 3
+        },
+        {
+          "date": "2026-02-16",
+          "count": 2
+        },
+        {
+          "date": "2026-02-17",
+          "count": 4
+        },
+        {
+          "date": "2026-02-18",
+          "count": 1
+        },
+        {
+          "date": "2026-02-19",
+          "count": 1
+        },
+        {
+          "date": "2026-02-20",
+          "count": 1
+        },
+        {
+          "date": "2026-02-21",
+          "count": 2
+        },
+        {
+          "date": "2026-02-23",
+          "count": 2
+        },
+        {
+          "date": "2026-02-25",
+          "count": 1
+        },
+        {
+          "date": "2026-02-26",
+          "count": 3
+        },
+        {
+          "date": "2026-02-27",
+          "count": 6
+        },
+        {
+          "date": "2026-02-28",
+          "count": 10
+        },
+        {
+          "date": "2026-03-01",
+          "count": 15
+        },
+        {
+          "date": "2026-03-02",
+          "count": 15
+        },
+        {
+          "date": "2026-03-03",
+          "count": 4
+        },
+        {
+          "date": "2026-03-04",
+          "count": 6
+        },
+        {
+          "date": "2026-03-05",
+          "count": 2
+        },
+        {
+          "date": "2026-03-06",
+          "count": 1
+        },
+        {
+          "date": "2026-03-07",
+          "count": 3
+        },
+        {
+          "date": "2026-03-08",
+          "count": 2
+        },
+        {
+          "date": "2026-03-09",
+          "count": 3
+        },
+        {
+          "date": "2026-03-11",
+          "count": 2
+        },
+        {
+          "date": "2026-03-15",
+          "count": 1
+        },
+        {
+          "date": "2026-03-17",
+          "count": 2
+        },
+        {
+          "date": "2026-03-18",
+          "count": 3
+        },
+        {
+          "date": "2026-03-20",
+          "count": 4
+        },
+        {
+          "date": "2026-03-22",
+          "count": 3
+        },
+        {
+          "date": "2026-03-23",
+          "count": 4
+        },
+        {
+          "date": "2026-03-24",
+          "count": 1
+        },
+        {
+          "date": "2026-03-25",
+          "count": 2
+        },
+        {
+          "date": "2026-03-26",
+          "count": 1
+        },
+        {
+          "date": "2026-03-28",
+          "count": 1
+        },
+        {
+          "date": "2026-03-30",
+          "count": 2
+        },
+        {
+          "date": "2026-04-03",
+          "count": 4
+        },
+        {
+          "date": "2026-04-04",
+          "count": 3
+        },
+        {
+          "date": "2026-04-05",
+          "count": 3
+        },
+        {
+          "date": "2026-04-08",
+          "count": 3
+        },
+        {
+          "date": "2026-04-09",
+          "count": 1
+        },
+        {
+          "date": "2026-04-10",
+          "count": 1
+        },
+        {
+          "date": "2026-04-12",
+          "count": 1
+        },
+        {
+          "date": "2026-04-13",
+          "count": 1
+        },
+        {
+          "date": "2026-04-15",
+          "count": 1
+        },
+        {
+          "date": "2026-04-17",
+          "count": 1
+        },
+        {
+          "date": "2026-04-18",
+          "count": 4
+        },
+        {
+          "date": "2026-04-24",
+          "count": 1
+        },
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-26",
+          "count": 3
+        },
+        {
+          "date": "2026-04-28",
+          "count": 1
+        },
+        {
+          "date": "2026-05-02",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 2
+        },
+        {
+          "date": "2026-05-04",
+          "count": 1
+        },
+        {
+          "date": "2026-05-05",
+          "count": 2
+        },
+        {
+          "date": "2026-05-06",
+          "count": 4
+        },
+        {
+          "date": "2026-05-07",
+          "count": 3
+        },
+        {
+          "date": "2026-05-08",
+          "count": 3
+        },
+        {
+          "date": "2026-05-09",
+          "count": 4
+        },
+        {
+          "date": "2026-05-10",
+          "count": 3
+        },
+        {
+          "date": "2026-05-12",
+          "count": 2
+        },
+        {
+          "date": "2026-05-14",
+          "count": 3
+        },
+        {
+          "date": "2026-05-15",
+          "count": 7
+        },
+        {
+          "date": "2026-05-16",
+          "count": 2
+        },
+        {
+          "date": "2026-05-17",
+          "count": 2
+        },
+        {
+          "date": "2026-05-18",
+          "count": 1
+        },
+        {
+          "date": "2026-05-19",
+          "count": 3
+        },
+        {
+          "date": "2026-05-20",
+          "count": 4
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-23",
+          "count": 2
+        },
+        {
+          "date": "2026-05-24",
+          "count": 6
+        },
+        {
+          "date": "2026-05-25",
+          "count": 6
+        },
+        {
+          "date": "2026-05-27",
+          "count": -2
+        },
+        {
+          "date": "2026-05-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-31",
+          "count": 4
+        },
+        {
+          "date": "2026-06-01",
+          "count": 1
+        },
+        {
+          "date": "2026-06-02",
+          "count": 2
+        },
+        {
+          "date": "2026-06-03",
+          "count": 1
+        },
+        {
+          "date": "2026-06-04",
+          "count": 8
+        },
+        {
+          "date": "2026-06-05",
+          "count": 2
+        },
+        {
+          "date": "2026-06-06",
+          "count": 12
+        },
+        {
+          "date": "2026-06-07",
+          "count": 4
+        },
+        {
+          "date": "2026-06-08",
+          "count": -3
+        },
+        {
+          "date": "2026-06-12",
+          "count": 2
+        },
+        {
+          "date": "2026-06-14",
+          "count": 2
+        },
+        {
+          "date": "2026-06-15",
+          "count": 1
+        },
+        {
+          "date": "2026-06-16",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 1
+        },
+        {
+          "date": "2026-06-20",
+          "count": 5
+        },
+        {
+          "date": "2026-06-21",
+          "count": 4
+        },
+        {
+          "date": "2026-06-22",
+          "count": 1
+        },
+        {
+          "date": "2026-06-24",
+          "count": 2
+        },
+        {
+          "date": "2026-06-25",
+          "count": -2
+        },
+        {
+          "date": "2026-06-27",
+          "count": 5
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1
+        },
+        {
+          "date": "2026-07-01",
+          "count": -1
+        },
+        {
+          "date": "2026-07-02",
+          "count": 2
+        },
+        {
+          "date": "2026-07-03",
+          "count": 4
+        },
+        {
+          "date": "2026-07-05",
+          "count": 3
+        }
+      ]
     },
     {
       "name": "Reston",
@@ -2566,7 +2972,433 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-02-02",
-      "goal_announce_target": 250.0
+      "goal_announce_target": 250.0,
+      "tier_daily_sales": [
+        {
+          "date": "2025-10-30",
+          "count": 2
+        },
+        {
+          "date": "2025-11-08",
+          "count": 1
+        },
+        {
+          "date": "2025-11-18",
+          "count": 3
+        },
+        {
+          "date": "2025-12-01",
+          "count": 1
+        },
+        {
+          "date": "2025-12-02",
+          "count": 1
+        },
+        {
+          "date": "2025-12-05",
+          "count": 1
+        },
+        {
+          "date": "2025-12-13",
+          "count": 2
+        },
+        {
+          "date": "2025-12-16",
+          "count": 3
+        },
+        {
+          "date": "2025-12-20",
+          "count": 1
+        },
+        {
+          "date": "2025-12-22",
+          "count": -2
+        },
+        {
+          "date": "2025-12-24",
+          "count": 2
+        },
+        {
+          "date": "2025-12-28",
+          "count": 1
+        },
+        {
+          "date": "2026-01-03",
+          "count": 1
+        },
+        {
+          "date": "2026-01-11",
+          "count": 2
+        },
+        {
+          "date": "2026-01-12",
+          "count": 1
+        },
+        {
+          "date": "2026-01-13",
+          "count": 2
+        },
+        {
+          "date": "2026-01-17",
+          "count": 1
+        },
+        {
+          "date": "2026-01-18",
+          "count": 1
+        },
+        {
+          "date": "2026-01-19",
+          "count": 2
+        },
+        {
+          "date": "2026-01-20",
+          "count": 1
+        },
+        {
+          "date": "2026-01-23",
+          "count": 3
+        },
+        {
+          "date": "2026-01-25",
+          "count": 1
+        },
+        {
+          "date": "2026-01-26",
+          "count": 1
+        },
+        {
+          "date": "2026-01-31",
+          "count": 1
+        },
+        {
+          "date": "2026-02-01",
+          "count": 1
+        },
+        {
+          "date": "2026-02-02",
+          "count": 1
+        },
+        {
+          "date": "2026-02-06",
+          "count": 1
+        },
+        {
+          "date": "2026-02-07",
+          "count": 1
+        },
+        {
+          "date": "2026-02-08",
+          "count": 1
+        },
+        {
+          "date": "2026-02-11",
+          "count": 2
+        },
+        {
+          "date": "2026-02-14",
+          "count": 1
+        },
+        {
+          "date": "2026-02-15",
+          "count": 1
+        },
+        {
+          "date": "2026-02-16",
+          "count": 1
+        },
+        {
+          "date": "2026-02-19",
+          "count": 1
+        },
+        {
+          "date": "2026-02-20",
+          "count": 1
+        },
+        {
+          "date": "2026-02-21",
+          "count": 1
+        },
+        {
+          "date": "2026-02-25",
+          "count": 4
+        },
+        {
+          "date": "2026-02-28",
+          "count": 1
+        },
+        {
+          "date": "2026-03-02",
+          "count": 1
+        },
+        {
+          "date": "2026-03-08",
+          "count": 2
+        },
+        {
+          "date": "2026-03-10",
+          "count": 1
+        },
+        {
+          "date": "2026-03-12",
+          "count": 1
+        },
+        {
+          "date": "2026-03-15",
+          "count": 1
+        },
+        {
+          "date": "2026-03-16",
+          "count": 2
+        },
+        {
+          "date": "2026-03-17",
+          "count": 1
+        },
+        {
+          "date": "2026-03-18",
+          "count": 2
+        },
+        {
+          "date": "2026-03-23",
+          "count": 1
+        },
+        {
+          "date": "2026-03-24",
+          "count": 4
+        },
+        {
+          "date": "2026-03-26",
+          "count": 5
+        },
+        {
+          "date": "2026-03-27",
+          "count": -4
+        },
+        {
+          "date": "2026-03-29",
+          "count": 3
+        },
+        {
+          "date": "2026-03-30",
+          "count": 3
+        },
+        {
+          "date": "2026-04-01",
+          "count": -1
+        },
+        {
+          "date": "2026-04-02",
+          "count": 3
+        },
+        {
+          "date": "2026-04-04",
+          "count": 1
+        },
+        {
+          "date": "2026-04-05",
+          "count": 1
+        },
+        {
+          "date": "2026-04-08",
+          "count": 3
+        },
+        {
+          "date": "2026-04-09",
+          "count": 2
+        },
+        {
+          "date": "2026-04-11",
+          "count": 2
+        },
+        {
+          "date": "2026-04-13",
+          "count": 1
+        },
+        {
+          "date": "2026-04-14",
+          "count": 3
+        },
+        {
+          "date": "2026-04-15",
+          "count": 1
+        },
+        {
+          "date": "2026-04-17",
+          "count": 2
+        },
+        {
+          "date": "2026-04-18",
+          "count": 2
+        },
+        {
+          "date": "2026-04-21",
+          "count": 1
+        },
+        {
+          "date": "2026-04-23",
+          "count": 2
+        },
+        {
+          "date": "2026-04-26",
+          "count": 1
+        },
+        {
+          "date": "2026-04-27",
+          "count": 1
+        },
+        {
+          "date": "2026-04-28",
+          "count": 1
+        },
+        {
+          "date": "2026-04-29",
+          "count": 3
+        },
+        {
+          "date": "2026-05-01",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 2
+        },
+        {
+          "date": "2026-05-04",
+          "count": 1
+        },
+        {
+          "date": "2026-05-07",
+          "count": 1
+        },
+        {
+          "date": "2026-05-08",
+          "count": 3
+        },
+        {
+          "date": "2026-05-10",
+          "count": 2
+        },
+        {
+          "date": "2026-05-11",
+          "count": 1
+        },
+        {
+          "date": "2026-05-16",
+          "count": 1
+        },
+        {
+          "date": "2026-05-20",
+          "count": 4
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-24",
+          "count": 1
+        },
+        {
+          "date": "2026-05-28",
+          "count": 1
+        },
+        {
+          "date": "2026-05-29",
+          "count": 1
+        },
+        {
+          "date": "2026-05-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-31",
+          "count": 4
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-03",
+          "count": -1
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-11",
+          "count": 1
+        },
+        {
+          "date": "2026-06-12",
+          "count": 1
+        },
+        {
+          "date": "2026-06-13",
+          "count": 4
+        },
+        {
+          "date": "2026-06-19",
+          "count": 3
+        },
+        {
+          "date": "2026-06-20",
+          "count": 1
+        },
+        {
+          "date": "2026-06-21",
+          "count": 1
+        },
+        {
+          "date": "2026-06-22",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": -1
+        },
+        {
+          "date": "2026-06-25",
+          "count": -2
+        },
+        {
+          "date": "2026-06-27",
+          "count": 4
+        },
+        {
+          "date": "2026-06-28",
+          "count": 22
+        },
+        {
+          "date": "2026-06-29",
+          "count": 3
+        },
+        {
+          "date": "2026-07-01",
+          "count": 2
+        },
+        {
+          "date": "2026-07-03",
+          "count": 1
+        },
+        {
+          "date": "2026-07-04",
+          "count": 4
+        },
+        {
+          "date": "2026-07-05",
+          "count": 3
+        }
+      ]
     },
     {
       "name": "Herriman",
@@ -3109,12 +3941,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 151.35,
+          "meta_spend": 151.46,
           "google_spend": 70.61,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 492.93,
+          "total_marketing_spend": 493.04,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -3909,7 +4741,265 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-09-25",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-03-27",
+          "count": 2
+        },
+        {
+          "date": "2026-03-30",
+          "count": 2
+        },
+        {
+          "date": "2026-04-02",
+          "count": 1
+        },
+        {
+          "date": "2026-04-03",
+          "count": 1
+        },
+        {
+          "date": "2026-04-06",
+          "count": 5
+        },
+        {
+          "date": "2026-04-07",
+          "count": 2
+        },
+        {
+          "date": "2026-04-08",
+          "count": 6
+        },
+        {
+          "date": "2026-04-09",
+          "count": 2
+        },
+        {
+          "date": "2026-04-11",
+          "count": 7
+        },
+        {
+          "date": "2026-04-13",
+          "count": 1
+        },
+        {
+          "date": "2026-04-14",
+          "count": -1
+        },
+        {
+          "date": "2026-04-17",
+          "count": 1
+        },
+        {
+          "date": "2026-04-23",
+          "count": 4
+        },
+        {
+          "date": "2026-04-27",
+          "count": 1
+        },
+        {
+          "date": "2026-04-28",
+          "count": 2
+        },
+        {
+          "date": "2026-04-29",
+          "count": 1
+        },
+        {
+          "date": "2026-04-30",
+          "count": 4
+        },
+        {
+          "date": "2026-05-01",
+          "count": 3
+        },
+        {
+          "date": "2026-05-02",
+          "count": 3
+        },
+        {
+          "date": "2026-05-03",
+          "count": 1
+        },
+        {
+          "date": "2026-05-05",
+          "count": 3
+        },
+        {
+          "date": "2026-05-07",
+          "count": 6
+        },
+        {
+          "date": "2026-05-08",
+          "count": 5
+        },
+        {
+          "date": "2026-05-09",
+          "count": 3
+        },
+        {
+          "date": "2026-05-10",
+          "count": 1
+        },
+        {
+          "date": "2026-05-11",
+          "count": 1
+        },
+        {
+          "date": "2026-05-12",
+          "count": 2
+        },
+        {
+          "date": "2026-05-13",
+          "count": 2
+        },
+        {
+          "date": "2026-05-14",
+          "count": 2
+        },
+        {
+          "date": "2026-05-15",
+          "count": 5
+        },
+        {
+          "date": "2026-05-16",
+          "count": 4
+        },
+        {
+          "date": "2026-05-17",
+          "count": 2
+        },
+        {
+          "date": "2026-05-18",
+          "count": 1
+        },
+        {
+          "date": "2026-05-19",
+          "count": 4
+        },
+        {
+          "date": "2026-05-20",
+          "count": -2
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        },
+        {
+          "date": "2026-05-24",
+          "count": 3
+        },
+        {
+          "date": "2026-05-25",
+          "count": 2
+        },
+        {
+          "date": "2026-05-27",
+          "count": 2
+        },
+        {
+          "date": "2026-05-28",
+          "count": 1
+        },
+        {
+          "date": "2026-05-30",
+          "count": 3
+        },
+        {
+          "date": "2026-05-31",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": -2
+        },
+        {
+          "date": "2026-06-03",
+          "count": 1
+        },
+        {
+          "date": "2026-06-06",
+          "count": 5
+        },
+        {
+          "date": "2026-06-08",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 4
+        },
+        {
+          "date": "2026-06-10",
+          "count": 3
+        },
+        {
+          "date": "2026-06-11",
+          "count": 2
+        },
+        {
+          "date": "2026-06-13",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 2
+        },
+        {
+          "date": "2026-06-18",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 3
+        },
+        {
+          "date": "2026-06-21",
+          "count": 3
+        },
+        {
+          "date": "2026-06-22",
+          "count": 1
+        },
+        {
+          "date": "2026-06-23",
+          "count": 3
+        },
+        {
+          "date": "2026-06-24",
+          "count": 4
+        },
+        {
+          "date": "2026-06-25",
+          "count": 4
+        },
+        {
+          "date": "2026-06-26",
+          "count": 1
+        },
+        {
+          "date": "2026-06-27",
+          "count": 7
+        },
+        {
+          "date": "2026-06-28",
+          "count": 1
+        },
+        {
+          "date": "2026-06-29",
+          "count": 6
+        },
+        {
+          "date": "2026-07-01",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 4
+        }
+      ]
     },
     {
       "name": "Old Bridge",
@@ -4004,12 +5094,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 108.48,
+          "meta_spend": 108.57,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 379.45,
+          "total_marketing_spend": 379.54,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -4975,7 +6065,8 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-11-01",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": []
     },
     {
       "name": "Dr Phillips",
@@ -5266,14 +6357,14 @@
           "conversion_rate": 26.1,
           "comm_events": 6,
           "ig_new_followers": 165,
-          "meta_spend": 1044.24,
+          "meta_spend": 1044.28,
           "google_spend": 92.95,
           "grassroots_spend": 850.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
-          "total_marketing_spend": 2260.74,
+          "total_marketing_spend": 2260.78,
           "blended_cpl": 98.29,
-          "blended_cpa": 376.79,
+          "blended_cpa": 376.8,
           "estimated_day1_rmr": null
         },
         {
@@ -5294,12 +6385,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 176.12,
+          "meta_spend": 176.36,
           "google_spend": 32.7,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 479.79,
+          "total_marketing_spend": 480.03,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -6036,7 +7127,85 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-08-30",
-      "goal_announce_target": 250.0
+      "goal_announce_target": 250.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-19",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-30",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-05",
+          "count": 1
+        },
+        {
+          "date": "2026-06-06",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 1
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-11",
+          "count": -1
+        },
+        {
+          "date": "2026-06-12",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 1
+        },
+        {
+          "date": "2026-06-16",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": 1
+        },
+        {
+          "date": "2026-06-28",
+          "count": 1
+        },
+        {
+          "date": "2026-06-29",
+          "count": 1
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1
+        },
+        {
+          "date": "2026-07-02",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 2
+        },
+        {
+          "date": "2026-07-05",
+          "count": 1
+        }
+      ]
     },
     {
       "name": "Aventura",
@@ -6271,12 +7440,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 188.66,
+          "meta_spend": 188.97,
           "google_spend": 21.77,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 481.4,
+          "total_marketing_spend": 481.71,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -7095,7 +8264,125 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-08-10",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-19",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-23",
+          "count": 1
+        },
+        {
+          "date": "2026-05-25",
+          "count": 1
+        },
+        {
+          "date": "2026-05-29",
+          "count": 3
+        },
+        {
+          "date": "2026-05-30",
+          "count": 1
+        },
+        {
+          "date": "2026-06-02",
+          "count": -1
+        },
+        {
+          "date": "2026-06-04",
+          "count": 1
+        },
+        {
+          "date": "2026-06-05",
+          "count": 2
+        },
+        {
+          "date": "2026-06-06",
+          "count": 1
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 2
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-11",
+          "count": 1
+        },
+        {
+          "date": "2026-06-12",
+          "count": 1
+        },
+        {
+          "date": "2026-06-13",
+          "count": 3
+        },
+        {
+          "date": "2026-06-17",
+          "count": 2
+        },
+        {
+          "date": "2026-06-18",
+          "count": 4
+        },
+        {
+          "date": "2026-06-19",
+          "count": 2
+        },
+        {
+          "date": "2026-06-21",
+          "count": 2
+        },
+        {
+          "date": "2026-06-22",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": 2
+        },
+        {
+          "date": "2026-06-25",
+          "count": 2
+        },
+        {
+          "date": "2026-06-26",
+          "count": 1
+        },
+        {
+          "date": "2026-06-28",
+          "count": 2
+        },
+        {
+          "date": "2026-06-29",
+          "count": 1
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 2
+        },
+        {
+          "date": "2026-07-04",
+          "count": 1
+        }
+      ]
     },
     {
       "name": "North Miami",
@@ -7330,12 +8617,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 169.63,
+          "meta_spend": 169.75,
           "google_spend": 52.24,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 492.84,
+          "total_marketing_spend": 492.96,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -8154,7 +9441,105 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-09-01",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-26",
+          "count": 1
+        },
+        {
+          "date": "2026-05-28",
+          "count": 7
+        },
+        {
+          "date": "2026-05-29",
+          "count": 1
+        },
+        {
+          "date": "2026-05-31",
+          "count": 1
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-03",
+          "count": 1
+        },
+        {
+          "date": "2026-06-04",
+          "count": 5
+        },
+        {
+          "date": "2026-06-05",
+          "count": 1
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 1
+        },
+        {
+          "date": "2026-06-14",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 3
+        },
+        {
+          "date": "2026-06-17",
+          "count": 2
+        },
+        {
+          "date": "2026-06-18",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 1
+        },
+        {
+          "date": "2026-06-20",
+          "count": 1
+        },
+        {
+          "date": "2026-06-21",
+          "count": 1
+        },
+        {
+          "date": "2026-06-22",
+          "count": 1
+        },
+        {
+          "date": "2026-06-23",
+          "count": -1
+        },
+        {
+          "date": "2026-06-27",
+          "count": 4
+        },
+        {
+          "date": "2026-06-29",
+          "count": 1
+        },
+        {
+          "date": "2026-07-01",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 4
+        },
+        {
+          "date": "2026-07-04",
+          "count": 1
+        }
+      ]
     },
     {
       "name": "Dallas - Uptown",
@@ -8445,12 +9830,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 185.41,
+          "meta_spend": 185.49,
           "google_spend": 20.27,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 476.65,
+          "total_marketing_spend": 476.73,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -9217,7 +10602,157 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-10-04",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-15",
+          "count": 1
+        },
+        {
+          "date": "2026-05-19",
+          "count": 7
+        },
+        {
+          "date": "2026-05-20",
+          "count": 4
+        },
+        {
+          "date": "2026-05-25",
+          "count": 1
+        },
+        {
+          "date": "2026-05-26",
+          "count": 1
+        },
+        {
+          "date": "2026-05-27",
+          "count": 4
+        },
+        {
+          "date": "2026-05-28",
+          "count": 2
+        },
+        {
+          "date": "2026-05-29",
+          "count": 7
+        },
+        {
+          "date": "2026-05-30",
+          "count": 2
+        },
+        {
+          "date": "2026-06-01",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-03",
+          "count": 3
+        },
+        {
+          "date": "2026-06-04",
+          "count": 2
+        },
+        {
+          "date": "2026-06-05",
+          "count": 3
+        },
+        {
+          "date": "2026-06-06",
+          "count": 3
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-08",
+          "count": 2
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-13",
+          "count": 3
+        },
+        {
+          "date": "2026-06-14",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 6
+        },
+        {
+          "date": "2026-06-16",
+          "count": 2
+        },
+        {
+          "date": "2026-06-17",
+          "count": 3
+        },
+        {
+          "date": "2026-06-18",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 2
+        },
+        {
+          "date": "2026-06-20",
+          "count": 1
+        },
+        {
+          "date": "2026-06-21",
+          "count": 6
+        },
+        {
+          "date": "2026-06-22",
+          "count": 2
+        },
+        {
+          "date": "2026-06-23",
+          "count": 4
+        },
+        {
+          "date": "2026-06-24",
+          "count": 2
+        },
+        {
+          "date": "2026-06-25",
+          "count": 6
+        },
+        {
+          "date": "2026-06-26",
+          "count": 2
+        },
+        {
+          "date": "2026-06-27",
+          "count": 2
+        },
+        {
+          "date": "2026-06-28",
+          "count": 2
+        },
+        {
+          "date": "2026-06-29",
+          "count": 5
+        },
+        {
+          "date": "2026-07-03",
+          "count": 1
+        },
+        {
+          "date": "2026-07-05",
+          "count": 2
+        }
+      ]
     },
     {
       "name": "Dunwoody",
@@ -9312,12 +10847,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 82.71,
+          "meta_spend": 82.72,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 353.68,
+          "total_marketing_spend": 353.69,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -11559,12 +13094,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 111.89,
+          "meta_spend": 111.99,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 382.86,
+          "total_marketing_spend": 382.96,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
