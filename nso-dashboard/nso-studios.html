@@ -1546,7 +1546,9 @@ function renderMeta(){
     <div class="chart-card-title">Active Ads</div>
     <div style="display:flex;align-items:flex-start;gap:10px;background:#f0f6fa;border-left:3px solid #99DAF3;border-radius:6px;padding:10px 14px;margin-bottom:16px">
       <span style="font-size:15px;line-height:1;color:#0084B5;flex-shrink:0;margin-top:1px">ⓘ</span>
-      <p style="margin:0;font-size:12px;color:#1a4d6e;line-height:1.55">If you want to preview the ads below, you must be logged into your Facebook account that is connected to Meta Business for your studio. If you do not have access to your studio's Meta Business, reach out to your Marketing Manager for assistance.</p>
+      <p style="margin:0;font-size:12px;color:#1a4d6e;line-height:1.55">${isAdminUser()
+        ?`If you want to preview the ads below, you must be logged into your Facebook account that is connected to Meta Business for your studio. If you do not have access to your studio's Meta Business, reach out to your Marketing Manager for assistance.`
+        :`Coming soon: full ad previews (images and video) will be viewable directly from this dashboard in an upcoming update.`}</p>
     </div>
     <div style="overflow-x:auto">
       <table class="data-table" id="meta-ads-table">
@@ -1607,10 +1609,15 @@ function renderMeta(){
     sortableTable('meta-ads-table',creativeRows,(g,i)=>{
       const isVid=(g.media_type||'').toLowerCase().includes('video')||g.name.toLowerCase().includes('reel');
       const fallback=`<div style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px">${isVid?'&#9654;':'&#128444;'}</div>`;
+      const canLink=isAdminUser();
       const thumbCell=g.thumb
-        ?`<a href="${g.preview||g.thumb}" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2)"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.outerHTML=${JSON.stringify(fallback)}"/></a>`
-        :`<a href="${g.preview||'#'}" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">${isVid?'&#9654;':'&#128444;'}</a>`;
-      const nameCell=g.preview
+        ?(canLink
+          ?`<a href="${g.preview||g.thumb}" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2)"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.outerHTML=${JSON.stringify(fallback)}"/></a>`
+          :`<div style="width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2)"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.outerHTML=${JSON.stringify(fallback)}"/></div>`)
+        :(canLink
+          ?`<a href="${g.preview||'#'}" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">${isVid?'&#9654;':'&#128444;'}</a>`
+          :fallback);
+      const nameCell=(canLink&&g.preview)
         ?`<a href="${g.preview}" target="_blank" rel="noopener" style="color:#1a4d6e;text-decoration:none;font-weight:600;font-size:13px">${g.name}</a>`
         :`<span style="font-weight:600;font-size:13px">${g.name}</span>`;
       const ctrStr=g.impressions>0?(g.clicks/g.impressions*100).toFixed(2)+'%':'—';
