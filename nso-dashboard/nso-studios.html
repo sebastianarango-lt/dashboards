@@ -103,7 +103,7 @@
       <div class="nav-submenu" id="organic-group">
         <button class="nav-tab nav-sub" onclick="switchTab('ga4',this)">Website</button>
         <button class="nav-tab nav-sub" onclick="switchTab('gbp',this)">Google Maps</button>
-        <button class="nav-tab nav-sub" onclick="switchTab('instagram',this)">Instagram</button>
+        <button class="nav-tab nav-sub" id="navTabInstagram" onclick="switchTab('instagram',this)">Instagram</button>
       </div>
     </div>
   </div>
@@ -251,6 +251,7 @@ const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SW
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
+let CUR_USER=null;const isAdminUser=()=>CUR_USER&&CUR_USER.role==='admin';
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='',_sumD7End=null;
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
 function lds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -1209,7 +1210,8 @@ function renderScorecard(){
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
   ];
 
-  const defs=_scView==='weekly'?weeklyDefs:cumDefs;
+  let defs=_scView==='weekly'?weeklyDefs:cumDefs;
+  if(!isAdminUser())defs=defs.filter(d=>d.key!=='ig'&&d.key!=='cumIg');
   const pastWeeks=weeks.filter(w=>w.w>0);
   function _fmtD(iso){if(!iso)return'?';const[y,m,d]=iso.split('-');return`${+m}/${+d}`+(y!=='2026'?`<br><span style="font-size:8px;color:#c07000">${y}</span>`:'')}
 
@@ -2375,8 +2377,13 @@ async function init(){
   // Auth check — redirects to login.html if no valid session
   const _authUser = checkAuth();
   if (!_authUser) return;
+  CUR_USER=_authUser;
   renderAuthNav(_authUser);
   const _allowedStudios = getAuthStudios(_authUser);
+  if(!isAdminUser()){
+    const _igTab=document.getElementById('navTabInstagram');
+    if(_igTab)_igTab.remove();
+  }
 
   // Load all data files
   const [dataRes,scRes,mktRes,dashRes,gadsRes,socialRes,salesRes,gbpRes,adMetaRes]=await Promise.allSettled([
