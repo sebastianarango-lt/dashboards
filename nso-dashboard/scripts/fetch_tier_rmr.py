@@ -298,6 +298,18 @@ for studio in sc.get("studios", []):
 
     studio["tier_rmr_by_week"] = tier_rmr
 
+    # Daily tier sales: aggregate by date for precise frontend date filtering.
+    # Same email-dedup as tier_rmr_by_week but at day granularity.
+    from collections import defaultdict as _dd
+    _by_date = _dd(int)
+    for d, _pd, n in daily:
+        _by_date[str(d)] += n
+    studio["tier_daily_sales"] = [
+        {"date": d, "count": n}
+        for d, n in sorted(_by_date.items())
+        if n != 0
+    ]
+
     # Summary
     last = tier_rmr[-1] if tier_rmr else {}
     t0p = pricing.get("tier0_price", 0) or 0
@@ -313,4 +325,4 @@ conn.close()
 with open(SCORECARD_FILE, "w") as f:
     json.dump(sc, f, indent=2)
 
-print(f"\nDone. {SCORECARD_FILE} updated with tier_rmr_by_week for all studios.")
+print(f"\nDone. {SCORECARD_FILE} updated with tier_rmr_by_week + tier_daily_sales for all studios.")

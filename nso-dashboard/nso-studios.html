@@ -963,28 +963,22 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // Use tier data for Total Sales — same methodology as scorecard/RMR everywhere.
-  // Date filter: compute delta between tier count at end vs start of selected range.
-  function _wkForDate(weeks,d){
-    if(!weeks||!d)return null;
-    const ds=d.toISOString().slice(0,10);let best=null;
-    for(const wk of weeks){const wn=parseInt(String(wk.week).replace(/[^0-9]/g,''))||0;if(wk.date_start&&wk.date_start<=ds)best=wn;}
-    return best;
-  }
-  function _tierSum(te){return te?(te.t0||0)+(te.t1||0)+(te.t2||0)+(te.t3||0):0;}
-  if(SC&&SC.studios){
+  // Use tier_daily_sales for Total Sales when no source filter — email-deduped, correct total (268).
+  // When a source filter is active, keep smC from NSO_SALES_ROWS (has source attribution).
+  if(SC&&SC.studios&&!(sr&&sr.length)){
     const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
-    let tierTotal=0,hasTier=false;
+    let tierC=0,tierP=0,tierY=0,hasTier=false;
+    const _rng=(f,t)=>{const fs=f?f.toISOString().slice(0,10):null,ts=t?t.toISOString().slice(0,10):null;return r=>(!fs||r.date>=fs)&&(!ts||r.date<=ts);};
+    const _sumTier=rows=>rows.reduce((a,r)=>a+(r.count||0),0);
     selSt.forEach(sel=>{
-      if(!sel.tier_rmr_by_week||!sel.current_week)return;
-      const tm={};(sel.tier_rmr_by_week).forEach(r=>{tm[r.week]=r;});
-      const toWk=to?_wkForDate(sel.weeks,to):sel.current_week;
-      const endTotal=_tierSum(tm[toWk||sel.current_week]);
-      let startTotal=0;
-      if(from){const fw=_wkForDate(sel.weeks,from);if(fw>0)startTotal=_tierSum(tm[fw-1]);}
-      tierTotal+=Math.max(0,endTotal-startTotal);hasTier=true;
+      const tds=sel.tier_daily_sales;
+      if(!tds||!tds.length)return;
+      tierC+=Math.max(0,_sumTier(tds.filter(_rng(from,to))));
+      if(wins.ppFrom)tierP+=Math.max(0,_sumTier(tds.filter(_rng(wins.ppFrom,wins.ppTo))));
+      if(wins.pyFrom)tierY+=Math.max(0,_sumTier(tds.filter(_rng(wins.pyFrom,wins.pyTo))));
+      hasTier=true;
     });
-    if(hasTier)smC=tierTotal;
+    if(hasTier){smC=tierC;if(wins.ppFrom)smP=tierP;if(wins.pyFrom)smY=tierY;}
   }
   buildTrend(toTS(curr.daily,curr.monthly));
   const fkpi=document.getElementById('funnel-kpis');
