@@ -521,7 +521,7 @@ function renderSummary(){
       const _gaMet=_gaActual>=_goalAnn;
       h+=`<div class="chart-card" style="padding:14px 20px;min-width:200px;margin-bottom:0">`;
       h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;color:#5a7a8a;letter-spacing:1px;margin-bottom:12px">Goal to Announce Opening${_infoBtnInline('sum_goal_announce')}</div>`;
-      h+=`<div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Presales Needed</div>`;
+      h+=`<div style="font-size:11px;color:#5a7a8a;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Presales as of ${_fmtDateShort(d7end)}</div>`;
       h+=`<div style="display:flex;align-items:baseline;gap:6px;margin-bottom:10px">`;
       h+=`<span style="font-family:Oswald,sans-serif;font-style:italic;font-size:32px;font-weight:700;color:${_gaMet?'#00C9A7':'#1a1a2e'};line-height:1">${_gaActual}</span>`;
       h+=`<span style="font-size:13px;color:#8aaabb">/ ${_goalAnn}</span>`;
@@ -599,12 +599,14 @@ function renderSummary(){
   const _sname=studio.data_name||studio.name;
   const raw7=(RAW&&RAW.daily_detail||[]).filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
   const lastLeads=raw7.reduce((s,r)=>s+(r.signups||0),0);
-  const sales7=NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
-  const lastNetPresales=Math.max(0,sales7.reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
+  const _tds7=(studio.tier_daily_sales||[]).filter(r=>r.date>=d7ago&&r.date<=d7end);
+  const lastNetPresales=_tds7.length?Math.max(0,_tds7.reduce((a,r)=>a+(r.count||0),0)):Math.max(0,(NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end)).reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
   const lastSpend=cur.total_marketing_spend||0;
   const _isReston=studio.code==='VA-001';
-  const wkLeadGoal=_isReston?60:(tgt.total_leads?Math.round(tgt.total_leads/paceWeeks):0);
-  const wkPresaleGoal=_isReston?21:(tgt.presales_count?Math.round(tgt.presales_count/paceWeeks):0);
+  const annPres=_goalAnn||tgt.presales_count||0;
+  const annLeads=_goalAnn===300?860:(_goalAnn===250?715:tgt.total_leads||0);
+  const wkLeadGoal=annLeads&&paceWeeks?Math.round(annLeads/paceWeeks):0;
+  const wkPresaleGoal=annPres&&paceWeeks?Math.round(annPres/paceWeeks):0;
   const cumSpend=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.total_marketing_spend||0),0);
   const cumSpendNoLT=w.slice(0,displayCw+1).reduce((s,x)=>s+(x.meta_spend||0)+(x.google_spend||0)+(x.grassroots_spend||0)+(x.other_spend||0),0);
   const estTotalSpend=displayCw>0?Math.round(cumSpendNoLT/displayCw*paceWeeks):0;
@@ -706,18 +708,19 @@ function drawCumChart(studio){
   if(_ch.sum){_ch.sum.destroy();_ch.sum=null}
   const totalW=studio.go_week||studio.weeks.length-1;
   const cw=studio.current_week||0;
-  const _isRest=studio.code==='VA-001';
-  const tPres=_isRest?21*totalW:(studio.targets.presales_count||0);
-  const tLeads=_isRest?60*totalW:(studio.targets.total_leads||0);
-  const wkLeadPace=_isRest?60:(totalW?tLeads/totalW:0);
-  const wkPresPace=_isRest?21:(totalW?tPres/totalW:0);
+  const _ann=studio.goal_announce_target||null;
+  const paceW=studio.co_week||totalW;
+  const tPres=_ann||studio.targets.presales_count||0;
+  const tLeads=_ann===300?860:(_ann===250?715:(studio.targets.total_leads||0));
+  const wkLeadPace=paceW?tLeads/paceW:0;
+  const wkPresPace=paceW?tPres/paceW:0;
   const w=studio.weeks.filter((_,i)=>i<=Math.max(cw+2,totalW));
   const labels=w.map(x=>x.week.replace('WEEK ','W'));
   const leadsD=w.map((x,i)=>i<=cw?x.total_leads||0:null);
   const _cumTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_cumTierMap[r.week]=r;});
   const presD=w.map((x,i)=>{if(i>cw)return null;const tr=_cumTierMap[i];return tr?(tr.t0||0)+(tr.t1||0)+(tr.t2||0)+(tr.t3||0):Math.max(0,(x.presales_count||0)-(x.cancellations_count||0));});
-  const leadsPace=w.map((_,i)=>Math.round(wkLeadPace*i));
-  const presPace=w.map((_,i)=>Math.round(wkPresPace*i));
+  const leadsPace=w.map((_,i)=>Math.min(tLeads,Math.round(wkLeadPace*i)));
+  const presPace=w.map((_,i)=>Math.min(tPres,Math.round(wkPresPace*i)));
   _ch.sum=new Chart(ctx,{type:'line',data:{labels,datasets:[
     {label:'LEADS',data:leadsD,borderColor:'#00A3E0',backgroundColor:'rgba(0,163,224,0.08)',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.3,fill:true,spanGaps:false},
     {label:'PRESALES (NET)',data:presD,borderColor:'#DDFF00',backgroundColor:'rgba(221,255,0,0.08)',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.3,fill:true,spanGaps:false},
@@ -733,11 +736,12 @@ function drawWeeklyChart(studio){
   if(_ch.sum){_ch.sum.destroy();_ch.sum=null}
   const totalW=studio.go_week||studio.weeks.length-1;
   const cw=studio.current_week||0;
-  const _isRest=studio.code==='VA-001';
-  const tPres=_isRest?21*totalW:(studio.targets.presales_count||0);
-  const tLeads=_isRest?60*totalW:(studio.targets.total_leads||0);
-  const wkPresPace=_isRest?21:(tPres&&totalW?+(tPres/totalW).toFixed(1):0);
-  const wkLeadPace=_isRest?60:(tLeads&&totalW?+(tLeads/totalW).toFixed(1):0);
+  const _ann=studio.goal_announce_target||null;
+  const paceW=studio.co_week||totalW;
+  const tPres=_ann||studio.targets.presales_count||0;
+  const tLeads=_ann===300?860:(_ann===250?715:(studio.targets.total_leads||0));
+  const wkPresPace=tPres&&paceW?+(tPres/paceW).toFixed(1):0;
+  const wkLeadPace=tLeads&&paceW?+(tLeads/paceW).toFixed(1):0;
   const w=studio.weeks.filter((_,i)=>i<=Math.max(cw+2,totalW));
   const labels=w.map(x=>x.week.replace('WEEK ','W'));
   const _wkTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_wkTierMap[r.week]=r;});
@@ -963,28 +967,22 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // Use tier data for Total Sales — same methodology as scorecard/RMR everywhere.
-  // Date filter: compute delta between tier count at end vs start of selected range.
-  function _wkForDate(weeks,d){
-    if(!weeks||!d)return null;
-    const ds=d.toISOString().slice(0,10);let best=null;
-    for(const wk of weeks){const wn=parseInt(String(wk.week).replace(/[^0-9]/g,''))||0;if(wk.date_start&&wk.date_start<=ds)best=wn;}
-    return best;
-  }
-  function _tierSum(te){return te?(te.t0||0)+(te.t1||0)+(te.t2||0)+(te.t3||0):0;}
-  if(SC&&SC.studios){
+  // Use tier_daily_sales for Total Sales when no source filter — email-deduped, correct total (268).
+  // When a source filter is active, keep smC from NSO_SALES_ROWS (has source attribution).
+  if(SC&&SC.studios&&!(sr&&sr.length)){
     const selSt=st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios;
-    let tierTotal=0,hasTier=false;
+    let tierC=0,tierP=0,tierY=0,hasTier=false;
+    const _rng=(f,t)=>{const fs=f?f.toISOString().slice(0,10):null,ts=t?t.toISOString().slice(0,10):null;return r=>(!fs||r.date>=fs)&&(!ts||r.date<=ts);};
+    const _sumTier=rows=>rows.reduce((a,r)=>a+(r.count||0),0);
     selSt.forEach(sel=>{
-      if(!sel.tier_rmr_by_week||!sel.current_week)return;
-      const tm={};(sel.tier_rmr_by_week).forEach(r=>{tm[r.week]=r;});
-      const toWk=to?_wkForDate(sel.weeks,to):sel.current_week;
-      const endTotal=_tierSum(tm[toWk||sel.current_week]);
-      let startTotal=0;
-      if(from){const fw=_wkForDate(sel.weeks,from);if(fw>0)startTotal=_tierSum(tm[fw-1]);}
-      tierTotal+=Math.max(0,endTotal-startTotal);hasTier=true;
+      const tds=sel.tier_daily_sales;
+      if(!tds||!tds.length)return;
+      tierC+=Math.max(0,_sumTier(tds.filter(_rng(from,to))));
+      if(wins.ppFrom)tierP+=Math.max(0,_sumTier(tds.filter(_rng(wins.ppFrom,wins.ppTo))));
+      if(wins.pyFrom)tierY+=Math.max(0,_sumTier(tds.filter(_rng(wins.pyFrom,wins.pyTo))));
+      hasTier=true;
     });
-    if(hasTier)smC=tierTotal;
+    if(hasTier){smC=tierC;if(wins.ppFrom)smP=tierP;if(wins.pyFrom)smY=tierY;}
   }
   buildTrend(toTS(curr.daily,curr.monthly));
   const fkpi=document.getElementById('funnel-kpis');
