@@ -5,11 +5,11 @@ from MART_SALES_DETAILS in Snowflake. Pure transactional approach: every
 buy (+1) and cancel (-1) transaction is counted on the day it occurs.
 
 Key logic:
-  - Dedup   : each transaction appears twice (LOCATION_ID 1 + 98).
-              ROW_NUMBER() OVER (PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
-              SALE_DATE::DATE, QUANTITY ORDER BY UNIQUE_SALE_ID) keeps rn=1.
+  - LOC=98  : LOCATION_ID=98 rows excluded — they are internal MindBody
+              duplicates that MindBody does not surface. All other rows kept.
   - Presales: QUANTITY=1, IS_RETURN=0, counted on their SALE_DATE.
-  - Cancels : QUANTITY=-1 OR IS_RETURN=1, counted on their SALE_DATE.
+  - Cancels : QUANTITY=-1 OR IS_RETURN=1, attributed to the client's ORIGINAL
+              BUY DATE (not return date) to match MindBody's reporting.
   - Source  : attributed via MART_LEADS_LOG / MART_CLIENTS per client email.
   - Revenue : GROSS_PAYMENTAMT_LOCAL (presale transactions only).
 
@@ -113,38 +113,67 @@ def get_conn():
 # ---------------------------------------------------------------------------
 def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
     """
-    Returns one row per (studio_id, date, source) with:
-      presales      — count of QUANTITY=1 buy transactions (deduped)
-      cancellations — count of QUANTITY=-1 / IS_RETURN cancel transactions (deduped)
+    Returns one row per (studio_id, effective_date, source) with:
+      presales      — count of QUANTITY=1 buy transactions
+      cancellations — count of QUANTITY=-1 / IS_RETURN cancel transactions
       gross_revenue — sum of GROSS_PAYMENTAMT_LOCAL on buy transactions
+
+    Methodology to match MindBody:
+      - LOCATION_ID 98 rows are excluded (they are internal MindBody duplicates
+        that MindBody itself does not surface to users).
+      - All other rows per client, including LOC=1 duplicates, are kept —
+        MindBody counts each row as a separate transaction.
+      - IS_RETURN cancellations are attributed to the client's original buy date
+        (not the return/processing date), matching MindBody's reporting convention.
     """
     sql = f"""
-    WITH txn_dedup AS (
-        -- Collapse the LOCATION_ID 1 / 98 duplicate: keep the row with the
-        -- lowest UNIQUE_SALE_ID for each logical transaction.
+    WITH buy_dates AS (
+        -- First presale buy date per client per studio.
+        -- Used to attribute IS_RETURN cancellations to the original buy date.
         SELECT
             STUDIO_ID,
-            CLIENT_ID,
-            EMAIL_ID,
-            PRODUCT_DESCRIPTION,
-            SALE_DATE::DATE            AS sale_date,
-            QUANTITY,
-            IS_RETURN,
-            COALESCE(GROSS_PAYMENTAMT_LOCAL, 0) AS gross_revenue,
-            ROW_NUMBER() OVER (
-                PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
-                             SALE_DATE::DATE, QUANTITY
-                ORDER BY UNIQUE_SALE_ID
-            ) AS rn
+            LOWER(TRIM(EMAIL_ID)) AS email,
+            MIN(SALE_DATE::DATE)  AS first_buy_date
         FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS
         WHERE STUDIO_ID IN ({ID_LIST})
           AND ITEM_TYPE = 'Pricing Option'
           AND LOWER(PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
-          AND SALE_DATE::DATE BETWEEN '{start_date}' AND '{end_date}'
+          AND QUANTITY = 1 AND IS_RETURN = 0
+          AND LOCATION_ID != 98
           AND (EMAIL_ID IS NULL OR (
               LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
+          ))
+        GROUP BY STUDIO_ID, LOWER(TRIM(EMAIL_ID))
+    ),
+    txn AS (
+        -- All presale transactions excluding LOC=98 rows.
+        -- IS_RETURN effective date = original buy date (MindBody convention).
+        SELECT
+            t.STUDIO_ID,
+            t.EMAIL_ID,
+            t.PRODUCT_DESCRIPTION,
+            CASE
+                WHEN t.QUANTITY = -1 OR t.IS_RETURN = 1
+                THEN COALESCE(b.first_buy_date, t.SALE_DATE::DATE)
+                ELSE t.SALE_DATE::DATE
+            END                                    AS effective_date,
+            t.QUANTITY,
+            t.IS_RETURN,
+            COALESCE(t.GROSS_PAYMENTAMT_LOCAL, 0)  AS gross_revenue
+        FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS t
+        LEFT JOIN buy_dates b
+               ON t.STUDIO_ID = b.STUDIO_ID
+              AND LOWER(TRIM(t.EMAIL_ID)) = b.email
+        WHERE t.STUDIO_ID IN ({ID_LIST})
+          AND t.ITEM_TYPE = 'Pricing Option'
+          AND LOWER(t.PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
+          AND t.LOCATION_ID != 98
+          AND (t.EMAIL_ID IS NULL OR (
+              LOWER(TRIM(t.EMAIL_ID)) NOT LIKE '%test%'
+          AND LOWER(TRIM(t.EMAIL_ID)) NOT LIKE '%sweat440%'
+          AND LOWER(TRIM(t.EMAIL_ID)) NOT LIKE '%leadteam%'
           ))
     ),
     leads_src AS (
@@ -178,20 +207,20 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
     )
     SELECT
         t.STUDIO_ID,
-        t.sale_date                                                          AS date,
+        t.effective_date                                                     AS date,
         COALESCE({_SOURCE_CASE}, 'N/A')                                     AS source,
         COUNT(CASE WHEN t.QUANTITY = 1  AND t.IS_RETURN = 0 THEN 1 END)    AS presales,
         COUNT(CASE WHEN t.QUANTITY = -1 OR  t.IS_RETURN = 1 THEN 1 END)    AS cancellations,
         SUM(CASE WHEN t.QUANTITY = 1 AND t.IS_RETURN = 0
                  THEN t.gross_revenue ELSE 0 END)                           AS gross_revenue
-    FROM txn_dedup t
+    FROM txn t
     LEFT JOIN leads_src  l
            ON LOWER(TRIM(t.EMAIL_ID)) = l.email
           AND t.STUDIO_ID = l.STUDIO_ID AND l.rn = 1
     LEFT JOIN clients_src c
            ON LOWER(TRIM(t.EMAIL_ID)) = c.email
           AND t.STUDIO_ID = c.STUDIO_ID AND c.rn = 1
-    WHERE t.rn = 1
+    WHERE t.effective_date BETWEEN '{start_date}' AND '{end_date}'
     GROUP BY 1, 2, 3
     ORDER BY 1, 2, 3
     """
@@ -296,26 +325,13 @@ def main():
         cutoff         = start_date
         mode           = "FULL REBUILD"
     else:
-        existing, max_date = load_existing(out_path)
-        if existing is None or max_date is None:
-            # No usable existing file → full rebuild
-            start_date = DEFAULT_START
-            end_date   = end_override
-            existing_daily = {str(sid): [] for sid in NSO_STUDIOS}
-            cutoff         = start_date
-            mode           = "FULL REBUILD (no existing file)"
-        else:
-            cutoff     = (datetime.strptime(max_date, "%Y-%m-%d")
-                          - timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
-            start_date = cutoff
-            end_date   = end_override
-            # Keep rows that predate the lookback window
-            existing_daily = {}
-            for sid_str, s in existing.get("studios", {}).items():
-                existing_daily[sid_str] = [
-                    r for r in s.get("daily", []) if r.get("date", "") < cutoff
-                ]
-            mode = f"INCREMENTAL (lookback {LOOKBACK_DAYS}d from {max_date})"
+        # IS_RETURN rows are attributed to the original buy date, which may predate
+        # any short lookback window.  Always do a full rebuild so no cancel is missed.
+        start_date = DEFAULT_START
+        end_date   = end_override
+        existing_daily = {str(sid): [] for sid in NSO_STUDIOS}
+        cutoff         = start_date
+        mode           = "FULL REBUILD"
 
     print("=" * 60)
     print(f"NSO Sales Fetch  [{mode}]")
