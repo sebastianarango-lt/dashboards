@@ -6,7 +6,7 @@ buy (+1) and cancel (-1) transaction is counted on the day it occurs.
 
 Key logic:
   - Dedup   : each transaction appears twice (LOCATION_ID 1 + 98).
-              ROW_NUMBER() OVER (PARTITION BY CLIENT_ID, PRODUCT_DESCRIPTION,
+              ROW_NUMBER() OVER (PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
               SALE_DATE::DATE, QUANTITY ORDER BY UNIQUE_SALE_ID) keeps rn=1.
   - Presales: QUANTITY=1, IS_RETURN=0, counted on their SALE_DATE.
   - Cancels : QUANTITY=-1 OR IS_RETURN=1, counted on their SALE_DATE.
@@ -132,7 +132,7 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
             IS_RETURN,
             COALESCE(GROSS_PAYMENTAMT_LOCAL, 0) AS gross_revenue,
             ROW_NUMBER() OVER (
-                PARTITION BY CLIENT_ID, PRODUCT_DESCRIPTION,
+                PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
                              SALE_DATE::DATE, QUANTITY
                 ORDER BY UNIQUE_SALE_ID
             ) AS rn
