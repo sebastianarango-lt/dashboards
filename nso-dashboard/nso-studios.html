@@ -341,9 +341,11 @@ const GLOSSARY={
   meta_clicks:{title:'Meta Ads — Clicks',desc:'Total number of clicks on Meta ads, including link clicks, button clicks, and other interactions that direct users off the platform.'},
   meta_leads:{title:'Meta Ads — Leads',desc:'Number of lead form submissions generated through Meta ad campaigns. These are tracked via the Meta Lead Ads format or website conversion events tied to Meta pixels.'},
   meta_cpl:{title:'Meta Ads — Cost / Lead',desc:'Total Meta ad spend divided by the number of leads generated. Measures the average cost to acquire one lead through Meta advertising.'},
+  meta_blended_cpl:{title:'Meta Ads — Cost / Lead',desc:'Meta ad spend divided by the number of leads SWEAT440 attributed to Meta Ads during the period (per the standard lead reporting used across this dashboard). Blends platform spend with Snowflake-attributed leads.'},
   google_spend:{title:'Google Ads — Spend',desc:'Total ad spend on Google Search and Display campaigns during the selected period, as reported by the Google Ads API.'},
   google_leads:{title:'Google Ads — Leads',desc:'Number of conversions tracked through Google Ads, typically form submissions or calls attributed to paid search campaigns.'},
   google_cpl:{title:'Google Ads — Cost / Lead',desc:'Total Google Ads spend divided by the number of tracked conversions. Measures the average cost to acquire one lead through Google advertising.'},
+  google_blended_cpl:{title:'Google Ads — Cost / Lead',desc:'Google Ads spend divided by the number of leads SWEAT440 attributed to Google Ads during the period (per the standard lead reporting used across this dashboard). Blends platform spend with Snowflake-attributed leads.'},
   ga4_sessions:{title:'Sessions',desc:'A session is a group of user interactions with the website within a given time frame. A new session begins after 30 minutes of inactivity or at midnight. One visitor can generate multiple sessions.'},
   ga4_users:{title:'Users',desc:'Total number of unique users who visited the website during the selected period, as measured by Google Analytics 4. Includes both new and returning visitors.'},
   ga4_new_users:{title:'New Users',desc:'Number of users who visited the website for the first time during the selected period. Tracked by GA4 using a unique identifier stored in the browser.'},
@@ -1500,7 +1502,27 @@ function renderMeta(){
   const fN=v=>Number(v).toLocaleString();
   const fK=v=>Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':fN(v);
 
+  // Snowflake-attributed leads for Meta Ads — matches the Funnel/Leads tab totals
+  const _fromD=from?new Date(from+'T00:00:00Z'):null;
+  const _toD=to?new Date(to+'T23:59:59Z'):new Date();
+  const _snowRows=[...fR(RAW.daily_detail||[],_fromD,_toD,activeStudios,['Meta Ads']),...fR(RAW.monthly_detail||[],_fromD,_toD,activeStudios,['Meta Ads'])];
+  const snowLeads=sR(_snowRows).leads;
+  const snowCpl=snowLeads>0?totalSpend/snowLeads:0;
+
   let h='';
+
+  // Summary KPI cards — Snowflake-attributed leads, matches the Funnel tab
+  h+=`<div class="kpi-grid three">`;
+  h+=kpiCard('Spend',totalSpend,null,null,f$,GLOSSARY.meta_spend);
+  h+=kpiCard('Leads',snowLeads,null,null,v=>v,GLOSSARY.leads);
+  h+=kpiCard('Cost / Lead',snowCpl,null,null,f$2,GLOSSARY.meta_blended_cpl);
+  h+=`</div>`;
+
+  h+=`<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`;
+  h+=`<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
+    <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
+    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">Everything below is reported directly by Meta Ads Manager (in-platform) and may not line up with the summary above, which follows SWEAT440's standard attribution model.</p>
+  </div>`;
 
   // KPI cards
   h+=`<div class="kpi-grid">`;
@@ -1720,7 +1742,27 @@ function renderGoogle(){
   const fK=v=>Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':fN(v);
   const ratingBadge=r=>{const m={Best:['#0a8a4a','Best'],Good:['#b85c00','Good'],Low:['#888','Low'],LEARNING:['#888','Learning']};const[c,t]=m[r]||['#888',r||'—'];return`<span style="color:${c};font-weight:600">${t}</span>`;};
 
+  // Snowflake-attributed leads for Google Ads — matches the Funnel/Leads tab totals
+  const _fromD=from?new Date(from+'T00:00:00Z'):null;
+  const _toD=to?new Date(to+'T23:59:59Z'):new Date();
+  const _snowRows=[...fR(RAW.daily_detail||[],_fromD,_toD,activeStudios,['Google Ads']),...fR(RAW.monthly_detail||[],_fromD,_toD,activeStudios,['Google Ads'])];
+  const snowLeads=sR(_snowRows).leads;
+  const snowCpl=snowLeads>0?totalSpend/snowLeads:0;
+
   let h='';
+
+  // Summary KPI cards — Snowflake-attributed leads, matches the Funnel tab
+  h+=`<div class="kpi-grid three">`;
+  h+=kpiCard('Spend',totalSpend,null,null,f$,GLOSSARY.google_spend);
+  h+=kpiCard('Leads',snowLeads,null,null,fN,GLOSSARY.leads);
+  h+=kpiCard('Cost / Lead',snowCpl,null,null,f$2,GLOSSARY.google_blended_cpl);
+  h+=`</div>`;
+
+  h+=`<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`;
+  h+=`<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
+    <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
+    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">Everything below is reported directly by Google Ads (in-platform) and may not line up with the summary above, which follows SWEAT440's standard attribution model.</p>
+  </div>`;
 
   // KPI cards
   h+=`<div class="kpi-grid three">`;
