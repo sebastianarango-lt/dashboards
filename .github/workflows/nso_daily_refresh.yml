@@ -2,7 +2,7 @@ name: NSO Dashboard Daily Refresh
 
 on:
   schedule:
-    - cron: '0 9 * * *'    # 5:00 AM Miami (1 hour after general refresh at 8:00 UTC)
+    - cron: '10 8 * * *'    # 4:10 AM Eastern (10 min after general refresh, to avoid git push collisions)
   workflow_dispatch:        # Allow manual trigger from GitHub UI
 
 permissions:

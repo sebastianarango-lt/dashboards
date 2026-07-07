@@ -2,7 +2,7 @@ name: Refresh Dashboard Data
 
 on:
   schedule:
-    - cron: "0 8 * * *"   # Every day at 8:00 AM UTC
+    - cron: "0 8 * * *"   # 4:00 AM Eastern (EDT=UTC-4; drifts to 3:00 AM during EST/winter)
   workflow_dispatch:        # Manual trigger from GitHub UI
 
 permissions:
