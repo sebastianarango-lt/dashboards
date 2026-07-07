@@ -48,6 +48,8 @@
       </div>
     </div>
 
+    <button class="nav-tab" id="navAdminTab" onclick="switchTab('admin',this)" style="display:none">Admin Table</button>
+
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -359,6 +361,13 @@
     <div id="instagram-content"></div>
   </div>
 
+  <div class="tab-content" id="tab-admin">
+    <div class="chart-card">
+      <div class="chart-card-title">Admin Table — Monthly Performance by Studio</div>
+      <div style="overflow-x:auto"><table class="data-table" id="adminTable"></table></div>
+    </div>
+  </div>
+
 
 </div>
 
@@ -488,6 +497,7 @@ function switchTab(id, btn) {
   if (id === 'website')   renderGA4();
   if (id === 'gbp')       renderGBP();
   if (id === 'instagram') renderInstagram();
+  if (id === 'admin')     buildAdminTable();
   // Hide source filter for single-source tabs
   const singleSourceTabs = ['meta', 'google', 'website', 'gbp', 'instagram'];
   const srcDropEl  = document.getElementById('sourceDropdown');
@@ -518,6 +528,9 @@ async function loadData() {
   if (!_authUser) return;
   renderAuthNav(_authUser);
   const _allowedStudios = getAuthStudios(_authUser);
+  window._isAdmin = _authUser.role === 'admin';
+  const _adminTabBtn = document.getElementById('navAdminTab');
+  if (_adminTabBtn) _adminTabBtn.style.display = window._isAdmin ? '' : 'none';
 
   // Main dashboard data — load in parallel (blocks initial render)
   const [rawRes, metaRes, googleRes] = await Promise.allSettled([
@@ -629,6 +642,7 @@ function applyFilters() {
   buildGoogleTab();
   buildCPRTab();
   buildSummaryTab();
+  if (window._isAdmin) buildAdminTable();
 
   // Re-render whichever organic tab is currently active
   const _activeOrgTab = document.querySelector('.tab-content.active');
@@ -975,7 +989,7 @@ function buildSummaryTab() {
     return rows.reduce((s,r)=>{
       const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();
       if(d<fT||d>tT) return s;
-      if(bySt&&!selStudios.includes(r.studio)) return s;
+      if(bySt&&!selStudios.includes(googleStudioName(r.studio))) return s;
       return s+(r.spend||0);
     },0);
   }
@@ -1083,7 +1097,7 @@ function buildCPRTab() {
   const ltCurr=leadteamForRange(from,to);
   const ltPp=leadteamForRange(ppFrom?new Date(ppFrom):null,ppTo?new Date(ppTo):null);
   const ltPy=leadteamForRange(pyFrom?new Date(pyFrom):null,pyTo?new Date(pyTo):null);
-  function sumGoogleSpend(f,t){if(!f||!t||!GOOGLE_ADS_RAW)return 0;const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;const dailyMonths=new Set((GOOGLE_ADS_RAW.daily||[]).map(r=>r.date.slice(0,7)));const rows=[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];return rows.reduce((s,r)=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return s;if(bySt&&!selStudios.includes(r.studio))return s;return s+(r.spend||0);},0);}
+  function sumGoogleSpend(f,t){if(!f||!t||!GOOGLE_ADS_RAW)return 0;const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;const dailyMonths=new Set((GOOGLE_ADS_RAW.daily||[]).map(r=>r.date.slice(0,7)));const rows=[...(GOOGLE_ADS_RAW.daily||[]),...(GOOGLE_ADS_RAW.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];return rows.reduce((s,r)=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return s;if(bySt&&!selStudios.includes(googleStudioName(r.studio)))return s;return s+(r.spend||0);},0);}
   function sumMetaSpend(f,t){
     if(!f||!t||!META_ADS_RAW)return 0;
     const fT=f.getTime(),tT=t.getTime(),bySt=selStudios.length>0;
@@ -1181,7 +1195,7 @@ function buildCPRTab() {
     const isMonthly = !r.date && !!r.month;
     const d  = new Date(ds+'T00:00:00Z').getTime();
     if (d < fTime || d > tTime) continue;
-    if (byStudio && !selStudios.includes(r.studio)) continue;
+    if (byStudio && !selStudios.includes(googleStudioName(r.studio))) continue;
     if (isMonthly && CPR_GRAN !== 'monthly') {
       addMonthlyAsDays(ds, (key, frac) => { if(!buckets[key])buckets[key]={google:0,meta:0,leads:0,ft:0,mem:0}; buckets[key].google+=r.spend*frac; });
     } else {
@@ -1264,6 +1278,150 @@ function buildCPRTab() {
 function toggleCPRds(btn,i){if(!cprChart)return;const ds=cprChart.data.datasets[i];ds.hidden=!ds.hidden;btn.classList.toggle('on');const cols=['#00A3E0','#00FFC2','#DDFF00','#888'];if(btn.classList.contains('on')){btn.style.background=cols[i];btn.style.borderColor=cols[i];btn.style.color='#000';}else{btn.style.background='#f4f9fd';btn.style.borderColor='#c0d4df';btn.style.color='#5a7a8a';}cprChart.update();}
 
 
+// -- ADMIN TABLE (admin-only) ----------------------------------------------
+const ADMIN_LEADTEAM_PER_STUDIO_MONTH = 1200;
+
+function _adminMonthList(from, to) {
+  const months = [];
+  let cur = new Date(Date.UTC(from.getUTCFullYear(), from.getUTCMonth(), 1));
+  const end = new Date(Date.UTC(to.getUTCFullYear(), to.getUTCMonth(), 1));
+  while (cur <= end) {
+    const mStart = new Date(Math.max(cur.getTime(), from.getTime()));
+    const mEndFull = new Date(Date.UTC(cur.getUTCFullYear(), cur.getUTCMonth()+1, 0, 23, 59, 59));
+    const mEnd = new Date(Math.min(mEndFull.getTime(), to.getTime()));
+    months.push({ start: mStart, end: mEnd, label: cur.toLocaleDateString('en-US',{month:'short',year:'numeric',timeZone:'UTC'}) });
+    cur = new Date(Date.UTC(cur.getUTCFullYear(), cur.getUTCMonth()+1, 1));
+  }
+  return months;
+}
+
+function _adminGoogleSpend(studio, f, t) {
+  if (!GOOGLE_ADS_RAW) return 0;
+  const fT = f.getTime(), tT = t.getTime();
+  const dailyMonths = new Set((GOOGLE_ADS_RAW.daily||[]).map(r => r.date.slice(0,7)));
+  const rows = [...(GOOGLE_ADS_RAW.daily||[]), ...(GOOGLE_ADS_RAW.monthly||[]).filter(r => !dailyMonths.has(r.month.slice(0,7)))];
+  return rows.reduce((s,r) => {
+    const d = new Date((r.date||r.month)+'T00:00:00Z').getTime();
+    if (d < fT || d > tT) return s;
+    if (googleStudioName(r.studio) !== studio) return s;
+    return s + (r.spend||0);
+  }, 0);
+}
+
+function _adminMetaSpend(studio, f, t) {
+  if (!META_ADS_RAW) return 0;
+  const fT = f.getTime(), tT = t.getTime();
+  let tot = 0;
+  const liveCovered = new Set();
+  for (const row of (META_ADS_RAW.studio_daily||[])) {
+    const d = new Date(row.date+'T00:00:00Z').getTime();
+    if (d < fT || d > tT) continue;
+    const nm = META_CODE_TO_STUDIO[row.studio_code] || row.studio_code;
+    if (nm !== studio) continue;
+    tot += row.spend||0;
+    liveCovered.add(row.studio_code+'|'+row.date.slice(0,7));
+  }
+  for (const row of (META_ADS_RAW.studio_monthly||[])) {
+    const d = new Date(row.month+'T00:00:00Z').getTime();
+    if (d < fT || d > tT) continue;
+    const nm = META_CODE_TO_STUDIO[row.studio_code] || row.studio_code;
+    if (nm !== studio) continue;
+    if (liveCovered.has(row.studio_code+'|'+row.month.slice(0,7))) continue;
+    tot += row.spend||0;
+  }
+  return tot;
+}
+
+function _adminLeadteamFee(f, t) {
+  const days = Math.round((t.getTime()-f.getTime())/86400000);
+  return ADMIN_LEADTEAM_PER_STUDIO_MONTH * (days/30.4375);
+}
+
+function buildAdminTable() {
+  if (!window._isAdmin) return;
+  const table = document.getElementById('adminTable');
+  if (!table || !RAW) return;
+  const from = window._metaFrom || null, to = window._metaTo || null;
+  if (!from || !to) return;
+
+  const selStudios = getSelected('studioMenu') || [];
+  const selSources = getSelected('sourceMenu') || [];
+  const studios = (selStudios.length ? selStudios : RAW.studios).slice().sort();
+  const months = _adminMonthList(from, to);
+
+  const f$  = v => '$'+Math.round(v).toLocaleString('en-US');
+  const f$2 = v => v>0 ? '$'+v.toFixed(2) : '—';
+
+  function metricsFor(studio, mFrom, mTo) {
+    const daily   = filterRows(RAW.daily_detail||[],   mFrom, mTo, [studio], selSources);
+    const monthly = filterRows(RAW.monthly_detail||[], mFrom, mTo, [studio], selSources);
+    const {leads, ft, mem} = sumRows([...daily, ...monthly]);
+    const spend = _adminGoogleSpend(studio, mFrom, mTo) + _adminMetaSpend(studio, mFrom, mTo) + _adminLeadteamFee(mFrom, mTo);
+    return {
+      leads, ft, mem, spend,
+      cpl:  leads>0 ? spend/leads : 0,
+      cpft: ft>0    ? spend/ft    : 0,
+      cpa:  mem>0   ? spend/mem   : 0,
+    };
+  }
+
+  function blank() { return {leads:0, ft:0, mem:0, spend:0, cpl:0, cpft:0, cpa:0}; }
+  function addInto(acc, m) { acc.leads+=m.leads; acc.ft+=m.ft; acc.mem+=m.mem; acc.spend+=m.spend; }
+  function finalize(acc) {
+    acc.cpl  = acc.leads>0 ? acc.spend/acc.leads : 0;
+    acc.cpft = acc.ft>0    ? acc.spend/acc.ft    : 0;
+    acc.cpa  = acc.mem>0   ? acc.spend/acc.mem   : 0;
+    return acc;
+  }
+
+  // studio -> {perMonth:[...], grand}
+  const studioRows = studios.map(studio => {
+    const perMonth = months.map(m => metricsFor(studio, m.start, m.end));
+    const grand = finalize(perMonth.reduce((acc,m) => { addInto(acc,m); return acc; }, blank()));
+    return { studio, perMonth, grand };
+  });
+
+  // Grand total row across all studios, per month + overall
+  const totalPerMonth = months.map((m,i) => finalize(studioRows.reduce((acc,row) => { addInto(acc,row.perMonth[i]); return acc; }, blank())));
+  const totalGrand = finalize(studioRows.reduce((acc,row) => { addInto(acc,row.grand); return acc; }, blank()));
+
+  function metricCells(m, groupBorder) {
+    const firstStyle = groupBorder ? ` style="${groupStyle}"` : '';
+    return `<td class="num"${firstStyle}>${m.leads.toLocaleString()}</td><td class="num">${m.ft.toLocaleString()}</td><td class="num">${m.mem.toLocaleString()}</td>`+
+           `<td class="num">${f$(m.spend)}</td><td class="num">${f$2(m.cpl)}</td><td class="num">${f$2(m.cpft)}</td><td class="num">${f$2(m.cpa)}</td>`;
+  }
+  const metricHeaders = '<th class="num">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>';
+  const groupStyle = 'border-left:1.5px solid #dde8ef';
+
+  const thead =
+    '<thead>'+
+      '<tr><th rowspan="2">Studio</th>'+
+        months.map(m => `<th colspan="7" style="text-align:center;${groupStyle}">${m.label}</th>`).join('')+
+        `<th colspan="7" style="text-align:center;${groupStyle}">Grand total</th>`+
+      '</tr>'+
+      '<tr>'+
+        months.map(() => `<th class="num" style="${groupStyle}">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>`).join('')+
+        `<th class="num" style="${groupStyle}">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>`+
+      '</tr>'+
+    '</thead>';
+
+  const tbody = '<tbody>'+
+    studioRows.map(row =>
+      `<tr><td>${row.studio}</td>`+
+        row.perMonth.map(m => metricCells(m, true)).join('')+
+        metricCells(row.grand, true)+
+      '</tr>'
+    ).join('')+
+  '</tbody>';
+
+  const tfoot = '<tfoot><tr><td>Grand Total</td>'+
+    totalPerMonth.map(m => metricCells(m, true)).join('')+
+    metricCells(totalGrand, true)+
+    '</tr></tfoot>';
+
+  table.innerHTML = thead + tbody + tfoot;
+}
+
 
 
 
@@ -1273,6 +1431,16 @@ function toggleCPRds(btn,i){if(!cprChart)return;const ds=cprChart.data.datasets[
 let META_ADS_RAW    = null;
 let GOOGLE_ADS_RAW  = null;
 let googleTrendChart = null;
+
+// google-ads-data.json uses shorter/older studio names — map them to data.json names
+const GOOGLE_STUDIO_ALIAS = {
+  'Pinecrest':               'Pinecrest - Palmetto Bay',
+  'Naples Mercato':          'Naples - Mercato',
+  'Dr Phillips':             'Orlando - Dr Phillips',
+  'Capitol View':            'Nashville - Capitol View',
+  'NYC - Financial District':'NYC - FiDi',
+};
+function googleStudioName(raw) { return GOOGLE_STUDIO_ALIAS[raw] || raw; }
 
 // Canonical studio code → name (no "SWEAT440 " prefix)
 const META_CODE_TO_STUDIO = {
@@ -1284,7 +1452,7 @@ const META_CODE_TO_STUDIO = {
   'FL-011': 'Miami - Coconut Grove',            'FL-012': 'Miramar',
   'FL-013': 'Fort Lauderdale - Las Olas', 'FL-014': 'Pembroke Pines',
   'FL-015': 'West Palm Beach',          'FL-016': 'Boca Raton',
-  'FL-017': 'Pinecrest',                'FL-019': 'Naples - Mercato',
+  'FL-017': 'Pinecrest - Palmetto Bay', 'FL-019': 'Naples - Mercato',
   'NC-001': 'Charlotte - Noda',         'NJ-001': 'Toms River',
   'NJ-002': 'Ocean Township',           'NJ-003': 'Wall Township',
   'NY-002': 'NYC - Chelsea',              'NY-003': 'NYC - Park Slope',
@@ -1563,7 +1731,7 @@ function buildGoogleTab() {
   const from=new Date(fromStr+'T00:00:00Z'),to=new Date(toStr+'T23:59:59Z');
   const ppFrom=window._metaPpFrom||null,ppTo=window._metaPpTo||null,pyFrom=window._metaPyFrom||null,pyTo=window._metaPyTo||null;
   const selSt=new Set(typeof getSelected==='function'?getSelected('studioMenu'):[]);const fbSt=selSt.size>0;
-  function fgr(rows,f,t){if(!rows||!rows.length)return[];const fT=f?f.getTime():0,tT=t?t.getTime():Infinity;return rows.filter(r=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return false;if(fbSt&&!selSt.has(r.studio))return false;return true;});}
+  function fgr(rows,f,t){if(!rows||!rows.length)return[];const fT=f?f.getTime():0,tT=t?t.getTime():Infinity;return rows.filter(r=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return false;if(fbSt&&!selSt.has(googleStudioName(r.studio)))return false;return true;});}
   function sg(rows){let sp=0,im=0,cl=0,le=0,ca=0,di=0,op=0;for(const r of rows){sp+=r.spend||0;im+=r.impressions||0;cl+=r.clicks||0;le+=r.leads||0;ca+=r.calls||0;di+=r.directions||0;op+=r.opportunities||0;}return{spend:Math.round(sp*100)/100,impressions:im,clicks:cl,leads:le,calls:ca,directions:di,opportunities:Math.round(op*100)/100};}
   const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];
   const curr=sg(fgr(allRows,from,to));
@@ -1576,7 +1744,7 @@ function buildGoogleTab() {
   const cpo_c=curr.opportunities>0?curr.spend/curr.opportunities:0,cpo_p=pp.opportunities>0?pp.spend/pp.opportunities:null,cpo_y=py.opportunities>0?py.spend/py.opportunities:null;
   kpisEl.innerHTML=kpiCard('Spend',curr.spend,pp.spend||null,py.spend||null,f$,GLOSSARY.google_spend_kpi)+kpiCard('Opportunities',curr.opportunities,pp.opportunities||null,py.opportunities||null,v=>Number(v).toFixed(0),GLOSSARY.google_opp)+kpiCard('Cost / Opp',cpo_c,cpo_p,cpo_y,f$2,GLOSSARY.google_cpo)+kpiCard('Leads',curr.leads,pp.leads||null,py.leads||null,fN,GLOSSARY.google_leads)+kpiCard('Calls',curr.calls,pp.calls||null,py.calls||null,fN,GLOSSARY.google_calls)+kpiCard('Directions',curr.directions,pp.directions||null,py.directions||null,fN,GLOSSARY.google_directions);
   _buildGoogleTrend(data,from,to,fbSt,selSt);
-  const smap={};for(const r of fgr(allRows,from,to)){const s=r.studio;if(!smap[s])smap[s]={spend:0,impressions:0,clicks:0,leads:0,calls:0,directions:0,opp:0};smap[s].spend+=r.spend||0;smap[s].impressions+=r.impressions||0;smap[s].clicks+=r.clicks||0;smap[s].leads+=r.leads||0;smap[s].calls+=r.calls||0;smap[s].directions+=r.directions||0;smap[s].opp+=r.opportunities||0;}
+  const smap={};for(const r of fgr(allRows,from,to)){const s=googleStudioName(r.studio);if(!smap[s])smap[s]={spend:0,impressions:0,clicks:0,leads:0,calls:0,directions:0,opp:0};smap[s].spend+=r.spend||0;smap[s].impressions+=r.impressions||0;smap[s].clicks+=r.clicks||0;smap[s].leads+=r.leads||0;smap[s].calls+=r.calls||0;smap[s].directions+=r.directions||0;smap[s].opp+=r.opportunities||0;}
   const srows=Object.entries(smap).map(([name,m])=>({name,...m,cpo:m.opp>0?m.spend/m.opp:null})).sort((a,b)=>b.opp-a.opp);
   if (srows.length) {
     sortableTable(
@@ -1623,7 +1791,7 @@ function buildGoogleTab() {
   const assets=data.assets||{};_buildGoogleAssets(assets.headlines||[],assets.descriptions||[]);
 }
 function _clearGoogleTrend(){if(googleTrendChart){googleTrendChart.destroy();googleTrendChart=null;}}
-function _buildGoogleTrend(data,from,to,fbSt,selSt){_clearGoogleTrend();const ctx=document.getElementById('googleTrendChart');if(!ctx)return;const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];const fTime=from.getTime(),tTime=to.getTime(),rDays=(tTime-fTime)/86400000;const bkts={};for(const r of allRows){const d=new Date((r.date||r.month)+'T00:00:00Z');if(d.getTime()<fTime||d.getTime()>tTime)continue;if(fbSt&&!selSt.has(r.studio))continue;let lbl;if(rDays<=62){lbl=r.date||r.month;}else if(rDays<=180){const day=d.getUTCDay();const mon=new Date(d);mon.setUTCDate(d.getUTCDate()-((day+6)%7));lbl=mon.toISOString().slice(0,10);}else{lbl=(r.date||r.month).slice(0,7)+'-01';}if(!bkts[lbl])bkts[lbl]={spend:0,opportunities:0};bkts[lbl].spend+=r.spend||0;bkts[lbl].opportunities+=r.opportunities||0;}const lbls=Object.keys(bkts).sort();const spends=lbls.map(l=>Math.round(bkts[l].spend*100)/100);const opps=lbls.map(l=>Math.round(bkts[l].opportunities*10)/10);const dL=lbls.map(l=>{const d=new Date(l+'T00:00:00Z');if(rDays<=62)return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});if(rDays<=180)return'Wk '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});});googleTrendChart=new Chart(ctx,{type:'bar',data:{labels:dL,datasets:[{label:'Spend',data:spends,backgroundColor:'rgba(52,168,83,0.25)',borderColor:'#34A853',borderWidth:2,borderRadius:3,yAxisID:'ySpend',order:2},{label:'Opportunities',data:opps,type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yOpp',order:1}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'top',labels:{font:{size:11},color:'#5a7a8a',boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Opportunities: '+c.parsed.y.toFixed(1)}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0,maxTicksLimit:12}},ySpend:{position:'left',grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#34A853',callback:v=>'$'+v.toLocaleString()}},yOpp:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0',callback:v=>v.toFixed(0)}}}}})}
+function _buildGoogleTrend(data,from,to,fbSt,selSt){_clearGoogleTrend();const ctx=document.getElementById('googleTrendChart');if(!ctx)return;const dailyMonths=new Set((data.daily||[]).map(r=>r.date.slice(0,7)));const allRows=[...(data.daily||[]),...(data.monthly||[]).filter(r=>!dailyMonths.has(r.month.slice(0,7)))];const fTime=from.getTime(),tTime=to.getTime(),rDays=(tTime-fTime)/86400000;const bkts={};for(const r of allRows){const d=new Date((r.date||r.month)+'T00:00:00Z');if(d.getTime()<fTime||d.getTime()>tTime)continue;if(fbSt&&!selSt.has(googleStudioName(r.studio)))continue;let lbl;if(rDays<=62){lbl=r.date||r.month;}else if(rDays<=180){const day=d.getUTCDay();const mon=new Date(d);mon.setUTCDate(d.getUTCDate()-((day+6)%7));lbl=mon.toISOString().slice(0,10);}else{lbl=(r.date||r.month).slice(0,7)+'-01';}if(!bkts[lbl])bkts[lbl]={spend:0,opportunities:0};bkts[lbl].spend+=r.spend||0;bkts[lbl].opportunities+=r.opportunities||0;}const lbls=Object.keys(bkts).sort();const spends=lbls.map(l=>Math.round(bkts[l].spend*100)/100);const opps=lbls.map(l=>Math.round(bkts[l].opportunities*10)/10);const dL=lbls.map(l=>{const d=new Date(l+'T00:00:00Z');if(rDays<=62)return d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});if(rDays<=180)return'Wk '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});return d.toLocaleDateString('en-US',{month:'short',year:'2-digit',timeZone:'UTC'});});googleTrendChart=new Chart(ctx,{type:'bar',data:{labels:dL,datasets:[{label:'Spend',data:spends,backgroundColor:'rgba(52,168,83,0.25)',borderColor:'#34A853',borderWidth:2,borderRadius:3,yAxisID:'ySpend',order:2},{label:'Opportunities',data:opps,type:'line',borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,tension:0.4,fill:false,yAxisID:'yOpp',order:1}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'top',labels:{font:{size:11},color:'#5a7a8a',boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label==='Spend'?'Spend: $'+c.parsed.y.toLocaleString():'Opportunities: '+c.parsed.y.toFixed(1)}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0,maxTicksLimit:12}},ySpend:{position:'left',grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#34A853',callback:v=>'$'+v.toLocaleString()}},yOpp:{position:'right',grid:{display:false},ticks:{font:{size:11},color:'#00A3E0',callback:v=>v.toFixed(0)}}}}})}
 function _buildGoogleAssets(headlines, descriptions) {
   const rb = label => { const map={BEST:['#0a8a4a','Best'],GOOD:['#b85c00','Good'],LOW:['#888','Low'],LEARNING:['#888','Learning']}; const[color,text]=map[label]||['#888',label||'-']; return '<span style="color:'+color+';font-weight:600">'+text+'</span>'; };
   const fK = v => Number(v)>=1000?(Number(v)/1000).toFixed(0)+'K':String(v);

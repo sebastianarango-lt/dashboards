@@ -612,17 +612,17 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 34,
-          "total_leads": 1168.0,
-          "digital_leads_week": 3,
-          "presales_week": 8,
-          "presales_count": 299.0,
+          "new_leads": 43,
+          "total_leads": 1177.0,
+          "digital_leads_week": 5,
+          "presales_week": 11,
+          "presales_count": 302.0,
           "cancellations_week": 2,
           "cancellations_count": 31.0,
           "grassroots_leads": 0,
           "grassroots_presales": 0,
-          "digital_presales_week": 1,
-          "conversion_rate": 23.5,
+          "digital_presales_week": 2,
+          "conversion_rate": 25.6,
           "comm_events": 5,
           "ig_new_followers": null,
           "meta_spend": 456.08,
@@ -631,8 +631,8 @@
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
           "total_marketing_spend": 866.97,
-          "blended_cpl": 25.5,
-          "blended_cpa": 108.37,
+          "blended_cpl": 20.16,
+          "blended_cpa": 78.82,
           "estimated_day1_rmr": null
         },
         {
@@ -641,10 +641,10 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": 0,
           "presales_week": 0,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": 0,
           "cancellations_count": 31.0,
           "grassroots_leads": 0,
@@ -653,12 +653,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 77.17,
+          "google_spend": 23.96,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 372.1,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -669,10 +669,10 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -697,10 +697,10 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -725,10 +725,10 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -753,10 +753,10 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -781,10 +781,10 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -809,10 +809,10 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -837,10 +837,10 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -865,10 +865,10 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -893,10 +893,10 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 1168.0,
+          "total_leads": 1177.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 299.0,
+          "presales_count": 302.0,
           "cancellations_week": null,
           "cancellations_count": 31.0,
           "grassroots_leads": null,
@@ -1062,77 +1062,77 @@
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 22,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 23,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 24,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 25,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 26,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 27,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 28,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 29,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 30,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         },
         {
           "week": 31,
           "t0": 0,
           "t1": 92,
           "t2": 137,
-          "t3": 45
+          "t3": 48
         }
       ],
       "pricing": {
@@ -1168,7 +1168,413 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-07-23",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-02-11",
+          "count": 6
+        },
+        {
+          "date": "2026-02-12",
+          "count": 2
+        },
+        {
+          "date": "2026-02-13",
+          "count": -1
+        },
+        {
+          "date": "2026-02-14",
+          "count": 2
+        },
+        {
+          "date": "2026-02-15",
+          "count": 3
+        },
+        {
+          "date": "2026-02-16",
+          "count": 2
+        },
+        {
+          "date": "2026-02-17",
+          "count": 4
+        },
+        {
+          "date": "2026-02-18",
+          "count": 1
+        },
+        {
+          "date": "2026-02-19",
+          "count": 1
+        },
+        {
+          "date": "2026-02-20",
+          "count": 1
+        },
+        {
+          "date": "2026-02-21",
+          "count": 2
+        },
+        {
+          "date": "2026-02-23",
+          "count": 2
+        },
+        {
+          "date": "2026-02-25",
+          "count": 1
+        },
+        {
+          "date": "2026-02-26",
+          "count": 3
+        },
+        {
+          "date": "2026-02-27",
+          "count": 6
+        },
+        {
+          "date": "2026-02-28",
+          "count": 10
+        },
+        {
+          "date": "2026-03-01",
+          "count": 15
+        },
+        {
+          "date": "2026-03-02",
+          "count": 15
+        },
+        {
+          "date": "2026-03-03",
+          "count": 4
+        },
+        {
+          "date": "2026-03-04",
+          "count": 6
+        },
+        {
+          "date": "2026-03-05",
+          "count": 2
+        },
+        {
+          "date": "2026-03-06",
+          "count": 1
+        },
+        {
+          "date": "2026-03-07",
+          "count": 3
+        },
+        {
+          "date": "2026-03-08",
+          "count": 2
+        },
+        {
+          "date": "2026-03-09",
+          "count": 3
+        },
+        {
+          "date": "2026-03-11",
+          "count": 2
+        },
+        {
+          "date": "2026-03-15",
+          "count": 1
+        },
+        {
+          "date": "2026-03-17",
+          "count": 2
+        },
+        {
+          "date": "2026-03-18",
+          "count": 3
+        },
+        {
+          "date": "2026-03-20",
+          "count": 4
+        },
+        {
+          "date": "2026-03-22",
+          "count": 3
+        },
+        {
+          "date": "2026-03-23",
+          "count": 4
+        },
+        {
+          "date": "2026-03-24",
+          "count": 1
+        },
+        {
+          "date": "2026-03-25",
+          "count": 2
+        },
+        {
+          "date": "2026-03-26",
+          "count": 1
+        },
+        {
+          "date": "2026-03-28",
+          "count": 1
+        },
+        {
+          "date": "2026-03-30",
+          "count": 2
+        },
+        {
+          "date": "2026-04-03",
+          "count": 4
+        },
+        {
+          "date": "2026-04-04",
+          "count": 3
+        },
+        {
+          "date": "2026-04-05",
+          "count": 3
+        },
+        {
+          "date": "2026-04-08",
+          "count": 3
+        },
+        {
+          "date": "2026-04-09",
+          "count": 1
+        },
+        {
+          "date": "2026-04-10",
+          "count": 1
+        },
+        {
+          "date": "2026-04-12",
+          "count": 1
+        },
+        {
+          "date": "2026-04-13",
+          "count": 1
+        },
+        {
+          "date": "2026-04-15",
+          "count": 1
+        },
+        {
+          "date": "2026-04-17",
+          "count": 1
+        },
+        {
+          "date": "2026-04-18",
+          "count": 4
+        },
+        {
+          "date": "2026-04-24",
+          "count": 1
+        },
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-26",
+          "count": 3
+        },
+        {
+          "date": "2026-04-28",
+          "count": 1
+        },
+        {
+          "date": "2026-05-02",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 2
+        },
+        {
+          "date": "2026-05-04",
+          "count": 1
+        },
+        {
+          "date": "2026-05-05",
+          "count": 2
+        },
+        {
+          "date": "2026-05-06",
+          "count": 4
+        },
+        {
+          "date": "2026-05-07",
+          "count": 3
+        },
+        {
+          "date": "2026-05-08",
+          "count": 3
+        },
+        {
+          "date": "2026-05-09",
+          "count": 4
+        },
+        {
+          "date": "2026-05-10",
+          "count": 3
+        },
+        {
+          "date": "2026-05-12",
+          "count": 2
+        },
+        {
+          "date": "2026-05-14",
+          "count": 3
+        },
+        {
+          "date": "2026-05-15",
+          "count": 7
+        },
+        {
+          "date": "2026-05-16",
+          "count": 2
+        },
+        {
+          "date": "2026-05-17",
+          "count": 2
+        },
+        {
+          "date": "2026-05-18",
+          "count": 1
+        },
+        {
+          "date": "2026-05-19",
+          "count": 3
+        },
+        {
+          "date": "2026-05-20",
+          "count": 4
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-23",
+          "count": 2
+        },
+        {
+          "date": "2026-05-24",
+          "count": 6
+        },
+        {
+          "date": "2026-05-25",
+          "count": 6
+        },
+        {
+          "date": "2026-05-27",
+          "count": -2
+        },
+        {
+          "date": "2026-05-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-31",
+          "count": 4
+        },
+        {
+          "date": "2026-06-01",
+          "count": 1
+        },
+        {
+          "date": "2026-06-02",
+          "count": 2
+        },
+        {
+          "date": "2026-06-03",
+          "count": 1
+        },
+        {
+          "date": "2026-06-04",
+          "count": 8
+        },
+        {
+          "date": "2026-06-05",
+          "count": 2
+        },
+        {
+          "date": "2026-06-06",
+          "count": 12
+        },
+        {
+          "date": "2026-06-07",
+          "count": 4
+        },
+        {
+          "date": "2026-06-08",
+          "count": -3
+        },
+        {
+          "date": "2026-06-12",
+          "count": 2
+        },
+        {
+          "date": "2026-06-14",
+          "count": 2
+        },
+        {
+          "date": "2026-06-15",
+          "count": 1
+        },
+        {
+          "date": "2026-06-16",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 1
+        },
+        {
+          "date": "2026-06-20",
+          "count": 5
+        },
+        {
+          "date": "2026-06-21",
+          "count": 4
+        },
+        {
+          "date": "2026-06-22",
+          "count": 1
+        },
+        {
+          "date": "2026-06-24",
+          "count": 2
+        },
+        {
+          "date": "2026-06-25",
+          "count": -2
+        },
+        {
+          "date": "2026-06-27",
+          "count": 5
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1
+        },
+        {
+          "date": "2026-07-01",
+          "count": -1
+        },
+        {
+          "date": "2026-07-02",
+          "count": 2
+        },
+        {
+          "date": "2026-07-03",
+          "count": 4
+        },
+        {
+          "date": "2026-07-05",
+          "count": 3
+        }
+      ]
     },
     {
       "name": "Reston",
@@ -1206,7 +1612,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 55,
+          "ig_new_followers": 53,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -2176,27 +2582,27 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 29,
-          "total_leads": 734.0,
-          "digital_leads_week": 4,
-          "presales_week": 10,
-          "presales_count": 178.0,
+          "new_leads": 40,
+          "total_leads": 745.0,
+          "digital_leads_week": 5,
+          "presales_week": 13,
+          "presales_count": 181.0,
           "cancellations_week": 0,
           "cancellations_count": 17.0,
-          "grassroots_leads": 19,
-          "grassroots_presales": 5,
+          "grassroots_leads": 27,
+          "grassroots_presales": 6,
           "digital_presales_week": 1,
-          "conversion_rate": 34.5,
+          "conversion_rate": 32.5,
           "comm_events": 3,
-          "ig_new_followers": 8,
+          "ig_new_followers": 10,
           "meta_spend": 366.59,
           "google_spend": 278.6,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
           "total_marketing_spend": 918.74,
-          "blended_cpl": 31.68,
-          "blended_cpa": 91.87,
+          "blended_cpl": 22.97,
+          "blended_cpa": 70.67,
           "estimated_day1_rmr": null
         },
         {
@@ -2205,10 +2611,10 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 734.0,
+          "total_leads": 745.0,
           "digital_leads_week": 0,
           "presales_week": 0,
-          "presales_count": 178.0,
+          "presales_count": 181.0,
           "cancellations_week": 0,
           "cancellations_count": 17.0,
           "grassroots_leads": 0,
@@ -2217,12 +2623,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 50.27,
+          "google_spend": 29.26,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 350.5,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -2233,10 +2639,10 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 734.0,
+          "total_leads": 745.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 178.0,
+          "presales_count": 181.0,
           "cancellations_week": null,
           "cancellations_count": 17.0,
           "grassroots_leads": null,
@@ -2261,10 +2667,10 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 734.0,
+          "total_leads": 745.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 178.0,
+          "presales_count": 181.0,
           "cancellations_week": null,
           "cancellations_count": 17.0,
           "grassroots_leads": null,
@@ -2512,28 +2918,28 @@
         {
           "week": 33,
           "t0": 41,
-          "t1": 137,
+          "t1": 140,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 34,
           "t0": 41,
-          "t1": 137,
+          "t1": 140,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 35,
           "t0": 41,
-          "t1": 137,
+          "t1": 140,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 36,
           "t0": 41,
-          "t1": 137,
+          "t1": 140,
           "t2": 0,
           "t3": 0
         }
@@ -2566,7 +2972,433 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-02-02",
-      "goal_announce_target": 250.0
+      "goal_announce_target": 250.0,
+      "tier_daily_sales": [
+        {
+          "date": "2025-10-30",
+          "count": 2
+        },
+        {
+          "date": "2025-11-08",
+          "count": 1
+        },
+        {
+          "date": "2025-11-18",
+          "count": 3
+        },
+        {
+          "date": "2025-12-01",
+          "count": 1
+        },
+        {
+          "date": "2025-12-02",
+          "count": 1
+        },
+        {
+          "date": "2025-12-05",
+          "count": 1
+        },
+        {
+          "date": "2025-12-13",
+          "count": 2
+        },
+        {
+          "date": "2025-12-16",
+          "count": 3
+        },
+        {
+          "date": "2025-12-20",
+          "count": 1
+        },
+        {
+          "date": "2025-12-22",
+          "count": -2
+        },
+        {
+          "date": "2025-12-24",
+          "count": 2
+        },
+        {
+          "date": "2025-12-28",
+          "count": 1
+        },
+        {
+          "date": "2026-01-03",
+          "count": 1
+        },
+        {
+          "date": "2026-01-11",
+          "count": 2
+        },
+        {
+          "date": "2026-01-12",
+          "count": 1
+        },
+        {
+          "date": "2026-01-13",
+          "count": 2
+        },
+        {
+          "date": "2026-01-17",
+          "count": 1
+        },
+        {
+          "date": "2026-01-18",
+          "count": 1
+        },
+        {
+          "date": "2026-01-19",
+          "count": 2
+        },
+        {
+          "date": "2026-01-20",
+          "count": 1
+        },
+        {
+          "date": "2026-01-23",
+          "count": 3
+        },
+        {
+          "date": "2026-01-25",
+          "count": 1
+        },
+        {
+          "date": "2026-01-26",
+          "count": 1
+        },
+        {
+          "date": "2026-01-31",
+          "count": 1
+        },
+        {
+          "date": "2026-02-01",
+          "count": 1
+        },
+        {
+          "date": "2026-02-02",
+          "count": 1
+        },
+        {
+          "date": "2026-02-06",
+          "count": 1
+        },
+        {
+          "date": "2026-02-07",
+          "count": 1
+        },
+        {
+          "date": "2026-02-08",
+          "count": 1
+        },
+        {
+          "date": "2026-02-11",
+          "count": 2
+        },
+        {
+          "date": "2026-02-14",
+          "count": 1
+        },
+        {
+          "date": "2026-02-15",
+          "count": 1
+        },
+        {
+          "date": "2026-02-16",
+          "count": 1
+        },
+        {
+          "date": "2026-02-19",
+          "count": 1
+        },
+        {
+          "date": "2026-02-20",
+          "count": 1
+        },
+        {
+          "date": "2026-02-21",
+          "count": 1
+        },
+        {
+          "date": "2026-02-25",
+          "count": 4
+        },
+        {
+          "date": "2026-02-28",
+          "count": 1
+        },
+        {
+          "date": "2026-03-02",
+          "count": 1
+        },
+        {
+          "date": "2026-03-08",
+          "count": 2
+        },
+        {
+          "date": "2026-03-10",
+          "count": 1
+        },
+        {
+          "date": "2026-03-12",
+          "count": 1
+        },
+        {
+          "date": "2026-03-15",
+          "count": 1
+        },
+        {
+          "date": "2026-03-16",
+          "count": 2
+        },
+        {
+          "date": "2026-03-17",
+          "count": 1
+        },
+        {
+          "date": "2026-03-18",
+          "count": 2
+        },
+        {
+          "date": "2026-03-23",
+          "count": 1
+        },
+        {
+          "date": "2026-03-24",
+          "count": 4
+        },
+        {
+          "date": "2026-03-26",
+          "count": 5
+        },
+        {
+          "date": "2026-03-27",
+          "count": -4
+        },
+        {
+          "date": "2026-03-29",
+          "count": 3
+        },
+        {
+          "date": "2026-03-30",
+          "count": 3
+        },
+        {
+          "date": "2026-04-01",
+          "count": -1
+        },
+        {
+          "date": "2026-04-02",
+          "count": 3
+        },
+        {
+          "date": "2026-04-04",
+          "count": 1
+        },
+        {
+          "date": "2026-04-05",
+          "count": 1
+        },
+        {
+          "date": "2026-04-08",
+          "count": 3
+        },
+        {
+          "date": "2026-04-09",
+          "count": 2
+        },
+        {
+          "date": "2026-04-11",
+          "count": 2
+        },
+        {
+          "date": "2026-04-13",
+          "count": 1
+        },
+        {
+          "date": "2026-04-14",
+          "count": 3
+        },
+        {
+          "date": "2026-04-15",
+          "count": 1
+        },
+        {
+          "date": "2026-04-17",
+          "count": 2
+        },
+        {
+          "date": "2026-04-18",
+          "count": 2
+        },
+        {
+          "date": "2026-04-21",
+          "count": 1
+        },
+        {
+          "date": "2026-04-23",
+          "count": 2
+        },
+        {
+          "date": "2026-04-26",
+          "count": 1
+        },
+        {
+          "date": "2026-04-27",
+          "count": 1
+        },
+        {
+          "date": "2026-04-28",
+          "count": 1
+        },
+        {
+          "date": "2026-04-29",
+          "count": 3
+        },
+        {
+          "date": "2026-05-01",
+          "count": 1
+        },
+        {
+          "date": "2026-05-03",
+          "count": 2
+        },
+        {
+          "date": "2026-05-04",
+          "count": 1
+        },
+        {
+          "date": "2026-05-07",
+          "count": 1
+        },
+        {
+          "date": "2026-05-08",
+          "count": 3
+        },
+        {
+          "date": "2026-05-10",
+          "count": 2
+        },
+        {
+          "date": "2026-05-11",
+          "count": 1
+        },
+        {
+          "date": "2026-05-16",
+          "count": 1
+        },
+        {
+          "date": "2026-05-20",
+          "count": 4
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-24",
+          "count": 1
+        },
+        {
+          "date": "2026-05-28",
+          "count": 1
+        },
+        {
+          "date": "2026-05-29",
+          "count": 1
+        },
+        {
+          "date": "2026-05-30",
+          "count": 1
+        },
+        {
+          "date": "2026-05-31",
+          "count": 4
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-03",
+          "count": -1
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-11",
+          "count": 1
+        },
+        {
+          "date": "2026-06-12",
+          "count": 1
+        },
+        {
+          "date": "2026-06-13",
+          "count": 4
+        },
+        {
+          "date": "2026-06-19",
+          "count": 3
+        },
+        {
+          "date": "2026-06-20",
+          "count": 1
+        },
+        {
+          "date": "2026-06-21",
+          "count": 1
+        },
+        {
+          "date": "2026-06-22",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": -1
+        },
+        {
+          "date": "2026-06-25",
+          "count": -2
+        },
+        {
+          "date": "2026-06-27",
+          "count": 4
+        },
+        {
+          "date": "2026-06-28",
+          "count": 22
+        },
+        {
+          "date": "2026-06-29",
+          "count": 3
+        },
+        {
+          "date": "2026-07-01",
+          "count": 2
+        },
+        {
+          "date": "2026-07-03",
+          "count": 1
+        },
+        {
+          "date": "2026-07-04",
+          "count": 4
+        },
+        {
+          "date": "2026-07-05",
+          "count": 3
+        }
+      ]
     },
     {
       "name": "Herriman",
@@ -2604,7 +3436,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 1453,
+          "ig_new_followers": 1455,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -2968,7 +3800,7 @@
           "digital_presales_week": 0,
           "conversion_rate": 29.4,
           "comm_events": 8,
-          "ig_new_followers": 5,
+          "ig_new_followers": null,
           "meta_spend": 0.0,
           "google_spend": 0.0,
           "grassroots_spend": 400.0,
@@ -3068,9 +3900,9 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 24,
-          "total_leads": 455.0,
-          "digital_leads_week": 8,
+          "new_leads": 26,
+          "total_leads": 457.0,
+          "digital_leads_week": 10,
           "presales_week": 11,
           "presales_count": 164.0,
           "cancellations_week": 1,
@@ -3078,16 +3910,16 @@
           "grassroots_leads": 2,
           "grassroots_presales": 1,
           "digital_presales_week": 3,
-          "conversion_rate": 45.8,
+          "conversion_rate": 42.3,
           "comm_events": 0,
-          "ig_new_followers": 59,
-          "meta_spend": 943.56,
+          "ig_new_followers": 63,
+          "meta_spend": 943.58,
           "google_spend": 182.17,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
-          "total_marketing_spend": 1399.28,
-          "blended_cpl": 58.3,
+          "total_marketing_spend": 1399.3,
+          "blended_cpl": 53.82,
           "blended_cpa": 127.21,
           "estimated_day1_rmr": null
         },
@@ -3097,7 +3929,7 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": 0,
           "presales_week": 0,
           "presales_count": 164.0,
@@ -3109,12 +3941,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 151.46,
+          "google_spend": 70.61,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 493.04,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -3125,7 +3957,7 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3153,7 +3985,7 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3181,7 +4013,7 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3209,7 +4041,7 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3237,7 +4069,7 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3265,7 +4097,7 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3293,7 +4125,7 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3321,7 +4153,7 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3349,7 +4181,7 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3377,7 +4209,7 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3405,7 +4237,7 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3433,7 +4265,7 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3461,7 +4293,7 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3489,7 +4321,7 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3517,7 +4349,7 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3545,7 +4377,7 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3573,7 +4405,7 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3601,7 +4433,7 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 455.0,
+          "total_leads": 457.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 164.0,
@@ -3909,7 +4741,265 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-09-25",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-03-27",
+          "count": 2
+        },
+        {
+          "date": "2026-03-30",
+          "count": 2
+        },
+        {
+          "date": "2026-04-02",
+          "count": 1
+        },
+        {
+          "date": "2026-04-03",
+          "count": 1
+        },
+        {
+          "date": "2026-04-06",
+          "count": 5
+        },
+        {
+          "date": "2026-04-07",
+          "count": 2
+        },
+        {
+          "date": "2026-04-08",
+          "count": 6
+        },
+        {
+          "date": "2026-04-09",
+          "count": 2
+        },
+        {
+          "date": "2026-04-11",
+          "count": 7
+        },
+        {
+          "date": "2026-04-13",
+          "count": 1
+        },
+        {
+          "date": "2026-04-14",
+          "count": -1
+        },
+        {
+          "date": "2026-04-17",
+          "count": 1
+        },
+        {
+          "date": "2026-04-23",
+          "count": 4
+        },
+        {
+          "date": "2026-04-27",
+          "count": 1
+        },
+        {
+          "date": "2026-04-28",
+          "count": 2
+        },
+        {
+          "date": "2026-04-29",
+          "count": 1
+        },
+        {
+          "date": "2026-04-30",
+          "count": 4
+        },
+        {
+          "date": "2026-05-01",
+          "count": 3
+        },
+        {
+          "date": "2026-05-02",
+          "count": 3
+        },
+        {
+          "date": "2026-05-03",
+          "count": 1
+        },
+        {
+          "date": "2026-05-05",
+          "count": 3
+        },
+        {
+          "date": "2026-05-07",
+          "count": 6
+        },
+        {
+          "date": "2026-05-08",
+          "count": 5
+        },
+        {
+          "date": "2026-05-09",
+          "count": 3
+        },
+        {
+          "date": "2026-05-10",
+          "count": 1
+        },
+        {
+          "date": "2026-05-11",
+          "count": 1
+        },
+        {
+          "date": "2026-05-12",
+          "count": 2
+        },
+        {
+          "date": "2026-05-13",
+          "count": 2
+        },
+        {
+          "date": "2026-05-14",
+          "count": 2
+        },
+        {
+          "date": "2026-05-15",
+          "count": 5
+        },
+        {
+          "date": "2026-05-16",
+          "count": 4
+        },
+        {
+          "date": "2026-05-17",
+          "count": 2
+        },
+        {
+          "date": "2026-05-18",
+          "count": 1
+        },
+        {
+          "date": "2026-05-19",
+          "count": 4
+        },
+        {
+          "date": "2026-05-20",
+          "count": -2
+        },
+        {
+          "date": "2026-05-21",
+          "count": 1
+        },
+        {
+          "date": "2026-05-24",
+          "count": 3
+        },
+        {
+          "date": "2026-05-25",
+          "count": 2
+        },
+        {
+          "date": "2026-05-27",
+          "count": 2
+        },
+        {
+          "date": "2026-05-28",
+          "count": 1
+        },
+        {
+          "date": "2026-05-30",
+          "count": 3
+        },
+        {
+          "date": "2026-05-31",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": -2
+        },
+        {
+          "date": "2026-06-03",
+          "count": 1
+        },
+        {
+          "date": "2026-06-06",
+          "count": 5
+        },
+        {
+          "date": "2026-06-08",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 4
+        },
+        {
+          "date": "2026-06-10",
+          "count": 3
+        },
+        {
+          "date": "2026-06-11",
+          "count": 2
+        },
+        {
+          "date": "2026-06-13",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 2
+        },
+        {
+          "date": "2026-06-18",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 3
+        },
+        {
+          "date": "2026-06-21",
+          "count": 3
+        },
+        {
+          "date": "2026-06-22",
+          "count": 1
+        },
+        {
+          "date": "2026-06-23",
+          "count": 3
+        },
+        {
+          "date": "2026-06-24",
+          "count": 4
+        },
+        {
+          "date": "2026-06-25",
+          "count": 4
+        },
+        {
+          "date": "2026-06-26",
+          "count": 1
+        },
+        {
+          "date": "2026-06-27",
+          "count": 7
+        },
+        {
+          "date": "2026-06-28",
+          "count": 1
+        },
+        {
+          "date": "2026-06-29",
+          "count": 6
+        },
+        {
+          "date": "2026-07-01",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 4
+        }
+      ]
     },
     {
       "name": "Old Bridge",
@@ -3947,7 +5037,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 153,
+          "ig_new_followers": 30,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -3963,9 +5053,9 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 28,
-          "total_leads": 44.0,
-          "digital_leads_week": 20,
+          "new_leads": 37,
+          "total_leads": 53.0,
+          "digital_leads_week": 27,
           "presales_week": 0,
           "presales_count": null,
           "cancellations_week": 0,
@@ -3975,14 +5065,14 @@
           "digital_presales_week": 0,
           "conversion_rate": 0.0,
           "comm_events": 0,
-          "ig_new_followers": 22,
-          "meta_spend": 471.11,
+          "ig_new_followers": 153,
+          "meta_spend": 471.12,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
-          "total_marketing_spend": 744.66,
-          "blended_cpl": 26.59,
+          "total_marketing_spend": 744.67,
+          "blended_cpl": 20.13,
           "blended_cpa": null,
           "estimated_day1_rmr": null
         },
@@ -3992,7 +5082,7 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": 0,
           "presales_week": 0,
           "presales_count": null,
@@ -4004,12 +5094,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
+          "meta_spend": 108.57,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 379.54,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -4020,7 +5110,7 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4048,7 +5138,7 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4076,7 +5166,7 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4104,7 +5194,7 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4132,7 +5222,7 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4160,7 +5250,7 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4188,7 +5278,7 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4216,7 +5306,7 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4244,7 +5334,7 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4272,7 +5362,7 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4300,7 +5390,7 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4328,7 +5418,7 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4356,7 +5446,7 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4384,7 +5474,7 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4412,7 +5502,7 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4440,7 +5530,7 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4468,7 +5558,7 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4496,7 +5586,7 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4524,7 +5614,7 @@
           "date_start": "2026-11-16",
           "date_end": "2026-11-22",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4552,7 +5642,7 @@
           "date_start": "2026-11-23",
           "date_end": "2026-11-29",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4580,7 +5670,7 @@
           "date_start": "2026-11-30",
           "date_end": "2026-12-06",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4608,7 +5698,7 @@
           "date_start": "2026-12-07",
           "date_end": "2026-12-13",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4636,7 +5726,7 @@
           "date_start": "2026-12-14",
           "date_end": "2026-12-20",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4664,7 +5754,7 @@
           "date_start": "2026-12-21",
           "date_end": "2026-12-27",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4692,7 +5782,7 @@
           "date_start": "2026-12-28",
           "date_end": "2027-01-03",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4720,7 +5810,7 @@
           "date_start": "2027-01-04",
           "date_end": "2027-01-10",
           "new_leads": null,
-          "total_leads": 44.0,
+          "total_leads": 53.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -4975,7 +6065,8 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-11-01",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": []
     },
     {
       "name": "Dr Phillips",
@@ -5013,7 +6104,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 133,
+          "ig_new_followers": 147,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -5153,7 +6244,7 @@
           "digital_presales_week": 1,
           "conversion_rate": 13.0,
           "comm_events": 3,
-          "ig_new_followers": 12,
+          "ig_new_followers": null,
           "meta_spend": 649.79,
           "google_spend": 92.78,
           "grassroots_spend": 0.0,
@@ -5253,27 +6344,27 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 19,
-          "total_leads": 136.0,
-          "digital_leads_week": 11,
-          "presales_week": 5,
-          "presales_count": 21.0,
+          "new_leads": 23,
+          "total_leads": 140.0,
+          "digital_leads_week": 12,
+          "presales_week": 6,
+          "presales_count": 22.0,
           "cancellations_week": 0,
           "cancellations_count": 1.0,
           "grassroots_leads": 0,
           "grassroots_presales": 0,
           "digital_presales_week": 0,
-          "conversion_rate": 26.3,
-          "comm_events": 0,
-          "ig_new_followers": 152,
-          "meta_spend": 1044.22,
+          "conversion_rate": 26.1,
+          "comm_events": 6,
+          "ig_new_followers": 165,
+          "meta_spend": 1044.28,
           "google_spend": 92.95,
-          "grassroots_spend": 0.0,
+          "grassroots_spend": 850.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
-          "total_marketing_spend": 1410.72,
-          "blended_cpl": 74.25,
-          "blended_cpa": 282.14,
+          "total_marketing_spend": 2260.78,
+          "blended_cpl": 98.29,
+          "blended_cpa": 376.8,
           "estimated_day1_rmr": null
         },
         {
@@ -5282,10 +6373,10 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": 0,
           "presales_week": 0,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": 0,
           "cancellations_count": 1.0,
           "grassroots_leads": 0,
@@ -5294,12 +6385,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 176.36,
+          "google_spend": 32.7,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 480.03,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -5310,10 +6401,10 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5338,10 +6429,10 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5366,10 +6457,10 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5394,10 +6485,10 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5422,10 +6513,10 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5450,10 +6541,10 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5478,10 +6569,10 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5506,10 +6597,10 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5534,10 +6625,10 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5562,10 +6653,10 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5590,10 +6681,10 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5618,10 +6709,10 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5646,10 +6737,10 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5674,10 +6765,10 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5702,10 +6793,10 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5730,10 +6821,10 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5758,10 +6849,10 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5786,10 +6877,10 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 136.0,
+          "total_leads": 140.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 21.0,
+          "presales_count": 22.0,
           "cancellations_week": null,
           "cancellations_count": 1.0,
           "grassroots_leads": null,
@@ -5869,140 +6960,140 @@
         {
           "week": 9,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 10,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 11,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 12,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 13,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 14,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 15,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 16,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 17,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 18,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 19,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 20,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 21,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 22,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 23,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 24,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 25,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 26,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 27,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 28,
           "t0": 0,
-          "t1": 20,
+          "t1": 21,
           "t2": 0,
           "t3": 0
         }
@@ -6036,7 +7127,85 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-08-30",
-      "goal_announce_target": 250.0
+      "goal_announce_target": 250.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-19",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-30",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-05",
+          "count": 1
+        },
+        {
+          "date": "2026-06-06",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 1
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-11",
+          "count": -1
+        },
+        {
+          "date": "2026-06-12",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 1
+        },
+        {
+          "date": "2026-06-16",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": 1
+        },
+        {
+          "date": "2026-06-28",
+          "count": 1
+        },
+        {
+          "date": "2026-06-29",
+          "count": 1
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1
+        },
+        {
+          "date": "2026-07-02",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 2
+        },
+        {
+          "date": "2026-07-05",
+          "count": 1
+        }
+      ]
     },
     {
       "name": "Aventura",
@@ -6074,7 +7243,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 123,
+          "ig_new_followers": 127,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -6130,7 +7299,7 @@
           "digital_presales_week": 1,
           "conversion_rate": 12.2,
           "comm_events": 1,
-          "ig_new_followers": 6,
+          "ig_new_followers": null,
           "meta_spend": 913.64,
           "google_spend": 102.12,
           "grassroots_spend": 0.0,
@@ -6230,8 +7399,8 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 49,
-          "total_leads": 288.0,
+          "new_leads": 50,
+          "total_leads": 289.0,
           "digital_leads_week": 17,
           "presales_week": 5,
           "presales_count": 45.0,
@@ -6240,16 +7409,16 @@
           "grassroots_leads": 0,
           "grassroots_presales": 0,
           "digital_presales_week": 1,
-          "conversion_rate": 10.2,
-          "comm_events": 0,
-          "ig_new_followers": 60,
+          "conversion_rate": 10.0,
+          "comm_events": 2,
+          "ig_new_followers": 66,
           "meta_spend": 1249.81,
           "google_spend": 146.04,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
           "total_marketing_spend": 1669.4,
-          "blended_cpl": 34.07,
+          "blended_cpl": 33.39,
           "blended_cpa": 333.88,
           "estimated_day1_rmr": null
         },
@@ -6259,7 +7428,7 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": 0,
           "presales_week": 0,
           "presales_count": 45.0,
@@ -6271,12 +7440,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 188.97,
+          "google_spend": 21.77,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 481.71,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -6287,7 +7456,7 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6315,7 +7484,7 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6343,7 +7512,7 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6371,7 +7540,7 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6399,7 +7568,7 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6427,7 +7596,7 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6455,7 +7624,7 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6483,7 +7652,7 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6511,7 +7680,7 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6539,7 +7708,7 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6567,7 +7736,7 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6595,7 +7764,7 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6623,7 +7792,7 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6651,7 +7820,7 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6679,7 +7848,7 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6707,7 +7876,7 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6735,7 +7904,7 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6763,7 +7932,7 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6791,7 +7960,7 @@
           "date_start": "2026-11-16",
           "date_end": "2026-11-22",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6819,7 +7988,7 @@
           "date_start": "2026-11-23",
           "date_end": "2026-11-29",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -6847,7 +8016,7 @@
           "date_start": "2026-11-30",
           "date_end": "2026-12-06",
           "new_leads": null,
-          "total_leads": 288.0,
+          "total_leads": 289.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 45.0,
@@ -7095,7 +8264,125 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-08-10",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-19",
+          "count": 1
+        },
+        {
+          "date": "2026-05-22",
+          "count": 1
+        },
+        {
+          "date": "2026-05-23",
+          "count": 1
+        },
+        {
+          "date": "2026-05-25",
+          "count": 1
+        },
+        {
+          "date": "2026-05-29",
+          "count": 3
+        },
+        {
+          "date": "2026-05-30",
+          "count": 1
+        },
+        {
+          "date": "2026-06-02",
+          "count": -1
+        },
+        {
+          "date": "2026-06-04",
+          "count": 1
+        },
+        {
+          "date": "2026-06-05",
+          "count": 2
+        },
+        {
+          "date": "2026-06-06",
+          "count": 1
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 2
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-11",
+          "count": 1
+        },
+        {
+          "date": "2026-06-12",
+          "count": 1
+        },
+        {
+          "date": "2026-06-13",
+          "count": 3
+        },
+        {
+          "date": "2026-06-17",
+          "count": 2
+        },
+        {
+          "date": "2026-06-18",
+          "count": 4
+        },
+        {
+          "date": "2026-06-19",
+          "count": 2
+        },
+        {
+          "date": "2026-06-21",
+          "count": 2
+        },
+        {
+          "date": "2026-06-22",
+          "count": 2
+        },
+        {
+          "date": "2026-06-24",
+          "count": 2
+        },
+        {
+          "date": "2026-06-25",
+          "count": 2
+        },
+        {
+          "date": "2026-06-26",
+          "count": 1
+        },
+        {
+          "date": "2026-06-28",
+          "count": 2
+        },
+        {
+          "date": "2026-06-29",
+          "count": 1
+        },
+        {
+          "date": "2026-06-30",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 2
+        },
+        {
+          "date": "2026-07-04",
+          "count": 1
+        }
+      ]
     },
     {
       "name": "North Miami",
@@ -7133,7 +8420,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 81,
+          "ig_new_followers": 84,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -7189,7 +8476,7 @@
           "digital_presales_week": 1,
           "conversion_rate": 17.6,
           "comm_events": 1,
-          "ig_new_followers": 5,
+          "ig_new_followers": null,
           "meta_spend": 985.0,
           "google_spend": 102.76,
           "grassroots_spend": 0.0,
@@ -7289,9 +8576,9 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 34,
-          "total_leads": 284.0,
-          "digital_leads_week": 24,
+          "new_leads": 38,
+          "total_leads": 288.0,
+          "digital_leads_week": 26,
           "presales_week": 6,
           "presales_count": 44.0,
           "cancellations_week": 2,
@@ -7299,17 +8586,17 @@
           "grassroots_leads": 0,
           "grassroots_presales": 0,
           "digital_presales_week": 0,
-          "conversion_rate": 17.6,
+          "conversion_rate": 15.8,
           "comm_events": 0,
-          "ig_new_followers": 16,
-          "meta_spend": 1250.75,
+          "ig_new_followers": 20,
+          "meta_spend": 1250.85,
           "google_spend": 212.3,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
-          "total_marketing_spend": 1736.6,
-          "blended_cpl": 51.08,
-          "blended_cpa": 289.43,
+          "total_marketing_spend": 1736.7,
+          "blended_cpl": 45.7,
+          "blended_cpa": 289.45,
           "estimated_day1_rmr": null
         },
         {
@@ -7318,7 +8605,7 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": 0,
           "presales_week": 0,
           "presales_count": 44.0,
@@ -7330,12 +8617,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 169.75,
+          "google_spend": 52.24,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 492.96,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -7346,7 +8633,7 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7374,7 +8661,7 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7402,7 +8689,7 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7430,7 +8717,7 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7458,7 +8745,7 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7486,7 +8773,7 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7514,7 +8801,7 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7542,7 +8829,7 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7570,7 +8857,7 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7598,7 +8885,7 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7626,7 +8913,7 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7654,7 +8941,7 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7682,7 +8969,7 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7710,7 +8997,7 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7738,7 +9025,7 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7766,7 +9053,7 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7794,7 +9081,7 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7822,7 +9109,7 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7850,7 +9137,7 @@
           "date_start": "2026-11-16",
           "date_end": "2026-11-22",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7878,7 +9165,7 @@
           "date_start": "2026-11-23",
           "date_end": "2026-11-29",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -7906,7 +9193,7 @@
           "date_start": "2026-11-30",
           "date_end": "2026-12-06",
           "new_leads": null,
-          "total_leads": 284.0,
+          "total_leads": 288.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": 44.0,
@@ -8154,7 +9441,105 @@
         "price_149": "Pre-Sales Membership"
       },
       "co_date": "2026-09-01",
-      "goal_announce_target": 300.0
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-26",
+          "count": 1
+        },
+        {
+          "date": "2026-05-28",
+          "count": 7
+        },
+        {
+          "date": "2026-05-29",
+          "count": 1
+        },
+        {
+          "date": "2026-05-31",
+          "count": 1
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-03",
+          "count": 1
+        },
+        {
+          "date": "2026-06-04",
+          "count": 5
+        },
+        {
+          "date": "2026-06-05",
+          "count": 1
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-09",
+          "count": 1
+        },
+        {
+          "date": "2026-06-14",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 3
+        },
+        {
+          "date": "2026-06-17",
+          "count": 2
+        },
+        {
+          "date": "2026-06-18",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 1
+        },
+        {
+          "date": "2026-06-20",
+          "count": 1
+        },
+        {
+          "date": "2026-06-21",
+          "count": 1
+        },
+        {
+          "date": "2026-06-22",
+          "count": 1
+        },
+        {
+          "date": "2026-06-23",
+          "count": -1
+        },
+        {
+          "date": "2026-06-27",
+          "count": 4
+        },
+        {
+          "date": "2026-06-29",
+          "count": 1
+        },
+        {
+          "date": "2026-07-01",
+          "count": 1
+        },
+        {
+          "date": "2026-07-03",
+          "count": 4
+        },
+        {
+          "date": "2026-07-04",
+          "count": 1
+        }
+      ]
     },
     {
       "name": "Dallas - Uptown",
@@ -8170,9 +9555,9 @@
         "conversion_rate": 35.0,
         "marketing_budget": null
       },
-      "co_week": 19,
-      "go_week": 22,
-      "opening_date": "2026-10-10",
+      "co_week": 21,
+      "go_week": 25,
+      "opening_date": "2026-10-31",
       "current_week": 9,
       "weeks": [
         {
@@ -8192,7 +9577,7 @@
           "digital_presales_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 19448,
+          "ig_new_followers": 19449,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -8304,7 +9689,7 @@
           "digital_presales_week": 0,
           "conversion_rate": 21.9,
           "comm_events": 2,
-          "ig_new_followers": 9,
+          "ig_new_followers": null,
           "meta_spend": 0.0,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
@@ -8404,27 +9789,27 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 45,
-          "total_leads": 431.0,
-          "digital_leads_week": 12,
-          "presales_week": 5,
-          "presales_count": 100.0,
+          "new_leads": 51,
+          "total_leads": 437.0,
+          "digital_leads_week": 15,
+          "presales_week": 7,
+          "presales_count": 102.0,
           "cancellations_week": 0,
           "cancellations_count": 2.0,
           "grassroots_leads": 15,
           "grassroots_presales": 0,
           "digital_presales_week": 3,
-          "conversion_rate": 11.1,
-          "comm_events": 0,
-          "ig_new_followers": 57,
+          "conversion_rate": 13.7,
+          "comm_events": 2,
+          "ig_new_followers": 63,
           "meta_spend": 1193.11,
           "google_spend": 137.26,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
           "total_marketing_spend": 1603.92,
-          "blended_cpl": 35.64,
-          "blended_cpa": 320.78,
+          "blended_cpl": 31.45,
+          "blended_cpa": 229.13,
           "estimated_day1_rmr": null
         },
         {
@@ -8433,10 +9818,10 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": 0,
           "presales_week": 0,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": 0,
           "cancellations_count": 2.0,
           "grassroots_leads": 0,
@@ -8445,12 +9830,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
-          "google_spend": 0.0,
+          "meta_spend": 185.49,
+          "google_spend": 20.27,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 476.73,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -8461,10 +9846,10 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8489,10 +9874,10 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8517,10 +9902,10 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8545,10 +9930,10 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8573,10 +9958,10 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8601,10 +9986,10 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8629,10 +10014,10 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8657,10 +10042,10 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8685,10 +10070,10 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8713,10 +10098,10 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8741,10 +10126,10 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8769,10 +10154,10 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8797,10 +10182,10 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8825,10 +10210,10 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8853,10 +10238,10 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8881,10 +10266,10 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8909,10 +10294,10 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8937,10 +10322,10 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -8965,10 +10350,10 @@
           "date_start": "2026-11-16",
           "date_end": "2026-11-22",
           "new_leads": null,
-          "total_leads": 431.0,
+          "total_leads": 437.0,
           "digital_leads_week": null,
           "presales_week": null,
-          "presales_count": 100.0,
+          "presales_count": 102.0,
           "cancellations_week": null,
           "cancellations_count": 2.0,
           "grassroots_leads": null,
@@ -9041,147 +10426,147 @@
         {
           "week": 8,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 9,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 10,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 11,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 12,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 13,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 14,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 15,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 16,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 17,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 18,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 19,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 20,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 21,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 22,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 23,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 24,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 25,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 26,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 27,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         },
         {
           "week": 28,
           "t0": 0,
-          "t1": 101,
+          "t1": 103,
           "t2": 0,
           "t3": 0
         }
@@ -9216,8 +10601,158 @@
         "price_129": "Pre Sale Membership",
         "price_149": "Pre-Sales Membership"
       },
-      "co_date": "2026-09-15",
-      "goal_announce_target": 300.0
+      "co_date": "2026-10-04",
+      "goal_announce_target": 300.0,
+      "tier_daily_sales": [
+        {
+          "date": "2026-05-15",
+          "count": 1
+        },
+        {
+          "date": "2026-05-19",
+          "count": 7
+        },
+        {
+          "date": "2026-05-20",
+          "count": 4
+        },
+        {
+          "date": "2026-05-25",
+          "count": 1
+        },
+        {
+          "date": "2026-05-26",
+          "count": 1
+        },
+        {
+          "date": "2026-05-27",
+          "count": 4
+        },
+        {
+          "date": "2026-05-28",
+          "count": 2
+        },
+        {
+          "date": "2026-05-29",
+          "count": 7
+        },
+        {
+          "date": "2026-05-30",
+          "count": 2
+        },
+        {
+          "date": "2026-06-01",
+          "count": 2
+        },
+        {
+          "date": "2026-06-02",
+          "count": 1
+        },
+        {
+          "date": "2026-06-03",
+          "count": 3
+        },
+        {
+          "date": "2026-06-04",
+          "count": 2
+        },
+        {
+          "date": "2026-06-05",
+          "count": 3
+        },
+        {
+          "date": "2026-06-06",
+          "count": 3
+        },
+        {
+          "date": "2026-06-07",
+          "count": 1
+        },
+        {
+          "date": "2026-06-08",
+          "count": 2
+        },
+        {
+          "date": "2026-06-10",
+          "count": 2
+        },
+        {
+          "date": "2026-06-13",
+          "count": 3
+        },
+        {
+          "date": "2026-06-14",
+          "count": 1
+        },
+        {
+          "date": "2026-06-15",
+          "count": 6
+        },
+        {
+          "date": "2026-06-16",
+          "count": 2
+        },
+        {
+          "date": "2026-06-17",
+          "count": 3
+        },
+        {
+          "date": "2026-06-18",
+          "count": 3
+        },
+        {
+          "date": "2026-06-19",
+          "count": 2
+        },
+        {
+          "date": "2026-06-20",
+          "count": 1
+        },
+        {
+          "date": "2026-06-21",
+          "count": 6
+        },
+        {
+          "date": "2026-06-22",
+          "count": 2
+        },
+        {
+          "date": "2026-06-23",
+          "count": 4
+        },
+        {
+          "date": "2026-06-24",
+          "count": 2
+        },
+        {
+          "date": "2026-06-25",
+          "count": 6
+        },
+        {
+          "date": "2026-06-26",
+          "count": 2
+        },
+        {
+          "date": "2026-06-27",
+          "count": 2
+        },
+        {
+          "date": "2026-06-28",
+          "count": 2
+        },
+        {
+          "date": "2026-06-29",
+          "count": 5
+        },
+        {
+          "date": "2026-07-03",
+          "count": 1
+        },
+        {
+          "date": "2026-07-05",
+          "count": 2
+        }
+      ]
     },
     {
       "name": "Dunwoody",
@@ -9271,9 +10806,9 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 29,
-          "total_leads": 45.0,
-          "digital_leads_week": 20,
+          "new_leads": 32,
+          "total_leads": 48.0,
+          "digital_leads_week": 22,
           "presales_week": 0,
           "presales_count": null,
           "cancellations_week": 0,
@@ -9290,7 +10825,7 @@
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
           "total_marketing_spend": 629.57,
-          "blended_cpl": 21.71,
+          "blended_cpl": 19.67,
           "blended_cpa": null,
           "estimated_day1_rmr": null
         },
@@ -9300,7 +10835,7 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": 0,
           "presales_week": 0,
           "presales_count": null,
@@ -9312,12 +10847,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
+          "meta_spend": 82.72,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 353.69,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -9328,7 +10863,7 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9356,7 +10891,7 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9384,7 +10919,7 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9412,7 +10947,7 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9440,7 +10975,7 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9468,7 +11003,7 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9496,7 +11031,7 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9524,7 +11059,7 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9552,7 +11087,7 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9580,7 +11115,7 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9608,7 +11143,7 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9636,7 +11171,7 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9664,7 +11199,7 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9692,7 +11227,7 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9720,7 +11255,7 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9748,7 +11283,7 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9776,7 +11311,7 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9804,7 +11339,7 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9832,7 +11367,7 @@
           "date_start": "2026-11-16",
           "date_end": "2026-11-22",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9860,7 +11395,7 @@
           "date_start": "2026-11-23",
           "date_end": "2026-11-29",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9888,7 +11423,7 @@
           "date_start": "2026-11-30",
           "date_end": "2026-12-06",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9916,7 +11451,7 @@
           "date_start": "2026-12-07",
           "date_end": "2026-12-13",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9944,7 +11479,7 @@
           "date_start": "2026-12-14",
           "date_end": "2026-12-20",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -9972,7 +11507,7 @@
           "date_start": "2026-12-21",
           "date_end": "2026-12-27",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10000,7 +11535,7 @@
           "date_start": "2026-12-28",
           "date_end": "2027-01-03",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10028,7 +11563,7 @@
           "date_start": "2027-01-04",
           "date_end": "2027-01-10",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10056,7 +11591,7 @@
           "date_start": "2027-01-11",
           "date_end": "2027-01-17",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10084,7 +11619,7 @@
           "date_start": "2027-01-18",
           "date_end": "2027-01-24",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10112,7 +11647,7 @@
           "date_start": "2027-01-25",
           "date_end": "2027-01-31",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10140,7 +11675,7 @@
           "date_start": "2027-02-01",
           "date_end": "2027-02-07",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10168,7 +11703,7 @@
           "date_start": "2027-02-08",
           "date_end": "2027-02-14",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10196,7 +11731,7 @@
           "date_start": "2027-02-15",
           "date_end": "2027-02-21",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10224,7 +11759,7 @@
           "date_start": "2027-02-22",
           "date_end": "2027-02-28",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10252,7 +11787,7 @@
           "date_start": "2027-03-01",
           "date_end": "2027-03-07",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10280,7 +11815,7 @@
           "date_start": "2027-03-08",
           "date_end": "2027-03-14",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10308,7 +11843,7 @@
           "date_start": "2027-03-15",
           "date_end": "2027-03-21",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10336,7 +11871,7 @@
           "date_start": "2027-03-22",
           "date_end": "2027-03-28",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10364,7 +11899,7 @@
           "date_start": "2027-03-29",
           "date_end": "2027-04-04",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10392,7 +11927,7 @@
           "date_start": "2027-04-05",
           "date_end": "2027-04-11",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10420,7 +11955,7 @@
           "date_start": "2027-04-12",
           "date_end": "2027-04-18",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10448,7 +11983,7 @@
           "date_start": "2027-04-19",
           "date_end": "2027-04-25",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10476,7 +12011,7 @@
           "date_start": "2027-04-26",
           "date_end": "2027-05-02",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10504,7 +12039,7 @@
           "date_start": "2027-05-03",
           "date_end": "2027-05-09",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10532,7 +12067,7 @@
           "date_start": "2027-05-10",
           "date_end": "2027-05-16",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10560,7 +12095,7 @@
           "date_start": "2027-05-17",
           "date_end": "2027-05-23",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10588,7 +12123,7 @@
           "date_start": "2027-05-24",
           "date_end": "2027-05-30",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10616,7 +12151,7 @@
           "date_start": "2027-05-31",
           "date_end": "2027-06-06",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10644,7 +12179,7 @@
           "date_start": "2027-06-07",
           "date_end": "2027-06-13",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10672,7 +12207,7 @@
           "date_start": "2027-06-14",
           "date_end": "2027-06-20",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10700,7 +12235,7 @@
           "date_start": "2027-06-21",
           "date_end": "2027-06-27",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10728,7 +12263,7 @@
           "date_start": "2027-06-28",
           "date_end": "2027-07-04",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10756,7 +12291,7 @@
           "date_start": "2027-07-05",
           "date_end": "2027-07-11",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10784,7 +12319,7 @@
           "date_start": "2027-07-12",
           "date_end": "2027-07-18",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10812,7 +12347,7 @@
           "date_start": "2027-07-19",
           "date_end": "2027-07-25",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10840,7 +12375,7 @@
           "date_start": "2027-07-26",
           "date_end": "2027-08-01",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10868,7 +12403,7 @@
           "date_start": "2027-08-02",
           "date_end": "2027-08-08",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10896,7 +12431,7 @@
           "date_start": "2027-08-09",
           "date_end": "2027-08-15",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10924,7 +12459,7 @@
           "date_start": "2027-08-16",
           "date_end": "2027-08-22",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10952,7 +12487,7 @@
           "date_start": "2027-08-23",
           "date_end": "2027-08-29",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -10980,7 +12515,7 @@
           "date_start": "2027-08-30",
           "date_end": "2027-09-05",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11008,7 +12543,7 @@
           "date_start": "2027-09-06",
           "date_end": "2027-09-12",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11036,7 +12571,7 @@
           "date_start": "2027-09-13",
           "date_end": "2027-09-19",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11064,7 +12599,7 @@
           "date_start": "2027-09-20",
           "date_end": "2027-09-26",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11092,7 +12627,7 @@
           "date_start": "2027-09-27",
           "date_end": "2027-10-03",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11120,7 +12655,7 @@
           "date_start": "2027-10-04",
           "date_end": "2027-10-10",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11148,7 +12683,7 @@
           "date_start": "2027-10-11",
           "date_end": "2027-10-17",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11176,7 +12711,7 @@
           "date_start": "2027-10-18",
           "date_end": "2027-10-24",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11204,7 +12739,7 @@
           "date_start": "2027-10-25",
           "date_end": "2027-10-31",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11232,7 +12767,7 @@
           "date_start": "2027-11-01",
           "date_end": "2027-11-07",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11260,7 +12795,7 @@
           "date_start": "2027-11-08",
           "date_end": "2027-11-14",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11288,7 +12823,7 @@
           "date_start": "2027-11-15",
           "date_end": "2027-11-21",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11316,7 +12851,7 @@
           "date_start": "2027-11-22",
           "date_end": "2027-11-28",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11344,7 +12879,7 @@
           "date_start": "2027-11-29",
           "date_end": "2027-12-05",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11372,7 +12907,7 @@
           "date_start": "2027-12-06",
           "date_end": "2027-12-12",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11400,7 +12935,7 @@
           "date_start": "2027-12-13",
           "date_end": "2027-12-19",
           "new_leads": null,
-          "total_leads": 45.0,
+          "total_leads": 48.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11518,9 +13053,9 @@
           "date_range": "6/29 - 7/5",
           "date_start": "2026-06-29",
           "date_end": "2026-07-05",
-          "new_leads": 33,
-          "total_leads": 41.0,
-          "digital_leads_week": 20,
+          "new_leads": 48,
+          "total_leads": 56.0,
+          "digital_leads_week": 25,
           "presales_week": 0,
           "presales_count": null,
           "cancellations_week": 0,
@@ -11537,7 +13072,7 @@
           "other_spend": 0.0,
           "leadteam_fee": 273.55,
           "total_marketing_spend": 748.75,
-          "blended_cpl": 22.69,
+          "blended_cpl": 15.6,
           "blended_cpa": null,
           "estimated_day1_rmr": null
         },
@@ -11547,7 +13082,7 @@
           "date_start": "2026-07-06",
           "date_end": "2026-07-12",
           "new_leads": 0,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": 0,
           "presales_week": 0,
           "presales_count": null,
@@ -11559,12 +13094,12 @@
           "conversion_rate": null,
           "comm_events": 0,
           "ig_new_followers": null,
-          "meta_spend": 0.0,
+          "meta_spend": 111.99,
           "google_spend": 0.0,
           "grassroots_spend": 0.0,
           "other_spend": 0.0,
           "leadteam_fee": 270.97,
-          "total_marketing_spend": 270.97,
+          "total_marketing_spend": 382.96,
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
@@ -11575,7 +13110,7 @@
           "date_start": "2026-07-13",
           "date_end": "2026-07-19",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11603,7 +13138,7 @@
           "date_start": "2026-07-20",
           "date_end": "2026-07-26",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11631,7 +13166,7 @@
           "date_start": "2026-07-27",
           "date_end": "2026-08-02",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11659,7 +13194,7 @@
           "date_start": "2026-08-03",
           "date_end": "2026-08-09",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11687,7 +13222,7 @@
           "date_start": "2026-08-10",
           "date_end": "2026-08-16",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11715,7 +13250,7 @@
           "date_start": "2026-08-17",
           "date_end": "2026-08-23",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11743,7 +13278,7 @@
           "date_start": "2026-08-24",
           "date_end": "2026-08-30",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11771,7 +13306,7 @@
           "date_start": "2026-08-31",
           "date_end": "2026-09-06",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11799,7 +13334,7 @@
           "date_start": "2026-09-07",
           "date_end": "2026-09-13",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11827,7 +13362,7 @@
           "date_start": "2026-09-14",
           "date_end": "2026-09-20",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11855,7 +13390,7 @@
           "date_start": "2026-09-21",
           "date_end": "2026-09-27",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11883,7 +13418,7 @@
           "date_start": "2026-09-28",
           "date_end": "2026-10-04",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11911,7 +13446,7 @@
           "date_start": "2026-10-05",
           "date_end": "2026-10-11",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11939,7 +13474,7 @@
           "date_start": "2026-10-12",
           "date_end": "2026-10-18",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11967,7 +13502,7 @@
           "date_start": "2026-10-19",
           "date_end": "2026-10-25",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -11995,7 +13530,7 @@
           "date_start": "2026-10-26",
           "date_end": "2026-11-01",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12023,7 +13558,7 @@
           "date_start": "2026-11-02",
           "date_end": "2026-11-08",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12051,7 +13586,7 @@
           "date_start": "2026-11-09",
           "date_end": "2026-11-15",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12079,7 +13614,7 @@
           "date_start": "2026-11-16",
           "date_end": "2026-11-22",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12107,7 +13642,7 @@
           "date_start": "2026-11-23",
           "date_end": "2026-11-29",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12135,7 +13670,7 @@
           "date_start": "2026-11-30",
           "date_end": "2026-12-06",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12163,7 +13698,7 @@
           "date_start": "2026-12-07",
           "date_end": "2026-12-13",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12191,7 +13726,7 @@
           "date_start": "2026-12-14",
           "date_end": "2026-12-20",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12219,7 +13754,7 @@
           "date_start": "2026-12-21",
           "date_end": "2026-12-27",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12247,7 +13782,7 @@
           "date_start": "2026-12-28",
           "date_end": "2027-01-03",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,
@@ -12275,7 +13810,7 @@
           "date_start": "2027-01-04",
           "date_end": "2027-01-10",
           "new_leads": null,
-          "total_leads": 41.0,
+          "total_leads": 56.0,
           "digital_leads_week": null,
           "presales_week": null,
           "presales_count": null,

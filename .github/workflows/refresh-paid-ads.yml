@@ -2,9 +2,9 @@ name: Refresh Paid Ads data
 
 on:
   schedule:
-    # 8:00 UTC = 3:00 AM EST / 4:00 AM EDT. Corre diario.
-    # Corre DESPUÉS de refresh.yml (el de Snowflake) para no pisarlo.
-    - cron: "15 8 * * *"
+    # 8:05 UTC = 4:05 AM EDT / 3:05 AM EST. Corre diario.
+    # Corre unos minutos DESPUÉS de refresh.yml para no pisarlo en el git push.
+    - cron: "5 8 * * *"
   workflow_dispatch: {}        # permite correrlo manual desde la UI
   push:
     branches: [main]
