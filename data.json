@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T19:23:51.281846Z",
+  "generated_at": "2026-07-08T20:04:37.799441Z",
   "studios": [
     "Austin - Highland",
     "Austin - Zilker",
@@ -1121,7 +1121,7 @@
       "signups": 5,
       "first_visits": 2,
       "first_activations": 2,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-01-02",
@@ -1130,7 +1130,7 @@
       "signups": 5,
       "first_visits": 5,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-02",
@@ -2262,7 +2262,7 @@
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Business Mode",
       "signups": 5,
-      "first_visits": 7,
+      "first_visits": 6,
       "first_activations": 1,
       "first_sales": 1
     },
@@ -2271,7 +2271,7 @@
       "studio": "Fort Lauderdale - Las Olas",
       "source": "ClassPass / Platforms",
       "signups": 1,
-      "first_visits": 1,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -4304,7 +4304,7 @@
       "date": "2026-01-05",
       "studio": "Coral Gables",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -4349,7 +4349,7 @@
       "date": "2026-01-05",
       "studio": "Coral Gables",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -4531,7 +4531,7 @@
       "source": "Business Mode",
       "signups": 3,
       "first_visits": 0,
-      "first_activations": 1,
+      "first_activations": 0,
       "first_sales": 1
     },
     {
@@ -4540,7 +4540,7 @@
       "source": "ClassPass / Platforms",
       "signups": 1,
       "first_visits": 1,
-      "first_activations": 0,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -6014,7 +6014,7 @@
       "date": "2026-01-06",
       "studio": "Miami - Upper East Side",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -6023,7 +6023,7 @@
       "date": "2026-01-06",
       "studio": "Miami - Upper East Side",
       "source": "ClassPass / Platforms",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -7088,7 +7088,7 @@
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-07",
@@ -7115,7 +7115,7 @@
       "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 4
+      "first_sales": 3
     },
     {
       "date": "2026-01-07",
@@ -8246,7 +8246,7 @@
       "date": "2026-01-08",
       "studio": "Eastchester",
       "source": "Meta Ads",
-      "signups": 13,
+      "signups": 14,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -8273,7 +8273,7 @@
       "date": "2026-01-08",
       "studio": "Eastchester",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -10640,7 +10640,7 @@
       "date": "2026-01-10",
       "studio": "Eastchester",
       "source": "Meta Ads",
-      "signups": 5,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -10667,7 +10667,7 @@
       "date": "2026-01-10",
       "studio": "Eastchester",
       "source": "Website (unattributed)",
-      "signups": 17,
+      "signups": 16,
       "first_visits": 5,
       "first_activations": 0,
       "first_sales": 6
@@ -11162,7 +11162,7 @@
       "date": "2026-01-10",
       "studio": "NYC - Park Slope",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -11171,7 +11171,7 @@
       "date": "2026-01-10",
       "studio": "NYC - Park Slope",
       "source": "ClassPass / Platforms",
-      "signups": 11,
+      "signups": 12,
       "first_visits": 14,
       "first_activations": 1,
       "first_sales": 0
@@ -11503,6 +11503,15 @@
     {
       "date": "2026-01-10",
       "studio": "West Palm Beach",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-01-10",
+      "studio": "West Palm Beach",
       "source": "N/A",
       "signups": 0,
       "first_visits": 2,
@@ -11513,7 +11522,7 @@
       "date": "2026-01-10",
       "studio": "West Palm Beach",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
@@ -12405,7 +12414,7 @@
       "studio": "NYC - Park Slope",
       "source": "Business Mode",
       "signups": 3,
-      "first_visits": 3,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -12414,7 +12423,7 @@
       "studio": "NYC - Park Slope",
       "source": "ClassPass / Platforms",
       "signups": 16,
-      "first_visits": 3,
+      "first_visits": 4,
       "first_activations": 0,
       "first_sales": 2
     },
@@ -18497,7 +18506,7 @@
       "date": "2026-01-16",
       "studio": "Eastchester",
       "source": "Google Ads",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -18506,7 +18515,7 @@
       "date": "2026-01-16",
       "studio": "Eastchester",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -19328,7 +19337,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-16",
@@ -19364,7 +19373,7 @@
       "signups": 2,
       "first_visits": 2,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
     },
     {
       "date": "2026-01-17",
@@ -19732,7 +19741,7 @@
       "source": "Meta Ads",
       "signups": 4,
       "first_visits": 0,
-      "first_activations": 0,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -19759,7 +19768,7 @@
       "source": "Website (unattributed)",
       "signups": 8,
       "first_visits": 3,
-      "first_activations": 26,
+      "first_activations": 25,
       "first_sales": 0
     },
     {
@@ -20631,8 +20640,8 @@
       "studio": "West Palm Beach",
       "source": "Meta Ads",
       "signups": 3,
-      "first_visits": 0,
-      "first_activations": 1,
+      "first_visits": 1,
+      "first_activations": 2,
       "first_sales": 0
     },
     {
@@ -20658,8 +20667,8 @@
       "studio": "West Palm Beach",
       "source": "Website (unattributed)",
       "signups": 4,
-      "first_visits": 4,
-      "first_activations": 20,
+      "first_visits": 3,
+      "first_activations": 19,
       "first_sales": 1
     },
     {
@@ -20944,6 +20953,15 @@
     {
       "date": "2026-01-18",
       "studio": "Deerfield Beach",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-01-18",
+      "studio": "Deerfield Beach",
       "source": "N/A",
       "signups": 1,
       "first_visits": 0,
@@ -20963,7 +20981,7 @@
       "date": "2026-01-18",
       "studio": "Deerfield Beach",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
@@ -22232,7 +22250,7 @@
       "date": "2026-01-19",
       "studio": "Eastchester",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 1,
       "first_activations": 1,
       "first_sales": 0
@@ -22259,7 +22277,7 @@
       "date": "2026-01-19",
       "studio": "Eastchester",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 4,
       "first_activations": 0,
       "first_sales": 0
@@ -22295,7 +22313,7 @@
       "date": "2026-01-19",
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -22313,7 +22331,7 @@
       "date": "2026-01-19",
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -22996,6 +23014,15 @@
     {
       "date": "2026-01-19",
       "studio": "Reston",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-01-19",
+      "studio": "Reston",
       "source": "N/A",
       "signups": 3,
       "first_visits": 0,
@@ -23006,10 +23033,10 @@
       "date": "2026-01-19",
       "studio": "Reston",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-01-19",
@@ -25499,10 +25526,10 @@
       "date": "2026-01-21",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-21",
@@ -25517,10 +25544,10 @@
       "date": "2026-01-21",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-01-21",
@@ -27255,7 +27282,7 @@
       "studio": "Eastchester",
       "source": "Google Ads",
       "signups": 3,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -27264,7 +27291,7 @@
       "studio": "Eastchester",
       "source": "Meta Ads",
       "signups": 3,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -28766,7 +28793,7 @@
       "date": "2026-01-24",
       "studio": "Miami Lakes",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -28784,7 +28811,7 @@
       "date": "2026-01-24",
       "studio": "Miami Lakes",
       "source": "Website (unattributed)",
-      "signups": 5,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 1,
       "first_sales": 0
@@ -29243,7 +29270,7 @@
       "date": "2026-01-24",
       "studio": "West Palm Beach",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -29261,7 +29288,7 @@
       "date": "2026-01-24",
       "studio": "West Palm Beach",
       "source": "Website (unattributed)",
-      "signups": 8,
+      "signups": 6,
       "first_visits": 3,
       "first_activations": 2,
       "first_sales": 1
@@ -30270,7 +30297,7 @@
       "studio": "Coral Gables",
       "source": "Business Mode",
       "signups": 2,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -30306,7 +30333,7 @@
       "studio": "Coral Gables",
       "source": "Website (unattributed)",
       "signups": 3,
-      "first_visits": 2,
+      "first_visits": 3,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -31385,10 +31412,10 @@
       "date": "2026-01-26",
       "studio": "West Palm Beach",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
+      "signups": 3,
+      "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-26",
@@ -31403,10 +31430,10 @@
       "date": "2026-01-26",
       "studio": "West Palm Beach",
       "source": "Website (unattributed)",
-      "signups": 3,
-      "first_visits": 2,
+      "signups": 2,
+      "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-01-27",
@@ -32465,19 +32492,19 @@
       "date": "2026-01-27",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-27",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-01-27",
@@ -33058,17 +33085,8 @@
     {
       "date": "2026-01-28",
       "studio": "Fort Lauderdale - Las Olas",
-      "source": "Business Mode",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-01-28",
-      "studio": "Fort Lauderdale - Las Olas",
       "source": "ClassPass / Platforms",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -38019,7 +38037,7 @@
       "studio": "Eastchester",
       "source": "Meta Ads",
       "signups": 1,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -38037,7 +38055,7 @@
       "studio": "Eastchester",
       "source": "Website (unattributed)",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -41321,7 +41339,7 @@
       "date": "2026-02-03",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -41330,7 +41348,7 @@
       "date": "2026-02-03",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -42716,16 +42734,7 @@
       "date": "2026-02-04",
       "studio": "Reston",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-02-04",
-      "studio": "Reston",
-      "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -48919,7 +48928,7 @@
       "source": "Meta Ads",
       "signups": 4,
       "first_visits": 0,
-      "first_activations": 0,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -48928,7 +48937,7 @@
       "source": "Website (unattributed)",
       "signups": 5,
       "first_visits": 0,
-      "first_activations": 1,
+      "first_activations": 0,
       "first_sales": 2
     },
     {
@@ -51104,7 +51113,7 @@
       "date": "2026-02-11",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -51122,7 +51131,7 @@
       "date": "2026-02-11",
       "studio": "Naples - Mercato",
       "source": "Website (unattributed)",
-      "signups": 15,
+      "signups": 12,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 3
@@ -51842,7 +51851,7 @@
       "date": "2026-02-12",
       "studio": "Eastchester",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -51869,7 +51878,7 @@
       "date": "2026-02-12",
       "studio": "Eastchester",
       "source": "Website (unattributed)",
-      "signups": 5,
+      "signups": 4,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -52391,7 +52400,7 @@
       "date": "2026-02-12",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -52400,7 +52409,7 @@
       "date": "2026-02-12",
       "studio": "Naples - Mercato",
       "source": "Website (unattributed)",
-      "signups": 6,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -62479,7 +62488,7 @@
     {
       "date": "2026-02-20",
       "studio": "Miramar",
-      "source": "Grassroots",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -68798,7 +68807,7 @@
       "date": "2026-02-25",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -68807,7 +68816,7 @@
       "date": "2026-02-25",
       "studio": "Naples - Mercato",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -75260,7 +75269,7 @@
       "date": "2026-03-02",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 8
@@ -75278,7 +75287,7 @@
       "date": "2026-03-02",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 6
@@ -75882,9 +75891,9 @@
       "studio": "Eastchester",
       "source": "Meta Ads",
       "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
     },
     {
       "date": "2026-03-03",
@@ -75918,9 +75927,9 @@
       "studio": "Eastchester",
       "source": "Website (unattributed)",
       "signups": 6,
-      "first_visits": 2,
-      "first_activations": 2,
-      "first_sales": 1
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
     },
     {
       "date": "2026-03-03",
@@ -76604,7 +76613,7 @@
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-03-03",
@@ -76622,7 +76631,7 @@
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-03-03",
@@ -77077,6 +77086,15 @@
     {
       "date": "2026-03-04",
       "studio": "Deerfield Beach",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-03-04",
+      "studio": "Deerfield Beach",
       "source": "N/A",
       "signups": 0,
       "first_visits": 0,
@@ -77088,7 +77106,7 @@
       "studio": "Deerfield Beach",
       "source": "Website (unattributed)",
       "signups": 3,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 2
     },
@@ -77249,7 +77267,7 @@
       "date": "2026-03-04",
       "studio": "Miami - Brickell",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -77268,6 +77286,15 @@
       "studio": "Miami - Brickell",
       "source": "Grassroots",
       "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-03-04",
+      "studio": "Miami - Brickell",
+      "source": "Meta Ads",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -77833,7 +77860,7 @@
     {
       "date": "2026-03-04",
       "studio": "Reston",
-      "source": "Website (unattributed)",
+      "source": "Meta Ads",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -82550,7 +82577,7 @@
       "date": "2026-03-08",
       "studio": "Naples - Mercato",
       "source": "Grassroots",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -82559,7 +82586,7 @@
       "date": "2026-03-08",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 0,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -84881,7 +84908,7 @@
       "date": "2026-03-10",
       "studio": "Reston",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -84890,7 +84917,7 @@
       "date": "2026-03-10",
       "studio": "Reston",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -91469,7 +91496,7 @@
       "date": "2026-03-16",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 12,
+      "signups": 11,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -91487,7 +91514,7 @@
       "date": "2026-03-16",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -91496,7 +91523,7 @@
       "date": "2026-03-16",
       "studio": "Naples - Mercato",
       "source": "Website (unattributed)",
-      "signups": 15,
+      "signups": 14,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -91603,8 +91630,17 @@
     {
       "date": "2026-03-16",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Website (unattributed)",
+      "source": "Meta Ads",
       "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-03-16",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Website (unattributed)",
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -92651,7 +92687,7 @@
       "signups": 17,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-03-17",
@@ -92660,7 +92696,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-03-17",
@@ -95375,7 +95411,7 @@
       "date": "2026-03-20",
       "studio": "Dallas - Prestonwood",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -95384,7 +95420,7 @@
       "date": "2026-03-20",
       "studio": "Dallas - Prestonwood",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
@@ -102152,7 +102188,7 @@
       "date": "2026-03-25",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -102161,7 +102197,7 @@
       "date": "2026-03-25",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -102592,7 +102628,7 @@
     {
       "date": "2026-03-26",
       "studio": "Dallas - Prestonwood",
-      "source": "Website (unattributed)",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -108209,7 +108245,7 @@
       "date": "2026-03-30",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -108231,6 +108267,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-03-30",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-03-30",
@@ -109676,7 +109721,7 @@
       "date": "2026-03-31",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -109685,7 +109730,7 @@
       "date": "2026-03-31",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 0,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -109702,7 +109747,7 @@
     {
       "date": "2026-03-31",
       "studio": "Reston",
-      "source": "Business Mode",
+      "source": "Meta Ads",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -113672,7 +113717,7 @@
       "date": "2026-04-03",
       "studio": "West Palm Beach",
       "source": "Local Listings",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -113681,7 +113726,7 @@
       "date": "2026-04-03",
       "studio": "West Palm Beach",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -113969,10 +114014,10 @@
       "date": "2026-04-04",
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
-      "signups": 14,
+      "signups": 13,
       "first_visits": 19,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-04-04",
@@ -114005,10 +114050,10 @@
       "date": "2026-04-04",
       "studio": "Dallas - Prestonwood",
       "source": "N/A",
-      "signups": 0,
+      "signups": 1,
       "first_visits": 2,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-04-04",
@@ -114716,10 +114761,10 @@
       "date": "2026-04-04",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
     },
     {
       "date": "2026-04-04",
@@ -114734,10 +114779,10 @@
       "date": "2026-04-04",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-04-04",
@@ -115111,6 +115156,15 @@
     {
       "date": "2026-04-04",
       "studio": "West Palm Beach",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-04",
+      "studio": "West Palm Beach",
       "source": "N/A",
       "signups": 1,
       "first_visits": 1,
@@ -115121,7 +115175,7 @@
       "date": "2026-04-04",
       "studio": "West Palm Beach",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -116156,7 +116210,7 @@
       "date": "2026-04-05",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 1,
       "first_sales": 1
@@ -116174,6 +116228,15 @@
       "date": "2026-04-05",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-05",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -117884,8 +117947,17 @@
       "date": "2026-04-07",
       "studio": "Boca Raton",
       "source": "Google Ads",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-07",
+      "studio": "Boca Raton",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -117911,7 +117983,7 @@
       "date": "2026-04-07",
       "studio": "Boca Raton",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -118927,20 +118999,20 @@
     {
       "date": "2026-04-07",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Business Mode",
+      "source": "Meta Ads",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-04-07",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Meta Ads",
+      "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-04-07",
@@ -120305,7 +120377,7 @@
       "date": "2026-04-08",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Grassroots",
-      "signups": 6,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -120314,7 +120386,7 @@
       "date": "2026-04-08",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -120323,7 +120395,7 @@
       "date": "2026-04-08",
       "studio": "Reston",
       "source": "Business Mode",
-      "signups": 5,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -120342,6 +120414,15 @@
       "studio": "Reston",
       "source": "Meta Ads",
       "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-08",
+      "studio": "Reston",
+      "source": "SWEAT440 App",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -120853,17 +120934,8 @@
     {
       "date": "2026-04-09",
       "studio": "Doral",
-      "source": "Local Listings",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-04-09",
-      "studio": "Doral",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -122141,7 +122213,7 @@
       "date": "2026-04-10",
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
-      "signups": 11,
+      "signups": 10,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -122163,6 +122235,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
+    },
+    {
+      "date": "2026-04-10",
+      "studio": "Dallas - Prestonwood",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-04-10",
@@ -122987,7 +123068,7 @@
       "date": "2026-04-10",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -122996,7 +123077,7 @@
       "date": "2026-04-10",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -124367,7 +124448,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-04-11",
@@ -124383,6 +124464,15 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Other",
       "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-04-11",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "SWEAT440 App",
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -124624,6 +124714,15 @@
     {
       "date": "2026-04-12",
       "studio": "Austin - Highland",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-12",
+      "studio": "Austin - Highland",
       "source": "MindBody App",
       "signups": 1,
       "first_visits": 1,
@@ -124634,7 +124733,7 @@
       "date": "2026-04-12",
       "studio": "Austin - Highland",
       "source": "Website (unattributed)",
-      "signups": 8,
+      "signups": 6,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -125381,7 +125480,7 @@
       "date": "2026-04-12",
       "studio": "Miramar",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -125408,7 +125507,7 @@
       "date": "2026-04-12",
       "studio": "Miramar",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -125920,6 +126019,15 @@
     {
       "date": "2026-04-13",
       "studio": "Austin - Highland",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-13",
+      "studio": "Austin - Highland",
       "source": "MindBody App",
       "signups": 0,
       "first_visits": 1,
@@ -125940,7 +126048,7 @@
       "studio": "Austin - Highland",
       "source": "Website (unattributed)",
       "signups": 3,
-      "first_visits": 3,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -126158,7 +126266,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-04-13",
@@ -126177,6 +126285,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 3
+    },
+    {
+      "date": "2026-04-13",
+      "studio": "Dallas - Prestonwood",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-04-13",
@@ -126235,18 +126352,9 @@
     {
       "date": "2026-04-13",
       "studio": "Doral",
-      "source": "Local Listings",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-04-13",
-      "studio": "Doral",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 1,
+      "signups": 2,
+      "first_visits": 2,
       "first_activations": 1,
       "first_sales": 1
     },
@@ -126281,7 +126389,7 @@
       "date": "2026-04-13",
       "studio": "Doral",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 1,
       "first_sales": 0
@@ -127496,7 +127604,7 @@
       "date": "2026-04-14",
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -127514,7 +127622,7 @@
       "date": "2026-04-14",
       "studio": "Dallas - Prestonwood",
       "source": "Meta Ads",
-      "signups": 5,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -128306,7 +128414,7 @@
       "date": "2026-04-14",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 1,
       "first_sales": 1
@@ -128315,7 +128423,7 @@
       "date": "2026-04-14",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -129512,7 +129620,7 @@
       "date": "2026-04-15",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -129539,7 +129647,7 @@
       "date": "2026-04-15",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 6,
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -132535,7 +132643,7 @@
     {
       "date": "2026-04-18",
       "studio": "Dallas - Prestonwood",
-      "source": "Business Mode",
+      "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -133256,7 +133364,7 @@
       "date": "2026-04-18",
       "studio": "Pembroke Pines",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -133265,7 +133373,7 @@
       "date": "2026-04-18",
       "studio": "Pembroke Pines",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -138223,17 +138331,8 @@
     {
       "date": "2026-04-22",
       "studio": "Naples - Mercato",
-      "source": "Business Mode",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-04-22",
-      "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -142166,8 +142265,8 @@
       "date": "2026-04-25",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 12,
-      "first_visits": 11,
+      "signups": 11,
+      "first_visits": 10,
       "first_activations": 0,
       "first_sales": 2
     },
@@ -142203,6 +142302,15 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "SWEAT440 App",
       "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-25",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Website (unattributed)",
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -143021,7 +143129,7 @@
       "date": "2026-04-26",
       "studio": "Miramar",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -143041,15 +143149,6 @@
       "source": "SWEAT440 App",
       "signups": 2,
       "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-04-26",
-      "studio": "Miramar",
-      "source": "Website (unattributed)",
-      "signups": 2,
-      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -144652,8 +144751,8 @@
       "source": "Business Mode",
       "signups": 5,
       "first_visits": 4,
-      "first_activations": 1,
-      "first_sales": 3
+      "first_activations": 0,
+      "first_sales": 2
     },
     {
       "date": "2026-04-27",
@@ -144688,8 +144787,8 @@
       "source": "Website (unattributed)",
       "signups": 2,
       "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
+      "first_activations": 1,
+      "first_sales": 2
     },
     {
       "date": "2026-04-27",
@@ -147368,7 +147467,7 @@
       "date": "2026-04-29",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 6,
+      "signups": 5,
       "first_visits": 6,
       "first_activations": 0,
       "first_sales": 3
@@ -147386,7 +147485,7 @@
       "date": "2026-04-29",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -148601,10 +148700,10 @@
       "date": "2026-04-30",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 12,
+      "signups": 11,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
     },
     {
       "date": "2026-04-30",
@@ -148628,10 +148727,10 @@
       "date": "2026-04-30",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "SWEAT440 App",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-04-30",
@@ -149780,7 +149879,7 @@
       "date": "2026-05-01",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 4
@@ -149798,7 +149897,7 @@
       "date": "2026-05-01",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -150969,7 +151068,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
       "signups": 2,
-      "first_visits": 14,
+      "first_visits": 12,
       "first_activations": 0,
       "first_sales": 2
     },
@@ -151005,7 +151104,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "SWEAT440 App",
       "signups": 1,
-      "first_visits": 5,
+      "first_visits": 7,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -152138,7 +152237,7 @@
       "date": "2026-05-03",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 4,
       "first_activations": 2,
       "first_sales": 1
@@ -152192,7 +152291,7 @@
       "date": "2026-05-03",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 5,
       "first_activations": 1,
       "first_sales": 3
@@ -153606,9 +153705,9 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
       "signups": 4,
-      "first_visits": 7,
-      "first_activations": 2,
-      "first_sales": 1
+      "first_visits": 6,
+      "first_activations": 1,
+      "first_sales": 0
     },
     {
       "date": "2026-05-04",
@@ -153660,9 +153759,9 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
       "signups": 8,
-      "first_visits": 16,
-      "first_activations": 1,
-      "first_sales": 2
+      "first_visits": 17,
+      "first_activations": 2,
+      "first_sales": 3
     },
     {
       "date": "2026-05-04",
@@ -154263,7 +154362,7 @@
       "studio": "Eastchester",
       "source": "Meta Ads",
       "signups": 3,
-      "first_visits": 1,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -154281,7 +154380,7 @@
       "studio": "Eastchester",
       "source": "Website (unattributed)",
       "signups": 2,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -154307,7 +154406,7 @@
       "date": "2026-05-05",
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Meta Ads",
-      "signups": 0,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 1,
       "first_sales": 1
@@ -154334,7 +154433,7 @@
       "date": "2026-05-05",
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -155432,7 +155531,7 @@
       "date": "2026-05-06",
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
-      "signups": 10,
+      "signups": 9,
       "first_visits": 3,
       "first_activations": 0,
       "first_sales": 1
@@ -155441,7 +155540,7 @@
       "date": "2026-05-06",
       "studio": "Dallas - Prestonwood",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -155640,7 +155739,7 @@
       "studio": "Miami - Brickell",
       "source": "Business Mode",
       "signups": 1,
-      "first_visits": 3,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -155685,7 +155784,7 @@
       "studio": "Miami - Brickell",
       "source": "Meta Ads",
       "signups": 2,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -156270,7 +156369,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
       "signups": 0,
-      "first_visits": 7,
+      "first_visits": 6,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -156297,7 +156396,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
       "signups": 1,
-      "first_visits": 1,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -156781,6 +156880,15 @@
     {
       "date": "2026-05-07",
       "studio": "Coral Gables",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-07",
+      "studio": "Coral Gables",
       "source": "N/A",
       "signups": 0,
       "first_visits": 2,
@@ -156791,7 +156899,7 @@
       "date": "2026-05-07",
       "studio": "Coral Gables",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 1,
       "first_sales": 0
@@ -157628,7 +157736,7 @@
       "date": "2026-05-07",
       "studio": "Pembroke Pines",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 2,
       "first_activations": 2,
       "first_sales": 0
@@ -157639,6 +157747,15 @@
       "source": "ClassPass / Platforms",
       "signups": 2,
       "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-07",
+      "studio": "Pembroke Pines",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -157683,7 +157800,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
       "signups": 1,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -157719,7 +157836,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
       "signups": 6,
-      "first_visits": 5,
+      "first_visits": 4,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -158131,15 +158248,6 @@
     {
       "date": "2026-05-08",
       "studio": "Dallas - Prestonwood",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-05-08",
-      "studio": "Dallas - Prestonwood",
       "source": "ClassPass / Platforms",
       "signups": 4,
       "first_visits": 0,
@@ -158162,7 +158270,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-05-08",
@@ -158979,9 +159087,9 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
       "signups": 4,
-      "first_visits": 6,
+      "first_visits": 5,
       "first_activations": 1,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-05-08",
@@ -159014,8 +159122,8 @@
       "date": "2026-05-08",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 3,
+      "signups": 3,
+      "first_visits": 5,
       "first_activations": 1,
       "first_sales": 0
     },
@@ -159041,10 +159149,10 @@
       "date": "2026-05-08",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 7,
-      "first_visits": 9,
+      "signups": 6,
+      "first_visits": 8,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-05-08",
@@ -159465,7 +159573,7 @@
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
       "signups": 6,
-      "first_visits": 23,
+      "first_visits": 21,
       "first_activations": 1,
       "first_sales": 1
     },
@@ -159510,7 +159618,7 @@
       "studio": "Dallas - Prestonwood",
       "source": "SWEAT440 App",
       "signups": 0,
-      "first_visits": 1,
+      "first_visits": 3,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -160213,7 +160321,7 @@
       "source": "Business Mode",
       "signups": 1,
       "first_visits": 4,
-      "first_activations": 53,
+      "first_activations": 50,
       "first_sales": 0
     },
     {
@@ -160249,7 +160357,7 @@
       "source": "Meta Ads",
       "signups": 3,
       "first_visits": 2,
-      "first_activations": 41,
+      "first_activations": 44,
       "first_sales": 2
     },
     {
@@ -160285,7 +160393,7 @@
       "source": "SWEAT440 App",
       "signups": 0,
       "first_visits": 2,
-      "first_activations": 7,
+      "first_activations": 10,
       "first_sales": 0
     },
     {
@@ -160303,7 +160411,7 @@
       "source": "Website (unattributed)",
       "signups": 3,
       "first_visits": 4,
-      "first_activations": 81,
+      "first_activations": 78,
       "first_sales": 1
     },
     {
@@ -160885,9 +160993,18 @@
     {
       "date": "2026-05-10",
       "studio": "Fort Lauderdale - Las Olas",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-10",
+      "studio": "Fort Lauderdale - Las Olas",
       "source": "Website (unattributed)",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -161940,7 +162057,7 @@
       "studio": "Dallas - Prestonwood",
       "source": "Business Mode",
       "signups": 3,
-      "first_visits": 7,
+      "first_visits": 6,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -161967,7 +162084,7 @@
       "studio": "Dallas - Prestonwood",
       "source": "Meta Ads",
       "signups": 3,
-      "first_visits": 2,
+      "first_visits": 3,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -163892,8 +164009,8 @@
       "date": "2026-05-12",
       "studio": "Miami Lakes",
       "source": "Meta Ads",
-      "signups": 0,
-      "first_visits": 0,
+      "signups": 1,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -163910,8 +164027,8 @@
       "date": "2026-05-12",
       "studio": "Miami Lakes",
       "source": "SWEAT440 App",
-      "signups": 3,
-      "first_visits": 2,
+      "signups": 2,
+      "first_visits": 1,
       "first_activations": 1,
       "first_sales": 0
     },
@@ -165341,8 +165458,8 @@
       "date": "2026-05-13",
       "studio": "Miramar",
       "source": "Business Mode",
-      "signups": 3,
-      "first_visits": 2,
+      "signups": 1,
+      "first_visits": 1,
       "first_activations": 1,
       "first_sales": 0
     },
@@ -165352,6 +165469,15 @@
       "source": "ClassPass / Platforms",
       "signups": 4,
       "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-13",
+      "studio": "Miramar",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -165667,7 +165793,7 @@
       "source": "Business Mode",
       "signups": 3,
       "first_visits": 5,
-      "first_activations": 4,
+      "first_activations": 3,
       "first_sales": 1
     },
     {
@@ -165712,7 +165838,7 @@
       "source": "Website (unattributed)",
       "signups": 1,
       "first_visits": 4,
-      "first_activations": 2,
+      "first_activations": 3,
       "first_sales": 1
     },
     {
@@ -168781,7 +168907,7 @@
       "source": "Business Mode",
       "signups": 3,
       "first_visits": 5,
-      "first_activations": 52,
+      "first_activations": 48,
       "first_sales": 0
     },
     {
@@ -168808,7 +168934,7 @@
       "source": "Meta Ads",
       "signups": 0,
       "first_visits": 1,
-      "first_activations": 39,
+      "first_activations": 40,
       "first_sales": 0
     },
     {
@@ -168817,7 +168943,7 @@
       "source": "N/A",
       "signups": 0,
       "first_visits": 1,
-      "first_activations": 46,
+      "first_activations": 47,
       "first_sales": 0
     },
     {
@@ -168844,7 +168970,7 @@
       "source": "SWEAT440 App",
       "signups": 0,
       "first_visits": 3,
-      "first_activations": 3,
+      "first_activations": 5,
       "first_sales": 0
     },
     {
@@ -168922,6 +169048,15 @@
     {
       "date": "2026-05-16",
       "studio": "Doral",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-16",
+      "studio": "Doral",
       "source": "N/A",
       "signups": 1,
       "first_visits": 1,
@@ -168941,7 +169076,7 @@
       "date": "2026-05-16",
       "studio": "Doral",
       "source": "Website (unattributed)",
-      "signups": 6,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -170191,8 +170326,17 @@
     {
       "date": "2026-05-17",
       "studio": "Fort Lauderdale - Las Olas",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-17",
+      "studio": "Fort Lauderdale - Las Olas",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 1
@@ -172064,7 +172208,7 @@
       "date": "2026-05-18",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -172084,6 +172228,15 @@
       "source": "Grassroots",
       "signups": 0,
       "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-18",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -174440,7 +174593,7 @@
       "date": "2026-05-20",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -174453,6 +174606,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
+    },
+    {
+      "date": "2026-05-20",
+      "studio": "Naples - Mercato",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-05-20",
@@ -175421,7 +175583,7 @@
       "date": "2026-05-21",
       "studio": "Miami Lakes",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -175430,7 +175592,7 @@
       "date": "2026-05-21",
       "studio": "Miami Lakes",
       "source": "SWEAT440 App",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -175628,10 +175790,10 @@
       "date": "2026-05-21",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-05-21",
@@ -175645,16 +175807,16 @@
     {
       "date": "2026-05-21",
       "studio": "Naples - Mercato",
-      "source": "Website (unattributed)",
-      "signups": 1,
+      "source": "Meta Ads",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-05-21",
       "studio": "North Miami",
-      "source": "Business Mode",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -175682,10 +175844,10 @@
       "date": "2026-05-21",
       "studio": "Ocean Township",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
+      "signups": 2,
+      "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-05-21",
@@ -175709,10 +175871,10 @@
       "date": "2026-05-21",
       "studio": "Ocean Township",
       "source": "Website (unattributed)",
-      "signups": 5,
-      "first_visits": 3,
+      "signups": 4,
+      "first_visits": 2,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-05-21",
@@ -176221,15 +176383,6 @@
     {
       "date": "2026-05-22",
       "studio": "Dallas - Prestonwood",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-22",
-      "studio": "Dallas - Prestonwood",
       "source": "ClassPass / Platforms",
       "signups": 1,
       "first_visits": 2,
@@ -176242,6 +176395,15 @@
       "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-22",
+      "studio": "Dallas - Prestonwood",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -176869,20 +177031,20 @@
     {
       "date": "2026-05-22",
       "studio": "Naples - Mercato",
-      "source": "Business Mode",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-22",
-      "studio": "Naples - Mercato",
       "source": "Grassroots",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-05-22",
+      "studio": "Naples - Mercato",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-05-22",
@@ -178085,7 +178247,7 @@
       "date": "2026-05-23",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -178103,7 +178265,7 @@
       "date": "2026-05-23",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -179147,10 +179309,10 @@
       "date": "2026-05-24",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 5
+      "first_sales": 4
     },
     {
       "date": "2026-05-24",
@@ -179169,6 +179331,24 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
+    },
+    {
+      "date": "2026-05-24",
+      "studio": "Naples - Mercato",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-24",
+      "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-05-24",
@@ -179192,8 +179372,8 @@
       "date": "2026-05-24",
       "studio": "Ocean Township",
       "source": "Business Mode",
-      "signups": 3,
-      "first_visits": 2,
+      "signups": 1,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -179201,8 +179381,8 @@
       "date": "2026-05-24",
       "studio": "Ocean Township",
       "source": "ClassPass / Platforms",
-      "signups": 2,
-      "first_visits": 0,
+      "signups": 3,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -179219,7 +179399,7 @@
       "date": "2026-05-24",
       "studio": "Ocean Township",
       "source": "N/A",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 1,
       "first_activations": 2,
       "first_sales": 1
@@ -180235,6 +180415,15 @@
     {
       "date": "2026-05-25",
       "studio": "Miami Beach",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-25",
+      "studio": "Miami Beach",
       "source": "N/A",
       "signups": 1,
       "first_visits": 1,
@@ -180246,8 +180435,8 @@
       "studio": "Miami Beach",
       "source": "Website (unattributed)",
       "signups": 3,
-      "first_visits": 3,
-      "first_activations": 2,
+      "first_visits": 2,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -181306,7 +181495,7 @@
     {
       "date": "2026-05-26",
       "studio": "Herriman",
-      "source": "Social Media Organic",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -181973,7 +182162,7 @@
       "date": "2026-05-26",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -181982,16 +182171,7 @@
       "date": "2026-05-26",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-26",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -182045,7 +182225,7 @@
       "date": "2026-05-26",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -182090,7 +182270,7 @@
       "date": "2026-05-26",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 1
@@ -182369,7 +182549,7 @@
       "date": "2026-05-27",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -182378,7 +182558,7 @@
       "date": "2026-05-27",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 7,
+      "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -182387,7 +182567,7 @@
       "date": "2026-05-27",
       "studio": "Aventura",
       "source": "Social Media Organic",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -183332,7 +183512,7 @@
       "date": "2026-05-27",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 8,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -183350,24 +183530,6 @@
       "date": "2026-05-27",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 3,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-27",
-      "studio": "North Miami",
-      "source": "Business Mode",
-      "signups": 5,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-27",
-      "studio": "North Miami",
-      "source": "Meta Ads",
       "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
@@ -183376,8 +183538,17 @@
     {
       "date": "2026-05-27",
       "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 3,
+      "source": "Business Mode",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-27",
+      "studio": "North Miami",
+      "source": "Meta Ads",
+      "signups": 13,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -184745,7 +184916,7 @@
       "date": "2026-05-28",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 7,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -184763,7 +184934,7 @@
       "date": "2026-05-28",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -184772,25 +184943,25 @@
       "date": "2026-05-28",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 5,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 5
+      "first_sales": 3
     },
     {
       "date": "2026-05-28",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 9,
+      "signups": 12,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 4
     },
     {
       "date": "2026-05-28",
       "studio": "North Miami",
       "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -185230,20 +185401,11 @@
     {
       "date": "2026-05-29",
       "studio": "Aventura",
-      "source": "Business Mode",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-29",
-      "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 6,
+      "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-05-29",
@@ -185253,15 +185415,6 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
-    },
-    {
-      "date": "2026-05-29",
-      "studio": "Aventura",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
     },
     {
       "date": "2026-05-29",
@@ -186140,7 +186293,7 @@
       "date": "2026-05-29",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -186148,8 +186301,8 @@
     {
       "date": "2026-05-29",
       "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "source": "Meta Ads",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -186194,7 +186347,7 @@
       "date": "2026-05-29",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -186203,7 +186356,7 @@
       "date": "2026-05-29",
       "studio": "Orlando - Dr Phillips",
       "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -186590,7 +186743,7 @@
       "date": "2026-05-30",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -186607,8 +186760,8 @@
     {
       "date": "2026-05-30",
       "studio": "Aventura",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "source": "Meta Ads",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -187634,7 +187787,7 @@
       "date": "2026-05-30",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -187652,7 +187805,7 @@
       "date": "2026-05-30",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -189011,10 +189164,10 @@
       "date": "2026-05-31",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-05-31",
@@ -189029,10 +189182,10 @@
       "date": "2026-05-31",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-05-31",
@@ -189470,7 +189623,7 @@
       "date": "2026-06-01",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -189488,16 +189641,7 @@
       "date": "2026-06-01",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 3,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-01",
-      "studio": "Aventura",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -190550,7 +190694,7 @@
       "date": "2026-06-01",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 12,
+      "signups": 10,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -190568,7 +190712,7 @@
       "date": "2026-06-01",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -190739,7 +190883,7 @@
       "date": "2026-06-01",
       "studio": "Reston",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -190749,6 +190893,15 @@
       "studio": "Reston",
       "source": "Grassroots",
       "signups": 9,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-01",
+      "studio": "Reston",
+      "source": "Meta Ads",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -191972,16 +192125,25 @@
       "date": "2026-06-02",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 5,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
     },
     {
       "date": "2026-06-02",
+      "studio": "Naples - Mercato",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-02",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -191999,16 +192161,7 @@
       "date": "2026-06-02",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-02",
-      "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -192043,7 +192196,7 @@
     {
       "date": "2026-06-02",
       "studio": "Orlando - Dr Phillips",
-      "source": "Business Mode",
+      "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -192440,7 +192593,7 @@
       "date": "2026-06-03",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -192458,16 +192611,7 @@
       "date": "2026-06-03",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-03",
-      "studio": "Aventura",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -193502,7 +193646,7 @@
       "date": "2026-06-03",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -193511,7 +193655,7 @@
       "date": "2026-06-03",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -193529,7 +193673,7 @@
       "date": "2026-06-03",
       "studio": "North Miami",
       "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -193928,7 +194072,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-04",
@@ -193946,7 +194090,7 @@
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-04",
@@ -194771,7 +194915,7 @@
       "date": "2026-06-04",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 7,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -194789,16 +194933,25 @@
       "date": "2026-06-04",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
     },
     {
       "date": "2026-06-04",
+      "studio": "Naples - Mercato",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-04",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -194807,19 +194960,19 @@
       "date": "2026-06-04",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 6,
+      "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-06-04",
       "studio": "North Miami",
       "source": "Social Media Organic",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-04",
@@ -194869,7 +195022,7 @@
     {
       "date": "2026-06-04",
       "studio": "Orlando - Dr Phillips",
-      "source": "Business Mode",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -195242,7 +195395,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-06-05",
@@ -195251,7 +195404,7 @@
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-05",
@@ -196184,7 +196337,7 @@
       "date": "2026-06-05",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -196193,16 +196346,7 @@
       "date": "2026-06-05",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-05",
-      "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -198830,7 +198974,7 @@
       "date": "2026-06-07",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -198848,7 +198992,7 @@
       "date": "2026-06-07",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -198857,7 +199001,7 @@
       "date": "2026-06-07",
       "studio": "North Miami",
       "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -198902,7 +199046,7 @@
       "date": "2026-06-07",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -198920,16 +199064,7 @@
       "date": "2026-06-07",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-07",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -199792,7 +199927,7 @@
     {
       "date": "2026-06-08",
       "studio": "Herriman",
-      "source": "Social Media Organic",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -200350,17 +200485,8 @@
     {
       "date": "2026-06-08",
       "studio": "Orlando - Dr Phillips",
-      "source": "Business Mode",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-08",
-      "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -200368,7 +200494,7 @@
     {
       "date": "2026-06-08",
       "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
+      "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -200738,7 +200864,7 @@
       "date": "2026-06-09",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -200747,7 +200873,7 @@
       "date": "2026-06-09",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 8,
+      "signups": 10,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -200756,7 +200882,7 @@
       "date": "2026-06-09",
       "studio": "Aventura",
       "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -201224,7 +201350,7 @@
       "date": "2026-06-09",
       "studio": "Herriman",
       "source": "Business Mode",
-      "signups": 5,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -201242,19 +201368,10 @@
       "date": "2026-06-09",
       "studio": "Herriman",
       "source": "Meta Ads",
-      "signups": 5,
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-06-09",
-      "studio": "Herriman",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-06-09",
@@ -201890,7 +202007,7 @@
       "date": "2026-06-09",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -201908,16 +202025,7 @@
       "date": "2026-06-09",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-09",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -202304,7 +202412,7 @@
       "date": "2026-06-10",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 5,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -202322,7 +202430,7 @@
       "date": "2026-06-10",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -202340,7 +202448,7 @@
       "date": "2026-06-10",
       "studio": "Aventura",
       "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -202808,16 +202916,16 @@
       "date": "2026-06-10",
       "studio": "Herriman",
       "source": "Business Mode",
-      "signups": 8,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
     },
     {
       "date": "2026-06-10",
       "studio": "Herriman",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -202825,8 +202933,26 @@
     {
       "date": "2026-06-10",
       "studio": "Herriman",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-10",
+      "studio": "Herriman",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-10",
+      "studio": "Herriman",
       "source": "Social Media Organic",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -203483,7 +203609,7 @@
       "date": "2026-06-10",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -203496,6 +203622,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-06-10",
+      "studio": "Orlando - Dr Phillips",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-06-10",
@@ -204267,7 +204402,7 @@
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Meta Ads",
       "signups": 1,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -204294,15 +204429,6 @@
       "studio": "Fort Lauderdale - Las Olas",
       "source": "Website (unattributed)",
       "signups": 1,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-11",
-      "studio": "Herriman",
-      "source": "Business Mode",
-      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -204311,19 +204437,10 @@
       "date": "2026-06-11",
       "studio": "Herriman",
       "source": "Meta Ads",
-      "signups": 5,
+      "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
-    },
-    {
-      "date": "2026-06-11",
-      "studio": "Herriman",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-06-11",
@@ -204779,7 +204896,7 @@
       "date": "2026-06-11",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -204788,16 +204905,7 @@
       "date": "2026-06-11",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-11",
-      "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -204842,7 +204950,7 @@
       "date": "2026-06-11",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -204851,16 +204959,7 @@
       "date": "2026-06-11",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-11",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -205220,7 +205319,7 @@
       "date": "2026-06-12",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -205230,6 +205329,15 @@
       "studio": "Aventura",
       "source": "Meta Ads",
       "signups": 4,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-12",
+      "studio": "Aventura",
+      "source": "SWEAT440 App",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -206777,10 +206885,10 @@
       "date": "2026-06-13",
       "studio": "Dallas - Uptown",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-06-13",
@@ -206799,6 +206907,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
+    },
+    {
+      "date": "2026-06-13",
+      "studio": "Dallas - Uptown",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-06-13",
@@ -207505,15 +207622,6 @@
     {
       "date": "2026-06-13",
       "studio": "Naples - Mercato",
-      "source": "Business Mode",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-13",
-      "studio": "Naples - Mercato",
       "source": "Grassroots",
       "signups": 3,
       "first_visits": 0,
@@ -207524,7 +207632,7 @@
       "date": "2026-06-13",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -208999,8 +209107,8 @@
     {
       "date": "2026-06-14",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "MindBody App",
-      "signups": 2,
+      "source": "Meta Ads",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -209008,8 +209116,8 @@
     {
       "date": "2026-06-14",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "SWEAT440 App",
-      "signups": 1,
+      "source": "MindBody App",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -209728,20 +209836,11 @@
     {
       "date": "2026-06-15",
       "studio": "Herriman",
-      "source": "Business Mode",
-      "signups": 1,
+      "source": "Meta Ads",
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
-    },
-    {
-      "date": "2026-06-15",
-      "studio": "Herriman",
-      "source": "Meta Ads",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-06-15",
@@ -210403,15 +210502,6 @@
     {
       "date": "2026-06-15",
       "studio": "Orlando - Dr Phillips",
-      "source": "Business Mode",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-15",
-      "studio": "Orlando - Dr Phillips",
       "source": "Google Ads",
       "signups": 1,
       "first_visits": 0,
@@ -210440,7 +210530,7 @@
       "date": "2026-06-15",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -210448,7 +210538,7 @@
     {
       "date": "2026-06-15",
       "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
+      "source": "N/A",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -210520,11 +210610,20 @@
     {
       "date": "2026-06-15",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-15",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "SWEAT440 App",
       "signups": 1,
       "first_visits": 2,
-      "first_activations": 2,
-      "first_sales": 1
+      "first_activations": 1,
+      "first_sales": 0
     },
     {
       "date": "2026-06-15",
@@ -211142,19 +211241,10 @@
       "date": "2026-06-16",
       "studio": "Dallas - Uptown",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-06-16",
-      "studio": "Dallas - Uptown",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-06-16",
@@ -212007,7 +212097,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
       "signups": 1,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -212016,7 +212106,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "SWEAT440 App",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -212528,16 +212618,7 @@
       "date": "2026-06-17",
       "studio": "Dallas - Uptown",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-17",
-      "studio": "Dallas - Uptown",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -213202,15 +213283,6 @@
     {
       "date": "2026-06-17",
       "studio": "Naples - Mercato",
-      "source": "Business Mode",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-17",
-      "studio": "Naples - Mercato",
       "source": "Grassroots",
       "signups": 14,
       "first_visits": 0,
@@ -213221,7 +213293,7 @@
       "date": "2026-06-17",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -213230,7 +213302,7 @@
       "date": "2026-06-17",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -213239,16 +213311,7 @@
       "date": "2026-06-17",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-17",
-      "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -213719,7 +213782,7 @@
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 4
+      "first_sales": 3
     },
     {
       "date": "2026-06-18",
@@ -213729,6 +213792,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
+    },
+    {
+      "date": "2026-06-18",
+      "studio": "Aventura",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-06-18",
@@ -214481,7 +214553,7 @@
       "date": "2026-06-18",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 3
@@ -214499,16 +214571,7 @@
       "date": "2026-06-18",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 3,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-18",
-      "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -215066,16 +215129,16 @@
       "date": "2026-06-19",
       "studio": "Dallas - Uptown",
       "source": "Business Mode",
-      "signups": 7,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-19",
       "studio": "Dallas - Uptown",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -215084,19 +215147,10 @@
       "date": "2026-06-19",
       "studio": "Dallas - Uptown",
       "source": "N/A",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-06-19",
-      "studio": "Dallas - Uptown",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 2
     },
     {
       "date": "2026-06-19",
@@ -215804,7 +215858,7 @@
       "date": "2026-06-19",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -215813,7 +215867,7 @@
       "date": "2026-06-19",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -215826,15 +215880,6 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-06-19",
-      "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-06-19",
@@ -217342,26 +217387,8 @@
     {
       "date": "2026-06-20",
       "studio": "Orlando - Dr Phillips",
-      "source": "Business Mode",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-20",
-      "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-20",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -217631,10 +217658,10 @@
       "date": "2026-06-21",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-06-21",
@@ -217644,6 +217671,24 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
+    },
+    {
+      "date": "2026-06-21",
+      "studio": "Aventura",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-21",
+      "studio": "Aventura",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-06-21",
@@ -217847,16 +217892,7 @@
       "date": "2026-06-21",
       "studio": "Dallas - Uptown",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-21",
-      "studio": "Dallas - Uptown",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -218027,10 +218063,10 @@
       "date": "2026-06-21",
       "studio": "Herriman",
       "source": "Business Mode",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
     },
     {
       "date": "2026-06-21",
@@ -218045,19 +218081,10 @@
       "date": "2026-06-21",
       "studio": "Herriman",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-21",
-      "studio": "Herriman",
-      "source": "Social Media Organic",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-21",
@@ -218135,7 +218162,7 @@
       "date": "2026-06-21",
       "studio": "Miami - Midtown",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -218153,7 +218180,7 @@
       "date": "2026-06-21",
       "studio": "Miami - Midtown",
       "source": "N/A",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -218548,29 +218575,20 @@
     {
       "date": "2026-06-21",
       "studio": "North Miami",
-      "source": "Business Mode",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-21",
-      "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 6,
+      "signups": 14,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-21",
       "studio": "North Miami",
       "source": "Social Media Organic",
-      "signups": 6,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-21",
@@ -219368,7 +219386,7 @@
       "date": "2026-06-22",
       "studio": "Herriman",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -219377,16 +219395,7 @@
       "date": "2026-06-22",
       "studio": "Herriman",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-22",
-      "studio": "Herriman",
-      "source": "Social Media Organic",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -219848,7 +219857,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-22",
@@ -219857,7 +219866,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-22",
@@ -219876,6 +219885,15 @@
       "first_visits": 1,
       "first_activations": 3,
       "first_sales": 1
+    },
+    {
+      "date": "2026-06-22",
+      "studio": "Ocean Township",
+      "source": "Meta Ads",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
     },
     {
       "date": "2026-06-22",
@@ -219910,7 +219928,7 @@
       "source": "Website (unattributed)",
       "signups": 2,
       "first_visits": 0,
-      "first_activations": 2,
+      "first_activations": 1,
       "first_sales": 0
     },
     {
@@ -220484,7 +220502,7 @@
       "date": "2026-06-23",
       "studio": "Dallas - Uptown",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 4
@@ -220502,16 +220520,7 @@
       "date": "2026-06-23",
       "studio": "Dallas - Uptown",
       "source": "Meta Ads",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-23",
-      "studio": "Dallas - Uptown",
-      "source": "Social Media Organic",
-      "signups": 2,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -221258,7 +221267,7 @@
       "date": "2026-06-23",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -221276,24 +221285,6 @@
       "date": "2026-06-23",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-23",
-      "studio": "North Miami",
-      "source": "Business Mode",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-23",
-      "studio": "North Miami",
-      "source": "Meta Ads",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -221302,11 +221293,20 @@
     {
       "date": "2026-06-23",
       "studio": "North Miami",
-      "source": "Social Media Organic",
-      "signups": 2,
+      "source": "Meta Ads",
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-06-23",
+      "studio": "North Miami",
+      "source": "Social Media Organic",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-06-23",
@@ -222563,7 +222563,7 @@
       "date": "2026-06-24",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -222572,7 +222572,7 @@
       "date": "2026-06-24",
       "studio": "Naples - Mercato",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -223400,7 +223400,7 @@
       "date": "2026-06-25",
       "studio": "Herriman",
       "source": "Business Mode",
-      "signups": 10,
+      "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -223418,7 +223418,7 @@
       "date": "2026-06-25",
       "studio": "Herriman",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -224498,10 +224498,19 @@
       "date": "2026-06-26",
       "studio": "Dallas - Uptown",
       "source": "Business Mode",
-      "signups": 7,
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-06-26",
+      "studio": "Dallas - Uptown",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-06-26",
@@ -226027,8 +226036,17 @@
     {
       "date": "2026-06-27",
       "studio": "Dunwoody",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-06-27",
+      "studio": "Dunwoody",
       "source": "Website (unattributed)",
-      "signups": 5,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -226982,7 +227000,7 @@
       "date": "2026-06-28",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -226995,6 +227013,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-06-28",
+      "studio": "Aventura",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-06-28",
@@ -228134,7 +228161,7 @@
       "date": "2026-06-29",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 21,
+      "signups": 20,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -228143,7 +228170,7 @@
       "date": "2026-06-29",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -228368,10 +228395,10 @@
       "date": "2026-06-29",
       "studio": "Dallas - Uptown",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
     },
     {
       "date": "2026-06-29",
@@ -228381,6 +228408,15 @@
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
+    },
+    {
+      "date": "2026-06-29",
+      "studio": "Dallas - Uptown",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-06-29",
@@ -230654,19 +230690,19 @@
       "date": "2026-06-30",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 0
     },
     {
       "date": "2026-06-30",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-30",
@@ -231041,7 +231077,7 @@
       "date": "2026-07-01",
       "studio": "Aventura",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -231050,7 +231086,7 @@
       "date": "2026-07-01",
       "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -231356,7 +231392,7 @@
       "date": "2026-07-01",
       "studio": "Dunwoody",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -231365,7 +231401,7 @@
       "date": "2026-07-01",
       "studio": "Dunwoody",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -231743,7 +231779,7 @@
       "date": "2026-07-01",
       "studio": "Middletown",
       "source": "Meta Ads",
-      "signups": 9,
+      "signups": 11,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -231752,7 +231788,7 @@
       "date": "2026-07-01",
       "studio": "Middletown",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -231950,7 +231986,7 @@
       "date": "2026-07-01",
       "studio": "Naples - Mercato",
       "source": "Business Mode",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -231959,6 +231995,15 @@
       "date": "2026-07-01",
       "studio": "Naples - Mercato",
       "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-01",
+      "studio": "Naples - Mercato",
+      "source": "Meta Ads",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -232058,25 +232103,7 @@
       "date": "2026-07-01",
       "studio": "Old Bridge",
       "source": "Meta Ads",
-      "signups": 5,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-07-01",
-      "studio": "Old Bridge",
-      "source": "Website (unattributed)",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-07-01",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Business Mode",
-      "signups": 1,
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -232085,7 +232112,7 @@
       "date": "2026-07-01",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -232453,17 +232480,8 @@
     {
       "date": "2026-07-02",
       "studio": "Aventura",
-      "source": "Business Mode",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-07-02",
-      "studio": "Aventura",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -232562,7 +232580,7 @@
       "date": "2026-07-02",
       "studio": "Coral Gables",
       "source": "Meta Ads",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -232580,7 +232598,7 @@
       "date": "2026-07-02",
       "studio": "Coral Gables",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -233462,7 +233480,7 @@
       "date": "2026-07-02",
       "studio": "Ocean Township",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -233498,7 +233516,7 @@
       "date": "2026-07-02",
       "studio": "Ocean Township",
       "source": "Website (unattributed)",
-      "signups": 8,
+      "signups": 7,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
@@ -233597,7 +233615,7 @@
       "date": "2026-07-02",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -233615,7 +233633,7 @@
       "date": "2026-07-02",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Meta Ads",
-      "signups": 13,
+      "signups": 15,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -233624,7 +233642,7 @@
       "date": "2026-07-02",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "SWEAT440 App",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 1,
       "first_activations": 1,
       "first_sales": 0
@@ -234209,16 +234227,7 @@
       "date": "2026-07-03",
       "studio": "Dunwoody",
       "source": "Meta Ads",
-      "signups": 3,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-07-03",
-      "studio": "Dunwoody",
-      "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -234803,7 +234812,7 @@
       "date": "2026-07-03",
       "studio": "North Miami",
       "source": "Business Mode",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -234821,7 +234830,7 @@
       "date": "2026-07-03",
       "studio": "North Miami",
       "source": "Meta Ads",
-      "signups": 5,
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -237017,7 +237026,7 @@
       "date": "2026-07-05",
       "studio": "Middletown",
       "source": "Meta Ads",
-      "signups": 5,
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -237026,7 +237035,7 @@
       "date": "2026-07-05",
       "studio": "Middletown",
       "source": "Website (unattributed)",
-      "signups": 10,
+      "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -237889,15 +237898,6 @@
     {
       "date": "2026-07-06",
       "studio": "Dallas - Uptown",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-07-06",
-      "studio": "Dallas - Uptown",
       "source": "Google Ads",
       "signups": 1,
       "first_visits": 0,
@@ -237911,7 +237911,7 @@
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-07-06",
@@ -238349,7 +238349,7 @@
       "date": "2026-07-06",
       "studio": "Middletown",
       "source": "Meta Ads",
-      "signups": 2,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -238358,7 +238358,7 @@
       "date": "2026-07-06",
       "studio": "Middletown",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -238673,7 +238673,7 @@
       "date": "2026-07-06",
       "studio": "Orlando - Dr Phillips",
       "source": "Business Mode",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -238682,7 +238682,7 @@
       "date": "2026-07-06",
       "studio": "Orlando - Dr Phillips",
       "source": "Meta Ads",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
@@ -240780,18 +240780,9 @@
     {
       "month": "2023-11-01",
       "studio": "South Miami",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "month": "2023-11-01",
-      "studio": "South Miami",
       "source": "N/A",
       "signups": 265,
-      "first_visits": 259,
+      "first_visits": 260,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -241572,17 +241563,8 @@
     {
       "month": "2024-01-01",
       "studio": "NYC - Park Slope",
-      "source": "Business Mode",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "month": "2024-01-01",
-      "studio": "NYC - Park Slope",
       "source": "N/A",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -243255,15 +243237,6 @@
     {
       "month": "2024-05-01",
       "studio": "Miami Beach",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "month": "2024-05-01",
-      "studio": "Miami Beach",
       "source": "ClassPass / Platforms",
       "signups": 0,
       "first_visits": 1,
@@ -243276,6 +243249,15 @@
       "source": "N/A",
       "signups": 318,
       "first_visits": 231,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "month": "2024-05-01",
+      "studio": "Miami Beach",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -246153,18 +246135,9 @@
     {
       "month": "2024-11-01",
       "studio": "Miami - Midtown",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "month": "2024-11-01",
-      "studio": "Miami - Midtown",
       "source": "N/A",
       "signups": 278,
-      "first_visits": 201,
+      "first_visits": 202,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -250005,20 +249978,20 @@
     {
       "month": "2025-06-01",
       "studio": "Pembroke Pines",
-      "source": "Business Mode",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "month": "2025-06-01",
-      "studio": "Pembroke Pines",
       "source": "N/A",
       "signups": 184,
       "first_visits": 153,
       "first_activations": 1,
       "first_sales": 1
+    },
+    {
+      "month": "2025-06-01",
+      "studio": "Pembroke Pines",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "month": "2025-06-01",
@@ -253238,7 +253211,16 @@
       "studio": "Miami - Upper East Side",
       "source": "Business Mode",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "month": "2025-11-01",
+      "studio": "Miami - Upper East Side",
+      "source": "ClassPass / Platforms",
+      "signups": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -253263,6 +253245,15 @@
     {
       "month": "2025-11-01",
       "studio": "Miami Beach",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "month": "2025-11-01",
+      "studio": "Miami Beach",
       "source": "N/A",
       "signups": 270,
       "first_visits": 195,
@@ -253282,7 +253273,7 @@
       "month": "2025-11-01",
       "studio": "Miami Beach",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -254589,8 +254580,8 @@
       "source": "Business Mode",
       "signups": 51,
       "first_visits": 44,
-      "first_activations": 8,
-      "first_sales": 9
+      "first_activations": 7,
+      "first_sales": 8
     },
     {
       "month": "2025-12-01",
@@ -254598,8 +254589,8 @@
       "source": "ClassPass / Platforms",
       "signups": 47,
       "first_visits": 39,
-      "first_activations": 0,
-      "first_sales": 0
+      "first_activations": 1,
+      "first_sales": 1
     },
     {
       "month": "2025-12-01",
@@ -254641,7 +254632,7 @@
       "month": "2025-12-01",
       "studio": "Miami Beach",
       "source": "Business Mode",
-      "signups": 37,
+      "signups": 36,
       "first_visits": 27,
       "first_activations": 4,
       "first_sales": 5
@@ -254662,7 +254653,7 @@
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "month": "2025-12-01",
@@ -254686,7 +254677,7 @@
       "month": "2025-12-01",
       "studio": "Miami Beach",
       "source": "SWEAT440 App",
-      "signups": 56,
+      "signups": 57,
       "first_visits": 21,
       "first_activations": 46,
       "first_sales": 49
@@ -254698,7 +254689,7 @@
       "signups": 53,
       "first_visits": 32,
       "first_activations": 6,
-      "first_sales": 7
+      "first_sales": 6
     },
     {
       "month": "2025-12-01",
@@ -255210,8 +255201,8 @@
       "source": "Business Mode",
       "signups": 42,
       "first_visits": 36,
-      "first_activations": 5,
-      "first_sales": 6
+      "first_activations": 4,
+      "first_sales": 5
     },
     {
       "month": "2025-12-01",
@@ -255246,8 +255237,8 @@
       "source": "SWEAT440 App",
       "signups": 17,
       "first_visits": 5,
-      "first_activations": 12,
-      "first_sales": 12
+      "first_activations": 13,
+      "first_sales": 13
     },
     {
       "month": "2025-12-01",
@@ -255370,8 +255361,8 @@
       "month": "2025-12-01",
       "studio": "South Miami",
       "source": "Business Mode",
-      "signups": 26,
-      "first_visits": 22,
+      "signups": 25,
+      "first_visits": 21,
       "first_activations": 4,
       "first_sales": 3
     },
@@ -255379,8 +255370,8 @@
       "month": "2025-12-01",
       "studio": "South Miami",
       "source": "ClassPass / Platforms",
-      "signups": 54,
-      "first_visits": 44,
+      "signups": 55,
+      "first_visits": 45,
       "first_activations": 0,
       "first_sales": 2
     },
