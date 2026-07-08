@@ -60,6 +60,7 @@ def fetch_meta_ads(start_date, end_date):
             "id", "name",
             "creative{thumbnail_url,image_url,object_type}",
             "preview_shareable_link",
+            "effective_status",
         ])
         for ad in ads:
             creative = ad.get("creative") or {}
@@ -68,6 +69,7 @@ def fetch_meta_ads(start_date, end_date):
                 "image_url": creative.get("image_url", ""),
                 "preview_link": ad.get("preview_shareable_link", ""),
                 "object_type": creative.get("object_type", ""),
+                "effective_status": ad.get("effective_status", ""),
             }
         print(f"  {len(creatives)} ad creatives fetched")
     except Exception as e:

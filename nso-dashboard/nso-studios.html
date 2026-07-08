@@ -1571,7 +1571,7 @@ function renderMeta(){
     if(!name)return;
     if(!creativeMap[name]){creativeMap[name]={name,impressions:0,clicks:0,spend:0,leads:0,
       media_type:r.object_type||'Other',thumb:'',preview:'',campaign:r.campaign_name||'',
-      ad_name:r.ad_name||''};}
+      ad_name:r.ad_name||'',status:''};}
     const g=creativeMap[name];
     g.impressions+=r.impressions||0;g.clicks+=r.clicks||0;
     g.spend+=r.spend||0;g.leads+=r.leads||0;
@@ -1584,6 +1584,7 @@ function renderMeta(){
     const meta=AD_META[g.ad_name];
     if(meta&&meta.thumbnail_url)g.thumb=meta.thumbnail_url;
     if(meta&&meta.preview_link&&!g.preview)g.preview=meta.preview_link;
+    if(meta&&meta.effective_status)g.status=meta.effective_status;
   });
   const creativeRows=Object.values(creativeMap).map(g=>({
     ...g,ctr_num:g.impressions>0?g.clicks/g.impressions*100:0,
@@ -1603,6 +1604,7 @@ function renderMeta(){
         <thead><tr>
           <th style="width:54px"></th>
           <th data-sort="name">Creative</th>
+          <th data-sort="status">Status</th>
           <th class="num" data-sort="impressions">Impressions</th>
           <th class="num" data-sort="clicks">Clicks</th>
           <th class="num" data-sort="ctr_num">CTR</th>
@@ -1647,8 +1649,6 @@ function renderMeta(){
     </div>
   </div>`;
 
-  // Daily spend chart
-  h+=`<div class="chart-card"><div class="chart-card-title">Daily Spend Over Time</div><div style="position:relative;width:100%;height:260px"><canvas id="metaSpendChart"></canvas></div></div>`;
 
   el.innerHTML=h;
 
@@ -1670,9 +1670,14 @@ function renderMeta(){
         :`<span style="font-weight:600;font-size:13px">${g.name}</span>`;
       const ctrStr=g.impressions>0?(g.clicks/g.impressions*100).toFixed(2)+'%':'—';
       const cplStr=g.leads>0?f$2(g.spend/g.leads):'—';
+      const st=(g.status||'').toUpperCase();
+      const stColor=st==='ACTIVE'?'#00a86b':st==='PAUSED'?'#f4a021':'#8aabbf';
+      const stLabel=st==='ACTIVE'?'Active':st==='PAUSED'?'Paused':st==='COMPLETED'?'Completed':st||'—';
+      const statusBadge=`<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:${stColor}22;color:${stColor};letter-spacing:.3px">${stLabel}</span>`;
       return`<tr>
         <td style="padding:8px 6px">${thumbCell}</td>
         <td><div>${nameCell}</div><div style="font-size:11px;color:#8aabbf;margin-top:2px">${g.media_type||'Other'}</div></td>
+        <td>${statusBadge}</td>
         <td class="num">${fK(g.impressions)}</td>
         <td class="num">${fN(g.clicks)}</td>
         <td class="num">${ctrStr}</td>
@@ -1685,7 +1690,7 @@ function renderMeta(){
       const tC=sorted.reduce((s,r)=>s+r.clicks,0);
       const tS=sorted.reduce((s,r)=>s+r.spend,0);
       const tL=sorted.reduce((s,r)=>s+r.leads,0);
-      return`<tr><td></td><td>Total (${sorted.length} creatives)</td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${f$(tS)}</td><td class="num">${tL}</td><td class="num">${tL>0?f$2(tS/tL):'—'}</td></tr>`;
+      return`<tr><td></td><td>Total (${sorted.length} creatives)</td><td></td><td class="num">${fK(tI)}</td><td class="num">${fN(tC)}</td><td class="num">${tI>0?(tC/tI*100).toFixed(2)+'%':'—'}</td><td class="num">${f$(tS)}</td><td class="num">${tL}</td><td class="num">${tL>0?f$2(tS/tL):'—'}</td></tr>`;
     });
   }
 
@@ -1709,20 +1714,6 @@ function renderMeta(){
     });
   }
 
-  setTimeout(()=>drawMetaTrend(from,to,activeStudios),50);
-}
-
-function drawMetaTrend(from,to,activeStudios){
-  const ctx=document.getElementById('metaSpendChart');if(!ctx)return;
-  if(_ch.meta){_ch.meta.destroy();_ch.meta=null;}
-  const datasets=activeStudios.map(studio=>{
-    const rows=metaFilter(studio,from,to);
-    const byDate={};rows.forEach(r=>{byDate[r.date]=(byDate[r.date]||0)+(r.spend||0)});
-    return{studio,byDate};
-  });
-  const allDates=[...new Set(datasets.flatMap(d=>Object.keys(d.byDate)))].sort();
-  const isMob=window.innerWidth<=768;
-  _ch.meta=new Chart(ctx,{type:'bar',data:{labels:allDates.map(d=>fmDay(d)),datasets:datasets.map(({studio,byDate})=>({label:studio.replace('SWEAT440 ',''),data:allDates.map(d=>+(byDate[d]||0).toFixed(2)),backgroundColor:studioColor(studio)+'cc',borderColor:studioColor(studio),borderWidth:1}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{family:'Oswald',size:12,style:'italic'},usePointStyle:true,padding:14}},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`}}},scales:{x:{stacked:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:14,maxRotation:0}},y:{stacked:true,grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',callback:v=>'$'+v}}}}});
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
