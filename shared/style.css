@@ -61,6 +61,8 @@
   .ms-item input[type=checkbox]{accent-color:#00A3E0;width:14px;height:14px;flex-shrink:0;cursor:pointer}
   .ms-divider{height:1px;background:#eef3f7;margin:4px 0}
   .ms-select-all{font-family:'Oswald',sans-serif;font-style:italic;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:#0084B5}
+  .ms-cat-header{display:flex;align-items:center;gap:8px;padding:7px 14px 4px;margin-top:2px;font-family:'Oswald',sans-serif;font-style:italic;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#0084B5;cursor:pointer}
+  .ms-cat-header input[type=checkbox]{accent-color:#00A3E0;width:13px;height:13px;flex-shrink:0;cursor:pointer}
 
   /* Granularity toggle */
   .gran-group{display:flex;gap:0;margin-bottom:16px;border:0.5px solid #c0d4df;border-radius:6px;overflow:hidden;width:fit-content}

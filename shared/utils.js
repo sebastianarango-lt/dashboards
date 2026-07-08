@@ -149,14 +149,14 @@ function studioColor(name){
 // -- Default exclusions (can be overridden per dashboard) -------------------
 const DEFAULT_EXCL_SOURCES = ['ClassPass / Platforms','Grassroots'];
 const DEFAULT_EXCL_STUDIOS = [
-  'Aventura','Dallas - Prestonwood','Dallas - Uptown','Herriman',
+  'Aventura','Dallas - Uptown','Herriman',
   'Middletown','Naples - Mercato','Nashville - Capitol View','North Miami',
-  'Old Bridge','Orlando - Dr Phillips','Pinecrest - Palmetto Bay','Reston'
+  'Old Bridge','Orlando - Dr Phillips','Reston'
 ];
 const NSO_STUDIOS = [
   'Aventura','Dallas - Uptown','Herriman',
   'Middletown','Naples - Mercato','North Miami',
-  'Old Bridge','Orlando - Dr Phillips','Pinecrest - Palmetto Bay','Reston'
+  'Old Bridge','Orlando - Dr Phillips','Reston'
 ];
 
 function localDateStr(d) { return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -228,25 +228,58 @@ function buildMultiSelect(menuId, labelId, items, defaultExcluded) {
   menu.appendChild(allDiv);
   const div0 = document.createElement('div'); div0.className = 'ms-divider'; menu.appendChild(div0);
 
-  // NSO studios sorted to the bottom
-  const sorted = [
-    ...items.filter(i => !NSO_STUDIOS.includes(i)),
-    ...items.filter(i =>  NSO_STUDIOS.includes(i)),
+  const itemSafeId = item => `ms_${menuId}_${item.replace(/[^a-z0-9]/gi,'_')}`;
+
+  // Open Studios first, NSO second — alphabetical within each category
+  const categories = [
+    { key: 'os',  label: 'Open Studios', items: items.filter(i => !NSO_STUDIOS.includes(i)).slice().sort() },
+    { key: 'nso', label: 'NSO',          items: items.filter(i =>  NSO_STUDIOS.includes(i)).slice().sort() },
   ];
 
-  sorted.forEach(item => {
-    const div = document.createElement('div'); div.className = 'ms-item';
-    const checked = !defaultExcluded.includes(item);
-    const safeId = `ms_${menuId}_${item.replace(/[^a-z0-9]/gi,'_')}`;
-    div.innerHTML = `<input type="checkbox" id="${safeId}" value="${item}" ${checked?'checked':''}> <label for="${safeId}" style="cursor:pointer">${item}</label>`;
-    div.querySelector('input').addEventListener('change', () => { syncSelectAll(menuId); updateLabel(menuId, labelId, items); _applyFilters(); });
-    menu.appendChild(div);
+  function syncCategory(cat) {
+    const catChk = document.getElementById(`${menuId}_cat_${cat.key}`);
+    if (!catChk) return;
+    const boxes = cat.items.map(item => document.getElementById(itemSafeId(item))).filter(Boolean);
+    const n = boxes.filter(c => c.checked).length;
+    catChk.checked = boxes.length > 0 && n === boxes.length;
+    catChk.indeterminate = n > 0 && n < boxes.length;
+  }
+
+  categories.forEach(cat => {
+    if (!cat.items.length) return;
+    const catId = `${menuId}_cat_${cat.key}`;
+    const catDiv = document.createElement('div');
+    catDiv.className = 'ms-cat-header';
+    catDiv.innerHTML = `<input type="checkbox" id="${catId}"> <label for="${catId}" style="cursor:pointer">${cat.label}</label>`;
+    menu.appendChild(catDiv);
+
+    cat.items.forEach(item => {
+      const div = document.createElement('div'); div.className = 'ms-item';
+      const checked = !defaultExcluded.includes(item);
+      const safeId = itemSafeId(item);
+      div.innerHTML = `<input type="checkbox" id="${safeId}" value="${item}" ${checked?'checked':''}> <label for="${safeId}" style="cursor:pointer">${item}</label>`;
+      div.querySelector('input').addEventListener('change', () => {
+        syncCategory(cat); syncSelectAll(menuId); updateLabel(menuId, labelId, items); _applyFilters();
+      });
+      menu.appendChild(div);
+    });
+
+    syncCategory(cat);
+    document.getElementById(catId).addEventListener('change', () => {
+      const catChk = document.getElementById(catId);
+      cat.items.forEach(item => {
+        const inp = document.getElementById(itemSafeId(item));
+        if (inp) inp.checked = catChk.checked;
+      });
+      syncSelectAll(menuId); updateLabel(menuId, labelId, items); _applyFilters();
+    });
   });
 
   const allChk = document.getElementById(menuId+'_all');
   syncSelectAll(menuId);
   allChk.addEventListener('change', () => {
     menu.querySelectorAll('input[value]').forEach(c => c.checked = allChk.checked);
+    categories.forEach(syncCategory);
     updateLabel(menuId, labelId, items); _applyFilters();
   });
   updateLabel(menuId, labelId, items);
