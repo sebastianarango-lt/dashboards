@@ -372,9 +372,10 @@ def load_daily_leads(daily_rows):
 
 
 def load_sales_data(sales_raw):
-    """Build {full_name: {date_str: {presales, cancellations, grassroots_presales, digital_presales}}}."""
+    """Build {full_name: {date_str: {presales, cancellations, grassroots_presales, digital_presales, digital_cancellations}}}."""
     by = defaultdict(lambda: defaultdict(
-        lambda: {"presales": 0, "cancellations": 0, "grassroots_presales": 0, "digital_presales": 0}
+        lambda: {"presales": 0, "cancellations": 0, "grassroots_presales": 0,
+                 "digital_presales": 0, "digital_cancellations": 0}
     ))
     if not sales_raw:
         return by
@@ -396,7 +397,8 @@ def load_sales_data(sales_raw):
             if src == "grassroots":
                 by[full][d]["grassroots_presales"] += int(row.get("presales") or 0)
             if src in _DIGITAL_SOURCES:
-                by[full][d]["digital_presales"] += int(row.get("presales") or 0)
+                by[full][d]["digital_presales"]      += int(row.get("presales") or 0)
+                by[full][d]["digital_cancellations"] += int(row.get("cancellations") or 0)
     return by
 
 
@@ -606,12 +608,12 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
         other_spend_by_week = {}
 
     leads = gr_leads = digital_leads = 0
-    presales = cancellations = gr_presales = digital_presales = 0
+    presales = cancellations = gr_presales = digital_presales = digital_cancellations = 0
     ig_sum = 0; has_ig = False
     meta_spend = gads_spend = 0.0
 
     def _add_day(d_str):
-        nonlocal leads, gr_leads, digital_leads, presales, cancellations, gr_presales, digital_presales
+        nonlocal leads, gr_leads, digital_leads, presales, cancellations, gr_presales, digital_presales, digital_cancellations
         nonlocal ig_sum, has_ig, meta_spend, gads_spend
 
         # Leads from data.json (keyed by short name)
@@ -622,10 +624,11 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
 
         # Sales from nso_sales_data.json (keyed by full name)
         sv = sales_by_date.get(full_name, {}).get(d_str, {})
-        presales          += sv.get("presales", 0)
-        cancellations     += sv.get("cancellations", 0)
-        gr_presales       += sv.get("grassroots_presales", 0)
-        digital_presales  += sv.get("digital_presales", 0)
+        presales               += sv.get("presales", 0)
+        cancellations          += sv.get("cancellations", 0)
+        gr_presales            += sv.get("grassroots_presales", 0)
+        digital_presales       += sv.get("digital_presales", 0)
+        digital_cancellations  += sv.get("digital_cancellations", 0)
 
         # Instagram followers
         fc = ig_fc.get(d_str)
@@ -661,19 +664,20 @@ def sum_week_data(wn, ws_date, we_date, data_name, full_name,
     comm_events = int(events_by_week.get(wn, 0))
 
     return {
-        "leads":            leads,
-        "gr_leads":         gr_leads,
-        "digital_leads":    digital_leads,
-        "presales":         presales,
-        "cancellations":    cancellations,
-        "gr_presales":      gr_presales,
-        "digital_presales": digital_presales,
-        "ig":               ig_sum if has_ig else None,
-        "meta_spend":       round(meta_spend, 2),
-        "gads_spend":       round(gads_spend, 2),
-        "gr_spend":         gr_spend,
-        "other_spend":      other_spend,
-        "comm_events":      comm_events,
+        "leads":                  leads,
+        "gr_leads":               gr_leads,
+        "digital_leads":          digital_leads,
+        "presales":               presales,
+        "cancellations":          cancellations,
+        "gr_presales":            gr_presales,
+        "digital_presales":       digital_presales,
+        "digital_cancellations":  digital_cancellations,
+        "ig":                     ig_sum if has_ig else None,
+        "meta_spend":             round(meta_spend, 2),
+        "gads_spend":             round(gads_spend, 2),
+        "gr_spend":               gr_spend,
+        "other_spend":            other_spend,
+        "comm_events":            comm_events,
     }
 
 
@@ -925,7 +929,8 @@ def main():
                 "cancellations_count": cc,
                 "grassroots_leads":   _weekly_int(w["gr_leads"]),
                 "grassroots_presales": _weekly_int(w["gr_presales"]),
-                "digital_presales_week": _weekly_int(w["digital_presales"]),
+                "digital_presales_week":       _weekly_int(w["digital_presales"]),
+                "digital_cancellations_week":  _weekly_int(w["digital_cancellations"]),
                 "conversion_rate":    conv_rate,
                 "comm_events":        _weekly_int(w["comm_events"]),
                 "ig_new_followers":   w["ig"],
