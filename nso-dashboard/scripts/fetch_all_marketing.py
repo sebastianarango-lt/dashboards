@@ -56,12 +56,20 @@ def fetch_meta_ads(start_date, end_date):
     print(f"  Fetching ad creatives...")
     creatives = {}
     try:
-        ads = account.get_ads(fields=[
-            "id", "name",
-            "creative{thumbnail_url,image_url,object_type}",
-            "preview_shareable_link",
-            "effective_status",
-        ])
+        ads = account.get_ads(
+            fields=[
+                "id", "name",
+                "creative{thumbnail_url,image_url,object_type}",
+                "preview_shareable_link",
+                "effective_status",
+            ],
+            params={
+                "effective_status": [
+                    "ACTIVE", "PAUSED", "DELETED", "ARCHIVED",
+                    "COMPLETED", "CAMPAIGN_PAUSED", "ADSET_PAUSED",
+                ],
+            },
+        )
         for ad in ads:
             creative = ad.get("creative") or {}
             creatives[ad["name"]] = {
