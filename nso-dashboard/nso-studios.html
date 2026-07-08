@@ -474,7 +474,7 @@ function renderSummary(){
   // C/O countdown (shown at top of timeline card — measures to C/O, not GO)
   const _coWkNum=studio.co_week||null;
   const _coWkData=_coWkNum?w.find(x=>(parseInt(String(x.week).replace(/[^0-9]/g,''))||0)===_coWkNum):null;
-  const coDateStr=_coWkData?(_coWkData.date_start||_coWkData.date_end||null):null;
+  const coDateStr=studio.co_date||(_coWkData?(_coWkData.date_start||_coWkData.date_end||null):null);
   const daysToCO=coDateStr?Math.max(0,Math.round((new Date(coDateStr+'T00:00:00Z')-new Date(todayStr+'T00:00:00Z'))/864e5)):daysToOpen;
 
   const presPct=tgt.presales_count?Math.min(100,Math.round((cur.presales_count||0)/tgt.presales_count*100)):0;
@@ -544,7 +544,7 @@ function renderSummary(){
   h+=`<div class="chart-card">`;
   h+=`<div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:18px">`;
   h+=`<div class="chart-card-title" style="margin-bottom:0">Presale Timeline — ${studio.name}</div>`;
-  h+=`<div style="font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;color:#5a7a8a;font-weight:500;text-transform:uppercase;letter-spacing:.5px;text-align:right"><span style="font-size:22px;font-weight:700;color:#e05a5a;font-family:'Oswald',sans-serif">${daysToCO!=null?daysToCO:'—'}</span>&nbsp;Days to Target C/O<div style="font-size:10px;font-weight:400;color:#e05a5a;text-transform:none;letter-spacing:0;margin-top:1px">${_fmtDate(d7end)}</div></div>`;
+  h+=`<div style="font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;color:#5a7a8a;font-weight:500;text-transform:uppercase;letter-spacing:.5px;text-align:right"><span style="font-size:22px;font-weight:700;color:#e05a5a;font-family:'Oswald',sans-serif">${daysToCO!=null?daysToCO:'—'}</span>&nbsp;Days to Target C/O<div style="font-size:10px;font-weight:400;color:#e05a5a;text-transform:none;letter-spacing:0;margin-top:1px">${coDateStr?_fmtDate(coDateStr):''}</div></div>`;
   h+=`</div>`;
   // Tier pricing vars for markers
   const _pricing=studio.pricing||{};
