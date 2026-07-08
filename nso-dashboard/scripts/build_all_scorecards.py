@@ -434,17 +434,33 @@ def load_ig_followers(social_raw):
 
 
 def load_meta_spend(meta_rows):
-    """Build {code: {date_str: spend}} from marketing_data.json meta_ads."""
+    """Build {code: {date_str: spend}} from marketing_data.json meta_ads.
+
+    Meta campaigns use studio names in their names (e.g. 'Dr Phillips'), not codes.
+    Match using EVENTS_SPEND_STUDIO_MAP aliases (longest first to avoid false positives),
+    falling back to the studio code itself.
+    """
     all_codes = [cfg["code"] for cfg in _STUDIO_CFG_CACHE]
+
+    # Build {code: [keywords sorted longest-first]} from the existing alias map
+    code_keywords = defaultdict(list)
+    for alias, code in EVENTS_SPEND_STUDIO_MAP.items():
+        code_keywords[code].append(alias.lower())
+    match_list = []
+    for code in all_codes:
+        keywords = sorted(code_keywords.get(code, []), key=len, reverse=True)
+        keywords.append(code.lower())   # code itself as final fallback
+        match_list.append((code, keywords))
+
     by = defaultdict(lambda: defaultdict(float))
     for r in meta_rows:
-        cname = str(r.get("campaign_name", ""))
+        cname = str(r.get("campaign_name", "")).lower()
         d = str(r.get("date", ""))[:10]
         spend = float(r.get("spend") or 0)
         if spend <= 0 or len(d) < 10:
             continue
-        for code in all_codes:
-            if code.lower() in cname.lower():
+        for code, keywords in match_list:
+            if any(kw in cname for kw in keywords):
                 by[code][d] += spend
                 break
     return by
