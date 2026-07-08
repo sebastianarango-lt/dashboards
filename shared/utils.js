@@ -149,14 +149,17 @@ function studioColor(name){
 // -- Default exclusions (can be overridden per dashboard) -------------------
 const DEFAULT_EXCL_SOURCES = ['ClassPass / Platforms','Grassroots'];
 const DEFAULT_EXCL_STUDIOS = [
-  'Aventura','Dallas - Uptown','Herriman',
+  'Aventura','Dallas - Uptown','Dunwoody','Fort Myers','Herriman',
   'Middletown','Naples - Mercato','Nashville - Capitol View','North Miami',
   'Old Bridge','Orlando - Dr Phillips','Reston'
 ];
 const NSO_STUDIOS = [
-  'Aventura','Dallas - Uptown','Herriman',
+  'Aventura','Dallas - Uptown','Dunwoody','Fort Myers','Herriman',
   'Middletown','Naples - Mercato','North Miami',
   'Old Bridge','Orlando - Dr Phillips','Reston'
+];
+const CLOSED_STUDIOS = [
+  'Nashville - Capitol View'
 ];
 
 function localDateStr(d) { return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -230,10 +233,11 @@ function buildMultiSelect(menuId, labelId, items, defaultExcluded) {
 
   const itemSafeId = item => `ms_${menuId}_${item.replace(/[^a-z0-9]/gi,'_')}`;
 
-  // Open Studios first, NSO second — alphabetical within each category
+  // Open Studios first, NSO second, Closed third — alphabetical within each category
   const categories = [
-    { key: 'os',  label: 'Open Studios', items: items.filter(i => !NSO_STUDIOS.includes(i)).slice().sort() },
-    { key: 'nso', label: 'NSO',          items: items.filter(i =>  NSO_STUDIOS.includes(i)).slice().sort() },
+    { key: 'os',     label: 'Open Studios', items: items.filter(i => !NSO_STUDIOS.includes(i) && !CLOSED_STUDIOS.includes(i)).slice().sort() },
+    { key: 'nso',    label: 'NSO',          items: items.filter(i =>  NSO_STUDIOS.includes(i)).slice().sort() },
+    { key: 'closed', label: 'Closed',       items: items.filter(i =>  CLOSED_STUDIOS.includes(i)).slice().sort() },
   ];
 
   function syncCategory(cat) {
