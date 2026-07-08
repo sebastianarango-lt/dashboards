@@ -251,7 +251,7 @@ const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SW
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
-let CUR_USER=null;const isAdminUser=()=>CUR_USER&&CUR_USER.role==='admin';
+let CUR_USER=null,_allowedStudios=null;const isAdminUser=()=>CUR_USER&&CUR_USER.role==='admin';
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='',_sumD7End=null;
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
 function lds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -2430,7 +2430,7 @@ async function init(){
   if (!_authUser) return;
   CUR_USER=_authUser;
   renderAuthNav(_authUser);
-  const _allowedStudios = getAuthStudios(_authUser);
+  _allowedStudios = getAuthStudios(_authUser);
   if(!isAdminUser()){
     const _igTab=document.getElementById('navTabInstagram');
     if(_igTab)_igTab.remove();
