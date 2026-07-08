@@ -986,42 +986,12 @@ function applyFilters(){
   const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
   let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // Use tier_daily_sales for Total Sales when no source filter — email-deduped, correct total (268).
-  // When a source filter is active, keep smC from NSO_SALES_ROWS (has source attribution).
-  const selSt=(SC&&SC.studios)?(st&&st.length?SC.studios.filter(s=>st.includes(s.full_name)):SC.studios):[];
-  let hasTier=false;
-  if(selSt.length&&!(sr&&sr.length)){
-    let tierC=0,tierP=0,tierY=0;
-    const _rng=(f,t)=>{const fs=f?f.toISOString().slice(0,10):null,ts=t?t.toISOString().slice(0,10):null;return r=>(!fs||r.date>=fs)&&(!ts||r.date<=ts);};
-    const _sumTier=rows=>rows.reduce((a,r)=>a+(r.count||0),0);
-    selSt.forEach(sel=>{
-      const tds=sel.tier_daily_sales;
-      if(!tds||!tds.length)return;
-      tierC+=Math.max(0,_sumTier(tds.filter(_rng(from,to))));
-      if(wins.ppFrom)tierP+=Math.max(0,_sumTier(tds.filter(_rng(wins.ppFrom,wins.ppTo))));
-      if(wins.pyFrom)tierY+=Math.max(0,_sumTier(tds.filter(_rng(wins.pyFrom,wins.pyTo))));
-      hasTier=true;
-    });
-    if(hasTier){smC=tierC;if(wins.ppFrom)smP=tierP;if(wins.pyFrom)smY=tierY;}
-  }
-  // Sales-by-period for the Funnel Over Time chart — mirrors whichever dataset backs
-  // the Total Sales KPI above (tier-based when no source filter, else NSO_SALES_ROWS net of
-  // cancellations), including the same per-studio/overall clamp, so the chart always sums to smC.
-  let salesByPeriod;
-  if(hasTier){
-    const _fs=from?from.toISOString().slice(0,10):null,_ts=to?to.toISOString().slice(0,10):null;
-    const _map={};
-    selSt.forEach(sel=>{
-      const tds=(sel.tier_daily_sales||[]).filter(r=>(!_fs||r.date>=_fs)&&(!_ts||r.date<=_ts));
-      if(!tds.length)return;
-      if(tds.reduce((a,r)=>a+(r.count||0),0)<0)return; // matches Math.max(0,...) clamp per studio
-      tds.forEach(r=>{const k=_periodKey(r.date);_map[k]=(_map[k]||0)+(r.count||0)});
-    });
-    salesByPeriod=_map;
-  }else{
-    salesByPeriod=_bucketByPeriod(sCurr,r=>(r.first_sales||0)-(r.cancellations||0));
-    if(Object.values(salesByPeriod).reduce((a,b)=>a+b,0)<0)Object.keys(salesByPeriod).forEach(k=>salesByPeriod[k]=0); // matches Math.max(0,...) clamp
-  }
+  // Sales-by-period for the Funnel Over Time chart — same dataset/formula as the Total Sales
+  // KPI above (nso_sales_data.json, net of cancellations), so the chart always sums to smC.
+  // The tier dataset (tier_daily_sales/tier_rmr_by_week) is reserved for the Scorecard tab's
+  // tier-breakdown rows and is not used anywhere else in the dashboard.
+  const salesByPeriod=_bucketByPeriod(sCurr,r=>(r.first_sales||0)-(r.cancellations||0));
+  if(Object.values(salesByPeriod).reduce((a,b)=>a+b,0)<0)Object.keys(salesByPeriod).forEach(k=>salesByPeriod[k]=0); // matches Math.max(0,...) clamp
   buildTrend(toTS(curr.daily,curr.monthly),salesByPeriod);
   const fkpi=document.getElementById('funnel-kpis');
   if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads)+kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
@@ -1031,10 +1001,12 @@ function applyFilters(){
   buildArea('leadsChart','leads-toggles',leadsSeries,activeSrcLeads,'signups');
   buildRing('leadsRing','leadsRingLeg',curr.all,'signups');
   document.getElementById('mem-kpis').innerHTML=kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
-  const salesSeries=toSrcTSGran(sCurr,[]);
+  // Net out cancellations per row so this chart/ring sum to the same net total as the KPI card above.
+  const sCurrNet=sCurr.map(r=>({...r,first_sales:(r.first_sales||0)-(r.cancellations||0)}));
+  const salesSeries=toSrcTSGran(sCurrNet,[]);
   const activeSrcSales=(sr||[]).filter(s=>salesSeries.some(r=>r.source===s&&(r.first_sales||0)>0));
   buildArea('memChart','mem-toggles',salesSeries,activeSrcSales,'first_sales');
-  buildRing('memRing','memRingLeg',sCurr,'first_sales');
+  buildRing('memRing','memRingLeg',sCurrNet,'first_sales');
   if(document.getElementById('tab-meta').classList.contains('active'))renderMeta();
   if(document.getElementById('tab-ga4').classList.contains('active'))renderGA4();
   if(document.getElementById('tab-gbp').classList.contains('active'))renderGBP();

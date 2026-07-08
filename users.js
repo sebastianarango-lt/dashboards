@@ -43,6 +43,12 @@ const USERS = {
     studios: null,
     role: 'admin'
   },
+  'laura.londono@leadteam.com': {
+    passwordHash: '15743531a3962a0aff9eb020754e49cb58ef8ab6ed81ddfcb674572e60c62f8a',
+    name: 'Laura Londoño',
+    studios: null,
+    role: 'admin'
+  },
 
   // ── Corporate (SWEAT440) — full access ────────────────────────────────────
   'matt@sweat440.com': {
@@ -225,6 +231,33 @@ const USERS = {
       'Fort Lauderdale - Las Olas',
       'Miami - Coconut Grove',
       'Miami - Upper East Side',
+      'NYC - Chelsea',
+      'NYC - FiDi',
+      'NYC - Park Slope',
+      'Aventura',
+      'North Miami',
+      'Boca Raton',
+      'West Palm Beach',
+    ],
+    role: 'franchisee'
+  },
+
+  'chris@ubfpt.com': {
+    passwordHash: 'ddd5c9061082705dc210837bf37f3bce4a7da96bd49915edd7ad99651d65be3b',
+    name: 'Chris Schuck',
+    studios: [
+      'Coral Springs',
+      'Deerfield Beach',
+      'Fort Lauderdale - Las Olas',
+      'Miami - Coconut Grove',
+      'Miami - Upper East Side',
+      'NYC - Chelsea',
+      'NYC - FiDi',
+      'NYC - Park Slope',
+      'Aventura',
+      'North Miami',
+      'Boca Raton',
+      'West Palm Beach',
     ],
     role: 'franchisee'
   },
