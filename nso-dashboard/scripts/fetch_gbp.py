@@ -52,6 +52,9 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parent.parent / ".env")
 
+NSO_CONFIG_SHEET_URL = "https://docs.google.com/spreadsheets/d/1Ku0VSwOY6HVXuqucduWlsbKIiNzb0ojL21rozaPpHHU"
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+
 # ---------------------------------------------------------------------------
 # API constants
 # ---------------------------------------------------------------------------
@@ -121,6 +124,56 @@ def _extract_location_id(raw: str) -> str:
         return raw
     return ""
 
+
+
+# ---------------------------------------------------------------------------
+# Read NSO studio GBP location IDs from the NSO Config Google Sheet.
+# Returns {full_name_lower: {"location_id": str, "code": str}} for any
+# studio that has a non-empty "gbp location id" column in the sheet.
+# ---------------------------------------------------------------------------
+
+def load_nso_location_ids_from_sheet(credentials_path: str) -> dict:
+    try:
+        from google.oauth2.service_account import Credentials
+        import gspread
+        creds = Credentials.from_service_account_file(credentials_path, scopes=SCOPES)
+        gc = gspread.authorize(creds)
+        sh = gc.open_by_url(NSO_CONFIG_SHEET_URL)
+        ws = sh.worksheet("NSO Config")
+        all_rows = ws.get_all_values()
+    except Exception as e:
+        print(f"  Warning: could not read NSO Config sheet: {e}")
+        return {}
+
+    if len(all_rows) < 2:
+        return {}
+
+    header_row = all_rows[1]
+    hdr_map = {h.strip().lower(): i for i, h in enumerate(header_row)}
+
+    def _col(row, *names):
+        for name in names:
+            i = hdr_map.get(name.lower(), -1)
+            if 0 <= i < len(row) and row[i].strip():
+                return row[i].strip()
+        return ""
+
+    result = {}
+    for row in all_rows[2:]:
+        name = row[0].strip() if row else ""
+        code = row[1].strip() if len(row) > 1 else ""
+        if not name or not code:
+            continue
+        raw_loc = _col(row, "gbp location id")
+        if not raw_loc:
+            continue
+        loc_id = _extract_location_id(raw_loc)
+        if loc_id:
+            full_name = f"SWEAT440 {name}".lower()
+            result[full_name] = {"location_id": loc_id, "code": code}
+            print(f"  Sheet GBP: {name} ({code}) → location_id={loc_id}")
+
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -353,17 +406,20 @@ def fetch_all_studios(
     start_date: str,
     end_date: str,
     studios: list | None = None,
+    sheet_ids: dict | None = None,
 ) -> dict:
     """
     Fetch GBP data for all studios in ALL_STUDIOS (or an explicit override list).
 
-    Only studios with a non-empty location_id are fetched; the rest are skipped
-    with a printed message.
+    Only studios with a non-empty location_id are fetched; the rest are skipped.
+    sheet_ids: optional dict from load_nso_location_ids_from_sheet() — patches
+    empty location_ids in ALL_STUDIOS and adds any new NSO studios not in the list.
 
     Args:
         start_date: ISO date string "YYYY-MM-DD"
         end_date:   ISO date string "YYYY-MM-DD"
         studios:    Optional override list (defaults to ALL_STUDIOS)
+        sheet_ids:  Optional {full_name_lower: {location_id, code}} from sheet
 
     Returns:
         Output dict ready to be serialised to JSON.
@@ -371,7 +427,26 @@ def fetch_all_studios(
     token = _get_access_token()
 
     if studios is None:
-        studios = ALL_STUDIOS
+        studios = [dict(s) for s in ALL_STUDIOS]  # copy so we can mutate
+
+    # Patch empty location_ids from sheet data and add any new NSO studios
+    if sheet_ids:
+        existing_names = {s["name"].lower() for s in studios}
+        for full_lower, info in sheet_ids.items():
+            matched = next((s for s in studios if s["name"].lower() == full_lower), None)
+            if matched:
+                if not matched.get("location_id"):
+                    matched["location_id"] = info["location_id"]
+                    matched["code"] = info["code"]
+                    print(f"  Patched location_id from sheet: {matched['name']}")
+            elif full_lower not in existing_names:
+                # New studio not yet in the hardcoded list
+                studios.append({
+                    "name": full_lower.title().replace("Sweat440", "SWEAT440"),
+                    "code": info["code"],
+                    "location_id": info["location_id"],
+                })
+                print(f"  Added new studio from sheet: {full_lower}")
 
     studio_results = []
     errors = []
@@ -501,6 +576,13 @@ def _parse_args() -> argparse.Namespace:
         default="gbp_data.json",
         help="Path for the output JSON file (default: gbp_data.json).",
     )
+    parser.add_argument(
+        "--credentials",
+        default=None,
+        help="Path to Google service account JSON. When provided, GBP location IDs "
+             "are read from the NSO Config sheet, overriding empty entries in the "
+             "hardcoded list and auto-adding new studios.",
+    )
     return parser.parse_args()
 
 
@@ -513,7 +595,13 @@ def main() -> None:
     print(f"Fetching GBP data: {start_date} -> {end_date}")
     print(f"Output: {args.output}\n")
 
-    result = fetch_all_studios(start_date, end_date)
+    sheet_ids = {}
+    if args.credentials:
+        print("Reading NSO studio GBP IDs from NSO Config sheet...")
+        sheet_ids = load_nso_location_ids_from_sheet(args.credentials)
+        print(f"  {len(sheet_ids)} studio(s) with GBP location ID in sheet\n")
+
+    result = fetch_all_studios(start_date, end_date, sheet_ids=sheet_ids)
 
     with open(args.output, "w", encoding="utf-8") as fh:
         json.dump(result, fh, indent=2, ensure_ascii=False)
