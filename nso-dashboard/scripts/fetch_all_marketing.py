@@ -606,16 +606,38 @@ def main():
     size_mb = out_path.stat().st_size / 1_000_000
     print(f"\nDone. Written to {out_path} ({size_mb:.1f} MB)")
 
-    # Write ad_meta to a separate file (always fully regenerated — fresh thumbnail URLs)
+    # Write ad_meta to a separate file.
+    # Merge with existing: preserve non-empty thumbnail_url from previous run so that
+    # DELETED/ARCHIVED ads (whose Meta creative is removed and returns empty URL) keep
+    # their last known good thumbnail until it naturally expires.
     if args.ad_meta_output:
         ad_meta_path = Path(args.ad_meta_output)
+        existing_ad_meta = {}
+        if ad_meta_path.exists():
+            try:
+                with open(ad_meta_path, encoding="utf-8") as f:
+                    existing_ad_meta = json.load(f).get("ad_meta", {})
+            except Exception:
+                pass
+
+        merged = dict(existing_ad_meta)
+        for name, meta in ad_meta.items():
+            prev = merged.get(name, {})
+            merged[name] = {
+                **prev,
+                **meta,
+                # Keep previous thumbnail_url if the new one is empty (deleted/archived ad)
+                "thumbnail_url": meta.get("thumbnail_url") or prev.get("thumbnail_url", ""),
+            }
+
         ad_meta_out = {
             "generated_at": output["generated_at"],
-            "ad_meta": ad_meta,
+            "ad_meta": merged,
         }
-        with open(ad_meta_path, "w") as f:
+        with open(ad_meta_path, "w", encoding="utf-8") as f:
             json.dump(ad_meta_out, f, indent=2, default=str)
-        print(f"Ad meta written to {ad_meta_path} ({len(ad_meta)} creatives)")
+        print(f"Ad meta written to {ad_meta_path} ({len(merged)} creatives, "
+              f"{len(ad_meta)} refreshed this run)")
 
     print("=" * 60)
 
