@@ -43,6 +43,12 @@ const USERS = {
     studios: null,
     role: 'admin'
   },
+  'laura.londono@leadteam.com': {
+    passwordHash: '15743531a3962a0aff9eb020754e49cb58ef8ab6ed81ddfcb674572e60c62f8a',
+    name: 'Laura Londoño',
+    studios: null,
+    role: 'admin'
+  },
 
   // ── Corporate (SWEAT440) — full access ────────────────────────────────────
   'matt@sweat440.com': {
