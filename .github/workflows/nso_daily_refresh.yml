@@ -105,6 +105,19 @@ jobs:
           cd nso-dashboard && python scripts/fetch_sheet_milestones.py
         continue-on-error: true
 
+      # ── GBP (Google Business Profile) ─────────────────────────────────────
+      - name: Refresh Google Business Profile data
+        env:
+          GBP_CLIENT_ID:     ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          python nso-dashboard/scripts/fetch_gbp.py \
+            --credentials nso-dashboard/credentials/service_account.json \
+            --start $TWO_DAYS_AGO \
+            --output nso-dashboard/gbp_data.json
+        continue-on-error: true
+
       # ── TIER RMR (real prices from Snowflake) ───────────────────────────────
       - name: Calculate tier RMR from actual prices
         env:
@@ -128,7 +141,8 @@ jobs:
             nso-dashboard/marketing_data.json \
             nso-dashboard/nso_google_ads.json \
             nso-dashboard/nso_scorecard_data.json \
-            nso-dashboard/nso_ad_meta.json
+            nso-dashboard/nso_ad_meta.json \
+            nso-dashboard/gbp_data.json
           find nso-dashboard/thumbnails -type f 2>/dev/null | grep -q . && \
             git add nso-dashboard/thumbnails/ || true
           git diff --cached --quiet || \
