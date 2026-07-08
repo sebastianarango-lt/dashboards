@@ -442,11 +442,7 @@ function renderSummary(){
   // Compute current week from today vs week bounds (JS-side, for display accuracy)
   const todayStr=new Date().toISOString().slice(0,10);
   function _liso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-  const _sn7=studio.data_name||studio.name;
-  const _stpFn=s=>(s||'').replace(/^SWEAT440\s+/,'');
-  const _d7dates=(RAW&&RAW.daily_detail||[]).filter(r=>_stpFn(r.studio)===_sn7&&r.date).map(r=>r.date).sort();
-  const _d7endStr=_d7dates.length?_d7dates[_d7dates.length-1]:null;
-  const _d7endDate=_d7endStr?new Date(_d7endStr+'T12:00:00Z'):(()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate()-2);})();
+  const _d7endDate=(()=>{const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate()-2);})();
   const d7end=_liso(_d7endDate);
   const d7ago=_liso(new Date(_d7endDate.getTime()-6*864e5));
   _sumD7End=d7end;
