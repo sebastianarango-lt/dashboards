@@ -391,8 +391,8 @@ const GLOSSARY={
   sc_leadteam_fee:{title:'LeadTeam Management Fee (weekly)',desc:'Weekly fee paid to LeadTeam for managing digital advertising campaigns (Meta and Google). This is a management cost separate from the actual ad spend placed on the platforms.'},
   sc_blended_cpl:{title:'Blended CPL (weekly)',desc:'Total marketing spend divided by total leads (digital + grassroots) for the week. Target range is $28–$41. Blended CPL accounts for all acquisition costs and all lead sources, giving a full-funnel cost view.'},
   sc_ads_cpl:{title:'Ads CPL (weekly)',desc:'Digital ad spend (Meta + Google only) divided by digital leads for the week. Excludes grassroots leads and non-digital spend. Useful for evaluating paid channel efficiency in isolation.'},
-  sc_blended_cpa:{title:'Blended CPA (weekly)',desc:'Total marketing spend divided by new presales for the week. Target range is $80–$116. Cost Per Acquisition measures how much is spent across all channels to acquire one new paying member.'},
-  sc_ads_cpa:{title:'Ads CPA (weekly)',desc:'Digital ad spend (Meta + Google only) divided by digital presales for the week. Isolates the cost efficiency of paid digital advertising for member acquisition.'},
+  sc_blended_cpa:{title:'Blended CPA (weekly)',desc:'Total marketing spend divided by net new presales for the week (gross presales minus cancellations processed that week). Target range is $80–$116. Cost Per Acquisition measures how much is spent across all channels to acquire one net new paying member.'},
+  sc_ads_cpa:{title:'Ads CPA (weekly)',desc:'Digital ad spend (Meta + Google only) divided by net new presales for the week (gross presales minus cancellations). Isolates the cost efficiency of paid digital advertising per net new member acquired.'},
 
   // ── Scorecard tab — cumulative ────────────────────────────────────────────
   sc_total_leads:{title:'Total Leads (cumulative)',desc:'Running total of all leads generated since Week 0. The pacing benchmark is the total leads target pro-rated to the current week, assuming even distribution. The final column target is the overall goal for the full pre-opening period.'},
@@ -1183,9 +1183,9 @@ function renderScorecard(){
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
     {label:_ib('sc_ads_cpl')+'Ads CPL', computed:wk=>wk.dsp&&wk.dlw>0?wk.dsp/wk.dlw:null, fmt:fCur, reqLabel:'—', color:false, cplSub:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:_ib('sc_blended_cpa')+'▶ Blended CPA', computed:wk=>wk.ts&&wk.np>0?wk.ts/wk.np:null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
+    {label:_ib('sc_blended_cpa')+'▶ Blended CPA', computed:wk=>wk.ts&&((wk.np||0)-(wk.canc||0))>0?wk.ts/((wk.np||0)-(wk.canc||0)):null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:_ib('sc_ads_cpa')+'Ads CPA', computed:wk=>wk.dsp&&wk.dpw>0?wk.dsp/wk.dpw:null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
+    {label:_ib('sc_ads_cpa')+'Ads CPA', computed:wk=>wk.dsp&&((wk.np||0)-(wk.canc||0))>0?wk.dsp/((wk.np||0)-(wk.canc||0)):null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
   ];
 
@@ -1217,9 +1217,9 @@ function renderScorecard(){
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
     {label:_ib('sc_ads_cpl')+'Ads CPL', computed:wk=>wk.cumDsp&&wk.cumDl>0?wk.cumDsp/wk.cumDl:null, fmt:fCur, reqLabel:'—', color:false, cplSub:true,
      colorFn:v=>!v?'':(v<=41?'sc-cell-good':v<=41*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:_ib('sc_blended_cpa')+'▶ Blended CPA', computed:wk=>wk.cumTs&&wk.pc>0?wk.cumTs/wk.pc:null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
+    {label:_ib('sc_blended_cpa')+'▶ Blended CPA', computed:wk=>wk.cumTs&&((wk.pc||0)-(wk.cancTot||0))>0?wk.cumTs/((wk.pc||0)-(wk.cancTot||0)):null, fmt:fCur, reqLabel:'$80 – $116', color:false, cpaParent:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
-    {label:_ib('sc_ads_cpa')+'Ads CPA', computed:wk=>wk.cumDsp&&wk.cumDp>0?wk.cumDsp/wk.cumDp:null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
+    {label:_ib('sc_ads_cpa')+'Ads CPA', computed:wk=>wk.cumDsp&&((wk.pc||0)-(wk.cancTot||0))>0?wk.cumDsp/((wk.pc||0)-(wk.cancTot||0)):null, fmt:fCur, reqLabel:'—', color:false, cpaSub:true,
      colorFn:v=>!v?'':(v<=116?'sc-cell-good':v<=116*1.3?'sc-cell-warn':'sc-cell-bad')},
   ];
 
