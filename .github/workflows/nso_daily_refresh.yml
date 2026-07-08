@@ -26,8 +26,9 @@ jobs:
 
       - name: Set date variables
         run: |
-          echo "YESTERDAY=$(date -u -d '1 day ago' +%Y-%m-%d)"    >> $GITHUB_ENV
-          echo "TWO_DAYS_AGO=$(date -u -d '2 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
+          echo "YESTERDAY=$(date -u -d '1 day ago' +%Y-%m-%d)"         >> $GITHUB_ENV
+          echo "TWO_DAYS_AGO=$(date -u -d '2 days ago' +%Y-%m-%d)"     >> $GITHUB_ENV
+          echo "FOURTEEN_DAYS_AGO=$(date -u -d '14 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
 
       - name: Write Google service account credentials
         run: |
@@ -50,7 +51,9 @@ jobs:
         continue-on-error: true
 
       # ── META ADS + GA4 + GOOGLE ADS ────────────────────────────────────────
-      - name: Refresh Meta Ads / GA4 / Google Ads (yesterday + 2 days ago)
+      # 14-day lookback so Meta's retroactive spend adjustments (attribution
+      # window up to 28 days) are captured and merged into the existing data.
+      - name: Refresh Meta Ads / GA4 / Google Ads (14-day lookback)
         env:
           META_ACCESS_TOKEN:              ${{ secrets.META_TOKEN }}
           META_APP_ID:                    ${{ secrets.META_APP_ID }}
@@ -63,7 +66,7 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_KEY_PATH: nso-dashboard/credentials/service_account.json
         run: |
           python nso-dashboard/scripts/fetch_all_marketing.py \
-            --start $TWO_DAYS_AGO \
+            --start $FOURTEEN_DAYS_AGO \
             --end   $YESTERDAY \
             --output nso-dashboard/marketing_all_new.json \
             --ad-meta-output nso-dashboard/nso_ad_meta.json
