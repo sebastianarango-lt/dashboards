@@ -121,17 +121,10 @@ jobs:
         continue-on-error: true
 
       # ── GBP (Google Business Profile) ─────────────────────────────────────
-      - name: Refresh Google Business Profile data
-        env:
-          GBP_CLIENT_ID:     ${{ secrets.GBP_CLIENT_ID }}
-          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
-          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
-        run: |
-          python nso-dashboard/scripts/fetch_gbp.py \
-            --credentials nso-dashboard/credentials/service_account.json \
-            --start $TWO_DAYS_AGO \
-            --output nso-dashboard/gbp_data.json
-        continue-on-error: true
+      # gbp_data.json is managed by refresh.yml (Open Studio workflow) which
+      # fetches the full historical range (--start 2025-01-01) daily.
+      # Do NOT fetch GBP here — a 2-day window would overwrite the historical
+      # file with zeros (GBP API has 3-4 day lag) and lose all past data.
 
       # ── TIER RMR (real prices from Snowflake) ───────────────────────────────
       - name: Calculate tier RMR from actual prices
@@ -156,8 +149,7 @@ jobs:
             nso-dashboard/marketing_data.json \
             nso-dashboard/nso_google_ads.json \
             nso-dashboard/nso_scorecard_data.json \
-            nso-dashboard/nso_ad_meta.json \
-            nso-dashboard/gbp_data.json
+            nso-dashboard/nso_ad_meta.json
           find nso-dashboard/thumbnails -type f 2>/dev/null | grep -q . && \
             git add nso-dashboard/thumbnails/ || true
           git diff --cached --quiet || \
