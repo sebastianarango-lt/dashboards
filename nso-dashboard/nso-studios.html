@@ -421,6 +421,7 @@ function toggleDs(btn,i){if(!trendChart)return;const ds=trendChart.data.datasets
 function switchSumStudio(code){
   const sc=SC&&SC.studios&&SC.studios.find(s=>s.code===code);
   if(!sc)return;
+  if(_allowedStudios&&!_allowedStudios.includes((sc.full_name||sc.name||'').replace(/^SWEAT440\s+/,'')))return;
   _sumStudio=sc;
   renderSummary();
   if(document.getElementById('tab-funnel').classList.contains('active'))renderFunnel();
@@ -429,8 +430,13 @@ function switchSumStudio(code){
 function renderSummary(){
   if(!SC||!SC.studios||!SC.studios.length)return;
 
-  // Pick studio from _sumStudio state; fall back to first in list
-  const studio=_sumStudio||SC.studios[0];
+  // Restrict visible studios to franchisee's allowed list (null = admin, sees all)
+  const _scVis=_allowedStudios
+    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
+    :(SC.studios||[]);
+  // If current _sumStudio is outside the allowed list, reset it
+  if(_sumStudio&&_allowedStudios&&!_scVis.find(s=>s.code===_sumStudio.code))_sumStudio=null;
+  const studio=_sumStudio||_scVis[0];
   if(!studio){document.getElementById('summaryContent').innerHTML='';return;}
   if(!_sumStudio)_sumStudio=studio;
 
@@ -486,9 +492,9 @@ function renderSummary(){
   const startDate=w[0]?.date_end||w[1]?.date_start||null;
   const curPct=Math.max(4,Math.min(96,pct));
 
-  // Studio switcher tabs
+  // Studio switcher tabs (only allowed studios visible)
   h+=`<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">`;
-  (SC.studios||[]).forEach(s=>{
+  _scVis.forEach(s=>{
     const active=s.code===studio.code;
     h+=`<button onclick="switchSumStudio('${s.code}')" style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;font-weight:600;text-transform:uppercase;padding:6px 16px;border-radius:4px;border:2px solid ${active?'#00A3E0':'#c0d4df'};background:${active?'#00A3E0':'transparent'};color:${active?'#fff':'#5a7a8a'};cursor:pointer;letter-spacing:.5px">${s.name}</button>`;
   });
@@ -865,12 +871,15 @@ function renderFunnel(){
   const fmtPct=p=>p!=null?p.toFixed(1)+'%':'—';
 
   // Show only the selected studio (same as Summary tab)
-  if(!_sumStudio)_sumStudio=SC.studios[0];
+  const _scVisFunnel=_allowedStudios
+    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
+    :(SC.studios||[]);
+  if(!_sumStudio||(_allowedStudios&&!_scVisFunnel.find(s=>s.code===_sumStudio.code)))_sumStudio=_scVisFunnel[0]||SC.studios[0];
   const activeCode=_sumStudio?_sumStudio.code:null;
 
-  // Studio switcher tabs
+  // Studio switcher tabs (only allowed studios visible)
   let h='<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">';
-  SC.studios.forEach(s=>{
+  _scVisFunnel.forEach(s=>{
     const active=s.code===activeCode;
     h+=`<button onclick="_sumStudio=SC.studios.find(x=>x.code==='${s.code}');renderFunnel()" style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;font-weight:600;text-transform:uppercase;padding:6px 16px;border-radius:4px;border:2px solid ${active?'#00A3E0':'#c0d4df'};background:${active?'#00A3E0':'transparent'};color:${active?'#fff':'#5a7a8a'};cursor:pointer;letter-spacing:.5px">${s.name}</button>`;
   });
@@ -1073,6 +1082,7 @@ function scKpi(label,val,target,fmt,targetLabel,auto){
 function switchScStudio(code){
   const sc=SC.studios&&SC.studios.find(s=>s.code===code);
   if(!sc)return;
+  if(_allowedStudios&&!_allowedStudios.includes((sc.full_name||sc.name||'').replace(/^SWEAT440\s+/,'')))return;
   _scStudio=sc;
   renderScorecard();
 }
@@ -1123,11 +1133,14 @@ function renderScorecard(){
     el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">Scorecard data not available.</div>';
     return;
   }
-  if(!_scStudio){
+  const _scVisCard=_allowedStudios
+    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
+    :(SC.studios||[]);
+  if(!_scStudio||(_allowedStudios&&!_scVisCard.find(s=>s.code===_scStudio.code))){
     const selStudios=_getSel('studioMenu');
-    _scStudio=(selStudios.length?SC.studios.find(s=>selStudios.includes(s.full_name)):null)||SC.studios[0];
+    _scStudio=(selStudios.length?_scVisCard.find(s=>selStudios.includes(s.full_name)):null)||_scVisCard[0];
   }
-  const sc=_scStudio||SC.studios[0];
+  const sc=_scStudio||_scVisCard[0];
   const cw=sc.current_week||0;
   const tgt=sc.targets||{};
 
@@ -1288,9 +1301,9 @@ function renderScorecard(){
   });
 
   let h='';
-  // Studio switcher tabs
+  // Studio switcher tabs (only allowed studios visible)
   h+=`<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">`;
-  (SC.studios||[]).forEach(s=>{
+  _scVisCard.forEach(s=>{
     const active=s.code===sc.code;
     h+=`<button onclick="switchScStudio('${s.code}')" style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;font-weight:600;text-transform:uppercase;padding:6px 16px;border-radius:4px;border:2px solid ${active?'#00A3E0':'#c0d4df'};background:${active?'#00A3E0':'transparent'};color:${active?'#fff':'#5a7a8a'};cursor:pointer;letter-spacing:.5px">${s.name}</button>`;
   });
