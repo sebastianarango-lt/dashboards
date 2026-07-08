@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T10:30:46.298515",
+  "generated_at": "2026-07-08T19:23:54.769137",
   "date_range": {
     "start": "2026-01-01",
     "end": "2026-07-06"
@@ -1090,16 +1090,16 @@
         {
           "date": "2026-06-04",
           "source": "Business Mode",
-          "presales": 1,
+          "presales": 2,
           "cancellations": 0,
-          "gross_revenue": 149.0
+          "gross_revenue": 298.0
         },
         {
           "date": "2026-06-04",
           "source": "Grassroots",
-          "presales": 6,
+          "presales": 5,
           "cancellations": 0,
-          "gross_revenue": 894.0
+          "gross_revenue": 745.0
         },
         {
           "date": "2026-06-04",
@@ -3050,7 +3050,7 @@
         },
         {
           "date": "2026-06-15",
-          "source": "Local Listings",
+          "source": "Business Mode",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
