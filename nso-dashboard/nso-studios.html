@@ -544,7 +544,7 @@ function renderSummary(){
   h+=`<div class="chart-card">`;
   h+=`<div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:18px">`;
   h+=`<div class="chart-card-title" style="margin-bottom:0">Presale Timeline — ${studio.name}</div>`;
-  h+=`<div style="font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;color:#5a7a8a;font-weight:500;text-transform:uppercase;letter-spacing:.5px;text-align:right"><span style="font-size:22px;font-weight:700;color:#e05a5a;font-family:'Oswald',sans-serif">${daysToCO!=null?daysToCO:'—'}</span>&nbsp;Days to Target C/O<div style="font-size:10px;font-weight:400;color:#e05a5a;text-transform:none;letter-spacing:0;margin-top:1px">${_fmtDate(d7end)}</div></div>`;
+  h+=`<div style="font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;color:#5a7a8a;font-weight:500;text-transform:uppercase;letter-spacing:.5px;text-align:right"><span style="font-size:22px;font-weight:700;color:#e05a5a;font-family:'Oswald',sans-serif">${daysToCO!=null?daysToCO:'—'}</span>&nbsp;Days to Target C/O<div style="font-size:10px;font-weight:400;color:#e05a5a;text-transform:none;letter-spacing:0;margin-top:1px">${coDateStr?_fmtDate(coDateStr):''}</div></div>`;
   h+=`</div>`;
   // Tier pricing vars for markers
   const _pricing=studio.pricing||{};
