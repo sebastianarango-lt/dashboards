@@ -5,11 +5,12 @@ from MART_SALES_DETAILS in Snowflake. Pure transactional approach: every
 buy (+1) and cancel (-1) transaction is counted on the day it occurs.
 
 Key logic:
-  - LOC=98  : LOCATION_ID=98 rows excluded — they are internal MindBody
-              duplicates that MindBody does not surface. All other rows kept.
+  - LOC=98  : LOCATION_ID=98 rows excluded only when a non-98 sibling exists
+              (same STUDIO_ID+CLIENT_ID+PRODUCT+DATE+QTY). When LOC=98 is
+              the studio's only location, those rows are kept.
   - Presales: QUANTITY=1, IS_RETURN=0, counted on their SALE_DATE.
-  - Cancels : QUANTITY=-1 OR IS_RETURN=1, attributed to the client's ORIGINAL
-              BUY DATE (not return date) to match MindBody's reporting.
+  - Cancels : QUANTITY=-1 OR IS_RETURN=1, counted on their SALE_DATE (return
+              date), matching how MindBody surfaces them in period views.
   - Source  : attributed via MART_LEADS_LOG / MART_CLIENTS per client email.
   - Revenue : GROSS_PAYMENTAMT_LOCAL (presale transactions only).
 
@@ -119,62 +120,57 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
       gross_revenue — sum of GROSS_PAYMENTAMT_LOCAL on buy transactions
 
     Methodology to match MindBody:
-      - LOCATION_ID 98 rows are excluded (they are internal MindBody duplicates
-        that MindBody itself does not surface to users).
-      - All other rows per client, including LOC=1 duplicates, are kept —
-        MindBody counts each row as a separate transaction.
-      - IS_RETURN cancellations are attributed to the client's original buy date
-        (not the return/processing date), matching MindBody's reporting convention.
+      - LOCATION_ID 98 rows are excluded only when a non-LOC=98 sibling exists
+        for the same logical key (STUDIO_ID+CLIENT_ID+PRODUCT+DATE+QTY).
+        When LOC=98 is the only row (studio's real location), it is kept.
+      - All other rows, including LOC=1 duplicates, are kept — MindBody counts
+        each row as a separate transaction.
+      - IS_RETURN cancellations are counted on their SALE_DATE (return date),
+        consistent with how MindBody surfaces them in period reports.
     """
     sql = f"""
-    WITH buy_dates AS (
-        -- First presale buy date per client per studio.
-        -- Used to attribute IS_RETURN cancellations to the original buy date.
+    WITH all_txn AS (
+        -- All presale rows with a flag indicating whether a non-LOC=98 sibling
+        -- exists for the same logical transaction key.
+        -- LOC=98 rows are MindBody-internal duplicates ONLY when a LOC!=98 row
+        -- exists for the same key; otherwise LOC=98 may be the studio's real location.
         SELECT
             STUDIO_ID,
-            LOWER(TRIM(EMAIL_ID)) AS email,
-            MIN(SALE_DATE::DATE)  AS first_buy_date
+            EMAIL_ID,
+            PRODUCT_DESCRIPTION,
+            SALE_DATE::DATE                        AS sale_date,
+            QUANTITY,
+            IS_RETURN,
+            LOCATION_ID,
+            COALESCE(GROSS_PAYMENTAMT_LOCAL, 0)    AS gross_revenue,
+            MAX(CASE WHEN LOCATION_ID != 98 THEN 1 ELSE 0 END) OVER (
+                PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
+                             SALE_DATE::DATE, QUANTITY
+            ) AS has_non98_sibling
         FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS
         WHERE STUDIO_ID IN ({ID_LIST})
           AND ITEM_TYPE = 'Pricing Option'
           AND LOWER(PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
-          AND QUANTITY = 1 AND IS_RETURN = 0
-          AND LOCATION_ID != 98
           AND (EMAIL_ID IS NULL OR (
               LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
           ))
-        GROUP BY STUDIO_ID, LOWER(TRIM(EMAIL_ID))
     ),
     txn AS (
-        -- All presale transactions excluding LOC=98 rows.
-        -- IS_RETURN effective date = original buy date (MindBody convention).
+        -- Filtered presale transactions:
+        --   • Keep all non-LOC=98 rows (including LOC=1 duplicates MindBody counts).
+        --   • Keep LOC=98 rows only when no non-98 sibling exists (studio's real LOC).
         SELECT
-            t.STUDIO_ID,
-            t.EMAIL_ID,
-            t.PRODUCT_DESCRIPTION,
-            CASE
-                WHEN t.QUANTITY = -1 OR t.IS_RETURN = 1
-                THEN COALESCE(b.first_buy_date, t.SALE_DATE::DATE)
-                ELSE t.SALE_DATE::DATE
-            END                                    AS effective_date,
-            t.QUANTITY,
-            t.IS_RETURN,
-            COALESCE(t.GROSS_PAYMENTAMT_LOCAL, 0)  AS gross_revenue
-        FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS t
-        LEFT JOIN buy_dates b
-               ON t.STUDIO_ID = b.STUDIO_ID
-              AND LOWER(TRIM(t.EMAIL_ID)) = b.email
-        WHERE t.STUDIO_ID IN ({ID_LIST})
-          AND t.ITEM_TYPE = 'Pricing Option'
-          AND LOWER(t.PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
-          AND t.LOCATION_ID != 98
-          AND (t.EMAIL_ID IS NULL OR (
-              LOWER(TRIM(t.EMAIL_ID)) NOT LIKE '%test%'
-          AND LOWER(TRIM(t.EMAIL_ID)) NOT LIKE '%sweat440%'
-          AND LOWER(TRIM(t.EMAIL_ID)) NOT LIKE '%leadteam%'
-          ))
+            STUDIO_ID,
+            EMAIL_ID,
+            PRODUCT_DESCRIPTION,
+            sale_date                              AS effective_date,
+            QUANTITY,
+            IS_RETURN,
+            gross_revenue
+        FROM all_txn
+        WHERE (LOCATION_ID != 98 OR has_non98_sibling = 0)
     ),
     leads_src AS (
         -- Best lead-source record per client+studio
@@ -325,8 +321,8 @@ def main():
         cutoff         = start_date
         mode           = "FULL REBUILD"
     else:
-        # IS_RETURN rows are attributed to the original buy date, which may predate
-        # any short lookback window.  Always do a full rebuild so no cancel is missed.
+        # Full rebuild ensures all cancels are correctly attributed regardless of
+        # when the return/processing date falls relative to the lookback window.
         start_date = DEFAULT_START
         end_date   = end_override
         existing_daily = {str(sid): [] for sid in NSO_STUDIOS}
