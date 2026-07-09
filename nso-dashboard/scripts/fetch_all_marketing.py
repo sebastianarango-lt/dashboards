@@ -90,7 +90,8 @@ def fetch_meta_ads(start_date, end_date):
         "level": "ad",
         "filtering": [
             {"field": "ad.effective_status", "operator": "IN",
-             "value": ["ACTIVE", "PAUSED", "COMPLETED"]}
+             "value": ["ACTIVE", "PAUSED", "COMPLETED", "DELETED", "ARCHIVED",
+                       "CAMPAIGN_PAUSED", "ADSET_PAUSED"]}
         ],
     }
     fields = [
