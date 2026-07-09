@@ -639,7 +639,7 @@ function applyFilters() {
   window._cprPy       = py;
   window._cprStudios  = studios;
   buildMetaTab();
-  buildGoogleTab();
+  if (document.getElementById('tab-google').classList.contains('active')) buildGoogleTab();
   buildCPRTab();
   buildSummaryTab();
   if (window._isAdmin) buildAdminTable();
