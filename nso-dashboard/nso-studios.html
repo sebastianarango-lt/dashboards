@@ -1008,6 +1008,7 @@ function applyFilters(){
   buildArea('memChart','mem-toggles',salesSeries,activeSrcSales,'first_sales');
   buildRing('memRing','memRingLeg',sCurrNet,'first_sales');
   if(document.getElementById('tab-meta').classList.contains('active'))renderMeta();
+  if(document.getElementById('tab-google').classList.contains('active'))renderGoogle();
   if(document.getElementById('tab-ga4').classList.contains('active'))renderGA4();
   if(document.getElementById('tab-gbp').classList.contains('active'))renderGBP();
 
@@ -1702,11 +1703,15 @@ function renderMeta(){
    ══════════════════════════════════════════════════════════════════════════ */
 let GOOGLE_RAW=null;
 const GOOGLE_ACCOUNTS={
-  'SWEAT440 Dallas - Prestonwood':'SWEAT440 - Prestonwood',
+  'SWEAT440 Herriman':'SWEAT440 - Herriman',
   'SWEAT440 Naples - Mercato':'SWEAT440 - Naples',
-  'SWEAT440 Pinecrest - Palmetto Bay':'SWEAT440 - Pinecrest',
   'SWEAT440 Reston':'SWEAT440 - Reston',
-  'SWEAT440 Herriman':'SWEAT440 - Herriman'
+  'SWEAT440 Dallas - Uptown':'SWEAT440 - Dallas Uptown',
+  'SWEAT440 Aventura':'SWEAT440 - Aventura',
+  'SWEAT440 North Miami':'SWEAT440 - North Miami',
+  'SWEAT440 Orlando - Dr Phillips':'SWEAT440 - Dr Phillips',
+  'SWEAT440 Dallas - Prestonwood':'SWEAT440 - Prestonwood',
+  'SWEAT440 Pinecrest - Palmetto Bay':'SWEAT440 - Pinecrest'
 };
 
 function googleFilter(studio,from,to){
