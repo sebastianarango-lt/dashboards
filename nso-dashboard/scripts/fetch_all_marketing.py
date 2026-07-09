@@ -52,36 +52,55 @@ def fetch_meta_ads(start_date, end_date):
     FacebookAdsApi.init(app_id, app_secret, token)
     account = AdAccount(ad_account_id)
 
-    # Fetch creative metadata (thumbnail, image, preview link) keyed by ad_name
-    print(f"  Fetching ad creatives...")
+    # Fetch ad status first (simple call — no nested creative fields, no filter param)
+    # NOTE: the effective_status filter param is NOT supported by get_ads() and returns
+    # error 1487176. Omit it entirely; the API returns all non-deleted ads by default.
+    print(f"  Fetching ad statuses...")
     creatives = {}
     try:
-        ads = account.get_ads(
+        ads_status = account.get_ads(
+            fields=["id", "name", "effective_status"],
+        )
+        for ad in ads_status:
+            name = ad.get("name", "")
+            if name:
+                creatives[name] = {
+                    "thumbnail_url": "",
+                    "image_url": "",
+                    "preview_link": "",
+                    "object_type": "",
+                    "effective_status": ad.get("effective_status", ""),
+                }
+        print(f"  {len(creatives)} ad statuses fetched")
+    except Exception as e:
+        print(f"  WARNING: Could not fetch ad statuses: {e}")
+
+    # Fetch creative thumbnails separately (nested fields can fail for some ads)
+    print(f"  Fetching ad creatives (thumbnails)...")
+    try:
+        ads_creative = account.get_ads(
             fields=[
                 "id", "name",
                 "creative{thumbnail_url,image_url,object_type}",
                 "preview_shareable_link",
-                "effective_status",
             ],
-            params={
-                "effective_status": [
-                    "ACTIVE", "PAUSED", "DELETED", "ARCHIVED",
-                    "COMPLETED", "CAMPAIGN_PAUSED", "ADSET_PAUSED",
-                ],
-            },
         )
-        for ad in ads:
+        for ad in ads_creative:
             creative = ad.get("creative") or {}
-            creatives[ad["name"]] = {
-                "thumbnail_url": creative.get("thumbnail_url", ""),
-                "image_url": creative.get("image_url", ""),
-                "preview_link": ad.get("preview_shareable_link", ""),
-                "object_type": creative.get("object_type", ""),
-                "effective_status": ad.get("effective_status", ""),
-            }
-        print(f"  {len(creatives)} ad creatives fetched")
+            name = ad.get("name", "")
+            if not name:
+                continue
+            entry = creatives.setdefault(name, {
+                "thumbnail_url": "", "image_url": "", "preview_link": "",
+                "object_type": "", "effective_status": "",
+            })
+            entry["thumbnail_url"] = creative.get("thumbnail_url", "") or entry.get("thumbnail_url", "")
+            entry["image_url"]     = creative.get("image_url", "") or entry.get("image_url", "")
+            entry["preview_link"]  = ad.get("preview_shareable_link", "") or entry.get("preview_link", "")
+            entry["object_type"]   = creative.get("object_type", "") or entry.get("object_type", "")
+        print(f"  {len(creatives)} ad creatives merged")
     except Exception as e:
-        print(f"  WARNING: Could not fetch ad creatives: {e}")
+        print(f"  WARNING: Could not fetch ad creatives (thumbnails): {e}")
 
     # Ad-level daily data
     params = {
