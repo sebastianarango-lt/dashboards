@@ -15,3 +15,7 @@ venv/
 # macOS / Windows
 .DS_Store
 Thumbs.db
+
+# Cloudflare Workers local state
+refresh-proxy/.wrangler/
+refresh-proxy/node_modules/

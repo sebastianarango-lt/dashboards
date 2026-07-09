@@ -81,8 +81,8 @@ body{font-family:'Open Sans',sans-serif;background:#0084B5;min-height:100vh;disp
 </div>
 
 <div id="adminActions" class="admin-actions" style="display:none">
-  <button id="refreshAllBtn" class="refresh-all-btn" onclick="triggerWorkflows(['nso_daily_refresh.yml','refresh.yml','refresh-paid-ads.yml'], 'refreshAllBtn', 'Refresh all data (30 min)')">Refresh all data (30 min)</button>
-  <button id="refreshSfBtn"  class="refresh-sf-btn"  onclick="triggerWorkflows(['refresh-snowflake.yml'], 'refreshSfBtn', 'Refresh Snowflake (~5 min)')">Refresh Snowflake (~5 min)</button>
+  <button id="refreshAllBtn" class="refresh-all-btn" onclick="triggerWorkflows('all', 'refreshAllBtn', 'Refresh all data (30 min)')">Refresh all data (30 min)</button>
+  <button id="refreshSfBtn"  class="refresh-sf-btn"  onclick="triggerWorkflows('snowflake', 'refreshSfBtn', 'Refresh Snowflake (~5 min)')">Refresh Snowflake (~5 min)</button>
 </div>
 
 <button class="signout" onclick="logout()">Sign out</button>
@@ -96,59 +96,34 @@ if (user) {
   if (user.role === 'admin') document.getElementById('adminActions').style.display = '';
 }
 
-const _GH_REPO      = 'dev-leadteam/dashboards';
-const _GH_TOKEN_KEY = 'sw440_gh_token';
+const _PROXY_URL    = 'https://sweat440-refresh-proxy.sweat440.workers.dev';
+const _PROXY_SECRET = 'AnwxoPAsDK9vUXVY';
 
-async function triggerWorkflows(workflows, btnId, label) {
+async function triggerWorkflows(set, btnId, label) {
   const btn = document.getElementById(btnId);
-
-  let token = sessionStorage.getItem(_GH_TOKEN_KEY);
-  if (!token) {
-    token = prompt(
-      'Enter a GitHub Personal Access Token with "workflow" scope\n' +
-      '(stored in your browser session only — never saved to disk):'
-    );
-    if (!token) return;
-    sessionStorage.setItem(_GH_TOKEN_KEY, token.trim());
-    token = token.trim();
-  }
-
   btn.disabled    = true;
   btn.textContent = 'Triggering…';
 
-  const results = await Promise.allSettled(
-    workflows.map(wf =>
-      fetch(`https://api.github.com/repos/${_GH_REPO}/actions/workflows/${wf}/dispatches`, {
-        method : 'POST',
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body   : JSON.stringify({ ref: 'main' }),
-      })
-    )
-  );
+  try {
+    const res = await fetch(_PROXY_URL, {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-App-Secret': _PROXY_SECRET },
+      body   : JSON.stringify({ set }),
+    });
+    const data = await res.json().catch(() => ({}));
 
-  const allOk   = results.every(r => r.status === 'fulfilled' && r.value.status === 204);
-  const anyAuth = results.some(r  => r.status === 'fulfilled' && r.value.status === 401);
-
-  if (anyAuth) {
-    sessionStorage.removeItem(_GH_TOKEN_KEY);
+    if (res.ok && data.ok) {
+      btn.textContent = '✓ Triggered!';
+      setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 5000);
+    } else {
+      btn.disabled    = false;
+      btn.textContent = label;
+      alert('Failed to trigger refresh (' + res.status + '). ' + (data.statuses ? JSON.stringify(data.statuses) : ''));
+    }
+  } catch (e) {
     btn.disabled    = false;
     btn.textContent = label;
-    alert('GitHub token rejected (401). It has been cleared — try again with a valid token.');
-    return;
-  }
-
-  if (allOk) {
-    btn.textContent = '✓ Triggered!';
-    setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 5000);
-  } else {
-    const errors = results
-      .map((r, i) => (r.status === 'rejected' || r.value?.status !== 204)
-        ? `${workflows[i]} (${r.value?.status ?? 'network error'})`
-        : null)
-      .filter(Boolean);
-    btn.disabled    = false;
-    btn.textContent = label;
-    alert('Some workflows failed to trigger:\n' + errors.join('\n'));
+    alert('Failed to reach refresh service: ' + e.message);
   }
 }
 </script>
