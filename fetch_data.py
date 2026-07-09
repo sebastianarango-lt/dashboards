@@ -35,7 +35,7 @@ conn = snowflake.connector.connect(
 )
 cur = conn.cursor()
 
-# ── Daily: previous quarter start → today ────────────────────────────────
+# ── Daily: start of current year → today ────────────────────────────────
 cur.execute("""
     SELECT
         EVENT_DATE, STUDIO_NAME, SOURCE,

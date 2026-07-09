@@ -317,10 +317,8 @@ function getSelected(menuId) {
 
 function getQuarterBounds() {
   const now = new Date();
-  const qMonth = Math.floor(now.getUTCMonth()/3)*3;
-  const qStart = new Date(Date.UTC(now.getUTCFullYear(), qMonth, 1));
-  const prevQStart = new Date(Date.UTC(now.getUTCFullYear(), qMonth-3, 1));
-  return { dailyFrom: prevQStart, dailyTo: now };
+  const yearStart = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
+  return { dailyFrom: yearStart, dailyTo: now };
 }
 
 function setGran(gran) {
@@ -335,7 +333,7 @@ function setGran(gran) {
 }
 
 function updateGranButtons(from, to) {
-  // Daily data covers: start of prev quarter → today
+  // Daily data covers: start of current year → today
   // We check if the requested range overlaps with our daily data window at all
   const { dailyFrom, dailyTo } = getQuarterBounds();
   // Allow daily if there's any overlap between [from,to] and [dailyFrom, dailyTo]
