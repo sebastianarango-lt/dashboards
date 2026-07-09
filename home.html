@@ -100,6 +100,8 @@ const _PROXY_URL    = 'https://sweat440-refresh-proxy.sweat440.workers.dev';
 const _PROXY_SECRET = 'AnwxoPAsDK9vUXVY';
 
 async function triggerWorkflows(set, btnId, label) {
+  if (!confirm('Run "' + label + '"?\nThis will kick off a live GitHub Actions run now.')) return;
+
   const btn = document.getElementById(btnId);
   btn.disabled    = true;
   btn.textContent = 'Triggering…';
