@@ -52,18 +52,14 @@ def fetch_meta_ads(start_date, end_date):
     FacebookAdsApi.init(app_id, app_secret, token)
     account = AdAccount(ad_account_id)
 
-    # Fetch ad status first (simple call — no nested creative fields, less likely to fail)
+    # Fetch ad status first (simple call — no nested creative fields, no filter param)
+    # NOTE: the effective_status filter param is NOT supported by get_ads() and returns
+    # error 1487176. Omit it entirely; the API returns all non-deleted ads by default.
     print(f"  Fetching ad statuses...")
     creatives = {}
     try:
         ads_status = account.get_ads(
             fields=["id", "name", "effective_status"],
-            params={
-                "effective_status": [
-                    "ACTIVE", "PAUSED", "DELETED", "ARCHIVED",
-                    "COMPLETED", "CAMPAIGN_PAUSED", "ADSET_PAUSED",
-                ],
-            },
         )
         for ad in ads_status:
             name = ad.get("name", "")
@@ -79,7 +75,7 @@ def fetch_meta_ads(start_date, end_date):
     except Exception as e:
         print(f"  WARNING: Could not fetch ad statuses: {e}")
 
-    # Fetch creative thumbnails separately (nested fields can fail for deleted/archived ads)
+    # Fetch creative thumbnails separately (nested fields can fail for some ads)
     print(f"  Fetching ad creatives (thumbnails)...")
     try:
         ads_creative = account.get_ads(
@@ -88,12 +84,6 @@ def fetch_meta_ads(start_date, end_date):
                 "creative{thumbnail_url,image_url,object_type}",
                 "preview_shareable_link",
             ],
-            params={
-                "effective_status": [
-                    "ACTIVE", "PAUSED", "DELETED", "ARCHIVED",
-                    "COMPLETED", "CAMPAIGN_PAUSED", "ADSET_PAUSED",
-                ],
-            },
         )
         for ad in ads_creative:
             creative = ad.get("creative") or {}
