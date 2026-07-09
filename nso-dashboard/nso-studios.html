@@ -1532,7 +1532,7 @@ function renderMeta(){
   h+=`<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`;
   h+=`<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
     <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
-    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">Everything below is reported directly by Meta Ads Manager (in-platform) and may not line up with the summary above, which follows SWEAT440's standard attribution model.</p>
+    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown elsewhere in this report. This is expected, as Meta uses a different attribution methodology than SWEAT440's standardized lead reporting.</p>
   </div>`;
 
   // KPI cards
@@ -1543,11 +1543,6 @@ function renderMeta(){
   h+=kpiCard('Leads',totalLeads,null,null,v=>v,GLOSSARY.meta_leads);
   h+=kpiCard('Cost / Lead',cpl,null,null,f$2,GLOSSARY.meta_cpl);
   h+=`</div>`;
-
-  h+=`<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
-    <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
-    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown elsewhere in this report. This is expected, as Meta uses a different attribution methodology than SWEAT440's standardized lead reporting.</p>
-  </div>`;
 
   // Creative ads table — grouped by creative short name
   const creativeMap={};
