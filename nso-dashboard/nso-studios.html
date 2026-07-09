@@ -1653,8 +1653,9 @@ function renderMeta(){
       const ctrStr=g.impressions>0?(g.clicks/g.impressions*100).toFixed(2)+'%':'—';
       const cplStr=g.leads>0?f$2(g.spend/g.leads):'—';
       const st=(g.status||'').toUpperCase();
-      const stColor=st==='ACTIVE'?'#00a86b':st==='PAUSED'?'#f4a021':'#8aabbf';
-      const stLabel=st==='ACTIVE'?'Active':st==='PAUSED'?'Paused':st==='COMPLETED'?'Completed':st||'—';
+      const isPaused=st==='PAUSED'||st==='ADSET_PAUSED'||st==='CAMPAIGN_PAUSED';
+      const stColor=st==='ACTIVE'?'#00a86b':isPaused?'#f4a021':st==='DELETED'||st==='ARCHIVED'?'#e05c5c':'#8aabbf';
+      const stLabel=st==='ACTIVE'?'Active':isPaused?'Paused':st==='DELETED'?'Deleted':st==='ARCHIVED'?'Archived':st==='COMPLETED'?'Completed':st||'—';
       const statusBadge=`<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:${stColor}22;color:${stColor};letter-spacing:.3px">${stLabel}</span>`;
       return`<tr>
         <td style="padding:8px 6px">${thumbCell}</td>
