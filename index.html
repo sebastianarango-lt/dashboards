@@ -251,6 +251,30 @@
       </div>
       <div style="position:relative;width:100%;height:260px"><canvas id="cprChart" role="img" aria-label="Line chart of cost per result over time"></canvas></div>
     </div>
+    <div class="chart-card" style="margin-top:20px">
+      <div class="chart-card-title">Studio Summary</div>
+      <div style="overflow-x:auto">
+        <table class="data-table" id="cprStudioSummaryTable">
+          <thead>
+            <tr>
+              <th class="row-num">#</th>
+              <th data-sort="studio">Studio</th>
+              <th class="num" data-sort="leads">Leads</th>
+              <th class="num" data-sort="ft">First Timers</th>
+              <th class="num" data-sort="mem">New Members</th>
+              <th class="num" data-sort="spend">Total Mkt Spend</th>
+              <th class="num" data-sort="google">Google Ads</th>
+              <th class="num" data-sort="meta">Meta Ads</th>
+              <th class="num" data-sort="leadteam">Leadteam Fee</th>
+              <th class="num" data-sort="cpl">Blended CPL</th>
+              <th class="num" data-sort="cpft">Blended CPFT</th>
+              <th class="num" data-sort="cpa">Blended CPA</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <!-- META ADS TAB -->
@@ -1273,6 +1297,72 @@ function buildCPRTab() {
   const cpftData=sortedKeys.map(k=>{const s=trendSpend(k),f=buckets[k].ft;return f>0?Math.round(s/f*100)/100:null;});
   const cpaData=sortedKeys.map(k=>{const s=trendSpend(k),m=buckets[k].mem;return m>0?Math.round(s/m*100)/100:null;});
   cprChart=new Chart(ctx,{type:'line',data:{labels:dispLabels,datasets:[{label:'Blended CPL',data:cplData,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true},{label:'Blended CPFT',data:cpftData,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true},{label:'Blended CPA',data:cpaData,borderColor:'#DDFF00',borderWidth:2.5,pointRadius:4,tension:0.4,fill:false,spanGaps:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>c.dataset.label+': $'+(c.parsed.y!=null?c.parsed.y.toLocaleString():'-')}}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a',callback:v=>'$'+v},position:'left'}}}});
+  buildCPRStudioSummaryTable(from,to,selStudios);
+}
+
+// -- CPR TAB: per-studio summary table, mirrors the 7 KPI cards on the Summary tab --
+function buildCPRStudioSummaryTable(from,to,selStudios) {
+  const table = document.getElementById('cprStudioSummaryTable');
+  if (!table || !RAW) return;
+  const selSources = getSelected('sourceMenu') || [];
+  const studios = (selStudios && selStudios.length ? selStudios : RAW.studios).slice();
+
+  const f$  = v => '$'+Math.round(v).toLocaleString('en-US');
+  const f$2 = v => '$'+Number(v).toFixed(2);
+  const dash = '<span style="color:#8aabbf">—</span>';
+
+  const rows = studios.map(studio => {
+    const daily   = filterRows(RAW.daily_detail   || [], from, to, [studio], selSources);
+    const monthly = filterRows(RAW.monthly_detail || [], from, to, [studio], selSources);
+    const {leads, ft, mem} = sumRows([...daily, ...monthly]);
+    const google   = _adminGoogleSpend(studio, from, to);
+    const meta     = _adminMetaSpend(studio, from, to);
+    const leadteam = _adminLeadteamFee(from, to);
+    const spend = google+meta+leadteam;
+    return {
+      studio, leads, ft, mem, spend, google, meta, leadteam,
+      cpl:  leads>0 ? spend/leads : null,
+      cpft: ft>0    ? spend/ft    : null,
+      cpa:  mem>0   ? spend/mem   : null,
+    };
+  });
+
+  sortableTable(
+    'cprStudioSummaryTable',
+    rows,
+    (r, i) => `<tr>
+      <td class="row-num">${i}</td>
+      <td>${r.studio.replace('SWEAT440 ', '')}</td>
+      <td class="num">${r.leads.toLocaleString()}</td>
+      <td class="num">${r.ft.toLocaleString()}</td>
+      <td class="num">${r.mem.toLocaleString()}</td>
+      <td class="num">${f$(r.spend)}</td>
+      <td class="num">${f$(r.google)}</td>
+      <td class="num">${f$(r.meta)}</td>
+      <td class="num">${f$(r.leadteam)}</td>
+      <td class="num">${r.cpl  != null ? f$2(r.cpl)  : dash}</td>
+      <td class="num">${r.cpft != null ? f$2(r.cpft) : dash}</td>
+      <td class="num">${r.cpa  != null ? f$2(r.cpa)  : dash}</td>
+    </tr>`,
+    (sorted) => {
+      const t = k => sorted.reduce((s,r)=>s+r[k],0);
+      const tLeads = t('leads'), tFt = t('ft'), tMem = t('mem'), tSpend = t('spend');
+      return `<tr>
+        <td class="row-num"></td>
+        <td style="font-weight:700">Total (${sorted.length} studios)</td>
+        <td class="num">${tLeads.toLocaleString()}</td>
+        <td class="num">${tFt.toLocaleString()}</td>
+        <td class="num">${tMem.toLocaleString()}</td>
+        <td class="num">${f$(tSpend)}</td>
+        <td class="num">${f$(t('google'))}</td>
+        <td class="num">${f$(t('meta'))}</td>
+        <td class="num">${f$(t('leadteam'))}</td>
+        <td class="num">${tLeads>0 ? f$2(tSpend/tLeads) : dash}</td>
+        <td class="num">${tFt>0    ? f$2(tSpend/tFt)    : dash}</td>
+        <td class="num">${tMem>0   ? f$2(tSpend/tMem)   : dash}</td>
+      </tr>`;
+    }
+  );
 }
 
 function toggleCPRds(btn,i){if(!cprChart)return;const ds=cprChart.data.datasets[i];ds.hidden=!ds.hidden;btn.classList.toggle('on');const cols=['#00A3E0','#00FFC2','#DDFF00','#888'];if(btn.classList.contains('on')){btn.style.background=cols[i];btn.style.borderColor=cols[i];btn.style.color='#000';}else{btn.style.background='#f4f9fd';btn.style.borderColor='#c0d4df';btn.style.color='#5a7a8a';}cprChart.update();}
