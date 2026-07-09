@@ -55,11 +55,14 @@ def fetch_meta_ads(start_date, end_date):
     # Fetch ad status first (simple call — no nested creative fields, no filter param)
     # NOTE: the effective_status filter param is NOT supported by get_ads() and returns
     # error 1487176. Omit it entirely; the API returns all non-deleted ads by default.
-    print(f"  Fetching ad statuses...")
+    # Use limit=1000 to minimize pagination calls (default ~25 causes ~200 requests for
+    # a large account, exhausting the hourly rate limit before insights can run).
+    print(f"  Fetching ad statuses...", flush=True)
     creatives = {}
     try:
         ads_status = account.get_ads(
             fields=["id", "name", "effective_status"],
+            params={"limit": 1000},
         )
         for ad in ads_status:
             name = ad.get("name", "")
@@ -71,12 +74,12 @@ def fetch_meta_ads(start_date, end_date):
                     "object_type": "",
                     "effective_status": ad.get("effective_status", ""),
                 }
-        print(f"  {len(creatives)} ad statuses fetched")
+        print(f"  {len(creatives)} ad statuses fetched", flush=True)
     except Exception as e:
-        print(f"  WARNING: Could not fetch ad statuses: {e}")
+        print(f"  WARNING: Could not fetch ad statuses: {e}", flush=True)
 
     # Fetch creative thumbnails separately (nested fields can fail for some ads)
-    print(f"  Fetching ad creatives (thumbnails)...")
+    print(f"  Fetching ad creatives (thumbnails)...", flush=True)
     try:
         ads_creative = account.get_ads(
             fields=[
@@ -84,6 +87,7 @@ def fetch_meta_ads(start_date, end_date):
                 "creative{thumbnail_url,image_url,object_type}",
                 "preview_shareable_link",
             ],
+            params={"limit": 1000},
         )
         for ad in ads_creative:
             creative = ad.get("creative") or {}
@@ -98,9 +102,9 @@ def fetch_meta_ads(start_date, end_date):
             entry["image_url"]     = creative.get("image_url", "") or entry.get("image_url", "")
             entry["preview_link"]  = ad.get("preview_shareable_link", "") or entry.get("preview_link", "")
             entry["object_type"]   = creative.get("object_type", "") or entry.get("object_type", "")
-        print(f"  {len(creatives)} ad creatives merged")
+        print(f"  {len(creatives)} ad creatives merged", flush=True)
     except Exception as e:
-        print(f"  WARNING: Could not fetch ad creatives (thumbnails): {e}")
+        print(f"  WARNING: Could not fetch ad creatives (thumbnails): {e}", flush=True)
 
     # Ad-level daily data
     params = {
@@ -128,7 +132,7 @@ def fetch_meta_ads(start_date, end_date):
         "cost_per_action_type",
     ]
 
-    print(f"  Fetching ad-level data from {ad_account_id} ({start_date} to {end_date})...")
+    print(f"  Fetching ad-level data from {ad_account_id} ({start_date} to {end_date})...", flush=True)
     rows = []
     try:
         insights = account.get_insights(params=params, fields=fields)
