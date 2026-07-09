@@ -266,6 +266,9 @@
               <th class="num" data-sort="google">Google Ads</th>
               <th class="num" data-sort="meta">Meta Ads</th>
               <th class="num" data-sort="leadteam">Leadteam Fee</th>
+              <th class="num" data-sort="cpl">Blended CPL</th>
+              <th class="num" data-sort="cpft">Blended CPFT</th>
+              <th class="num" data-sort="cpa">Blended CPA</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -1304,7 +1307,9 @@ function buildCPRStudioSummaryTable(from,to,selStudios) {
   const selSources = getSelected('sourceMenu') || [];
   const studios = (selStudios && selStudios.length ? selStudios : RAW.studios).slice();
 
-  const f$ = v => '$'+Math.round(v).toLocaleString('en-US');
+  const f$  = v => '$'+Math.round(v).toLocaleString('en-US');
+  const f$2 = v => '$'+Number(v).toFixed(2);
+  const dash = '<span style="color:#8aabbf">—</span>';
 
   const rows = studios.map(studio => {
     const daily   = filterRows(RAW.daily_detail   || [], from, to, [studio], selSources);
@@ -1313,7 +1318,13 @@ function buildCPRStudioSummaryTable(from,to,selStudios) {
     const google   = _adminGoogleSpend(studio, from, to);
     const meta     = _adminMetaSpend(studio, from, to);
     const leadteam = _adminLeadteamFee(from, to);
-    return { studio, leads, ft, mem, spend: google+meta+leadteam, google, meta, leadteam };
+    const spend = google+meta+leadteam;
+    return {
+      studio, leads, ft, mem, spend, google, meta, leadteam,
+      cpl:  leads>0 ? spend/leads : null,
+      cpft: ft>0    ? spend/ft    : null,
+      cpa:  mem>0   ? spend/mem   : null,
+    };
   });
 
   sortableTable(
@@ -1329,19 +1340,26 @@ function buildCPRStudioSummaryTable(from,to,selStudios) {
       <td class="num">${f$(r.google)}</td>
       <td class="num">${f$(r.meta)}</td>
       <td class="num">${f$(r.leadteam)}</td>
+      <td class="num">${r.cpl  != null ? f$2(r.cpl)  : dash}</td>
+      <td class="num">${r.cpft != null ? f$2(r.cpft) : dash}</td>
+      <td class="num">${r.cpa  != null ? f$2(r.cpa)  : dash}</td>
     </tr>`,
     (sorted) => {
       const t = k => sorted.reduce((s,r)=>s+r[k],0);
+      const tLeads = t('leads'), tFt = t('ft'), tMem = t('mem'), tSpend = t('spend');
       return `<tr>
         <td class="row-num"></td>
         <td style="font-weight:700">Total (${sorted.length} studios)</td>
-        <td class="num">${t('leads').toLocaleString()}</td>
-        <td class="num">${t('ft').toLocaleString()}</td>
-        <td class="num">${t('mem').toLocaleString()}</td>
-        <td class="num">${f$(t('spend'))}</td>
+        <td class="num">${tLeads.toLocaleString()}</td>
+        <td class="num">${tFt.toLocaleString()}</td>
+        <td class="num">${tMem.toLocaleString()}</td>
+        <td class="num">${f$(tSpend)}</td>
         <td class="num">${f$(t('google'))}</td>
         <td class="num">${f$(t('meta'))}</td>
         <td class="num">${f$(t('leadteam'))}</td>
+        <td class="num">${tLeads>0 ? f$2(tSpend/tLeads) : dash}</td>
+        <td class="num">${tFt>0    ? f$2(tSpend/tFt)    : dash}</td>
+        <td class="num">${tMem>0   ? f$2(tSpend/tMem)   : dash}</td>
       </tr>`;
     }
   );
