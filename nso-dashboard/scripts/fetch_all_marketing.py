@@ -79,6 +79,8 @@ def fetch_meta_ads(start_date, end_date):
         print(f"  WARNING: Could not fetch ad statuses: {e}", flush=True)
 
     # Fetch creative thumbnails separately (nested fields can fail for some ads)
+    # Use limit=200 (not 1000) — nested creative fields make each page much heavier
+    # and Meta's server returns HTTP 500 at limit=1000 with nested fields.
     print(f"  Fetching ad creatives (thumbnails)...", flush=True)
     try:
         ads_creative = account.get_ads(
@@ -87,7 +89,7 @@ def fetch_meta_ads(start_date, end_date):
                 "creative{thumbnail_url,image_url,object_type}",
                 "preview_shareable_link",
             ],
-            params={"limit": 1000},
+            params={"limit": 200},
         )
         for ad in ads_creative:
             creative = ad.get("creative") or {}
@@ -134,42 +136,53 @@ def fetch_meta_ads(start_date, end_date):
 
     print(f"  Fetching ad-level data from {ad_account_id} ({start_date} to {end_date})...", flush=True)
     rows = []
-    try:
-        insights = account.get_insights(params=params, fields=fields)
-        for row in insights:
-            leads = 0
-            cost_per_lead = 0.0
-            for action in row.get("actions", []):
-                if action["action_type"] in ("lead", "offsite_conversion.fb_pixel_lead"):
-                    leads += int(action["value"])
-            for cpa in row.get("cost_per_action_type", []):
-                if cpa["action_type"] in ("lead", "offsite_conversion.fb_pixel_lead"):
-                    cost_per_lead = float(cpa["value"])
+    import time as _time
+    for attempt in range(1, 4):
+        try:
+            insights = account.get_insights(params=params, fields=fields)
+            for row in insights:
+                leads = 0
+                cost_per_lead = 0.0
+                for action in row.get("actions", []):
+                    if action["action_type"] in ("lead", "offsite_conversion.fb_pixel_lead"):
+                        leads += int(action["value"])
+                for cpa in row.get("cost_per_action_type", []):
+                    if cpa["action_type"] in ("lead", "offsite_conversion.fb_pixel_lead"):
+                        cost_per_lead = float(cpa["value"])
 
-            ad_name = row.get("ad_name", "")
-            creative = creatives.get(ad_name, {})
+                ad_name = row.get("ad_name", "")
+                creative = creatives.get(ad_name, {})
 
-            rows.append({
-                "date": row["date_start"],
-                "campaign_name": row.get("campaign_name", ""),
-                "campaign_id": row.get("campaign_id", ""),
-                "adset_name": row.get("adset_name", ""),
-                "ad_name": ad_name,
-                "spend": round(safe(row.get("spend")), 2),
-                "impressions": int(safe(row.get("impressions"))),
-                "clicks": int(safe(row.get("clicks"))),
-                "ctr": round(safe(row.get("ctr")), 2),
-                "cpc": round(safe(row.get("cpc")), 2),
-                "leads": leads,
-                "cost_per_lead": round(cost_per_lead, 2),
-                "thumbnail_url": creative.get("thumbnail_url", ""),
-                "image_url": creative.get("image_url", ""),
-                "preview_link": creative.get("preview_link", ""),
-                "object_type": creative.get("object_type", ""),
-            })
-        print(f"  {len(rows)} ad-day rows fetched")
-    except Exception as e:
-        print(f"  ERROR: Meta Ads error: {e}")
+                rows.append({
+                    "date": row["date_start"],
+                    "campaign_name": row.get("campaign_name", ""),
+                    "campaign_id": row.get("campaign_id", ""),
+                    "adset_name": row.get("adset_name", ""),
+                    "ad_name": ad_name,
+                    "spend": round(safe(row.get("spend")), 2),
+                    "impressions": int(safe(row.get("impressions"))),
+                    "clicks": int(safe(row.get("clicks"))),
+                    "ctr": round(safe(row.get("ctr")), 2),
+                    "cpc": round(safe(row.get("cpc")), 2),
+                    "leads": leads,
+                    "cost_per_lead": round(cost_per_lead, 2),
+                    "thumbnail_url": creative.get("thumbnail_url", ""),
+                    "image_url": creative.get("image_url", ""),
+                    "preview_link": creative.get("preview_link", ""),
+                    "object_type": creative.get("object_type", ""),
+                })
+            print(f"  {len(rows)} ad-day rows fetched", flush=True)
+            break
+        except Exception as e:
+            err_str = str(e)
+            if attempt < 3 and ("limit" in err_str.lower() or "429" in err_str or "403" in err_str or "rate" in err_str.lower()):
+                wait = 60 * attempt
+                print(f"  Rate limit on insights (attempt {attempt}/3), waiting {wait}s...", flush=True)
+                _time.sleep(wait)
+                rows = []
+            else:
+                print(f"  ERROR: Meta Ads insights failed after {attempt} attempt(s): {e}", flush=True)
+                break
 
     return rows, creatives
 
