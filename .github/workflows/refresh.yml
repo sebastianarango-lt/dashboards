@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install snowflake-connector-python requests python-dotenv
-          pip install google-ads
+          pip install google-ads gspread google-auth
 
       - name: Fetch Snowflake + Meta account-level data
         env:
@@ -66,6 +66,11 @@ jobs:
             --output nso-dashboard/social_insights.json
         continue-on-error: true
 
+      - name: Write Google service account credentials
+        run: |
+          mkdir -p nso-dashboard/credentials
+          printf '%s' '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > nso-dashboard/credentials/service_account.json
+
       - name: Fetch Google Business Profile data (all studios)
         env:
           GBP_CLIENT_ID:     ${{ secrets.GBP_CLIENT_ID }}
@@ -74,7 +79,8 @@ jobs:
         run: |
           python nso-dashboard/scripts/fetch_gbp.py \
             --start 2025-01-01 \
-            --output nso-dashboard/gbp_data.json
+            --output nso-dashboard/gbp_data.json \
+            --credentials nso-dashboard/credentials/service_account.json
         continue-on-error: true
 
       - name: Commit updated data files
