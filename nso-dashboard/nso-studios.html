@@ -247,7 +247,7 @@
 /* ══════════════════════════════════════════════════════════════════════════
    NSO STUDIOS DASHBOARD — Self-contained
    ══════════════════════════════════════════════════════════════════════════ */
-const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge','SWEAT440 Dunwoody','SWEAT440 Middletown'];
+const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge','SWEAT440 Dunwoody','SWEAT440 Middletown','SWEAT440 Fort Myers'];
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
@@ -1475,7 +1475,8 @@ const META_CODES={
   'SWEAT440 Dallas - Uptown':'TX-004',
   'SWEAT440 Old Bridge':'NJ-004',
   'SWEAT440 Dunwoody':'GA-001',
-  'SWEAT440 Middletown':'NJ-005'
+  'SWEAT440 Middletown':'NJ-005',
+  'SWEAT440 Fort Myers':'FL-022'
 };
 
 function metaFilter(studio,from,to){
@@ -1712,7 +1713,8 @@ const GOOGLE_ACCOUNTS={
   'SWEAT440 North Miami':'SWEAT440 - North Miami',
   'SWEAT440 Orlando - Dr Phillips':'SWEAT440 - Dr Phillips',
   'SWEAT440 Dallas - Prestonwood':'SWEAT440 - Prestonwood',
-  'SWEAT440 Pinecrest - Palmetto Bay':'SWEAT440 - Pinecrest'
+  'SWEAT440 Pinecrest - Palmetto Bay':'SWEAT440 - Pinecrest',
+  'SWEAT440 Fort Myers':'SWEAT440 - Fort Myers'
 };
 
 function googleFilter(studio,from,to){
@@ -2453,7 +2455,7 @@ async function init(){
 
   if(dataRes.status==='fulfilled'){RAW=dataRes.value;if(!RAW.daily_detail)RAW.daily_detail=[];if(!RAW.monthly_detail)RAW.monthly_detail=[]
     // data.json stores studio names without "SWEAT440 " prefix — normalize to match NSO array
-    const _nsoShort=['Dallas - Prestonwood','Herriman','Naples - Mercato','Pinecrest - Palmetto Bay','Reston','Dr Phillips','Orlando - Dr Phillips','Aventura','North Miami','Dallas - Uptown','Old Bridge','Dunwoody','Middletown'];
+    const _nsoShort=['Dallas - Prestonwood','Herriman','Naples - Mercato','Pinecrest - Palmetto Bay','Reston','Dr Phillips','Orlando - Dr Phillips','Aventura','North Miami','Dallas - Uptown','Old Bridge','Dunwoody','Middletown','Fort Myers'];
     function _normStudio(arr){return arr.map(r=>_nsoShort.includes(r.studio)?{...r,studio:'SWEAT440 '+r.studio}:r)}
     RAW.daily_detail=_normStudio(RAW.daily_detail);RAW.monthly_detail=_normStudio(RAW.monthly_detail);}
   else{console.error('data.json failed');RAW={daily_detail:[],monthly_detail:[],sources:[],studios:[]}}

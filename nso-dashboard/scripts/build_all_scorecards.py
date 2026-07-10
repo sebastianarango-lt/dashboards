@@ -63,6 +63,7 @@ EVENTS_SPEND_STUDIO_MAP = {
     "dallas - uptown": "TX-004",
     "dunwoody": "GA-001",
     "middletown": "NJ-005",
+    "fort myers": "FL-022",
 }
 
 
@@ -94,6 +95,7 @@ IG_SOCIAL_CODE = {
     "NJ-004": "oldbridge",
     "GA-001": "dunwoody",
     "NJ-005": "middletown",
+    "FL-022": "fortmyers",
 }
 
 # Google Sheets tab config per studio code
