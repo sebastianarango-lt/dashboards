@@ -550,6 +550,10 @@ async function loadData() {
   // Auth check — redirects to login.html if no valid session
   const _authUser = checkAuth();
   if (!_authUser) return;
+  if (_authUser.role !== 'admin' && _authUser.role !== 'corporate') {
+    location.replace('home.html');
+    return;
+  }
   renderAuthNav(_authUser);
   const _allowedStudios = getAuthStudios(_authUser);
   window._isAdmin = _authUser.role === 'admin';
