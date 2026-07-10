@@ -313,6 +313,111 @@ const USERS = {
     role: 'franchisee'
   },
 
+  // ── Additional franchisee partners ───────────────────────────────────────
+
+  'christina@solarisft.com': {
+    passwordHash: 'b9eae662ea91a660e4d273ba7013dfa798550b66007bf87c40c5a1e638dafdaa',
+    name: 'Christina',
+    studios: ['Aventura', 'North Miami'],
+    role: 'franchisee'
+  },
+  'mmasco@marcoregion.com': {
+    passwordHash: '6a415abc9545d84c71b3b3bcde2848154af957d0b16418097f4af723e58412de',
+    name: 'Mike Masco',
+    studios: ['Reston', 'Old Bridge', 'Middletown'],
+    role: 'franchisee'
+  },
+  'dbogota@marcoregion.com': {
+    passwordHash: '8958e47f0d6c1cb275bbaa8d9d9d1e9d55e278c5144989a50e165c055dff5318',
+    name: 'Danny Bogota',
+    studios: ['Reston', 'Old Bridge', 'Middletown'],
+    role: 'franchisee'
+  },
+  'jjankowski@marcoregion.com': {
+    passwordHash: '40337bf924d8a08b9b27ab8c8c5229062fd2ef4ae92f6dfa3c4b7b062e1ace88',
+    name: 'Joe Jankowski',
+    studios: ['Reston', 'Old Bridge', 'Middletown'],
+    role: 'franchisee'
+  },
+  'sunny@s440dfw.com': {
+    passwordHash: '618f4cfb8d6a4aa6548741d58ea602bc7095b4a13b520810a5b4c3dbb28853aa',
+    name: 'Sunny',
+    studios: ['Dallas - Uptown'],
+    role: 'franchisee'
+  },
+  'ron@summitfitnessgroup.com': {
+    passwordHash: '837459b2dd650c83ef1d91ea46faa438cb1a6c108372b1ee122183ee6905e495',
+    name: 'Ron',
+    studios: ['Dunwoody'],
+    role: 'franchisee'
+  },
+  'gretchen@summitfitnessgroup.com': {
+    passwordHash: '3fcffc64c5660be7ebf4455e74d671979bd2defe63bcb92220df6f8524cbedb2',
+    name: 'Gretchen',
+    studios: ['Dunwoody'],
+    role: 'franchisee'
+  },
+  'samfrei1@gmail.com': {
+    passwordHash: '03af7a51f55d082887e4ae79b82bab8eb5dc6946969b6e0f7b2d43a810b358f5',
+    name: 'Samantha Frei',
+    studios: ['Herriman'],
+    role: 'franchisee'
+  },
+  'jamieperucci@gmail.com': {
+    passwordHash: 'e23ed7e595b5e6e135c12b79611186e5a3c95a0f784b7273928025d834986e32',
+    name: 'Jamie Perucci',
+    studios: ['Herriman'],
+    role: 'franchisee'
+  },
+  'darrenperucci@gmail.com': {
+    passwordHash: '9b0c94b4ec9122fa7ab056efad5514ed984b357e83a0517b8d19814e2d943183',
+    name: 'Darren Perucci',
+    studios: ['Herriman'],
+    role: 'franchisee'
+  },
+  'wes@wnnen.com': {
+    passwordHash: 'a43602f31f188f40319dd174550b2b7fdde97cfb2f7727aa787b625696797b87',
+    name: 'Wesley',
+    studios: ['Fort Myers'],
+    role: 'franchisee'
+  },
+  'breyes887@gmail.com': {
+    passwordHash: 'd2c3687b4fc174f682a88bd592ecfd03a7852a99ccb3853ea0df9c42867ce179',
+    name: 'Beatriz Reyes',
+    studios: ['Fort Myers'],
+    role: 'franchisee'
+  },
+  'aron@kairosok.co': {
+    passwordHash: '4fd69310ae6bd16cd698971300382cbb7deb454ba9684ff9deb191e7ae8f3e15',
+    name: 'Aron',
+    studios: ['OKC - Rose Creek'],
+    role: 'franchisee'
+  },
+  'jerry.ambroise@gmail.com': {
+    passwordHash: 'f62643d9cee19dd090aabc3de611ac73d552287f4176c6ba2be051a2de72c0af',
+    name: 'Jerry Ambroise',
+    studios: ['Long Beach'],
+    role: 'franchisee'
+  },
+  'eileen.m.clarke@gmail.com': {
+    passwordHash: 'de88d91f3bcc818a58338ed4b5695e038da471540aa3592f9c7daf1d10429974',
+    name: 'Eileen Clarke',
+    studios: ['Long Beach'],
+    role: 'franchisee'
+  },
+  'william@clholdingsinc.com': {
+    passwordHash: '93861ed1846a3fab6e3c88c634d3867ea7cd659cdd33a9e871a5fb965e3db697',
+    name: 'William',
+    studios: ['Burlington'],
+    role: 'franchisee'
+  },
+  'douglas@clholdingsinc.com': {
+    passwordHash: 'f969f537b98300ab8433e47f71df6f1e0f34cdeefc9765780ecdcdefdeb5e7cb',
+    name: 'Douglas',
+    studios: ['Burlington'],
+    role: 'franchisee'
+  },
+
   // ── Studio Managers (single-studio access) ───────────────────────────────
 
   'manager.aventura@sweat440.studio': {
