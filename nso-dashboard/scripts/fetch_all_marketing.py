@@ -33,156 +33,133 @@ def safe(val, default=0):
 
 
 # ════════════════════════════════════════════════════════════════════════════
-# META ADS
+# META ADS  (uses meta_client.py from repo root — has retry on rate limits)
 # ════════════════════════════════════════════════════════════════════════════
 def fetch_meta_ads(start_date, end_date):
-    from facebook_business.api import FacebookAdsApi
-    from facebook_business.adobjects.adaccount import AdAccount
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+    from meta_client import MetaClient
 
     print("\n>> META ADS")
     token = os.environ.get("META_ACCESS_TOKEN")
-    app_id = os.environ.get("META_APP_ID", "")
-    app_secret = os.environ.get("META_APP_SECRET", "")
     ad_account_id = os.environ.get("META_AD_ACCOUNT_ID", "act_1553887681409034")
 
     if not token:
-        print("  WARNING: META_ACCESS_TOKEN not set - skipping")
-        return []
+        print("  WARNING: META_ACCESS_TOKEN not set - skipping", flush=True)
+        return [], {}
 
-    FacebookAdsApi.init(app_id, app_secret, token)
-    account = AdAccount(ad_account_id)
+    meta = MetaClient(token=token)
 
-    # Fetch ad status first (simple call — no nested creative fields, no filter param)
-    # NOTE: the effective_status filter param is NOT supported by get_ads() and returns
-    # error 1487176. Omit it entirely; the API returns all non-deleted ads by default.
-    # Use limit=1000 to minimize pagination calls (default ~25 causes ~200 requests for
-    # a large account, exhausting the hourly rate limit before insights can run).
-    print(f"  Fetching ad statuses...", flush=True)
+    # ── 1. Ad list: effective_status + creative ID + preview link ──────────
+    # _paginate() has built-in retry on rate limit (codes 17, 32, 4, 613).
+    print("  Fetching ad list (status + creative IDs)...", flush=True)
     creatives = {}
+    cids_per_name: dict[str, str] = {}
     try:
-        ads_status = account.get_ads(
-            fields=["id", "name", "effective_status"],
-            params={"limit": 1000},
-        )
-        for ad in ads_status:
-            name = ad.get("name", "")
-            if name:
-                creatives[name] = {
-                    "thumbnail_url": "",
-                    "image_url": "",
-                    "preview_link": "",
-                    "object_type": "",
-                    "effective_status": ad.get("effective_status", ""),
-                }
-        print(f"  {len(creatives)} ad statuses fetched", flush=True)
-    except Exception as e:
-        print(f"  WARNING: Could not fetch ad statuses: {e}", flush=True)
-
-    # Fetch creative thumbnails separately (nested fields can fail for some ads)
-    # Use limit=200 (not 1000) — nested creative fields make each page much heavier
-    # and Meta's server returns HTTP 500 at limit=1000 with nested fields.
-    print(f"  Fetching ad creatives (thumbnails)...", flush=True)
-    try:
-        ads_creative = account.get_ads(
-            fields=[
-                "id", "name",
-                "creative{thumbnail_url,image_url,object_type}",
-                "preview_shareable_link",
-            ],
-            params={"limit": 200},
-        )
-        for ad in ads_creative:
-            creative = ad.get("creative") or {}
+        all_ads = meta.list_ads_with_status(ad_account_id)
+        for ad in all_ads:
             name = ad.get("name", "")
             if not name:
                 continue
-            entry = creatives.setdefault(name, {
-                "thumbnail_url": "", "image_url": "", "preview_link": "",
-                "object_type": "", "effective_status": "",
-            })
-            entry["thumbnail_url"] = creative.get("thumbnail_url", "") or entry.get("thumbnail_url", "")
-            entry["image_url"]     = creative.get("image_url", "") or entry.get("image_url", "")
-            entry["preview_link"]  = ad.get("preview_shareable_link", "") or entry.get("preview_link", "")
-            entry["object_type"]   = creative.get("object_type", "") or entry.get("object_type", "")
-        print(f"  {len(creatives)} ad creatives merged", flush=True)
+            creatives[name] = {
+                "thumbnail_url": "",
+                "image_url":     "",
+                "preview_link":  ad.get("preview_shareable_link", ""),
+                "object_type":   "",
+                "effective_status": ad.get("effective_status", ""),
+            }
+            cid = (ad.get("creative") or {}).get("id")
+            if cid:
+                cids_per_name[name] = cid
+        print(f"  {len(creatives)} ads fetched", flush=True)
     except Exception as e:
-        print(f"  WARNING: Could not fetch ad creatives (thumbnails): {e}", flush=True)
+        print(f"  WARNING: Could not fetch ad list: {e}", flush=True)
 
-    # Ad-level daily data
-    params = {
-        "time_range": {"since": start_date, "until": end_date},
-        "time_increment": 1,
-        "level": "ad",
-        "filtering": [
-            {"field": "ad.effective_status", "operator": "IN",
-             "value": ["ACTIVE", "PAUSED", "COMPLETED", "DELETED", "ARCHIVED",
-                       "CAMPAIGN_PAUSED", "ADSET_PAUSED"]}
-        ],
-    }
-    fields = [
-        "date_start",
-        "campaign_name",
-        "campaign_id",
-        "adset_name",
-        "ad_name",
-        "spend",
-        "impressions",
-        "clicks",
-        "ctr",
-        "cpc",
-        "actions",
-        "cost_per_action_type",
-    ]
+    # ── 2. Batch-fetch creative thumbnails by ID ───────────────────────────
+    # get_creatives_by_ids() chunks by 10 and halves on failure — no single
+    # bad creative kills the whole batch.
+    if cids_per_name:
+        unique_cids = list({c for c in cids_per_name.values()})
+        cid_to_names: dict[str, list[str]] = {}
+        for name, cid in cids_per_name.items():
+            cid_to_names.setdefault(cid, []).append(name)
 
+        print(f"  Fetching {len(unique_cids)} creatives in batch...", flush=True)
+        try:
+            cdetails = meta.get_creatives_by_ids(unique_cids)
+            for cid, cdata in cdetails.items():
+                # Cascade through creative shapes to find thumbnail (same logic as Open Studios)
+                thumb = (
+                    cdata.get("thumbnail_url") or
+                    cdata.get("image_url") or
+                    ((cdata.get("object_story_spec") or {}).get("video_data") or {}).get("image_url") or
+                    ((cdata.get("object_story_spec") or {}).get("link_data") or {}).get("picture") or
+                    (((cdata.get("asset_feed_spec") or {}).get("images") or [{}])[0]).get("url") or ""
+                )
+                obj_type = cdata.get("object_type", "")
+                for name in cid_to_names.get(cid, []):
+                    entry = creatives.setdefault(name, {
+                        "thumbnail_url": "", "image_url": "", "preview_link": "",
+                        "object_type": "", "effective_status": "",
+                    })
+                    if thumb:
+                        entry["thumbnail_url"] = thumb
+                    if obj_type:
+                        entry["object_type"] = obj_type
+            print(f"  {len(cdetails)} creatives fetched", flush=True)
+        except Exception as e:
+            print(f"  WARNING: Could not fetch creatives: {e}", flush=True)
+
+    # ── 3. Ad-level insights (paginated with retry) ────────────────────────
     print(f"  Fetching ad-level data from {ad_account_id} ({start_date} to {end_date})...", flush=True)
     rows = []
-    import time as _time
-    for attempt in range(1, 4):
-        try:
-            insights = account.get_insights(params=params, fields=fields)
-            for row in insights:
-                leads = 0
-                cost_per_lead = 0.0
-                for action in row.get("actions", []):
-                    if action["action_type"] in ("lead", "offsite_conversion.fb_pixel_lead"):
-                        leads += int(action["value"])
-                for cpa in row.get("cost_per_action_type", []):
-                    if cpa["action_type"] in ("lead", "offsite_conversion.fb_pixel_lead"):
-                        cost_per_lead = float(cpa["value"])
+    try:
+        raw_rows = meta.get_insights(
+            ad_account_id,
+            level="ad",
+            date_start=start_date,
+            date_end=end_date,
+            time_increment=1,
+            extra_fields=["ctr", "cpc", "cost_per_action_type"],
+            filtering=[{
+                "field": "ad.effective_status", "operator": "IN",
+                "value": ["ACTIVE", "PAUSED", "COMPLETED", "DELETED", "ARCHIVED",
+                          "CAMPAIGN_PAUSED", "ADSET_PAUSED"],
+            }],
+        )
+        for row in raw_rows:
+            leads, cost_per_lead = 0, 0.0
+            for action in (row.get("actions") or []):
+                if action.get("action_type") in ("lead", "offsite_conversion.fb_pixel_lead"):
+                    leads += int(float(action.get("value", 0)))
+            for cpa in (row.get("cost_per_action_type") or []):
+                if cpa.get("action_type") in ("lead", "offsite_conversion.fb_pixel_lead"):
+                    cost_per_lead = float(cpa.get("value", 0))
 
-                ad_name = row.get("ad_name", "")
-                creative = creatives.get(ad_name, {})
-
-                rows.append({
-                    "date": row["date_start"],
-                    "campaign_name": row.get("campaign_name", ""),
-                    "campaign_id": row.get("campaign_id", ""),
-                    "adset_name": row.get("adset_name", ""),
-                    "ad_name": ad_name,
-                    "spend": round(safe(row.get("spend")), 2),
-                    "impressions": int(safe(row.get("impressions"))),
-                    "clicks": int(safe(row.get("clicks"))),
-                    "ctr": round(safe(row.get("ctr")), 2),
-                    "cpc": round(safe(row.get("cpc")), 2),
-                    "leads": leads,
-                    "cost_per_lead": round(cost_per_lead, 2),
-                    "thumbnail_url": creative.get("thumbnail_url", ""),
-                    "image_url": creative.get("image_url", ""),
-                    "preview_link": creative.get("preview_link", ""),
-                    "object_type": creative.get("object_type", ""),
-                })
-            print(f"  {len(rows)} ad-day rows fetched", flush=True)
-            break
-        except Exception as e:
-            err_str = str(e)
-            if attempt < 3 and ("limit" in err_str.lower() or "429" in err_str or "403" in err_str or "rate" in err_str.lower()):
-                wait = 60 * attempt
-                print(f"  Rate limit on insights (attempt {attempt}/3), waiting {wait}s...", flush=True)
-                _time.sleep(wait)
-                rows = []
-            else:
-                print(f"  ERROR: Meta Ads insights failed after {attempt} attempt(s): {e}", flush=True)
-                break
+            ad_name  = row.get("ad_name", "")
+            creative = creatives.get(ad_name, {})
+            rows.append({
+                "date":          row.get("date_start", ""),
+                "campaign_name": row.get("campaign_name", ""),
+                "campaign_id":   row.get("campaign_id", ""),
+                "adset_name":    row.get("adset_name", ""),
+                "ad_name":       ad_name,
+                "spend":         round(safe(row.get("spend")), 2),
+                "impressions":   int(safe(row.get("impressions"))),
+                "clicks":        int(safe(row.get("clicks"))),
+                "ctr":           round(safe(row.get("ctr")), 2),
+                "cpc":           round(safe(row.get("cpc")), 2),
+                "leads":         leads,
+                "cost_per_lead": round(cost_per_lead, 2),
+                "thumbnail_url": creative.get("thumbnail_url", ""),
+                "image_url":     creative.get("image_url", ""),
+                "preview_link":  creative.get("preview_link", ""),
+                "object_type":   creative.get("object_type", ""),
+            })
+        print(f"  {len(rows)} ad-day rows fetched", flush=True)
+    except Exception as e:
+        print(f"  ERROR: Meta Ads insights failed: {e}", flush=True)
 
     return rows, creatives
 

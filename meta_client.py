@@ -140,7 +140,9 @@ class MetaClient:
         return self._paginate(path, params)
 
     def get_insights(self, object_id: str, *, level: str, date_start: str, date_end: str,
-                     time_increment: int | None = None, extra_fields: list[str] | None = None) -> list[dict]:
+                     time_increment: int | None = None, extra_fields: list[str] | None = None,
+                     filtering: list[dict] | None = None) -> list[dict]:
+        import json as _json
         fields = DEFAULT_INSIGHT_FIELDS + (extra_fields or [])
         params: dict[str, Any] = {
             "level":      level,
@@ -150,11 +152,18 @@ class MetaClient:
         }
         if time_increment is not None:
             params["time_increment"] = time_increment
+        if filtering:
+            params["filtering"] = _json.dumps(filtering)
         return self._paginate_insights(f"{object_id}/insights", params)
 
     def get_daily_insights(self, campaign_id: str, *, date_start: str, date_end: str) -> list[dict]:
         return self.get_insights(campaign_id, level="campaign",
                                  date_start=date_start, date_end=date_end, time_increment=1)
+
+    def list_ads_with_status(self, ad_account_id: str) -> list[dict]:
+        """List all ads with effective_status + creative ID + preview link. Has retry on rate limit."""
+        fields = "id,name,effective_status,creative{id},preview_shareable_link"
+        return self._paginate(f"{ad_account_id}/ads", {"fields": fields, "limit": 500})
 
     def list_ad_sets(self, campaign_id: str) -> list[dict]:
         return self._paginate(f"{campaign_id}/adsets", {"fields": ADSET_FIELDS, "limit": 500})
