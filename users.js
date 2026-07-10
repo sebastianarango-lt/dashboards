@@ -115,7 +115,7 @@ const USERS = {
   // ── Franchisees ───────────────────────────────────────────────────────────
 
   'alex@sweat440.com': {
-    passwordHash: '32620a96dfe2cf41f26c5751dd0197ff0235421dec2bd8b3f503f187a2665c76',
+    passwordHash: '6148189bed46eac08ab1de3198b5b8fe4bc106155e9cc48db03f7c065ccf9112',
     name: 'Alex Avila',
     studios: [
       'Aventura',
@@ -130,7 +130,7 @@ const USERS = {
   },
 
   'amanda@redxfit.com': {
-    passwordHash: 'd51efb736aca536431204927a0dc30e4909d49b809733b7ac6b1227610b6e679',
+    passwordHash: '89ff3f7d55e57b9dceb056ac191d750cae7a07af6f40bed8ea9e8ece229681f6',
     name: 'Amanda Hays',
     studios: [
       'Madison',
@@ -139,7 +139,7 @@ const USERS = {
   },
 
   'cdevarona5@gmail.com': {
-    passwordHash: '82251cee9a5262e36d13362d1b86e38fb0fb3314570ace33171d7aa3f08c33de',
+    passwordHash: '0f63f8aaa25f0b7abf5d5f4dfcdb9bf6cfaa993366803d70c243342f6f6a24c2',
     name: 'Carlos de Varona',
     studios: [
       'Miami Lakes',
@@ -150,7 +150,7 @@ const USERS = {
   },
 
   'chelsie@localfavorite.com': {
-    passwordHash: '24851852c95b5d223f697bb0a9796f93ffb7be334b3951cef647dadd61b33729',
+    passwordHash: 'f763b08be9b8e5a877afb329b53ca528133150f34b199be51b1cdd123473f148',
     name: 'Chelsie DiPaolo',
     studios: [
       'Dallas - Uptown',
@@ -159,7 +159,7 @@ const USERS = {
   },
 
   'vstones1430@gmail.com': {
-    passwordHash: '1795997e9ff59e77d14b1539574b29538f318fc4c3f40418498810a4610db22b',
+    passwordHash: '72d08b301960aabbbe6d011907bf4a0ddf2dc8f967fc833b40ba92ed811d5cb6',
     name: 'Erika Sanchez',
     studios: [
       'Coral Gables',
@@ -169,7 +169,7 @@ const USERS = {
   },
 
   'gabrielzimerik@gmail.com': {
-    passwordHash: 'd7e6cbbfbf54323003090f4c38df5df9cf16068d9a69d4139adfb33c1261eebb',
+    passwordHash: 'b7fadee2ec84787e0934f14ff2f7fdb7ac3cef8d1b24ac310c316ffed7fc12e9',
     name: 'Gabriel Zimeri',
     studios: [
       'Dallas - Prestonwood',
@@ -178,7 +178,7 @@ const USERS = {
   },
 
   'jmarcoventures@gmail.com': {
-    passwordHash: '0a608db52dbac47efd7d82bbb5ca50f43d3787303323c539238b6241bcb2548c',
+    passwordHash: '48b90caf00185b81e5efe47eb32b640e859a141ecdef1a1c9fe5c395cfa29cd9',
     name: 'Jeff Marco',
     studios: [
       'Reston',
@@ -187,7 +187,7 @@ const USERS = {
   },
 
   'jimmy@purefitnessmiami.com': {
-    passwordHash: 'a55c5acee96d109db1b9dc660e624dfb0e8b5b6647b5e27797f149019897cf8e',
+    passwordHash: '813e908ad6a0fe2ee6fdab5c6e39b81c13dfc44bc281594093b1223fc25129cc',
     name: 'Jimmy Kassis',
     studios: [
       'Pinecrest - Palmetto Bay',
@@ -196,7 +196,7 @@ const USERS = {
   },
 
   'sweat440drphillips@gmail.com': {
-    passwordHash: 'b61a400650e82386dec094ae527ad930ecfaafd2cdc9fe1a102110c6f666c3a1',
+    passwordHash: 'cdfd2e3690f21aa05859a2ef75ae9a93a7ca747dc7b959bc2bcae4ee569f1727',
     name: 'Julian Leon',
     studios: [
       'Orlando - Dr Phillips',
@@ -205,7 +205,7 @@ const USERS = {
   },
 
   'kenfrei212@gmail.com': {
-    passwordHash: '28eb3c0cd68bbf4d712e0223ae9fd10c62c33499efc6d6d3463656ac80b670a5',
+    passwordHash: '03bdbfac6f27623041bf2613259bb4807c623abf0580d266721f74f6deaf8881',
     name: 'Ken Frei',
     studios: [
       'Herriman',
@@ -214,7 +214,7 @@ const USERS = {
   },
 
   'kristen@sweat440eastchester.com': {
-    passwordHash: '296a0b062b2c363b5dc4264c2cc465376db6b43836be03207891ec9c78dec70b',
+    passwordHash: '77164796aba3b5172f5aaee9fa1ca7ac8320dea1dbf358598851446983b754b0',
     name: 'Kristen Albert',
     studios: [
       'Eastchester',
@@ -223,7 +223,7 @@ const USERS = {
   },
 
   'marcg@ubfpt.com': {
-    passwordHash: 'ddd5c9061082705dc210837bf37f3bce4a7da96bd49915edd7ad99651d65be3b',
+    passwordHash: 'f20dc60cc48796cd97f932ec6f3eb2616704a397dc6675c1e7f35dcbf5b94816',
     name: 'Marc Gralnick',
     studios: [
       'Coral Springs',
@@ -243,7 +243,7 @@ const USERS = {
   },
 
   'chris@ubfpt.com': {
-    passwordHash: 'ddd5c9061082705dc210837bf37f3bce4a7da96bd49915edd7ad99651d65be3b',
+    passwordHash: 'e89705b7dad672bdb55f41cf5f7b45f85652b7568277fe5a5698ccb228fb21f0',
     name: 'Chris Schuck',
     studios: [
       'Coral Springs',
@@ -263,7 +263,7 @@ const USERS = {
   },
 
   'markcacciaguida@gmail.com': {
-    passwordHash: '15743531a3962a0aff9eb020754e49cb58ef8ab6ed81ddfcb674572e60c62f8a',
+    passwordHash: '29d15c3b8a75b4d27a929231aff5c05a8b9d71dbe4ffe1fabafff4056f0f6af8',
     name: 'Mark Cacciaguida',
     studios: [
       'Doral',
@@ -273,7 +273,7 @@ const USERS = {
   },
 
   'matt.bvre@gmail.com': {
-    passwordHash: 'd88941531023bac8a31eb314ef70f3f68384cb4d6eac6e11bcd72bfadc94857d',
+    passwordHash: 'cee141226eb3053c9fdec51c9b4e703e90db3d98e11efdbbc4383e543a442d38',
     name: "Matt O'Connor",
     studios: [
       'Charlotte - Noda',
@@ -282,7 +282,7 @@ const USERS = {
   },
 
   'mgelrud@hotmail.com': {
-    passwordHash: 'd335bf42e39a6a32a89f0af712959f8b3b99c33b7fd5d89c2eba678e53eece73',
+    passwordHash: '17b8f79636a93de2aeae965c445eb93af65c4009007f39b870c3324e7cd6b4d1',
     name: 'Max Gelrud',
     studios: [
       'South Miami',
@@ -291,7 +291,7 @@ const USERS = {
   },
 
   'nmarco@marcoregion.com': {
-    passwordHash: 'bc791077b452b49030913ecff3162274e589a6db036dc2af28aff2c8dad78fb1',
+    passwordHash: 'fb67db4c70cbf40834a15fa59d2da7c0de995a140d7e434bda0bdd318a72e9be',
     name: 'Nick Marco',
     studios: [
       'Middletown',
@@ -304,7 +304,7 @@ const USERS = {
   },
 
   'pmarcus@catalyst-hp.com': {
-    passwordHash: '852789ef58b107d14ac27bd472aa381d80d198b4ac55132799387b110bd93b76',
+    passwordHash: 'ca7dfd189a4ff966d779092c8bcf3d8711fd45b426e3043ac82ea54b7c7bd84e',
     name: 'Paul Marcus',
     studios: [
       'Austin - Highland',
@@ -316,103 +316,103 @@ const USERS = {
   // ── Additional franchisee partners ───────────────────────────────────────
 
   'christina@solarisft.com': {
-    passwordHash: 'b9eae662ea91a660e4d273ba7013dfa798550b66007bf87c40c5a1e638dafdaa',
+    passwordHash: '77fcf61dda7d1c1b9520361c7a06e5acda4bd793cc97358badac00622f7f10c3',
     name: 'Christina',
     studios: ['Aventura', 'North Miami'],
     role: 'franchisee'
   },
   'mmasco@marcoregion.com': {
-    passwordHash: '6a415abc9545d84c71b3b3bcde2848154af957d0b16418097f4af723e58412de',
+    passwordHash: '3a8b51f8f75d41ddbeea76cca9abebd6290fa3a4f2cfc820bc4defba360378a8',
     name: 'Mike Masco',
     studios: ['Reston', 'Old Bridge', 'Middletown'],
     role: 'franchisee'
   },
   'dbogota@marcoregion.com': {
-    passwordHash: '8958e47f0d6c1cb275bbaa8d9d9d1e9d55e278c5144989a50e165c055dff5318',
+    passwordHash: 'b3a6e169a58615d33a8cd5131534c5e71babb9c6372ab06f22bd4f611810d230',
     name: 'Danny Bogota',
     studios: ['Reston', 'Old Bridge', 'Middletown'],
     role: 'franchisee'
   },
   'jjankowski@marcoregion.com': {
-    passwordHash: '40337bf924d8a08b9b27ab8c8c5229062fd2ef4ae92f6dfa3c4b7b062e1ace88',
+    passwordHash: '6d40df3b8d087027aa4a13fb0b8fd59cda4197bb0fc46d8d797f9ad7c8e7595d',
     name: 'Joe Jankowski',
     studios: ['Reston', 'Old Bridge', 'Middletown'],
     role: 'franchisee'
   },
   'sunny@s440dfw.com': {
-    passwordHash: '618f4cfb8d6a4aa6548741d58ea602bc7095b4a13b520810a5b4c3dbb28853aa',
+    passwordHash: 'f3113e7fc45b328d3ca26109767c0d719ae9fb8009b02c935bcbd9b8c9bd5302',
     name: 'Sunny',
     studios: ['Dallas - Uptown'],
     role: 'franchisee'
   },
   'ron@summitfitnessgroup.com': {
-    passwordHash: '837459b2dd650c83ef1d91ea46faa438cb1a6c108372b1ee122183ee6905e495',
+    passwordHash: '1f4e649c3fd63ef83c313a9bffce4f1b7a7858a80ec687c19e41885d13fe5cb9',
     name: 'Ron',
     studios: ['Dunwoody'],
     role: 'franchisee'
   },
   'gretchen@summitfitnessgroup.com': {
-    passwordHash: '3fcffc64c5660be7ebf4455e74d671979bd2defe63bcb92220df6f8524cbedb2',
+    passwordHash: 'ba6c0eb0f170a5f6141e14cc66305c247936a721d7afff1504516a09cd2df372',
     name: 'Gretchen',
     studios: ['Dunwoody'],
     role: 'franchisee'
   },
   'samfrei1@gmail.com': {
-    passwordHash: '03af7a51f55d082887e4ae79b82bab8eb5dc6946969b6e0f7b2d43a810b358f5',
+    passwordHash: '52f02277d6f6ca87c2261f8fcdc4a6fcf94fc974129f3e5cac45d8d69626bf43',
     name: 'Samantha Frei',
     studios: ['Herriman'],
     role: 'franchisee'
   },
   'jamieperucci@gmail.com': {
-    passwordHash: 'e23ed7e595b5e6e135c12b79611186e5a3c95a0f784b7273928025d834986e32',
+    passwordHash: '514a0581443ccd94d8e39882141e8ada4b15a82e7790778cc098805c67654dae',
     name: 'Jamie Perucci',
     studios: ['Herriman'],
     role: 'franchisee'
   },
   'darrenperucci@gmail.com': {
-    passwordHash: '9b0c94b4ec9122fa7ab056efad5514ed984b357e83a0517b8d19814e2d943183',
+    passwordHash: 'eb1abf91bb480cdcd76f0e2f2d157f92e75a3bec673a17eec8776812e86081cf',
     name: 'Darren Perucci',
     studios: ['Herriman'],
     role: 'franchisee'
   },
   'wes@wnnen.com': {
-    passwordHash: 'a43602f31f188f40319dd174550b2b7fdde97cfb2f7727aa787b625696797b87',
+    passwordHash: 'edcaf11a17220d1a410928c44c75154f4ab713bec65df7a15dd6fb28c43d73b5',
     name: 'Wesley',
     studios: ['Fort Myers'],
     role: 'franchisee'
   },
   'breyes887@gmail.com': {
-    passwordHash: 'd2c3687b4fc174f682a88bd592ecfd03a7852a99ccb3853ea0df9c42867ce179',
+    passwordHash: '135e8620ae97d25807b3b03b3433007b429fe0ab74bfffc52804cfed2b904390',
     name: 'Beatriz Reyes',
     studios: ['Fort Myers'],
     role: 'franchisee'
   },
   'aron@kairosok.co': {
-    passwordHash: '4fd69310ae6bd16cd698971300382cbb7deb454ba9684ff9deb191e7ae8f3e15',
+    passwordHash: '31e040693ac34c1460bd7fdc3d02992316e4a1779d18107dd1163336e8c3a42b',
     name: 'Aron',
     studios: ['OKC - Rose Creek'],
     role: 'franchisee'
   },
   'jerry.ambroise@gmail.com': {
-    passwordHash: 'f62643d9cee19dd090aabc3de611ac73d552287f4176c6ba2be051a2de72c0af',
+    passwordHash: 'cc34f77f0839fc5d24cc0abc74bd5d68ca0966a0541fe575b435e3331be339fb',
     name: 'Jerry Ambroise',
     studios: ['Long Beach'],
     role: 'franchisee'
   },
   'eileen.m.clarke@gmail.com': {
-    passwordHash: 'de88d91f3bcc818a58338ed4b5695e038da471540aa3592f9c7daf1d10429974',
+    passwordHash: '152e42b452665aefdf7c61e2fb31a3be13425bd2f7598dba10eada0b35e0234a',
     name: 'Eileen Clarke',
     studios: ['Long Beach'],
     role: 'franchisee'
   },
   'william@clholdingsinc.com': {
-    passwordHash: '93861ed1846a3fab6e3c88c634d3867ea7cd659cdd33a9e871a5fb965e3db697',
+    passwordHash: 'f10e0a2b5cfd6a6d54144c7b61cdee5544e3dc9c8e539bca666c632555b61cc3',
     name: 'William',
     studios: ['Burlington'],
     role: 'franchisee'
   },
   'douglas@clholdingsinc.com': {
-    passwordHash: 'f969f537b98300ab8433e47f71df6f1e0f34cdeefc9765780ecdcdefdeb5e7cb',
+    passwordHash: 'e3e5730a440eb2514251db6906db3d444a4fb958fdeb267f0f648e6ccd1e64e1',
     name: 'Douglas',
     studios: ['Burlington'],
     role: 'franchisee'
