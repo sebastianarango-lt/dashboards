@@ -421,259 +421,259 @@ const USERS = {
   // ── Studio Managers (single-studio access) ───────────────────────────────
 
   'manager.aventura@sweat440.studio': {
-    passwordHash: 'b7a17455f6ecd3263291126ae8125f00ee63b3aed9930766fecdac9c43b4d235',
+    passwordHash: '543a9974fd6baec86fe04c77e5e9684a935aeeebe252c92be1719c29a2919ae6',
     name: 'Manager Aventura',
     studios: ['Aventura'],
     role: 'manager'
   },
   'manager.boca@sweat440.studio': {
-    passwordHash: 'd88941531023bac8a31eb314ef70f3f68384cb4d6eac6e11bcd72bfadc94857d',
+    passwordHash: '2fe64fe4dfe27a18458df4dcb387d9641bf4d330fb79f7b428b6a09ffa59180e',
     name: 'Manager Boca Raton',
     studios: ['Boca Raton'],
     role: 'manager'
   },
   'manager.brickell@sweat440.studio': {
-    passwordHash: 'd335bf42e39a6a32a89f0af712959f8b3b99c33b7fd5d89c2eba678e53eece73',
+    passwordHash: '0f039658bc4bb85dfeea292bf89b9edafc8360b742792c47700761d8c1df2f90',
     name: 'Manager Miami - Brickell',
     studios: ['Miami - Brickell'],
     role: 'manager'
   },
   'manager.burlington@sweat440.studio': {
-    passwordHash: 'fe52a2656e8cbb762f4bdbaa37c0c4cfcce3b3364cdfde6a7a71319ff19be351',
+    passwordHash: '4102053461ad96a0919a551b5c80647e78b89af941a57dfcd95d0f4a55929418',
     name: 'Manager Burlington',
     studios: ['Burlington'],
     role: 'manager'
   },
   'manager.chelsea@sweat440.studio': {
-    passwordHash: 'bc791077b452b49030913ecff3162274e589a6db036dc2af28aff2c8dad78fb1',
+    passwordHash: '4aa74ce63b4e8aaa0ed6dec6f5709564e5d17f07a8e9201303799c2c7ad71457',
     name: 'Manager NYC - Chelsea',
     studios: ['NYC - Chelsea'],
     role: 'manager'
   },
   'manager.coralsprings@sweat440.studio': {
-    passwordHash: 'b7557e8f7e90d03a15065d11de76dbdf1100bb1e254b15c2936b4dd2fba20ad4',
+    passwordHash: '40c89e4ea51f85c2404b06cbf8461a309cff94c9c966cedb8fa87a1f0aff8d7f',
     name: 'Manager Coral Springs',
     studios: ['Coral Springs'],
     role: 'manager'
   },
   'manager.dallasuptown@sweat440.studio': {
-    passwordHash: 'be8e876f077d5f259efc60fe4f304f6ba81824b82090f578cc0da42377b8e5b7',
+    passwordHash: 'e530fabccadb9e93fe7fbefa2fd39ddac66dd50c438e059b64e80bb93a97be7c',
     name: 'Manager Dallas - Uptown',
     studios: ['Dallas - Uptown'],
     role: 'manager'
   },
   'manager.deerfield@sweat440.studio': {
-    passwordHash: '3e7a0538eb2c216279cea5d5a7c4151da907add7f65f7b1ce8ccf47808d56497',
+    passwordHash: 'ef0122f7b9a185899de6d44050c96f19e1750dc1307a40f1338a3d1929beedf4',
     name: 'Manager Deerfield Beach',
     studios: ['Deerfield Beach'],
     role: 'manager'
   },
   'manager.doral@sweat440.studio': {
-    passwordHash: '152cd5b6b730da5ff307ea345f3c02e0d743f0ea50e0b37b6aaaf32ba8398caa',
+    passwordHash: '88e68ad16270a6dd697fdff5abde0e0f5f61a2141ad53b29ba6633fd630695e6',
     name: 'Manager Doral',
     studios: ['Doral'],
     role: 'manager'
   },
   'manager.drphillips@sweat440.studio': {
-    passwordHash: '169b3d489c5f1484e5cdcf278652f9bd4c586b6207e80d66c06c3a48a1e6983e',
+    passwordHash: 'db122b4ebc5cd5c1699443ce5065e378658bee66cde2b808ca8f7bb91843287e',
     name: 'Manager Orlando - Dr Phillips',
     studios: ['Orlando - Dr Phillips'],
     role: 'manager'
   },
   'manager.dunwoody@sweat440.studio': {
-    passwordHash: 'c4b89ab7da4ca4a23cb04e65a81921aa3922769b8f29827e3ca762c0b74b8bce',
+    passwordHash: '2638ec0260444dc24c7e10660d8e93fb9bfc37d97db97f986fab2d858df3efd6',
     name: 'Manager Dunwoody',
     studios: ['Dunwoody'],
     role: 'manager'
   },
   'manager.eastchester@sweat440.studio': {
-    passwordHash: 'a84f28e657b4a9bd77c22721a234ad5ba2b1f16538abd625b805bb6bf462a911',
+    passwordHash: '4e04a959734564eae29a6352c763da037bda910bb4b3c426b9251db9a8ad683d',
     name: 'Manager Eastchester',
     studios: ['Eastchester'],
     role: 'manager'
   },
   'manager.fidi@sweat440.studio': {
-    passwordHash: '2f1262948495d8bd0b5fb1ce6f6f91bab2e1d1084d9dfaac63b67f44f63e26e6',
+    passwordHash: 'edd0da8d4554497becff62c2bd75fcfb80df198e95786ec5ef44ff1fdcab7796',
     name: 'Manager NYC - FiDi',
     studios: ['NYC - FiDi'],
     role: 'manager'
   },
   'manager.fortmyers@sweat440.studio': {
-    passwordHash: '55239bb43701280ef57847f222207ee6245826f4fe16f534179c7efadd8a47bb',
+    passwordHash: 'f5adc6f78450e785ba628f6d9093fdd1d8e4119097449b810db1854e05841ca5',
     name: 'Manager Fort Myers',
     studios: ['Fort Myers'],
     role: 'manager'
   },
   'manager.gables@sweat440.studio': {
-    passwordHash: '63b141a0a72671c36928eeaec0aed361d544fe7355e15b665e58e6890a1c5ec7',
+    passwordHash: '1879bfc6ce015229ae17e6296973e289708585b8155a753b2d19e2d57a57efb0',
     name: 'Manager Coral Gables',
     studios: ['Coral Gables'],
     role: 'manager'
   },
   'manager.grove@sweat440.studio': {
-    passwordHash: '852789ef58b107d14ac27bd472aa381d80d198b4ac55132799387b110bd93b76',
+    passwordHash: '229153e54d8ae2f0af2bdd0702ac7117ffe14cccf6447e8497d49d2b1347bc79',
     name: 'Manager Miami - Coconut Grove',
     studios: ['Miami - Coconut Grove'],
     role: 'manager'
   },
   'manager.herriman@sweat440.studio': {
-    passwordHash: '7283f8e4f8a40b725e50878c74c0129861c52aef77639edb7e26ffd6c799e773',
+    passwordHash: 'f34b741d16e7935a92d7dadf6deed0934fd324b589f4422d80f5ec0b629f1d26',
     name: 'Manager Herriman',
     studios: ['Herriman'],
     role: 'manager'
   },
   'manager.highland@sweat440.studio': {
-    passwordHash: 'ba24dc7ecc6936b16fc9119db6ccb74027fca186b09dff9f089dd1b9956ebe39',
+    passwordHash: 'f36d21bb7b8af2fe4d3473ab8d7d3953245c3e8cdcad7dd5c89ae4acc4b860c7',
     name: 'Manager Austin - Highland',
     studios: ['Austin - Highland'],
     role: 'manager'
   },
   'manager.lasolas@sweat440.studio': {
-    passwordHash: 'f010cb846fef55667baa4ea6cd5e5a49fbc2e48280a3e3ffd39e880c2aaf7a95',
+    passwordHash: '9314ed64bca372d94d28dae08385ae69dcc57b5c4a75c97646295827268edc4f',
     name: 'Manager Fort Lauderdale - Las Olas',
     studios: ['Fort Lauderdale - Las Olas'],
     role: 'manager'
   },
   'manager.longbeach@sweat440.studio': {
-    passwordHash: '0ab20ae17d313ec2cb6744ebedfbb864f1e0cac5c7e8cb6424cdf12a954b7372',
+    passwordHash: 'f56c35806ef658008f9e2234ddab7573ad698550238a0de9d0052db9f71be404',
     name: 'Manager Long Beach',
     studios: ['Long Beach'],
     role: 'manager'
   },
   'manager.madison@sweat440.studio': {
-    passwordHash: 'a79bb1122e79c261bea9b2696f7a858a802a4ae852d85d72d243cbe6217de202',
+    passwordHash: '8bd1506f99c5f8c8542b399fbfcce6db801cb59c256b60f51f6bcf6944f6afb6',
     name: 'Manager Madison',
     studios: ['Madison'],
     role: 'manager'
   },
   'manager.mercato@sweat440.studio': {
-    passwordHash: '2a98e7d0c06d820a013e08eca21346c78cee4132cf0dde12d08fa931aed1b321',
+    passwordHash: '50b9dd7e84e8151633c9eac644543e163329e3efb80ee180fe0cac83dcecdf75',
     name: 'Manager Naples - Mercato',
     studios: ['Naples - Mercato'],
     role: 'manager'
   },
   'manager.miamilakes@sweat440.studio': {
-    passwordHash: '5a33760b87cc73d0227fd187317a463c0a8990b139ab41342864d13553a9cce6',
+    passwordHash: '1fa833e0b34fbca590ca637859caf92a1c8e94e434a84660244824034b2f037c',
     name: 'Manager Miami Lakes',
     studios: ['Miami Lakes'],
     role: 'manager'
   },
   'manager.middletown@sweat440.studio': {
-    passwordHash: '1369b6c7afcc39dd730812965c81be82e7c4249b0b5780141c19d10f7a6a1620',
+    passwordHash: '5af93fe67c9a2f33861e5fe13e63949f4ba0fb6df1fe0eddb8befc3db8b0ba76',
     name: 'Manager Middletown',
     studios: ['Middletown'],
     role: 'manager'
   },
   'manager.midtownmiami@sweat440.studio': {
-    passwordHash: '4b2840986c74ab92b827c9913b66606c26ae80544320bcf217a85ba0d2ee6c47',
+    passwordHash: '6345912ce6b2040a1d27b44874bb9ae74a07d5b034785cd0b1186fe640731fdd',
     name: 'Manager Miami - Midtown',
     studios: ['Miami - Midtown'],
     role: 'manager'
   },
   'manager.miramar@sweat440.studio': {
-    passwordHash: '258f8cf316b2c35d89dc2cc5b76737e11affc4c040694d175fb6e0bb81d7fc87',
+    passwordHash: 'fc0123cc9ebddb8e7b97ddcc18c16a9a0722f3221478632f41e7b8e33f5867fd',
     name: 'Manager Miramar',
     studios: ['Miramar'],
     role: 'manager'
   },
   'manager.noda@sweat440.studio': {
-    passwordHash: '946ea5c25c6f3843d3b205b5126926cacc72570af222a41de9fff829a87e920f',
+    passwordHash: 'e3ea1ee16b2b769841c65602f3dbc8e31b3290c8f083bf1077d0078c23a212c0',
     name: 'Manager Charlotte - NoDa',
     studios: ['Charlotte - Noda'],
     role: 'manager'
   },
   'manager.northmiami@sweat440.studio': {
-    passwordHash: '6582d7a98ca5400aadf180126bbbb6c3433d36627b108319ffd28391901a8100',
+    passwordHash: 'b29788e1ac2571caba642823a57757be6af756a6ed3d2199b3c3228109e224f3',
     name: 'Manager North Miami',
     studios: ['North Miami'],
     role: 'manager'
   },
   'manager.ocean@sweat440.studio': {
-    passwordHash: '8574606ea369a4a8025b7e15064dc5b1b71b7e7496e300273644351d17663ff3',
+    passwordHash: '17c6b1637aefde6031bad0d7fb41d6393c29362afe7a5d8e720470b91f064b3f',
     name: 'Manager Ocean Township',
     studios: ['Ocean Township'],
     role: 'manager'
   },
   'manager.oldbridge@sweat440.studio': {
-    passwordHash: 'b5dbdcaad22ae2a61af0adf47803d09eb1414d77cebdc6a818f9b78c8c114380',
+    passwordHash: '0fe6fb234a3cb169b47746494131fd66b08a9dd2741c023bcb2f10bcab77e252',
     name: 'Manager Old Bridge',
     studios: ['Old Bridge'],
     role: 'manager'
   },
   'manager.parkslope@sweat440.studio': {
-    passwordHash: 'ab829716343bb39cd5c80179e4f7350b492299d2b140af84fe260c95e94cb316',
+    passwordHash: 'cc88730ae87a9f7cf4f93aac115d712e88148e8711d15551bc994b7c404a0439',
     name: 'Manager NYC - Park Slope',
     studios: ['NYC - Park Slope'],
     role: 'manager'
   },
   'manager.pinecrest@sweat440.studio': {
-    passwordHash: '9f8fff3e071f9fa2670a195432a9f1bed6639461b6470cb40dcc24b8afd5a44a',
+    passwordHash: '692bf7f3b845c8f8415d3a7d428e8a27313b546cde76834b82ff2b0819563eda',
     name: 'Manager Pinecrest',
     studios: ['Pinecrest - Palmetto Bay'],
     role: 'manager'
   },
   'manager.pines@sweat440.studio': {
-    passwordHash: '8777b7c9cdaace4ea68c3f46c0aa27c65686b89d093e1e44581b15877d5f19bd',
+    passwordHash: '42ce9e61f4c60a1a6130f5ae0505547a4a19bcd49f90355522c6c1d55d0106b5',
     name: 'Manager Pembroke Pines',
     studios: ['Pembroke Pines'],
     role: 'manager'
   },
   'manager.prestonwood@sweat440.studio': {
-    passwordHash: '6137a4244f39e374cd5cb25bfe298e1e9d73eb4348838b3fae229ee51bf9205f',
+    passwordHash: 'f77661053e345d984291fd6307cf8313605f0b5f90f417e2dbf8782f6abc808b',
     name: 'Manager Dallas - Prestonwood',
     studios: ['Dallas - Prestonwood'],
     role: 'manager'
   },
   'manager.reston@sweat440.studio': {
-    passwordHash: '74c4f3069c042afd3e585a6b3b2c6d3ddf27a88d0a4de903cfd721e206f554f3',
+    passwordHash: '71535f36c17de6f0bf197540a62bfd0294517f565055704ee32595e1e3d2279b',
     name: 'Manager Reston',
     studios: ['Reston'],
     role: 'manager'
   },
   'manager.rosecreek@sweat440.studio': {
-    passwordHash: 'e2030bfcb3694d4c20b9c865ad2bf0672c2ed84dc2445bf3045975c411897b4b',
+    passwordHash: '695dcd64384ad9eb113c2eab595c8087ab419acc8465463392df8cd33d402840',
     name: 'Manager OKC - Rose Creek',
     studios: ['OKC - Rose Creek'],
     role: 'manager'
   },
   'manager.sobe@sweat440.studio': {
-    passwordHash: 'e8b8d515b3fc80fa44bce8bb13f3b3b0df55d6370ad994f1b60d6a51c8ea71cb',
+    passwordHash: 'ef8efc22c1c0f3bbbd4f17141583dcf3549e0b94de40ecd25711e5da9c0ee524',
     name: 'Manager Miami Beach',
     studios: ['Miami Beach'],
     role: 'manager'
   },
   'manager.southmiami@sweat440.studio': {
-    passwordHash: '39884ad4e822a21fed7318f6b15d6ad0da092652a1e92946ff917de69151e1f0',
+    passwordHash: 'a5b9fc8a9af01ce8bd23d3c2a543f24d7d301a834bf1547fda4e1c11222b3aa5',
     name: 'Manager South Miami',
     studios: ['South Miami'],
     role: 'manager'
   },
   'manager.tomsriver@sweat440.studio': {
-    passwordHash: '503a38231bd7a94edf989d4e48f1597a0959dd407a69a03445ca35d2807176ab',
+    passwordHash: '539ecbe402ddc78c57bc4f863c760630568d2f1d054ffcf2dbb6796791cb8fd0',
     name: 'Manager Toms River',
     studios: ['Toms River'],
     role: 'manager'
   },
   'manager.uppereastside@sweat440.studio': {
-    passwordHash: '566860be3de9c7b613d3706f416556ca093c5b645ce9cc009daa92ec090a636b',
+    passwordHash: '23a4e130fb7c496b5901a5ce4967584021cb154dc756c53dff123114dd567f57',
     name: 'Manager Miami - Upper East Side',
     studios: ['Miami - Upper East Side'],
     role: 'manager'
   },
   'manager.wall@sweat440.studio': {
-    passwordHash: '66a4e8d13343707ceb03e5a64a6cb3df045222bb3d06b9d5dee572d79c6c8370',
+    passwordHash: 'da0e4f715bf551adc65f17da115e2e29838bd66d702de74626fdb31f158dacdd',
     name: 'Manager Wall Township',
     studios: ['Wall Township'],
     role: 'manager'
   },
   'manager.wpb@sweat440.studio': {
-    passwordHash: '2143941d3794c31dc594d10e223884625f434c7abca231246263cbe0913d9196',
+    passwordHash: '6fd83d84a184433a721dd85e8084ca56879b9a9715d73c8c3ee8ed157c5760b9',
     name: 'Manager West Palm Beach',
     studios: ['West Palm Beach'],
     role: 'manager'
   },
   'manager.zilker@sweat440.studio': {
-    passwordHash: '8b7126e0c838252809692bbc23767a5b6bc792ddc24ba55f67194e2193cf1812',
+    passwordHash: 'd9372b8e75d41734c1157ead7ff6c9766499cd39035c817a0fa6c0bd6478d38a',
     name: 'Manager Austin - Zilker',
     studios: ['Austin - Zilker'],
     role: 'manager'
