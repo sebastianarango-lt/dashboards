@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T16:35:12",
+  "generated_at": "2026-07-14T17:18:57",
   "date_range": {
     "start": "2025-01-01",
     "end": "2026-05-11"
@@ -274382,8 +274382,8 @@
       "clicks": 3,
       "ctr": 9.09,
       "avg_cpc": 9.13,
-      "conversions": 1.0,
-      "cost_per_conversion": 27.39
+      "conversions": 2.0,
+      "cost_per_conversion": 13.69
     },
     {
       "date": "2026-07-04",
@@ -278282,8 +278282,8 @@
       "clicks": 2,
       "ctr": 9.09,
       "avg_cpc": 13.53,
-      "conversions": 2.0,
-      "cost_per_conversion": 13.53
+      "conversions": 3.0,
+      "cost_per_conversion": 9.02
     },
     {
       "date": "2026-07-11",
@@ -279163,7 +279163,7 @@
       "campaign_id": "23885731913",
       "status": "ENABLED",
       "spend": 52.95,
-      "impressions": 800,
+      "impressions": 801,
       "clicks": 28,
       "ctr": 3.5,
       "avg_cpc": 1.89,
