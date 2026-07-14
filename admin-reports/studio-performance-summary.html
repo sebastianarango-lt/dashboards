@@ -229,17 +229,20 @@ function buildStudioPerformanceTable() {
     const daily   = filterRows(RAW.daily_detail||[],   mFrom, mTo, [studio], selSources);
     const monthly = filterRows(RAW.monthly_detail||[], mFrom, mTo, [studio], selSources);
     const {leads, ft, mem} = sumRows([...daily, ...monthly]);
-    const spend = _adminGoogleSpend(studio, mFrom, mTo) + _adminMetaSpend(studio, mFrom, mTo) + _adminLeadteamFee(mFrom, mTo);
+    const google    = _adminGoogleSpend(studio, mFrom, mTo);
+    const meta      = _adminMetaSpend(studio, mFrom, mTo);
+    const leadteam  = _adminLeadteamFee(mFrom, mTo);
+    const spend = google + meta + leadteam;
     return {
-      leads, ft, mem, spend,
+      leads, ft, mem, spend, google, meta, leadteam,
       cpl:  leads>0 ? spend/leads : 0,
       cpft: ft>0    ? spend/ft    : 0,
       cpa:  mem>0   ? spend/mem   : 0,
     };
   }
 
-  function blank() { return {leads:0, ft:0, mem:0, spend:0, cpl:0, cpft:0, cpa:0}; }
-  function addInto(acc, m) { acc.leads+=m.leads; acc.ft+=m.ft; acc.mem+=m.mem; acc.spend+=m.spend; }
+  function blank() { return {leads:0, ft:0, mem:0, spend:0, google:0, meta:0, leadteam:0, cpl:0, cpft:0, cpa:0}; }
+  function addInto(acc, m) { acc.leads+=m.leads; acc.ft+=m.ft; acc.mem+=m.mem; acc.spend+=m.spend; acc.google+=m.google; acc.meta+=m.meta; acc.leadteam+=m.leadteam; }
   function finalize(acc) {
     acc.cpl  = acc.leads>0 ? acc.spend/acc.leads : 0;
     acc.cpft = acc.ft>0    ? acc.spend/acc.ft    : 0;
@@ -261,19 +264,21 @@ function buildStudioPerformanceTable() {
   function metricCells(m, groupBorder) {
     const firstStyle = groupBorder ? ` style="${groupStyle}"` : '';
     return `<td class="num"${firstStyle}>${m.leads.toLocaleString()}</td><td class="num">${m.ft.toLocaleString()}</td><td class="num">${m.mem.toLocaleString()}</td>`+
-           `<td class="num">${f$(m.spend)}</td><td class="num">${f$2(m.cpl)}</td><td class="num">${f$2(m.cpft)}</td><td class="num">${f$2(m.cpa)}</td>`;
+           `<td class="num">${f$(m.spend)}</td><td class="num">${f$(m.google)}</td><td class="num">${f$(m.meta)}</td><td class="num">${f$(m.leadteam)}</td>`+
+           `<td class="num">${f$2(m.cpl)}</td><td class="num">${f$2(m.cpft)}</td><td class="num">${f$2(m.cpa)}</td>`;
   }
   const groupStyle = 'border-left:1.5px solid #dde8ef';
+  const COLS_PER_GROUP = 10;
 
   const thead =
     '<thead>'+
       '<tr><th rowspan="2">Studio</th>'+
-        months.map(m => `<th colspan="7" style="text-align:center;${groupStyle}">${m.label}</th>`).join('')+
-        `<th colspan="7" style="text-align:center;${groupStyle}">Grand total</th>`+
+        months.map(m => `<th colspan="${COLS_PER_GROUP}" style="text-align:center;${groupStyle}">${m.label}</th>`).join('')+
+        `<th colspan="${COLS_PER_GROUP}" style="text-align:center;${groupStyle}">Grand total</th>`+
       '</tr>'+
       '<tr>'+
-        months.map(() => `<th class="num" style="${groupStyle}">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>`).join('')+
-        `<th class="num" style="${groupStyle}">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>`+
+        months.map(() => `<th class="num" style="${groupStyle}">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">Google Ads</th><th class="num">Meta Ads</th><th class="num">Leadteam Fee</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>`).join('')+
+        `<th class="num" style="${groupStyle}">Leads</th><th class="num">FT</th><th class="num">Members</th><th class="num">Mkt Spend</th><th class="num">Google Ads</th><th class="num">Meta Ads</th><th class="num">Leadteam Fee</th><th class="num">CPL</th><th class="num">CPFT</th><th class="num">CPA</th>`+
       '</tr>'+
     '</thead>';
 
