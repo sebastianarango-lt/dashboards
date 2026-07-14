@@ -226,6 +226,64 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
     cols = [d[0].lower() for d in cur.description]
     rows = [dict(zip(cols, row)) for row in cur.fetchall()]
     print(f"  {len(rows)} rows returned")
+
+    # Debug: log raw REFERRED_BY/LEAD_SOURCE for rows ending up as N/A
+    debug_sql = f"""
+    WITH all_txn AS (
+        SELECT STUDIO_ID, EMAIL_ID, PRODUCT_DESCRIPTION, SALE_DATE::DATE AS sale_date,
+               QUANTITY, IS_RETURN, LOCATION_ID,
+               MAX(CASE WHEN LOCATION_ID != 98 THEN 1 ELSE 0 END) OVER (
+                   PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION, SALE_DATE::DATE, QUANTITY
+               ) AS has_non98_sibling
+        FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS
+        WHERE STUDIO_ID IN ({ID_LIST})
+          AND ITEM_TYPE = 'Pricing Option'
+          AND LOWER(PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
+          AND (EMAIL_ID IS NULL OR (
+              LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
+          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
+          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'))
+    ),
+    txn AS (
+        SELECT STUDIO_ID, EMAIL_ID, sale_date AS effective_date, QUANTITY, IS_RETURN
+        FROM all_txn
+        WHERE NOT (LOCATION_ID = 98 AND has_non98_sibling = 1)
+          AND effective_date BETWEEN '{start_date}' AND '{end_date}'
+    ),
+    leads_src AS (
+        SELECT LOWER(TRIM(EMAIL_ID)) AS email, STUDIO_ID, LEAD_SOURCE,
+               ROW_NUMBER() OVER (PARTITION BY STUDIO_ID, LOWER(TRIM(EMAIL_ID)) ORDER BY LEAD_DATE DESC NULLS LAST) AS rn
+        FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_LEADS
+        WHERE STUDIO_ID IN ({ID_LIST})
+    ),
+    clients_src AS (
+        SELECT LOWER(TRIM(EMAIL_ID)) AS email, STUDIO_ID, REFERRED_BY,
+               ROW_NUMBER() OVER (PARTITION BY STUDIO_ID, LOWER(TRIM(EMAIL_ID)) ORDER BY FIRST_VISIT_DATE DESC NULLS LAST) AS rn
+        FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_CLIENTS
+        WHERE STUDIO_ID IN ({ID_LIST})
+          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
+          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
+          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
+    )
+    SELECT COALESCE(NULLIF(TRIM(c.REFERRED_BY),''), 'NULL') AS referred_by,
+           COALESCE(NULLIF(TRIM(l.LEAD_SOURCE),''), 'NULL') AS lead_source,
+           COUNT(*) AS cnt
+    FROM txn t
+    LEFT JOIN leads_src  l ON LOWER(TRIM(t.EMAIL_ID)) = l.email AND t.STUDIO_ID = l.STUDIO_ID AND l.rn = 1
+    LEFT JOIN clients_src c ON LOWER(TRIM(t.EMAIL_ID)) = c.email AND t.STUDIO_ID = c.STUDIO_ID AND c.rn = 1
+    WHERE ({_SOURCE_CASE}) IS NULL
+    GROUP BY 1, 2 ORDER BY 3 DESC
+    LIMIT 20
+    """
+    cur.execute(debug_sql)
+    unmapped = cur.fetchall()
+    if unmapped:
+        print("  ⚠️  Unmapped source values (falling to N/A):")
+        for referred_by, lead_source, cnt in unmapped:
+            print(f"     REFERRED_BY='{referred_by}'  LEAD_SOURCE='{lead_source}'  ({cnt} rows)")
+    else:
+        print("  ✓  No unmapped source values")
+
     return rows
 
 
