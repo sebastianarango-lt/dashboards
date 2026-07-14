@@ -146,12 +146,18 @@ Monthly: 3 years of history (by month, per studio+source)
 
 ## Excluded studios (default)
 These are excluded by default in all dashboards (override if needed):
-- SWEAT440 Dallas - Prestonwood
-- SWEAT440 Herriman
-- SWEAT440 Naples - Mercato
-- SWEAT440 Nashville - Capitol View
-- SWEAT440 Pinecrest - Palmetto Bay
-- SWEAT440 Reston
+- Aventura
+- Dallas - Uptown
+- Dunwoody
+- Fort Myers
+- Herriman
+- Middletown
+- Naples - Mercato
+- Nashville - Capitol View
+- North Miami
+- Old Bridge
+- Orlando - Dr Phillips
+- Reston
 
 ## Excluded sources (default)
 - ClassPass / Platforms
