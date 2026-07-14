@@ -26,9 +26,18 @@ body{font-family:'Open Sans',sans-serif;background:#0084B5;min-height:100vh;disp
 .dash-icon svg{width:34px;height:34px}
 .dash-icon.blue{background:#e6f6fd}
 .dash-icon.cyan{background:#e0fff6}
+.dash-icon.navy{background:#e6f6fd}
+.dash-icon.gray{background:#eef2f5}
 
 .dash-title{font-family:'Oswald',sans-serif;font-style:italic;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#1a1a2e;margin-bottom:10px}
 .dash-desc{font-size:13px;color:#8aaabb;line-height:1.7}
+
+.dash-card{position:relative}
+.dash-card.disabled{cursor:default}
+.dash-card.disabled:hover{transform:none;box-shadow:0 16px 48px rgba(0,0,0,.22)}
+.dash-card.disabled .dash-icon{filter:grayscale(1);opacity:.55}
+.dash-card.disabled .dash-title{color:#8aaabb}
+.soon-badge{position:absolute;top:18px;right:18px;background:#f4f9fd;color:#5a7a8a;font-family:'Oswald',sans-serif;font-style:italic;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:20px;border:1px solid #dde8ef}
 
 .signout{margin-top:48px;background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.65);font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:9px 24px;border-radius:8px;cursor:pointer;transition:all .15s}
 .signout:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.5)}
@@ -78,6 +87,27 @@ body{font-family:'Open Sans',sans-serif;background:#0084B5;min-height:100vh;disp
     <div class="dash-title">NSO Dashboard</div>
     <div class="dash-desc">New studio opening tracker — scorecard, funnel &amp; marketing data</div>
   </a>
+
+  <div class="dash-card disabled" id="corpDashCard">
+    <span class="soon-badge">Coming soon</span>
+    <div class="dash-icon gray">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5a7a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18M6 21V8l6-4 6 4v13M9 21v-5h6v5M9 12h.01M15 12h.01M9 9h.01M15 9h.01"/>
+      </svg>
+    </div>
+    <div class="dash-title">Corporate Reports</div>
+    <div class="dash-desc">Company-wide performance &amp; reporting for SWEAT440 corporate</div>
+  </div>
+
+  <a class="dash-card" id="adminReportsDashCard" href="admin-reports/index.html">
+    <div class="dash-icon navy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#00A3E0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>
+      </svg>
+    </div>
+    <div class="dash-title">Marketing Admin Reports</div>
+    <div class="dash-desc">Internal reporting tools for the LeadTeam marketing admin team</div>
+  </a>
 </div>
 
 <div id="adminActions" class="admin-actions" style="display:none">
@@ -96,6 +126,10 @@ if (user) {
   if (user.role === 'admin') document.getElementById('adminActions').style.display = '';
   if (user.role !== 'admin' && user.role !== 'corporate') {
     document.getElementById('osDashCard').remove();
+    document.getElementById('corpDashCard').remove();
+  }
+  if (user.role !== 'admin') {
+    document.getElementById('adminReportsDashCard').remove();
   }
 }
 

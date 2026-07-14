@@ -33,8 +33,8 @@ function logout() {
 }
 
 function _redirectToLogin() {
-  const isNso = location.pathname.includes('/nso-dashboard/');
-  location.replace(isNso ? '../login.html' : 'login.html');
+  const isNested = location.pathname.includes('/nso-dashboard/') || location.pathname.includes('/admin-reports/');
+  location.replace(isNested ? '../login.html' : 'login.html');
 }
 
 // Renders the user info + sign-out button into the nav.
