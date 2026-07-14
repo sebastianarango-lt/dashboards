@@ -79,7 +79,8 @@ _SOURCE_CASE = """
         WHEN LOWER(TRIM(c.REFERRED_BY)) = 'google ads'          THEN 'Google Ads'
         WHEN LOWER(TRIM(c.REFERRED_BY)) = 'tiktok ads'          THEN 'TikTok Ads'
         WHEN LOWER(TRIM(c.REFERRED_BY)) = 'local listings'      THEN 'Local Listings'
-        WHEN LOWER(TRIM(c.REFERRED_BY)) = 'internet / ai search' THEN 'Internet / AI Search'
+        WHEN LOWER(TRIM(c.REFERRED_BY)) = 'internet / ai search' THEN
+             IFF(CAST(c.SIGNEDUP_DATE AS DATE) < '2026-03-18'::DATE, 'Google Ads', 'Internet / AI Search')
         -- Offline / organic (REFERRED_BY — must come before owned-property LEAD_SOURCE checks)
         WHEN LOWER(TRIM(c.REFERRED_BY)) = 'local event'         THEN 'Grassroots'
         WHEN LOWER(TRIM(c.REFERRED_BY)) = 'print ads / signs'   THEN 'Print Ads / Signs'
@@ -98,7 +99,8 @@ _SOURCE_CASE = """
                                                                  THEN 'Word of Mouth'
         WHEN LOWER(TRIM(c.REFERRED_BY)) IN ('classpass','wellhub','wellness passport')
                                                                  THEN 'ClassPass / Platforms'
-        WHEN LOWER(TRIM(c.REFERRED_BY)) IN ('drive by','flyer','internet','n/a',
+        WHEN LOWER(TRIM(c.REFERRED_BY)) IN ('drive by','flyer','frederick',
+                                             'holly met outside of gym.','internet','n/a',
                                              'newspaper','other','radio','tv / streaming')
                                                                  THEN 'Other'
         ELSE 'N/A'
@@ -184,24 +186,36 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
         WHERE (LOCATION_ID != 98 OR has_non98_sibling = 0)
     ),
     leads_src AS (
-        -- Best lead-source record per client+studio
+        -- Best lead-source record per client+studio (priority matches MARKETING_REPORTS.PUBLIC.LEADS)
         SELECT
             LOWER(TRIM(CLIENT_EMAIL)) AS email,
             STUDIO_ID,
             LEAD_SOURCE,
             ROW_NUMBER() OVER (
                 PARTITION BY LOWER(TRIM(CLIENT_EMAIL)), STUDIO_ID
-                ORDER BY IFF(LEAD_SOURCE IS NULL, 1, 0), STAGE_START ASC
+                ORDER BY
+                    CASE
+                        WHEN LOWER(TRIM(LEAD_SOURCE)) = 'facebook lead ad'              THEN 0
+                        WHEN LOWER(TRIM(LEAD_SOURCE)) LIKE '%instagram%'                THEN 0
+                        WHEN LOWER(TRIM(LEAD_SOURCE)) LIKE '%facebook%'
+                         AND LOWER(TRIM(LEAD_SOURCE)) LIKE '%lead%'                     THEN 0
+                        WHEN LOWER(TRIM(LEAD_SOURCE)) LIKE '%google%'                   THEN 0
+                        WHEN LOWER(TRIM(LEAD_SOURCE)) = 'public api'                    THEN 3
+                        WHEN LEAD_SOURCE IS NULL                                         THEN 2
+                        ELSE 1
+                    END,
+                    STAGE_START ASC
             ) AS rn
         FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_LEADS_LOG
         WHERE STUDIO_ID IN ({ID_LIST})
     ),
     clients_src AS (
-        -- REFERRED_BY fallback per client+studio
+        -- REFERRED_BY + SIGNEDUP_DATE per client+studio
         SELECT
             LOWER(TRIM(EMAIL_ID)) AS email,
             STUDIO_ID,
             REFERRED_BY,
+            CAST(SIGNEDUP_DATE AS DATE) AS SIGNEDUP_DATE,
             ROW_NUMBER() OVER (
                 PARTITION BY LOWER(TRIM(EMAIL_ID)), STUDIO_ID
                 ORDER BY SIGNEDUP_DATE ASC
