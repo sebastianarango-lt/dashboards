@@ -55,7 +55,7 @@ const USERS = {
     passwordHash: '92fc58cc5d4c65dc0e729ab464685f1e98ca864d367b7ead975316143eda4b98',
     name: 'Matt Miller',
     studios: null,
-    role: 'corporate'
+    role: 'admin'
   },
   'cody@sweat440.com': {
     passwordHash: '1795997e9ff59e77d14b1539574b29538f318fc4c3f40418498810a4610db22b',
