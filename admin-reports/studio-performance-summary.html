@@ -277,10 +277,15 @@ function buildStudioPerformanceTable() {
   const totalPerMonth = months.map((m,i) => finalize(studioRows.reduce((acc,row) => { addInto(acc,row.perMonth[i]); return acc; }, blank())));
   const totalGrand = finalize(studioRows.reduce((acc,row) => { addInto(acc,row.grand); return acc; }, blank()));
 
+  function zeroSpendClass(v) { return v<=0 ? ' spend-zero' : ''; }
+
   function metricCells(m, groupBorder) {
     const firstStyle = groupBorder ? ` style="${groupStyle}"` : '';
     return `<td class="num"${firstStyle}>${m.leads.toLocaleString()}</td><td class="num">${m.ft.toLocaleString()}</td><td class="num">${m.mem.toLocaleString()}</td>`+
-           `<td class="num">${f$(m.spend)}</td><td class="num">${f$(m.google)}</td><td class="num">${f$(m.meta)}</td><td class="num">${f$(m.leadteam)}</td>`+
+           `<td class="num">${f$(m.spend)}</td>`+
+           `<td class="num${zeroSpendClass(m.google)}">${f$(m.google)}</td>`+
+           `<td class="num${zeroSpendClass(m.meta)}">${f$(m.meta)}</td>`+
+           `<td class="num${zeroSpendClass(m.leadteam)}">${f$(m.leadteam)}</td>`+
            `<td class="num">${f$2(m.cpl)}</td><td class="num">${f$2(m.cpft)}</td><td class="num">${f$2(m.cpa)}</td>`;
   }
   const groupStyle = 'border-left:1.5px solid #dde8ef';
