@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T19:26:49.440871+00:00",
+  "generated_at": "2026-07-14T19:59:24.392955+00:00",
   "window_start": "2026-07-07",
   "window_end": "2026-07-13",
   "window_label": "Jul 07 – Jul 13, 2026",
@@ -1176,16 +1176,16 @@
       "display_name": "Free Class - Open Studios",
       "period_label": "Apr 15, 2026 onwards",
       "totals": {
-        "impressions": 2184488,
-        "clicks": 26079,
-        "reach": 904096,
+        "impressions": 2185184,
+        "clicks": 26089,
+        "reach": 904276,
         "leads": 831,
         "purchases": 65,
         "trials": 309,
-        "spend": 67769.4,
+        "spend": 67787.48,
         "ctr": 1.19,
         "cpm": 31.02,
-        "cpl": 81.55
+        "cpl": 81.57
       },
       "most_recent_date": "2026-07-13",
       "high_count": 10,
@@ -1529,7 +1529,7 @@
           "impressions": 48,
           "leads": 0,
           "headline": "Only 48 impressions in the last 7 days",
-          "detail": "Ad has $73 in historical spend but barely showed this week (48 impressions).",
+          "detail": "Ad has $74 in historical spend but barely showed this week (48 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -1881,6 +1881,97 @@
           "leads": 0,
           "headline": "Only 2 impressions in the last 7 days",
           "detail": "Ad has $51 in historical spend but barely showed this week (2 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120245322936990249",
+          "ad_name": "26-FL-003-02 - DR - PYC - Plan",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $99 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120245831767150249",
+          "ad_name": "26-FL-003-02 - Hyrox - Video - Part",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $251 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120245832465620249",
+          "ad_name": "26-FL-003-02 - Hyrox - Blue",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $209 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120246426273560249",
+          "ad_name": "26-FL-003-02 - Hyrox - Video - Purpose",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $84 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120246855804860249",
+          "ad_name": "26-FL-003-02 - PS - SI - ShowUpV3",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $271 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120246856811460249",
+          "ad_name": "26-FL-003-02 - PS - SI - ShowUpV2",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $46 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120249120745420249",
+          "ad_name": "26-FL-003-02 - SI - Video - WorstDay",
+          "studio_code": "FL-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $129 in historical spend but barely showed this week (0 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -2284,19 +2375,6 @@
           "leads": 0,
           "headline": "Only 0 impressions in the last 7 days",
           "detail": "Ad has $34 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
-          "ad_id": "120245322936990249",
-          "ad_name": "26-FL-003-02 - DR - PYC - Plan",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $99 in historical spend but barely showed this week (0 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -3264,32 +3342,6 @@
         {
           "type": "low_impressions",
           "severity": "medium",
-          "ad_id": "120245831767150249",
-          "ad_name": "26-FL-003-02 - Hyrox - Video - Part",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $251 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
-          "ad_id": "120245832465620249",
-          "ad_name": "26-FL-003-02 - Hyrox - Blue",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $209 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
           "ad_id": "120245831767180249",
           "ad_name": "26-NJ-003-02 - Hyrox - Video - Part",
           "studio_code": "NJ-003",
@@ -3589,19 +3641,6 @@
         {
           "type": "low_impressions",
           "severity": "medium",
-          "ad_id": "120246426273560249",
-          "ad_name": "26-FL-003-02 - Hyrox - Video - Purpose",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $84 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
           "ad_id": "120246426273660249",
           "ad_name": "26-NJ-003-02 - Hyrox - Video - Purpose",
           "studio_code": "NJ-003",
@@ -3831,32 +3870,6 @@
           "leads": 0,
           "headline": "Only 0 impressions in the last 7 days",
           "detail": "Ad has $33 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
-          "ad_id": "120246855804860249",
-          "ad_name": "26-FL-003-02 - PS - SI - ShowUpV3",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $271 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
-          "ad_id": "120246856811460249",
-          "ad_name": "26-FL-003-02 - PS - SI - ShowUpV2",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $46 in historical spend but barely showed this week (0 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -4247,19 +4260,6 @@
           "leads": 0,
           "headline": "Only 0 impressions in the last 7 days",
           "detail": "Ad has $236 in historical spend but barely showed this week (0 impressions).",
-          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
-        },
-        {
-          "type": "low_impressions",
-          "severity": "medium",
-          "ad_id": "120249120745420249",
-          "ad_name": "26-FL-003-02 - SI - Video - WorstDay",
-          "studio_code": "FL-003",
-          "spend": 0,
-          "impressions": 0,
-          "leads": 0,
-          "headline": "Only 0 impressions in the last 7 days",
-          "detail": "Ad has $129 in historical spend but barely showed this week (0 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
