@@ -610,7 +610,7 @@ function renderSummary(){
   const raw7=(RAW&&RAW.daily_detail||[]).filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end);
   const lastLeads=raw7.reduce((s,r)=>s+(r.signups||0),0);
   const _tds7=(studio.tier_daily_sales||[]).filter(r=>r.date>=d7ago&&r.date<=d7end);
-  const lastNetPresales=_tds7.length?Math.max(0,_tds7.reduce((a,r)=>a+(r.count||0),0)):Math.max(0,(NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end)).reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
+  const lastNetPresales=Math.max(0,(NSO_SALES_ROWS.filter(r=>_strip(r.studio)===_sname&&r.date>=d7ago&&r.date<=d7end)).reduce((s,r)=>s+(r.first_sales||0)-(r.cancellations||0),0));
   const lastSpend=cur.total_marketing_spend||0;
   const _isReston=studio.code==='VA-001';
   const annPres=_goalAnn||tgt.presales_count||0;
