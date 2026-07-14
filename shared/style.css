@@ -29,6 +29,10 @@
 
   .chart-card{background:#fff;border:0.5px solid #dde8ef;border-radius:12px;padding:22px;margin-bottom:20px}
   .chart-card-title{font-family:'Oswald',sans-serif;font-style:italic;font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#1a1a2e;margin-bottom:18px}
+  .chart-card-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .chart-card-title-row .chart-card-title{margin-bottom:0}
+  .download-btn{background:#00A3E0;color:#fff;border:none;border-radius:6px;padding:7px 16px;font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:background .15s}
+  .download-btn:hover{background:#0084B5}
 
   .funnel-wrap{display:flex;flex-direction:column;gap:16px}
   .funnel-stage-label{font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:#5a7a8a;margin-bottom:5px}
