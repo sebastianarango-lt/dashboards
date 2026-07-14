@@ -87,6 +87,8 @@ _SOURCE_CASE = """
                                                                  THEN 'Word of Mouth'
         WHEN LOWER(TRIM(c.REFERRED_BY)) IN ('classpass','wellhub','wellness passport')
                                                                  THEN 'ClassPass / Platforms'
+        WHEN LOWER(TRIM(c.REFERRED_BY)) LIKE '%print%'
+          OR LOWER(TRIM(c.REFERRED_BY)) IN ('signs','sign')    THEN 'Print Ads / Signs'
         WHEN LOWER(TRIM(c.REFERRED_BY)) IN ('drive by','flyer','internet','n/a',
                                              'newspaper','other','radio','tv / streaming')
                                                                  THEN 'Other'
