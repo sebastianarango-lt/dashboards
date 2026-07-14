@@ -105,6 +105,12 @@ const USERS = {
     studios: null,
     role: 'corporate'
   },
+  'bradford@sweat440.com': {
+    passwordHash: 'e5dcb9554ead1a04112aa0da7d1c4cb84ed2392dbf6336d83d71b40a64e32967',
+    name: 'Bradford Rahmlow',
+    studios: null,
+    role: 'corporate'
+  },
   'corporate@sweat440.com': {
     passwordHash: 'ddd5c9061082705dc210837bf37f3bce4a7da96bd49915edd7ad99651d65be3b',
     name: 'SWEAT440 Corporate',
