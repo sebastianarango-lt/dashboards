@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T14:42:23.376760+00:00",
+  "generated_at": "2026-07-15T15:15:25.490338+00:00",
   "window_start": "2026-07-08",
   "window_end": "2026-07-14",
   "window_label": "Jul 08 – Jul 14, 2026",
@@ -1176,23 +1176,23 @@
       "display_name": "Free Class - Open Studios",
       "period_label": "Apr 15, 2026 onwards",
       "totals": {
-        "impressions": 2204055,
-        "clicks": 26297,
-        "reach": 908650,
+        "impressions": 2204853,
+        "clicks": 26303,
+        "reach": 908798,
         "leads": 835,
         "purchases": 67,
         "trials": 315,
-        "spend": 68356.94,
+        "spend": 68381.07,
         "ctr": 1.19,
         "cpm": 31.01,
-        "cpl": 81.86
+        "cpl": 81.89
       },
       "most_recent_date": "2026-07-14",
       "high_count": 12,
-      "medium_count": 323,
-      "alerts_count": 335,
+      "medium_count": 324,
+      "alerts_count": 336,
       "opportunities_count": 7,
-      "findings_count": 419,
+      "findings_count": 420,
       "findings": [
         {
           "type": "wasted_spend",
@@ -1200,11 +1200,11 @@
           "ad_id": "120250407271580249",
           "ad_name": "26-NY-002-02 - PS - SI - ShowUpV3",
           "studio_code": "NY-002",
-          "spend": 273.76,
+          "spend": 273.8,
           "leads": 0,
-          "impressions": 9242,
+          "impressions": 9243,
           "headline": "$274 spent — zero leads",
-          "detail": "This ad spent $273.76 in the last 7 days without generating a single lead.",
+          "detail": "This ad spent $273.80 in the last 7 days without generating a single lead.",
           "recommendation": "Pause immediately and audit the landing page or creative."
         },
         {
@@ -1213,11 +1213,11 @@
           "ad_id": "120250407272620249",
           "ad_name": "26-NY-003-02 - PS - SI - ShowUpV3",
           "studio_code": "NY-003",
-          "spend": 239.94,
+          "spend": 239.95,
           "leads": 0,
-          "impressions": 6692,
+          "impressions": 6693,
           "headline": "$240 spent — zero leads",
-          "detail": "This ad spent $239.94 in the last 7 days without generating a single lead.",
+          "detail": "This ad spent $239.95 in the last 7 days without generating a single lead.",
           "recommendation": "Pause immediately and audit the landing page or creative."
         },
         {
@@ -1304,11 +1304,11 @@
           "ad_id": "120250407271160249",
           "ad_name": "26-FL-014-02 - DF - PYC - RealResults",
           "studio_code": "FL-014",
-          "spend": 97.12,
+          "spend": 97.51,
           "leads": 0,
-          "impressions": 2533,
-          "headline": "$97 spent — zero leads",
-          "detail": "This ad spent $97.12 in the last 7 days without generating a single lead.",
+          "impressions": 2534,
+          "headline": "$98 spent — zero leads",
+          "detail": "This ad spent $97.51 in the last 7 days without generating a single lead.",
           "recommendation": "Pause immediately and audit the landing page or creative."
         },
         {
@@ -1375,6 +1375,19 @@
           "headline": "Regular CPL — $56 (target: below $50)",
           "detail": "CPL of $56.48 is in the acceptable-but-improvable range ($50–$80).",
           "recommendation": "Monitor and test creative variations to bring CPL below $50."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120251854389040249",
+          "ad_name": "26-FL-007-02 - DR - POC - Coach Sun Glasses",
+          "studio_code": "FL-007",
+          "spend": 7.83,
+          "impressions": 178,
+          "leads": 0,
+          "headline": "Only 178 impressions in the last 7 days",
+          "detail": "Ad has $30 in historical spend but barely showed this week (178 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
           "type": "low_impressions",
