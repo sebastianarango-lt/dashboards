@@ -46,6 +46,11 @@ input:focus,select:focus{border-color:#00A3E0}
 .msg.success{background:#e8faf0;border:1px solid #a8e6c3;color:#0a8a4a}
 .msg.success a{color:#0a8a4a;font-weight:700;text-decoration:underline}
 
+.mode-toggle{display:flex;gap:8px;width:100%;max-width:640px;margin-bottom:24px}
+.mode-btn{flex:1;padding:11px;border:1.5px solid rgba(255,255,255,.4);border-radius:8px;background:transparent;color:rgba(255,255,255,.85);font-family:'Oswald',sans-serif;font-style:italic;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:all .15s}
+.mode-btn.active{background:#fff;color:#0084B5;border-color:#fff}
+.mode-btn:not(.active):hover{border-color:#fff;color:#fff}
+
 @media(max-width:600px){
   .row,.row.three{grid-template-columns:1fr}
   .card{padding:28px 22px 24px}
@@ -62,10 +67,23 @@ input:focus,select:focus{border-color:#00A3E0}
 </div>
 
 <div class="page-title">Add Studio</div>
-<div class="page-sub">Opens a pull request adding a new entry to <code>studios.json</code>, the canonical studio registry every dashboard and data pipeline reads from. A teammate reviews and merges it before it affects any live pipeline.</div>
+<div class="page-sub" id="pageSubAdd">Opens a pull request adding a new entry to <code>studios.json</code>, the canonical studio registry every dashboard and data pipeline reads from. A teammate reviews and merges it before it affects any live pipeline.</div>
+<div class="page-sub" id="pageSubEdit" style="display:none">Opens a pull request updating an existing entry in <code>studios.json</code> — blank optional fields are left unchanged, so you can fill in just what's missing without disturbing the rest. A teammate reviews and merges it before it affects any live pipeline.</div>
+
+<div class="mode-toggle">
+  <button type="button" id="modeAddBtn" class="mode-btn active" onclick="setMode('add')">Add New Studio</button>
+  <button type="button" id="modeEditBtn" class="mode-btn" onclick="setMode('edit')">Edit Existing Studio</button>
+</div>
 
 <div class="card">
   <form id="addStudioForm" onsubmit="handleSubmit(event)">
+
+    <div class="form-group" id="editPickerGroup" style="display:none">
+      <label for="f_pick_existing">Select studio to edit</label>
+      <select id="f_pick_existing" onchange="loadExistingStudio()">
+        <option value="">— choose a studio —</option>
+      </select>
+    </div>
 
     <div class="section-title">Identity</div>
     <div class="row">
@@ -94,7 +112,7 @@ input:focus,select:focus{border-color:#00A3E0}
     </div>
     <div class="checkbox-row">
       <input type="checkbox" id="f_excluded" checked/>
-      <label for="f_excluded">Exclude from dashboards by default (typical for a new studio)</label>
+      <label for="f_excluded">Exclude from OS dashboards by default (typical for a new studio opening - NSO)</label>
     </div>
 
     <div class="section-title">Meta Ads</div>
@@ -181,6 +199,9 @@ const _PROXY_URL    = 'https://sweat440-refresh-proxy.sweat440.workers.dev';
 const _PROXY_SECRET = 'AnwxoPAsDK9vUXVY';
 
 let _studiosCache = null;
+let _mode = 'add'; // 'add' | 'edit'
+let _editingOriginalName = null;
+
 async function loadStudiosForSuggest() {
   try {
     const res = await fetch('../studios.json?_=' + Date.now());
@@ -189,10 +210,12 @@ async function loadStudiosForSuggest() {
     console.warn('studios.json unavailable:', e);
     _studiosCache = { studios: [] };
   }
+  populateExistingPicker();
 }
 loadStudiosForSuggest();
 
 function suggestCode() {
+  if (_mode === 'edit') return; // code is prefilled from the picked studio, not auto-suggested
   const state = document.getElementById('f_state').value.trim().toUpperCase();
   const codeInput = document.getElementById('f_code');
   if (!state || !_studiosCache || codeInput.dataset.userEdited === 'true') return;
@@ -212,6 +235,67 @@ function showMsg(text, cls) {
   el.className = 'msg show ' + cls;
 }
 
+function populateExistingPicker() {
+  const sel = document.getElementById('f_pick_existing');
+  const studios = ((_studiosCache && _studiosCache.studios) || []).slice().sort((a, b) => a.name.localeCompare(b.name));
+  sel.innerHTML = '<option value="">— choose a studio —</option>';
+  for (const s of studios) {
+    const opt = document.createElement('option');
+    opt.value = s.name;
+    opt.textContent = s.name + (s.code ? ` (${s.code})` : '');
+    sel.appendChild(opt);
+  }
+}
+
+function resetForm() {
+  document.getElementById('addStudioForm').reset();
+  document.getElementById('f_code').dataset.userEdited = 'false';
+  document.getElementById('f_pick_existing').value = '';
+  _editingOriginalName = null;
+  document.getElementById('msg').className = 'msg';
+}
+
+function setMode(mode) {
+  _mode = mode;
+  document.getElementById('modeAddBtn').classList.toggle('active', mode === 'add');
+  document.getElementById('modeEditBtn').classList.toggle('active', mode === 'edit');
+  document.getElementById('editPickerGroup').style.display = mode === 'edit' ? '' : 'none';
+  document.getElementById('pageSubAdd').style.display = mode === 'add' ? '' : 'none';
+  document.getElementById('pageSubEdit').style.display = mode === 'edit' ? '' : 'none';
+  document.getElementById('submitBtn').textContent = mode === 'add' ? 'Open Pull Request' : 'Open Update Pull Request';
+  resetForm();
+  populateExistingPicker();
+}
+
+function loadExistingStudio() {
+  const name = document.getElementById('f_pick_existing').value;
+  if (!name) { _editingOriginalName = null; return; }
+  const s = ((_studiosCache && _studiosCache.studios) || []).find(x => x.name === name);
+  if (!s) return;
+  _editingOriginalName = s.name;
+
+  document.getElementById('f_name').value = s.name || '';
+  document.getElementById('f_state').value = s.state || '';
+  document.getElementById('f_code').value = s.code || '';
+  document.getElementById('f_code').dataset.userEdited = 'true';
+  document.getElementById('f_status').value = s.status || 'nso';
+  document.getElementById('f_excluded').checked = !!s.excluded_default;
+  document.getElementById('f_meta_match').value = (s.meta && s.meta.match) || '';
+  document.getElementById('f_meta_ad_account').value = (s.meta && s.meta.ad_account_id) || '';
+  document.getElementById('f_meta_page').value = (s.meta && s.meta.page_id) || '';
+  document.getElementById('f_meta_ig').value = (s.meta && s.meta.instagram_account_id) || '';
+  document.getElementById('f_gads_match').value = (s.google_ads && s.google_ads.match) || '';
+  document.getElementById('f_gads_cid').value = (s.google_ads && s.google_ads.customer_id) || '';
+  document.getElementById('f_ga4_path').value = (s.ga4 && s.ga4.studio_page_path) || '';
+  document.getElementById('f_gbp_loc').value = (s.gbp && s.gbp.location_id) || '';
+  document.getElementById('f_snowflake_id').value = (s.snowflake_id != null) ? s.snowflake_id : '';
+  const tp = s.tier_pricing || {};
+  document.getElementById('f_tier1').value = (tp.tier1_price != null) ? tp.tier1_price : '';
+  document.getElementById('f_tier2').value = (tp.tier2_price != null) ? tp.tier2_price : '';
+  document.getElementById('f_tier3').value = (tp.tier3_price != null) ? tp.tier3_price : '';
+  document.getElementById('msg').className = 'msg';
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
@@ -220,7 +304,16 @@ async function handleSubmit(e) {
   const code  = document.getElementById('f_code').value.trim().toUpperCase();
 
   if (!name || !state) return;
-  if (!confirm(`Open a pull request adding "${name}" to studios.json?`)) return;
+  if (_mode === 'edit' && !_editingOriginalName) {
+    showMsg('Pick a studio to edit first.', 'error');
+    return;
+  }
+
+  const btnLabel = _mode === 'add' ? 'Open Pull Request' : 'Open Update Pull Request';
+  const confirmText = _mode === 'add'
+    ? `Open a pull request adding "${name}" to studios.json?`
+    : `Open a pull request updating "${_editingOriginalName}" in studios.json?`;
+  if (!confirm(confirmText)) return;
 
   const studio = {
     name, state, code: code || null,
@@ -254,14 +347,18 @@ async function handleSubmit(e) {
   };
 
   btn.disabled = true;
-  btn.textContent = 'Opening pull request…';
+  btn.textContent = _mode === 'add' ? 'Opening pull request…' : 'Opening update pull request…';
   document.getElementById('msg').className = 'msg';
+
+  const payload = _mode === 'add'
+    ? { action: 'add_studio', studio }
+    : { action: 'update_studio', originalName: _editingOriginalName, studio };
 
   try {
     const res = await fetch(_PROXY_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-App-Secret': _PROXY_SECRET },
-      body: JSON.stringify({ action: 'add_studio', studio }),
+      body: JSON.stringify(payload),
     });
     const data = await res.json().catch(() => ({}));
 
@@ -277,15 +374,15 @@ async function handleSubmit(e) {
       msgEl.innerHTML = '';
       msgEl.appendChild(wrap);
       msgEl.className = 'msg show success';
-      setTimeout(() => { btn.disabled = false; btn.textContent = 'Open Pull Request'; }, 4000);
+      setTimeout(() => { btn.disabled = false; btn.textContent = btnLabel; }, 4000);
     } else {
       btn.disabled = false;
-      btn.textContent = 'Open Pull Request';
+      btn.textContent = btnLabel;
       showMsg(data.error || `Failed to open pull request (${res.status}).`, 'error');
     }
   } catch (e) {
     btn.disabled = false;
-    btn.textContent = 'Open Pull Request';
+    btn.textContent = btnLabel;
     showMsg('Failed to reach refresh service: ' + e.message, 'error');
   }
 }

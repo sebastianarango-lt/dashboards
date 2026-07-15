@@ -38,6 +38,13 @@ function slugify(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+// Normalize a studio name for duplicate comparison: case-insensitive, and
+// dashes/extra whitespace collapsed — so "Dallas - Uptown" and "Dallas Uptown"
+// (or "dallas  uptown") are recognized as the same studio.
+function normalizeName(name) {
+  return name.toLowerCase().replace(/[-–—]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 function ghHeaders(env) {
   return {
     Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -95,25 +102,159 @@ function normalizeStudio(studio) {
   };
 }
 
-function prBodyFor(studio) {
+// Merge a submitted patch into an existing studios.json entry. For most
+// optional fields, a blank/null value in the patch means "leave unchanged"
+// (so filling in just one missing field doesn't wipe out the rest of the
+// profile). name/state/status/excluded_default always take the submitted
+// value as-is — the form always shows a definite current value for those,
+// there's no "blank" state to distinguish from "unchanged".
+function mergeStudio(existing, patch) {
+  const keep = (existingVal, patchVal) => (patchVal === null || patchVal === undefined) ? existingVal : patchVal;
+  return {
+    name: patch.name || existing.name,
+    code: keep(existing.code, patch.code),
+    state: patch.state || existing.state,
+    status: patch.status || existing.status,
+    excluded_default: !!patch.excluded_default,
+    meta: {
+      match: keep(existing.meta.match, patch.meta.match),
+      ad_account_id: keep(existing.meta.ad_account_id, patch.meta.ad_account_id),
+      page_id: keep(existing.meta.page_id, patch.meta.page_id),
+      instagram_account_id: keep(existing.meta.instagram_account_id, patch.meta.instagram_account_id),
+    },
+    google_ads: {
+      match: keep(existing.google_ads.match, patch.google_ads.match),
+      customer_id: keep(existing.google_ads.customer_id, patch.google_ads.customer_id),
+    },
+    ga4: { studio_page_path: keep(existing.ga4.studio_page_path, patch.ga4.studio_page_path) },
+    gbp: { location_id: keep(existing.gbp.location_id, patch.gbp.location_id) },
+    snowflake_id: keep(existing.snowflake_id, patch.snowflake_id),
+    social_slug: keep(existing.social_slug, patch.social_slug),
+    // tier_pricing merges key-by-key so e.g. adding tier3 doesn't drop tier1/tier2.
+    tier_pricing: patch.tier_pricing
+      ? { ...(existing.tier_pricing || {}), ...patch.tier_pricing }
+      : existing.tier_pricing,
+  };
+}
+
+function fieldRows(studio) {
+  return [
+    ['Code', studio.code],
+    ['State', studio.state],
+    ['Status', studio.status],
+    ['Excluded from dashboards by default', studio.excluded_default],
+    ['Meta match', studio.meta.match],
+    ['Meta ad account', studio.meta.ad_account_id],
+    ['Meta page ID', studio.meta.page_id],
+    ['Meta IG ID', studio.meta.instagram_account_id],
+    ['Google Ads match', studio.google_ads.match],
+    ['Google Ads customer ID', studio.google_ads.customer_id],
+    ['GA4 page path', studio.ga4.studio_page_path],
+    ['GBP location ID', studio.gbp.location_id],
+    ['Snowflake ID', studio.snowflake_id],
+    ['Social slug', studio.social_slug],
+    ['Tier pricing', studio.tier_pricing ? JSON.stringify(studio.tier_pricing) : null],
+  ];
+}
+
+function prBodyForAdd(studio) {
   const lines = [
     `Adds **${studio.name}** to the canonical studio registry (\`studios.json\`), submitted via the Add Studio admin widget.`,
     '',
     '| Field | Value |',
     '|---|---|',
-    `| Code | ${studio.code || '_(none yet)_'} |`,
-    `| State | ${studio.state} |`,
-    `| Status | ${studio.status} |`,
-    `| Excluded from dashboards by default | ${studio.excluded_default} |`,
-    `| Meta match | ${studio.meta.match || '_(none)_'} |`,
-    `| Google Ads match | ${studio.google_ads.match || '_(none)_'} |`,
-    `| GA4 page path | ${studio.ga4.studio_page_path || '_(none)_'} |`,
-    `| GBP location ID | ${studio.gbp.location_id || '_(none)_'} |`,
-    `| Snowflake ID | ${studio.snowflake_id ?? '_(none)_'} |`,
+    ...fieldRows(studio).map(([label, val]) => `| ${label} | ${val ?? '_(none)_'} |`),
     '',
     'Review the fields above against real ad-account/campaign naming before merging — this only wires up config, it does not verify the studio actually has live campaigns yet.',
   ];
   return lines.join('\n');
+}
+
+function prBodyForUpdate(existing, merged) {
+  const before = new Map(fieldRows(existing));
+  const after = fieldRows(merged);
+  const changed = after.filter(([label, val]) => JSON.stringify(before.get(label)) !== JSON.stringify(val));
+
+  const lines = [
+    `Updates **${existing.name}**'s entry in the canonical studio registry (\`studios.json\`), submitted via the Add Studio admin widget's Edit mode.`,
+    '',
+  ];
+  if (existing.name !== merged.name) {
+    lines.push(`Renamed to **${merged.name}**.`, '');
+  }
+  if (changed.length) {
+    lines.push('| Field | Before | After |', '|---|---|---|');
+    for (const [label, val] of changed) {
+      lines.push(`| ${label} | ${before.get(label) ?? '_(none)_'} | ${val ?? '_(none)_'} |`);
+    }
+  } else {
+    lines.push('_No fields changed._');
+  }
+  lines.push('', 'Review before merging.');
+  return lines.join('\n');
+}
+
+// Shared GitHub plumbing for both add and update: read studios.json, let the
+// caller mutate the parsed registry (returning an {error, status} to abort),
+// then branch + commit + open a PR with the result.
+async function openStudiosPr(env, { branchPrefix, commitMessage, prTitle, mutate }) {
+  const gh = ghHeaders(env);
+
+  const contentRes = await fetch(`https://api.github.com/repos/${REPO}/contents/studios.json?ref=main`, { headers: gh });
+  if (!contentRes.ok) {
+    return { error: `Failed to read studios.json (${contentRes.status})`, status: 502 };
+  }
+  const contentJson = await contentRes.json();
+  const registry = JSON.parse(b64DecodeUnicode(contentJson.content));
+
+  const mutation = mutate(registry) || {};
+  if (mutation.error) return mutation;
+  const prBody = mutation.prBody;
+
+  registry.studios.sort((a, b) => a.name.localeCompare(b.name));
+  const newContent = JSON.stringify(registry, null, 2) + '\n';
+
+  const refRes = await fetch(`https://api.github.com/repos/${REPO}/git/ref/heads/main`, { headers: gh });
+  if (!refRes.ok) {
+    return { error: `Failed to read main ref (${refRes.status})`, status: 502 };
+  }
+  const mainSha = (await refRes.json()).object.sha;
+
+  const branch = `${branchPrefix}-${Date.now()}`;
+  const branchRes = await fetch(`https://api.github.com/repos/${REPO}/git/refs`, {
+    method: 'POST',
+    headers: gh,
+    body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
+  });
+  if (!branchRes.ok) {
+    return { error: `Failed to create branch (${branchRes.status})`, status: 502 };
+  }
+
+  const commitRes = await fetch(`https://api.github.com/repos/${REPO}/contents/studios.json`, {
+    method: 'PUT',
+    headers: gh,
+    body: JSON.stringify({
+      message: commitMessage,
+      content: b64EncodeUnicode(newContent),
+      sha: contentJson.sha,
+      branch,
+    }),
+  });
+  if (!commitRes.ok) {
+    return { error: `Failed to commit studios.json (${commitRes.status})`, status: 502 };
+  }
+
+  const prRes = await fetch(`https://api.github.com/repos/${REPO}/pulls`, {
+    method: 'POST',
+    headers: gh,
+    body: JSON.stringify({ title: prTitle, head: branch, base: 'main', body: prBody }),
+  });
+  if (!prRes.ok) {
+    return { error: `Failed to open pull request (${prRes.status})`, status: 502 };
+  }
+  const pr = await prRes.json();
+
+  return { prUrl: pr.html_url };
 }
 
 async function handleAddStudio(body, env, headers) {
@@ -122,76 +263,78 @@ async function handleAddStudio(body, env, headers) {
     return jsonResponse({ ok: false, error: 'Studio name and state are required.' }, 400, headers);
   }
 
-  const gh = ghHeaders(env);
-
-  // 1. Read current studios.json
-  const contentRes = await fetch(`https://api.github.com/repos/${REPO}/contents/studios.json?ref=main`, { headers: gh });
-  if (!contentRes.ok) {
-    return jsonResponse({ ok: false, error: `Failed to read studios.json (${contentRes.status})` }, 502, headers);
-  }
-  const contentJson = await contentRes.json();
-  const registry = JSON.parse(b64DecodeUnicode(contentJson.content));
-
-  if (studio.code && registry.studios.some(s => s.code === studio.code)) {
-    return jsonResponse({ ok: false, error: `Code ${studio.code} already exists in studios.json.` }, 409, headers);
-  }
-  if (registry.studios.some(s => s.name.toLowerCase() === studio.name.toLowerCase())) {
-    return jsonResponse({ ok: false, error: `A studio named "${studio.name}" already exists in studios.json.` }, 409, headers);
-  }
-
-  registry.studios.push(studio);
-  registry.studios.sort((a, b) => a.name.localeCompare(b.name));
-  const newContent = JSON.stringify(registry, null, 2) + '\n';
-
-  // 2. Branch from main's latest commit
-  const refRes = await fetch(`https://api.github.com/repos/${REPO}/git/ref/heads/main`, { headers: gh });
-  if (!refRes.ok) {
-    return jsonResponse({ ok: false, error: `Failed to read main ref (${refRes.status})` }, 502, headers);
-  }
-  const mainSha = (await refRes.json()).object.sha;
-
-  const branch = `add-studio-${slugify(studio.name)}-${Date.now()}`;
-  const branchRes = await fetch(`https://api.github.com/repos/${REPO}/git/refs`, {
-    method: 'POST',
-    headers: gh,
-    body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
+  const result = await openStudiosPr(env, {
+    branchPrefix: `add-studio-${slugify(studio.name)}`,
+    commitMessage: `Add studio: ${studio.name}`,
+    prTitle: `Add studio: ${studio.name}`,
+    mutate(registry) {
+      if (studio.code && registry.studios.some(s => s.code === studio.code)) {
+        return { error: `Code ${studio.code} already exists in studios.json.`, status: 409 };
+      }
+      const normalizedNew = normalizeName(studio.name);
+      const nameMatch = registry.studios.find(s => normalizeName(s.name) === normalizedNew);
+      if (nameMatch) {
+        return {
+          error: `"${studio.name}" looks like a duplicate of the existing studio "${nameMatch.name}"` +
+                 (nameMatch.code ? ` (${nameMatch.code})` : '') + '.',
+          status: 409,
+        };
+      }
+      registry.studios.push(studio);
+      return { prBody: prBodyForAdd(studio) };
+    },
   });
-  if (!branchRes.ok) {
-    return jsonResponse({ ok: false, error: `Failed to create branch (${branchRes.status})` }, 502, headers);
+
+  if (result.error) return jsonResponse({ ok: false, error: result.error }, result.status || 502, headers);
+  return jsonResponse({ ok: true, prUrl: result.prUrl }, 200, headers);
+}
+
+async function handleUpdateStudio(body, env, headers) {
+  const originalName = typeof body.originalName === 'string' ? body.originalName.trim() : '';
+  const patch = normalizeStudio(body.studio || {});
+  if (!originalName) {
+    return jsonResponse({ ok: false, error: 'Missing originalName — which studio to update.' }, 400, headers);
+  }
+  if (!patch.name || !patch.state) {
+    return jsonResponse({ ok: false, error: 'Studio name and state are required.' }, 400, headers);
   }
 
-  // 3. Commit updated studios.json to the new branch
-  const commitRes = await fetch(`https://api.github.com/repos/${REPO}/contents/studios.json`, {
-    method: 'PUT',
-    headers: gh,
-    body: JSON.stringify({
-      message: `Add studio: ${studio.name}`,
-      content: b64EncodeUnicode(newContent),
-      sha: contentJson.sha,
-      branch,
-    }),
+  const result = await openStudiosPr(env, {
+    branchPrefix: `update-studio-${slugify(patch.name)}`,
+    commitMessage: `Update studio: ${patch.name}`,
+    prTitle: `Update studio: ${patch.name}`,
+    mutate(registry) {
+      const idx = registry.studios.findIndex(s => s.name === originalName);
+      if (idx === -1) {
+        return {
+          error: `Couldn't find a studio named "${originalName}" in studios.json — it may have been renamed or removed. Refresh and try again.`,
+          status: 404,
+        };
+      }
+      const existing = registry.studios[idx];
+      const merged = mergeStudio(existing, patch);
+
+      const others = registry.studios.filter((_, i) => i !== idx);
+      if (merged.code && others.some(s => s.code === merged.code)) {
+        return { error: `Code ${merged.code} already exists on another studio in studios.json.`, status: 409 };
+      }
+      const normalizedNew = normalizeName(merged.name);
+      const nameMatch = others.find(s => normalizeName(s.name) === normalizedNew);
+      if (nameMatch) {
+        return {
+          error: `"${merged.name}" looks like a duplicate of the existing studio "${nameMatch.name}"` +
+                 (nameMatch.code ? ` (${nameMatch.code})` : '') + '.',
+          status: 409,
+        };
+      }
+
+      registry.studios[idx] = merged;
+      return { prBody: prBodyForUpdate(existing, merged) };
+    },
   });
-  if (!commitRes.ok) {
-    return jsonResponse({ ok: false, error: `Failed to commit studios.json (${commitRes.status})` }, 502, headers);
-  }
 
-  // 4. Open the PR
-  const prRes = await fetch(`https://api.github.com/repos/${REPO}/pulls`, {
-    method: 'POST',
-    headers: gh,
-    body: JSON.stringify({
-      title: `Add studio: ${studio.name}`,
-      head: branch,
-      base: 'main',
-      body: prBodyFor(studio),
-    }),
-  });
-  if (!prRes.ok) {
-    return jsonResponse({ ok: false, error: `Failed to open pull request (${prRes.status})` }, 502, headers);
-  }
-  const pr = await prRes.json();
-
-  return jsonResponse({ ok: true, prUrl: pr.html_url }, 200, headers);
+  if (result.error) return jsonResponse({ ok: false, error: result.error }, result.status || 502, headers);
+  return jsonResponse({ ok: true, prUrl: result.prUrl }, 200, headers);
 }
 
 export default {
@@ -213,9 +356,9 @@ export default {
       return new Response('Bad request', { status: 400, headers });
     }
 
-    if (body.action === 'add_studio') {
+    if (body.action === 'add_studio' || body.action === 'update_studio') {
       try {
-        return await handleAddStudio(body, env, headers);
+        return await (body.action === 'add_studio' ? handleAddStudio(body, env, headers) : handleUpdateStudio(body, env, headers));
       } catch (e) {
         return jsonResponse({ ok: false, error: `Unexpected error: ${e.message}` }, 500, headers);
       }
