@@ -46,7 +46,9 @@ PAID_ADS_PATH  = REPO_ROOT / "meta-ads-baked.json"  # static baked monthly spend
 
 # How many days back to re-fetch on each daily run.
 # Historical data outside this window is preserved via upsert from the existing file.
-DAILY_LOOKBACK_DAYS = 21
+# TEMPORARY: bumped to 365 for a one-time backfill (see commit message) — revert to 21
+# right after this run completes successfully.
+DAILY_LOOKBACK_DAYS = 365
 
 logging.basicConfig(
     level=logging.INFO,
