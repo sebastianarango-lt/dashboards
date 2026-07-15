@@ -39,15 +39,21 @@ log = logging.getLogger("nso-ads-etl")
 # ── helpers de clasificación ─────────────────────────────────────────
 def match_studio(name: str, studios: list[dict]) -> dict | None:
     """
-    Intenta casar el nombre de un ad set contra la lista de studios.
-    Primero busca coincidencias específicas (campo 'match' no vacío).
-    Si no hay ninguna, devuelve el primer studio catch-all (match='').
+    Intenta casar el nombre de un ad/adset contra la lista de studios.
+    1) Codigo del studio embebido en el nombre (ej. "26-FL-018-01 Open" -> FL-018)
+       -- confiable incluso cuando el nombre/keyword del studio no aparece.
+    2) Coincidencia por keyword (campo 'match' no vacio).
+    3) Catch-all (studio con match='').
     """
-    n = (name or "").lower()
+    n = name or ""
+    for s in studios:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
     catchall = None
     for s in studios:
         m = s.get("match", "")
-        if m and m.lower() in n:
+        if m and m.lower() in n_lower:
             return s
         if not m and catchall is None:
             catchall = s

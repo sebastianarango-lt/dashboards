@@ -57,9 +57,17 @@ log = logging.getLogger("paid-ads-etl")
 
 # ── helpers de clasificación ─────────────────────────────────────────
 def match_studio(name: str, studios: list[dict]) -> dict | None:
-    n = (name or "").lower()
+    """Match an ad/adset name to a studio. Checks the studio's own code first —
+    ads follow a "{date}-{CODE}-{seq} - ..." naming convention where the code is
+    always embedded, even when the studio name/keyword isn't (e.g. many NSO
+    adsets just say "Open"). Falls back to the keyword `match` substring."""
+    n = name or ""
     for s in studios:
-        if s.get("match") and s["match"].lower() in n:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
+    for s in studios:
+        if s.get("match") and s["match"].lower() in n_lower:
             return s
     return None
 

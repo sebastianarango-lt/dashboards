@@ -36,13 +36,20 @@ def by_name() -> dict[str, dict]:
 
 
 def meta_studio_rows() -> list[dict]:
-    """Shape expected by fetch_meta_ads.py's match_studio(): {code, name, state, match}."""
+    """Shape expected by fetch_meta_ads.py's match_studio(): {code, name, state, match}.
+
+    Includes any studio with a `code` OR a `meta.match` — not just ones with a
+    match keyword — because match_studio() checks the code embedded in the ad/
+    adset name first (e.g. "26-FL-018-01 Open" -> FL-018) and only falls back to
+    the keyword. A studio with a code but no match keyword is still matchable.
+    """
     rows = []
     for s in load_studios():
+        code = s.get("code")
         match = s.get("meta", {}).get("match")
-        if not match:
+        if not code and not match:
             continue
-        rows.append({"code": s["code"], "name": s["name"], "state": s.get("state"), "match": match})
+        rows.append({"code": code, "name": s["name"], "state": s.get("state"), "match": match})
     return rows
 
 

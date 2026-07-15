@@ -59,9 +59,19 @@ log = logging.getLogger("meta-ads-etl")
 # ── classification helpers (unchanged) ──────────────────────────────
 
 def match_studio(name: str, studios: list[dict]) -> dict | None:
-    n = (name or "").lower()
+    """Match an ad/adset name to a studio. Every ad follows a "{date}-{CODE}-{seq}
+    - ..." naming convention (e.g. "26-FL-018-01 Open"), so the studio's own code
+    is checked first — it's embedded reliably even when the studio name/keyword
+    isn't (many NSO adsets say just "Open", never the studio name). Falls back to
+    the keyword `match` substring for any legacy naming that doesn't embed a code.
+    """
+    n = name or ""
     for s in studios:
-        if s.get("match") and s["match"].lower() in n:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
+    for s in studios:
+        if s.get("match") and s["match"].lower() in n_lower:
             return s
     return None
 
