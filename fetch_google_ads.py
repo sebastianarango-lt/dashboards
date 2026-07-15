@@ -60,52 +60,14 @@ log = logging.getLogger("google-ads-etl")
 
 # ════════════════════════════════════════════════════════════════════════════
 # STUDIO ATTRIBUTION
-# Campaign name regex map derived from Looker Studio CASE formula.
-# Returns the canonical studio name (no "SWEAT440 " prefix) used across
-# all dashboard data sources as the shared merge/filter key.
+# Campaign name regex map, generated from studios.json (canonical registry) —
+# each studio's google_ads.pattern (true regex) or google_ads.match (plain
+# substring) field. Returns the canonical studio name (no "SWEAT440 " prefix)
+# used across all dashboard data sources as the shared merge/filter key.
 # ════════════════════════════════════════════════════════════════════════════
-# Each entry: (regex_pattern, canonical_name)
-# Patterns are tested in order; first match wins.
-CAMPAIGN_STUDIO_MAP: list[tuple[re.Pattern, str]] = [
-    (re.compile(r"iramar",         re.IGNORECASE), "Miramar"),
-    (re.compile(r"FIDI|FiDi|Financial District", re.IGNORECASE), "NYC - Financial District"),
-    (re.compile(r"helsea",         re.IGNORECASE), "NYC - Chelsea"),
-    (re.compile(r"rickell",        re.IGNORECASE), "Miami - Brickell"),
-    (re.compile(r"Sobe|Miami Beach|SoBe", re.IGNORECASE), "Miami Beach"),
-    (re.compile(r"Doral",          re.IGNORECASE), "Doral"),
-    (re.compile(r"Gables",         re.IGNORECASE), "Coral Gables"),
-    (re.compile(r"eerfield",       re.IGNORECASE), "Deerfield Beach"),
-    (re.compile(r"pper|iscayne",   re.IGNORECASE), "Miami - Upper East Side"),
-    (re.compile(r"Springs",        re.IGNORECASE), "Coral Springs"),
-    (re.compile(r"River|Toms",     re.IGNORECASE), "Toms River"),
-    (re.compile(r"usic Row|Music", re.IGNORECASE), "Music Row"),
-    (re.compile(r"ighland",        re.IGNORECASE), "Austin - Highland"),
-    (re.compile(r"ilker|Zilker",   re.IGNORECASE), "Austin - Zilker"),
-    (re.compile(r"idtown",         re.IGNORECASE), "Miami - Midtown"),
-    (re.compile(r"ulch|apitol",    re.IGNORECASE), "Capitol View"),
-    (re.compile(r"cean",           re.IGNORECASE), "Ocean Township"),
-    (re.compile(r"NODA",           re.IGNORECASE), "Charlotte - Noda"),
-    (re.compile(r"South Miami",    re.IGNORECASE), "South Miami"),
-    (re.compile(r"oconut|Coconut|Grove|FL011", re.IGNORECASE), "Miami - Coconut Grove"),
-    (re.compile(r"untsville",      re.IGNORECASE), "Huntsville"),
-    (re.compile(r"adison",         re.IGNORECASE), "Madison"),
-    (re.compile(r"Lakes",          re.IGNORECASE), "Miami Lakes"),
-    (re.compile(r"Olas",           re.IGNORECASE), "Fort Lauderdale - Las Olas"),
-    (re.compile(r"embroke",        re.IGNORECASE), "Pembroke Pines"),
-    (re.compile(r"Boca",           re.IGNORECASE), "Boca Raton"),
-    (re.compile(r"West Palm",      re.IGNORECASE), "West Palm Beach"),
-    (re.compile(r"Wall",           re.IGNORECASE), "Wall Township"),
-    (re.compile(r"astchester",     re.IGNORECASE), "Eastchester"),
-    (re.compile(r"Slope",          re.IGNORECASE), "NYC - Park Slope"),
-    (re.compile(r"Prestonwood",    re.IGNORECASE), "Dallas - Prestonwood"),
-    (re.compile(r"Reston",         re.IGNORECASE), "Reston"),
-    (re.compile(r"inecrest",       re.IGNORECASE), "Pinecrest"),
-    (re.compile(r"Naples",         re.IGNORECASE), "Naples Mercato"),
-    (re.compile(r"Aventura",       re.IGNORECASE), "Aventura"),
-    (re.compile(r"Herriman",       re.IGNORECASE), "Herriman"),
-    (re.compile(r"Phillips|Dr.?\s*Phillips", re.IGNORECASE), "Dr Phillips"),
-    (re.compile(r"NYC|New York",   re.IGNORECASE), "NYC - Financial District"),
-]
+import studios as _studios_registry
+
+CAMPAIGN_STUDIO_MAP: list[tuple[re.Pattern, str]] = _studios_registry.google_ads_campaign_map()
 
 
 def studio_from_campaign(campaign_name: str) -> str | None:

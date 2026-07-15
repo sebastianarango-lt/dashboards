@@ -44,12 +44,13 @@ pillar_tokens:
 # y todos los ad sets quedan agrupados bajo ese nombre.
 #
 # Si tus ad sets tienen nombres como "NSO Charlotte NoDa - DINKS" y
-# quieres desglosar por studio dentro de la misma campaña, añade:
+# quieres desglosar por studio dentro de la misma campaña, añade los
+# codigos (resueltos contra el registro canonico en ../studios.json):
 #
-# studios:
-#   - { code: "NC-001", name: "Charlotte NoDa",   state: "NC", match: "Charlotte" }
-#   - { code: "FL-001", name: "Miami Beach",       state: "FL", match: "Miami Beach" }
-#   ...
+# studio_codes: [NC-001, FL-001]
+#
+# (El formato legacy `studios: [{code, name, state, match}, ...]` sigue
+# funcionando si lo prefieres.)
 # -----------------------------------------------------------------------
 studios: []
 

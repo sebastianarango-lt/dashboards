@@ -43,21 +43,13 @@ load_dotenv(Path(__file__).parent.parent / ".env")
 
 import snowflake.connector
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+import studios as studios_registry
+
 # ---------------------------------------------------------------------------
-# Studio registry  {snowflake_studio_id: {name, code}}
+# Studio registry  {snowflake_studio_id: {name, code}} — sourced from studios.json
 # ---------------------------------------------------------------------------
-NSO_STUDIOS = {
-    5751381: {"name": "SWEAT440 Naples - Mercato",  "code": "FL-019"},
-    5752080: {"name": "SWEAT440 Herriman",           "code": "UT-001"},
-    5750130: {"name": "SWEAT440 Reston",             "code": "VA-001"},
-    5753281: {"name": "SWEAT440 Dr Phillips",        "code": "FL-020"},
-    5753604: {"name": "SWEAT440 Aventura",           "code": "FL-018"},
-    5753608: {"name": "SWEAT440 North Miami",        "code": "FL-021"},
-    5753491: {"name": "SWEAT440 Dallas - Uptown",    "code": "TX-004"},
-    5753073: {"name": "SWEAT440 Old Bridge",         "code": "NJ-004"},
-    5754676: {"name": "SWEAT440 Dunwoody",           "code": "GA-001"},
-    5753113: {"name": "SWEAT440 Middletown",         "code": "NJ-005"},
-}
+NSO_STUDIOS = studios_registry.nso_studios_by_snowflake_id()
 
 ID_LIST       = ",".join(str(i) for i in NSO_STUDIOS)
 DEFAULT_START = "2026-01-01"

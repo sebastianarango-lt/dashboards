@@ -37,13 +37,10 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-import yaml
-
 from meta_client import MetaClient, leads_of, purchases_of, trials_of
 
 # ── paths ────────────────────────────────────────────────────────────
 REPO_ROOT      = Path(__file__).resolve().parent
-CONFIG_PATH    = REPO_ROOT / "config-meta.yaml"
 OUT_PATH       = REPO_ROOT / "meta-ads-data.json"
 PAID_ADS_PATH  = REPO_ROOT / "meta-ads-baked.json"  # static baked monthly spend, never overwritten
 
@@ -187,12 +184,10 @@ def previous_quarter_bounds(today: date) -> tuple[str, str]:
 # ── main ETL ─────────────────────────────────────────────────────────
 
 def run():
-    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-        cfg = yaml.safe_load(f)
+    import studios as studios_registry
 
-    account_cfg  = cfg["meta_account"]
-    ad_account   = account_cfg["ad_account_id"]   # e.g. "act_1553887681409034"
-    studios_cfg  = account_cfg["studios"]
+    ad_account  = studios_registry.defaults()["meta_ad_account_id"]  # e.g. "act_1553887681409034"
+    studios_cfg = studios_registry.meta_studio_rows()
 
     today     = date.today()
     today_iso = today.isoformat()

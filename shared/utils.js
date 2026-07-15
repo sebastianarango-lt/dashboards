@@ -147,20 +147,55 @@ function studioColor(name){
 }
 
 // -- Default exclusions (can be overridden per dashboard) -------------------
+// Populated from studios.json by loadStudiosRegistry() — call it once in each
+// dashboard's loadData(), before buildMultiSelect(). Kept as `const` arrays
+// (mutated in place via .push, never reassigned) so every file that already
+// references these exact array objects keeps working unchanged.
 const DEFAULT_EXCL_SOURCES = ['ClassPass / Platforms','Grassroots'];
-const DEFAULT_EXCL_STUDIOS = [
-  'Aventura','Dallas - Uptown','Dunwoody','Fort Myers','Herriman',
-  'Middletown','Naples - Mercato','Nashville - Capitol View','North Miami',
-  'Old Bridge','Orlando - Dr Phillips','Reston'
-];
-const NSO_STUDIOS = [
-  'Aventura','Dallas - Uptown','Dunwoody','Fort Myers','Herriman',
-  'Middletown','Naples - Mercato','North Miami',
-  'Old Bridge','Orlando - Dr Phillips','Reston'
-];
-const CLOSED_STUDIOS = [
-  'Nashville - Capitol View'
-];
+const DEFAULT_EXCL_STUDIOS = [];
+const NSO_STUDIOS = [];
+const CLOSED_STUDIOS = [];
+
+// google-ads-data.json rows written before the studios.json migration used
+// shorter/older studio names. This is a historical-compat shim, not studio
+// config — new fetches already write canonical names, so this map should
+// never need new entries.
+const GOOGLE_STUDIO_ALIAS = {
+  'Pinecrest':               'Pinecrest - Palmetto Bay',
+  'Naples Mercato':          'Naples - Mercato',
+  'Dr Phillips':             'Orlando - Dr Phillips',
+  'Capitol View':            'Nashville - Capitol View',
+  'NYC - Financial District':'NYC - FiDi',
+};
+function googleStudioName(raw) { return GOOGLE_STUDIO_ALIAS[raw] || raw; }
+
+// Canonical studio code -> name (no "SWEAT440 " prefix). Populated from
+// studios.json by loadStudiosRegistry().
+const META_CODE_TO_STUDIO = {};
+
+// Fetches studios.json and populates DEFAULT_EXCL_STUDIOS / NSO_STUDIOS /
+// CLOSED_STUDIOS / META_CODE_TO_STUDIO in place. Call once per page load,
+// before buildMultiSelect() or any META_CODE_TO_STUDIO lookup.
+async function loadStudiosRegistry(basePath = '') {
+  let registry = { studios: [] };
+  try {
+    const res = await fetch(basePath + 'studios.json?_=' + Date.now());
+    registry = await res.json();
+  } catch (e) {
+    console.warn('studios.json unavailable:', e);
+  }
+  DEFAULT_EXCL_STUDIOS.length = 0;
+  NSO_STUDIOS.length = 0;
+  CLOSED_STUDIOS.length = 0;
+  for (const key of Object.keys(META_CODE_TO_STUDIO)) delete META_CODE_TO_STUDIO[key];
+  for (const s of (registry.studios || [])) {
+    if (s.excluded_default) DEFAULT_EXCL_STUDIOS.push(s.name);
+    if (s.status === 'nso') NSO_STUDIOS.push(s.name);
+    if (s.status === 'closed') CLOSED_STUDIOS.push(s.name);
+    if (s.code) META_CODE_TO_STUDIO[s.code] = s.name;
+  }
+  return registry;
+}
 
 function localDateStr(d) { return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
