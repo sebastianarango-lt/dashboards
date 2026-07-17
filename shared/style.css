@@ -112,7 +112,7 @@
   .data-table td.num{text-align:right;font-weight:600;color:#0084B5}
   .data-table td.pct{text-align:right;font-size:11px;color:#5a7a8a}
   .data-table tr:last-child td{border-bottom:none}
-  .data-table tr:hover td{background:#f7fbff}
+  .data-table tr:not(.no-hover):hover td{background:#f7fbff}
   .bar-mini{display:inline-block;height:6px;border-radius:3px;background:#00A3E0;vertical-align:middle;margin-right:6px}
 
   /* Ring chart container */
