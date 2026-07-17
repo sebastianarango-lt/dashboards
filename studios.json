@@ -102,6 +102,28 @@
       "tier_pricing": null
     },
     {
+      "name": "Burlington",
+      "code": "MA-001",
+      "state": "MA",
+      "status": "nso",
+      "excluded_default": true,
+      "meta": {
+        "page_id": null,
+        "instagram_account_id": "17841416960489049"
+      },
+      "google_ads": {},
+      "ga4": {
+        "studio_page_path": "/gyms/locations-massachusetts-burlington/"
+      },
+      "gbp": {
+        "location_id": "14351316046294416379",
+        "code": "S440-Burlington"
+      },
+      "snowflake_id": 5755228,
+      "social_slug": "burlington",
+      "tier_pricing": null
+    },
+    {
       "name": "Charlotte - Noda",
       "code": "NC-001",
       "state": "NC",
