@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWEAT440 — Add Studio</title>
+<link rel="icon" href="../favicon.jpg"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Open Sans',sans-serif;background:#0084B5;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 24px 80px}
+
+.back-link{position:fixed;top:24px;left:24px;display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.65);font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;text-decoration:none;transition:color .15s}
+.back-link:hover{color:#fff}
+
+.logo-wrap{margin-bottom:32px;text-align:center}
+.logo-wrap img{height:42px}
+
+.page-title{font-family:'Oswald',sans-serif;font-style:italic;font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff;text-align:center;margin-bottom:8px}
+.page-sub{font-size:13px;color:rgba(255,255,255,.75);text-align:center;margin-bottom:32px;max-width:520px;line-height:1.6}
+
+.card{background:#fff;border-radius:20px;padding:40px 40px 36px;width:100%;max-width:640px;box-shadow:0 20px 60px rgba(0,0,0,.22)}
+
+.section-title{font-family:'Oswald',sans-serif;font-style:italic;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00A3E0;margin:28px 0 14px;padding-top:20px;border-top:1px solid #edf3f7}
+.section-title:first-child{margin-top:0;padding-top:0;border-top:none}
+.section-hint{font-size:12px;color:#8aaabb;margin:-8px 0 14px;line-height:1.5}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row.three{grid-template-columns:1fr 1fr 1fr}
+.form-group{margin-bottom:16px}
+label{display:block;font-family:'Oswald',sans-serif;font-style:italic;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#5a7a8a;margin-bottom:6px}
+label .opt{color:#b7cbd6;text-transform:none;font-style:normal;letter-spacing:0}
+input,select{width:100%;padding:10px 14px;border:1.5px solid #c0d4df;border-radius:8px;font-size:14px;font-family:'Open Sans',sans-serif;color:#1a1a2e;outline:none;transition:border-color .15s;background:#fff}
+input:focus,select:focus{border-color:#00A3E0}
+.checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.checkbox-row input{width:auto}
+.checkbox-row label{margin:0;font-size:13px;text-transform:none;font-style:normal;color:#1a1a2e;letter-spacing:0;font-family:'Open Sans',sans-serif}
+
+.submit-btn{width:100%;padding:13px;background:#00A3E0;color:#fff;border:none;border-radius:8px;font-family:'Oswald',sans-serif;font-style:italic;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;margin-top:8px;transition:background .15s}
+.submit-btn:hover{background:#0084B5}
+.submit-btn:disabled{background:#a0c8df;cursor:not-allowed}
+
+.msg{display:none;border-radius:8px;padding:12px 16px;font-size:13px;margin-top:16px;line-height:1.6}
+.msg.show{display:block}
+.msg.error{background:#fff0f0;border:1px solid #f5c6c6;color:#c0392b}
+.msg.success{background:#e8faf0;border:1px solid #a8e6c3;color:#0a8a4a}
+.msg.success a{color:#0a8a4a;font-weight:700;text-decoration:underline}
+
+.mode-toggle{display:flex;gap:8px;width:100%;max-width:640px;margin-bottom:24px}
+.mode-btn{flex:1;padding:11px;border:1.5px solid rgba(255,255,255,.4);border-radius:8px;background:transparent;color:rgba(255,255,255,.85);font-family:'Oswald',sans-serif;font-style:italic;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:all .15s}
+.mode-btn.active{background:#fff;color:#0084B5;border-color:#fff}
+.mode-btn:not(.active):hover{border-color:#fff;color:#fff}
+
+@media(max-width:600px){
+  .row,.row.three{grid-template-columns:1fr}
+  .card{padding:28px 22px 24px}
+  .back-link{position:static;margin-bottom:20px}
+}
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">← Marketing Admin Reports</a>
+
+<div class="logo-wrap">
+  <img src="../logo.png" alt="SWEAT440"/>
+</div>
+
+<div class="page-title">Add Studio</div>
+<div class="page-sub" id="pageSubAdd">Opens a pull request adding a new entry to <code>studios.json</code>, the canonical studio registry every dashboard and data pipeline reads from. A teammate reviews and merges it before it affects any live pipeline.</div>
+<div class="page-sub" id="pageSubEdit" style="display:none">Opens a pull request updating an existing entry in <code>studios.json</code> — blank optional fields are left unchanged, so you can fill in just what's missing without disturbing the rest. A teammate reviews and merges it before it affects any live pipeline.</div>
+
+<div class="mode-toggle">
+  <button type="button" id="modeAddBtn" class="mode-btn active" onclick="setMode('add')">Add New Studio</button>
+  <button type="button" id="modeEditBtn" class="mode-btn" onclick="setMode('edit')">Edit Existing Studio</button>
+</div>
+
+<div class="card">
+  <form id="addStudioForm" onsubmit="handleSubmit(event)">
+
+    <div class="form-group" id="editPickerGroup" style="display:none">
+      <label for="f_pick_existing">Select studio to edit</label>
+      <select id="f_pick_existing" onchange="loadExistingStudio()">
+        <option value="">— choose a studio —</option>
+      </select>
+    </div>
+
+    <div class="section-title">Identity</div>
+    <div class="row">
+      <div class="form-group">
+        <label for="f_name">Studio name *</label>
+        <input type="text" id="f_name" required placeholder="e.g. Dallas - Uptown"/>
+      </div>
+      <div class="form-group">
+        <label for="f_state">State *</label>
+        <input type="text" id="f_state" required maxlength="2" placeholder="e.g. TX" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase(); suggestCode()"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label for="f_code">Code <span class="opt">(auto-suggested, editable)</span></label>
+        <input type="text" id="f_code" placeholder="e.g. TX-005"/>
+      </div>
+      <div class="form-group">
+        <label for="f_status">Status</label>
+        <select id="f_status">
+          <option value="nso" selected>NSO (new studio opening)</option>
+          <option value="open">Open</option>
+          <option value="closed">Closed</option>
+        </select>
+      </div>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="f_excluded" checked/>
+      <label for="f_excluded">Exclude from OS dashboards by default (typical for a new studio opening - NSO)</label>
+    </div>
+
+    <div class="section-title">Meta Ads</div>
+    <div class="section-hint">Leave blank if the studio isn't running Meta campaigns yet — fill in later.</div>
+    <div class="row">
+      <div class="form-group">
+        <label for="f_meta_match">Campaign/adset name match <span class="opt">(optional)</span></label>
+        <input type="text" id="f_meta_match" placeholder="e.g. Uptown"/>
+      </div>
+      <div class="form-group">
+        <label for="f_meta_ad_account">Ad account ID <span class="opt">(optional, defaults to corporate)</span></label>
+        <input type="text" id="f_meta_ad_account" placeholder="act_..."/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label for="f_meta_page">Facebook page ID <span class="opt">(optional)</span></label>
+        <input type="text" id="f_meta_page"/>
+      </div>
+      <div class="form-group">
+        <label for="f_meta_ig">Instagram account ID <span class="opt">(optional)</span></label>
+        <input type="text" id="f_meta_ig"/>
+      </div>
+    </div>
+
+    <div class="section-title">Google Ads</div>
+    <div class="row">
+      <div class="form-group">
+        <label for="f_gads_match">Campaign name match <span class="opt">(optional)</span></label>
+        <input type="text" id="f_gads_match" placeholder="e.g. Uptown"/>
+      </div>
+      <div class="form-group">
+        <label for="f_gads_cid">Customer ID <span class="opt">(optional)</span></label>
+        <input type="text" id="f_gads_cid" placeholder="e.g. 385-801-4125"/>
+      </div>
+    </div>
+
+    <div class="section-title">GA4 / GBP / Snowflake</div>
+    <div class="row">
+      <div class="form-group">
+        <label for="f_ga4_path">GA4 page path <span class="opt">(optional)</span></label>
+        <input type="text" id="f_ga4_path" placeholder="/gyms/..."/>
+      </div>
+      <div class="form-group">
+        <label for="f_gbp_loc">GBP location ID <span class="opt">(optional)</span></label>
+        <input type="text" id="f_gbp_loc"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="f_snowflake_id">Snowflake studio ID <span class="opt">(optional — usually not known yet at NSO stage)</span></label>
+      <input type="text" id="f_snowflake_id" placeholder="e.g. 5753491"/>
+    </div>
+
+    <div class="section-title">Presale tier pricing <span class="opt" style="text-transform:none">(optional)</span></div>
+    <div class="row three">
+      <div class="form-group">
+        <label for="f_tier1">Tier 1 price</label>
+        <input type="number" id="f_tier1" placeholder="99"/>
+      </div>
+      <div class="form-group">
+        <label for="f_tier2">Tier 2 price</label>
+        <input type="number" id="f_tier2" placeholder="129"/>
+      </div>
+      <div class="form-group">
+        <label for="f_tier3">Tier 3 price</label>
+        <input type="number" id="f_tier3" placeholder="149"/>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">Open Pull Request</button>
+    <div class="msg" id="msg"></div>
+  </form>
+</div>
+
+<script src="../users.js"></script>
+<script src="../shared/auth.js"></script>
+<script>
+const user = checkAuth();
+if (user) {
+  if (user.role !== 'admin') location.replace('../home.html');
+}
+
+const _PROXY_URL    = 'https://sweat440-refresh-proxy.sweat440.workers.dev';
+const _PROXY_SECRET = 'AnwxoPAsDK9vUXVY';
+
+let _studiosCache = null;
+let _mode = 'add'; // 'add' | 'edit'
+let _editingOriginalName = null;
+
+async function loadStudiosForSuggest() {
+  try {
+    const res = await fetch('../studios.json?_=' + Date.now());
+    _studiosCache = await res.json();
+  } catch (e) {
+    console.warn('studios.json unavailable:', e);
+    _studiosCache = { studios: [] };
+  }
+  populateExistingPicker();
+}
+loadStudiosForSuggest();
+
+function suggestCode() {
+  if (_mode === 'edit') return; // code is prefilled from the picked studio, not auto-suggested
+  const state = document.getElementById('f_state').value.trim().toUpperCase();
+  const codeInput = document.getElementById('f_code');
+  if (!state || !_studiosCache || codeInput.dataset.userEdited === 'true') return;
+  const nums = (_studiosCache.studios || [])
+    .map(s => s.code)
+    .filter(c => c && c.startsWith(state + '-'))
+    .map(c => parseInt(c.split('-')[1], 10))
+    .filter(n => !isNaN(n));
+  const next = nums.length ? Math.max(...nums) + 1 : 1;
+  codeInput.value = `${state}-${String(next).padStart(3, '0')}`;
+}
+document.getElementById('f_code').addEventListener('input', function() { this.dataset.userEdited = 'true'; });
+
+function showMsg(text, cls) {
+  const el = document.getElementById('msg');
+  el.textContent = text;
+  el.className = 'msg show ' + cls;
+}
+
+function populateExistingPicker() {
+  const sel = document.getElementById('f_pick_existing');
+  const studios = ((_studiosCache && _studiosCache.studios) || []).slice().sort((a, b) => a.name.localeCompare(b.name));
+  sel.innerHTML = '<option value="">— choose a studio —</option>';
+  for (const s of studios) {
+    const opt = document.createElement('option');
+    opt.value = s.name;
+    opt.textContent = s.name + (s.code ? ` (${s.code})` : '');
+    sel.appendChild(opt);
+  }
+}
+
+function resetForm() {
+  document.getElementById('addStudioForm').reset();
+  document.getElementById('f_code').dataset.userEdited = 'false';
+  document.getElementById('f_pick_existing').value = '';
+  _editingOriginalName = null;
+  document.getElementById('msg').className = 'msg';
+}
+
+function setMode(mode) {
+  _mode = mode;
+  document.getElementById('modeAddBtn').classList.toggle('active', mode === 'add');
+  document.getElementById('modeEditBtn').classList.toggle('active', mode === 'edit');
+  document.getElementById('editPickerGroup').style.display = mode === 'edit' ? '' : 'none';
+  document.getElementById('pageSubAdd').style.display = mode === 'add' ? '' : 'none';
+  document.getElementById('pageSubEdit').style.display = mode === 'edit' ? '' : 'none';
+  document.getElementById('submitBtn').textContent = mode === 'add' ? 'Open Pull Request' : 'Open Update Pull Request';
+  resetForm();
+  populateExistingPicker();
+}
+
+function loadExistingStudio() {
+  const name = document.getElementById('f_pick_existing').value;
+  if (!name) { _editingOriginalName = null; return; }
+  const s = ((_studiosCache && _studiosCache.studios) || []).find(x => x.name === name);
+  if (!s) return;
+  _editingOriginalName = s.name;
+
+  document.getElementById('f_name').value = s.name || '';
+  document.getElementById('f_state').value = s.state || '';
+  document.getElementById('f_code').value = s.code || '';
+  document.getElementById('f_code').dataset.userEdited = 'true';
+  document.getElementById('f_status').value = s.status || 'nso';
+  document.getElementById('f_excluded').checked = !!s.excluded_default;
+  document.getElementById('f_meta_match').value = (s.meta && s.meta.match) || '';
+  document.getElementById('f_meta_ad_account').value = (s.meta && s.meta.ad_account_id) || '';
+  document.getElementById('f_meta_page').value = (s.meta && s.meta.page_id) || '';
+  document.getElementById('f_meta_ig').value = (s.meta && s.meta.instagram_account_id) || '';
+  document.getElementById('f_gads_match').value = (s.google_ads && s.google_ads.match) || '';
+  document.getElementById('f_gads_cid').value = (s.google_ads && s.google_ads.customer_id) || '';
+  document.getElementById('f_ga4_path').value = (s.ga4 && s.ga4.studio_page_path) || '';
+  document.getElementById('f_gbp_loc').value = (s.gbp && s.gbp.location_id) || '';
+  document.getElementById('f_snowflake_id').value = (s.snowflake_id != null) ? s.snowflake_id : '';
+  const tp = s.tier_pricing || {};
+  document.getElementById('f_tier1').value = (tp.tier1_price != null) ? tp.tier1_price : '';
+  document.getElementById('f_tier2').value = (tp.tier2_price != null) ? tp.tier2_price : '';
+  document.getElementById('f_tier3').value = (tp.tier3_price != null) ? tp.tier3_price : '';
+  document.getElementById('msg').className = 'msg';
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const name  = document.getElementById('f_name').value.trim();
+  const state = document.getElementById('f_state').value.trim().toUpperCase();
+  const code  = document.getElementById('f_code').value.trim().toUpperCase();
+
+  if (!name || !state) return;
+  if (_mode === 'edit' && !_editingOriginalName) {
+    showMsg('Pick a studio to edit first.', 'error');
+    return;
+  }
+
+  const btnLabel = _mode === 'add' ? 'Open Pull Request' : 'Open Update Pull Request';
+  const confirmText = _mode === 'add'
+    ? `Open a pull request adding "${name}" to studios.json?`
+    : `Open a pull request updating "${_editingOriginalName}" in studios.json?`;
+  if (!confirm(confirmText)) return;
+
+  const studio = {
+    name, state, code: code || null,
+    status: document.getElementById('f_status').value,
+    excluded_default: document.getElementById('f_excluded').checked,
+    meta: {
+      match: document.getElementById('f_meta_match').value.trim() || null,
+      ad_account_id: document.getElementById('f_meta_ad_account').value.trim() || null,
+      page_id: document.getElementById('f_meta_page').value.trim() || null,
+      instagram_account_id: document.getElementById('f_meta_ig').value.trim() || null,
+    },
+    google_ads: {
+      match: document.getElementById('f_gads_match').value.trim() || null,
+      customer_id: document.getElementById('f_gads_cid').value.trim() || null,
+    },
+    ga4: { studio_page_path: document.getElementById('f_ga4_path').value.trim() || null },
+    gbp: { location_id: document.getElementById('f_gbp_loc').value.trim() || null },
+    snowflake_id: document.getElementById('f_snowflake_id').value.trim() || null,
+    social_slug: null,
+    tier_pricing: (function() {
+      const t1 = document.getElementById('f_tier1').value;
+      const t2 = document.getElementById('f_tier2').value;
+      const t3 = document.getElementById('f_tier3').value;
+      if (!t1 && !t2 && !t3) return null;
+      const out = {};
+      if (t1) out.tier1_price = Number(t1);
+      if (t2) out.tier2_price = Number(t2);
+      if (t3) out.tier3_price = Number(t3);
+      return out;
+    })(),
+  };
+
+  btn.disabled = true;
+  btn.textContent = _mode === 'add' ? 'Opening pull request…' : 'Opening update pull request…';
+  document.getElementById('msg').className = 'msg';
+
+  const payload = _mode === 'add'
+    ? { action: 'add_studio', studio }
+    : { action: 'update_studio', originalName: _editingOriginalName, studio };
+
+  try {
+    const res = await fetch(_PROXY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-App-Secret': _PROXY_SECRET },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.ok && data.prUrl) {
+      btn.textContent = '✓ Pull request opened';
+      const safeUrl = String(data.prUrl);
+      const a = document.createElement('a');
+      a.href = safeUrl; a.textContent = safeUrl; a.target = '_blank'; a.rel = 'noopener';
+      const wrap = document.createElement('span');
+      wrap.textContent = 'Pull request opened: ';
+      wrap.appendChild(a);
+      const msgEl = document.getElementById('msg');
+      msgEl.innerHTML = '';
+      msgEl.appendChild(wrap);
+      msgEl.className = 'msg show success';
+      setTimeout(() => { btn.disabled = false; btn.textContent = btnLabel; }, 4000);
+    } else {
+      btn.disabled = false;
+      btn.textContent = btnLabel;
+      showMsg(data.error || `Failed to open pull request (${res.status}).`, 'error');
+    }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = btnLabel;
+    showMsg('Failed to reach refresh service: ' + e.message, 'error');
+  }
+}
+</script>
+</body>
+</html>

@@ -37,13 +37,10 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-import yaml
-
 from meta_client import MetaClient, leads_of, purchases_of, trials_of
 
 # ── paths ────────────────────────────────────────────────────────────
 REPO_ROOT      = Path(__file__).resolve().parent
-CONFIG_PATH    = REPO_ROOT / "config-meta.yaml"
 OUT_PATH       = REPO_ROOT / "meta-ads-data.json"
 PAID_ADS_PATH  = REPO_ROOT / "meta-ads-baked.json"  # static baked monthly spend, never overwritten
 
@@ -62,9 +59,19 @@ log = logging.getLogger("meta-ads-etl")
 # ── classification helpers (unchanged) ──────────────────────────────
 
 def match_studio(name: str, studios: list[dict]) -> dict | None:
-    n = (name or "").lower()
+    """Match an ad/adset name to a studio. Every ad follows a "{date}-{CODE}-{seq}
+    - ..." naming convention (e.g. "26-FL-018-01 Open"), so the studio's own code
+    is checked first — it's embedded reliably even when the studio name/keyword
+    isn't (many NSO adsets say just "Open", never the studio name). Falls back to
+    the keyword `match` substring for any legacy naming that doesn't embed a code.
+    """
+    n = name or ""
     for s in studios:
-        if s.get("match") and s["match"].lower() in n:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
+    for s in studios:
+        if s.get("match") and s["match"].lower() in n_lower:
             return s
     return None
 
@@ -187,12 +194,10 @@ def previous_quarter_bounds(today: date) -> tuple[str, str]:
 # ── main ETL ─────────────────────────────────────────────────────────
 
 def run():
-    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-        cfg = yaml.safe_load(f)
+    import studios as studios_registry
 
-    account_cfg  = cfg["meta_account"]
-    ad_account   = account_cfg["ad_account_id"]   # e.g. "act_1553887681409034"
-    studios_cfg  = account_cfg["studios"]
+    ad_account  = studios_registry.defaults()["meta_ad_account_id"]  # e.g. "act_1553887681409034"
+    studios_cfg = studios_registry.meta_studio_rows()
 
     today     = date.today()
     today_iso = today.isoformat()

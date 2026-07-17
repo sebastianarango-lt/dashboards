@@ -7,28 +7,24 @@ then patches nso_scorecard_data.json with 'tier_rmr_by_week' per studio.
 Run from nso-dashboard/:
     python scripts/fetch_tier_rmr.py
 """
-import json, os
+import json, os, sys
 from datetime import datetime, timedelta
+from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 import snowflake.connector
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+import studios as studios_registry
+
 SCORECARD_FILE = "nso_scorecard_data.json"
 YESTERDAY = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
 
-# Per-studio pricing config (source: NSO Config Google Sheet).
-# tier0_price is a special founders tier below the normal T1 (Reston only).
-# Used only for RMR estimation — tier assignment uses SKU_TIER_MAP below.
-STUDIO_PRICING = {
-    "FL-019": {"tier1_price": 99,  "tier2_price": 129, "tier3_price": 149},  # Naples
-    "VA-001": {"tier0_price": 99,  "tier1_price": 129, "tier2_price": 149},  # Reston: founders=$99
-    "UT-001": {"tier1_price": 99,  "tier2_price": 129, "tier3_price": 149},  # Herriman
-    "FL-020": {"tier1_price": 99,  "tier2_price": 129, "tier3_price": 149},  # Dr Phillips
-    "FL-018": {"tier1_price": 129, "tier2_price": 149},                       # Aventura
-    "FL-021": {"tier1_price": 129, "tier2_price": 149},                       # North Miami
-    "TX-004": {"tier1_price": 129, "tier2_price": 149},                       # Dallas Uptown
-    "NJ-004": {"tier1_price": 99,  "tier2_price": 129},                       # Old Bridge
-}
+# Per-studio pricing config, sourced from studios.json's tier_pricing (originally
+# from the NSO Config Google Sheet). tier0_price is a special founders tier below
+# the normal T1 (Reston only). Used only for RMR estimation — tier assignment
+# uses SKU_TIER_MAP below.
+STUDIO_PRICING = studios_registry.tier_pricing_by_code()
 
 _STANDARD_SKU_TIERS = {
     "pre sale membership":  "t1",
@@ -74,17 +70,8 @@ def sku_to_tier(prod_desc, sku_tier_map):
     return sku_tier_map.get(prod_desc.strip().lower(), "t1")
 
 
-# Map Snowflake studio_id from scorecard JSON
-SNOWFLAKE_IDS = {
-    "FL-019": 5751381,  # Naples - Mercato
-    "VA-001": 5750130,  # Reston
-    "UT-001": 5752080,  # Herriman
-    "FL-020": 5753281,  # Dr Phillips
-    "FL-018": 5753604,  # Aventura
-    "FL-021": 5753608,  # North Miami
-    "TX-004": 5753491,  # Dallas - Uptown
-    "NJ-004": 5753073,  # Old Bridge
-}
+# Map Snowflake studio_id from scorecard JSON, sourced from studios.json.
+SNOWFLAKE_IDS = studios_registry.snowflake_id_by_code()
 
 
 def connect():

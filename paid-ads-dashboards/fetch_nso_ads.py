@@ -21,8 +21,10 @@ import yaml
 
 from meta_client import MetaClient, leads_of, purchases_of, trials_of
 
+REPO_ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(REPO_ROOT.parent))
+import studios as studios_registry
 
-REPO_ROOT   = Path(__file__).resolve().parent
 CONFIG_PATH = REPO_ROOT / "config-nso.yaml"
 OUT_PATH    = REPO_ROOT / "nso-ads-data.json"
 
@@ -37,15 +39,21 @@ log = logging.getLogger("nso-ads-etl")
 # ── helpers de clasificación ─────────────────────────────────────────
 def match_studio(name: str, studios: list[dict]) -> dict | None:
     """
-    Intenta casar el nombre de un ad set contra la lista de studios.
-    Primero busca coincidencias específicas (campo 'match' no vacío).
-    Si no hay ninguna, devuelve el primer studio catch-all (match='').
+    Intenta casar el nombre de un ad/adset contra la lista de studios.
+    1) Codigo del studio embebido en el nombre (ej. "26-FL-018-01 Open" -> FL-018)
+       -- confiable incluso cuando el nombre/keyword del studio no aparece.
+    2) Coincidencia por keyword (campo 'match' no vacio).
+    3) Catch-all (studio con match='').
     """
-    n = (name or "").lower()
+    n = name or ""
+    for s in studios:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
     catchall = None
     for s in studios:
         m = s.get("match", "")
-        if m and m.lower() in n:
+        if m and m.lower() in n_lower:
             return s
         if not m and catchall is None:
             catchall = s
@@ -249,13 +257,26 @@ def run_one(
     log.info(f"-- NSO Campaign: {display_name} [{campaign_id}]")
     log.info(f"   period: {date_start} -> {date_end}")
 
-    # Si no hay studios en el config, crea un catch-all con el nombre de la campaña
-    studios_cfg: list[dict] = cfg.get("studios") or [{
-        "code":  campaign_id,
-        "name":  display_name,
-        "state": "",
-        "match": "",   # catch-all: coincide con todo
-    }]
+    # Resolución de studios: studio_codes (via studios.json) > studios inline
+    # (legacy) > catch-all con el nombre de la campaña.
+    studio_codes = cfg.get("studio_codes")
+    if studio_codes:
+        by_code = studios_registry.by_code()
+        studios_cfg: list[dict] = []
+        for code in studio_codes:
+            s = by_code.get(code)
+            if not s:
+                log.warning(f"  studio_codes: no studios.json entry for code {code}, skipping")
+                continue
+            studios_cfg.append({"code": s["code"], "name": s["name"], "state": s.get("state") or "",
+                                 "match": s.get("meta", {}).get("match", "")})
+    else:
+        studios_cfg = cfg.get("studios") or [{
+            "code":  campaign_id,
+            "name":  display_name,
+            "state": "",
+            "match": "",   # catch-all: coincide con todo
+        }]
 
     ad_sets = meta.list_ad_sets(campaign_id)
     log.info(f"  {len(ad_sets)} ad sets")

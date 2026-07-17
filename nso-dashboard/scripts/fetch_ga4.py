@@ -21,8 +21,13 @@ Standalone (test mode):
 from __future__ import annotations
 
 import os
+import sys
 import argparse
 from datetime import date, timedelta
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+import studios as studios_registry
 
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import (
@@ -106,36 +111,18 @@ def fetch_traffic(
 # 2. All-pages fetch (NEW)
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Studio location page slugs across the entire SWEAT440 site.
-# Add new locations here as they launch.
-STUDIO_PAGE_SLUGS: list[str] = [
-    # Florida
-    "/gyms/locations-florida-pinecrest/",
-    "/gyms/locations-florida-doral/",
-    "/gyms/locations-florida-miami-beach/",
-    "/gyms/locations-florida-brickell/",
-    "/gyms/locations-florida-coral-gables/",
-    "/gyms/locations-florida-aventura/",
-    "/gyms/locations-florida-ft-lauderdale/",
-    "/gyms/locations-florida-pembroke-pines/",
-    "/gyms/locations-florida-boca-raton/",
-    "/gyms/locations-florida-west-palm-beach/",
-    "/gyms/locations-florida-orlando/",
-    "/gyms/locations-florida-naples-mercato/",
-    # Texas
-    "/gyms/locations-texas-austin-highland/",
+# Studio location page slugs across the entire SWEAT440 site. Sourced from
+# studios.json (canonical registry) for every studio with a known ga4.
+# studio_page_path, plus a small fallback list for pages that don't (yet)
+# correspond to a confirmed studio in the registry (pre-launch/unconfirmed —
+# add them to studios.json once confirmed, then remove from the fallback here).
+_PRELAUNCH_UNMAPPED_SLUGS = [
     "/gyms/locations-texas-austin-domain/",
-    "/gyms/locations-texas-dallas-prestonwood/",
     "/gyms/locations-texas-houston/",
-    # Utah
-    "/gyms/utah-herriman/",
-    # Virginia
-    "/gyms/virginia-reston/",
-    # California
     "/gyms/locations-california-los-angeles/",
     "/gyms/locations-california-san-diego/",
-    # Add more as needed
 ]
+STUDIO_PAGE_SLUGS: list[str] = studios_registry.ga4_page_slugs() + _PRELAUNCH_UNMAPPED_SLUGS
 
 
 def fetch_all_pages(

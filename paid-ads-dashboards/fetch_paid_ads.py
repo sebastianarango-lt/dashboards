@@ -18,10 +18,31 @@ import yaml
 
 from meta_client import MetaClient, leads_of, purchases_of, trials_of, count_actions, pixel_custom_leads_of, LEAD_ACTION_TYPES
 
-
 REPO_ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(REPO_ROOT.parent))
+import studios as studios_registry
+
 CONFIG_PATH = REPO_ROOT / "config.yaml"
 OUT_PATH = REPO_ROOT / "paid-ads-data.json"
+
+
+def resolve_campaign_studios(c: dict) -> list[dict]:
+    """Resolve a campaign's studio roster: `studio_codes` (list of codes, looked
+    up in the canonical studios.json registry) if present, else the legacy
+    inline `studios` list for backward compatibility."""
+    codes = c.get("studio_codes")
+    if codes:
+        by_code = studios_registry.by_code()
+        out = []
+        for code in codes:
+            s = by_code.get(code)
+            if not s:
+                log.warning(f"  studio_codes: no studios.json entry for code {code}, skipping")
+                continue
+            out.append({"code": s["code"], "name": s["name"], "state": s.get("state"),
+                        "match": s.get("meta", {}).get("match", "")})
+        return out
+    return c["studios"]
 
 DAILY_AD_STUDIO_START = "2026-04-01"  # earliest date for daily_ad_studio; grows forward indefinitely
 
@@ -36,9 +57,17 @@ log = logging.getLogger("paid-ads-etl")
 
 # ── helpers de clasificación ─────────────────────────────────────────
 def match_studio(name: str, studios: list[dict]) -> dict | None:
-    n = (name or "").lower()
+    """Match an ad/adset name to a studio. Checks the studio's own code first —
+    ads follow a "{date}-{CODE}-{seq} - ..." naming convention where the code is
+    always embedded, even when the studio name/keyword isn't (e.g. many NSO
+    adsets just say "Open"). Falls back to the keyword `match` substring."""
+    n = name or ""
     for s in studios:
-        if s.get("match") and s["match"].lower() in n:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
+    for s in studios:
+        if s.get("match") and s["match"].lower() in n_lower:
             return s
     return None
 
@@ -320,21 +349,7 @@ def run_one(meta: MetaClient, campaign_key: str, c: dict) -> dict:
             log.warning(f"  get_daily_insights for {_cid} failed: {_e}")
     log.info(f"  {len(daily)} daily rows")
 
-    studios_cfg = c["studios"]
-
-    # Normalize studio names to Snowflake canonical
-    _CANONICAL = {
-        "Charlotte - NoDa":      "Charlotte - Noda",
-        "Miami Brickell":        "Miami - Brickell",
-        "Miami Upper East Side": "Miami - Upper East Side",
-        "Midtown Miami":         "Miami - Midtown",
-        "Coconut Grove":         "Miami - Coconut Grove",
-        "NYC Chelsea":           "NYC - Chelsea",
-        "NYC Park Slope":        "NYC - Park Slope",
-    }
-    for s in studios_cfg:
-        if s.get("name") in _CANONICAL:
-            s["name"] = _CANONICAL[s["name"]]
+    studios_cfg = resolve_campaign_studios(c)
 
     def _empty_bucket():
         return {"spend": 0.0, "impressions": 0, "leads": 0, "ads": []}

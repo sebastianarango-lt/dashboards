@@ -25,50 +25,17 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parent.parent / ".env")
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+import studios as studios_registry
+
 BASE = "https://graph.facebook.com/v21.0"
 
 # All SWEAT440 studios — ig_id is discovered at runtime via the Meta API.
-# code = short slug used as the thumbnails sub-directory name.
-STUDIOS = [
-    {"name": "Coral Gables",          "code": "gables",        "page_id": "110268611810389",    "ig_id": None},
-    {"name": "Dallas - Prestonwood",  "code": "prestonwood",   "page_id": "845182982009071",    "ig_id": None},
-    {"name": "Toms River",            "code": "tomsriver",     "page_id": "108238962107956",    "ig_id": None},
-    {"name": "South Beach",           "code": "sobe",          "page_id": "105547208952141",    "ig_id": None},
-    {"name": "North Miami",           "code": "northmiami",    "page_id": "1145229115329264",   "ig_id": None},
-    {"name": "Austin - Highland",     "code": "highland",      "page_id": "351629338025804",    "ig_id": None},
-    {"name": "Miami Lakes",           "code": "miamilakes",    "page_id": "101752329601099",    "ig_id": None},
-    {"name": "Aventura",              "code": "aventura",      "page_id": "1047698415096383",   "ig_id": None},
-    {"name": "Eastchester",           "code": "eastchester",   "page_id": "664055870131827",    "ig_id": None},
-    {"name": "Boca Raton",            "code": "boca",          "page_id": "637367179456983",    "ig_id": None},
-    {"name": "Midtown Miami",         "code": "midtown",       "page_id": "103476569380316",    "ig_id": None},
-    {"name": "Orlando - Dr. Phillips","code": "drphillips",    "page_id": "986634234541338",    "ig_id": None},
-    {"name": "Dallas - Uptown",       "code": "uptown",        "page_id": "1013504171849728",   "ig_id": None},
-    {"name": "Herriman",              "code": "herriman",      "page_id": "1016504601542354",   "ig_id": None},
-    {"name": "Pinecrest",             "code": "pinecrest",     "page_id": "848877064975048",    "ig_id": None},
-    {"name": "Austin - Zilker",       "code": "zilker",        "page_id": "119087484495208",    "ig_id": None},
-    {"name": "Coral Springs",         "code": "coralsprings",  "page_id": "106485985557697",    "ig_id": None},
-    {"name": "South Miami",           "code": "southmiami",    "page_id": "116631111441913",    "ig_id": None},
-    {"name": "Deerfield Beach",       "code": "deerfield",     "page_id": "106597632212836",    "ig_id": None},
-    {"name": "Doral",                 "code": "doral",         "page_id": "103789732469470",    "ig_id": None},
-    {"name": "Brooklyn - Park Slope", "code": "parkslope",     "page_id": "681591261709097",    "ig_id": None},
-    {"name": "West Palm Beach",       "code": "westpalm",      "page_id": "703238786198886",    "ig_id": None},
-    {"name": "Coconut Grove",         "code": "coconutgrove",  "page_id": "196520916880971",    "ig_id": None},
-    {"name": "Charlotte - NoDa",      "code": "noda",          "page_id": "104198619263881",    "ig_id": None},
-    {"name": "Corporate",             "code": "corporate",     "page_id": "2077978269155137",   "ig_id": None},
-    {"name": "Ocean Township",        "code": "oceantownship", "page_id": "184923338027883",    "ig_id": None},
-    {"name": "Upper East Side",       "code": "uppereastside", "page_id": "108861828669519",    "ig_id": None},
-    {"name": "Brickell",              "code": "brickell",      "page_id": "107873258720021",    "ig_id": None},
-    {"name": "Reston",                "code": "reston",        "page_id": "875200972337017",    "ig_id": None},
-    {"name": "Wall NJ",               "code": "wallnj",        "page_id": "700746796454324",    "ig_id": None},
-    {"name": "Chelsea",               "code": "chelsea",       "page_id": "105456357683242",    "ig_id": None},
-    {"name": "Las Olas",              "code": "lasolas",       "page_id": "300173986520471",    "ig_id": None},
-    {"name": "Miramar",               "code": "miramar",       "page_id": "203760659484865",    "ig_id": None},
-    {"name": "Pembroke Pines",        "code": "pembrokepines", "page_id": "328512683684059",    "ig_id": None},
-    {"name": "FiDi",                  "code": "fidi",          "page_id": "149250091597748",    "ig_id": None},
-    {"name": "Madison",               "code": "madison",       "page_id": "111726744769276",    "ig_id": None},
-    {"name": "Old Bridge",            "code": "oldbridge",     "page_id": None,                  "ig_id": "17841439161726674"},
-    {"name": "Dunwoody",              "code": "dunwoody",      "page_id": "1119194191285831",    "ig_id": "17841422592958602"},
-    {"name": "Middletown",            "code": "middletown",    "page_id": "1138263712703066",    "ig_id": "17841434822163164"},
+# code = short slug used as the thumbnails sub-directory name. Sourced from
+# studios.json (canonical registry); "Corporate" is a house account, not a
+# studio, so it's appended separately rather than living in the registry.
+STUDIOS = studios_registry.social_insights_rows() + [
+    {"name": "Corporate", "code": "corporate", "page_id": "2077978269155137", "ig_id": None},
 ]
 
 

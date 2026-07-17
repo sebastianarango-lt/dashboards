@@ -31,6 +31,9 @@ ROOT = Path(__file__).parent.parent        # nso-dashboard/
 REPO_ROOT = ROOT.parent                    # dashboards/ (where data.json lives)
 TODAY = date.today()
 
+sys.path.insert(0, str(REPO_ROOT))
+import studios as studios_registry
+
 CREDS_PATH = ROOT / "credentials" / "service_account.json"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 LEADTEAM_MONTHLY = 1200.0  # $1,200/month, prorated daily
@@ -79,24 +82,18 @@ def calc_leadteam_fee(date_start, date_end):
     return round(total, 2)
 
 # Studios where the data.json name differs from the display name.
-# data.json uses STUDIO_NAME from Snowflake (strip_brand applied).
-DATA_NAME_OVERRIDES = {
-    "FL-020": "Orlando - Dr Phillips",
-}
+# data.json uses STUDIO_NAME from Snowflake (strip_brand applied). Sourced
+# from studios.json's canonical `name` (which IS the data.json spelling) —
+# looked up by code at point of use via _canonical_name_by_code().
+_STUDIOS_BY_CODE = studios_registry.by_code()
+
+
+def _canonical_name_by_code(code: str, fallback: str) -> str:
+    s = _STUDIOS_BY_CODE.get(code)
+    return s["name"] if s else fallback
 
 # Maps NSO studio code → social_insights.json 'code' field
-IG_SOCIAL_CODE = {
-    "VA-001": "reston",
-    "UT-001": "herriman",
-    "FL-020": "drphillips",
-    "FL-018": "aventura",
-    "FL-021": "northmiami",
-    "TX-004": "uptown",
-    "NJ-004": "oldbridge",
-    "GA-001": "dunwoody",
-    "NJ-005": "middletown",
-    "FL-022": "fortmyers",
-}
+IG_SOCIAL_CODE = studios_registry.ig_social_code_by_code()
 
 # Google Sheets tab config per studio code
 SHEET_CONFIG = {
@@ -277,7 +274,7 @@ def load_studio_config(gc):
             "code":          code,
             "state":         "",
             "full_name":     f"SWEAT440 {name}",
-            "data_name":     DATA_NAME_OVERRIDES.get(code, name),
+            "data_name":     _canonical_name_by_code(code, name),
             "week0_date":    (week1_start - timedelta(days=1)) if week1_start else None,
             "week1_start":   week1_start,
             "co_date":       co_date,
