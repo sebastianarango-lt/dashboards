@@ -1,20 +1,16 @@
 {
-  "generated_at": "2026-07-18T09:30:21.437546",
+  "generated_at": "2026-07-19T09:57:43.282375",
   "date_range": {
-    "start": "2026-04-19",
-    "end": "2026-07-17"
+    "start": "2026-04-20",
+    "end": "2026-07-18"
   },
   "instagram": [
     {
       "studio": "Austin - Highland",
       "code": "highland",
       "ig_id": "17841453093016498",
-      "current_followers": 1300,
+      "current_followers": 1301,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 635
-        },
         {
           "date": "2026-04-20",
           "reach": 674
@@ -120,8 +116,8 @@
           "reach": 425
         },
         {
-          "date": "2026-05-17",
-          "reach": 461
+          "date": "2026-05-16",
+          "reach": 406
         },
         {
           "date": "2026-05-18",
@@ -228,8 +224,8 @@
           "reach": 448
         },
         {
-          "date": "2026-06-14",
-          "reach": 201
+          "date": "2026-06-13",
+          "reach": 403
         },
         {
           "date": "2026-06-15",
@@ -249,8 +245,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 522,
-          "follower_count": 2
+          "reach": 522
         },
         {
           "date": "2026-06-20",
@@ -359,11 +354,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 296,
           "follower_count": 0
         },
         {
           "date": "2026-07-12",
-          "reach": 273,
           "follower_count": 0
         },
         {
@@ -385,18 +380,23 @@
           "date": "2026-07-16",
           "reach": 1096,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 601,
+          "follower_count": 0
         }
       ],
       "posts": [
         {
           "date": "2026-07-15",
           "caption": "The robbery can wait\u2026 fix your form first! \ud83d\ude2d\ud83c\udfcb\ufe0f\u200d\u2642\ufe0f",
-          "likes": 64,
-          "comments": 6,
+          "likes": 65,
+          "comments": 7,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da1MjPjhZ21/",
           "image_url": "nso-dashboard/thumbnails/highland/Da1MjPjhZ21.jpg",
-          "engagement": 70
+          "engagement": 72
         },
         {
           "date": "2026-06-25",
@@ -594,12 +594,8 @@
       "studio": "Austin - Zilker",
       "code": "zilker",
       "ig_id": "17841459256313869",
-      "current_followers": 1294,
+      "current_followers": 1296,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1472
-        },
         {
           "date": "2026-04-20",
           "reach": 1124
@@ -705,8 +701,8 @@
           "reach": 811
         },
         {
-          "date": "2026-05-17",
-          "reach": 982
+          "date": "2026-05-16",
+          "reach": 754
         },
         {
           "date": "2026-05-18",
@@ -813,8 +809,8 @@
           "reach": 668
         },
         {
-          "date": "2026-06-14",
-          "reach": 495
+          "date": "2026-06-13",
+          "reach": 700
         },
         {
           "date": "2026-06-15",
@@ -834,8 +830,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 317,
-          "follower_count": 1
+          "reach": 317
         },
         {
           "date": "2026-06-20",
@@ -944,11 +939,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 596,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 665,
           "follower_count": 0
         },
         {
@@ -969,6 +964,11 @@
         {
           "date": "2026-07-16",
           "reach": 638,
+          "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 682,
           "follower_count": 0
         }
       ],
@@ -1094,24 +1094,24 @@
           "engagement": 20
         },
         {
-          "date": "2026-04-19",
-          "caption": "Member Social this Friday.\n\n7\u20139PM at Better Half Coffee & Cocktails | Holdout Brewing \n\nEat. Drink. Connect.\n\nBring someone with you.\n\n@betterhalfbar ",
-          "likes": 18,
-          "comments": 0,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/DXVQ2wJDm7X/",
-          "image_url": "nso-dashboard/thumbnails/zilker/DXVQ2wJDm7X.jpg",
-          "engagement": 18
-        },
-        {
           "date": "2026-07-10",
           "caption": "\ud83d\udd25 This is one you don\u2019t want to miss. \ud83d\udd25\n\nWe\u2019re teaming up with @batheaustin for an unforgettable Half Day Retreat\u2014the perfect mix of sweat, recovery, ",
-          "likes": 14,
+          "likes": 15,
           "comments": 0,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/Dan3OJpOGcF/",
           "image_url": "nso-dashboard/thumbnails/zilker/Dan3OJpOGcF.jpg",
-          "engagement": 14
+          "engagement": 15
+        },
+        {
+          "date": "2026-07-18",
+          "caption": "Everyone has a reason they walk through our doors. \ud83d\udc99\n\nThese stories are proof that sometimes the biggest changes happen outside the gym.\n\n#sweat440 #t",
+          "likes": 13,
+          "comments": 0,
+          "media_type": "CAROUSEL_ALBUM",
+          "permalink": "https://www.instagram.com/p/Da70XbTDnm3/",
+          "image_url": "nso-dashboard/thumbnails/zilker/Da70XbTDnm3.jpg",
+          "engagement": 13
         },
         {
           "date": "2026-06-22",
@@ -1179,12 +1179,8 @@
       "studio": "Aventura",
       "code": "aventura",
       "ig_id": "17841427621524852",
-      "current_followers": 494,
+      "current_followers": 503,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 0
-        },
         {
           "date": "2026-04-20",
           "reach": 0
@@ -1290,8 +1286,8 @@
           "reach": 56
         },
         {
-          "date": "2026-05-17",
-          "reach": 0
+          "date": "2026-05-16",
+          "reach": 7
         },
         {
           "date": "2026-05-18",
@@ -1398,8 +1394,8 @@
           "reach": 1357
         },
         {
-          "date": "2026-06-14",
-          "reach": 1586
+          "date": "2026-06-13",
+          "reach": 1556
         },
         {
           "date": "2026-06-15",
@@ -1419,8 +1415,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 1088,
-          "follower_count": 15
+          "reach": 1088
         },
         {
           "date": "2026-06-20",
@@ -1529,11 +1524,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1031,
           "follower_count": 13
         },
         {
           "date": "2026-07-12",
-          "reach": 1068,
           "follower_count": 9
         },
         {
@@ -1555,6 +1550,11 @@
           "date": "2026-07-16",
           "reach": 1288,
           "follower_count": 7
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1023,
+          "follower_count": 3
         }
       ],
       "posts": [
@@ -1609,6 +1609,16 @@
           "engagement": 19
         },
         {
+          "date": "2026-07-10",
+          "caption": "SWEAT440 is popping up at Hammer & Nails Aventura - grab a fresh cut, tune in to the Spain vs Belgium World Cup Quarterfinal (yes there\u2019s big screens)",
+          "likes": 16,
+          "comments": 2,
+          "media_type": "IMAGE",
+          "permalink": "https://www.instagram.com/p/Dal-7BXAjwF/",
+          "image_url": "nso-dashboard/thumbnails/aventura/Dal-7BXAjwF.jpg",
+          "engagement": 18
+        },
+        {
           "date": "2026-05-03",
           "caption": "If you live in Aventura, your daily routine is about to get a serious upgrade. \u2728\n\nSay goodbye to crowded big-box gyms and guesswork workouts. SWEAT440",
           "likes": 18,
@@ -1617,16 +1627,6 @@
           "permalink": "https://www.instagram.com/p/DX4J2pFD-wO/",
           "image_url": "nso-dashboard/thumbnails/aventura/DX4J2pFD-wO.jpg",
           "engagement": 18
-        },
-        {
-          "date": "2026-07-10",
-          "caption": "SWEAT440 is popping up at Hammer & Nails Aventura - grab a fresh cut, tune in to the Spain vs Belgium World Cup Quarterfinal (yes there\u2019s big screens)",
-          "likes": 15,
-          "comments": 2,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/Dal-7BXAjwF/",
-          "image_url": "nso-dashboard/thumbnails/aventura/Dal-7BXAjwF.jpg",
-          "engagement": 17
         },
         {
           "date": "2026-06-10",
@@ -1764,12 +1764,8 @@
       "studio": "Boca Raton",
       "code": "boca",
       "ig_id": "17841473616181779",
-      "current_followers": 1727,
+      "current_followers": 1728,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 638
-        },
         {
           "date": "2026-04-20",
           "reach": 573
@@ -1875,8 +1871,8 @@
           "reach": 744
         },
         {
-          "date": "2026-05-17",
-          "reach": 766
+          "date": "2026-05-16",
+          "reach": 1162
         },
         {
           "date": "2026-05-18",
@@ -1983,8 +1979,8 @@
           "reach": 786
         },
         {
-          "date": "2026-06-14",
-          "reach": 538
+          "date": "2026-06-13",
+          "reach": 816
         },
         {
           "date": "2026-06-15",
@@ -2004,8 +2000,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 465,
-          "follower_count": 0
+          "reach": 465
         },
         {
           "date": "2026-06-20",
@@ -2114,11 +2109,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 372,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 401,
           "follower_count": 4
         },
         {
@@ -2140,6 +2135,11 @@
           "date": "2026-07-16",
           "reach": 642,
           "follower_count": 4
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 825,
+          "follower_count": 1
         }
       ],
       "posts": [
@@ -2294,6 +2294,16 @@
           "engagement": 17
         },
         {
+          "date": "2026-07-17",
+          "caption": "Another amazing Mat Pilates class in the books!\n\nWe had an incredible time with our SWEAT440 members and loved welcoming some new faces to the mat. \ud83d\udc99 ",
+          "likes": 16,
+          "comments": 0,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Da5UioDx5FH/",
+          "image_url": "nso-dashboard/thumbnails/boca/Da5UioDx5FH.jpg",
+          "engagement": 16
+        },
+        {
           "date": "2026-04-23",
           "caption": "We\u2019re excited to invite you to a special Mat Pilates Class happening next week!\n\n\ud83d\uddd3 Wednesday, April 29th\n\u23f0 6:30\u20137:30 PM\n\nThis is the perfect opportuni",
           "likes": 15,
@@ -2324,16 +2334,6 @@
           "engagement": 14
         },
         {
-          "date": "2026-07-17",
-          "caption": "Another amazing Mat Pilates class in the books!\n\nWe had an incredible time with our SWEAT440 members and loved welcoming some new faces to the mat. \ud83d\udc99 ",
-          "likes": 13,
-          "comments": 0,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/Da5UioDx5FH/",
-          "image_url": "nso-dashboard/thumbnails/boca/Da5UioDx5FH.jpg",
-          "engagement": 13
-        },
-        {
           "date": "2026-05-09",
           "caption": "Celebrating Mother\u2019s Day a little early at SWEAT440\ufffc \ud83e\udd0d\n\nToday was full of strong women, supportive families, and so much love all around. From moms an",
           "likes": 12,
@@ -2357,12 +2357,8 @@
       "studio": "Charlotte - Noda",
       "code": "noda",
       "ig_id": "17841458238862430",
-      "current_followers": 2651,
+      "current_followers": 2652,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1212
-        },
         {
           "date": "2026-04-20",
           "reach": 1216
@@ -2468,8 +2464,8 @@
           "reach": 1305
         },
         {
-          "date": "2026-05-17",
-          "reach": 1326
+          "date": "2026-05-16",
+          "reach": 1366
         },
         {
           "date": "2026-05-18",
@@ -2576,8 +2572,8 @@
           "reach": 1140
         },
         {
-          "date": "2026-06-14",
-          "reach": 819
+          "date": "2026-06-13",
+          "reach": 707
         },
         {
           "date": "2026-06-15",
@@ -2597,8 +2593,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 702,
-          "follower_count": 3
+          "reach": 702
         },
         {
           "date": "2026-06-20",
@@ -2707,11 +2702,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 721,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 770,
           "follower_count": 3
         },
         {
@@ -2733,6 +2728,11 @@
           "date": "2026-07-16",
           "reach": 1458,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1041,
+          "follower_count": 3
         }
       ],
       "posts": [
@@ -2759,12 +2759,12 @@
         {
           "date": "2026-07-15",
           "caption": "Big welcome to our newest coach, Nik! We\u2019re so excited to have her join the SWEAT440 NoDa team. Next time you\u2019re in the studio, make sure to say hi! \ud83d\udcaa",
-          "likes": 72,
+          "likes": 73,
           "comments": 18,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/Da0DezRv30j/",
           "image_url": "nso-dashboard/thumbnails/noda/Da0DezRv30j.jpg",
-          "engagement": 90
+          "engagement": 91
         },
         {
           "date": "2026-07-08",
@@ -2809,12 +2809,12 @@
         {
           "date": "2026-07-15",
           "caption": "Big 440 shoutout to Allison! \ud83d\udca5\n\nYour commitment, consistency, and positive attitude never go unnoticed. You continue to show up and put in the work ev",
-          "likes": 52,
+          "likes": 55,
           "comments": 9,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da1GxGPvKtg/",
           "image_url": "nso-dashboard/thumbnails/noda/Da1GxGPvKtg.jpg",
-          "engagement": 61
+          "engagement": 64
         },
         {
           "date": "2026-05-01",
@@ -2879,22 +2879,22 @@
         {
           "date": "2026-07-16",
           "caption": "Welcome to the \ud83d\udcaf club, Elzada!! Keep showing up and crushing it! \ud83d\udd25",
-          "likes": 34,
+          "likes": 36,
           "comments": 2,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da21XA1vy1t/",
           "image_url": "nso-dashboard/thumbnails/noda/Da21XA1vy1t.jpg",
-          "engagement": 36
+          "engagement": 38
         },
         {
           "date": "2026-07-17",
           "caption": "Hard work paying off! Shoutout to Lisa for hitting 250 classes! We are so proud of you\ud83d\udd25\ud83d\udcaa\ud83c\udffc Next stop the 440 Club!",
-          "likes": 28,
+          "likes": 31,
           "comments": 6,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da52EN5vzfA/",
           "image_url": "nso-dashboard/thumbnails/noda/Da52EN5vzfA.jpg",
-          "engagement": 34
+          "engagement": 37
         },
         {
           "date": "2026-07-14",
@@ -2942,12 +2942,8 @@
       "studio": "Coral Gables",
       "code": "gables",
       "ig_id": "17841435667665457",
-      "current_followers": 1735,
+      "current_followers": 1736,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 543
-        },
         {
           "date": "2026-04-20",
           "reach": 756
@@ -3053,8 +3049,8 @@
           "reach": 1018
         },
         {
-          "date": "2026-05-17",
-          "reach": 807
+          "date": "2026-05-16",
+          "reach": 1026
         },
         {
           "date": "2026-05-18",
@@ -3161,8 +3157,8 @@
           "reach": 553
         },
         {
-          "date": "2026-06-14",
-          "reach": 575
+          "date": "2026-06-13",
+          "reach": 406
         },
         {
           "date": "2026-06-15",
@@ -3182,8 +3178,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 512,
-          "follower_count": 2
+          "reach": 512
         },
         {
           "date": "2026-06-20",
@@ -3292,11 +3287,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 625,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 456,
           "follower_count": 1
         },
         {
@@ -3318,6 +3313,11 @@
           "date": "2026-07-16",
           "reach": 681,
           "follower_count": 3
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 492,
+          "follower_count": 1
         }
       ],
       "posts": [
@@ -3334,12 +3334,12 @@
         {
           "date": "2026-06-27",
           "caption": "She doesn\u2019t just run the studio, she leads from the front \ud83d\udcaa\ud83c\udffc\ud83d\udc99\n\nToday we\u2019re celebrating our owner for crushing her 440th class at SWEAT440 Coral Gables",
-          "likes": 184,
+          "likes": 185,
           "comments": 64,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/DaGIQwIIF3r/",
           "image_url": "nso-dashboard/thumbnails/gables/DaGIQwIIF3r.jpg",
-          "engagement": 248
+          "engagement": 249
         },
         {
           "date": "2026-05-22",
@@ -3354,12 +3354,12 @@
         {
           "date": "2026-07-07",
           "caption": "Angela joined SWEAT440 Coral Gables looking for workouts that would challenge her, keep her motivated, and fit into her busy schedule. From her very f",
-          "likes": 99,
+          "likes": 100,
           "comments": 32,
           "media_type": "CAROUSEL_ALBUM",
           "permalink": "https://www.instagram.com/p/Daf2qYLHPVY/",
           "image_url": "nso-dashboard/thumbnails/gables/Daf2qYLHPVY.jpg",
-          "engagement": 131
+          "engagement": 132
         },
         {
           "date": "2026-07-01",
@@ -3512,14 +3512,14 @@
           "engagement": 48
         },
         {
-          "date": "2026-04-19",
-          "caption": "Congratulations on reaching your 750th class, Connie!! \ud83d\udca5\ud83d\udcaa\ud83c\udffc\nShowing up time and time again takes real commitment, and you\u2019ve proven just how strong and",
-          "likes": 42,
+          "date": "2026-06-01",
+          "caption": "This is your sign to stop waiting and start moving\ud83d\udcaa\ud83d\ude1c\n\nWalk in \ud83d\udc4f\nPut in the work \ud83d\ude2e\u200d\ud83d\udca8\nWalk out stronger \ud83d\udcaa\n\nThat\u2019s the @SWEAT440 experience\u26a1\ud83d\udda4\ud83d\udc99\n\n#coralgab",
+          "likes": 40,
           "comments": 2,
           "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DXTEuI-iHqb/",
-          "image_url": "nso-dashboard/thumbnails/gables/DXTEuI-iHqb.jpg",
-          "engagement": 44
+          "permalink": "https://www.instagram.com/reel/DZD9BIxRFNB/",
+          "image_url": "nso-dashboard/thumbnails/gables/DZD9BIxRFNB.jpg",
+          "engagement": 42
         }
       ]
     },
@@ -3527,12 +3527,8 @@
       "studio": "Coral Springs",
       "code": "coralsprings",
       "ig_id": "17841455694117449",
-      "current_followers": 6907,
+      "current_followers": 6906,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 456
-        },
         {
           "date": "2026-04-20",
           "reach": 470
@@ -3638,8 +3634,8 @@
           "reach": 675
         },
         {
-          "date": "2026-05-17",
-          "reach": 697
+          "date": "2026-05-16",
+          "reach": 693
         },
         {
           "date": "2026-05-18",
@@ -3746,8 +3742,8 @@
           "reach": 661
         },
         {
-          "date": "2026-06-14",
-          "reach": 229
+          "date": "2026-06-13",
+          "reach": 375
         },
         {
           "date": "2026-06-15",
@@ -3767,8 +3763,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 2398,
-          "follower_count": 3
+          "reach": 2398
         },
         {
           "date": "2026-06-20",
@@ -3877,11 +3872,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 330,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 397,
           "follower_count": 2
         },
         {
@@ -3902,6 +3897,11 @@
         {
           "date": "2026-07-16",
           "reach": 813,
+          "follower_count": 3
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1661,
           "follower_count": 3
         }
       ],
@@ -3937,14 +3937,24 @@
           "engagement": 93
         },
         {
+          "date": "2026-07-17",
+          "caption": "Pranking one of the OG\u2019s\ud83e\udd23\ud83d\udc99 Pauline has been a member with SWEAT440 since 2023, having over 600 classes under her belt\ud83d\ude33 She is an inspiration to us all",
+          "likes": 82,
+          "comments": 10,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Da6IR5QpSgZ/",
+          "image_url": "nso-dashboard/thumbnails/coralsprings/Da6IR5QpSgZ.jpg",
+          "engagement": 92
+        },
+        {
           "date": "2026-07-16",
           "caption": "When the last exercise doesn\u2019t want you to go\ud83d\udc94\ud83d\ude02 Who else can relate??\ud83d\ude35\u200d\ud83d\udcab\ud83d\udcaa\n\n#SWEAT440 #NeverLate #CoralSprings #fitness #gymhumor",
-          "likes": 74,
+          "likes": 77,
           "comments": 7,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da3i6_XpWRI/",
           "image_url": "nso-dashboard/thumbnails/coralsprings/Da3i6_XpWRI.jpg",
-          "engagement": 81
+          "engagement": 84
         },
         {
           "date": "2026-06-04",
@@ -3965,16 +3975,6 @@
           "permalink": "https://www.instagram.com/reel/DZxRD2ZRhUo/",
           "image_url": "nso-dashboard/thumbnails/coralsprings/DZxRD2ZRhUo.jpg",
           "engagement": 78
-        },
-        {
-          "date": "2026-07-17",
-          "caption": "Pranking one of the OG\u2019s\ud83e\udd23\ud83d\udc99 Pauline has been a member with SWEAT440 since 2023, having over 600 classes under her belt\ud83d\ude33 She is an inspiration to us all",
-          "likes": 45,
-          "comments": 5,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/Da6IR5QpSgZ/",
-          "image_url": "nso-dashboard/thumbnails/coralsprings/Da6IR5QpSgZ.jpg",
-          "engagement": 50
         },
         {
           "date": "2026-04-28",
@@ -4015,6 +4015,16 @@
           "permalink": "https://www.instagram.com/reel/DXfV1Cgibjh/",
           "image_url": "nso-dashboard/thumbnails/coralsprings/DXfV1Cgibjh.jpg",
           "engagement": 44
+        },
+        {
+          "date": "2026-07-18",
+          "caption": "Working out isn\u2019t ALWAYS fun\ud83e\udd37\u200d\u2640\ufe0f Sometimes the struggle is very real\ud83d\ude33, but so are the RESULTS\ud83e\uddbe\n\n-Whether you\u2019re looking to tone up, lose weight, or bu",
+          "likes": 32,
+          "comments": 1,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Da8PsrUxeVh/",
+          "image_url": "nso-dashboard/thumbnails/coralsprings/Da8PsrUxeVh.jpg",
+          "engagement": 33
         },
         {
           "date": "2026-07-08",
@@ -4095,16 +4105,6 @@
           "permalink": "https://www.instagram.com/p/DZAqhNkkUsK/",
           "image_url": "nso-dashboard/thumbnails/coralsprings/DZAqhNkkUsK.jpg",
           "engagement": 19
-        },
-        {
-          "date": "2026-04-24",
-          "caption": "We\u2019re excited to have Project Lean Nation (PLN) popping up at SWEAT440 TOMORROW, April 25th from 8AM\u201312PM! \ud83d\udea8\n\nOpening this May, PLN is bringing Coral ",
-          "likes": 16,
-          "comments": 3,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/DXhGbhDEe5z/",
-          "image_url": "nso-dashboard/thumbnails/coralsprings/DXhGbhDEe5z.jpg",
-          "engagement": 19
         }
       ]
     },
@@ -4112,12 +4112,8 @@
       "studio": "Dallas - Prestonwood",
       "code": "prestonwood",
       "ig_id": "17841477656432324",
-      "current_followers": 984,
+      "current_followers": 989,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1641
-        },
         {
           "date": "2026-04-20",
           "reach": 2014
@@ -4223,8 +4219,8 @@
           "reach": 1668
         },
         {
-          "date": "2026-05-17",
-          "reach": 1709
+          "date": "2026-05-16",
+          "reach": 1688
         },
         {
           "date": "2026-05-18",
@@ -4331,8 +4327,8 @@
           "reach": 769
         },
         {
-          "date": "2026-06-14",
-          "reach": 857
+          "date": "2026-06-13",
+          "reach": 1102
         },
         {
           "date": "2026-06-15",
@@ -4352,8 +4348,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 1001,
-          "follower_count": 3
+          "reach": 1001
         },
         {
           "date": "2026-06-20",
@@ -4462,11 +4457,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1038,
           "follower_count": 3
         },
         {
           "date": "2026-07-12",
-          "reach": 1001,
           "follower_count": 2
         },
         {
@@ -4488,6 +4483,11 @@
           "date": "2026-07-16",
           "reach": 1218,
           "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 703,
+          "follower_count": 1
         }
       ],
       "posts": [
@@ -4534,12 +4534,12 @@
         {
           "date": "2026-05-27",
           "caption": "Looking for a workout that actually fits your schedule? \ud83e\udd1d\n\nAt SWEAT440, classes start every 10 minutes, so there\u2019s no stress about making it \u201con time.",
-          "likes": 39,
+          "likes": 40,
           "comments": 4,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/DY293A_gumn/",
           "image_url": "nso-dashboard/thumbnails/prestonwood/DY293A_gumn.jpg",
-          "engagement": 43
+          "engagement": 44
         },
         {
           "date": "2026-06-09",
@@ -4574,12 +4574,12 @@
         {
           "date": "2026-07-09",
           "caption": "A challenge is just an excuse to discover what you\u2019re capable of. \ud83d\udc99\u26a1\n\nA little effort.\nA lot of encouragement.\nAnd a community that makes every workou",
-          "likes": 26,
+          "likes": 27,
           "comments": 0,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Dalv12GAjIH/",
           "image_url": "nso-dashboard/thumbnails/prestonwood/Dalv12GAjIH.jpg",
-          "engagement": 26
+          "engagement": 27
         },
         {
           "date": "2026-06-23",
@@ -4697,12 +4697,8 @@
       "studio": "Dallas - Uptown",
       "code": "uptown",
       "ig_id": "17841409013036348",
-      "current_followers": 19680,
+      "current_followers": 19691,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 322
-        },
         {
           "date": "2026-04-20",
           "reach": 217
@@ -4808,8 +4804,8 @@
           "reach": 193
         },
         {
-          "date": "2026-05-17",
-          "reach": 56
+          "date": "2026-05-16",
+          "reach": 123
         },
         {
           "date": "2026-05-18",
@@ -4916,8 +4912,8 @@
           "reach": 2088
         },
         {
-          "date": "2026-06-14",
-          "reach": 3050
+          "date": "2026-06-13",
+          "reach": 3211
         },
         {
           "date": "2026-06-15",
@@ -4937,8 +4933,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 2648,
-          "follower_count": 5
+          "reach": 2648
         },
         {
           "date": "2026-06-20",
@@ -5047,11 +5042,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 706,
           "follower_count": 9
         },
         {
           "date": "2026-07-12",
-          "reach": 1595,
           "follower_count": 9
         },
         {
@@ -5073,6 +5068,11 @@
           "date": "2026-07-16",
           "reach": 1115,
           "follower_count": 6
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1159,
+          "follower_count": 9
         }
       ],
       "posts": [
@@ -5129,12 +5129,12 @@
         {
           "date": "2026-07-14",
           "caption": "@katytraildallas on a Saturday\u2026it just doesn\u2019t miss. \u2600\ufe0f Huge thanks to @katy5k_dallastx for having us out! We\u2019re proud to be a sponsor of this year\u2019s ",
-          "likes": 17,
+          "likes": 18,
           "comments": 7,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Dax0gh9RDSn/",
           "image_url": "nso-dashboard/thumbnails/uptown/Dax0gh9RDSn.jpg",
-          "engagement": 24
+          "engagement": 25
         },
         {
           "date": "2026-06-06",
@@ -5282,12 +5282,8 @@
       "studio": "Deerfield Beach",
       "code": "deerfield",
       "ig_id": "17841455568623986",
-      "current_followers": 3137,
+      "current_followers": 3136,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 324
-        },
         {
           "date": "2026-04-20",
           "reach": 402
@@ -5393,8 +5389,8 @@
           "reach": 852
         },
         {
-          "date": "2026-05-17",
-          "reach": 591
+          "date": "2026-05-16",
+          "reach": 469
         },
         {
           "date": "2026-05-18",
@@ -5501,8 +5497,8 @@
           "reach": 1119
         },
         {
-          "date": "2026-06-14",
-          "reach": 470
+          "date": "2026-06-13",
+          "reach": 854
         },
         {
           "date": "2026-06-15",
@@ -5522,8 +5518,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 906,
-          "follower_count": 1
+          "reach": 906
         },
         {
           "date": "2026-06-20",
@@ -5632,11 +5627,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 360,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 469,
           "follower_count": 5
         },
         {
@@ -5658,6 +5653,11 @@
           "date": "2026-07-16",
           "reach": 486,
           "follower_count": 4
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 247,
+          "follower_count": 1
         }
       ],
       "posts": [
@@ -5867,12 +5867,8 @@
       "studio": "Doral",
       "code": "doral",
       "ig_id": "17841451826254305",
-      "current_followers": 2924,
+      "current_followers": 2927,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1294
-        },
         {
           "date": "2026-04-20",
           "reach": 1262
@@ -5978,8 +5974,8 @@
           "reach": 772
         },
         {
-          "date": "2026-05-17",
-          "reach": 1029
+          "date": "2026-05-16",
+          "reach": 1751
         },
         {
           "date": "2026-05-18",
@@ -6086,8 +6082,8 @@
           "reach": 1124
         },
         {
-          "date": "2026-06-14",
-          "reach": 675
+          "date": "2026-06-13",
+          "reach": 889
         },
         {
           "date": "2026-06-15",
@@ -6107,8 +6103,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 971,
-          "follower_count": 3
+          "reach": 971
         },
         {
           "date": "2026-06-20",
@@ -6217,11 +6212,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 939,
           "follower_count": 5
         },
         {
           "date": "2026-07-12",
-          "reach": 551,
           "follower_count": 3
         },
         {
@@ -6243,6 +6238,11 @@
           "date": "2026-07-16",
           "reach": 683,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 901,
+          "follower_count": 4
         }
       ],
       "posts": [
@@ -6319,12 +6319,12 @@
         {
           "date": "2026-07-08",
           "caption": "Wishing Coach Kimberly all the best as she begins an exciting new chapter! \ud83d\udc99\n\nKimberly, thank you for your dedication, positivity, and the impact you\u2019",
-          "likes": 74,
+          "likes": 75,
           "comments": 7,
           "media_type": "CAROUSEL_ALBUM",
           "permalink": "https://www.instagram.com/p/DajDeeamBwU/",
           "image_url": "nso-dashboard/thumbnails/doral/DajDeeamBwU.jpg",
-          "engagement": 81
+          "engagement": 82
         },
         {
           "date": "2026-06-05",
@@ -6347,6 +6347,16 @@
           "engagement": 73
         },
         {
+          "date": "2026-07-17",
+          "caption": "ran so fast, he caught up to the speed of light\n\n#sweat440 #neverlate #doral #hiit #explorepages",
+          "likes": 71,
+          "comments": 1,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Da6Ocb_qTKH/",
+          "image_url": "nso-dashboard/thumbnails/doral/Da6Ocb_qTKH.jpg",
+          "engagement": 72
+        },
+        {
           "date": "2026-07-14",
           "caption": "Viviendo el esp\u00edritu del Mundial\u26bd\ufe0f\n\nHow many tries do you think it took to make this shot?",
           "likes": 62,
@@ -6355,16 +6365,6 @@
           "permalink": "https://www.instagram.com/reel/DaydwOAq9Th/",
           "image_url": "nso-dashboard/thumbnails/doral/DaydwOAq9Th.jpg",
           "engagement": 69
-        },
-        {
-          "date": "2026-04-19",
-          "caption": "Great energy, strong workout, and even better people \ud83d\udcaa\ud83d\udd25 Amazing group training event at @laterraza_organic \u2014 thank you @wellnessbyboon for the invite ",
-          "likes": 52,
-          "comments": 2,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DXUNICIt13h/",
-          "image_url": "nso-dashboard/thumbnails/doral/DXUNICIt13h.jpg",
-          "engagement": 54
         },
         {
           "date": "2026-05-22",
@@ -6462,10 +6462,6 @@
       "ig_id": "17841475452183427",
       "current_followers": 2053,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 764
-        },
         {
           "date": "2026-04-20",
           "reach": 543
@@ -6571,8 +6567,8 @@
           "reach": 1533
         },
         {
-          "date": "2026-05-17",
-          "reach": 1185
+          "date": "2026-05-16",
+          "reach": 1311
         },
         {
           "date": "2026-05-18",
@@ -6679,8 +6675,8 @@
           "reach": 987
         },
         {
-          "date": "2026-06-14",
-          "reach": 1140
+          "date": "2026-06-13",
+          "reach": 1303
         },
         {
           "date": "2026-06-15",
@@ -6700,8 +6696,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 789,
-          "follower_count": 5
+          "reach": 789
         },
         {
           "date": "2026-06-20",
@@ -6810,11 +6805,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 624,
           "follower_count": 3
         },
         {
           "date": "2026-07-12",
-          "reach": 895,
           "follower_count": 0
         },
         {
@@ -6836,9 +6831,24 @@
           "date": "2026-07-16",
           "reach": 743,
           "follower_count": 4
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 855,
+          "follower_count": 3
         }
       ],
       "posts": [
+        {
+          "date": "2026-07-18",
+          "caption": "Six months. Member Social \ud83d\udc99\n\nLast night was a reminder that what we\u2019ve built is so much bigger than a gym.\n\nTo every member who has trusted us with yo",
+          "likes": 184,
+          "comments": 43,
+          "media_type": "CAROUSEL_ALBUM",
+          "permalink": "https://www.instagram.com/p/Da8MlCUlQ5b/",
+          "image_url": "nso-dashboard/thumbnails/eastchester/Da8MlCUlQ5b.jpg",
+          "engagement": 227
+        },
         {
           "date": "2026-05-14",
           "caption": "\ud83c\udfc6 COACH OF THE MONTH \ud83c\udfc6\n\ud83d\udc99\ud83d\udd25 COACH NAOMI \ud83d\udd25\ud83d\udc99\n\n\u201cFitness has always been a great outlet for me, whether I\u2019m having a good day or a bad one. I love challengi",
@@ -6852,12 +6862,12 @@
         {
           "date": "2026-06-24",
           "caption": "Seeing double after Wednesday at SWEAT440 \ud83e\udd23\ud83d\udc99\ud83d\udcaa\ud83c\udffc #neverlate #twins #sistersister #sweatfam",
-          "likes": 133,
+          "likes": 134,
           "comments": 6,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DZ-q2AxpnX2/",
           "image_url": "nso-dashboard/thumbnails/eastchester/DZ-q2AxpnX2.jpg",
-          "engagement": 139
+          "engagement": 140
         },
         {
           "date": "2026-05-09",
@@ -6882,12 +6892,12 @@
         {
           "date": "2026-05-15",
           "caption": "\ud83d\udea8 MEMBER OF THE MONTH ALERT \ud83d\udea8\n\nAge is just a number\u2026 consistency, discipline, and heart never go out of style \ud83d\udcaa\ud83d\udc99\n\nDonna shows up EVERY. SINGLE. DAY. N",
-          "likes": 91,
+          "likes": 92,
           "comments": 11,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/DYW8flZhTgO/",
           "image_url": "nso-dashboard/thumbnails/eastchester/DYW8flZhTgO.jpg",
-          "engagement": 102
+          "engagement": 103
         },
         {
           "date": "2026-06-08",
@@ -6898,6 +6908,16 @@
           "permalink": "https://www.instagram.com/reel/DZVOgdThVmx/",
           "image_url": "nso-dashboard/thumbnails/eastchester/DZVOgdThVmx.jpg",
           "engagement": 101
+        },
+        {
+          "date": "2026-07-18",
+          "caption": "Just a few more from a great night! #SWEAT440 #sweatfam #newfriends #grateful \ud83d\udcaa\ud83c\udffc\ud83d\udc99",
+          "likes": 97,
+          "comments": 1,
+          "media_type": "CAROUSEL_ALBUM",
+          "permalink": "https://www.instagram.com/p/Da80YBvlFt6/",
+          "image_url": "nso-dashboard/thumbnails/eastchester/Da80YBvlFt6.jpg",
+          "engagement": 98
         },
         {
           "date": "2026-05-12",
@@ -7018,26 +7038,6 @@
           "permalink": "https://www.instagram.com/p/DZWIZbLJ4Lj/",
           "image_url": "nso-dashboard/thumbnails/eastchester/DZWIZbLJ4Lj.jpg",
           "engagement": 62
-        },
-        {
-          "date": "2026-05-28",
-          "caption": "\ud83d\udea8 100 CLASSES FOR STEPH!!! \ud83d\udea8\ud83d\udd25\ud83d\udcaa\n\nSteph, you\u2019ve officially hit the BIG 1\ufe0f\u20e30\ufe0f\u20e30\ufe0f\u20e3 and we couldn\u2019t be more hyped for you!! Your consistency, hard work, an",
-          "likes": 56,
-          "comments": 5,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/DY48KTyp-of/",
-          "image_url": "nso-dashboard/thumbnails/eastchester/DY48KTyp-of.jpg",
-          "engagement": 61
-        },
-        {
-          "date": "2026-07-01",
-          "caption": "\u2728 Faith. Consistency. Strength. \u2728\n\nFor the last 100 classes, Priscila has shown what happens when you trust the process and keep showing up.\n\nAs she w",
-          "likes": 48,
-          "comments": 12,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/DaQudA_pHYw/",
-          "image_url": "nso-dashboard/thumbnails/eastchester/DaQudA_pHYw.jpg",
-          "engagement": 60
         }
       ]
     },
@@ -7045,12 +7045,8 @@
       "studio": "Fort Lauderdale - Las Olas",
       "code": "lasolas",
       "ig_id": "17841466949002290",
-      "current_followers": 1996,
+      "current_followers": 1998,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 788
-        },
         {
           "date": "2026-04-20",
           "reach": 785
@@ -7156,8 +7152,8 @@
           "reach": 943
         },
         {
-          "date": "2026-05-17",
-          "reach": 942
+          "date": "2026-05-16",
+          "reach": 750
         },
         {
           "date": "2026-05-18",
@@ -7264,8 +7260,8 @@
           "reach": 764
         },
         {
-          "date": "2026-06-14",
-          "reach": 643
+          "date": "2026-06-13",
+          "reach": 539
         },
         {
           "date": "2026-06-15",
@@ -7285,8 +7281,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 781,
-          "follower_count": 4
+          "reach": 781
         },
         {
           "date": "2026-06-20",
@@ -7395,11 +7390,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 569,
           "follower_count": 3
         },
         {
           "date": "2026-07-12",
-          "reach": 413,
           "follower_count": 0
         },
         {
@@ -7421,6 +7416,11 @@
           "date": "2026-07-16",
           "reach": 546,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1286,
+          "follower_count": 2
         }
       ],
       "posts": [
@@ -7437,12 +7437,12 @@
         {
           "date": "2026-07-17",
           "caption": "",
-          "likes": 116,
-          "comments": 13,
+          "likes": 122,
+          "comments": 14,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da5l3eBuHM-/",
           "image_url": "nso-dashboard/thumbnails/lasolas/Da5l3eBuHM-.jpg",
-          "engagement": 129
+          "engagement": 136
         },
         {
           "date": "2026-07-02",
@@ -7457,12 +7457,12 @@
         {
           "date": "2026-07-13",
           "caption": "COACH OF THE MONTH: NICOLE \ud83c\udf1f\nMeet Coach Nicole! \ud83d\udc99\nWith over 16 years of experience in the fitness industry, Nicole brings an incredible depth of knowl",
-          "likes": 89,
+          "likes": 90,
           "comments": 21,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DavIfw2uFnL/",
           "image_url": "nso-dashboard/thumbnails/lasolas/DavIfw2uFnL.jpg",
-          "engagement": 110
+          "engagement": 111
         },
         {
           "date": "2026-04-22",
@@ -7525,6 +7525,16 @@
           "engagement": 28
         },
         {
+          "date": "2026-07-17",
+          "caption": "250 CLASSES STRONG! \ud83c\udf89\n\nA huge shoutout to Marlyn for crushing an incredible 250 SWEAT440 workouts! \ud83d\udcaa\ud83d\udd25\n\nFrom being one of the very first members to joi",
+          "likes": 19,
+          "comments": 4,
+          "media_type": "IMAGE",
+          "permalink": "https://www.instagram.com/p/Da5QeDbuZAL/",
+          "image_url": "nso-dashboard/thumbnails/lasolas/Da5QeDbuZAL.jpg",
+          "engagement": 23
+        },
+        {
           "date": "2026-06-01",
           "caption": "\ud83d\udd25 JUNE DAILY BURN CHALLENGE \ud83d\udd25\n\nAre you ready to heat things up this month? Every day in June, we\u2019re bringing you a new exercise challenge designed to ",
           "likes": 20,
@@ -7585,16 +7595,6 @@
           "engagement": 14
         },
         {
-          "date": "2026-07-17",
-          "caption": "250 CLASSES STRONG! \ud83c\udf89\n\nA huge shoutout to Marlyn for crushing an incredible 250 SWEAT440 workouts! \ud83d\udcaa\ud83d\udd25\n\nFrom being one of the very first members to joi",
-          "likes": 11,
-          "comments": 2,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/Da5QeDbuZAL/",
-          "image_url": "nso-dashboard/thumbnails/lasolas/Da5QeDbuZAL.jpg",
-          "engagement": 13
-        },
-        {
           "date": "2026-05-15",
           "caption": "\ud83d\udea8 WE\u2019RE HIRING COACHES! \ud83d\udea8\n\nAre you passionate about mentoring athletes, building confidence, and making a difference? We\u2019re looking for energetic, ded",
           "likes": 12,
@@ -7630,12 +7630,8 @@
       "studio": "Herriman",
       "code": "herriman",
       "ig_id": "17841447639266583",
-      "current_followers": 1869,
+      "current_followers": 1875,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 130
-        },
         {
           "date": "2026-04-20",
           "reach": 111
@@ -7741,8 +7737,8 @@
           "reach": 317
         },
         {
-          "date": "2026-05-17",
-          "reach": 443
+          "date": "2026-05-16",
+          "reach": 741
         },
         {
           "date": "2026-05-18",
@@ -7849,8 +7845,8 @@
           "reach": 1938
         },
         {
-          "date": "2026-06-14",
-          "reach": 1466
+          "date": "2026-06-13",
+          "reach": 2609
         },
         {
           "date": "2026-06-15",
@@ -7870,8 +7866,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 1396,
-          "follower_count": 6
+          "reach": 1396
         },
         {
           "date": "2026-06-20",
@@ -7980,11 +7975,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 600,
           "follower_count": 4
         },
         {
           "date": "2026-07-12",
-          "reach": 621,
           "follower_count": 4
         },
         {
@@ -8006,6 +8001,11 @@
           "date": "2026-07-16",
           "reach": 788,
           "follower_count": 5
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 640,
+          "follower_count": 3
         }
       ],
       "posts": [
@@ -8022,12 +8022,12 @@
         {
           "date": "2026-07-07",
           "caption": "We love Cris and Amber- so glad they won the paddle board give away! Hope you enjoy it! Thanks to everyone who entered!",
-          "likes": 63,
+          "likes": 64,
           "comments": 5,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DaeRs6ORULZ/",
           "image_url": "nso-dashboard/thumbnails/herriman/DaeRs6ORULZ.jpg",
-          "engagement": 68
+          "engagement": 69
         },
         {
           "date": "2026-05-13",
@@ -8040,6 +8040,16 @@
           "engagement": 53
         },
         {
+          "date": "2026-04-23",
+          "caption": "SWEAT440 Herriman is coming soon to 5127 W Miller Crossing Dr, Suite A, Herriman, UT 84096 \ud83d\udca5\n\n40-minute coach-led strength training classes, built to ",
+          "likes": 50,
+          "comments": 2,
+          "media_type": "IMAGE",
+          "permalink": "https://www.instagram.com/p/DXfLfNrgY4j/",
+          "image_url": "nso-dashboard/thumbnails/herriman/DXfLfNrgY4j.jpg",
+          "engagement": 52
+        },
+        {
           "date": "2026-05-08",
           "caption": "",
           "likes": 37,
@@ -8050,14 +8060,14 @@
           "engagement": 51
         },
         {
-          "date": "2026-04-23",
-          "caption": "SWEAT440 Herriman is coming soon to 5127 W Miller Crossing Dr, Suite A, Herriman, UT 84096 \ud83d\udca5\n\n40-minute coach-led strength training classes, built to ",
-          "likes": 49,
-          "comments": 2,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/DXfLfNrgY4j/",
-          "image_url": "nso-dashboard/thumbnails/herriman/DXfLfNrgY4j.jpg",
-          "engagement": 51
+          "date": "2026-07-07",
+          "caption": "Thursday 6:30-8:00 PM\nJuly 9- bring friends",
+          "likes": 38,
+          "comments": 11,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/DagojdwxXlm/",
+          "image_url": "nso-dashboard/thumbnails/herriman/DagojdwxXlm.jpg",
+          "engagement": 49
         },
         {
           "date": "2026-05-14",
@@ -8068,16 +8078,6 @@
           "permalink": "https://www.instagram.com/p/DYUyirkx4-E/",
           "image_url": "nso-dashboard/thumbnails/herriman/DYUyirkx4-E.jpg",
           "engagement": 49
-        },
-        {
-          "date": "2026-07-07",
-          "caption": "Thursday 6:30-8:00 PM\nJuly 9- bring friends",
-          "likes": 37,
-          "comments": 10,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DagojdwxXlm/",
-          "image_url": "nso-dashboard/thumbnails/herriman/DagojdwxXlm.jpg",
-          "engagement": 47
         },
         {
           "date": "2026-06-10",
@@ -8142,12 +8142,12 @@
         {
           "date": "2026-07-13",
           "caption": "Come! Enjoy this free community workout!",
-          "likes": 20,
+          "likes": 21,
           "comments": 6,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Davc5FdAlKb/",
           "image_url": "nso-dashboard/thumbnails/herriman/Davc5FdAlKb.jpg",
-          "engagement": 26
+          "engagement": 27
         },
         {
           "date": "2026-05-18",
@@ -8162,12 +8162,12 @@
         {
           "date": "2026-04-27",
           "caption": "A free Preview Week at SWEAT440 is waiting for you. You just have to lock in your spot\ud83d\udca5\n\nClaim your Founder's Rate with $0 down today and secure your ",
-          "likes": 20,
+          "likes": 21,
           "comments": 5,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DXpgjiNj_5d/",
           "image_url": "nso-dashboard/thumbnails/herriman/DXpgjiNj_5d.jpg",
-          "engagement": 25
+          "engagement": 26
         },
         {
           "date": "2026-06-11",
@@ -8215,12 +8215,8 @@
       "studio": "Madison",
       "code": "madison",
       "ig_id": "17841452244161600",
-      "current_followers": 1019,
+      "current_followers": 1020,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 12
-        },
         {
           "date": "2026-04-20",
           "reach": 16
@@ -8326,8 +8322,8 @@
           "reach": 9
         },
         {
-          "date": "2026-05-17",
-          "reach": 5
+          "date": "2026-05-16",
+          "reach": 8
         },
         {
           "date": "2026-05-18",
@@ -8434,7 +8430,7 @@
           "reach": 10
         },
         {
-          "date": "2026-06-14",
+          "date": "2026-06-13",
           "reach": 8
         },
         {
@@ -8455,8 +8451,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 9,
-          "follower_count": 1
+          "reach": 9
         },
         {
           "date": "2026-06-20",
@@ -8565,11 +8560,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 4,
           "follower_count": 0
         },
         {
           "date": "2026-07-12",
-          "reach": 10,
           "follower_count": 0
         },
         {
@@ -8590,6 +8585,11 @@
         {
           "date": "2026-07-16",
           "reach": 11,
+          "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 2,
           "follower_count": 0
         }
       ],
@@ -8650,12 +8650,8 @@
       "studio": "Miami - Brickell",
       "code": "brickell",
       "ig_id": "17841448835800498",
-      "current_followers": 1855,
+      "current_followers": 1854,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 420
-        },
         {
           "date": "2026-04-20",
           "reach": 609
@@ -8761,8 +8757,8 @@
           "reach": 1209
         },
         {
-          "date": "2026-05-17",
-          "reach": 1264
+          "date": "2026-05-16",
+          "reach": 1247
         },
         {
           "date": "2026-05-18",
@@ -8869,8 +8865,8 @@
           "reach": 597
         },
         {
-          "date": "2026-06-14",
-          "reach": 504
+          "date": "2026-06-13",
+          "reach": 408
         },
         {
           "date": "2026-06-15",
@@ -8890,8 +8886,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 378,
-          "follower_count": 2
+          "reach": 378
         },
         {
           "date": "2026-06-20",
@@ -9000,11 +8995,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 66,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 58,
           "follower_count": 1
         },
         {
@@ -9025,6 +9020,11 @@
         {
           "date": "2026-07-16",
           "reach": 643,
+          "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 202,
           "follower_count": 0
         }
       ],
@@ -9238,10 +9238,6 @@
       "current_followers": 1308,
       "daily": [
         {
-          "date": "2026-04-19",
-          "reach": 281
-        },
-        {
           "date": "2026-04-20",
           "reach": 296
         },
@@ -9346,8 +9342,8 @@
           "reach": 565
         },
         {
-          "date": "2026-05-17",
-          "reach": 476
+          "date": "2026-05-16",
+          "reach": 420
         },
         {
           "date": "2026-05-18",
@@ -9454,8 +9450,8 @@
           "reach": 326
         },
         {
-          "date": "2026-06-14",
-          "reach": 333
+          "date": "2026-06-13",
+          "reach": 400
         },
         {
           "date": "2026-06-15",
@@ -9475,8 +9471,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 166,
-          "follower_count": 1
+          "reach": 166
         },
         {
           "date": "2026-06-20",
@@ -9585,11 +9580,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 298,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 160,
           "follower_count": 0
         },
         {
@@ -9611,6 +9606,11 @@
           "date": "2026-07-16",
           "reach": 310,
           "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 217,
+          "follower_count": 2
         }
       ],
       "posts": [
@@ -9795,6 +9795,16 @@
           "engagement": 14
         },
         {
+          "date": "2026-07-14",
+          "caption": "\ud83e\udd64 POP-UP ALERT! \ud83e\udd64\n\nJoin us this Saturday, July 18th, from 8:00 AM\u201312:00 PM at SWEAT440 Coconut Grove for a special pop-up with MV Nutrition!\n\nStop by ",
+          "likes": 10,
+          "comments": 0,
+          "media_type": "IMAGE",
+          "permalink": "https://www.instagram.com/p/Daxxx5exbq9/",
+          "image_url": "nso-dashboard/thumbnails/coconutgrove/Daxxx5exbq9.jpg",
+          "engagement": 10
+        },
+        {
           "date": "2026-07-08",
           "caption": "30 classes. 40 days. One prize. \ud83c\udfc6\n\nFrom July 13th to August 22nd, our coaches will be in your corner the whole way. End the summer stronger than you s",
           "likes": 7,
@@ -9803,16 +9813,6 @@
           "permalink": "https://www.instagram.com/p/Dai2YTIka2u/",
           "image_url": "nso-dashboard/thumbnails/coconutgrove/Dai2YTIka2u.jpg",
           "engagement": 10
-        },
-        {
-          "date": "2026-07-14",
-          "caption": "\ud83e\udd64 POP-UP ALERT! \ud83e\udd64\n\nJoin us this Saturday, July 18th, from 8:00 AM\u201312:00 PM at SWEAT440 Coconut Grove for a special pop-up with MV Nutrition!\n\nStop by ",
-          "likes": 9,
-          "comments": 0,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/Daxxx5exbq9/",
-          "image_url": "nso-dashboard/thumbnails/coconutgrove/Daxxx5exbq9.jpg",
-          "engagement": 9
         }
       ]
     },
@@ -9820,12 +9820,8 @@
       "studio": "Miami - Midtown",
       "code": "midtown",
       "ig_id": "17841459181240845",
-      "current_followers": 1619,
+      "current_followers": 1617,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 182
-        },
         {
           "date": "2026-04-20",
           "reach": 958
@@ -9931,8 +9927,8 @@
           "reach": 409
         },
         {
-          "date": "2026-05-17",
-          "reach": 816
+          "date": "2026-05-16",
+          "reach": 678
         },
         {
           "date": "2026-05-18",
@@ -10039,8 +10035,8 @@
           "reach": 401
         },
         {
-          "date": "2026-06-14",
-          "reach": 270
+          "date": "2026-06-13",
+          "reach": 522
         },
         {
           "date": "2026-06-15",
@@ -10060,8 +10056,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 279,
-          "follower_count": 1
+          "reach": 279
         },
         {
           "date": "2026-06-20",
@@ -10170,11 +10165,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 568,
           "follower_count": 0
         },
         {
           "date": "2026-07-12",
-          "reach": 471,
           "follower_count": 2
         },
         {
@@ -10196,6 +10191,11 @@
           "date": "2026-07-16",
           "reach": 314,
           "follower_count": 2
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 223,
+          "follower_count": 0
         }
       ],
       "posts": [
@@ -10405,12 +10405,8 @@
       "studio": "Miami - Upper East Side",
       "code": "uppereastside",
       "ig_id": "17841455694057668",
-      "current_followers": 2041,
+      "current_followers": 2043,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 299
-        },
         {
           "date": "2026-04-20",
           "reach": 313
@@ -10516,8 +10512,8 @@
           "reach": 797
         },
         {
-          "date": "2026-05-17",
-          "reach": 597
+          "date": "2026-05-16",
+          "reach": 524
         },
         {
           "date": "2026-05-18",
@@ -10624,8 +10620,8 @@
           "reach": 278
         },
         {
-          "date": "2026-06-14",
-          "reach": 322
+          "date": "2026-06-13",
+          "reach": 689
         },
         {
           "date": "2026-06-15",
@@ -10645,8 +10641,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 803,
-          "follower_count": 3
+          "reach": 803
         },
         {
           "date": "2026-06-20",
@@ -10755,11 +10750,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 565,
           "follower_count": 0
         },
         {
           "date": "2026-07-12",
-          "reach": 256,
           "follower_count": 4
         },
         {
@@ -10781,6 +10776,11 @@
           "date": "2026-07-16",
           "reach": 841,
           "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 653,
+          "follower_count": 1
         }
       ],
       "posts": [
@@ -10993,10 +10993,6 @@
       "current_followers": 1372,
       "daily": [
         {
-          "date": "2026-04-19",
-          "reach": 1657
-        },
-        {
           "date": "2026-04-20",
           "reach": 1271
         },
@@ -11101,8 +11097,8 @@
           "reach": 620
         },
         {
-          "date": "2026-05-17",
-          "reach": 669
+          "date": "2026-05-16",
+          "reach": 650
         },
         {
           "date": "2026-05-18",
@@ -11209,8 +11205,8 @@
           "reach": 1083
         },
         {
-          "date": "2026-06-14",
-          "reach": 958
+          "date": "2026-06-13",
+          "reach": 904
         },
         {
           "date": "2026-06-15",
@@ -11230,8 +11226,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 507,
-          "follower_count": 4
+          "reach": 507
         },
         {
           "date": "2026-06-20",
@@ -11340,11 +11335,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 599,
           "follower_count": 0
         },
         {
           "date": "2026-07-12",
-          "reach": 1935,
           "follower_count": 5
         },
         {
@@ -11365,6 +11360,11 @@
         {
           "date": "2026-07-16",
           "reach": 173,
+          "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 175,
           "follower_count": 0
         }
       ],
@@ -11460,6 +11460,16 @@
           "engagement": 25
         },
         {
+          "date": "2026-07-17",
+          "caption": "Congratulations @dangrimes11  for your 1,000 Classes at SWEAT440!\nAn extraordinary achievement and a true testament to your dedication, discipline, an",
+          "likes": 16,
+          "comments": 6,
+          "media_type": "IMAGE",
+          "permalink": "https://www.instagram.com/p/Da6G8FEPERf/",
+          "image_url": "nso-dashboard/thumbnails/sobe/Da6G8FEPERf.jpg",
+          "engagement": 22
+        },
+        {
           "date": "2026-07-11",
           "caption": "Two days of learning, collaboration, and growth with the SWEAT440 leadership team @scott_kinworthy @ryanhawell @codypatrickfitness @millerfits440 @fus",
           "likes": 19,
@@ -11477,16 +11487,6 @@
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DZ5oAT2vQtb/",
           "image_url": "nso-dashboard/thumbnails/sobe/DZ5oAT2vQtb.jpg",
-          "engagement": 18
-        },
-        {
-          "date": "2026-04-19",
-          "caption": "Thank you to everyone who was part of this incredible experience at WellNXT Miami x Fest 2026 \nThis event has become one of the most important wellnes",
-          "likes": 18,
-          "comments": 0,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DXTyXyZgHK7/",
-          "image_url": "nso-dashboard/thumbnails/sobe/DXTyXyZgHK7.jpg",
           "engagement": 18
         },
         {
@@ -11540,16 +11540,6 @@
           "engagement": 12
         },
         {
-          "date": "2026-07-17",
-          "caption": "Congratulations @dangrimes11  for your 1,000 Classes at SWEAT440!\nAn extraordinary achievement and a true testament to your dedication, discipline, an",
-          "likes": 7,
-          "comments": 4,
-          "media_type": "IMAGE",
-          "permalink": "https://www.instagram.com/p/Da6G8FEPERf/",
-          "image_url": "nso-dashboard/thumbnails/sobe/Da6G8FEPERf.jpg",
-          "engagement": 11
-        },
-        {
           "date": "2026-07-11",
           "caption": "Training with besties just hits different \nAt SWEAT440, working out isn\u2019t just about fitness\u2026 it\u2019s about community, energy, and having FUN with your p",
           "likes": 10,
@@ -11568,6 +11558,16 @@
           "permalink": "https://www.instagram.com/p/DY73EgrPja2/",
           "image_url": "nso-dashboard/thumbnails/sobe/DY73EgrPja2.jpg",
           "engagement": 11
+        },
+        {
+          "date": "2026-05-10",
+          "caption": "We want to thank you all for being here today at this wonderful pop-up event in honor of Mother\u2019s Day Weekend. This weekend is all about celebrating t",
+          "likes": 11,
+          "comments": 0,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/DYLVdD3NGCZ/",
+          "image_url": "nso-dashboard/thumbnails/sobe/DYLVdD3NGCZ.jpg",
+          "engagement": 11
         }
       ]
     },
@@ -11575,12 +11575,8 @@
       "studio": "Miami Lakes",
       "code": "miamilakes",
       "ig_id": "17841453086827955",
-      "current_followers": 4586,
+      "current_followers": 4587,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 2158
-        },
         {
           "date": "2026-04-20",
           "reach": 3309
@@ -11686,8 +11682,8 @@
           "reach": 1083
         },
         {
-          "date": "2026-05-17",
-          "reach": 956
+          "date": "2026-05-16",
+          "reach": 1018
         },
         {
           "date": "2026-05-18",
@@ -11794,8 +11790,8 @@
           "reach": 2566
         },
         {
-          "date": "2026-06-14",
-          "reach": 1311
+          "date": "2026-06-13",
+          "reach": 2011
         },
         {
           "date": "2026-06-15",
@@ -11815,8 +11811,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 1833,
-          "follower_count": 3
+          "reach": 1833
         },
         {
           "date": "2026-06-20",
@@ -11925,11 +11920,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1196,
           "follower_count": 3
         },
         {
           "date": "2026-07-12",
-          "reach": 895,
           "follower_count": 5
         },
         {
@@ -11951,6 +11946,11 @@
           "date": "2026-07-16",
           "reach": 1221,
           "follower_count": 4
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1337,
+          "follower_count": 3
         }
       ],
       "posts": [
@@ -11967,12 +11967,12 @@
         {
           "date": "2026-07-13",
           "caption": "\u2b50\ufe0f Member of the Month: GABY \u2b50\ufe0f\n\n\u201cI joined SWEAT440 in December 2024, and it\u2019s truly changed my life.\n\nBefore finding SWEAT440, I was already working ",
-          "likes": 123,
+          "likes": 125,
           "comments": 44,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/DavS9Zjxp75/",
           "image_url": "nso-dashboard/thumbnails/miamilakes/DavS9Zjxp75.jpg",
-          "engagement": 167
+          "engagement": 169
         },
         {
           "date": "2026-06-15",
@@ -12075,16 +12075,6 @@
           "engagement": 97
         },
         {
-          "date": "2026-04-19",
-          "caption": "ONE WEEK OUT \u2600\ufe0f\ud83c\udfd6\ufe0f\n\nOur 4th Annual Beach Workout at Haulover Beach is almost here and we\u2019re bringing the energy \ud83d\udcaa\ud83d\udd25\n\nWe kick things off at 8AM with a te",
-          "likes": 93,
-          "comments": 4,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DXUpGC5JUWL/",
-          "image_url": "nso-dashboard/thumbnails/miamilakes/DXUpGC5JUWL.jpg",
-          "engagement": 97
-        },
-        {
           "date": "2026-05-18",
           "caption": "There\u2019s something whisking at SWEAT440 \ud83c\udf75\ud83d\udc40\ud83d\udcaa\n\nCan you guess what it is?? \n\u2022\n#sweat440 #matcha #sweat440miamilakes #wellness",
           "likes": 85,
@@ -12135,6 +12125,16 @@
           "engagement": 78
         },
         {
+          "date": "2026-07-13",
+          "caption": "Choose your weapon \ud83d\udc40\n\u2022\n#sweat440 #sweat440gym #sweat440miamilakes #sweat440pembrokepines #sweat440miramar",
+          "likes": 72,
+          "comments": 3,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/DavS42ix9Aj/",
+          "image_url": "nso-dashboard/thumbnails/miamilakes/DavS42ix9Aj.jpg",
+          "engagement": 75
+        },
+        {
           "date": "2026-06-17",
           "caption": "Giggles 1 and 2 are always a fun time to have coaching at SWEAT440 \ud83d\udcaa\n\u2022\n#sweat440 #sweat440gym #sweat440miamilakes #sweat440pembrokepines #sweat440mira",
           "likes": 64,
@@ -12145,13 +12145,13 @@
           "engagement": 73
         },
         {
-          "date": "2026-07-13",
-          "caption": "Choose your weapon \ud83d\udc40\n\u2022\n#sweat440 #sweat440gym #sweat440miamilakes #sweat440pembrokepines #sweat440miramar",
-          "likes": 69,
-          "comments": 3,
+          "date": "2026-05-11",
+          "caption": "When it\u2019s the beginning of a new week and you know it! \n\nLET\u2019S CRUSH IT \ud83d\udcaa\ud83d\udd25\n\u2022\n#sweat440 #sweat440gym #sweat440miamilakes #sweat440pembrokepines #sweat4",
+          "likes": 65,
+          "comments": 7,
           "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DavS42ix9Aj/",
-          "image_url": "nso-dashboard/thumbnails/miamilakes/DavS42ix9Aj.jpg",
+          "permalink": "https://www.instagram.com/reel/DYNE4hapQ5N/",
+          "image_url": "nso-dashboard/thumbnails/miamilakes/DYNE4hapQ5N.jpg",
           "engagement": 72
         }
       ]
@@ -12168,12 +12168,8 @@
       "studio": "Miramar",
       "code": "miramar",
       "ig_id": "17841464058563074",
-      "current_followers": 2003,
+      "current_followers": 2005,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 710
-        },
         {
           "date": "2026-04-20",
           "reach": 750
@@ -12279,8 +12275,8 @@
           "reach": 1180
         },
         {
-          "date": "2026-05-17",
-          "reach": 1347
+          "date": "2026-05-16",
+          "reach": 1554
         },
         {
           "date": "2026-05-18",
@@ -12387,8 +12383,8 @@
           "reach": 455
         },
         {
-          "date": "2026-06-14",
-          "reach": 744
+          "date": "2026-06-13",
+          "reach": 699
         },
         {
           "date": "2026-06-15",
@@ -12408,8 +12404,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 396,
-          "follower_count": 2
+          "reach": 396
         },
         {
           "date": "2026-06-20",
@@ -12518,11 +12513,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 475,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 488,
           "follower_count": 1
         },
         {
@@ -12544,6 +12539,11 @@
           "date": "2026-07-16",
           "reach": 643,
           "follower_count": 0
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 357,
+          "follower_count": 4
         }
       ],
       "posts": [
@@ -12753,12 +12753,8 @@
       "studio": "NYC - Chelsea",
       "code": "chelsea",
       "ig_id": "17841428255331446",
-      "current_followers": 1491,
+      "current_followers": 1493,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 439
-        },
         {
           "date": "2026-04-20",
           "reach": 413
@@ -12864,8 +12860,8 @@
           "reach": 864
         },
         {
-          "date": "2026-05-17",
-          "reach": 596
+          "date": "2026-05-16",
+          "reach": 754
         },
         {
           "date": "2026-05-18",
@@ -12972,8 +12968,8 @@
           "reach": 385
         },
         {
-          "date": "2026-06-14",
-          "reach": 296
+          "date": "2026-06-13",
+          "reach": 406
         },
         {
           "date": "2026-06-15",
@@ -12993,8 +12989,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 1162,
-          "follower_count": 3
+          "reach": 1162
         },
         {
           "date": "2026-06-20",
@@ -13103,11 +13098,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 635,
           "follower_count": 0
         },
         {
           "date": "2026-07-12",
-          "reach": 418,
           "follower_count": 1
         },
         {
@@ -13128,6 +13123,11 @@
         {
           "date": "2026-07-16",
           "reach": 555,
+          "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 378,
           "follower_count": 1
         }
       ],
@@ -13338,12 +13338,8 @@
       "studio": "NYC - FiDi",
       "code": "fidi",
       "ig_id": "17841462054478171",
-      "current_followers": 779,
+      "current_followers": 778,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 330
-        },
         {
           "date": "2026-04-20",
           "reach": 337
@@ -13449,8 +13445,8 @@
           "reach": 504
         },
         {
-          "date": "2026-05-17",
-          "reach": 571
+          "date": "2026-05-16",
+          "reach": 623
         },
         {
           "date": "2026-05-18",
@@ -13557,8 +13553,8 @@
           "reach": 24
         },
         {
-          "date": "2026-06-14",
-          "reach": 139
+          "date": "2026-06-13",
+          "reach": 368
         },
         {
           "date": "2026-06-15",
@@ -13578,8 +13574,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 51,
-          "follower_count": 1
+          "reach": 51
         },
         {
           "date": "2026-06-20",
@@ -13688,11 +13683,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 126,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 150,
           "follower_count": 1
         },
         {
@@ -13714,6 +13709,11 @@
           "date": "2026-07-16",
           "reach": 21,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 17,
+          "follower_count": 0
         }
       ],
       "posts": [
@@ -13926,10 +13926,6 @@
       "current_followers": 598,
       "daily": [
         {
-          "date": "2026-04-19",
-          "reach": 497
-        },
-        {
           "date": "2026-04-20",
           "reach": 269
         },
@@ -14034,8 +14030,8 @@
           "reach": 619
         },
         {
-          "date": "2026-05-17",
-          "reach": 1031
+          "date": "2026-05-16",
+          "reach": 646
         },
         {
           "date": "2026-05-18",
@@ -14142,8 +14138,8 @@
           "reach": 349
         },
         {
-          "date": "2026-06-14",
-          "reach": 408
+          "date": "2026-06-13",
+          "reach": 180
         },
         {
           "date": "2026-06-15",
@@ -14163,8 +14159,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 300,
-          "follower_count": 2
+          "reach": 300
         },
         {
           "date": "2026-06-20",
@@ -14273,11 +14268,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 262,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 273,
           "follower_count": 3
         },
         {
@@ -14299,6 +14294,11 @@
           "date": "2026-07-16",
           "reach": 372,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 155,
+          "follower_count": 0
         }
       ],
       "posts": [
@@ -14363,13 +14363,13 @@
           "engagement": 28
         },
         {
-          "date": "2026-04-19",
-          "caption": "Park Slope \u2014 we had people competing for free classes + merch \ud83d\udc40\n\nWe\u2019ll mix in stuff like this\u2026 but the real thing is the classes\n\n40 minutes, structur",
-          "likes": 24,
-          "comments": 3,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DXU5xKCCXRW/",
-          "image_url": "nso-dashboard/thumbnails/parkslope/DXU5xKCCXRW.jpg",
+          "date": "2026-07-09",
+          "caption": "Big shoutout to Markus for hitting 100 classes! \ud83d\udcaf\ud83d\udd25\n\nMarkus has been with us since soon after we opened, and he\u2019s been such an awesome part of the Park",
+          "likes": 23,
+          "comments": 4,
+          "media_type": "CAROUSEL_ALBUM",
+          "permalink": "https://www.instagram.com/p/DajWd45FMI1/",
+          "image_url": "nso-dashboard/thumbnails/parkslope/DajWd45FMI1.jpg",
           "engagement": 27
         },
         {
@@ -14391,16 +14391,6 @@
           "permalink": "https://www.instagram.com/p/DYKXwsmgFQY/",
           "image_url": "nso-dashboard/thumbnails/parkslope/DYKXwsmgFQY.jpg",
           "engagement": 26
-        },
-        {
-          "date": "2026-07-09",
-          "caption": "Big shoutout to Markus for hitting 100 classes! \ud83d\udcaf\ud83d\udd25\n\nMarkus has been with us since soon after we opened, and he\u2019s been such an awesome part of the Park",
-          "likes": 22,
-          "comments": 3,
-          "media_type": "CAROUSEL_ALBUM",
-          "permalink": "https://www.instagram.com/p/DajWd45FMI1/",
-          "image_url": "nso-dashboard/thumbnails/parkslope/DajWd45FMI1.jpg",
-          "engagement": 25
         },
         {
           "date": "2026-07-07",
@@ -14501,6 +14491,16 @@
           "permalink": "https://www.instagram.com/p/DX-QL4YD_kx/",
           "image_url": "nso-dashboard/thumbnails/parkslope/DX-QL4YD_kx.jpg",
           "engagement": 14
+        },
+        {
+          "date": "2026-05-22",
+          "caption": "The weather is right \u2600\ufe0f and the vibes are high \ud83d\udca5\nJoin us NEXT Saturday May 30th for some extra cardio and a fun run! \ud83c\udfc3\ud83c\udffe\ud83c\udfc3\u200d\u2640\ufe0f\ud83c\udfc3\u200d\u2642\ufe0f@ tag your running budd",
+          "likes": 13,
+          "comments": 0,
+          "media_type": "IMAGE",
+          "permalink": "https://www.instagram.com/p/DYp5uc_z_NU/",
+          "image_url": "nso-dashboard/thumbnails/parkslope/DYp5uc_z_NU.jpg",
+          "engagement": 13
         }
       ]
     },
@@ -14508,12 +14508,8 @@
       "studio": "North Miami",
       "code": "northmiami",
       "ig_id": "17841432225694783",
-      "current_followers": 291,
+      "current_followers": 293,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 0
-        },
         {
           "date": "2026-04-20",
           "reach": 0
@@ -14619,8 +14615,8 @@
           "reach": 21
         },
         {
-          "date": "2026-05-17",
-          "reach": 26
+          "date": "2026-05-16",
+          "reach": 22
         },
         {
           "date": "2026-05-18",
@@ -14727,8 +14723,8 @@
           "reach": 1737
         },
         {
-          "date": "2026-06-14",
-          "reach": 3407
+          "date": "2026-06-13",
+          "reach": 1386
         },
         {
           "date": "2026-06-15",
@@ -14748,8 +14744,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 955,
-          "follower_count": 2
+          "reach": 955
         },
         {
           "date": "2026-06-20",
@@ -14858,11 +14853,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1038,
           "follower_count": 6
         },
         {
           "date": "2026-07-12",
-          "reach": 1048,
           "follower_count": 3
         },
         {
@@ -14884,6 +14879,11 @@
           "date": "2026-07-16",
           "reach": 1426,
           "follower_count": 8
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1182,
+          "follower_count": 3
         }
       ],
       "posts": [
@@ -14920,12 +14920,12 @@
         {
           "date": "2026-07-17",
           "caption": "There\u2019s nothing like the SWEAT440 experience \ud83c\udfac\n\nComing soon \ud83c\udf7f click the link in bio to secure your reservations for preview week! \ud83c\udfcb\ufe0f",
-          "likes": 14,
+          "likes": 15,
           "comments": 3,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da5hgBjtriA/",
           "image_url": "nso-dashboard/thumbnails/northmiami/Da5hgBjtriA.jpg",
-          "engagement": 17
+          "engagement": 18
         },
         {
           "date": "2026-07-16",
@@ -14998,6 +14998,16 @@
           "engagement": 6
         },
         {
+          "date": "2026-05-13",
+          "caption": "Finally, a fitness community in North Miami that actually feels like home. \ud83c\udfe0\ud83d\udcaa\n\nWe're opening soon in North Miami, and we can't wait to meet our new ne",
+          "likes": 5,
+          "comments": 0,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/DYS-fUqjFbf/",
+          "image_url": "nso-dashboard/thumbnails/northmiami/DYS-fUqjFbf.jpg",
+          "engagement": 5
+        },
+        {
           "date": "2026-06-30",
           "caption": "Our coaches will push you to be the best version of yourself. \ud83d\udcaa We celebrate you and your achievements every step of the way. \ud83d\udc99\n\nWant to be part of th",
           "likes": 4,
@@ -15005,16 +15015,6 @@
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/DaOd78Ejnep/",
           "image_url": "nso-dashboard/thumbnails/northmiami/DaOd78Ejnep.jpg",
-          "engagement": 4
-        },
-        {
-          "date": "2026-05-13",
-          "caption": "Finally, a fitness community in North Miami that actually feels like home. \ud83c\udfe0\ud83d\udcaa\n\nWe're opening soon in North Miami, and we can't wait to meet our new ne",
-          "likes": 4,
-          "comments": 0,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DYS-fUqjFbf/",
-          "image_url": "nso-dashboard/thumbnails/northmiami/DYS-fUqjFbf.jpg",
           "engagement": 4
         },
         {
@@ -15093,12 +15093,8 @@
       "studio": "Ocean Township",
       "code": "oceantownship",
       "ig_id": "17841462858298971",
-      "current_followers": 2542,
+      "current_followers": 2543,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 937
-        },
         {
           "date": "2026-04-20",
           "reach": 1131
@@ -15204,8 +15200,8 @@
           "reach": 1114
         },
         {
-          "date": "2026-05-17",
-          "reach": 1312
+          "date": "2026-05-16",
+          "reach": 1294
         },
         {
           "date": "2026-05-18",
@@ -15312,8 +15308,8 @@
           "reach": 811
         },
         {
-          "date": "2026-06-14",
-          "reach": 779
+          "date": "2026-06-13",
+          "reach": 713
         },
         {
           "date": "2026-06-15",
@@ -15333,8 +15329,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 963,
-          "follower_count": 5
+          "reach": 963
         },
         {
           "date": "2026-06-20",
@@ -15443,11 +15438,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1231,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 2598,
           "follower_count": 4
         },
         {
@@ -15469,6 +15464,11 @@
           "date": "2026-07-16",
           "reach": 2193,
           "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1402,
+          "follower_count": 0
         }
       ],
       "posts": [
@@ -15595,12 +15595,12 @@
         {
           "date": "2026-07-16",
           "caption": "They call me the songbird of my generation\u2026\n#sweat440 Coach \u2714\ufe0f\nMotivator \u2714\ufe0f\nSinger song-writer \u2714\ufe0f",
-          "likes": 54,
+          "likes": 55,
           "comments": 8,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da3F_kmxVD8/",
           "image_url": "nso-dashboard/thumbnails/oceantownship/Da3F_kmxVD8.jpg",
-          "engagement": 62
+          "engagement": 63
         },
         {
           "date": "2026-06-24",
@@ -15655,12 +15655,12 @@
         {
           "date": "2026-07-10",
           "caption": "\ud83c\udf89 MEMBER OF THE MONTH: ROB! \ud83c\udf89\nIf you\u2019ve ever taken a class with Rob, you know one thing is guaranteed... you\u2019re leaving in a better mood than you walk",
-          "likes": 38,
+          "likes": 39,
           "comments": 10,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/Danjj_8RwKt/",
           "image_url": "nso-dashboard/thumbnails/oceantownship/Danjj_8RwKt.jpg",
-          "engagement": 48
+          "engagement": 49
         },
         {
           "date": "2026-07-13",
@@ -15678,12 +15678,8 @@
       "studio": "Old Bridge",
       "code": "oldbridge",
       "ig_id": "17841439161726674",
-      "current_followers": 236,
+      "current_followers": 239,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 0
-        },
         {
           "date": "2026-04-20",
           "reach": 0
@@ -15789,7 +15785,7 @@
           "reach": 0
         },
         {
-          "date": "2026-05-17",
+          "date": "2026-05-16",
           "reach": 0
         },
         {
@@ -15897,7 +15893,7 @@
           "reach": 0
         },
         {
-          "date": "2026-06-14",
+          "date": "2026-06-13",
           "reach": 0
         },
         {
@@ -15918,8 +15914,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 0,
-          "follower_count": 0
+          "reach": 0
         },
         {
           "date": "2026-06-20",
@@ -16028,11 +16023,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1294,
           "follower_count": 10
         },
         {
           "date": "2026-07-12",
-          "reach": 1079,
           "follower_count": 3
         },
         {
@@ -16054,6 +16049,11 @@
           "date": "2026-07-16",
           "reach": 1249,
           "follower_count": 8
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1418,
+          "follower_count": 6
         }
       ],
       "posts": [
@@ -16061,11 +16061,11 @@
           "date": "2026-07-09",
           "caption": "\ud83d\udd25 Old Bridge, it\u2019s an honor to introduce myself! \ud83d\udd25\n\nMy name is Justice Lopez, and I\u2019m proud to be the new Studio Manager of SWEAT440 Old Bridge.\n\nWith",
           "likes": 78,
-          "comments": 6,
+          "comments": 8,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/DalCk78uDE6/",
           "image_url": "nso-dashboard/thumbnails/oldbridge/DalCk78uDE6.jpg",
-          "engagement": 84
+          "engagement": 86
         },
         {
           "date": "2026-07-07",
@@ -16080,12 +16080,12 @@
         {
           "date": "2026-07-17",
           "caption": "Growth never stops. \ud83d\udc99\n\nThis week I had the privilege of attending SWEAT440 Management Induction Training, learning from incredible leaders like Scott,",
-          "likes": 17,
+          "likes": 21,
           "comments": 4,
           "media_type": "CAROUSEL_ALBUM",
           "permalink": "https://www.instagram.com/p/Da6QzHJCSEk/",
           "image_url": "nso-dashboard/thumbnails/oldbridge/Da6QzHJCSEk.jpg",
-          "engagement": 21
+          "engagement": 25
         },
         {
           "date": "2026-07-10",
@@ -16098,6 +16098,16 @@
           "engagement": 17
         },
         {
+          "date": "2026-07-17",
+          "caption": "Stop searching for \"friends with boats\"\u2026 and start finding a squad that actually shows up. \ud83e\udd1d\n\nThe solo gym grind gets old fast. SWEAT440 replaces it w",
+          "likes": 14,
+          "comments": 1,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Da5mgFUkj49/",
+          "image_url": "nso-dashboard/thumbnails/oldbridge/Da5mgFUkj49.jpg",
+          "engagement": 15
+        },
+        {
           "date": "2026-06-27",
           "caption": "The easiest \"yes\" of your day is coming soon to Old Bridge. \u2728\n\nIf you're tired of racing to make a class time or wandering around a big-box gym wonder",
           "likes": 13,
@@ -16108,23 +16118,23 @@
           "engagement": 13
         },
         {
-          "date": "2026-07-17",
-          "caption": "Stop searching for \"friends with boats\"\u2026 and start finding a squad that actually shows up. \ud83e\udd1d\n\nThe solo gym grind gets old fast. SWEAT440 replaces it w",
-          "likes": 11,
-          "comments": 1,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/Da5mgFUkj49/",
-          "image_url": "nso-dashboard/thumbnails/oldbridge/Da5mgFUkj49.jpg",
-          "engagement": 12
-        },
-        {
           "date": "2026-07-09",
           "caption": "Find the team that has your back, right here in Old Bridge. \u2728\n\nSometimes the hardest part of training isn't the workout \u2014 it's finding a place where y",
-          "likes": 10,
+          "likes": 11,
           "comments": 0,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DalAbUvFnsq/",
           "image_url": "nso-dashboard/thumbnails/oldbridge/DalAbUvFnsq.jpg",
+          "engagement": 11
+        },
+        {
+          "date": "2026-07-15",
+          "caption": "Looking for a sign to start your new routine in Old Bridge? This is it. \u23f0\n\nStop waiting for the \"perfect time\" to plan your workouts. At SWEAT440 Old ",
+          "likes": 9,
+          "comments": 1,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Daz_SCEFGHU/",
+          "image_url": "nso-dashboard/thumbnails/oldbridge/Daz_SCEFGHU.jpg",
           "engagement": 10
         },
         {
@@ -16146,16 +16156,6 @@
           "permalink": "https://www.instagram.com/p/DaLQHh_jhTR/",
           "image_url": "nso-dashboard/thumbnails/oldbridge/DaLQHh_jhTR.jpg",
           "engagement": 10
-        },
-        {
-          "date": "2026-07-15",
-          "caption": "Looking for a sign to start your new routine in Old Bridge? This is it. \u23f0\n\nStop waiting for the \"perfect time\" to plan your workouts. At SWEAT440 Old ",
-          "likes": 8,
-          "comments": 1,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/Daz_SCEFGHU/",
-          "image_url": "nso-dashboard/thumbnails/oldbridge/Daz_SCEFGHU.jpg",
-          "engagement": 9
         },
         {
           "date": "2026-06-26",
@@ -16263,12 +16263,8 @@
       "studio": "Orlando - Dr Phillips",
       "code": "drphillips",
       "ig_id": "17841439014807825",
-      "current_followers": 715,
+      "current_followers": 748,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 0
-        },
         {
           "date": "2026-04-20",
           "reach": 8
@@ -16374,8 +16370,8 @@
           "reach": 4
         },
         {
-          "date": "2026-05-17",
-          "reach": 1
+          "date": "2026-05-16",
+          "reach": 2
         },
         {
           "date": "2026-05-18",
@@ -16482,8 +16478,8 @@
           "reach": 711
         },
         {
-          "date": "2026-06-14",
-          "reach": 843
+          "date": "2026-06-13",
+          "reach": 615
         },
         {
           "date": "2026-06-15",
@@ -16503,8 +16499,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 685,
-          "follower_count": 6
+          "reach": 685
         },
         {
           "date": "2026-06-20",
@@ -16613,11 +16608,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 835,
           "follower_count": 12
         },
         {
           "date": "2026-07-12",
-          "reach": 825,
           "follower_count": 59
         },
         {
@@ -16639,9 +16634,24 @@
           "date": "2026-07-16",
           "reach": 530,
           "follower_count": 8
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 579,
+          "follower_count": 8
         }
       ],
       "posts": [
+        {
+          "date": "2026-06-16",
+          "caption": "Our coaches will push you to be the best version of yourself. \ud83d\udcaa We celebrate you and your achievements every step of the way. \ud83d\udc99\n\nWant to be part of th",
+          "likes": 14,
+          "comments": 2,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/DZpyETNEShK/",
+          "image_url": "nso-dashboard/thumbnails/drphillips/DZpyETNEShK.jpg",
+          "engagement": 16
+        },
         {
           "date": "2026-07-03",
           "caption": "Fall in love with SWEAT440 \ud83d\udc99Your chance to experience it is here!\ud83c\udf89\n\nSign up for our lowest rate ever and enjoy 7 days risk-free! \ud83e\udd29 Click the link in o",
@@ -16651,16 +16661,6 @@
           "permalink": "https://www.instagram.com/p/DaT1T5Zq7K1/",
           "image_url": "nso-dashboard/thumbnails/drphillips/DaT1T5Zq7K1.jpg",
           "engagement": 15
-        },
-        {
-          "date": "2026-06-16",
-          "caption": "Our coaches will push you to be the best version of yourself. \ud83d\udcaa We celebrate you and your achievements every step of the way. \ud83d\udc99\n\nWant to be part of th",
-          "likes": 14,
-          "comments": 0,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/DZpyETNEShK/",
-          "image_url": "nso-dashboard/thumbnails/drphillips/DZpyETNEShK.jpg",
-          "engagement": 14
         },
         {
           "date": "2026-05-31",
@@ -16753,6 +16753,16 @@
           "engagement": 8
         },
         {
+          "date": "2026-07-10",
+          "caption": "After an accident that left her unable to move, Angelica came back to SWEAT440. Not just for the workout, for the community that never let her feel al",
+          "likes": 7,
+          "comments": 0,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Dan8i1NlaNK/",
+          "image_url": "nso-dashboard/thumbnails/drphillips/Dan8i1NlaNK.jpg",
+          "engagement": 7
+        },
+        {
           "date": "2026-05-10",
           "caption": "40 minutes is enough\ud83d\udd50 Structured. Coach-led. Done before you know it.\n\nThe kind of training that moves you forward every single time, without needing ",
           "likes": 7,
@@ -16761,16 +16771,6 @@
           "permalink": "https://www.instagram.com/reel/DYLJU77E66q/",
           "image_url": "nso-dashboard/thumbnails/drphillips/DYLJU77E66q.jpg",
           "engagement": 7
-        },
-        {
-          "date": "2026-07-10",
-          "caption": "After an accident that left her unable to move, Angelica came back to SWEAT440. Not just for the workout, for the community that never let her feel al",
-          "likes": 6,
-          "comments": 0,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/Dan8i1NlaNK/",
-          "image_url": "nso-dashboard/thumbnails/drphillips/Dan8i1NlaNK.jpg",
-          "engagement": 6
         },
         {
           "date": "2026-06-04",
@@ -16850,10 +16850,6 @@
       "ig_id": "17841466976072397",
       "current_followers": 1934,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 835
-        },
         {
           "date": "2026-04-20",
           "reach": 1501
@@ -16959,8 +16955,8 @@
           "reach": 823
         },
         {
-          "date": "2026-05-17",
-          "reach": 704
+          "date": "2026-05-16",
+          "reach": 756
         },
         {
           "date": "2026-05-18",
@@ -17067,8 +17063,8 @@
           "reach": 811
         },
         {
-          "date": "2026-06-14",
-          "reach": 397
+          "date": "2026-06-13",
+          "reach": 711
         },
         {
           "date": "2026-06-15",
@@ -17088,8 +17084,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 624,
-          "follower_count": 1
+          "reach": 624
         },
         {
           "date": "2026-06-20",
@@ -17198,11 +17193,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 555,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 326,
           "follower_count": 2
         },
         {
@@ -17223,6 +17218,11 @@
         {
           "date": "2026-07-16",
           "reach": 665,
+          "follower_count": 2
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 402,
           "follower_count": 2
         }
       ],
@@ -17310,12 +17310,12 @@
         {
           "date": "2026-07-08",
           "caption": "30 classes. 40 days. One prize. \ud83c\udfc6\n\nFrom July 13th to August 22nd, our coaches will be in your corner the whole way. End the summer stronger than you s",
-          "likes": 13,
+          "likes": 14,
           "comments": 0,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/Dai2XWgGYui/",
           "image_url": "nso-dashboard/thumbnails/pembrokepines/Dai2XWgGYui.jpg",
-          "engagement": 13
+          "engagement": 14
         },
         {
           "date": "2026-06-09",
@@ -17433,12 +17433,8 @@
       "studio": "Pinecrest - Palmetto Bay",
       "code": "pinecrest",
       "ig_id": "17841477435248000",
-      "current_followers": 1325,
+      "current_followers": 1327,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 2389
-        },
         {
           "date": "2026-04-20",
           "reach": 1813
@@ -17544,8 +17540,8 @@
           "reach": 2022
         },
         {
-          "date": "2026-05-17",
-          "reach": 1650
+          "date": "2026-05-16",
+          "reach": 1988
         },
         {
           "date": "2026-05-18",
@@ -17652,8 +17648,8 @@
           "reach": 975
         },
         {
-          "date": "2026-06-14",
-          "reach": 2030
+          "date": "2026-06-13",
+          "reach": 1900
         },
         {
           "date": "2026-06-15",
@@ -17673,8 +17669,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 1562,
-          "follower_count": 3
+          "reach": 1562
         },
         {
           "date": "2026-06-20",
@@ -17783,11 +17778,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 1154,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 937,
           "follower_count": 6
         },
         {
@@ -17809,6 +17804,11 @@
           "date": "2026-07-16",
           "reach": 1714,
           "follower_count": 5
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1307,
+          "follower_count": 4
         }
       ],
       "posts": [
@@ -17833,6 +17833,16 @@
           "engagement": 113
         },
         {
+          "date": "2026-07-15",
+          "caption": "Different ages. Different stories. One community.\n\nAt SWEAT440 Pinecrest, strength isn\u2019t about your age. It\u2019s about showing up, giving your best, and ",
+          "likes": 79,
+          "comments": 20,
+          "media_type": "VIDEO",
+          "permalink": "https://www.instagram.com/reel/Da0H2a_BlmE/",
+          "image_url": "nso-dashboard/thumbnails/pinecrest/Da0H2a_BlmE.jpg",
+          "engagement": 99
+        },
+        {
           "date": "2026-06-05",
           "caption": "Meet Coach Kai @kalikaifitness \ud83d\udc99\n\nOne of our founding coaches, Kai has been part of the SWEAT440 Pinecrest journey since before the doors even opened.",
           "likes": 80,
@@ -17841,16 +17851,6 @@
           "permalink": "https://www.instagram.com/p/DZNRpnsOeEo/",
           "image_url": "nso-dashboard/thumbnails/pinecrest/DZNRpnsOeEo.jpg",
           "engagement": 99
-        },
-        {
-          "date": "2026-07-15",
-          "caption": "Different ages. Different stories. One community.\n\nAt SWEAT440 Pinecrest, strength isn\u2019t about your age. It\u2019s about showing up, giving your best, and ",
-          "likes": 77,
-          "comments": 20,
-          "media_type": "VIDEO",
-          "permalink": "https://www.instagram.com/reel/Da0H2a_BlmE/",
-          "image_url": "nso-dashboard/thumbnails/pinecrest/Da0H2a_BlmE.jpg",
-          "engagement": 97
         },
         {
           "date": "2026-07-04",
@@ -18021,10 +18021,6 @@
       "current_followers": 344,
       "daily": [
         {
-          "date": "2026-04-19",
-          "reach": 1262
-        },
-        {
           "date": "2026-04-20",
           "reach": 1650
         },
@@ -18129,8 +18125,8 @@
           "reach": 1107
         },
         {
-          "date": "2026-05-17",
-          "reach": 1189
+          "date": "2026-05-16",
+          "reach": 1016
         },
         {
           "date": "2026-05-18",
@@ -18237,8 +18233,8 @@
           "reach": 465
         },
         {
-          "date": "2026-06-14",
-          "reach": 292
+          "date": "2026-06-13",
+          "reach": 270
         },
         {
           "date": "2026-06-15",
@@ -18258,8 +18254,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 526,
-          "follower_count": 0
+          "reach": 526
         },
         {
           "date": "2026-06-20",
@@ -18368,11 +18363,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 172,
           "follower_count": 3
         },
         {
           "date": "2026-07-12",
-          "reach": 363,
           "follower_count": 4
         },
         {
@@ -18393,6 +18388,11 @@
         {
           "date": "2026-07-16",
           "reach": 180,
+          "follower_count": 1
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 291,
           "follower_count": 1
         }
       ],
@@ -18603,12 +18603,8 @@
       "studio": "South Miami",
       "code": "southmiami",
       "ig_id": "17841460068168413",
-      "current_followers": 3038,
+      "current_followers": 3044,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1152
-        },
         {
           "date": "2026-04-20",
           "reach": 953
@@ -18714,8 +18710,8 @@
           "reach": 1074
         },
         {
-          "date": "2026-05-17",
-          "reach": 1209
+          "date": "2026-05-16",
+          "reach": 1105
         },
         {
           "date": "2026-05-18",
@@ -18822,8 +18818,8 @@
           "reach": 678
         },
         {
-          "date": "2026-06-14",
-          "reach": 929
+          "date": "2026-06-13",
+          "reach": 728
         },
         {
           "date": "2026-06-15",
@@ -18843,8 +18839,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 782,
-          "follower_count": 2
+          "reach": 782
         },
         {
           "date": "2026-06-20",
@@ -18953,11 +18948,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 753,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 858,
           "follower_count": 1
         },
         {
@@ -18979,6 +18974,11 @@
           "date": "2026-07-16",
           "reach": 741,
           "follower_count": 3
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 906,
+          "follower_count": 6
         }
       ],
       "posts": [
@@ -19115,12 +19115,12 @@
         {
           "date": "2026-07-17",
           "caption": "Together, we were able to donate three boxes with valuable supplies  for the Venezuelan people. Thank you GEM Latam for the amazing logistics you prov",
-          "likes": 34,
+          "likes": 35,
           "comments": 1,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Da5hT8hRR2b/",
           "image_url": "nso-dashboard/thumbnails/southmiami/Da5hT8hRR2b.jpg",
-          "engagement": 35
+          "engagement": 36
         },
         {
           "date": "2026-07-15",
@@ -19188,12 +19188,8 @@
       "studio": "Toms River",
       "code": "tomsriver",
       "ig_id": "17841456009580177",
-      "current_followers": 4837,
+      "current_followers": 4840,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1269
-        },
         {
           "date": "2026-04-20",
           "reach": 889
@@ -19299,8 +19295,8 @@
           "reach": 1242
         },
         {
-          "date": "2026-05-17",
-          "reach": 1127
+          "date": "2026-05-16",
+          "reach": 1271
         },
         {
           "date": "2026-05-18",
@@ -19407,8 +19403,8 @@
           "reach": 1041
         },
         {
-          "date": "2026-06-14",
-          "reach": 1157
+          "date": "2026-06-13",
+          "reach": 847
         },
         {
           "date": "2026-06-15",
@@ -19428,8 +19424,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 779,
-          "follower_count": 3
+          "reach": 779
         },
         {
           "date": "2026-06-20",
@@ -19538,11 +19533,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 857,
           "follower_count": 2
         },
         {
           "date": "2026-07-12",
-          "reach": 1493,
           "follower_count": 4
         },
         {
@@ -19564,6 +19559,11 @@
           "date": "2026-07-16",
           "reach": 1450,
           "follower_count": 5
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 852,
+          "follower_count": 2
         }
       ],
       "posts": [
@@ -19773,12 +19773,8 @@
       "studio": "Wall Township",
       "code": "wallnj",
       "ig_id": "17841475431787496",
-      "current_followers": 1479,
+      "current_followers": 1481,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 767
-        },
         {
           "date": "2026-04-20",
           "reach": 1675
@@ -19884,8 +19880,8 @@
           "reach": 846
         },
         {
-          "date": "2026-05-17",
-          "reach": 1169
+          "date": "2026-05-16",
+          "reach": 866
         },
         {
           "date": "2026-05-18",
@@ -19992,8 +19988,8 @@
           "reach": 572
         },
         {
-          "date": "2026-06-14",
-          "reach": 778
+          "date": "2026-06-13",
+          "reach": 794
         },
         {
           "date": "2026-06-15",
@@ -20013,8 +20009,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 478,
-          "follower_count": 2
+          "reach": 478
         },
         {
           "date": "2026-06-20",
@@ -20123,11 +20118,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 750,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 810,
           "follower_count": 2
         },
         {
@@ -20148,6 +20143,11 @@
         {
           "date": "2026-07-16",
           "reach": 896,
+          "follower_count": 2
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 530,
           "follower_count": 2
         }
       ],
@@ -20358,12 +20358,8 @@
       "studio": "West Palm Beach",
       "code": "westpalm",
       "ig_id": "17841474879143521",
-      "current_followers": 1659,
+      "current_followers": 1660,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 547
-        },
         {
           "date": "2026-04-20",
           "reach": 728
@@ -20469,8 +20465,8 @@
           "reach": 769
         },
         {
-          "date": "2026-05-17",
-          "reach": 689
+          "date": "2026-05-16",
+          "reach": 763
         },
         {
           "date": "2026-05-18",
@@ -20577,8 +20573,8 @@
           "reach": 966
         },
         {
-          "date": "2026-06-14",
-          "reach": 972
+          "date": "2026-06-13",
+          "reach": 696
         },
         {
           "date": "2026-06-15",
@@ -20598,8 +20594,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 502,
-          "follower_count": 5
+          "reach": 502
         },
         {
           "date": "2026-06-20",
@@ -20708,11 +20703,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 539,
           "follower_count": 3
         },
         {
           "date": "2026-07-12",
-          "reach": 657,
           "follower_count": 0
         },
         {
@@ -20734,6 +20729,11 @@
           "date": "2026-07-16",
           "reach": 1260,
           "follower_count": 9
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 415,
+          "follower_count": 6
         }
       ],
       "posts": [
@@ -20770,12 +20770,12 @@
         {
           "date": "2026-07-12",
           "caption": "Meet Coach Saadeh \ud83d\udc4b\n\nWe\u2019re excited to welcome Saadeh to the SWEAT440 team! \ud83d\udcaa\n\nSaadeh is a natural pro bodybuilder, ISSA-certified Strength & Condition",
-          "likes": 46,
+          "likes": 47,
           "comments": 1,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DasbpEwM6GU/",
           "image_url": "nso-dashboard/thumbnails/westpalm/DasbpEwM6GU.jpg",
-          "engagement": 47
+          "engagement": 48
         },
         {
           "date": "2026-06-20",
@@ -20943,12 +20943,8 @@
       "studio": "Corporate",
       "code": "corporate",
       "ig_id": "17841406944098426",
-      "current_followers": 14665,
+      "current_followers": 14675,
       "daily": [
-        {
-          "date": "2026-04-19",
-          "reach": 1282
-        },
         {
           "date": "2026-04-20",
           "reach": 1573
@@ -21054,8 +21050,8 @@
           "reach": 966
         },
         {
-          "date": "2026-05-17",
-          "reach": 1073
+          "date": "2026-05-16",
+          "reach": 931
         },
         {
           "date": "2026-05-18",
@@ -21162,8 +21158,8 @@
           "reach": 1131
         },
         {
-          "date": "2026-06-14",
-          "reach": 1187
+          "date": "2026-06-13",
+          "reach": 1895
         },
         {
           "date": "2026-06-15",
@@ -21183,8 +21179,7 @@
         },
         {
           "date": "2026-06-19",
-          "reach": 992,
-          "follower_count": 11
+          "reach": 992
         },
         {
           "date": "2026-06-20",
@@ -21293,11 +21288,11 @@
         },
         {
           "date": "2026-07-11",
+          "reach": 866,
           "follower_count": 1
         },
         {
           "date": "2026-07-12",
-          "reach": 433,
           "follower_count": 5
         },
         {
@@ -21319,18 +21314,23 @@
           "date": "2026-07-16",
           "reach": 1193,
           "follower_count": 11
+        },
+        {
+          "date": "2026-07-17",
+          "reach": 1402,
+          "follower_count": 5
         }
       ],
       "posts": [
         {
           "date": "2026-07-08",
           "caption": "14 new studios. Same rule: you're #neverlate \ud83d\udd25\n\nMore cities. More communities. Same energy. A new class kicks off every 10 minutes, each session is co",
-          "likes": 229,
+          "likes": 230,
           "comments": 48,
           "media_type": "VIDEO",
           "permalink": "https://www.instagram.com/reel/Dai2EFTgmhi/",
           "image_url": "nso-dashboard/thumbnails/corporate/Dai2EFTgmhi.jpg",
-          "engagement": 277
+          "engagement": 278
         },
         {
           "date": "2026-06-13",
@@ -21365,12 +21365,12 @@
         {
           "date": "2026-07-02",
           "caption": "Breaking news: Classes start every 10 minutes \ud83d\uddde\ufe0f\n\nNo waiting. No missing out. Just show up, there\u2019s always a class starting.\n\n\ud83d\udc49 Find your nearest SWEA",
-          "likes": 105,
+          "likes": 106,
           "comments": 5,
           "media_type": "IMAGE",
           "permalink": "https://www.instagram.com/p/DaTYe8zBZpi/",
           "image_url": "nso-dashboard/thumbnails/corporate/DaTYe8zBZpi.jpg",
-          "engagement": 110
+          "engagement": 111
         },
         {
           "date": "2026-05-14",
