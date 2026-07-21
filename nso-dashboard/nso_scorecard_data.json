@@ -3602,7 +3602,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 1676,
+          "ig_new_followers": 1693,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -6312,6 +6312,12 @@
           "label": "Paid Lead Gen Start",
           "subtitle": "Meta / Google paid ads begin",
           "date": "2026-07-01"
+        },
+        {
+          "key": "paid_presales_start_date",
+          "label": "Paid Presales Start Date",
+          "subtitle": "Presales campaign begins",
+          "date": "2026-07-28"
         }
       ],
       "sku_map": {
@@ -6360,7 +6366,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 249,
+          "ig_new_followers": 250,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -7556,7 +7562,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 238,
+          "ig_new_followers": 240,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -10032,7 +10038,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 19466,
+          "ig_new_followers": 19463,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -14465,6 +14471,12 @@
           "label": "Paid Lead Gen Start",
           "subtitle": "Meta / Google paid ads begin",
           "date": "2026-07-01"
+        },
+        {
+          "key": "paid_presales_start_date",
+          "label": "Paid Presales Start Date",
+          "subtitle": "Presales campaign begins",
+          "date": "2026-07-28"
         }
       ],
       "sku_map": {
