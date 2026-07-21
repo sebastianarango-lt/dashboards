@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T18:11:07.899042+00:00",
+  "generated_at": "2026-07-21T18:43:48.082317+00:00",
   "active_campaign": "free_class_open_studios_2026",
   "campaigns_index": [
     {
@@ -18,8 +18,8 @@
       "period_label": "Apr 15, 2026 onwards",
       "date_start": "2026-04-15",
       "date_end": "2026-12-31",
-      "leads": 859,
-      "spend": 72640.65,
+      "leads": 860,
+      "spend": 72641.61,
       "is_default": true
     },
     {
@@ -68986,16 +68986,16 @@
       "date_start": "2026-04-15",
       "date_end": "2026-12-31",
       "totals": {
-        "impressions": 2340484,
-        "clicks": 28045,
-        "reach": 948351,
-        "leads": 859,
+        "impressions": 2340530,
+        "clicks": 28046,
+        "reach": 948366,
+        "leads": 860,
         "purchases": 74,
         "trials": 339,
-        "spend": 72640.65,
+        "spend": 72641.61,
         "ctr": 1.2,
         "cpm": 31.04,
-        "cpl": 84.56
+        "cpl": 84.47
       },
       "daily": [
         {
@@ -69860,8 +69860,8 @@
         },
         {
           "date": "2026-07-20",
-          "spend": 831.38,
-          "impressions": 26671,
+          "spend": 831.39,
+          "impressions": 26672,
           "clicks": 348,
           "reach": 17378,
           "leads": 4,
@@ -69870,11 +69870,11 @@
         },
         {
           "date": "2026-07-21",
-          "spend": 350.4500000000001,
-          "impressions": 9100,
-          "clicks": 132,
-          "reach": 7010,
-          "leads": 4,
+          "spend": 351.20000000000005,
+          "impressions": 9139,
+          "clicks": 133,
+          "reach": 7042,
+          "leads": 5,
           "trials": 0,
           "purchases": 0
         }
@@ -69914,9 +69914,9 @@
           "code": "FL-003",
           "name": "Coral Gables",
           "state": "FL",
-          "impressions": 77602,
+          "impressions": 77603,
           "clicks": 850,
-          "spend": 2492.91,
+          "spend": 2492.92,
           "reach": 31695,
           "ctr": 1.1,
           "cpm": 32.12,
@@ -69929,10 +69929,10 @@
           "code": "FL-004",
           "name": "Doral",
           "state": "FL",
-          "impressions": 75780,
+          "impressions": 75782,
           "clicks": 1080,
-          "spend": 2495.33,
-          "reach": 34817,
+          "spend": 2495.38,
+          "reach": 34818,
           "ctr": 1.43,
           "cpm": 32.93,
           "leads": 34,
@@ -69944,9 +69944,9 @@
           "code": "FL-005",
           "name": "Miami Lakes",
           "state": "FL",
-          "impressions": 97964,
+          "impressions": 97966,
           "clicks": 1150,
-          "spend": 2516.18,
+          "spend": 2516.21,
           "reach": 34993,
           "ctr": 1.17,
           "cpm": 25.68,
@@ -69962,7 +69962,7 @@
           "impressions": 46042,
           "clicks": 673,
           "spend": 1611.13,
-          "reach": 20346,
+          "reach": 20350,
           "ctr": 1.46,
           "cpm": 34.99,
           "leads": 20,
@@ -69974,9 +69974,9 @@
           "code": "FL-007",
           "name": "Miami - Upper East Side",
           "state": "FL",
-          "impressions": 56900,
+          "impressions": 56902,
           "clicks": 688,
-          "spend": 2291.97,
+          "spend": 2291.98,
           "reach": 24008,
           "ctr": 1.21,
           "cpm": 40.28,
@@ -70004,9 +70004,9 @@
           "code": "FL-009",
           "name": "South Miami",
           "state": "FL",
-          "impressions": 110662,
+          "impressions": 110664,
           "clicks": 1117,
-          "spend": 3549.65,
+          "spend": 3549.68,
           "reach": 48722,
           "ctr": 1.01,
           "cpm": 32.08,
@@ -70019,7 +70019,7 @@
           "code": "FL-010",
           "name": "Miami - Midtown",
           "state": "FL",
-          "impressions": 76012,
+          "impressions": 76013,
           "clicks": 919,
           "spend": 2434.52,
           "reach": 30410,
@@ -70049,9 +70049,9 @@
           "code": "FL-012",
           "name": "Miramar",
           "state": "FL",
-          "impressions": 111946,
+          "impressions": 111947,
           "clicks": 1523,
-          "spend": 4144.0,
+          "spend": 4144.02,
           "reach": 47951,
           "ctr": 1.36,
           "cpm": 37.02,
@@ -70079,14 +70079,14 @@
           "code": "FL-014",
           "name": "Pembroke Pines",
           "state": "FL",
-          "impressions": 101017,
+          "impressions": 101022,
           "clicks": 1166,
-          "spend": 2988.44,
-          "reach": 43948,
+          "spend": 2988.48,
+          "reach": 43950,
           "ctr": 1.15,
           "cpm": 29.58,
           "leads": 35,
-          "cpl": 85.38,
+          "cpl": 85.39,
           "purchases": 2,
           "trials": 16
         },
@@ -70094,14 +70094,14 @@
           "code": "FL-015",
           "name": "West Palm Beach",
           "state": "FL",
-          "impressions": 95984,
-          "clicks": 1360,
-          "spend": 3249.46,
+          "impressions": 95987,
+          "clicks": 1361,
+          "spend": 3249.58,
           "reach": 34746,
           "ctr": 1.42,
           "cpm": 33.85,
-          "leads": 60,
-          "cpl": 54.16,
+          "leads": 61,
+          "cpl": 53.27,
           "purchases": 8,
           "trials": 31
         },
@@ -70109,7 +70109,7 @@
           "code": "FL-016",
           "name": "Boca Raton",
           "state": "FL",
-          "impressions": 79212,
+          "impressions": 79213,
           "clicks": 1349,
           "spend": 3294.98,
           "reach": 33456,
@@ -70124,10 +70124,10 @@
           "code": "NC-001",
           "name": "Charlotte - Noda",
           "state": "NC",
-          "impressions": 127200,
+          "impressions": 127202,
           "clicks": 1272,
-          "spend": 3113.76,
-          "reach": 55894,
+          "spend": 3113.81,
+          "reach": 55895,
           "ctr": 1.0,
           "cpm": 24.48,
           "leads": 34,
@@ -70139,14 +70139,14 @@
           "code": "NJ-001",
           "name": "Toms River",
           "state": "NJ",
-          "impressions": 125715,
+          "impressions": 125718,
           "clicks": 1356,
-          "spend": 3009.95,
-          "reach": 47287,
+          "spend": 3010.17,
+          "reach": 47291,
           "ctr": 1.08,
           "cpm": 23.94,
           "leads": 27,
-          "cpl": 111.48,
+          "cpl": 111.49,
           "purchases": 4,
           "trials": 10
         },
@@ -70154,10 +70154,10 @@
           "code": "NJ-002",
           "name": "Ocean Township",
           "state": "NJ",
-          "impressions": 164711,
+          "impressions": 164715,
           "clicks": 1691,
-          "spend": 3757.01,
-          "reach": 55635,
+          "spend": 3757.04,
+          "reach": 55637,
           "ctr": 1.03,
           "cpm": 22.81,
           "leads": 45,
@@ -70169,10 +70169,10 @@
           "code": "NJ-003",
           "name": "Wall Township",
           "state": "NJ",
-          "impressions": 121250,
+          "impressions": 121253,
           "clicks": 1378,
-          "spend": 3194.8,
-          "reach": 46404,
+          "spend": 3194.82,
+          "reach": 46405,
           "ctr": 1.14,
           "cpm": 26.35,
           "leads": 25,
@@ -70184,14 +70184,14 @@
           "code": "NY-002",
           "name": "NYC - Chelsea",
           "state": "NY",
-          "impressions": 110113,
+          "impressions": 110116,
           "clicks": 1262,
-          "spend": 3656.01,
+          "spend": 3656.07,
           "reach": 43105,
           "ctr": 1.15,
           "cpm": 33.2,
           "leads": 39,
-          "cpl": 93.74,
+          "cpl": 93.75,
           "purchases": 0,
           "trials": 5
         },
@@ -70199,14 +70199,14 @@
           "code": "NY-003",
           "name": "NYC - Park Slope",
           "state": "NY",
-          "impressions": 100153,
+          "impressions": 100157,
           "clicks": 1334,
-          "spend": 3738.9,
+          "spend": 3739.07,
           "reach": 40442,
           "ctr": 1.33,
           "cpm": 37.33,
           "leads": 48,
-          "cpl": 77.89,
+          "cpl": 77.9,
           "purchases": 8,
           "trials": 15
         },
@@ -70214,9 +70214,9 @@
           "code": "NY-004",
           "name": "Eastchester",
           "state": "NY",
-          "impressions": 130797,
+          "impressions": 130802,
           "clicks": 1810,
-          "spend": 4256.13,
+          "spend": 4256.21,
           "reach": 41575,
           "ctr": 1.38,
           "cpm": 32.54,
@@ -70229,9 +70229,9 @@
           "code": "TX-001",
           "name": "Austin - Zilker",
           "state": "TX",
-          "impressions": 95047,
+          "impressions": 95048,
           "clicks": 846,
-          "spend": 2594.37,
+          "spend": 2594.38,
           "reach": 41049,
           "ctr": 0.89,
           "cpm": 27.3,
@@ -70244,9 +70244,9 @@
           "code": "TX-002",
           "name": "Austin - Highland",
           "state": "TX",
-          "impressions": 96167,
+          "impressions": 96168,
           "clicks": 865,
-          "spend": 2539.05,
+          "spend": 2539.06,
           "reach": 37405,
           "ctr": 0.9,
           "cpm": 26.4,
@@ -70384,8 +70384,8 @@
         {
           "studio_code": "FL-003",
           "audience": "PYC",
-          "spend": 404.56,
-          "impressions": 12610,
+          "spend": 404.57,
+          "impressions": 12611,
           "leads": 6,
           "ads": [
             "26-FL-003-02 - DR - PYC - Plan",
@@ -70446,8 +70446,8 @@
         {
           "studio_code": "FL-004",
           "audience": "PYC",
-          "spend": 207.18,
-          "impressions": 6398,
+          "spend": 207.2,
+          "impressions": 6399,
           "leads": 1,
           "ads": [
             "26-FL-004-02 - DR - PYC - Plan",
@@ -70475,8 +70475,8 @@
         {
           "studio_code": "FL-004",
           "audience": "POC",
-          "spend": 173.45,
-          "impressions": 5518,
+          "spend": 173.48,
+          "impressions": 5519,
           "leads": 0,
           "ads": [
             "26-FL-004-02 - P&R - POC - Yourself",
@@ -70507,8 +70507,8 @@
         {
           "studio_code": "FL-005",
           "audience": "PYC",
-          "spend": 168.81,
-          "impressions": 5233,
+          "spend": 168.83,
+          "impressions": 5234,
           "leads": 1,
           "ads": [
             "26-FL-005-02 - DR - PYC - Plan",
@@ -70521,8 +70521,8 @@
         {
           "studio_code": "FL-005",
           "audience": "SI",
-          "spend": 1450.9,
-          "impressions": 48946,
+          "spend": 1450.91,
+          "impressions": 48947,
           "leads": 21,
           "ads": [
             "26-FL-005-02 - PS - SI - ShowUp",
@@ -70630,8 +70630,8 @@
         {
           "studio_code": "FL-007",
           "audience": "PYC",
-          "spend": 367.45,
-          "impressions": 9932,
+          "spend": 367.46,
+          "impressions": 9933,
           "leads": 2,
           "ads": [
             "26-FL-007-02 - DR - PYC - Plan",
@@ -70672,7 +70672,7 @@
           "studio_code": "FL-007",
           "audience": "DINKS",
           "spend": 360.18,
-          "impressions": 6963,
+          "impressions": 6964,
           "leads": 2,
           "ads": [
             "26-FL-007-02 - DR - DINKS - Video - Review",
@@ -70794,8 +70794,8 @@
         {
           "studio_code": "FL-009",
           "audience": "DINKS",
-          "spend": 860.91,
-          "impressions": 22350,
+          "spend": 860.94,
+          "impressions": 22352,
           "leads": 5,
           "ads": [
             "26-FL-009-02 - DR - DINKS - Video - Review",
@@ -70816,7 +70816,7 @@
           "studio_code": "FL-010",
           "audience": "PYC",
           "spend": 446.22,
-          "impressions": 16661,
+          "impressions": 16662,
           "leads": 4,
           "ads": [
             "26-FL-010-02 - DR - PYC - Plan",
@@ -70940,8 +70940,8 @@
         {
           "studio_code": "FL-012",
           "audience": "PYC",
-          "spend": 766.44,
-          "impressions": 21851,
+          "spend": 766.46,
+          "impressions": 21852,
           "leads": 5,
           "ads": [
             "26-FL-012-02 - DR - PYC - Plan",
@@ -71063,8 +71063,8 @@
         {
           "studio_code": "FL-014",
           "audience": "PYC",
-          "spend": 568.02,
-          "impressions": 16911,
+          "spend": 568.06,
+          "impressions": 16916,
           "leads": 5,
           "ads": [
             "26-FL-014-02 - DR - PYC - Plan",
@@ -71127,8 +71127,8 @@
           "studio_code": "FL-015",
           "audience": "PYC",
           "spend": 112.99,
-          "impressions": 3292,
-          "leads": 0,
+          "impressions": 3293,
+          "leads": 1,
           "ads": [
             "26-FL-015-02 - DR - PYC - Plan",
             "26-FL-015-02 - DR - PYC - RealResults",
@@ -71140,8 +71140,8 @@
         {
           "studio_code": "FL-015",
           "audience": "SI",
-          "spend": 2903.61,
-          "impressions": 87016,
+          "spend": 2903.73,
+          "impressions": 87018,
           "leads": 56,
           "ads": [
             "26-FL-015-02 - PS - SI - ShowUp",
@@ -71188,7 +71188,7 @@
           "studio_code": "FL-016",
           "audience": "PYC",
           "spend": 693.39,
-          "impressions": 18548,
+          "impressions": 18549,
           "leads": 9,
           "ads": [
             "26-FL-016-02 - DR - PYC - Plan",
@@ -71249,8 +71249,8 @@
         {
           "studio_code": "NC-001",
           "audience": "PYC",
-          "spend": 349.18,
-          "impressions": 13003,
+          "spend": 349.19,
+          "impressions": 13004,
           "leads": 4,
           "ads": [
             "26-NC-001-02 - DR - PYC - Plan",
@@ -71290,8 +71290,8 @@
         {
           "studio_code": "NC-001",
           "audience": "DINKS",
-          "spend": 173.46,
-          "impressions": 5923,
+          "spend": 173.5,
+          "impressions": 5924,
           "leads": 1,
           "ads": [
             "26-NC-001-02 - DR - DINKS - Video - Review",
@@ -71325,8 +71325,8 @@
         {
           "studio_code": "NJ-001",
           "audience": "SI",
-          "spend": 1959.3,
-          "impressions": 80142,
+          "spend": 1959.52,
+          "impressions": 80144,
           "leads": 22,
           "ads": [
             "26-NJ-001-02 - PS - SI - ShowUp",
@@ -71352,7 +71352,7 @@
           "studio_code": "NJ-001",
           "audience": "DINKS",
           "spend": 207.27,
-          "impressions": 8122,
+          "impressions": 8123,
           "leads": 1,
           "ads": [
             "26-NJ-001-02 - DR - DINKS - Video - Review",
@@ -71372,8 +71372,8 @@
         {
           "studio_code": "NJ-002",
           "audience": "PYC",
-          "spend": 288.13,
-          "impressions": 11693,
+          "spend": 288.14,
+          "impressions": 11694,
           "leads": 1,
           "ads": [
             "26-NJ-002-02 - DR - PYC - Plan",
@@ -71386,8 +71386,8 @@
         {
           "studio_code": "NJ-002",
           "audience": "SI",
-          "spend": 1914.44,
-          "impressions": 79750,
+          "spend": 1914.45,
+          "impressions": 79752,
           "leads": 27,
           "ads": [
             "26-NJ-002-02 - PS - SI - ShowUp",
@@ -71401,8 +71401,8 @@
         {
           "studio_code": "NJ-002",
           "audience": "POC",
-          "spend": 242.31,
-          "impressions": 10511,
+          "spend": 242.32,
+          "impressions": 10512,
           "leads": 4,
           "ads": [
             "26-NJ-002-02 - P&R - POC - Yourself",
@@ -71433,8 +71433,8 @@
         {
           "studio_code": "NJ-003",
           "audience": "PYC",
-          "spend": 417.69,
-          "impressions": 17003,
+          "spend": 417.7,
+          "impressions": 17005,
           "leads": 3,
           "ads": [
             "26-NJ-003-02 - DR - PYC - Plan",
@@ -71447,8 +71447,8 @@
         {
           "studio_code": "NJ-003",
           "audience": "SI",
-          "spend": 1807.79,
-          "impressions": 69662,
+          "spend": 1807.8,
+          "impressions": 69663,
           "leads": 19,
           "ads": [
             "26-NJ-003-02 - PS - SI - ShowUp",
@@ -71535,8 +71535,8 @@
         {
           "studio_code": "NY-002",
           "audience": "DINKS",
-          "spend": 89.45,
-          "impressions": 2045,
+          "spend": 89.51,
+          "impressions": 2048,
           "leads": 1,
           "ads": [
             "26-NY-002-02 - DR - DINKS - Video - Review",
@@ -71571,8 +71571,8 @@
         {
           "studio_code": "NY-003",
           "audience": "SI",
-          "spend": 3194.82,
-          "impressions": 86580,
+          "spend": 3194.88,
+          "impressions": 86582,
           "leads": 38,
           "ads": [
             "26-NY-003-02 - PS - SI - ShowUp",
@@ -71597,8 +71597,8 @@
         {
           "studio_code": "NY-003",
           "audience": "DINKS",
-          "spend": 187.37,
-          "impressions": 3916,
+          "spend": 187.48,
+          "impressions": 3918,
           "leads": 4,
           "ads": [
             "26-NY-003-02 - DR - DINKS - Video - Review",
@@ -71618,8 +71618,8 @@
         {
           "studio_code": "NY-004",
           "audience": "PYC",
-          "spend": 649.54,
-          "impressions": 21808,
+          "spend": 649.55,
+          "impressions": 21809,
           "leads": 6,
           "ads": [
             "26-NY-004-02 - DR - PYC - Plan",
@@ -71633,8 +71633,8 @@
         {
           "studio_code": "NY-004",
           "audience": "SI",
-          "spend": 2928.68,
-          "impressions": 89467,
+          "spend": 2928.71,
+          "impressions": 89469,
           "leads": 28,
           "ads": [
             "26-NY-004-02 - PS - SI - ShowUp",
@@ -71659,8 +71659,8 @@
         {
           "studio_code": "NY-004",
           "audience": "DINKS",
-          "spend": 269.38,
-          "impressions": 7549,
+          "spend": 269.42,
+          "impressions": 7551,
           "leads": 1,
           "ads": [
             "26-NY-004-02 - DR - DINKS - Video - Review",
@@ -71695,8 +71695,8 @@
         {
           "studio_code": "TX-001",
           "audience": "SI",
-          "spend": 1249.3,
-          "impressions": 34679,
+          "spend": 1249.31,
+          "impressions": 34680,
           "leads": 21,
           "ads": [
             "26-TX-001-02 - PS - SI - ShowUp",
@@ -71757,8 +71757,8 @@
         {
           "studio_code": "TX-002",
           "audience": "SI",
-          "spend": 1478.83,
-          "impressions": 52871,
+          "spend": 1478.84,
+          "impressions": 52872,
           "leads": 18,
           "ads": [
             "26-TX-002-02 - PS - SI - ShowUp",
@@ -71805,8 +71805,8 @@
       "pillars": [
         {
           "pillar": "Decision Relief",
-          "spend": 13545.01,
-          "impressions": 407718,
+          "spend": 13545.34,
+          "impressions": 407734,
           "leads": 133,
           "cpl": 101.84,
           "ads": [
@@ -71834,8 +71834,8 @@
         },
         {
           "pillar": "Psychological Safety",
-          "spend": 36025.87,
-          "impressions": 1122423,
+          "spend": 36026.34,
+          "impressions": 1122436,
           "leads": 444,
           "cpl": 81.14,
           "ads": [
@@ -71950,10 +71950,10 @@
         },
         {
           "pillar": "Value Confidence",
-          "spend": 1346.15,
-          "impressions": 40887,
-          "leads": 7,
-          "cpl": 192.31,
+          "spend": 1346.29,
+          "impressions": 40901,
+          "leads": 8,
+          "cpl": 168.29,
           "ads": [
             "26-FL-016-02 - VC - PYC - Video - No Plan Needed",
             "26-FL-014-02 - VC - PYC - Still Paying",
@@ -71982,7 +71982,7 @@
         {
           "concept": "Plan",
           "spend": 2473.27,
-          "impressions": 77667,
+          "impressions": 77668,
           "leads": 33,
           "cpl": 74.95,
           "ads": [
@@ -72010,8 +72010,8 @@
         },
         {
           "concept": "RealResults",
-          "spend": 3226.12,
-          "impressions": 101992,
+          "spend": 3226.13,
+          "impressions": 101993,
           "leads": 34,
           "cpl": 94.89,
           "ads": [
@@ -72039,8 +72039,8 @@
         },
         {
           "concept": "ShowUp",
-          "spend": 3150.88,
-          "impressions": 105668,
+          "spend": 3150.95,
+          "impressions": 105669,
           "leads": 43,
           "cpl": 73.28,
           "ads": [
@@ -72097,8 +72097,8 @@
         },
         {
           "concept": "Video - Review",
-          "spend": 2931.47,
-          "impressions": 80415,
+          "spend": 2931.5,
+          "impressions": 80417,
           "leads": 30,
           "cpl": 97.72,
           "ads": [
@@ -72155,8 +72155,8 @@
         },
         {
           "concept": "Video - Voice",
-          "spend": 3616.84,
-          "impressions": 88664,
+          "spend": 3616.99,
+          "impressions": 88665,
           "leads": 40,
           "cpl": 90.42,
           "ads": [
@@ -72184,8 +72184,8 @@
         },
         {
           "concept": "ShowUpV3",
-          "spend": 26109.79,
-          "impressions": 827757,
+          "spend": 26110.04,
+          "impressions": 827768,
           "leads": 323,
           "cpl": 80.84,
           "ads": [
@@ -72271,8 +72271,8 @@
         },
         {
           "concept": "Video - WorstDay",
-          "spend": 7008.12,
-          "impressions": 179291,
+          "spend": 7008.13,
+          "impressions": 179292,
           "leads": 93,
           "cpl": 75.36,
           "ads": [
@@ -72393,8 +72393,8 @@
         },
         {
           "concept": "Video - Coach",
-          "spend": 2369.63,
-          "impressions": 79461,
+          "spend": 2369.64,
+          "impressions": 79463,
           "leads": 18,
           "cpl": 131.65,
           "ads": [
@@ -72422,8 +72422,8 @@
         },
         {
           "concept": "Coach",
-          "spend": 4835.72,
-          "impressions": 138866,
+          "spend": 4836.01,
+          "impressions": 138878,
           "leads": 37,
           "cpl": 130.7,
           "ads": [
@@ -72451,10 +72451,10 @@
         },
         {
           "concept": "Video - Plan",
-          "spend": 903.2,
-          "impressions": 26811,
-          "leads": 5,
-          "cpl": 180.64,
+          "spend": 903.3,
+          "impressions": 26821,
+          "leads": 6,
+          "cpl": 150.55,
           "ads": [
             "26-FL-016-02 - VC - PYC - Video - No Plan Needed",
             "26-FL-010-02 - VC - PYC - Video - No Plan Needed",
@@ -72480,10 +72480,10 @@
         },
         {
           "concept": "Still",
-          "spend": 418.02,
-          "impressions": 13175,
+          "spend": 418.06,
+          "impressions": 13179,
           "leads": 2,
-          "cpl": 209.01,
+          "cpl": 209.03,
           "ads": [
             "26-FL-014-02 - VC - PYC - Still Paying",
             "26-FL-010-02 - VC - PYC - Still Paying",
@@ -72521,8 +72521,8 @@
       "media_types": [
         {
           "media_type": "Other",
-          "spend": 49730.93,
-          "impressions": 1658166,
+          "spend": 49731.59,
+          "impressions": 1658196,
           "leads": 595,
           "cpl": 83.58,
           "ads": [
@@ -72550,10 +72550,10 @@
         },
         {
           "media_type": "Video",
-          "spend": 22790.16,
-          "impressions": 678290,
-          "leads": 263,
-          "cpl": 86.65,
+          "spend": 22790.46,
+          "impressions": 678306,
+          "leads": 264,
+          "cpl": 86.33,
           "ads": [
             "26-FL-013-02 - DR - DINKS - Video - Review",
             "26-FL-013-02 - SSB - SAHP - Video - ForYou",
@@ -72731,16 +72731,16 @@
         {
           "studio_code": "FL-003",
           "pillar": "Value Confidence",
-          "spend": 69.31,
-          "impressions": 2345,
+          "spend": 69.32,
+          "impressions": 2346,
           "leads": 0,
           "cpl": 0
         },
         {
           "studio_code": "FL-004",
           "pillar": "Decision Relief",
-          "spend": 840.44,
-          "impressions": 25327,
+          "spend": 840.47,
+          "impressions": 25328,
           "leads": 8,
           "cpl": 105.06
         },
@@ -72771,10 +72771,10 @@
         {
           "studio_code": "FL-004",
           "pillar": "Value Confidence",
-          "spend": 84.27,
-          "impressions": 2460,
+          "spend": 84.29,
+          "impressions": 2461,
           "leads": 1,
-          "cpl": 84.27
+          "cpl": 84.29
         },
         {
           "studio_code": "FL-005",
@@ -72787,8 +72787,8 @@
         {
           "studio_code": "FL-005",
           "pillar": "Psychological Safety",
-          "spend": 1282.11,
-          "impressions": 44167,
+          "spend": 1282.12,
+          "impressions": 44168,
           "leads": 17,
           "cpl": 75.42
         },
@@ -72819,10 +72819,10 @@
         {
           "studio_code": "FL-005",
           "pillar": "Value Confidence",
-          "spend": 68.22,
-          "impressions": 1877,
+          "spend": 68.24,
+          "impressions": 1878,
           "leads": 1,
-          "cpl": 68.22
+          "cpl": 68.24
         },
         {
           "studio_code": "FL-006",
@@ -72868,7 +72868,7 @@
           "studio_code": "FL-007",
           "pillar": "Decision Relief",
           "spend": 583.09,
-          "impressions": 13137,
+          "impressions": 13138,
           "leads": 4,
           "cpl": 145.77
         },
@@ -72899,8 +72899,8 @@
         {
           "studio_code": "FL-007",
           "pillar": "Value Confidence",
-          "spend": 85.63,
-          "impressions": 1909,
+          "spend": 85.64,
+          "impressions": 1910,
           "leads": 0,
           "cpl": 0
         },
@@ -72947,8 +72947,8 @@
         {
           "studio_code": "FL-009",
           "pillar": "Decision Relief",
-          "spend": 1101.03,
-          "impressions": 29453,
+          "spend": 1101.06,
+          "impressions": 29455,
           "leads": 5,
           "cpl": 220.21
         },
@@ -73028,7 +73028,7 @@
           "studio_code": "FL-010",
           "pillar": "Value Confidence",
           "spend": 103.0,
-          "impressions": 2804,
+          "impressions": 2805,
           "leads": 0,
           "cpl": 0
         },
@@ -73107,8 +73107,8 @@
         {
           "studio_code": "FL-012",
           "pillar": "Value Confidence",
-          "spend": 42.71,
-          "impressions": 1337,
+          "spend": 42.73,
+          "impressions": 1338,
           "leads": 0,
           "cpl": 0
         },
@@ -73195,8 +73195,8 @@
         {
           "studio_code": "FL-014",
           "pillar": "Value Confidence",
-          "spend": 73.83,
-          "impressions": 1945,
+          "spend": 73.86,
+          "impressions": 1949,
           "leads": 0,
           "cpl": 0
         },
@@ -73211,8 +73211,8 @@
         {
           "studio_code": "FL-015",
           "pillar": "Psychological Safety",
-          "spend": 2797.58,
-          "impressions": 84363,
+          "spend": 2797.7,
+          "impressions": 84365,
           "leads": 56,
           "cpl": 49.96
         },
@@ -73236,9 +73236,9 @@
           "studio_code": "FL-015",
           "pillar": "Value Confidence",
           "spend": 38.1,
-          "impressions": 1074,
-          "leads": 0,
-          "cpl": 0
+          "impressions": 1075,
+          "leads": 1,
+          "cpl": 38.1
         },
         {
           "studio_code": "FL-016",
@@ -73283,10 +73283,10 @@
         {
           "studio_code": "NC-001",
           "pillar": "Decision Relief",
-          "spend": 310.71,
-          "impressions": 11621,
+          "spend": 310.75,
+          "impressions": 11622,
           "leads": 4,
-          "cpl": 77.68
+          "cpl": 77.69
         },
         {
           "studio_code": "NC-001",
@@ -73323,8 +73323,8 @@
         {
           "studio_code": "NC-001",
           "pillar": "Value Confidence",
-          "spend": 52.5,
-          "impressions": 2044,
+          "spend": 52.51,
+          "impressions": 2045,
           "leads": 0,
           "cpl": 0
         },
@@ -73332,17 +73332,17 @@
           "studio_code": "NJ-001",
           "pillar": "Decision Relief",
           "spend": 556.11,
-          "impressions": 23672,
+          "impressions": 23673,
           "leads": 2,
           "cpl": 278.06
         },
         {
           "studio_code": "NJ-001",
           "pillar": "Psychological Safety",
-          "spend": 1674.95,
-          "impressions": 70470,
+          "spend": 1675.17,
+          "impressions": 70472,
           "leads": 18,
-          "cpl": 93.05
+          "cpl": 93.06
         },
         {
           "studio_code": "NJ-001",
@@ -73379,16 +73379,16 @@
         {
           "studio_code": "NJ-002",
           "pillar": "Decision Relief",
-          "spend": 780.53,
-          "impressions": 29828,
+          "spend": 780.54,
+          "impressions": 29829,
           "leads": 3,
           "cpl": 260.18
         },
         {
           "studio_code": "NJ-002",
           "pillar": "Psychological Safety",
-          "spend": 1496.55,
-          "impressions": 67645,
+          "spend": 1496.56,
+          "impressions": 67647,
           "leads": 25,
           "cpl": 59.86
         },
@@ -73419,16 +73419,16 @@
         {
           "studio_code": "NJ-002",
           "pillar": "Value Confidence",
-          "spend": 51.46,
-          "impressions": 2350,
+          "spend": 51.47,
+          "impressions": 2351,
           "leads": 1,
-          "cpl": 51.46
+          "cpl": 51.47
         },
         {
           "studio_code": "NJ-003",
           "pillar": "Decision Relief",
-          "spend": 782.84,
-          "impressions": 28800,
+          "spend": 782.85,
+          "impressions": 28802,
           "leads": 4,
           "cpl": 195.71
         },
@@ -73475,10 +73475,10 @@
         {
           "studio_code": "NY-002",
           "pillar": "Decision Relief",
-          "spend": 415.01,
-          "impressions": 13119,
+          "spend": 415.07,
+          "impressions": 13122,
           "leads": 5,
-          "cpl": 83.0
+          "cpl": 83.01
         },
         {
           "studio_code": "NY-002",
@@ -73515,16 +73515,16 @@
         {
           "studio_code": "NY-003",
           "pillar": "Decision Relief",
-          "spend": 363.17,
-          "impressions": 8175,
+          "spend": 363.28,
+          "impressions": 8177,
           "leads": 9,
-          "cpl": 40.35
+          "cpl": 40.36
         },
         {
           "studio_code": "NY-003",
           "pillar": "Psychological Safety",
-          "spend": 2948.92,
-          "impressions": 80718,
+          "spend": 2948.98,
+          "impressions": 80720,
           "leads": 37,
           "cpl": 79.7
         },
@@ -73555,16 +73555,16 @@
         {
           "studio_code": "NY-004",
           "pillar": "Decision Relief",
-          "spend": 780.94,
-          "impressions": 24062,
+          "spend": 780.98,
+          "impressions": 24064,
           "leads": 8,
           "cpl": 97.62
         },
         {
           "studio_code": "NY-004",
           "pillar": "Psychological Safety",
-          "spend": 2384.07,
-          "impressions": 75263,
+          "spend": 2384.1,
+          "impressions": 75265,
           "leads": 21,
           "cpl": 113.53
         },
@@ -73587,10 +73587,10 @@
         {
           "studio_code": "NY-004",
           "pillar": "Value Confidence",
-          "spend": 62.94,
-          "impressions": 2030,
+          "spend": 62.95,
+          "impressions": 2031,
           "leads": 1,
-          "cpl": 62.94
+          "cpl": 62.95
         },
         {
           "studio_code": "TX-001",
@@ -73603,8 +73603,8 @@
         {
           "studio_code": "TX-001",
           "pillar": "Psychological Safety",
-          "spend": 1065.76,
-          "impressions": 30349,
+          "spend": 1065.77,
+          "impressions": 30350,
           "leads": 17,
           "cpl": 62.69
         },
@@ -73651,8 +73651,8 @@
         {
           "studio_code": "TX-002",
           "pillar": "Psychological Safety",
-          "spend": 1160.57,
-          "impressions": 43782,
+          "spend": 1160.58,
+          "impressions": 43783,
           "leads": 9,
           "cpl": 128.95
         },
@@ -74101,8 +74101,8 @@
         {
           "studio_code": "FL-003",
           "concept": "Video - Plan",
-          "spend": 44.38,
-          "impressions": 1444,
+          "spend": 44.39,
+          "impressions": 1445,
           "leads": 0,
           "cpl": 0
         },
@@ -74205,16 +74205,16 @@
         {
           "studio_code": "FL-004",
           "concept": "Coach",
-          "spend": 324.35,
-          "impressions": 8536,
+          "spend": 324.38,
+          "impressions": 8537,
           "leads": 2,
-          "cpl": 162.18
+          "cpl": 162.19
         },
         {
           "studio_code": "FL-004",
           "concept": "Video - Plan",
-          "spend": 62.8,
-          "impressions": 1825,
+          "spend": 62.82,
+          "impressions": 1826,
           "leads": 0,
           "cpl": 0
         },
@@ -74309,8 +74309,8 @@
         {
           "studio_code": "FL-005",
           "concept": "ShowUpV3",
-          "spend": 946.62,
-          "impressions": 33160,
+          "spend": 946.63,
+          "impressions": 33161,
           "leads": 10,
           "cpl": 94.66
         },
@@ -74357,10 +74357,10 @@
         {
           "studio_code": "FL-005",
           "concept": "Video - Plan",
-          "spend": 48.24,
-          "impressions": 1309,
+          "spend": 48.26,
+          "impressions": 1310,
           "leads": 1,
-          "cpl": 48.24
+          "cpl": 48.26
         },
         {
           "studio_code": "FL-005",
@@ -74590,15 +74590,15 @@
           "studio_code": "FL-007",
           "concept": "Coach",
           "spend": 283.68,
-          "impressions": 5501,
+          "impressions": 5502,
           "leads": 2,
           "cpl": 141.84
         },
         {
           "studio_code": "FL-007",
           "concept": "Video - Plan",
-          "spend": 57.55,
-          "impressions": 1310,
+          "spend": 57.56,
+          "impressions": 1311,
           "leads": 0,
           "cpl": 0
         },
@@ -74765,10 +74765,10 @@
         {
           "studio_code": "FL-009",
           "concept": "Video - Review",
-          "spend": 595.92,
-          "impressions": 15851,
+          "spend": 595.95,
+          "impressions": 15853,
           "leads": 5,
-          "cpl": 119.18
+          "cpl": 119.19
         },
         {
           "studio_code": "FL-009",
@@ -74982,7 +74982,7 @@
           "studio_code": "FL-010",
           "concept": "Video - Plan",
           "spend": 58.02,
-          "impressions": 1493,
+          "impressions": 1494,
           "leads": 0,
           "cpl": 0
         },
@@ -75229,8 +75229,8 @@
         {
           "studio_code": "FL-012",
           "concept": "Still",
-          "spend": 28.09,
-          "impressions": 826,
+          "spend": 28.11,
+          "impressions": 827,
           "leads": 0,
           "cpl": 0
         },
@@ -75365,10 +75365,10 @@
         {
           "studio_code": "FL-014",
           "concept": "RealResults",
-          "spend": 286.69,
-          "impressions": 8572,
+          "spend": 286.7,
+          "impressions": 8573,
           "leads": 3,
-          "cpl": 95.56
+          "cpl": 95.57
         },
         {
           "studio_code": "FL-014",
@@ -75485,8 +75485,8 @@
         {
           "studio_code": "FL-014",
           "concept": "Video - Plan",
-          "spend": 43.11,
-          "impressions": 1164,
+          "spend": 43.14,
+          "impressions": 1167,
           "leads": 0,
           "cpl": 0
         },
@@ -75494,7 +75494,7 @@
           "studio_code": "FL-014",
           "concept": "Still",
           "spend": 30.72,
-          "impressions": 781,
+          "impressions": 782,
           "leads": 0,
           "cpl": 0
         },
@@ -75557,8 +75557,8 @@
         {
           "studio_code": "FL-015",
           "concept": "ShowUpV3",
-          "spend": 1960.98,
-          "impressions": 59370,
+          "spend": 1961.1,
+          "impressions": 59372,
           "leads": 42,
           "cpl": 46.69
         },
@@ -75606,9 +75606,9 @@
           "studio_code": "FL-015",
           "concept": "Video - Plan",
           "spend": 29.85,
-          "impressions": 790,
-          "leads": 0,
-          "cpl": 0
+          "impressions": 791,
+          "leads": 1,
+          "cpl": 29.85
         },
         {
           "studio_code": "FL-015",
@@ -75622,7 +75622,7 @@
           "studio_code": "FL-016",
           "concept": "Plan",
           "spend": 472.09,
-          "impressions": 12849,
+          "impressions": 12850,
           "leads": 9,
           "cpl": 52.45
         },
@@ -75861,10 +75861,10 @@
         {
           "studio_code": "NC-001",
           "concept": "Coach",
-          "spend": 181.07,
-          "impressions": 6542,
+          "spend": 181.11,
+          "impressions": 6543,
           "leads": 1,
-          "cpl": 181.07
+          "cpl": 181.11
         },
         {
           "studio_code": "NC-001",
@@ -75877,8 +75877,8 @@
         {
           "studio_code": "NC-001",
           "concept": "Still",
-          "spend": 27.3,
-          "impressions": 1045,
+          "spend": 27.31,
+          "impressions": 1046,
           "leads": 0,
           "cpl": 0
         },
@@ -75901,10 +75901,10 @@
         {
           "studio_code": "NJ-001",
           "concept": "ShowUp",
-          "spend": 232.8,
-          "impressions": 11415,
+          "spend": 232.87,
+          "impressions": 11416,
           "leads": 5,
-          "cpl": 46.56
+          "cpl": 46.57
         },
         {
           "studio_code": "NJ-001",
@@ -75933,10 +75933,10 @@
         {
           "studio_code": "NJ-001",
           "concept": "Video - Voice",
-          "spend": 100.44,
-          "impressions": 3864,
+          "spend": 100.59,
+          "impressions": 3865,
           "leads": 1,
-          "cpl": 100.44
+          "cpl": 100.59
         },
         {
           "studio_code": "NJ-001",
@@ -76006,7 +76006,7 @@
           "studio_code": "NJ-001",
           "concept": "Coach",
           "spend": 327.02,
-          "impressions": 13591,
+          "impressions": 13592,
           "leads": 2,
           "cpl": 163.51
         },
@@ -76109,8 +76109,8 @@
         {
           "studio_code": "NJ-002",
           "concept": "ShowUpV3",
-          "spend": 1342.47,
-          "impressions": 62618,
+          "spend": 1342.48,
+          "impressions": 62620,
           "leads": 25,
           "cpl": 53.7
         },
@@ -76149,10 +76149,10 @@
         {
           "studio_code": "NJ-002",
           "concept": "Coach",
-          "spend": 168.53,
-          "impressions": 6130,
+          "spend": 168.54,
+          "impressions": 6131,
           "leads": 1,
-          "cpl": 168.53
+          "cpl": 168.54
         },
         {
           "studio_code": "NJ-002",
@@ -76165,8 +76165,8 @@
         {
           "studio_code": "NJ-002",
           "concept": "Still",
-          "spend": 11.91,
-          "impressions": 639,
+          "spend": 11.92,
+          "impressions": 640,
           "leads": 0,
           "cpl": 0
         },
@@ -76277,16 +76277,16 @@
         {
           "studio_code": "NJ-003",
           "concept": "Video - WorstDay",
-          "spend": 324.89,
-          "impressions": 9776,
+          "spend": 324.9,
+          "impressions": 9777,
           "leads": 6,
           "cpl": 54.15
         },
         {
           "studio_code": "NJ-003",
           "concept": "Video - Coach",
-          "spend": 214.46,
-          "impressions": 9413,
+          "spend": 214.47,
+          "impressions": 9415,
           "leads": 2,
           "cpl": 107.23
         },
@@ -76413,10 +76413,10 @@
         {
           "studio_code": "NY-002",
           "concept": "Coach",
-          "spend": 66.83,
-          "impressions": 1752,
+          "spend": 66.89,
+          "impressions": 1755,
           "leads": 1,
-          "cpl": 66.83
+          "cpl": 66.89
         },
         {
           "studio_code": "NY-002",
@@ -76493,8 +76493,8 @@
         {
           "studio_code": "NY-003",
           "concept": "ShowUpV3",
-          "spend": 1973.93,
-          "impressions": 56406,
+          "spend": 1973.99,
+          "impressions": 56408,
           "leads": 24,
           "cpl": 82.25
         },
@@ -76533,10 +76533,10 @@
         {
           "studio_code": "NY-003",
           "concept": "Coach",
-          "spend": 160.14,
-          "impressions": 3472,
+          "spend": 160.25,
+          "impressions": 3474,
           "leads": 4,
-          "cpl": 40.03
+          "cpl": 40.06
         },
         {
           "studio_code": "NY-003",
@@ -76613,8 +76613,8 @@
         {
           "studio_code": "NY-004",
           "concept": "ShowUpV3",
-          "spend": 1819.25,
-          "impressions": 60843,
+          "spend": 1819.28,
+          "impressions": 60845,
           "leads": 18,
           "cpl": 101.07
         },
@@ -76653,16 +76653,16 @@
         {
           "studio_code": "NY-004",
           "concept": "Coach",
-          "spend": 303.65,
-          "impressions": 9822,
+          "spend": 303.69,
+          "impressions": 9824,
           "leads": 4,
-          "cpl": 75.91
+          "cpl": 75.92
         },
         {
           "studio_code": "NY-004",
           "concept": "Video - Plan",
-          "spend": 47.65,
-          "impressions": 1481,
+          "spend": 47.66,
+          "impressions": 1482,
           "leads": 0,
           "cpl": 0
         },
@@ -76757,8 +76757,8 @@
         {
           "studio_code": "TX-001",
           "concept": "ShowUpV3",
-          "spend": 1006.3,
-          "impressions": 28844,
+          "spend": 1006.31,
+          "impressions": 28845,
           "leads": 17,
           "cpl": 59.19
         },
@@ -76901,8 +76901,8 @@
         {
           "studio_code": "TX-002",
           "concept": "ShowUpV3",
-          "spend": 992.03,
-          "impressions": 37813,
+          "spend": 992.04,
+          "impressions": 37814,
           "leads": 7,
           "cpl": 141.72
         },
@@ -77023,8 +77023,8 @@
         {
           "studio_code": "FL-003",
           "media_type": "Video",
-          "spend": 892.64,
-          "impressions": 25729,
+          "spend": 892.65,
+          "impressions": 25730,
           "leads": 4,
           "cpl": 223.16
         },
@@ -77039,16 +77039,16 @@
         {
           "studio_code": "FL-004",
           "media_type": "Other",
-          "spend": 1350.59,
-          "impressions": 42347,
+          "spend": 1350.62,
+          "impressions": 42348,
           "leads": 15,
           "cpl": 90.04
         },
         {
           "studio_code": "FL-004",
           "media_type": "Video",
-          "spend": 1142.33,
-          "impressions": 33353,
+          "spend": 1142.35,
+          "impressions": 33354,
           "leads": 19,
           "cpl": 60.12
         },
@@ -77063,18 +77063,18 @@
         {
           "studio_code": "FL-005",
           "media_type": "Other",
-          "spend": 1856.96,
-          "impressions": 75148,
+          "spend": 1856.97,
+          "impressions": 75149,
           "leads": 32,
           "cpl": 58.03
         },
         {
           "studio_code": "FL-005",
           "media_type": "Video",
-          "spend": 657.67,
-          "impressions": 22793,
+          "spend": 657.69,
+          "impressions": 22794,
           "leads": 15,
-          "cpl": 43.84
+          "cpl": 43.85
         },
         {
           "studio_code": "FL-005",
@@ -77112,15 +77112,15 @@
           "studio_code": "FL-007",
           "media_type": "Other",
           "spend": 1574.3,
-          "impressions": 42001,
+          "impressions": 42002,
           "leads": 13,
           "cpl": 121.1
         },
         {
           "studio_code": "FL-007",
           "media_type": "Video",
-          "spend": 716.8,
-          "impressions": 14866,
+          "spend": 716.81,
+          "impressions": 14867,
           "leads": 4,
           "cpl": 179.2
         },
@@ -77167,8 +77167,8 @@
         {
           "studio_code": "FL-009",
           "media_type": "Video",
-          "spend": 1759.97,
-          "impressions": 48317,
+          "spend": 1760.0,
+          "impressions": 48319,
           "leads": 13,
           "cpl": 135.38
         },
@@ -77192,7 +77192,7 @@
           "studio_code": "FL-010",
           "media_type": "Video",
           "spend": 946.97,
-          "impressions": 24514,
+          "impressions": 24515,
           "leads": 11,
           "cpl": 86.09
         },
@@ -77231,8 +77231,8 @@
         {
           "studio_code": "FL-012",
           "media_type": "Other",
-          "spend": 2474.43,
-          "impressions": 68097,
+          "spend": 2474.45,
+          "impressions": 68098,
           "leads": 37,
           "cpl": 66.88
         },
@@ -77279,16 +77279,16 @@
         {
           "studio_code": "FL-014",
           "media_type": "Other",
-          "spend": 1789.42,
-          "impressions": 56247,
+          "spend": 1789.43,
+          "impressions": 56249,
           "leads": 19,
           "cpl": 94.18
         },
         {
           "studio_code": "FL-014",
           "media_type": "Video",
-          "spend": 1176.48,
-          "impressions": 44023,
+          "spend": 1176.51,
+          "impressions": 44026,
           "leads": 16,
           "cpl": 73.53
         },
@@ -77303,8 +77303,8 @@
         {
           "studio_code": "FL-015",
           "media_type": "Other",
-          "spend": 2940.95,
-          "impressions": 88253,
+          "spend": 2941.07,
+          "impressions": 88255,
           "leads": 59,
           "cpl": 49.85
         },
@@ -77312,9 +77312,9 @@
           "studio_code": "FL-015",
           "media_type": "Video",
           "spend": 307.62,
-          "impressions": 7695,
-          "leads": 1,
-          "cpl": 307.62
+          "impressions": 7696,
+          "leads": 2,
+          "cpl": 153.81
         },
         {
           "studio_code": "FL-015",
@@ -77328,7 +77328,7 @@
           "studio_code": "FL-016",
           "media_type": "Other",
           "spend": 2544.06,
-          "impressions": 64062,
+          "impressions": 64063,
           "leads": 39,
           "cpl": 65.23
         },
@@ -77351,8 +77351,8 @@
         {
           "studio_code": "NC-001",
           "media_type": "Other",
-          "spend": 2440.65,
-          "impressions": 104616,
+          "spend": 2440.7,
+          "impressions": 104618,
           "leads": 28,
           "cpl": 87.17
         },
@@ -77375,18 +77375,18 @@
         {
           "studio_code": "NJ-001",
           "media_type": "Other",
-          "spend": 2141.16,
-          "impressions": 92281,
+          "spend": 2141.23,
+          "impressions": 92283,
           "leads": 19,
-          "cpl": 112.69
+          "cpl": 112.7
         },
         {
           "studio_code": "NJ-001",
           "media_type": "Video",
-          "spend": 868.53,
-          "impressions": 33426,
+          "spend": 868.68,
+          "impressions": 33427,
           "leads": 8,
-          "cpl": 108.57
+          "cpl": 108.58
         },
         {
           "studio_code": "NJ-001",
@@ -77399,8 +77399,8 @@
         {
           "studio_code": "NJ-002",
           "media_type": "Other",
-          "spend": 2377.65,
-          "impressions": 116723,
+          "spend": 2377.68,
+          "impressions": 116727,
           "leads": 39,
           "cpl": 60.97
         },
@@ -77431,10 +77431,10 @@
         {
           "studio_code": "NJ-003",
           "media_type": "Video",
-          "spend": 1049.08,
-          "impressions": 35188,
+          "spend": 1049.1,
+          "impressions": 35191,
           "leads": 9,
-          "cpl": 116.56
+          "cpl": 116.57
         },
         {
           "studio_code": "NJ-003",
@@ -77447,8 +77447,8 @@
         {
           "studio_code": "NY-002",
           "media_type": "Other",
-          "spend": 3040.97,
-          "impressions": 94907,
+          "spend": 3041.03,
+          "impressions": 94910,
           "leads": 32,
           "cpl": 95.03
         },
@@ -77471,8 +77471,8 @@
         {
           "studio_code": "NY-003",
           "media_type": "Other",
-          "spend": 2791.96,
-          "impressions": 79018,
+          "spend": 2792.13,
+          "impressions": 79022,
           "leads": 34,
           "cpl": 82.12
         },
@@ -77495,16 +77495,16 @@
         {
           "studio_code": "NY-004",
           "media_type": "Other",
-          "spend": 3069.14,
-          "impressions": 98782,
+          "spend": 3069.21,
+          "impressions": 98786,
           "leads": 29,
           "cpl": 105.83
         },
         {
           "studio_code": "NY-004",
           "media_type": "Video",
-          "spend": 1172.61,
-          "impressions": 31688,
+          "spend": 1172.62,
+          "impressions": 31689,
           "leads": 12,
           "cpl": 97.72
         },
@@ -77519,8 +77519,8 @@
         {
           "studio_code": "TX-001",
           "media_type": "Other",
-          "spend": 1753.84,
-          "impressions": 60769,
+          "spend": 1753.85,
+          "impressions": 60770,
           "leads": 24,
           "cpl": 73.08
         },
@@ -77543,8 +77543,8 @@
         {
           "studio_code": "TX-002",
           "media_type": "Other",
-          "spend": 1679.26,
-          "impressions": 69168,
+          "spend": 1679.27,
+          "impressions": 69169,
           "leads": 13,
           "cpl": 129.17
         },
@@ -110790,8 +110790,8 @@
           {
             "studio_code": "NY-002",
             "date": "2026-07-20",
-            "spend": 42.32,
-            "impressions": 1093,
+            "spend": 42.33,
+            "impressions": 1094,
             "clicks": 17,
             "leads": 0,
             "trials": 0,
@@ -110800,8 +110800,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.56,
-            "cpm": 38.72
+            "ctr": 1.55,
+            "cpm": 38.69
           },
           {
             "studio_code": "NY-003",
@@ -110886,34 +110886,34 @@
           {
             "studio_code": "FL-004",
             "date": "2026-07-21",
-            "spend": 14.790000000000001,
-            "impressions": 341,
+            "spend": 14.84,
+            "impressions": 343,
             "clicks": 6,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "reach": 269,
-            "cpl": 14.79,
+            "reach": 270,
+            "cpl": 14.84,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.76,
-            "cpm": 43.37
+            "ctr": 1.75,
+            "cpm": 43.27
           },
           {
             "studio_code": "FL-005",
             "date": "2026-07-21",
-            "spend": 13.750000000000002,
-            "impressions": 399,
+            "spend": 13.78,
+            "impressions": 401,
             "clicks": 12,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 272,
+            "reach": 274,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 3.01,
-            "cpm": 34.46
+            "ctr": 2.99,
+            "cpm": 34.36
           },
           {
             "studio_code": "FL-006",
@@ -110924,7 +110924,7 @@
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 111,
+            "reach": 112,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
@@ -110934,18 +110934,18 @@
           {
             "studio_code": "FL-007",
             "date": "2026-07-21",
-            "spend": 8.540000000000001,
-            "impressions": 145,
+            "spend": 8.55,
+            "impressions": 146,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 119,
+            "reach": 120,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 58.9
+            "cpm": 58.56
           },
           {
             "studio_code": "FL-008",
@@ -110966,34 +110966,34 @@
           {
             "studio_code": "FL-009",
             "date": "2026-07-21",
-            "spend": 16.150000000000002,
-            "impressions": 477,
+            "spend": 16.2,
+            "impressions": 480,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 370,
+            "reach": 371,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.63,
-            "cpm": 33.86
+            "ctr": 0.62,
+            "cpm": 33.75
           },
           {
             "studio_code": "FL-010",
             "date": "2026-07-21",
             "spend": 12.58,
-            "impressions": 313,
+            "impressions": 314,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 263,
+            "reach": 264,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.32,
-            "cpm": 40.19
+            "cpm": 40.06
           },
           {
             "studio_code": "FL-011",
@@ -111014,8 +111014,8 @@
           {
             "studio_code": "FL-012",
             "date": "2026-07-21",
-            "spend": 16.349999999999998,
-            "impressions": 414,
+            "spend": 16.380000000000003,
+            "impressions": 416,
             "clicks": 8,
             "leads": 0,
             "trials": 0,
@@ -111024,8 +111024,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.93,
-            "cpm": 39.49
+            "ctr": 1.92,
+            "cpm": 39.38
           },
           {
             "studio_code": "FL-013",
@@ -111036,7 +111036,7 @@
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 204,
+            "reach": 205,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
@@ -111046,34 +111046,34 @@
           {
             "studio_code": "FL-014",
             "date": "2026-07-21",
-            "spend": 15.52,
-            "impressions": 366,
+            "spend": 15.540000000000001,
+            "impressions": 370,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 306,
+            "reach": 311,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.27,
-            "cpm": 42.4
+            "cpm": 42.0
           },
           {
             "studio_code": "FL-015",
             "date": "2026-07-21",
-            "spend": 17.49,
-            "impressions": 366,
-            "clicks": 6,
-            "leads": 1,
+            "spend": 17.61,
+            "impressions": 369,
+            "clicks": 7,
+            "leads": 2,
             "trials": 0,
             "purchases": 0,
-            "reach": 266,
-            "cpl": 17.49,
+            "reach": 268,
+            "cpl": 8.8,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.64,
-            "cpm": 47.79
+            "ctr": 1.9,
+            "cpm": 47.72
           },
           {
             "studio_code": "FL-016",
@@ -111084,7 +111084,7 @@
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 242,
+            "reach": 243,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
@@ -111094,72 +111094,72 @@
           {
             "studio_code": "NC-001",
             "date": "2026-07-21",
-            "spend": 17.8,
-            "impressions": 520,
+            "spend": 17.849999999999998,
+            "impressions": 522,
             "clicks": 6,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 425,
+            "reach": 427,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.15,
-            "cpm": 34.23
+            "cpm": 34.2
           },
           {
             "studio_code": "NJ-001",
             "date": "2026-07-21",
-            "spend": 15.680000000000001,
-            "impressions": 654,
+            "spend": 15.749999999999998,
+            "impressions": 655,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 514,
+            "reach": 515,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.07,
-            "cpm": 23.98
+            "cpm": 24.05
           },
           {
             "studio_code": "NJ-002",
             "date": "2026-07-21",
-            "spend": 23.59,
-            "impressions": 778,
+            "spend": 23.620000000000005,
+            "impressions": 782,
             "clicks": 8,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 535,
+            "reach": 537,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.03,
-            "cpm": 30.32
+            "ctr": 1.02,
+            "cpm": 30.2
           },
           {
             "studio_code": "NJ-003",
             "date": "2026-07-21",
-            "spend": 17.46,
-            "impressions": 639,
+            "spend": 17.48,
+            "impressions": 642,
             "clicks": 12,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 497,
+            "reach": 502,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.88,
-            "cpm": 27.32
+            "ctr": 1.87,
+            "cpm": 27.23
           },
           {
             "studio_code": "NY-002",
             "date": "2026-07-21",
-            "spend": 15.57,
-            "impressions": 358,
+            "spend": 15.61,
+            "impressions": 359,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -111168,62 +111168,62 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.96,
-            "cpm": 43.49
+            "ctr": 1.95,
+            "cpm": 43.48
           },
           {
             "studio_code": "NY-003",
             "date": "2026-07-21",
-            "spend": 20.23,
-            "impressions": 484,
+            "spend": 20.37,
+            "impressions": 487,
             "clicks": 13,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "reach": 396,
-            "cpl": 20.23,
+            "reach": 397,
+            "cpl": 20.37,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.69,
-            "cpm": 41.8
+            "ctr": 2.67,
+            "cpm": 41.83
           },
           {
             "studio_code": "NY-004",
             "date": "2026-07-21",
-            "spend": 21.11,
-            "impressions": 707,
+            "spend": 21.179999999999996,
+            "impressions": 712,
             "clicks": 6,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "reach": 543,
-            "cpl": 21.11,
+            "reach": 547,
+            "cpl": 21.18,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.85,
-            "cpm": 29.86
+            "ctr": 0.84,
+            "cpm": 29.75
           },
           {
             "studio_code": "TX-001",
             "date": "2026-07-21",
-            "spend": 14.910000000000002,
-            "impressions": 250,
+            "spend": 14.92,
+            "impressions": 251,
             "clicks": 11,
             "leads": 0,
             "trials": 0,
             "purchases": 0,
-            "reach": 194,
+            "reach": 195,
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.4,
-            "cpm": 59.64
+            "ctr": 4.38,
+            "cpm": 59.44
           },
           {
             "studio_code": "TX-002",
             "date": "2026-07-21",
-            "spend": 11.490000000000002,
-            "impressions": 370,
+            "spend": 11.5,
+            "impressions": 371,
             "clicks": 5,
             "leads": 0,
             "trials": 0,
@@ -111233,7 +111233,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.35,
-            "cpm": 31.05
+            "cpm": 31.0
           }
         ],
         "by_audience": [
@@ -117435,13 +117435,13 @@
           {
             "audience": "DINKS",
             "date": "2026-07-20",
-            "spend": 196.72,
-            "impressions": 5413,
+            "spend": 196.73,
+            "impressions": 5414,
             "clicks": 85,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 196.72,
+            "cpl": 196.73,
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.57,
@@ -117510,8 +117510,8 @@
           {
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 72.94,
-            "impressions": 1794,
+            "spend": 73.24000000000001,
+            "impressions": 1805,
             "clicks": 26,
             "leads": 0,
             "trials": 0,
@@ -117519,14 +117519,14 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.45,
-            "cpm": 40.66
+            "ctr": 1.44,
+            "cpm": 40.58
           },
           {
             "audience": "POC",
             "date": "2026-07-21",
-            "spend": 19.279999999999998,
-            "impressions": 387,
+            "spend": 19.32,
+            "impressions": 389,
             "clicks": 6,
             "leads": 0,
             "trials": 0,
@@ -117534,23 +117534,23 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.55,
-            "cpm": 49.82
+            "ctr": 1.54,
+            "cpm": 49.67
           },
           {
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 150.36,
-            "impressions": 3895,
-            "clicks": 53,
-            "leads": 2,
+            "spend": 150.48999999999998,
+            "impressions": 3910,
+            "clicks": 54,
+            "leads": 3,
             "trials": 0,
             "purchases": 0,
-            "cpl": 75.18,
+            "cpl": 50.16,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.36,
-            "cpm": 38.6
+            "ctr": 1.38,
+            "cpm": 38.49
           },
           {
             "audience": "SAHP",
@@ -117570,17 +117570,17 @@
           {
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 105.44999999999999,
-            "impressions": 2963,
+            "spend": 105.72999999999999,
+            "impressions": 2974,
             "clicks": 47,
             "leads": 2,
             "trials": 0,
             "purchases": 0,
-            "cpl": 52.72,
+            "cpl": 52.86,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.59,
-            "cpm": 35.59
+            "ctr": 1.58,
+            "cpm": 35.55
           }
         ],
         "by_pillar": [
@@ -123872,17 +123872,17 @@
           {
             "pillar": "Decision Relief",
             "date": "2026-07-20",
-            "spend": 244.14999999999998,
-            "impressions": 7250,
+            "spend": 244.15999999999997,
+            "impressions": 7251,
             "clicks": 120,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 244.15,
+            "cpl": 244.16,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.66,
-            "cpm": 33.68
+            "ctr": 1.65,
+            "cpm": 33.67
           },
           {
             "pillar": "HYROX",
@@ -123962,8 +123962,8 @@
           {
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 99.38,
-            "impressions": 2429,
+            "spend": 99.73,
+            "impressions": 2444,
             "clicks": 41,
             "leads": 0,
             "trials": 0,
@@ -123971,8 +123971,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.69,
-            "cpm": 40.91
+            "ctr": 1.68,
+            "cpm": 40.81
           },
           {
             "pillar": "HYROX",
@@ -124007,17 +124007,17 @@
           {
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 100.19,
-            "impressions": 2765,
+            "spend": 100.46,
+            "impressions": 2775,
             "clicks": 46,
             "leads": 2,
             "trials": 0,
             "purchases": 0,
-            "cpl": 50.09,
+            "cpl": 50.23,
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.66,
-            "cpm": 36.24
+            "cpm": 36.2
           },
           {
             "pillar": "Social Safety",
@@ -124037,17 +124037,17 @@
           {
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 119.24999999999999,
-            "impressions": 3137,
-            "clicks": 38,
-            "leads": 2,
+            "spend": 119.35999999999997,
+            "impressions": 3149,
+            "clicks": 39,
+            "leads": 3,
             "trials": 0,
             "purchases": 0,
-            "cpl": 59.62,
+            "cpl": 39.79,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.21,
-            "cpm": 38.01
+            "ctr": 1.24,
+            "cpm": 37.9
           }
         ],
         "by_concept": [
@@ -138994,17 +138994,17 @@
           {
             "concept": "Coach",
             "date": "2026-07-20",
-            "spend": 183.59,
-            "impressions": 5276,
+            "spend": 183.6,
+            "impressions": 5277,
             "clicks": 85,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 183.59,
+            "cpl": 183.6,
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.61,
-            "cpm": 34.8
+            "cpm": 34.79
           },
           {
             "concept": "Plan",
@@ -139234,8 +139234,8 @@
           {
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 77.99000000000001,
-            "impressions": 1762,
+            "spend": 78.28000000000002,
+            "impressions": 1772,
             "clicks": 27,
             "leads": 0,
             "trials": 0,
@@ -139243,8 +139243,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.53,
-            "cpm": 44.26
+            "ctr": 1.52,
+            "cpm": 44.18
           },
           {
             "concept": "Plan",
@@ -139264,8 +139264,8 @@
           {
             "concept": "RealResults",
             "date": "2026-07-21",
-            "spend": 8.850000000000001,
-            "impressions": 187,
+            "spend": 8.86,
+            "impressions": 188,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -139273,14 +139273,14 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.07,
-            "cpm": 47.33
+            "ctr": 1.06,
+            "cpm": 47.13
           },
           {
             "concept": "ShowUp",
             "date": "2026-07-21",
-            "spend": 4.91,
-            "impressions": 200,
+            "spend": 4.98,
+            "impressions": 201,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -139288,8 +139288,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.5,
-            "cpm": 24.55
+            "ctr": 1.49,
+            "cpm": 24.78
           },
           {
             "concept": "ShowUpV2",
@@ -139309,38 +139309,38 @@
           {
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 92.94,
-            "impressions": 2490,
+            "spend": 93.14,
+            "impressions": 2499,
             "clicks": 43,
             "leads": 2,
             "trials": 0,
             "purchases": 0,
-            "cpl": 46.47,
+            "cpl": 46.57,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.73,
-            "cpm": 37.33
+            "ctr": 1.72,
+            "cpm": 37.27
           },
           {
             "concept": "Still",
             "date": "2026-07-21",
-            "spend": 38.77,
-            "impressions": 985,
+            "spend": 38.81000000000001,
+            "impressions": 989,
             "clicks": 19,
             "leads": 2,
             "trials": 0,
             "purchases": 0,
-            "cpl": 19.39,
+            "cpl": 19.41,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.93,
-            "cpm": 39.36
+            "ctr": 1.92,
+            "cpm": 39.24
           },
           {
             "concept": "Video - Coach",
             "date": "2026-07-21",
-            "spend": 7.28,
-            "impressions": 252,
+            "spend": 7.290000000000001,
+            "impressions": 254,
             "clicks": 9,
             "leads": 0,
             "trials": 0,
@@ -139348,8 +139348,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 3.57,
-            "cpm": 28.89
+            "ctr": 3.54,
+            "cpm": 28.7
           },
           {
             "concept": "Video - ForYou",
@@ -139369,23 +139369,23 @@
           {
             "concept": "Video - Plan",
             "date": "2026-07-21",
-            "spend": 78.14,
-            "impressions": 2117,
-            "clicks": 19,
-            "leads": 0,
+            "spend": 78.21,
+            "impressions": 2125,
+            "clicks": 20,
+            "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 0,
+            "cpl": 78.21,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.9,
-            "cpm": 36.91
+            "ctr": 0.94,
+            "cpm": 36.8
           },
           {
             "concept": "Video - Review",
             "date": "2026-07-21",
-            "spend": 14.110000000000001,
-            "impressions": 415,
+            "spend": 14.16,
+            "impressions": 418,
             "clicks": 5,
             "leads": 0,
             "trials": 0,
@@ -139394,7 +139394,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.2,
-            "cpm": 34.0
+            "cpm": 33.88
           },
           {
             "concept": "Video - Still",
@@ -139429,8 +139429,8 @@
           {
             "concept": "Video - WorstDay",
             "date": "2026-07-21",
-            "spend": 5.26,
-            "impressions": 198,
+            "spend": 5.27,
+            "impressions": 199,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -139438,8 +139438,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.51,
-            "cpm": 26.57
+            "ctr": 0.5,
+            "cpm": 26.48
           },
           {
             "concept": "Yourself",
@@ -142161,13 +142161,13 @@
           {
             "media_type": "Other",
             "date": "2026-07-20",
-            "spend": 569.11,
-            "impressions": 18015,
+            "spend": 569.12,
+            "impressions": 18016,
             "clicks": 232,
             "leads": 3,
             "trials": 0,
             "purchases": 0,
-            "cpl": 189.7,
+            "cpl": 189.71,
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.29,
@@ -142191,32 +142191,32 @@
           {
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 240.91000000000003,
-            "impressions": 6019,
+            "spend": 241.51999999999998,
+            "impressions": 6044,
             "clicks": 98,
             "leads": 4,
             "trials": 0,
             "purchases": 0,
-            "cpl": 60.23,
+            "cpl": 60.38,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.63,
-            "cpm": 40.02
+            "ctr": 1.62,
+            "cpm": 39.96
           },
           {
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 109.53999999999999,
-            "impressions": 3081,
-            "clicks": 34,
-            "leads": 0,
+            "spend": 109.67999999999999,
+            "impressions": 3095,
+            "clicks": 35,
+            "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 0,
+            "cpl": 109.68,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.1,
-            "cpm": 35.55
+            "ctr": 1.13,
+            "cpm": 35.44
           }
         ],
         "by_studio_audience": [
@@ -241344,8 +241344,8 @@
             "studio_code": "NY-002",
             "audience": "DINKS",
             "date": "2026-07-20",
-            "spend": 12.09,
-            "impressions": 272,
+            "spend": 12.1,
+            "impressions": 273,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -241353,8 +241353,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.57,
-            "cpm": 44.45
+            "ctr": 2.56,
+            "cpm": 44.32
           },
           {
             "studio_code": "NY-002",
@@ -241664,8 +241664,8 @@
             "studio_code": "FL-004",
             "audience": "POC",
             "date": "2026-07-21",
-            "spend": 2.15,
-            "impressions": 36,
+            "spend": 2.18,
+            "impressions": 37,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -241674,23 +241674,23 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 59.72
+            "cpm": 58.92
           },
           {
             "studio_code": "FL-004",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 9.79,
-            "impressions": 240,
+            "spend": 9.81,
+            "impressions": 241,
             "clicks": 6,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 9.79,
+            "cpl": 9.81,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.5,
-            "cpm": 40.79
+            "ctr": 2.49,
+            "cpm": 40.71
           },
           {
             "studio_code": "FL-004",
@@ -241712,8 +241712,8 @@
             "studio_code": "FL-005",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 6.74,
-            "impressions": 159,
+            "spend": 6.76,
+            "impressions": 160,
             "clicks": 5,
             "leads": 0,
             "trials": 0,
@@ -241721,15 +241721,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 3.14,
-            "cpm": 42.39
+            "ctr": 3.12,
+            "cpm": 42.25
           },
           {
             "studio_code": "FL-005",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 6.98,
-            "impressions": 238,
+            "spend": 6.99,
+            "impressions": 239,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -241737,8 +241737,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.94,
-            "cpm": 29.33
+            "ctr": 2.93,
+            "cpm": 29.25
           },
           {
             "studio_code": "FL-006",
@@ -241792,8 +241792,8 @@
             "studio_code": "FL-007",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 3.5599999999999996,
-            "impressions": 66,
+            "spend": 3.57,
+            "impressions": 67,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -241802,7 +241802,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 53.94
+            "cpm": 53.28
           },
           {
             "studio_code": "FL-007",
@@ -241872,8 +241872,8 @@
             "studio_code": "FL-009",
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 11.96,
-            "impressions": 349,
+            "spend": 12.01,
+            "impressions": 352,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -241882,7 +241882,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.57,
-            "cpm": 34.27
+            "cpm": 34.12
           },
           {
             "studio_code": "FL-009",
@@ -241905,7 +241905,7 @@
             "audience": "PYC",
             "date": "2026-07-21",
             "spend": 10.16,
-            "impressions": 256,
+            "impressions": 257,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -241914,7 +241914,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.39,
-            "cpm": 39.69
+            "cpm": 39.53
           },
           {
             "studio_code": "FL-010",
@@ -241968,8 +241968,8 @@
             "studio_code": "FL-012",
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 11.200000000000001,
-            "impressions": 233,
+            "spend": 11.21,
+            "impressions": 234,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -241977,8 +241977,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 3.0,
-            "cpm": 48.07
+            "ctr": 2.99,
+            "cpm": 47.91
           },
           {
             "studio_code": "FL-012",
@@ -242000,8 +242000,8 @@
             "studio_code": "FL-012",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 3.92,
-            "impressions": 127,
+            "spend": 3.94,
+            "impressions": 128,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -242009,8 +242009,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.79,
-            "cpm": 30.87
+            "ctr": 0.78,
+            "cpm": 30.78
           },
           {
             "studio_code": "FL-012",
@@ -242096,8 +242096,8 @@
             "studio_code": "FL-014",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 9.99,
-            "impressions": 302,
+            "spend": 10.01,
+            "impressions": 306,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -242106,7 +242106,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.33,
-            "cpm": 33.08
+            "cpm": 32.71
           },
           {
             "studio_code": "FL-015",
@@ -242129,32 +242129,32 @@
             "audience": "PYC",
             "date": "2026-07-21",
             "spend": 2.95,
-            "impressions": 67,
-            "clicks": 1,
-            "leads": 0,
+            "impressions": 68,
+            "clicks": 2,
+            "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 0,
+            "cpl": 2.95,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.49,
-            "cpm": 44.03
+            "ctr": 2.94,
+            "cpm": 43.38
           },
           {
             "studio_code": "FL-015",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 13.22,
-            "impressions": 270,
+            "spend": 13.34,
+            "impressions": 272,
             "clicks": 4,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 13.22,
+            "cpl": 13.34,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.48,
-            "cpm": 48.96
+            "ctr": 1.47,
+            "cpm": 49.04
           },
           {
             "studio_code": "FL-016",
@@ -242208,8 +242208,8 @@
             "studio_code": "NC-001",
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 6.85,
-            "impressions": 249,
+            "spend": 6.89,
+            "impressions": 250,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -242218,7 +242218,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.2,
-            "cpm": 27.51
+            "cpm": 27.56
           },
           {
             "studio_code": "NC-001",
@@ -242240,8 +242240,8 @@
             "studio_code": "NC-001",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 8.77,
-            "impressions": 226,
+            "spend": 8.78,
+            "impressions": 227,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -242249,8 +242249,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.33,
-            "cpm": 38.81
+            "ctr": 1.32,
+            "cpm": 38.68
           },
           {
             "studio_code": "NJ-001",
@@ -242288,8 +242288,8 @@
             "studio_code": "NJ-001",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 3.24,
-            "impressions": 144,
+            "spend": 3.31,
+            "impressions": 145,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -242297,15 +242297,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.39,
-            "cpm": 22.5
+            "ctr": 1.38,
+            "cpm": 22.83
           },
           {
             "studio_code": "NJ-002",
             "audience": "POC",
             "date": "2026-07-21",
-            "spend": 2.45,
-            "impressions": 87,
+            "spend": 2.46,
+            "impressions": 88,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -242313,15 +242313,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.6,
-            "cpm": 28.16
+            "ctr": 4.55,
+            "cpm": 27.95
           },
           {
             "studio_code": "NJ-002",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 3.19,
-            "impressions": 139,
+            "spend": 3.2,
+            "impressions": 140,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -242329,15 +242329,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.72,
-            "cpm": 22.95
+            "ctr": 0.71,
+            "cpm": 22.86
           },
           {
             "studio_code": "NJ-002",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 17.95,
-            "impressions": 552,
+            "spend": 17.96,
+            "impressions": 554,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -242346,14 +242346,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.54,
-            "cpm": 32.52
+            "cpm": 32.42
           },
           {
             "studio_code": "NJ-003",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 11.639999999999999,
-            "impressions": 440,
+            "spend": 11.65,
+            "impressions": 442,
             "clicks": 11,
             "leads": 0,
             "trials": 0,
@@ -242361,8 +242361,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.5,
-            "cpm": 26.45
+            "ctr": 2.49,
+            "cpm": 26.36
           },
           {
             "studio_code": "NJ-003",
@@ -242384,8 +242384,8 @@
             "studio_code": "NJ-003",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 4.57,
-            "impressions": 157,
+            "spend": 4.58,
+            "impressions": 158,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -242393,15 +242393,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.64,
-            "cpm": 29.11
+            "ctr": 0.63,
+            "cpm": 28.99
           },
           {
             "studio_code": "NY-002",
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 5.61,
-            "impressions": 156,
+            "spend": 5.65,
+            "impressions": 157,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -242409,8 +242409,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.92,
-            "cpm": 35.96
+            "ctr": 1.91,
+            "cpm": 35.99
           },
           {
             "studio_code": "NY-002",
@@ -242448,8 +242448,8 @@
             "studio_code": "NY-003",
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 4.02,
-            "impressions": 91,
+            "spend": 4.13,
+            "impressions": 93,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -242457,8 +242457,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.4,
-            "cpm": 44.18
+            "ctr": 4.3,
+            "cpm": 44.41
           },
           {
             "studio_code": "NY-003",
@@ -242480,24 +242480,24 @@
             "studio_code": "NY-003",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 7.86,
-            "impressions": 242,
+            "spend": 7.89,
+            "impressions": 243,
             "clicks": 5,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 7.86,
+            "cpl": 7.89,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.07,
-            "cpm": 32.48
+            "ctr": 2.06,
+            "cpm": 32.47
           },
           {
             "studio_code": "NY-004",
             "audience": "DINKS",
             "date": "2026-07-21",
-            "spend": 4.53,
-            "impressions": 134,
+            "spend": 4.58,
+            "impressions": 137,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -242505,8 +242505,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.99,
-            "cpm": 33.81
+            "ctr": 2.92,
+            "cpm": 33.43
           },
           {
             "studio_code": "NY-004",
@@ -242528,24 +242528,24 @@
             "studio_code": "NY-004",
             "audience": "PYC",
             "date": "2026-07-21",
-            "spend": 3.3099999999999996,
-            "impressions": 131,
+            "spend": 3.3199999999999994,
+            "impressions": 132,
             "clicks": 0,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 3.31,
+            "cpl": 3.32,
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 25.27
+            "cpm": 25.15
           },
           {
             "studio_code": "NY-004",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 10.68,
-            "impressions": 374,
+            "spend": 10.69,
+            "impressions": 375,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -242554,7 +242554,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.53,
-            "cpm": 28.56
+            "cpm": 28.51
           },
           {
             "studio_code": "TX-001",
@@ -242576,8 +242576,8 @@
             "studio_code": "TX-001",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 11.38,
-            "impressions": 209,
+            "spend": 11.39,
+            "impressions": 210,
             "clicks": 10,
             "leads": 0,
             "trials": 0,
@@ -242585,8 +242585,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.78,
-            "cpm": 54.45
+            "ctr": 4.76,
+            "cpm": 54.24
           },
           {
             "studio_code": "TX-002",
@@ -242608,8 +242608,8 @@
             "studio_code": "TX-002",
             "audience": "SI",
             "date": "2026-07-21",
-            "spend": 9.05,
-            "impressions": 276,
+            "spend": 9.06,
+            "impressions": 277,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -242617,8 +242617,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.09,
-            "cpm": 32.79
+            "ctr": 1.08,
+            "cpm": 32.71
           }
         ],
         "by_studio_pillar": [
@@ -329170,8 +329170,8 @@
             "studio_code": "NY-002",
             "pillar": "Decision Relief",
             "date": "2026-07-20",
-            "spend": 12.09,
-            "impressions": 272,
+            "spend": 12.1,
+            "impressions": 273,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -329179,8 +329179,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.57,
-            "cpm": 44.45
+            "ctr": 2.56,
+            "cpm": 44.32
           },
           {
             "studio_code": "NY-002",
@@ -329474,8 +329474,8 @@
             "studio_code": "FL-004",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 4.97,
-            "impressions": 99,
+            "spend": 5.0,
+            "impressions": 100,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -329484,23 +329484,23 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 50.2
+            "cpm": 50.0
           },
           {
             "studio_code": "FL-004",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 9.79,
-            "impressions": 240,
+            "spend": 9.81,
+            "impressions": 241,
             "clicks": 6,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 9.79,
+            "cpl": 9.81,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.5,
-            "cpm": 40.79
+            "ctr": 2.49,
+            "cpm": 40.71
           },
           {
             "studio_code": "FL-005",
@@ -329522,8 +329522,8 @@
             "studio_code": "FL-005",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 6.98,
-            "impressions": 238,
+            "spend": 6.99,
+            "impressions": 239,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -329531,15 +329531,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.94,
-            "cpm": 29.33
+            "ctr": 2.93,
+            "cpm": 29.25
           },
           {
             "studio_code": "FL-005",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 6.74,
-            "impressions": 159,
+            "spend": 6.76,
+            "impressions": 160,
             "clicks": 5,
             "leads": 0,
             "trials": 0,
@@ -329547,8 +329547,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 3.14,
-            "cpm": 42.39
+            "ctr": 3.12,
+            "cpm": 42.25
           },
           {
             "studio_code": "FL-006",
@@ -329602,8 +329602,8 @@
             "studio_code": "FL-007",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 3.5599999999999996,
-            "impressions": 66,
+            "spend": 3.57,
+            "impressions": 67,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -329612,7 +329612,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 53.94
+            "cpm": 53.28
           },
           {
             "studio_code": "FL-008",
@@ -329682,8 +329682,8 @@
             "studio_code": "FL-009",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 11.96,
-            "impressions": 349,
+            "spend": 12.01,
+            "impressions": 352,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -329692,7 +329692,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.57,
-            "cpm": 34.27
+            "cpm": 34.12
           },
           {
             "studio_code": "FL-009",
@@ -329731,7 +329731,7 @@
             "pillar": "Value Confidence",
             "date": "2026-07-21",
             "spend": 10.16,
-            "impressions": 256,
+            "impressions": 257,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -329740,7 +329740,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.39,
-            "cpm": 39.69
+            "cpm": 39.53
           },
           {
             "studio_code": "FL-011",
@@ -329762,8 +329762,8 @@
             "studio_code": "FL-012",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 11.49,
-            "impressions": 237,
+            "spend": 11.5,
+            "impressions": 238,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -329771,15 +329771,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.95,
-            "cpm": 48.48
+            "ctr": 2.94,
+            "cpm": 48.32
           },
           {
             "studio_code": "FL-012",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 3.92,
-            "impressions": 127,
+            "spend": 3.94,
+            "impressions": 128,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -329787,8 +329787,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.79,
-            "cpm": 30.87
+            "ctr": 0.78,
+            "cpm": 30.78
           },
           {
             "studio_code": "FL-013",
@@ -329858,8 +329858,8 @@
             "studio_code": "FL-014",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 4.59,
-            "impressions": 155,
+            "spend": 4.6,
+            "impressions": 158,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -329868,7 +329868,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 29.61
+            "cpm": 29.11
           },
           {
             "studio_code": "FL-015",
@@ -329890,33 +329890,33 @@
             "studio_code": "FL-015",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 13.22,
-            "impressions": 270,
+            "spend": 13.34,
+            "impressions": 272,
             "clicks": 4,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 13.22,
+            "cpl": 13.34,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.48,
-            "cpm": 48.96
+            "ctr": 1.47,
+            "cpm": 49.04
           },
           {
             "studio_code": "FL-015",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
             "spend": 2.95,
-            "impressions": 67,
-            "clicks": 1,
-            "leads": 0,
+            "impressions": 68,
+            "clicks": 2,
+            "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 0,
+            "cpl": 2.95,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.49,
-            "cpm": 44.03
+            "ctr": 2.94,
+            "cpm": 43.38
           },
           {
             "studio_code": "FL-016",
@@ -329970,8 +329970,8 @@
             "studio_code": "NC-001",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 10.370000000000001,
-            "impressions": 330,
+            "spend": 10.41,
+            "impressions": 331,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -329980,14 +329980,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.21,
-            "cpm": 31.42
+            "cpm": 31.45
           },
           {
             "studio_code": "NC-001",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 7.43,
-            "impressions": 190,
+            "spend": 7.4399999999999995,
+            "impressions": 191,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -329996,7 +329996,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.05,
-            "cpm": 39.11
+            "cpm": 38.95
           },
           {
             "studio_code": "NJ-001",
@@ -330018,8 +330018,8 @@
             "studio_code": "NJ-001",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 3.24,
-            "impressions": 144,
+            "spend": 3.31,
+            "impressions": 145,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -330027,8 +330027,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.39,
-            "cpm": 22.5
+            "ctr": 1.38,
+            "cpm": 22.83
           },
           {
             "studio_code": "NJ-001",
@@ -330050,8 +330050,8 @@
             "studio_code": "NJ-002",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 2.45,
-            "impressions": 87,
+            "spend": 2.46,
+            "impressions": 88,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -330059,15 +330059,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.6,
-            "cpm": 28.16
+            "ctr": 4.55,
+            "cpm": 27.95
           },
           {
             "studio_code": "NJ-002",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 17.95,
-            "impressions": 552,
+            "spend": 17.96,
+            "impressions": 554,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -330076,14 +330076,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.54,
-            "cpm": 32.52
+            "cpm": 32.42
           },
           {
             "studio_code": "NJ-002",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 3.19,
-            "impressions": 139,
+            "spend": 3.2,
+            "impressions": 140,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -330091,15 +330091,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.72,
-            "cpm": 22.95
+            "ctr": 0.71,
+            "cpm": 22.86
           },
           {
             "studio_code": "NJ-003",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 5.35,
-            "impressions": 185,
+            "spend": 5.36,
+            "impressions": 187,
             "clicks": 8,
             "leads": 0,
             "trials": 0,
@@ -330107,8 +330107,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.32,
-            "cpm": 28.92
+            "ctr": 4.28,
+            "cpm": 28.66
           },
           {
             "studio_code": "NJ-003",
@@ -330162,8 +330162,8 @@
             "studio_code": "NY-002",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 5.880000000000001,
-            "impressions": 166,
+            "spend": 5.92,
+            "impressions": 167,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -330171,8 +330171,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.81,
-            "cpm": 35.42
+            "ctr": 1.8,
+            "cpm": 35.45
           },
           {
             "studio_code": "NY-002",
@@ -330194,8 +330194,8 @@
             "studio_code": "NY-003",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 4.06,
-            "impressions": 92,
+            "spend": 4.17,
+            "impressions": 94,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -330203,24 +330203,24 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.35,
-            "cpm": 44.13
+            "ctr": 4.26,
+            "cpm": 44.36
           },
           {
             "studio_code": "NY-003",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 7.86,
-            "impressions": 242,
+            "spend": 7.89,
+            "impressions": 243,
             "clicks": 5,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 7.86,
+            "cpl": 7.89,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.07,
-            "cpm": 32.48
+            "ctr": 2.06,
+            "cpm": 32.47
           },
           {
             "studio_code": "NY-003",
@@ -330242,8 +330242,8 @@
             "studio_code": "NY-004",
             "pillar": "Decision Relief",
             "date": "2026-07-21",
-            "spend": 7.4399999999999995,
-            "impressions": 228,
+            "spend": 7.49,
+            "impressions": 231,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -330251,15 +330251,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.75,
-            "cpm": 32.63
+            "ctr": 1.73,
+            "cpm": 32.42
           },
           {
             "studio_code": "NY-004",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 10.68,
-            "impressions": 374,
+            "spend": 10.69,
+            "impressions": 375,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -330268,30 +330268,30 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.53,
-            "cpm": 28.56
+            "cpm": 28.51
           },
           {
             "studio_code": "NY-004",
             "pillar": "Value Confidence",
             "date": "2026-07-21",
-            "spend": 2.99,
-            "impressions": 105,
+            "spend": 3.0,
+            "impressions": 106,
             "clicks": 0,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 2.99,
+            "cpl": 3.0,
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 28.48
+            "cpm": 28.3
           },
           {
             "studio_code": "TX-001",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 11.38,
-            "impressions": 209,
+            "spend": 11.39,
+            "impressions": 210,
             "clicks": 10,
             "leads": 0,
             "trials": 0,
@@ -330299,8 +330299,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.78,
-            "cpm": 54.45
+            "ctr": 4.76,
+            "cpm": 54.24
           },
           {
             "studio_code": "TX-001",
@@ -330322,8 +330322,8 @@
             "studio_code": "TX-002",
             "pillar": "Psychological Safety",
             "date": "2026-07-21",
-            "spend": 9.05,
-            "impressions": 276,
+            "spend": 9.06,
+            "impressions": 277,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -330331,8 +330331,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.09,
-            "cpm": 32.79
+            "ctr": 1.08,
+            "cpm": 32.71
           },
           {
             "studio_code": "TX-002",
@@ -488036,8 +488036,8 @@
             "studio_code": "NY-002",
             "concept": "Coach",
             "date": "2026-07-20",
-            "spend": 12.09,
-            "impressions": 272,
+            "spend": 12.1,
+            "impressions": 273,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -488045,8 +488045,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.57,
-            "cpm": 44.45
+            "ctr": 2.56,
+            "cpm": 44.32
           },
           {
             "studio_code": "NY-002",
@@ -488548,8 +488548,8 @@
             "studio_code": "FL-004",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 4.97,
-            "impressions": 99,
+            "spend": 5.0,
+            "impressions": 100,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -488558,7 +488558,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 50.2
+            "cpm": 50.0
           },
           {
             "studio_code": "FL-004",
@@ -488580,8 +488580,8 @@
             "studio_code": "FL-004",
             "concept": "Video - Plan",
             "date": "2026-07-21",
-            "spend": 6.8,
-            "impressions": 165,
+            "spend": 6.82,
+            "impressions": 166,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -488589,8 +488589,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.61,
-            "cpm": 41.21
+            "ctr": 0.6,
+            "cpm": 41.08
           },
           {
             "studio_code": "FL-004",
@@ -488628,8 +488628,8 @@
             "studio_code": "FL-005",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 6.98,
-            "impressions": 238,
+            "spend": 6.99,
+            "impressions": 239,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -488637,8 +488637,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.94,
-            "cpm": 29.33
+            "ctr": 2.93,
+            "cpm": 29.25
           },
           {
             "studio_code": "FL-005",
@@ -488660,8 +488660,8 @@
             "studio_code": "FL-005",
             "concept": "Video - Plan",
             "date": "2026-07-21",
-            "spend": 4.32,
-            "impressions": 116,
+            "spend": 4.34,
+            "impressions": 117,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -488669,8 +488669,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.86,
-            "cpm": 37.24
+            "ctr": 0.85,
+            "cpm": 37.09
           },
           {
             "studio_code": "FL-006",
@@ -488756,8 +488756,8 @@
             "studio_code": "FL-007",
             "concept": "Video - Plan",
             "date": "2026-07-21",
-            "spend": 1.88,
-            "impressions": 48,
+            "spend": 1.89,
+            "impressions": 49,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -488766,7 +488766,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 39.17
+            "cpm": 38.57
           },
           {
             "studio_code": "FL-007",
@@ -488900,8 +488900,8 @@
             "studio_code": "FL-009",
             "concept": "Video - Review",
             "date": "2026-07-21",
-            "spend": 11.96,
-            "impressions": 349,
+            "spend": 12.01,
+            "impressions": 352,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -488910,7 +488910,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.57,
-            "cpm": 34.27
+            "cpm": 34.12
           },
           {
             "studio_code": "FL-010",
@@ -488949,7 +488949,7 @@
             "concept": "Video - Plan",
             "date": "2026-07-21",
             "spend": 5.42,
-            "impressions": 111,
+            "impressions": 112,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -488957,8 +488957,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.9,
-            "cpm": 48.83
+            "ctr": 0.89,
+            "cpm": 48.39
           },
           {
             "studio_code": "FL-010",
@@ -489028,8 +489028,8 @@
             "studio_code": "FL-012",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 9.34,
-            "impressions": 171,
+            "spend": 9.35,
+            "impressions": 172,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -489037,15 +489037,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.34,
-            "cpm": 54.62
+            "ctr": 2.33,
+            "cpm": 54.36
           },
           {
             "studio_code": "FL-012",
             "concept": "Still",
             "date": "2026-07-21",
-            "spend": 2.4,
-            "impressions": 60,
+            "spend": 2.42,
+            "impressions": 61,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -489054,7 +489054,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 40.0
+            "cpm": 39.67
           },
           {
             "studio_code": "FL-012",
@@ -489188,8 +489188,8 @@
             "studio_code": "FL-014",
             "concept": "RealResults",
             "date": "2026-07-21",
-            "spend": 5.4,
-            "impressions": 147,
+            "spend": 5.41,
+            "impressions": 148,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -489198,14 +489198,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.68,
-            "cpm": 36.73
+            "cpm": 36.55
           },
           {
             "studio_code": "FL-014",
             "concept": "Still",
             "date": "2026-07-21",
             "spend": 1.07,
-            "impressions": 41,
+            "impressions": 42,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -489214,14 +489214,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 26.1
+            "cpm": 25.48
           },
           {
             "studio_code": "FL-014",
             "concept": "Video - Plan",
             "date": "2026-07-21",
-            "spend": 3.52,
-            "impressions": 114,
+            "spend": 3.53,
+            "impressions": 116,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -489230,7 +489230,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 30.88
+            "cpm": 30.43
           },
           {
             "studio_code": "FL-015",
@@ -489252,17 +489252,17 @@
             "studio_code": "FL-015",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 13.22,
-            "impressions": 270,
+            "spend": 13.34,
+            "impressions": 272,
             "clicks": 4,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 13.22,
+            "cpl": 13.34,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.48,
-            "cpm": 48.96
+            "ctr": 1.47,
+            "cpm": 49.04
           },
           {
             "studio_code": "FL-015",
@@ -489285,16 +489285,16 @@
             "concept": "Video - Plan",
             "date": "2026-07-21",
             "spend": 2.12,
-            "impressions": 46,
-            "clicks": 1,
-            "leads": 0,
+            "impressions": 47,
+            "clicks": 2,
+            "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 0,
+            "cpl": 2.12,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.17,
-            "cpm": 46.09
+            "ctr": 4.26,
+            "cpm": 45.11
           },
           {
             "studio_code": "FL-016",
@@ -489380,8 +489380,8 @@
             "studio_code": "NC-001",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 9.03,
-            "impressions": 294,
+            "spend": 9.07,
+            "impressions": 295,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -489390,14 +489390,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.02,
-            "cpm": 30.71
+            "cpm": 30.75
           },
           {
             "studio_code": "NC-001",
             "concept": "Still",
             "date": "2026-07-21",
-            "spend": 1.39,
-            "impressions": 45,
+            "spend": 1.4,
+            "impressions": 46,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -489405,8 +489405,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.22,
-            "cpm": 30.89
+            "ctr": 2.17,
+            "cpm": 30.43
           },
           {
             "studio_code": "NC-001",
@@ -489460,8 +489460,8 @@
             "studio_code": "NJ-001",
             "concept": "ShowUp",
             "date": "2026-07-21",
-            "spend": 3.22,
-            "impressions": 139,
+            "spend": 3.29,
+            "impressions": 140,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -489469,8 +489469,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.44,
-            "cpm": 23.17
+            "ctr": 1.43,
+            "cpm": 23.5
           },
           {
             "studio_code": "NJ-001",
@@ -489524,8 +489524,8 @@
             "studio_code": "NJ-002",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 2.45,
-            "impressions": 87,
+            "spend": 2.46,
+            "impressions": 88,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -489533,15 +489533,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.6,
-            "cpm": 28.16
+            "ctr": 4.55,
+            "cpm": 27.95
           },
           {
             "studio_code": "NJ-002",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 17.95,
-            "impressions": 552,
+            "spend": 17.96,
+            "impressions": 554,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -489550,14 +489550,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.54,
-            "cpm": 32.52
+            "cpm": 32.42
           },
           {
             "studio_code": "NJ-002",
             "concept": "Still",
             "date": "2026-07-21",
-            "spend": 0.27,
-            "impressions": 21,
+            "spend": 0.28,
+            "impressions": 22,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -489566,7 +489566,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 12.86
+            "cpm": 12.73
           },
           {
             "studio_code": "NJ-002",
@@ -489620,8 +489620,8 @@
             "studio_code": "NJ-003",
             "concept": "Video - Coach",
             "date": "2026-07-21",
-            "spend": 5.35,
-            "impressions": 185,
+            "spend": 5.36,
+            "impressions": 187,
             "clicks": 8,
             "leads": 0,
             "trials": 0,
@@ -489629,8 +489629,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.32,
-            "cpm": 28.92
+            "ctr": 4.28,
+            "cpm": 28.66
           },
           {
             "studio_code": "NJ-003",
@@ -489668,8 +489668,8 @@
             "studio_code": "NJ-003",
             "concept": "Video - WorstDay",
             "date": "2026-07-21",
-            "spend": 2.43,
-            "impressions": 94,
+            "spend": 2.44,
+            "impressions": 95,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -489677,15 +489677,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.06,
-            "cpm": 25.85
+            "ctr": 1.05,
+            "cpm": 25.68
           },
           {
             "studio_code": "NY-002",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 5.880000000000001,
-            "impressions": 165,
+            "spend": 5.92,
+            "impressions": 166,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -489693,8 +489693,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.82,
-            "cpm": 35.64
+            "ctr": 1.81,
+            "cpm": 35.66
           },
           {
             "studio_code": "NY-002",
@@ -489748,8 +489748,8 @@
             "studio_code": "NY-003",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 4.02,
-            "impressions": 91,
+            "spend": 4.13,
+            "impressions": 93,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -489757,8 +489757,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.4,
-            "cpm": 44.18
+            "ctr": 4.3,
+            "cpm": 44.41
           },
           {
             "studio_code": "NY-003",
@@ -489780,17 +489780,17 @@
             "studio_code": "NY-003",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 7.86,
-            "impressions": 242,
+            "spend": 7.89,
+            "impressions": 243,
             "clicks": 5,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 7.86,
+            "cpl": 7.89,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.07,
-            "cpm": 32.48
+            "ctr": 2.06,
+            "cpm": 32.47
           },
           {
             "studio_code": "NY-003",
@@ -489844,8 +489844,8 @@
             "studio_code": "NY-004",
             "concept": "Coach",
             "date": "2026-07-21",
-            "spend": 7.12,
-            "impressions": 202,
+            "spend": 7.17,
+            "impressions": 205,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -489853,15 +489853,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.98,
-            "cpm": 35.25
+            "ctr": 1.95,
+            "cpm": 34.98
           },
           {
             "studio_code": "NY-004",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 10.68,
-            "impressions": 374,
+            "spend": 10.69,
+            "impressions": 375,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -489870,7 +489870,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.53,
-            "cpm": 28.56
+            "cpm": 28.51
           },
           {
             "studio_code": "NY-004",
@@ -489908,8 +489908,8 @@
             "studio_code": "NY-004",
             "concept": "Video - Plan",
             "date": "2026-07-21",
-            "spend": 2.25,
-            "impressions": 78,
+            "spend": 2.26,
+            "impressions": 79,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -489918,7 +489918,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 28.85
+            "cpm": 28.61
           },
           {
             "studio_code": "TX-001",
@@ -489940,8 +489940,8 @@
             "studio_code": "TX-001",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 11.38,
-            "impressions": 209,
+            "spend": 11.39,
+            "impressions": 210,
             "clicks": 10,
             "leads": 0,
             "trials": 0,
@@ -489949,8 +489949,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.78,
-            "cpm": 54.45
+            "ctr": 4.76,
+            "cpm": 54.24
           },
           {
             "studio_code": "TX-001",
@@ -489972,8 +489972,8 @@
             "studio_code": "TX-002",
             "concept": "ShowUpV3",
             "date": "2026-07-21",
-            "spend": 9.05,
-            "impressions": 276,
+            "spend": 9.06,
+            "impressions": 277,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -489981,8 +489981,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.09,
-            "cpm": 32.79
+            "ctr": 1.08,
+            "cpm": 32.71
           },
           {
             "studio_code": "TX-002",
@@ -555670,8 +555670,8 @@
             "studio_code": "NY-002",
             "media_type": "Other",
             "date": "2026-07-20",
-            "spend": 39.6,
-            "impressions": 976,
+            "spend": 39.61,
+            "impressions": 977,
             "clicks": 15,
             "leads": 0,
             "trials": 0,
@@ -555680,7 +555680,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.54,
-            "cpm": 40.57
+            "cpm": 40.54
           },
           {
             "studio_code": "NY-002",
@@ -555862,24 +555862,24 @@
             "studio_code": "FL-004",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 7.96,
-            "impressions": 174,
+            "spend": 7.99,
+            "impressions": 175,
             "clicks": 5,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 7.96,
+            "cpl": 7.99,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.87,
-            "cpm": 45.75
+            "ctr": 2.86,
+            "cpm": 45.66
           },
           {
             "studio_code": "FL-004",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 6.83,
-            "impressions": 167,
+            "spend": 6.8500000000000005,
+            "impressions": 168,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -555888,14 +555888,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.6,
-            "cpm": 40.9
+            "cpm": 40.77
           },
           {
             "studio_code": "FL-005",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 9.43,
-            "impressions": 283,
+            "spend": 9.440000000000001,
+            "impressions": 284,
             "clicks": 11,
             "leads": 0,
             "trials": 0,
@@ -555903,15 +555903,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 3.89,
-            "cpm": 33.32
+            "ctr": 3.87,
+            "cpm": 33.24
           },
           {
             "studio_code": "FL-005",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 4.32,
-            "impressions": 116,
+            "spend": 4.34,
+            "impressions": 117,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -555919,8 +555919,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.86,
-            "cpm": 37.24
+            "ctr": 0.85,
+            "cpm": 37.09
           },
           {
             "studio_code": "FL-006",
@@ -555974,8 +555974,8 @@
             "studio_code": "FL-007",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 2.4499999999999997,
-            "impressions": 59,
+            "spend": 2.46,
+            "impressions": 60,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -555984,7 +555984,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 41.53
+            "cpm": 41.0
           },
           {
             "studio_code": "FL-008",
@@ -556038,8 +556038,8 @@
             "studio_code": "FL-009",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 14.39,
-            "impressions": 416,
+            "spend": 14.44,
+            "impressions": 419,
             "clicks": 2,
             "leads": 0,
             "trials": 0,
@@ -556048,7 +556048,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.48,
-            "cpm": 34.59
+            "cpm": 34.46
           },
           {
             "studio_code": "FL-010",
@@ -556071,7 +556071,7 @@
             "media_type": "Video",
             "date": "2026-07-21",
             "spend": 7.84,
-            "impressions": 168,
+            "impressions": 169,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -556079,8 +556079,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.6,
-            "cpm": 46.67
+            "ctr": 0.59,
+            "cpm": 46.39
           },
           {
             "studio_code": "FL-011",
@@ -556118,8 +556118,8 @@
             "studio_code": "FL-012",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 11.74,
-            "impressions": 231,
+            "spend": 11.77,
+            "impressions": 233,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -556127,8 +556127,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.73,
-            "cpm": 50.82
+            "ctr": 1.72,
+            "cpm": 50.52
           },
           {
             "studio_code": "FL-012",
@@ -556182,8 +556182,8 @@
             "studio_code": "FL-014",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 12.0,
-            "impressions": 252,
+            "spend": 12.010000000000002,
+            "impressions": 254,
             "clicks": 1,
             "leads": 0,
             "trials": 0,
@@ -556191,15 +556191,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 0.4,
-            "cpm": 47.62
+            "ctr": 0.39,
+            "cpm": 47.28
           },
           {
             "studio_code": "FL-014",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 3.52,
-            "impressions": 114,
+            "spend": 3.53,
+            "impressions": 116,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -556208,39 +556208,39 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 30.88
+            "cpm": 30.43
           },
           {
             "studio_code": "FL-015",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 15.370000000000001,
-            "impressions": 320,
+            "spend": 15.49,
+            "impressions": 322,
             "clicks": 5,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 15.37,
+            "cpl": 15.49,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.56,
-            "cpm": 48.03
+            "ctr": 1.55,
+            "cpm": 48.11
           },
           {
             "studio_code": "FL-015",
             "media_type": "Video",
             "date": "2026-07-21",
             "spend": 2.12,
-            "impressions": 46,
-            "clicks": 1,
-            "leads": 0,
+            "impressions": 47,
+            "clicks": 2,
+            "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 0,
+            "cpl": 2.12,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.17,
-            "cpm": 46.09
+            "ctr": 4.26,
+            "cpm": 45.11
           },
           {
             "studio_code": "FL-016",
@@ -556278,8 +556278,8 @@
             "studio_code": "NC-001",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 10.42,
-            "impressions": 339,
+            "spend": 10.47,
+            "impressions": 341,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -556287,8 +556287,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.18,
-            "cpm": 30.74
+            "ctr": 1.17,
+            "cpm": 30.7
           },
           {
             "studio_code": "NC-001",
@@ -556310,8 +556310,8 @@
             "studio_code": "NJ-001",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 11.27,
-            "impressions": 469,
+            "spend": 11.34,
+            "impressions": 470,
             "clicks": 4,
             "leads": 0,
             "trials": 0,
@@ -556320,7 +556320,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.85,
-            "cpm": 24.03
+            "cpm": 24.13
           },
           {
             "studio_code": "NJ-001",
@@ -556342,8 +556342,8 @@
             "studio_code": "NJ-002",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 20.669999999999998,
-            "impressions": 660,
+            "spend": 20.700000000000003,
+            "impressions": 664,
             "clicks": 7,
             "leads": 0,
             "trials": 0,
@@ -556351,8 +556351,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.06,
-            "cpm": 31.32
+            "ctr": 1.05,
+            "cpm": 31.17
           },
           {
             "studio_code": "NJ-002",
@@ -556390,8 +556390,8 @@
             "studio_code": "NJ-003",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 13.379999999999999,
-            "impressions": 518,
+            "spend": 13.4,
+            "impressions": 521,
             "clicks": 10,
             "leads": 0,
             "trials": 0,
@@ -556399,15 +556399,15 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.93,
-            "cpm": 25.83
+            "ctr": 1.92,
+            "cpm": 25.72
           },
           {
             "studio_code": "NY-002",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 12.91,
-            "impressions": 267,
+            "spend": 12.95,
+            "impressions": 268,
             "clicks": 5,
             "leads": 0,
             "trials": 0,
@@ -556416,7 +556416,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.87,
-            "cpm": 48.35
+            "cpm": 48.32
           },
           {
             "studio_code": "NY-002",
@@ -556438,17 +556438,17 @@
             "studio_code": "NY-003",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 16.46,
-            "impressions": 433,
+            "spend": 16.6,
+            "impressions": 436,
             "clicks": 11,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 16.46,
+            "cpl": 16.6,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 2.54,
-            "cpm": 38.01
+            "ctr": 2.52,
+            "cpm": 38.07
           },
           {
             "studio_code": "NY-003",
@@ -556470,24 +556470,24 @@
             "studio_code": "NY-004",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 18.54,
-            "impressions": 603,
+            "spend": 18.599999999999998,
+            "impressions": 607,
             "clicks": 6,
             "leads": 1,
             "trials": 0,
             "purchases": 0,
-            "cpl": 18.54,
+            "cpl": 18.6,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 1.0,
-            "cpm": 30.75
+            "ctr": 0.99,
+            "cpm": 30.64
           },
           {
             "studio_code": "NY-004",
             "media_type": "Video",
             "date": "2026-07-21",
-            "spend": 2.57,
-            "impressions": 104,
+            "spend": 2.5799999999999996,
+            "impressions": 105,
             "clicks": 0,
             "leads": 0,
             "trials": 0,
@@ -556496,14 +556496,14 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 0.0,
-            "cpm": 24.71
+            "cpm": 24.57
           },
           {
             "studio_code": "TX-001",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 14.830000000000002,
-            "impressions": 249,
+            "spend": 14.84,
+            "impressions": 250,
             "clicks": 11,
             "leads": 0,
             "trials": 0,
@@ -556511,8 +556511,8 @@
             "cpl": 0,
             "cpt": 0,
             "cpp": 0,
-            "ctr": 4.42,
-            "cpm": 59.56
+            "ctr": 4.4,
+            "cpm": 59.36
           },
           {
             "studio_code": "TX-001",
@@ -556534,8 +556534,8 @@
             "studio_code": "TX-002",
             "media_type": "Other",
             "date": "2026-07-21",
-            "spend": 9.530000000000001,
-            "impressions": 291,
+            "spend": 9.540000000000001,
+            "impressions": 292,
             "clicks": 3,
             "leads": 0,
             "trials": 0,
@@ -556544,7 +556544,7 @@
             "cpt": 0,
             "cpp": 0,
             "ctr": 1.03,
-            "cpm": 32.75
+            "cpm": 32.67
           },
           {
             "studio_code": "TX-002",
@@ -825300,8 +825300,8 @@
       "date": "2026-07-20",
       "studio_code": "NY-002",
       "ad_id": "120251855121170249",
-      "spend": 12.09,
-      "impressions": 272,
+      "spend": 12.1,
+      "impressions": 273,
       "clicks": 7,
       "leads": 0,
       "trials": 0
@@ -825630,8 +825630,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-004",
       "ad_id": "120251853636730249",
-      "spend": 2.15,
-      "impressions": 36,
+      "spend": 2.18,
+      "impressions": 37,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -825650,8 +825650,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-004",
       "ad_id": "120252396547390249",
-      "spend": 6.8,
-      "impressions": 165,
+      "spend": 6.82,
+      "impressions": 166,
       "clicks": 1,
       "leads": 0,
       "trials": 0
@@ -825670,8 +825670,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-005",
       "ad_id": "120250407272300249",
-      "spend": 6.98,
-      "impressions": 238,
+      "spend": 6.99,
+      "impressions": 239,
       "clicks": 7,
       "leads": 0,
       "trials": 0
@@ -825690,8 +825690,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-005",
       "ad_id": "120252396547470249",
-      "spend": 4.32,
-      "impressions": 116,
+      "spend": 4.34,
+      "impressions": 117,
       "clicks": 1,
       "leads": 0,
       "trials": 0
@@ -825760,8 +825760,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-007",
       "ad_id": "120252396547610249",
-      "spend": 1.88,
-      "impressions": 48,
+      "spend": 1.89,
+      "impressions": 49,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -825830,8 +825830,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-009",
       "ad_id": "120250407271830249",
-      "spend": 11.96,
-      "impressions": 349,
+      "spend": 12.01,
+      "impressions": 352,
       "clicks": 2,
       "leads": 0,
       "trials": 0
@@ -825881,7 +825881,7 @@
       "studio_code": "FL-010",
       "ad_id": "120252396547620249",
       "spend": 5.42,
-      "impressions": 111,
+      "impressions": 112,
       "clicks": 1,
       "leads": 0,
       "trials": 0
@@ -825960,8 +825960,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-012",
       "ad_id": "120251855121250249",
-      "spend": 9.05,
-      "impressions": 167,
+      "spend": 9.06,
+      "impressions": 168,
       "clicks": 4,
       "leads": 0,
       "trials": 0
@@ -825980,8 +825980,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-012",
       "ad_id": "120252412225910249",
-      "spend": 2.4,
-      "impressions": 60,
+      "spend": 2.42,
+      "impressions": 61,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -826030,8 +826030,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-014",
       "ad_id": "120250407271160249",
-      "spend": 5.4,
-      "impressions": 147,
+      "spend": 5.41,
+      "impressions": 148,
       "clicks": 1,
       "leads": 0,
       "trials": 0
@@ -826050,8 +826050,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-014",
       "ad_id": "120252396547550249",
-      "spend": 3.52,
-      "impressions": 114,
+      "spend": 3.53,
+      "impressions": 116,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -826061,7 +826061,7 @@
       "studio_code": "FL-014",
       "ad_id": "120252412225880249",
       "spend": 1.07,
-      "impressions": 41,
+      "impressions": 42,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -826070,8 +826070,8 @@
       "date": "2026-07-21",
       "studio_code": "FL-015",
       "ad_id": "120250407272150249",
-      "spend": 13.22,
-      "impressions": 270,
+      "spend": 13.34,
+      "impressions": 272,
       "clicks": 4,
       "leads": 1,
       "trials": 0
@@ -826091,9 +826091,9 @@
       "studio_code": "FL-015",
       "ad_id": "120252396547590249",
       "spend": 2.12,
-      "impressions": 46,
-      "clicks": 1,
-      "leads": 0,
+      "impressions": 47,
+      "clicks": 2,
+      "leads": 1,
       "trials": 0
     },
     {
@@ -826180,8 +826180,8 @@
       "date": "2026-07-21",
       "studio_code": "NC-001",
       "ad_id": "120251855121200249",
-      "spend": 6.85,
-      "impressions": 249,
+      "spend": 6.89,
+      "impressions": 250,
       "clicks": 3,
       "leads": 0,
       "trials": 0
@@ -826200,8 +826200,8 @@
       "date": "2026-07-21",
       "studio_code": "NC-001",
       "ad_id": "120252412225730249",
-      "spend": 1.39,
-      "impressions": 45,
+      "spend": 1.4,
+      "impressions": 46,
       "clicks": 1,
       "leads": 0,
       "trials": 0
@@ -826210,8 +826210,8 @@
       "date": "2026-07-21",
       "studio_code": "NJ-001",
       "ad_id": "120250407272250249",
-      "spend": 3.22,
-      "impressions": 139,
+      "spend": 3.29,
+      "impressions": 140,
       "clicks": 2,
       "leads": 0,
       "trials": 0
@@ -826260,8 +826260,8 @@
       "date": "2026-07-21",
       "studio_code": "NJ-002",
       "ad_id": "120250407272570249",
-      "spend": 17.95,
-      "impressions": 552,
+      "spend": 17.96,
+      "impressions": 554,
       "clicks": 3,
       "leads": 0,
       "trials": 0
@@ -826270,8 +826270,8 @@
       "date": "2026-07-21",
       "studio_code": "NJ-002",
       "ad_id": "120251853636820249",
-      "spend": 2.45,
-      "impressions": 87,
+      "spend": 2.46,
+      "impressions": 88,
       "clicks": 4,
       "leads": 0,
       "trials": 0
@@ -826290,8 +826290,8 @@
       "date": "2026-07-21",
       "studio_code": "NJ-002",
       "ad_id": "120252412225840249",
-      "spend": 0.27,
-      "impressions": 21,
+      "spend": 0.28,
+      "impressions": 22,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -826300,8 +826300,8 @@
       "date": "2026-07-21",
       "studio_code": "NJ-003",
       "ad_id": "120250407272680249",
-      "spend": 2.43,
-      "impressions": 94,
+      "spend": 2.44,
+      "impressions": 95,
       "clicks": 1,
       "leads": 0,
       "trials": 0
@@ -826330,8 +826330,8 @@
       "date": "2026-07-21",
       "studio_code": "NJ-003",
       "ad_id": "120251562036660249",
-      "spend": 5.35,
-      "impressions": 185,
+      "spend": 5.36,
+      "impressions": 187,
       "clicks": 8,
       "leads": 0,
       "trials": 0
@@ -826380,8 +826380,8 @@
       "date": "2026-07-21",
       "studio_code": "NY-002",
       "ad_id": "120251855121170249",
-      "spend": 5.61,
-      "impressions": 156,
+      "spend": 5.65,
+      "impressions": 157,
       "clicks": 3,
       "leads": 0,
       "trials": 0
@@ -826410,8 +826410,8 @@
       "date": "2026-07-21",
       "studio_code": "NY-003",
       "ad_id": "120250407272620249",
-      "spend": 7.86,
-      "impressions": 242,
+      "spend": 7.89,
+      "impressions": 243,
       "clicks": 5,
       "leads": 1,
       "trials": 0
@@ -826440,8 +826440,8 @@
       "date": "2026-07-21",
       "studio_code": "NY-003",
       "ad_id": "120251855121120249",
-      "spend": 4.02,
-      "impressions": 91,
+      "spend": 4.13,
+      "impressions": 93,
       "clicks": 4,
       "leads": 0,
       "trials": 0
@@ -826470,8 +826470,8 @@
       "date": "2026-07-21",
       "studio_code": "NY-004",
       "ad_id": "120250407271950249",
-      "spend": 10.68,
-      "impressions": 374,
+      "spend": 10.69,
+      "impressions": 375,
       "clicks": 2,
       "leads": 0,
       "trials": 0
@@ -826500,8 +826500,8 @@
       "date": "2026-07-21",
       "studio_code": "NY-004",
       "ad_id": "120251855121240249",
-      "spend": 4.53,
-      "impressions": 134,
+      "spend": 4.58,
+      "impressions": 137,
       "clicks": 4,
       "leads": 0,
       "trials": 0
@@ -826510,8 +826510,8 @@
       "date": "2026-07-21",
       "studio_code": "NY-004",
       "ad_id": "120252396547420249",
-      "spend": 2.25,
-      "impressions": 78,
+      "spend": 2.26,
+      "impressions": 79,
       "clicks": 0,
       "leads": 0,
       "trials": 0
@@ -826530,8 +826530,8 @@
       "date": "2026-07-21",
       "studio_code": "TX-001",
       "ad_id": "120250407272090249",
-      "spend": 11.38,
-      "impressions": 209,
+      "spend": 11.39,
+      "impressions": 210,
       "clicks": 10,
       "leads": 0,
       "trials": 0
@@ -826560,8 +826560,8 @@
       "date": "2026-07-21",
       "studio_code": "TX-002",
       "ad_id": "120250407272730249",
-      "spend": 9.05,
-      "impressions": 276,
+      "spend": 9.06,
+      "impressions": 277,
       "clicks": 3,
       "leads": 0,
       "trials": 0
