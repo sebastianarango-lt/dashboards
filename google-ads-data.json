@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T18:14:07.165856+00:00",
+  "generated_at": "2026-07-21T18:47:09.058212+00:00",
   "date_windows": {
     "daily_from": "2026-04-01",
     "daily_to": "2026-07-21",
@@ -44,14 +44,14 @@
     "West Palm Beach"
   ],
   "totals": {
-    "spend": 85477.22,
-    "impressions": 747688,
-    "clicks": 28325,
+    "spend": 85499.06,
+    "impressions": 747957,
+    "clicks": 28332,
     "leads": 692,
     "calls": 720,
-    "directions": 1964,
-    "opportunities": 1569.2,
-    "cost_per_opp": 54.47
+    "directions": 1966,
+    "opportunities": 1569.8,
+    "cost_per_opp": 54.46
   },
   "daily": [
     {
@@ -1390,7 +1390,7 @@
       "date": "2026-07-21",
       "studio": "Austin - Highland",
       "spend": 16.79,
-      "impressions": 95,
+      "impressions": 103,
       "clicks": 4,
       "leads": 0,
       "calls": 0,
@@ -2733,9 +2733,9 @@
     {
       "date": "2026-07-21",
       "studio": "Austin - Zilker",
-      "spend": 9.92,
-      "impressions": 73,
-      "clicks": 5,
+      "spend": 17.91,
+      "impressions": 81,
+      "clicks": 6,
       "leads": 0,
       "calls": 0,
       "directions": 0,
@@ -3262,7 +3262,7 @@
       "date": "2026-07-21",
       "studio": "Aventura",
       "spend": 6.68,
-      "impressions": 41,
+      "impressions": 55,
       "clicks": 5,
       "leads": 0,
       "calls": 0,
@@ -4606,7 +4606,7 @@
       "date": "2026-07-21",
       "studio": "Boca Raton",
       "spend": 0.0,
-      "impressions": 83,
+      "impressions": 94,
       "clicks": 0,
       "leads": 0,
       "calls": 0,
@@ -5950,7 +5950,7 @@
       "date": "2026-07-21",
       "studio": "Charlotte - Noda",
       "spend": 24.16,
-      "impressions": 77,
+      "impressions": 89,
       "clicks": 5,
       "leads": 0,
       "calls": 0,
@@ -7294,7 +7294,7 @@
       "date": "2026-07-21",
       "studio": "Coral Gables",
       "spend": 9.35,
-      "impressions": 41,
+      "impressions": 51,
       "clicks": 2,
       "leads": 0,
       "calls": 0,
@@ -8638,7 +8638,7 @@
       "date": "2026-07-21",
       "studio": "Coral Springs",
       "spend": 9.51,
-      "impressions": 96,
+      "impressions": 103,
       "clicks": 6,
       "leads": 0,
       "calls": 0,
@@ -9502,7 +9502,7 @@
       "date": "2026-07-21",
       "studio": "Dallas - Prestonwood",
       "spend": 7.3,
-      "impressions": 112,
+      "impressions": 117,
       "clicks": 3,
       "leads": 0,
       "calls": 0,
@@ -10846,7 +10846,7 @@
       "date": "2026-07-21",
       "studio": "Deerfield Beach",
       "spend": 8.65,
-      "impressions": 65,
+      "impressions": 73,
       "clicks": 5,
       "leads": 0,
       "calls": 0,
@@ -12190,7 +12190,7 @@
       "date": "2026-07-21",
       "studio": "Doral",
       "spend": 5.9,
-      "impressions": 60,
+      "impressions": 63,
       "clicks": 2,
       "leads": 0,
       "calls": 0,
@@ -13534,7 +13534,7 @@
       "date": "2026-07-21",
       "studio": "Eastchester",
       "spend": 18.29,
-      "impressions": 104,
+      "impressions": 112,
       "clicks": 6,
       "leads": 1,
       "calls": 0,
@@ -14878,7 +14878,7 @@
       "date": "2026-07-21",
       "studio": "Fort Lauderdale - Las Olas",
       "spend": 7.17,
-      "impressions": 104,
+      "impressions": 111,
       "clicks": 4,
       "leads": 0,
       "calls": 0,
@@ -15382,7 +15382,7 @@
       "date": "2026-07-21",
       "studio": "Herriman",
       "spend": 3.49,
-      "impressions": 180,
+      "impressions": 207,
       "clicks": 4,
       "leads": 0,
       "calls": 0,
@@ -17926,7 +17926,7 @@
       "date": "2026-07-21",
       "studio": "Miami - Coconut Grove",
       "spend": 23.25,
-      "impressions": 51,
+      "impressions": 55,
       "clicks": 2,
       "leads": 0,
       "calls": 0,
@@ -19270,7 +19270,7 @@
       "date": "2026-07-21",
       "studio": "Miami - Midtown",
       "spend": 0.0,
-      "impressions": 36,
+      "impressions": 43,
       "clicks": 0,
       "leads": 0,
       "calls": 0,
@@ -20614,7 +20614,7 @@
       "date": "2026-07-21",
       "studio": "Miami - Upper East Side",
       "spend": 6.0,
-      "impressions": 124,
+      "impressions": 136,
       "clicks": 3,
       "leads": 0,
       "calls": 0,
@@ -23158,7 +23158,7 @@
       "date": "2026-07-21",
       "studio": "Miami Lakes",
       "spend": 19.75,
-      "impressions": 38,
+      "impressions": 45,
       "clicks": 2,
       "leads": 0,
       "calls": 0,
@@ -23806,7 +23806,7 @@
       "date": "2026-07-11",
       "studio": "Miramar",
       "spend": 54.99,
-      "impressions": 108,
+      "impressions": 106,
       "clicks": 4,
       "leads": 0,
       "calls": 0,
@@ -23926,7 +23926,7 @@
       "date": "2026-07-21",
       "studio": "Miramar",
       "spend": 17.08,
-      "impressions": 44,
+      "impressions": 52,
       "clicks": 3,
       "leads": 0,
       "calls": 0,
@@ -25270,7 +25270,7 @@
       "date": "2026-07-21",
       "studio": "NYC - Chelsea",
       "spend": 41.51,
-      "impressions": 440,
+      "impressions": 446,
       "clicks": 8,
       "leads": 0,
       "calls": 0,
@@ -26613,14 +26613,14 @@
     {
       "date": "2026-07-21",
       "studio": "NYC - Park Slope",
-      "spend": 18.27,
-      "impressions": 219,
-      "clicks": 8,
+      "spend": 27.31,
+      "impressions": 251,
+      "clicks": 12,
       "leads": 0,
       "calls": 0,
-      "directions": 1,
-      "opportunities": 0.3,
-      "cost_per_opp": 60.9
+      "directions": 2,
+      "opportunities": 0.6,
+      "cost_per_opp": 45.52
     },
     {
       "date": "2026-06-23",
@@ -26962,7 +26962,7 @@
       "date": "2026-07-21",
       "studio": "Naples - Mercato",
       "spend": 13.09,
-      "impressions": 102,
+      "impressions": 112,
       "clicks": 11,
       "leads": 0,
       "calls": 1,
@@ -28306,7 +28306,7 @@
       "date": "2026-07-21",
       "studio": "Ocean Township",
       "spend": 1.41,
-      "impressions": 62,
+      "impressions": 66,
       "clicks": 1,
       "leads": 0,
       "calls": 0,
@@ -28990,7 +28990,7 @@
       "date": "2026-07-21",
       "studio": "Orlando - Dr Phillips",
       "spend": 15.93,
-      "impressions": 206,
+      "impressions": 208,
       "clicks": 4,
       "leads": 0,
       "calls": 1,
@@ -30334,7 +30334,7 @@
       "date": "2026-07-21",
       "studio": "Pembroke Pines",
       "spend": 0.0,
-      "impressions": 28,
+      "impressions": 29,
       "clicks": 0,
       "leads": 0,
       "calls": 0,
@@ -31678,7 +31678,7 @@
       "date": "2026-07-21",
       "studio": "Pinecrest - Palmetto Bay",
       "spend": 37.34,
-      "impressions": 42,
+      "impressions": 43,
       "clicks": 6,
       "leads": 0,
       "calls": 0,
@@ -33021,14 +33021,14 @@
     {
       "date": "2026-07-21",
       "studio": "Reston",
-      "spend": 14.74,
-      "impressions": 140,
-      "clicks": 7,
+      "spend": 19.55,
+      "impressions": 168,
+      "clicks": 9,
       "leads": 0,
       "calls": 0,
-      "directions": 0,
-      "opportunities": 0.0,
-      "cost_per_opp": 0
+      "directions": 1,
+      "opportunities": 0.3,
+      "cost_per_opp": 65.17
     },
     {
       "date": "2026-04-01",
@@ -34366,7 +34366,7 @@
       "date": "2026-07-21",
       "studio": "South Miami",
       "spend": 62.05,
-      "impressions": 40,
+      "impressions": 41,
       "clicks": 4,
       "leads": 0,
       "calls": 0,
@@ -35710,7 +35710,7 @@
       "date": "2026-07-21",
       "studio": "Toms River",
       "spend": 10.34,
-      "impressions": 82,
+      "impressions": 99,
       "clicks": 3,
       "leads": 0,
       "calls": 0,
@@ -37054,7 +37054,7 @@
       "date": "2026-07-21",
       "studio": "Wall Township",
       "spend": 22.6,
-      "impressions": 53,
+      "impressions": 55,
       "clicks": 2,
       "leads": 0,
       "calls": 0,
@@ -38398,7 +38398,7 @@
       "date": "2026-07-21",
       "studio": "West Palm Beach",
       "spend": 3.79,
-      "impressions": 67,
+      "impressions": 68,
       "clicks": 1,
       "leads": 0,
       "calls": 0,
@@ -46071,119 +46071,119 @@
     "headlines": [
       {
         "text": "Top-Rated Gym Classes Near You",
-        "impressions": 145497,
-        "clicks": 5708,
+        "impressions": 145572,
+        "clicks": 5711,
         "ctr": 3.92,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "We Handle the Workout Plan",
-        "impressions": 140449,
-        "clicks": 6159,
-        "ctr": 4.39,
+        "impressions": 140492,
+        "clicks": 6160,
+        "ctr": 4.38,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Start Where You Are",
-        "impressions": 126982,
+        "impressions": 127012,
         "clicks": 4118,
         "ctr": 3.24,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Busy Life. Strong Body.",
-        "impressions": 83249,
-        "clicks": 3350,
+        "impressions": 83293,
+        "clicks": 3352,
         "ctr": 4.02,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Find Your Fitness Community",
-        "impressions": 55769,
+        "impressions": 55785,
         "clicks": 1903,
         "ctr": 3.41,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Award-Winning Gym Classes",
-        "impressions": 52539,
-        "clicks": 1936,
-        "ctr": 3.68,
+        "impressions": 52563,
+        "clicks": 1938,
+        "ctr": 3.69,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "No Pressure. Just Progress",
-        "impressions": 51572,
+        "impressions": 51595,
         "clicks": 1967,
         "ctr": 3.81,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Train Without Pressure",
-        "impressions": 49133,
+        "impressions": 49146,
         "clicks": 2232,
         "ctr": 4.54,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Start Your 1st Class Today",
-        "impressions": 48950,
-        "clicks": 2087,
+        "impressions": 48974,
+        "clicks": 2088,
         "ctr": 4.26,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Strength Workouts Every 10 Min",
-        "impressions": 32786,
+        "impressions": 32811,
         "clicks": 867,
         "ctr": 2.64,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Workouts for Busy Schedules",
-        "impressions": 31024,
+        "impressions": 31033,
         "clicks": 1257,
         "ctr": 4.05,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Risk a Free Trial Week",
-        "impressions": 29940,
-        "clicks": 932,
-        "ctr": 3.11,
+        "impressions": 29968,
+        "clicks": 934,
+        "ctr": 3.12,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Limited-Time Presale Offer",
-        "impressions": 27912,
+        "impressions": 27940,
         "clicks": 839,
-        "ctr": 3.01,
+        "ctr": 3.0,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Strong Results, Short Sessions",
-        "impressions": 27372,
+        "impressions": 27383,
         "clicks": 1142,
         "ctr": 4.17,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Coach-Guided Strength Training",
-        "impressions": 21552,
-        "clicks": 1304,
+        "impressions": 21567,
+        "clicks": 1305,
         "ctr": 6.05,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Pre-Sale is On: $129/Month",
-        "impressions": 20057,
-        "clicks": 752,
+        "impressions": 20107,
+        "clicks": 755,
         "ctr": 3.75,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Best Strength Classes Near You",
-        "impressions": 19556,
+        "impressions": 19557,
         "clicks": 802,
         "ctr": 4.1,
         "performance_label": "NOT_APPLICABLE"
@@ -46197,21 +46197,21 @@
       },
       {
         "text": "SWEAT440 Park Slope",
-        "impressions": 15585,
+        "impressions": 15588,
         "clicks": 429,
         "ctr": 2.75,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Show Up and Build Strength",
-        "impressions": 14885,
+        "impressions": 14888,
         "clicks": 721,
         "ctr": 4.84,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 West Palm Beach",
-        "impressions": 13767,
+        "impressions": 13768,
         "clicks": 772,
         "ctr": 5.61,
         "performance_label": "NOT_APPLICABLE"
@@ -46239,28 +46239,28 @@
       },
       {
         "text": "SWEAT440 Coral Springs",
-        "impressions": 11736,
+        "impressions": 11740,
         "clicks": 622,
         "ctr": 5.3,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Eastchester",
-        "impressions": 11459,
+        "impressions": 11465,
         "clicks": 637,
         "ctr": 5.56,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Guided Strength for Real Life",
-        "impressions": 10774,
+        "impressions": 10777,
         "clicks": 470,
         "ctr": 4.36,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Ocean Township",
-        "impressions": 10772,
+        "impressions": 10776,
         "clicks": 492,
         "ctr": 4.57,
         "performance_label": "NOT_APPLICABLE"
@@ -46274,30 +46274,30 @@
       },
       {
         "text": "SWEAT440 Upper East Side",
-        "impressions": 10583,
+        "impressions": 10590,
         "clicks": 378,
         "ctr": 3.57,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Join Early, Recover Faster",
-        "impressions": 10074,
+        "impressions": 10083,
         "clicks": 322,
-        "ctr": 3.2,
+        "ctr": 3.19,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Miami Lakes",
-        "impressions": 9805,
+        "impressions": 9812,
         "clicks": 560,
         "ctr": 5.71,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Strength Training Classes",
-        "impressions": 9698,
-        "clicks": 583,
-        "ctr": 6.01,
+        "impressions": 9707,
+        "clicks": 584,
+        "ctr": 6.02,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46309,28 +46309,28 @@
       },
       {
         "text": "New SWEAT440 Reston",
-        "impressions": 9215,
+        "impressions": 9221,
         "clicks": 305,
         "ctr": 3.31,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Las Olas",
-        "impressions": 8495,
+        "impressions": 8497,
         "clicks": 447,
         "ctr": 5.26,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 NoDa",
-        "impressions": 8481,
+        "impressions": 8488,
         "clicks": 379,
         "ctr": 4.47,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Wall Township",
-        "impressions": 8339,
+        "impressions": 8341,
         "clicks": 389,
         "ctr": 4.66,
         "performance_label": "NOT_APPLICABLE"
@@ -46344,70 +46344,70 @@
       },
       {
         "text": "SWEAT440 Toms River",
-        "impressions": 7247,
+        "impressions": 7255,
         "clicks": 324,
         "ctr": 4.47,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 North Miami",
-        "impressions": 6647,
-        "clicks": 214,
-        "ctr": 3.22,
+        "impressions": 6660,
+        "clicks": 215,
+        "ctr": 3.23,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Midtown Miami",
-        "impressions": 6479,
+        "impressions": 6482,
         "clicks": 304,
         "ctr": 4.69,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Park Slope New York",
-        "impressions": 6032,
-        "clicks": 148,
-        "ctr": 2.45,
+        "impressions": 6036,
+        "clicks": 149,
+        "ctr": 2.47,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Grab $129/mo Founder's Deal",
-        "impressions": 5994,
+        "impressions": 5998,
         "clicks": 290,
-        "ctr": 4.84,
+        "ctr": 4.83,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Strength Training in Reston",
-        "impressions": 5818,
+        "impressions": 5822,
         "clicks": 240,
-        "ctr": 4.13,
+        "ctr": 4.12,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Doral",
-        "impressions": 5788,
+        "impressions": 5790,
         "clicks": 270,
         "ctr": 4.66,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Coral Gables",
-        "impressions": 5494,
+        "impressions": 5498,
         "clicks": 226,
         "ctr": 4.11,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Sweat440™",
-        "impressions": 5456,
+        "impressions": 5479,
         "clicks": 252,
-        "ctr": 4.62,
+        "ctr": 4.6,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 Herriman",
-        "impressions": 5441,
+        "impressions": 5449,
         "clicks": 219,
         "ctr": 4.02,
         "performance_label": "NOT_APPLICABLE"
@@ -46423,79 +46423,79 @@
     "descriptions": [
       {
         "text": "Classes start every 10 minutes, so you are never late and never wait to work out. Try free",
-        "impressions": 336196,
-        "clicks": 12885,
+        "impressions": 336356,
+        "clicks": 12890,
         "ctr": 3.83,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Classes start every 10 minutes, so you are never late and never wait to work out.",
-        "impressions": 89676,
+        "impressions": 89685,
         "clicks": 3218,
         "ctr": 3.59,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Workouts that fit your life, making consistency easier. Try Free",
-        "impressions": 68646,
+        "impressions": 68677,
         "clicks": 2549,
         "ctr": 3.71,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Walk in and start training right away with coach-led strength circuits. Try Free",
-        "impressions": 30388,
+        "impressions": 30395,
         "clicks": 1667,
-        "ctr": 5.49,
+        "ctr": 5.48,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Enjoy Our Special Membership Offer: Founder’s Rate at $99/Month. Dr Phillips is Coming!",
-        "impressions": 27620,
+        "impressions": 27622,
         "clicks": 643,
         "ctr": 2.33,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Enjoy Our Special Membership Offer: Founder’s Rate at $129/Month. Reston is Coming!",
-        "impressions": 27385,
-        "clicks": 748,
+        "impressions": 27403,
+        "clicks": 749,
         "ctr": 2.73,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "YourWalk in and start training right away with coach-led strength circuits. Try free.",
-        "impressions": 26693,
+        "impressions": 26717,
         "clicks": 1441,
-        "ctr": 5.4,
+        "ctr": 5.39,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Walk in and start training right away with coach-led strength circuits.",
-        "impressions": 24743,
-        "clicks": 1345,
+        "impressions": 24755,
+        "clicks": 1346,
         "ctr": 5.44,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Short, effective strength sessions you can actually keep up with. Try Free",
-        "impressions": 21132,
+        "impressions": 21140,
         "clicks": 381,
         "ctr": 1.8,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Workouts that fit your life, making consistency easier.",
-        "impressions": 18480,
+        "impressions": 18482,
         "clicks": 745,
         "ctr": 4.03,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Enjoy Our Special Membership Offer: Founder’s Rate at $99/Month. North Miami is Coming!",
-        "impressions": 16179,
-        "clicks": 505,
-        "ctr": 3.12,
+        "impressions": 16215,
+        "clicks": 507,
+        "ctr": 3.13,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46507,30 +46507,30 @@
       },
       {
         "text": "Enjoy Our Special Membership Offer: Founder’s Rate at $129/Month. Herriman is Coming!",
-        "impressions": 9698,
+        "impressions": 9724,
         "clicks": 316,
-        "ctr": 3.26,
+        "ctr": 3.25,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Enjoy Our Special Membership Offer: Founder’s Rate at $99/Month. Aventura is Coming!",
-        "impressions": 8650,
+        "impressions": 8664,
         "clicks": 322,
         "ctr": 3.72,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Build Strength in Every Workout. Join today. Classes Start Every 10 Minutes.",
-        "impressions": 8612,
-        "clicks": 414,
+        "impressions": 8622,
+        "clicks": 415,
         "ctr": 4.81,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Enjoy Our Special Membership Offer: Founder’s Rate at $129/Month. Dallas Uptown is Coming!",
-        "impressions": 8386,
+        "impressions": 8410,
         "clicks": 280,
-        "ctr": 3.34,
+        "ctr": 3.33,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46549,14 +46549,14 @@
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Zilker today.",
-        "impressions": 5850,
+        "impressions": 5852,
         "clicks": 231,
         "ctr": 3.95,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Eastchester today.",
-        "impressions": 4703,
+        "impressions": 4705,
         "clicks": 292,
         "ctr": 6.21,
         "performance_label": "NOT_APPLICABLE"
@@ -46577,16 +46577,16 @@
       },
       {
         "text": "SWEAT440 Reston is Coming Soon. Try Us Free for 7 Days.",
-        "impressions": 3625,
-        "clicks": 207,
-        "ctr": 5.71,
+        "impressions": 3630,
+        "clicks": 208,
+        "ctr": 5.73,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Park Slope today.",
-        "impressions": 2762,
-        "clicks": 116,
-        "ctr": 4.2,
+        "impressions": 2764,
+        "clicks": 117,
+        "ctr": 4.23,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46612,16 +46612,16 @@
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Wall Township today",
-        "impressions": 2383,
+        "impressions": 2385,
         "clicks": 136,
-        "ctr": 5.71,
+        "ctr": 5.7,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Boca Raton today.",
-        "impressions": 2287,
+        "impressions": 2294,
         "clicks": 128,
-        "ctr": 5.6,
+        "ctr": 5.58,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46633,30 +46633,30 @@
       },
       {
         "text": "SWEAT440 Herriman is Coming Soon. Try Us Free for 7 Days.",
-        "impressions": 2218,
+        "impressions": 2219,
         "clicks": 157,
         "ctr": 7.08,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Lock in your Founder's Rate at $129/Month. Join now before presale ends.",
-        "impressions": 2209,
+        "impressions": 2210,
         "clicks": 187,
-        "ctr": 8.47,
+        "ctr": 8.46,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "SWEAT440 North Miami is Coming Soon. Try Us Free for 7 Days.",
-        "impressions": 2083,
+        "impressions": 2085,
         "clicks": 134,
         "ctr": 6.43,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "Limited-time discounted memberships available for those who sign up early.",
-        "impressions": 1991,
-        "clicks": 69,
-        "ctr": 3.47,
+        "impressions": 2003,
+        "clicks": 70,
+        "ctr": 3.49,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46675,14 +46675,14 @@
       },
       {
         "text": "SWEAT440 Dallas Uptown is Coming Soon. Try Us Free for 7 Days.",
-        "impressions": 1810,
+        "impressions": 1811,
         "clicks": 105,
         "ctr": 5.8,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Miami Lakes today.",
-        "impressions": 1598,
+        "impressions": 1599,
         "clicks": 110,
         "ctr": 6.88,
         "performance_label": "NOT_APPLICABLE"
@@ -46703,9 +46703,9 @@
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Toms River today.",
-        "impressions": 1484,
+        "impressions": 1487,
         "clicks": 74,
-        "ctr": 4.99,
+        "ctr": 4.98,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46738,16 +46738,16 @@
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 NoDa today.",
-        "impressions": 1386,
+        "impressions": 1387,
         "clicks": 70,
         "ctr": 5.05,
         "performance_label": "NOT_APPLICABLE"
       },
       {
         "text": "4 stations, 40 minutes, real results. Book your free class at SWEAT440 Coral Gables today.",
-        "impressions": 1382,
+        "impressions": 1383,
         "clicks": 66,
-        "ctr": 4.78,
+        "ctr": 4.77,
         "performance_label": "NOT_APPLICABLE"
       },
       {
@@ -46759,7 +46759,7 @@
       },
       {
         "text": "4 stations, 40 minutes real results Book your free class at SWEAT440 Deerfield Beach today",
-        "impressions": 1278,
+        "impressions": 1280,
         "clicks": 55,
         "ctr": 4.3,
         "performance_label": "NOT_APPLICABLE"
