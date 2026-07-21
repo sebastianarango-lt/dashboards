@@ -189,9 +189,9 @@ async function loadStudiosRegistry(basePath = '') {
   CLOSED_STUDIOS.length = 0;
   for (const key of Object.keys(META_CODE_TO_STUDIO)) delete META_CODE_TO_STUDIO[key];
   for (const s of (registry.studios || [])) {
-    if (s.excluded_default) DEFAULT_EXCL_STUDIOS.push(s.name);
-    if (s.status === 'nso') NSO_STUDIOS.push(s.name);
-    if (s.status === 'closed') CLOSED_STUDIOS.push(s.name);
+    if (s.excluded_default) { DEFAULT_EXCL_STUDIOS.push(s.name); DEFAULT_EXCL_STUDIOS.push('- ' + s.name); }
+    if (s.status === 'nso')    { NSO_STUDIOS.push(s.name);     NSO_STUDIOS.push('- ' + s.name); }
+    if (s.status === 'closed') { CLOSED_STUDIOS.push(s.name);  CLOSED_STUDIOS.push('- ' + s.name); }
     if (s.code) META_CODE_TO_STUDIO[s.code] = s.name;
   }
   return registry;
@@ -296,7 +296,8 @@ function buildMultiSelect(menuId, labelId, items, defaultExcluded) {
       const div = document.createElement('div'); div.className = 'ms-item';
       const checked = !defaultExcluded.includes(item);
       const safeId = itemSafeId(item);
-      div.innerHTML = `<input type="checkbox" id="${safeId}" value="${item}" ${checked?'checked':''}> <label for="${safeId}" style="cursor:pointer">${item}</label>`;
+      const displayName = item.replace(/^-\s+/, '');
+      div.innerHTML = `<input type="checkbox" id="${safeId}" value="${item}" ${checked?'checked':''}> <label for="${safeId}" style="cursor:pointer">${displayName}</label>`;
       div.querySelector('input').addEventListener('change', () => {
         syncCategory(cat); syncSelectAll(menuId); updateLabel(menuId, labelId, items); _applyFilters();
       });
