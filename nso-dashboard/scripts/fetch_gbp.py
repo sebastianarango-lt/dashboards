@@ -65,6 +65,8 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 PERFORMANCE_API = "https://businessprofileperformance.googleapis.com/v1"
+MYBUSINESS_API  = "https://mybusiness.googleapis.com/v4"
+ACCT_MGMT_API   = "https://mybusinessaccountmanagement.googleapis.com/v1"
 
 METRICS = [
     "BUSINESS_IMPRESSIONS_DESKTOP_MAPS",
@@ -99,6 +101,22 @@ def _get_access_token() -> str:
 
 def _headers(token: str) -> dict:
     return {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+
+
+def _get_gbp_account_name(token: str) -> str:
+    """Discover the GBP account resource name via Account Management API."""
+    try:
+        resp = requests.get(
+            f"{ACCT_MGMT_API}/accounts",
+            headers=_headers(token),
+            timeout=30,
+        )
+        resp.raise_for_status()
+        accounts = resp.json().get("accounts", [])
+        return accounts[0]["name"] if accounts else ""
+    except Exception as exc:
+        print(f"  Warning: could not discover GBP account: {exc}")
+        return ""
 
 
 # ---------------------------------------------------------------------------
@@ -320,24 +338,75 @@ def fetch_performance_metrics(
 # ---------------------------------------------------------------------------
 
 
-def fetch_reviews(location_id: str, token: str) -> None:
+def fetch_reviews(location_id: str, token: str, account_name: str = "") -> dict | None:
     """
-    Stub: returns None.
+    Fetch review summary for a GBP location.
 
-    The reviews endpoint requires an account ID:
-        GET https://mybusiness.googleapis.com/v4/accounts/{account}/locations/{id}/reviews
-    Account IDs are not yet available for all NSO studios. Once they are,
-    implement this to return:
+    Paginates through all reviews to compute the 5-star count (the API only
+    returns averageRating and totalReviewCount in the list response, not a
+    breakdown by star rating).
+
+    Returns:
         {
             "average_rating": 4.8,
-            "total_count": 120,
-            "recent": [
-                {"rating": 5, "comment": "...", "date": "2026-01-01"},
-                ...
-            ]
+            "total_count": 454,
+            "five_star_count": 320
         }
+    or None if account_name is empty or the request fails.
     """
-    return None
+    if not account_name:
+        return None
+
+    loc_id = location_id.removeprefix("locations/")
+    url = f"{MYBUSINESS_API}/{account_name}/locations/{loc_id}/reviews"
+    hdrs = _headers(token)
+
+    total_count = 0
+    avg_rating = None
+    five_star_count = 0
+    page_token = None
+
+    print(f"  Fetching reviews for locations/{loc_id}...")
+
+    while True:
+        params = {"pageSize": 50}
+        if page_token:
+            params["pageToken"] = page_token
+
+        try:
+            resp = requests.get(url, headers=hdrs, params=params, timeout=30)
+            if resp.status_code == 429:
+                print("    Rate limited on reviews, waiting 5 s...")
+                time.sleep(5)
+                resp = requests.get(url, headers=hdrs, params=params, timeout=30)
+            resp.raise_for_status()
+        except Exception as exc:
+            print(f"    Warning: reviews error: {exc}")
+            return None
+
+        data = resp.json()
+
+        if avg_rating is None:
+            avg_rating = data.get("averageRating")
+            total_count = data.get("totalReviewCount", 0)
+
+        for rv in data.get("reviews", []):
+            if rv.get("starRating") == "FIVE":
+                five_star_count += 1
+
+        page_token = data.get("nextPageToken")
+        if not page_token:
+            break
+
+        time.sleep(0.5)
+
+    result = {
+        "average_rating": round(float(avg_rating), 2) if avg_rating is not None else None,
+        "total_count": total_count,
+        "five_star_count": five_star_count,
+    }
+    print(f"  -> reviews: avg={result['average_rating']}, total={total_count}, 5-star={five_star_count}")
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -368,6 +437,12 @@ def fetch_all_studios(
         Output dict ready to be serialised to JSON.
     """
     token = _get_access_token()
+
+    gbp_account_name = _get_gbp_account_name(token)
+    if gbp_account_name:
+        print(f"  GBP account: {gbp_account_name}")
+    else:
+        print("  Warning: could not discover GBP account — reviews will be skipped")
 
     if studios is None:
         studios = [dict(s) for s in ALL_STUDIOS]  # copy so we can mutate
@@ -405,7 +480,8 @@ def fetch_all_studios(
             daily_rows = fetch_performance_metrics(
                 location_id, start_date, end_date, token
             )
-            reviews = fetch_reviews(location_id, token)
+            is_nso = studio.get("status") == "nso"
+            reviews = fetch_reviews(location_id, token, gbp_account_name) if not is_nso else None
         except Exception as exc:
             msg = f"{studio['name']}: {exc}"
             print(f"  Error fetching {studio['name']}: {exc}")
