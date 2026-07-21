@@ -111,8 +111,9 @@ body{font-family:'Open Sans',sans-serif;background:#0084B5;min-height:100vh;disp
 </div>
 
 <div id="adminActions" class="admin-actions" style="display:none">
-  <button id="refreshAllBtn" class="refresh-all-btn" onclick="triggerWorkflows('all', 'refreshAllBtn', 'Refresh all data (30 min)')">Refresh all data (30 min)</button>
-  <button id="refreshSfBtn"  class="refresh-sf-btn"  onclick="triggerWorkflows('snowflake', 'refreshSfBtn', 'Refresh Snowflake (~5 min)')">Refresh Snowflake (~5 min)</button>
+  <button id="refreshAllBtn"   class="refresh-all-btn" onclick="triggerWorkflows('all',       'refreshAllBtn',   'Refresh all data (30 min)')">Refresh all data (30 min)</button>
+  <button id="refreshNoAdsBtn" class="refresh-sf-btn"  onclick="triggerWorkflows('no-ads',    'refreshNoAdsBtn', 'Refresh no ads (~15 min)')">Refresh no ads (~15 min)</button>
+  <button id="refreshSfBtn"    class="refresh-sf-btn"  onclick="triggerWorkflows('snowflake', 'refreshSfBtn',    'Refresh Snowflake (~5 min)')">Refresh Snowflake (~5 min)</button>
 </div>
 
 <button class="signout" onclick="logout()">Sign out</button>
