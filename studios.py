@@ -82,6 +82,7 @@ def gbp_studio_rows() -> list[dict]:
             "name": f"SWEAT440 {s['name']}",
             "code": gbp.get("code") or s.get("code") or "",
             "location_id": gbp.get("location_id") or "",
+            "status": s.get("status", "open"),
         })
     return rows
 
