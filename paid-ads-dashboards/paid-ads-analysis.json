@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T12:49:31.596050+00:00",
+  "generated_at": "2026-07-21T18:11:09.586467+00:00",
   "window_start": "2026-07-14",
   "window_end": "2026-07-20",
   "window_label": "Jul 14 – Jul 20, 2026",
@@ -1176,16 +1176,16 @@
       "display_name": "Free Class - Open Studios",
       "period_label": "Apr 15, 2026 onwards",
       "totals": {
-        "impressions": 2335943,
-        "clicks": 27992,
-        "reach": 947337,
-        "leads": 856,
+        "impressions": 2340484,
+        "clicks": 28045,
+        "reach": 948351,
+        "leads": 859,
         "purchases": 74,
         "trials": 339,
-        "spend": 72491.7,
+        "spend": 72640.65,
         "ctr": 1.2,
-        "cpm": 31.03,
-        "cpl": 84.69
+        "cpm": 31.04,
+        "cpl": 84.56
       },
       "most_recent_date": "2026-07-20",
       "high_count": 8,
@@ -1200,11 +1200,11 @@
           "ad_id": "120250407272620249",
           "ad_name": "26-NY-003-02 - PS - SI - ShowUpV3",
           "studio_code": "NY-003",
-          "spend": 197.39,
+          "spend": 197.43,
           "leads": 2,
-          "cpl": 98.69,
+          "cpl": 98.72,
           "headline": "Bad CPL — $99 (limit is $80)",
-          "detail": "CPL of $98.69 exceeds the $80 limit. Target: below $50.",
+          "detail": "CPL of $98.72 exceeds the $80 limit. Target: below $50.",
           "recommendation": "Pause or significantly reduce budget — cost per lead is unsustainable."
         },
         {
@@ -1213,11 +1213,11 @@
           "ad_id": "120250407271950249",
           "ad_name": "26-NY-004-02 - PS - SI - ShowUpV3",
           "studio_code": "NY-004",
-          "spend": 178.62,
+          "spend": 178.67,
           "leads": 0,
-          "impressions": 6799,
+          "impressions": 6800,
           "headline": "$179 spent — zero leads",
-          "detail": "This ad spent $178.62 in the last 7 days without generating a single lead.",
+          "detail": "This ad spent $178.67 in the last 7 days without generating a single lead.",
           "recommendation": "Pause immediately and audit the landing page or creative."
         },
         {
@@ -1226,7 +1226,7 @@
           "ad_id": "120250407272150249",
           "ad_name": "26-FL-015-02 - PS - SI - ShowUpV3",
           "studio_code": "FL-015",
-          "spend": 176.58,
+          "spend": 176.59,
           "leads": 2,
           "cpl": 88.29,
           "headline": "Bad CPL — $88 (limit is $80)",
@@ -1241,7 +1241,7 @@
           "studio_code": "FL-009",
           "spend": 139.26,
           "leads": 0,
-          "impressions": 3900,
+          "impressions": 3901,
           "headline": "$139 spent — zero leads",
           "detail": "This ad spent $139.26 in the last 7 days without generating a single lead.",
           "recommendation": "Pause immediately and audit the landing page or creative."
@@ -1304,11 +1304,11 @@
           "ad_id": "120250407272570249",
           "ad_name": "26-NJ-002-02 - PS - SI - ShowUpV3",
           "studio_code": "NJ-002",
-          "spend": 206.92,
+          "spend": 207.08,
           "leads": 3,
-          "cpl": 68.97,
+          "cpl": 69.03,
           "headline": "Regular CPL — $69 (target: below $50)",
-          "detail": "CPL of $68.97 is in the acceptable-but-improvable range ($50–$80).",
+          "detail": "CPL of $69.03 is in the acceptable-but-improvable range ($50–$80).",
           "recommendation": "Monitor and test creative variations to bring CPL below $50."
         },
         {
@@ -1412,7 +1412,7 @@
           "impressions": 178,
           "leads": 0,
           "headline": "Only 178 impressions in the last 7 days",
-          "detail": "Ad has $67 in historical spend but barely showed this week (178 impressions).",
+          "detail": "Ad has $68 in historical spend but barely showed this week (178 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -5687,11 +5687,11 @@
           "ad_id": "120250407271580249",
           "ad_name": "26-NY-002-02 - PS - SI - ShowUpV3",
           "studio_code": "NY-002",
-          "spend": 1389.4299999999998,
+          "spend": 1389.4599999999998,
           "leads": 13,
           "cpl": 106.88,
           "headline": "Paused — $1,389 historical spend",
-          "detail": "Ad is currently paused with $1,389.43 in total historical spend (13 leads, CPL $106.88).",
+          "detail": "Ad is currently paused with $1,389.46 in total historical spend (13 leads, CPL $106.88).",
           "recommendation": "Review performance before reactivating — know why it was paused."
         },
         {
