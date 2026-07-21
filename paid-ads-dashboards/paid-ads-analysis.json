@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T18:43:49.700664+00:00",
+  "generated_at": "2026-07-21T20:23:31.139497+00:00",
   "window_start": "2026-07-14",
   "window_end": "2026-07-20",
   "window_label": "Jul 14 – Jul 20, 2026",
@@ -1176,24 +1176,37 @@
       "display_name": "Free Class - Open Studios",
       "period_label": "Apr 15, 2026 onwards",
       "totals": {
-        "impressions": 2340530,
-        "clicks": 28046,
-        "reach": 948366,
-        "leads": 860,
-        "purchases": 74,
-        "trials": 339,
-        "spend": 72641.61,
-        "ctr": 1.2,
-        "cpm": 31.04,
-        "cpl": 84.47
+        "impressions": 2540550,
+        "clicks": 31124,
+        "reach": 1016554,
+        "leads": 905,
+        "purchases": 83,
+        "trials": 358,
+        "spend": 78914.59,
+        "ctr": 1.23,
+        "cpm": 31.06,
+        "cpl": 87.2
       },
       "most_recent_date": "2026-07-20",
-      "high_count": 8,
-      "medium_count": 335,
-      "alerts_count": 343,
+      "high_count": 11,
+      "medium_count": 344,
+      "alerts_count": 355,
       "opportunities_count": 2,
-      "findings_count": 442,
+      "findings_count": 461,
       "findings": [
+        {
+          "type": "wasted_spend",
+          "severity": "high",
+          "ad_id": "120250407271550249",
+          "ad_name": "26-FL-017-02  - Is Now Open",
+          "studio_code": "FL-017",
+          "spend": 207.79,
+          "leads": 0,
+          "impressions": 7250,
+          "headline": "$208 spent — zero leads",
+          "detail": "This ad spent $207.79 in the last 7 days without generating a single lead.",
+          "recommendation": "Pause immediately and audit the landing page or creative."
+        },
         {
           "type": "cpl_bad",
           "severity": "high",
@@ -1226,11 +1239,11 @@
           "ad_id": "120250407272150249",
           "ad_name": "26-FL-015-02 - PS - SI - ShowUpV3",
           "studio_code": "FL-015",
-          "spend": 176.59,
+          "spend": 176.61,
           "leads": 2,
-          "cpl": 88.29,
+          "cpl": 88.3,
           "headline": "Bad CPL — $88 (limit is $80)",
-          "detail": "CPL of $88.29 exceeds the $80 limit. Target: below $50.",
+          "detail": "CPL of $88.30 exceeds the $80 limit. Target: below $50.",
           "recommendation": "Pause or significantly reduce budget — cost per lead is unsustainable."
         },
         {
@@ -1288,6 +1301,19 @@
         {
           "type": "wasted_spend",
           "severity": "high",
+          "ad_id": "120252396547600249",
+          "ad_name": "26-FL-017-02- VC - PYC - Video - No Plan Needed",
+          "studio_code": "FL-017",
+          "spend": 95.85,
+          "leads": 0,
+          "impressions": 2751,
+          "headline": "$96 spent — zero leads",
+          "detail": "This ad spent $95.85 in the last 7 days without generating a single lead.",
+          "recommendation": "Pause immediately and audit the landing page or creative."
+        },
+        {
+          "type": "wasted_spend",
+          "severity": "high",
           "ad_id": "120250407271710249",
           "ad_name": "26-FL-008-02 - PS - SI - ShowUpV3",
           "studio_code": "FL-008",
@@ -1296,6 +1322,19 @@
           "impressions": 3073,
           "headline": "$92 spent — zero leads",
           "detail": "This ad spent $91.63 in the last 7 days without generating a single lead.",
+          "recommendation": "Pause immediately and audit the landing page or creative."
+        },
+        {
+          "type": "wasted_spend",
+          "severity": "high",
+          "ad_id": "120252412225760249",
+          "ad_name": "26-FL-017-02 - VC - PYC - Still Paying",
+          "studio_code": "FL-017",
+          "spend": 80.06,
+          "leads": 0,
+          "impressions": 2116,
+          "headline": "$80 spent — zero leads",
+          "detail": "This ad spent $80.06 in the last 7 days without generating a single lead.",
           "recommendation": "Pause immediately and audit the landing page or creative."
         },
         {
@@ -5058,6 +5097,71 @@
         {
           "type": "low_impressions",
           "severity": "medium",
+          "ad_id": "120249818703210249",
+          "ad_name": "26-FL-017-02 - SI - Video - WorstDay",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $41 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120249818863240249",
+          "ad_name": "26-FL-017-02 - PS - SI - ShowUpV3",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $30 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120249820597770249",
+          "ad_name": "26-FL-017-02  - Is Now Open",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $134 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120250051655740249",
+          "ad_name": "26-FL-017-02  - Is Now Open",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $273 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120250055822280249",
+          "ad_name": "26-FL-017-02 - PS - SI - ShowUpV3",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $84 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
           "ad_id": "120249688013160249",
           "ad_name": "26-FL-010-02 - PS - SI - ShowUpV2",
           "studio_code": "FL-010",
@@ -5565,6 +5669,45 @@
         {
           "type": "low_impressions",
           "severity": "medium",
+          "ad_id": "120251562036580249",
+          "ad_name": "26-TX-003-02  - DR - PYC - Video - Coach",
+          "studio_code": "TX-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $164 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120250407271500249",
+          "ad_name": "26-FL-017-02 - DF - PYC - RealResults",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $37 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120250407271530249",
+          "ad_name": "26-FL-017-02 - PS - SI - ShowUpV3",
+          "studio_code": "FL-017",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $314 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
           "ad_id": "120251552754960249",
           "ad_name": "26-FL-001-02 - DR - PYC - Video - Coach",
           "studio_code": "FL-001",
@@ -5586,6 +5729,19 @@
           "leads": 0,
           "headline": "Only 0 impressions in the last 7 days",
           "detail": "Ad has $146 in historical spend but barely showed this week (0 impressions).",
+          "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
+        },
+        {
+          "type": "low_impressions",
+          "severity": "medium",
+          "ad_id": "120251855121540249",
+          "ad_name": "26-TX-003-02 - DR - DINKS - Coach Hot Takes",
+          "studio_code": "TX-003",
+          "spend": 0,
+          "impressions": 0,
+          "leads": 0,
+          "headline": "Only 0 impressions in the last 7 days",
+          "detail": "Ad has $247 in historical spend but barely showed this week (0 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -5918,6 +6074,19 @@
         {
           "type": "paused_high_spend",
           "severity": "info",
+          "ad_id": "120251853636990249",
+          "ad_name": "26-FL-017-02 - DR - POC - Coach Sun Glasses",
+          "studio_code": "FL-017",
+          "spend": 331.3999999999999,
+          "leads": 2,
+          "cpl": 165.7,
+          "headline": "Paused — $331 historical spend",
+          "detail": "Ad is currently paused with $331.40 in total historical spend (2 leads, CPL $165.70).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
           "ad_id": "120246855804820249",
           "ad_name": "26-FL-008-02 - PS - SI - ShowUpV3",
           "studio_code": "FL-008",
@@ -5939,6 +6108,19 @@
           "cpl": 162.93,
           "headline": "Paused — $326 historical spend",
           "detail": "Ad is currently paused with $325.86 in total historical spend (2 leads, CPL $162.93).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
+          "ad_id": "120250407271530249",
+          "ad_name": "26-FL-017-02 - PS - SI - ShowUpV3",
+          "studio_code": "FL-017",
+          "spend": 314.38,
+          "leads": 3,
+          "cpl": 104.79,
+          "headline": "Paused — $314 historical spend",
+          "detail": "Ad is currently paused with $314.38 in total historical spend (3 leads, CPL $104.79).",
           "recommendation": "Review performance before reactivating — know why it was paused."
         },
         {
@@ -6056,6 +6238,19 @@
           "cpl": 125.53,
           "headline": "Paused — $251 historical spend",
           "detail": "Ad is currently paused with $251.07 in total historical spend (2 leads, CPL $125.53).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
+          "ad_id": "120251855121540249",
+          "ad_name": "26-TX-003-02 - DR - DINKS - Coach Hot Takes",
+          "studio_code": "TX-003",
+          "spend": 247.32,
+          "leads": 0,
+          "cpl": 0.0,
+          "headline": "Paused — $247 historical spend",
+          "detail": "Ad is currently paused with $247.32 in total historical spend (0 leads, CPL $0.00).",
           "recommendation": "Review performance before reactivating — know why it was paused."
         },
         {
@@ -6438,6 +6633,19 @@
         {
           "type": "paused_high_spend",
           "severity": "info",
+          "ad_id": "120251562036580249",
+          "ad_name": "26-TX-003-02  - DR - PYC - Video - Coach",
+          "studio_code": "TX-003",
+          "spend": 163.63000000000002,
+          "leads": 0,
+          "cpl": 0.0,
+          "headline": "Paused — $164 historical spend",
+          "detail": "Ad is currently paused with $163.63 in total historical spend (0 leads, CPL $0.00).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
           "ad_id": "120246855804990249",
           "ad_name": "26-FL-009-02 - PS - SI - ShowUpV3",
           "studio_code": "FL-009",
@@ -6446,6 +6654,19 @@
           "cpl": 79.89,
           "headline": "Paused — $160 historical spend",
           "detail": "Ad is currently paused with $159.79 in total historical spend (2 leads, CPL $79.89).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
+          "ad_id": "120251855121870249",
+          "ad_name": "26-FL-017-02 - DR - DINKS - Coach Hot Takes",
+          "studio_code": "FL-017",
+          "spend": 157.10000000000002,
+          "leads": 1,
+          "cpl": 157.1,
+          "headline": "Paused — $157 historical spend",
+          "detail": "Ad is currently paused with $157.10 in total historical spend (1 leads, CPL $157.10).",
           "recommendation": "Review performance before reactivating — know why it was paused."
         },
         {
@@ -6511,6 +6732,19 @@
           "cpl": 0.0,
           "headline": "Paused — $151 historical spend",
           "detail": "Ad is currently paused with $150.76 in total historical spend (0 leads, CPL $0.00).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
+          "ad_id": "120251853637040249",
+          "ad_name": "26-TX-003-02 - DR - POC - Coach Sun Glasses",
+          "studio_code": "TX-003",
+          "spend": 149.16,
+          "leads": 0,
+          "cpl": 0.0,
+          "headline": "Paused — $149 historical spend",
+          "detail": "Ad is currently paused with $149.16 in total historical spend (0 leads, CPL $0.00).",
           "recommendation": "Review performance before reactivating — know why it was paused."
         },
         {
@@ -6667,6 +6901,19 @@
           "cpl": 0.0,
           "headline": "Paused — $128 historical spend",
           "detail": "Ad is currently paused with $128.02 in total historical spend (0 leads, CPL $0.00).",
+          "recommendation": "Review performance before reactivating — know why it was paused."
+        },
+        {
+          "type": "paused_high_spend",
+          "severity": "info",
+          "ad_id": "120251478525380249",
+          "ad_name": "26-TX-003-02 - PS - SI - ShowUp",
+          "studio_code": "TX-003",
+          "spend": 126.01999999999998,
+          "leads": 0,
+          "cpl": 0.0,
+          "headline": "Paused — $126 historical spend",
+          "detail": "Ad is currently paused with $126.02 in total historical spend (0 leads, CPL $0.00).",
           "recommendation": "Review performance before reactivating — know why it was paused."
         },
         {
