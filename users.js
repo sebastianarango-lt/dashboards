@@ -210,6 +210,15 @@ const USERS = {
     role: 'franchisee'
   },
 
+  'julianviejillo@hotmail.com': {
+    passwordHash: '2f111735ba6e3c59137e7c9042336024af9e9340cc11c80b10f06e59d4b6db7b',
+    name: 'Julian Viejillo',
+    studios: [
+      'Orlando - Dr Phillips',
+    ],
+    role: 'franchisee'
+  },
+
   'kenfrei212@gmail.com': {
     passwordHash: '03bdbfac6f27623041bf2613259bb4807c623abf0580d266721f74f6deaf8881',
     name: 'Ken Frei',
