@@ -428,7 +428,7 @@ function toggleDs(btn,i){if(!trendChart)return;const ds=trendChart.data.datasets
 function switchSumStudio(code){
   const sc=SC&&SC.studios&&SC.studios.find(s=>s.code===code);
   if(!sc)return;
-  if(_allowedStudios&&!_allowedStudios.includes((sc.full_name||sc.name||'').replace(/^SWEAT440\s+/,'')))return;
+  if(_allowedStudios&&!_allowedStudios.includes((sc.data_name||sc.full_name||sc.name||'').replace(/^SWEAT440\s+/,'')))return;
   _sumStudio=sc;
   renderSummary();
   if(document.getElementById('tab-funnel').classList.contains('active'))renderFunnel();
@@ -439,7 +439,7 @@ function renderSummary(){
 
   // Restrict visible studios to franchisee's allowed list (null = admin, sees all)
   const _scVis=(_allowedStudios
-    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
+    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.data_name||s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
     :(SC.studios||[])).sort((a,b)=>(a.name||'').localeCompare(b.name||''));
   // If current _sumStudio is outside the allowed list, reset it
   if(_sumStudio&&_allowedStudios&&!_scVis.find(s=>s.code===_sumStudio.code))_sumStudio=null;
@@ -879,7 +879,7 @@ function renderFunnel(){
 
   // Show only the selected studio (same as Summary tab)
   const _scVisFunnel=_allowedStudios
-    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
+    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.data_name||s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
     :(SC.studios||[]);
   if(!_sumStudio||(_allowedStudios&&!_scVisFunnel.find(s=>s.code===_sumStudio.code)))_sumStudio=_scVisFunnel[0]||SC.studios[0];
   const activeCode=_sumStudio?_sumStudio.code:null;
@@ -1063,7 +1063,7 @@ function scKpi(label,val,target,fmt,targetLabel,auto){
 function switchScStudio(code){
   const sc=SC.studios&&SC.studios.find(s=>s.code===code);
   if(!sc)return;
-  if(_allowedStudios&&!_allowedStudios.includes((sc.full_name||sc.name||'').replace(/^SWEAT440\s+/,'')))return;
+  if(_allowedStudios&&!_allowedStudios.includes((sc.data_name||sc.full_name||sc.name||'').replace(/^SWEAT440\s+/,'')))return;
   _scStudio=sc;
   renderScorecard();
 }
@@ -1115,7 +1115,7 @@ function renderScorecard(){
     return;
   }
   const _scVisCard=(_allowedStudios
-    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
+    ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.data_name||s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
     :(SC.studios||[])).sort((a,b)=>(a.name||'').localeCompare(b.name||''));
   if(!_scStudio||(_allowedStudios&&!_scVisCard.find(s=>s.code===_scStudio.code))){
     const selStudios=_getSel('studioMenu');
