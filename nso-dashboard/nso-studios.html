@@ -247,7 +247,7 @@
 /* ══════════════════════════════════════════════════════════════════════════
    NSO STUDIOS DASHBOARD — Self-contained
    ══════════════════════════════════════════════════════════════════════════ */
-const NSO=['SWEAT440 Herriman','SWEAT440 Naples - Mercato','SWEAT440 Reston','SWEAT440 Orlando - Dr Phillips','SWEAT440 Aventura','SWEAT440 North Miami','SWEAT440 Dallas - Uptown','SWEAT440 Old Bridge','SWEAT440 Dunwoody','SWEAT440 Middletown','SWEAT440 Fort Myers','SWEAT440 Burlington'];
+const NSO=['SWEAT440 Aventura','SWEAT440 Burlington','SWEAT440 Dallas - Uptown','SWEAT440 Dunwoody','SWEAT440 Fort Myers','SWEAT440 Herriman','SWEAT440 Middletown','SWEAT440 Naples - Mercato','SWEAT440 North Miami','SWEAT440 Old Bridge','SWEAT440 Orlando - Dr Phillips','SWEAT440 Reston'];
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
@@ -431,9 +431,9 @@ function renderSummary(){
   if(!SC||!SC.studios||!SC.studios.length)return;
 
   // Restrict visible studios to franchisee's allowed list (null = admin, sees all)
-  const _scVis=_allowedStudios
+  const _scVis=(_allowedStudios
     ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
-    :(SC.studios||[]);
+    :(SC.studios||[])).sort((a,b)=>(a.name||'').localeCompare(b.name||''));
   // If current _sumStudio is outside the allowed list, reset it
   if(_sumStudio&&_allowedStudios&&!_scVis.find(s=>s.code===_sumStudio.code))_sumStudio=null;
   const studio=_sumStudio||_scVis[0];
@@ -1106,9 +1106,9 @@ function renderScorecard(){
     el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">Scorecard data not available.</div>';
     return;
   }
-  const _scVisCard=_allowedStudios
+  const _scVisCard=(_allowedStudios
     ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
-    :(SC.studios||[]);
+    :(SC.studios||[])).sort((a,b)=>(a.name||'').localeCompare(b.name||''));
   if(!_scStudio||(_allowedStudios&&!_scVisCard.find(s=>s.code===_scStudio.code))){
     const selStudios=_getSel('studioMenu');
     _scStudio=(selStudios.length?_scVisCard.find(s=>selStudios.includes(s.full_name)):null)||_scVisCard[0];
