@@ -283,6 +283,19 @@ def main():
                             "ig_id": studio["ig_id"],
                             "current_followers": None, "daily": [], "posts": [], "error": str(e)}
 
+    # ── Load existing data for append-only merge ──────────────────────────
+    out_path = Path(args.output)
+    existing_studios = {}
+    if out_path.exists():
+        try:
+            with open(out_path, encoding="utf-8") as f:
+                existing = json.load(f)
+            for s in existing.get("instagram", []):
+                existing_studios[s["studio"]] = s
+            print(f"\nLoaded existing data: {len(existing_studios)} studios")
+        except Exception as e:
+            print(f"\nWARNING: could not load existing {out_path}: {e}")
+
     # Fetch all studios in parallel — 5 workers balances speed vs Meta rate limits.
     ig_map = {}
     print(f"\nFetching {len(STUDIOS)} studios with 5 parallel workers...")
@@ -293,19 +306,45 @@ def main():
             if ig_result:
                 ig_map[studio["name"]] = ig_result
 
-    # Re-order results to match STUDIOS list order
-    output["instagram"] = [ig_map[s["name"]] for s in STUDIOS if s["name"] in ig_map]
+    # ── Merge new fetch with existing historical data ──────────────────────
+    for studio_name, new_data in ig_map.items():
+        old = existing_studios.get(studio_name, {})
+
+        # Daily rows: new data wins for overlapping dates; old data preserved for the rest
+        old_daily = {r["date"]: r for r in old.get("daily", [])}
+        new_daily = {r["date"]: r for r in new_data.get("daily", [])}
+        old_daily.update(new_daily)
+        new_data["daily"] = sorted(old_daily.values(), key=lambda x: x["date"])
+
+        # Posts: dedup by permalink, new API data wins for engagement counts
+        old_posts = {p["permalink"]: p for p in old.get("posts", []) if p.get("permalink")}
+        new_posts = {p["permalink"]: p for p in new_data.get("posts", []) if p.get("permalink")}
+        old_posts.update(new_posts)
+        new_data["posts"] = sorted(old_posts.values(), key=lambda x: x.get("date", ""), reverse=True)
+
+        ig_map[studio_name] = new_data
+
+    # Build final list: STUDIOS order first, then any studios in existing file not in STUDIOS
+    seen = set()
+    final_ig = []
+    for s in STUDIOS:
+        if s["name"] in ig_map:
+            final_ig.append(ig_map[s["name"]])
+            seen.add(s["name"])
+    for studio_name, data in existing_studios.items():
+        if studio_name not in seen and studio_name not in ig_map:
+            final_ig.append(data)
+    output["instagram"] = final_ig
 
     # ── Download thumbnails and replace image_url with local paths ────────
     # Instagram/Facebook CDN URLs expire in ~24h. We download each post's
     # thumbnail as a static file so GitHub Pages serves them with no expiry.
     # Saved to: nso-dashboard/thumbnails/{code}/{post_slug}.jpg
     # JSON stores the repo-relative path so the dashboard can load them directly.
-    out_path = Path(args.output)
     thumbs_root = out_path.parent / "thumbnails"
     print(f"\n{'=' * 60}")
     print("Downloading thumbnails...")
-    total_ok = total_fail = 0
+    total_ok = total_fail = total_skip = 0
 
     for studio in output["instagram"]:
         code = studio.get("code", "unknown")
@@ -314,6 +353,10 @@ def main():
         for post in studio.get("posts", []):
             url = post.get("image_url", "")
             if not url:
+                continue
+            # Already saved from a previous run — skip re-download
+            if url.startswith("nso-dashboard/thumbnails/"):
+                total_skip += 1
                 continue
             slug = ""
             permalink = post.get("permalink", "")
@@ -334,7 +377,7 @@ def main():
                 post["image_url"] = ""
                 total_fail += 1
 
-    print(f"  Downloaded: {total_ok}  Failed/cleared: {total_fail}")
+    print(f"  Downloaded: {total_ok}  Failed/cleared: {total_fail}  Skipped (existing): {total_skip}")
 
     # Summary
     print("\n" + "=" * 60)
