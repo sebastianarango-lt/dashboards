@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SWEAT440 — Paid Ads Dashboard</title>
+<title>SWEAT440 — Meta Ads Dashboard - Open Studios</title>
 
 <!-- Brand fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -371,7 +371,7 @@
 <div class="container">
   <header class="topbar">
     <div>
-      <h1>Paid Ads Dashboard</h1>
+      <h1>Meta Ads Dashboard - Open Studios</h1>
       <div class="meta">
         <span id="generatedAt">Loading…</span>
       </div>
@@ -379,7 +379,6 @@
     <div class="campaign-picker">
       <label for="campaignSelect" style="font-weight:600;color:var(--ink-soft);">Campaign:</label>
       <select id="campaignSelect"></select>
-      <span class="period" id="periodLabel"></span>
     </div>
   </header>
 
@@ -1031,9 +1030,6 @@ function render() {
   if (!c) return;
 
   const view = buildView(c);
-
-  document.getElementById("periodLabel").textContent =
-    c.period_label + "  ·  " + view._range.start + " → " + view._range.end;
 
   const ri = document.getElementById("rangeInfo");
   if (ri) {
@@ -1779,6 +1775,13 @@ function renderFindingCard(f) {
   const typeLabel = AI_TYPE_LABELS[f.type] || f.type;
   const recClass  = (f.severity === "opportunity" || f.severity === "info") ? "finding-rec-good" : "finding-rec-alert";
 
+  const creative = conceptCreative(f.ad_name || "");
+  const adNameHtml = creative
+    ? `<a href="${creative.url}" target="_blank" title="Ver creativo en Drive"
+         style="color:inherit;text-decoration:none;">${f.ad_name || ""}
+         <span style="margin-left:4px;font-size:11px;opacity:.7">🔗</span></a>`
+    : (f.ad_name || "");
+
   const meta = [];
   if (f.spend)       meta.push(`Spend: <strong>${fmtMoney(f.spend)}</strong>`);
   if (f.leads != null) meta.push(`Leads: <strong>${f.leads}</strong>`);
@@ -1791,7 +1794,7 @@ function renderFindingCard(f) {
     <div class="finding-header">
       <span class="finding-badge ${sevClass}">${sevLabel}</span>
       <span class="finding-badge fbadge-type">${typeLabel}</span>
-      <span class="finding-headline" style="flex:1;min-width:0;margin-left:4px">${f.ad_name || ""}</span>
+      <span class="finding-headline" style="flex:1;min-width:0;margin-left:4px">${adNameHtml}</span>
       <span class="finding-studio">${aiStudioMap[f.studio_code] || f.studio_code || ""}</span>
     </div>
     <div style="font-weight:600;font-size:13px;margin-bottom:4px">${f.headline || ""}</div>

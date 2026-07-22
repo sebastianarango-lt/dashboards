@@ -8,6 +8,7 @@ const ALLOWED_ORIGIN = 'https://reports.sweat440.com';
 
 const WORKFLOW_SETS = {
   all:       ['nso_daily_refresh.yml', 'refresh.yml', 'refresh-paid-ads.yml'],
+  'no-ads':  ['refresh-no-ads.yml'],
   snowflake: ['refresh-snowflake.yml'],
 };
 
