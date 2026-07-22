@@ -1,0 +1,160 @@
+name: Refresh Data (No Ads)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install snowflake-connector-python requests python-dotenv
+          pip install -r nso-dashboard/requirements.txt
+
+      - name: Set date variables
+        run: |
+          echo "YESTERDAY=$(date -u -d '1 day ago' +%Y-%m-%d)"     >> $GITHUB_ENV
+          echo "TWO_DAYS_AGO=$(date -u -d '2 days ago' +%Y-%m-%d)" >> $GITHUB_ENV
+
+      - name: Write Google service account credentials
+        run: |
+          mkdir -p nso-dashboard/credentials
+          printf '%s' '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > nso-dashboard/credentials/service_account.json
+
+      # ── OPEN STUDIO: Snowflake ────────────────────────────────────────────
+      - name: Refresh Open Studio data (Snowflake → data.json)
+        env:
+          SF_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SF_USER:      ${{ secrets.SF_USER }}
+          SF_TOKEN:     ${{ secrets.SF_TOKEN }}
+          SF_ROLE:      ${{ secrets.SF_ROLE }}
+          SF_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SF_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SF_SCHEMA:    ${{ secrets.SF_SCHEMA }}
+        run: python fetch_data.py
+
+      # ── OPEN STUDIO: Instagram + GBP ──────────────────────────────────────
+      - name: Fetch Instagram insights (all studios)
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_TOKEN }}
+          META_APP_ID:       ${{ secrets.META_APP_ID }}
+          META_APP_SECRET:   ${{ secrets.META_APP_SECRET }}
+        run: |
+          python nso-dashboard/scripts/fetch_social_insights.py \
+            --days 90 \
+            --output nso-dashboard/social_insights.json
+        continue-on-error: true
+
+      - name: Fetch Google Business Profile data (all studios)
+        env:
+          GBP_CLIENT_ID:     ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          python nso-dashboard/scripts/fetch_gbp.py \
+            --start 2025-01-01 \
+            --output nso-dashboard/gbp_data.json \
+            --credentials nso-dashboard/credentials/service_account.json
+        continue-on-error: true
+
+      # ── NSO: Snowflake ─────────────────────────────────────────────────────
+      - name: Refresh NSO Sales (Snowflake → nso_sales_data.json)
+        env:
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
+        run: |
+          python nso-dashboard/scripts/fetch_nso_sales.py \
+            --end $TWO_DAYS_AGO \
+            --output nso-dashboard/nso_sales_data.json
+        continue-on-error: true
+
+      - name: Rebuild Scorecards (Snowflake → nso_scorecard_data.json)
+        env:
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
+        run: python nso-dashboard/scripts/build_all_scorecards.py
+        continue-on-error: true
+
+      - name: Calculate tier RMR (Snowflake → patches scorecard)
+        env:
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
+        run: cd nso-dashboard && python scripts/fetch_tier_rmr.py
+        continue-on-error: true
+
+      # ── NSO: GBP + Social ─────────────────────────────────────────────────
+      - name: Refresh NSO GBP (yesterday + 2 days ago)
+        env:
+          GBP_CLIENT_ID:     ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          python nso-dashboard/scripts/fetch_gbp.py \
+            --start $TWO_DAYS_AGO \
+            --end   $YESTERDAY \
+            --output nso-dashboard/gbp_data_new.json \
+            --credentials nso-dashboard/credentials/service_account.json
+          python nso-dashboard/scripts/merge_gbp.py \
+            --existing nso-dashboard/gbp_data.json \
+            --new      nso-dashboard/gbp_data_new.json
+          rm -f nso-dashboard/gbp_data_new.json
+        continue-on-error: true
+
+      - name: Refresh NSO Social Insights
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_TOKEN }}
+          META_APP_ID:       ${{ secrets.META_APP_ID }}
+          META_APP_SECRET:   ${{ secrets.META_APP_SECRET }}
+        run: |
+          python nso-dashboard/scripts/fetch_social_insights.py \
+            --output nso-dashboard/social_insights.json
+        continue-on-error: true
+
+      # ── NSO: Milestones / config sheet ────────────────────────────────────
+      - name: Patch Reston early weeks from Google Sheet
+        run: cd nso-dashboard && python scripts/patch_reston_early_weeks.py
+        continue-on-error: true
+
+      - name: Apply pricing, milestones, targets and dates from NSO Config sheet
+        run: cd nso-dashboard && python scripts/fetch_sheet_milestones.py
+        continue-on-error: true
+
+      # ── COMMIT ────────────────────────────────────────────────────────────
+      - name: Commit updated data files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git add nso-dashboard/social_insights.json
+          git add nso-dashboard/gbp_data.json
+          git add nso-dashboard/nso_sales_data.json
+          git add nso-dashboard/nso_scorecard_data.json
+          git add nso-dashboard/thumbnails/ 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: refresh data (no ads) $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase origin main
+          git push

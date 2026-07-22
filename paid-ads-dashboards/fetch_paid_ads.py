@@ -236,7 +236,7 @@ def detect_concept(
             continue
         if re.fullmatch(r"[Vv]\d+", w):
             continue
-        if len(w) < 3:
+        if len(w) < 2:
             continue
         words_out.append(w)
 
@@ -254,12 +254,14 @@ def detect_concept(
         primary = words_out[0]
         primary_idx = 0
 
+    # Multi-word concept: include remaining words after primary
+    # e.g. "Coach Sun Glasses", "Coach Hot Takes", "Video - No Plan Needed"
+    tail = words_out[primary_idx + 1:]
+    if not tail:
+        return primary
     if primary.upper() in _GENERIC_PREFIXES:
-        for w in words_out[primary_idx + 1:]:
-            if len(w) >= 3 and w[0].isupper():
-                return f"{primary} - {w}"
-
-    return primary
+        return f"{primary} - {' '.join(tail)}"
+    return " ".join([primary] + tail)
 
 
 def safe_float(x, default=0.0):

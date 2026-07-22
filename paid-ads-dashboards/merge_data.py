@@ -62,6 +62,7 @@ for key in all_keys:
 
 result = {
     **base_data,
+    "generated_at":     new_data.get("generated_at", base_data.get("generated_at")),
     "active_campaign":  active_key,
     "campaigns_index":  campaigns_index,
     "campaigns":        base_camps,
