@@ -157,7 +157,7 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
           AND ITEM_TYPE = 'Pricing Option'
           AND LOWER(PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
           AND (EMAIL_ID IS NULL OR (
-              LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
+              LOWER(TRIM(EMAIL_ID)) NOT LIKE 'test%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
           ))
@@ -216,7 +216,7 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
         WHERE STUDIO_ID IN ({ID_LIST})
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
-          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%test%'
+          AND LOWER(TRIM(EMAIL_ID)) NOT LIKE 'test%'
     )
     SELECT
         t.STUDIO_ID,

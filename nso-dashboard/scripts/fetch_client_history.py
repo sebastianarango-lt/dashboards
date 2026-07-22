@@ -118,7 +118,7 @@ WITH base AS (
       AND s.ITEM_TYPE = 'Pricing Option'
       AND LOWER(s.PRODUCT_DESCRIPTION) LIKE '%pre%sale%'
       AND (s.EMAIL_ID IS NULL OR (
-          LOWER(TRIM(s.EMAIL_ID)) NOT LIKE '%test%'
+          LOWER(TRIM(s.EMAIL_ID)) NOT LIKE 'test%'
       AND LOWER(TRIM(s.EMAIL_ID)) NOT LIKE '%sweat440%'
       AND LOWER(TRIM(s.EMAIL_ID)) NOT LIKE '%leadteam%'
       ))
