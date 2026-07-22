@@ -61,6 +61,19 @@ jobs:
             --output nso-dashboard/nso_sales_data.json
         continue-on-error: true
 
+      - name: Refresh Client History
+        env:
+          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_PASSWORD }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
+        run: |
+          python nso-dashboard/scripts/fetch_client_history.py \
+            --output nso-dashboard/nso_client_history.json
+        continue-on-error: true
+
       # ── META ADS + GA4 + GOOGLE ADS ────────────────────────────────────────
       # Default: 14-day lookback (MARKETING_START) so Meta's retroactive spend
       # adjustments are captured. On manual dispatch, MARKETING_START can be

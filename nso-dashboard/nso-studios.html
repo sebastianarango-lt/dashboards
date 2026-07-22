@@ -83,6 +83,7 @@
   <div class="nav-tabs" id="navTabs">
     <button class="nav-tab active" onclick="switchTab('summary',this)">Summary</button>
     <button class="nav-tab" onclick="switchTab('scorecard',this)">Scorecard</button>
+    <button class="nav-tab" id="navClientHistory" onclick="switchTab('clienthistory',this)" style="display:none">Client History</button>
     <div class="nav-group">
       <button class="nav-tab nav-group-label" onclick="toggleNavGroup('funnel-group',this)">Funnel ▾</button>
       <div class="nav-submenu" id="funnel-group">
@@ -140,6 +141,11 @@
   <!-- SUMMARY TAB -->
   <div class="tab-content active" id="tab-summary">
     <div id="summaryContent"></div>
+  </div>
+
+  <!-- CLIENT HISTORY TAB -->
+  <div class="tab-content" id="tab-clienthistory">
+    <div id="ch-content"></div>
   </div>
 
   <!-- SCORECARD TAB -->
@@ -250,7 +256,7 @@
 const NSO=['SWEAT440 Aventura','SWEAT440 Burlington','SWEAT440 Dallas - Uptown','SWEAT440 Dunwoody','SWEAT440 Fort Myers','SWEAT440 Herriman','SWEAT440 Middletown','SWEAT440 Naples - Mercato','SWEAT440 North Miami','SWEAT440 Old Bridge','SWEAT440 Orlando - Dr Phillips','SWEAT440 Reston'];
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
-let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={};const _ch={};
+let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={},CH_RAW=null;const _ch={};
 let CUR_USER=null,_allowedStudios=null;const isAdminUser=()=>CUR_USER&&CUR_USER.role==='admin';
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='',_sumD7End=null;
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
@@ -276,6 +282,7 @@ function switchTab(id,btn){
   else if(id==='scorecard')renderScorecard();
   else if(id==='gbp')renderGBP();
   else if(id==='ga4')renderGA4();
+  else if(id==='clienthistory')renderClientHistory();
   else if(id==='meta')renderMeta();
   else if(id==='google')renderGoogle();
   else if(id==='instagram')renderInstagram();
@@ -1015,6 +1022,7 @@ function applyFilters(){
   if(document.getElementById('tab-instagram').classList.contains('active'))renderInstagram();
   if(document.getElementById('tab-scorecard').classList.contains('active'))renderScorecard();
   if(document.getElementById('tab-summary').classList.contains('active'))renderSummary();
+  if(document.getElementById('tab-clienthistory').classList.contains('active'))renderClientHistory();
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -2010,6 +2018,150 @@ function _ga4Sum(rows){
   };
 }
 
+// ── Client History ────────────────────────────────────────────────────────────
+let _chSort={col:'date',asc:false};
+
+function renderClientHistory(){
+  const el=document.getElementById('ch-content');
+  if(!el)return;
+  if(!isAdminUser()){el.innerHTML='';return;}
+  if(!CH_RAW||!CH_RAW.studios){el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">Client history data not yet available.</div>';return;}
+
+  const selStudios=new Set(_getSel('studioMenu').map(s=>s.replace(/^SWEAT440\s+/,'')));
+
+  // Collect records across selected studios
+  let records=[];
+  for(const s of CH_RAW.studios){
+    const sname=s.name.replace(/^SWEAT440\s+/,'');
+    if(selStudios.size&&!selStudios.has(sname))continue;
+    for(const r of (s.records||[])){
+      records.push({...r,studio:sname});
+    }
+  }
+
+  // Date filter
+  const from=document.getElementById('fFrom').value||'';
+  const to  =document.getElementById('fTo').value  ||'';
+  if(from)records=records.filter(r=>r.date>=from);
+  if(to)  records=records.filter(r=>r.date<=to);
+
+  // Type filter
+  const typeVal=document.getElementById('chTypeFilter')?.value||'all';
+  if(typeVal==='sale')  records=records.filter(r=>r.type==='sale');
+  if(typeVal==='cancel')records=records.filter(r=>r.type==='cancel');
+
+  // Sort
+  const {col,asc}=_chSort;
+  records.sort((a,b)=>{
+    let av=a[col]??'',bv=b[col]??'';
+    if(col==='amount'){av=+av;bv=+bv;}
+    else{av=String(av).toLowerCase();bv=String(bv).toLowerCase();}
+    return av<bv?(asc?-1:1):av>bv?(asc?1:-1):0;
+  });
+
+  const sales   =records.filter(r=>r.type==='sale').length;
+  const cancels =records.filter(r=>r.type==='cancel').length;
+  const revenue =records.filter(r=>r.type==='sale').reduce((s,r)=>s+(r.amount||0),0);
+
+  function _th(label,col){
+    const arrow=_chSort.col===col?(_chSort.asc?' ▲':' ▼'):'';
+    return `<th class="num" style="cursor:pointer;white-space:nowrap" onclick="chSortBy('${col}')">${label}${arrow}</th>`;
+  }
+  function _thL(label,col){
+    const arrow=_chSort.col===col?(_chSort.asc?' ▲':' ▼'):'';
+    return `<th style="cursor:pointer;white-space:nowrap" onclick="chSortBy('${col}')">${label}${arrow}</th>`;
+  }
+
+  const typeColor=r=>r.type==='cancel'?'#ff6b6b':'inherit';
+
+  let h='';
+  // Controls bar
+  h+=`<div class="chart-card" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0">`;
+  h+=`<span style="font-family:Oswald,sans-serif;font-style:italic;font-weight:600;font-size:12px;text-transform:uppercase;color:#5a7a8a">Type</span>`;
+  h+=`<select id="chTypeFilter" onchange="renderClientHistory()" style="background:#1a2a35;color:#e0eef5;border:1px solid #2a4a5a;border-radius:4px;padding:4px 8px;font-size:13px">
+        <option value="all">All (${records.length})</option>
+        <option value="sale"${typeVal==='sale'?' selected':''}>Sales</option>
+        <option value="cancel"${typeVal==='cancel'?' selected':''}>Cancellations</option>
+      </select>`;
+  h+=`<div style="margin-left:auto;display:flex;gap:8px">`;
+  h+=`<button onclick="chExportCSV()" style="background:#00A3E0;color:#000;border:none;border-radius:4px;padding:6px 14px;font-family:Oswald,sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;cursor:pointer">Export CSV</button>`;
+  h+=`</div></div>`;
+
+  // KPI summary
+  h+=`<div class="kpi-grid three" style="margin:16px 0">`;
+  h+=`<div class="kpi-card"><div class="kpi-card-label">Sales</div><div class="kpi-card-val">${sales.toLocaleString()}</div></div>`;
+  h+=`<div class="kpi-card"><div class="kpi-card-label">Cancellations</div><div class="kpi-card-val" style="color:#ff6b6b">${cancels.toLocaleString()}</div></div>`;
+  h+=`<div class="kpi-card"><div class="kpi-card-label">Revenue (Sales)</div><div class="kpi-card-val">$${revenue.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}</div></div>`;
+  h+=`</div>`;
+
+  // Table
+  h+=`<div class="chart-card"><div style="overflow-x:auto"><table class="data-table" id="chTable">`;
+  h+=`<thead><tr>`;
+  h+=_thL('Name','client_name');
+  h+=_thL('Email','email');
+  h+=_thL('Phone','phone');
+  h+=_thL('Studio','studio');
+  h+=_thL('Product','product');
+  h+=_th('Date','date');
+  h+=_th('Time','time');
+  h+=_thL('Platform','platform');
+  h+=_thL('Sold By','sold_by');
+  h+=_th('Amount','amount');
+  h+=_thL('Type','type');
+  h+=`</tr></thead><tbody>`;
+
+  if(!records.length){
+    h+=`<tr><td colspan="11" style="text-align:center;color:#8aaabb;padding:24px">No records match the current filters.</td></tr>`;
+  } else {
+    for(const r of records){
+      const c=typeColor(r);
+      const typeLabel=r.type==='cancel'?'<span style="color:#ff6b6b;font-weight:600">Cancel</span>':'<span style="color:#00FFC2;font-weight:600">Sale</span>';
+      const amt=r.amount>0?`$${r.amount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';
+      h+=`<tr style="color:${c}">`;
+      h+=`<td>${r.client_name||'—'}</td>`;
+      h+=`<td><a href="mailto:${r.email}" style="color:#00A3E0;text-decoration:none">${r.email||'—'}</a></td>`;
+      h+=`<td>${r.phone||'—'}</td>`;
+      h+=`<td>${r.studio||'—'}</td>`;
+      h+=`<td>${r.product||'—'}</td>`;
+      h+=`<td class="num">${r.date||'—'}</td>`;
+      h+=`<td class="num">${r.time||'—'}</td>`;
+      h+=`<td>${r.platform||'—'}</td>`;
+      h+=`<td>${r.sold_by||'—'}</td>`;
+      h+=`<td class="num">${amt}</td>`;
+      h+=`<td>${typeLabel}</td>`;
+      h+=`</tr>`;
+    }
+  }
+  h+=`</tbody></table></div></div>`;
+
+  // Store filtered records for export
+  window._chRecords=records;
+  el.innerHTML=h;
+}
+
+function chSortBy(col){
+  if(_chSort.col===col)_chSort.asc=!_chSort.asc;
+  else{_chSort.col=col;_chSort.asc=col==='date'?false:true;}
+  renderClientHistory();
+}
+
+function chExportCSV(){
+  const recs=window._chRecords||[];
+  const hdr=['Name','Email','Phone','Studio','Product','Date','Time','Platform','Sold By','Amount','Type'];
+  const rows=recs.map(r=>[
+    r.client_name,r.email,r.phone,r.studio,r.product,r.date,r.time,r.platform,r.sold_by,r.amount,r.type
+  ].map(v=>{
+    const s=String(v??'').replace(/"/g,'""');
+    return /[",\n]/.test(s)?`"${s}"`:s;
+  }).join(','));
+  const csv=[hdr.join(','),...rows].join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`client_history_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
 function renderGA4(){
   const el=document.getElementById('ga4-content');if(!el)return;
   if(!GA4_RAW||!GA4_RAW.length){el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">No GA4 data available.</div>';return;}
@@ -2435,13 +2587,17 @@ async function init(){
   CUR_USER=_authUser;
   renderAuthNav(_authUser);
   _allowedStudios = getAuthStudios(_authUser);
+  if(isAdminUser()){
+    const _chTab=document.getElementById('navClientHistory');
+    if(_chTab)_chTab.style.display='';
+  }
   if(!isAdminUser()){
     const _igTab=document.getElementById('navTabInstagram');
     if(_igTab)_igTab.remove();
   }
 
   // Load all data files
-  const [dataRes,scRes,mktRes,dashRes,gadsRes,socialRes,salesRes,gbpRes,adMetaRes]=await Promise.allSettled([
+  const [dataRes,scRes,mktRes,dashRes,gadsRes,socialRes,salesRes,gbpRes,adMetaRes,chRes]=await Promise.allSettled([
     fetch('../data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('nso_scorecard_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('marketing_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
@@ -2450,7 +2606,8 @@ async function init(){
     fetch('social_insights.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('nso_sales_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
     fetch('gbp_data.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
-    fetch('nso_ad_meta.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject())
+    fetch('nso_ad_meta.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
+    fetch('nso_client_history.json?_='+Date.now()).then(r=>r.ok?r.json():Promise.reject()),
   ]);
 
   if(dataRes.status==='fulfilled'){RAW=dataRes.value;if(!RAW.daily_detail)RAW.daily_detail=[];if(!RAW.monthly_detail)RAW.monthly_detail=[]
@@ -2496,6 +2653,9 @@ async function init(){
 
   if(adMetaRes.status==='fulfilled'){AD_META=adMetaRes.value.ad_meta||{}}
   else{console.warn('nso_ad_meta.json not found — thumbnails may be stale')}
+
+  if(chRes.status==='fulfilled'){CH_RAW=chRes.value}
+  else{console.warn('nso_client_history.json not found')}
 
   // Build multi-selects (filter NSO list to allowed studios if franchisee)
   // NSO names have "SWEAT440 " prefix; users.js stores names without it (matching data.json)
