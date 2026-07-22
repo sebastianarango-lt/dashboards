@@ -311,8 +311,6 @@ def fetch_ga4(start_date, end_date, location=None):
         dimensions=[
             Dimension(name="date"),
             Dimension(name="landingPagePlusQueryString"),
-            Dimension(name="sessionSource"),
-            Dimension(name="sessionMedium"),
         ],
         metrics=[
             Metric(name="sessions"),
@@ -322,7 +320,7 @@ def fetch_ga4(start_date, end_date, location=None):
         limit=100000,
     )
 
-    print(f"  Fetching all landing-page sessions...")
+    print(f"  Fetching all landing-page sessions (aggregated by date+page)...")
     rows = []
     try:
         response = client.run_report(traffic_request)
@@ -330,9 +328,8 @@ def fetch_ga4(start_date, end_date, location=None):
             d = row.dimension_values[0].value
             rows.append({
                 "date": f"{d[:4]}-{d[4:6]}-{d[6:]}",
-                "landing_page": row.dimension_values[1].value,
-                "source": row.dimension_values[2].value,
-                "medium": row.dimension_values[3].value,
+                # Strip query string — fbclid/externalId params inflate row count ~10x
+                "landing_page": row.dimension_values[1].value.split("?")[0],
                 "sessions": int(row.metric_values[0].value),
                 "total_users": int(row.metric_values[1].value),
                 "new_users": int(row.metric_values[2].value),
