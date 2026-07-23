@@ -35,11 +35,14 @@ function sortableTable(tableId, data, renderRow, totalsRow) {
   }
   ths.forEach(th => {
     th.classList.add('sortable');
-    th.addEventListener('click', () => {
-      const col = th.dataset.sort;
-      if (state.col === col) { state.asc = !state.asc; } else { state.col = col; state.asc = true; }
-      render();
-    });
+    if (!th._sortableTableBound) {
+      th._sortableTableBound = true;
+      th.addEventListener('click', () => {
+        const col = th.dataset.sort;
+        if (state.col === col) { state.asc = !state.asc; } else { state.col = col; state.asc = true; }
+        render();
+      });
+    }
   });
   render();
 }
