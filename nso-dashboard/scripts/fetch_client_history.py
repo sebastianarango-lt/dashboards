@@ -93,7 +93,9 @@ def get_conn():
 # Main query — individual presale + cancellation records with phone join
 # ---------------------------------------------------------------------------
 QUERY = f"""
-WITH base AS (
+WITH filtered AS (
+    -- No LOC=98 dedup: show every raw transaction for audit purposes.
+    -- This matches what MindBody surfaces in its own reports.
     SELECT
         s.STUDIO_ID,
         s.CLIENT_ID,
@@ -106,13 +108,7 @@ WITH base AS (
         s.SOURCE_CHANNEL,
         s.QUANTITY,
         s.IS_RETURN,
-        COALESCE(s.GROSS_PAYMENTAMT_LOCAL, 0)       AS amount,
-        -- LOC=98 dedup (same logic as fetch_nso_sales.py)
-        MAX(CASE WHEN s.LOCATION_ID != 98 THEN 1 ELSE 0 END) OVER (
-            PARTITION BY s.STUDIO_ID, s.CLIENT_ID, s.PRODUCT_DESCRIPTION,
-                         s.SALE_DATE::DATE, s.QUANTITY
-        ) AS has_non98_sibling,
-        s.LOCATION_ID
+        COALESCE(s.GROSS_PAYMENTAMT_LOCAL, 0)       AS amount
     FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS s
     WHERE s.STUDIO_ID IN ({ID_LIST})
       AND s.ITEM_TYPE = 'Pricing Option'
@@ -122,10 +118,6 @@ WITH base AS (
       AND LOWER(TRIM(s.EMAIL_ID)) NOT LIKE '%sweat440%'
       AND LOWER(TRIM(s.EMAIL_ID)) NOT LIKE '%leadteam%'
       ))
-),
-filtered AS (
-    SELECT * FROM base
-    WHERE LOCATION_ID != 98 OR has_non98_sibling = 0
 ),
 phones AS (
     SELECT
