@@ -278,8 +278,8 @@ function switchTab(id,btn){
   btn.classList.add('active');
   document.getElementById('navTabs').classList.remove('open');
   document.querySelector('.controls-bar').style.display=(id==='summary'||id==='scorecard')?'none':'';
-  if(id==='summary')renderSummary();
-  else if(id==='scorecard')renderScorecard();
+  if(id==='summary'){if(_scStudio)_sumStudio=_scStudio;renderSummary();}
+  else if(id==='scorecard'){if(_sumStudio)_scStudio=_sumStudio;renderScorecard();}
   else if(id==='gbp')renderGBP();
   else if(id==='ga4')renderGA4();
   else if(id==='clienthistory')renderClientHistory();
