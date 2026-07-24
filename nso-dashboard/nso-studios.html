@@ -103,7 +103,7 @@
       <button class="nav-tab nav-group-label" onclick="toggleNavGroup('organic-group',this)">Organic Channels ▾</button>
       <div class="nav-submenu" id="organic-group">
         <button class="nav-tab nav-sub" onclick="switchTab('ga4',this)">Website</button>
-        <button class="nav-tab nav-sub" onclick="switchTab('gbp',this)">Google Maps</button>
+        <button class="nav-tab nav-sub" onclick="switchTab('gbp',this)">Google Business Profile</button>
         <button class="nav-tab nav-sub" id="navTabInstagram" onclick="switchTab('instagram',this)">Instagram</button>
       </div>
     </div>
@@ -256,7 +256,7 @@
 const NSO=['SWEAT440 Aventura','SWEAT440 Burlington','SWEAT440 Dallas - Uptown','SWEAT440 Dunwoody','SWEAT440 Fort Myers','SWEAT440 Herriman','SWEAT440 Middletown','SWEAT440 Naples - Mercato','SWEAT440 North Miami','SWEAT440 Old Bridge','SWEAT440 Orlando - Dr Phillips','SWEAT440 Reston'];
 const EXCL_SRC=['ClassPass / Platforms','N/A'];
 
-let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={},CH_RAW=null;const _ch={};
+let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={},CH_RAW=null;const _ch={};let _chDupOnly=false;
 let CUR_USER=null,_allowedStudios=null;const isAdminUser=()=>CUR_USER&&CUR_USER.role==='admin';
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='',_sumD7End=null;
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
@@ -2042,6 +2042,10 @@ function renderClientHistory(){
     }
   }
 
+  // Cap at 2 days ago (same cutoff as other tabs)
+  const _chCap=(()=>{const n=new Date();n.setDate(n.getDate()-2);return n.toISOString().slice(0,10);})();
+  records=records.filter(r=>r.date<=_chCap);
+
   // Date filter
   const from=document.getElementById('fFrom').value||'';
   const to  =document.getElementById('fTo').value  ||'';
@@ -2066,6 +2070,12 @@ function renderClientHistory(){
   const cancels =records.filter(r=>r.type==='cancel').length;
   const revenue =records.filter(r=>r.type==='sale').reduce((s,r)=>s+(r.amount||0),0);
 
+  // Email frequency — count SALES only (1 sale + 1 cancel is not "multiple memberships")
+  const emailFreq={};
+  records.filter(r=>r.type==='sale').forEach(r=>{if(r.email)emailFreq[r.email]=(emailFreq[r.email]||0)+1;});
+  const dupEmails=new Set(Object.keys(emailFreq).filter(e=>emailFreq[e]>1));
+  const dupCount=dupEmails.size;
+
   function _th(label,col){
     const arrow=_chSort.col===col?(_chSort.asc?' ▲':' ▼'):'';
     return `<th class="num" style="cursor:pointer;white-space:nowrap" onclick="chSortBy('${col}')">${label}${arrow}</th>`;
@@ -2075,30 +2085,71 @@ function renderClientHistory(){
     return `<th style="cursor:pointer;white-space:nowrap" onclick="chSortBy('${col}')">${label}${arrow}</th>`;
   }
 
+
+  // Apply Dupes Only filter
+  if(_chDupOnly) records=records.filter(r=>dupEmails.has(r.email));
+
   const typeColor=r=>r.type==='cancel'?'#ff6b6b':'inherit';
 
+  const _chCapFmt=new Date(_chCap+'T00:00:00Z').toLocaleDateString('en-US',{month:'numeric',day:'numeric',year:'numeric',timeZone:'UTC'});
   let h='';
+  h+=`<div class="data-thru-label" style="font-size:11px;color:#8aaabb;margin-bottom:8px">Data until ${_chCapFmt}</div>`;
   // Controls bar
   h+=`<div class="chart-card" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0">`;
   h+=`<span style="font-family:Oswald,sans-serif;font-style:italic;font-weight:600;font-size:12px;text-transform:uppercase;color:#5a7a8a">Type</span>`;
   h+=`<select id="chTypeFilter" onchange="renderClientHistory()" style="background:#1a2a35;color:#e0eef5;border:1px solid #2a4a5a;border-radius:4px;padding:4px 8px;font-size:13px">
-        <option value="all">All (${records.length})</option>
+        <option value="all">All</option>
         <option value="sale"${typeVal==='sale'?' selected':''}>Sales</option>
         <option value="cancel"${typeVal==='cancel'?' selected':''}>Cancellations</option>
       </select>`;
+  h+=`<button onclick="_chDupOnly=!_chDupOnly;renderClientHistory()" style="padding:5px 14px;border-radius:4px;border:2px solid ${_chDupOnly?'#f4a021':'#2a4a5a'};background:${_chDupOnly?'#f4a021':'transparent'};color:${_chDupOnly?'#000':'#8aaabb'};font-family:Oswald,sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;cursor:pointer;letter-spacing:.5px">Dupes Only${dupCount?' ('+dupCount+')':''}</button>`;
   h+=`<div style="margin-left:auto;display:flex;gap:8px">`;
   h+=`<button onclick="chExportCSV()" style="background:#00A3E0;color:#000;border:none;border-radius:4px;padding:6px 14px;font-family:Oswald,sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;cursor:pointer">Export CSV</button>`;
   h+=`</div></div>`;
 
   // KPI summary
-  h+=`<div class="kpi-grid three" style="margin:16px 0">`;
+  h+=`<div class="kpi-grid" style="margin:16px 0">`;
   h+=`<div class="kpi-card"><div class="kpi-card-label">Sales</div><div class="kpi-card-val">${sales.toLocaleString()}</div></div>`;
   h+=`<div class="kpi-card"><div class="kpi-card-label">Cancellations</div><div class="kpi-card-val" style="color:#ff6b6b">${cancels.toLocaleString()}</div></div>`;
   h+=`<div class="kpi-card"><div class="kpi-card-label">Revenue (Sales)</div><div class="kpi-card-val">$${revenue.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}</div></div>`;
+  h+=`<div class="kpi-card" style="cursor:pointer;border:2px solid ${dupCount?'#f4a021':'#2a4a5a'}" onclick="_chDupOnly=!_chDupOnly;renderClientHistory()"><div class="kpi-card-label" style="color:#f4a021">Multiple Memberships</div><div class="kpi-card-val" style="color:${dupCount?'#f4a021':'#8aaabb'}">${dupCount}</div><div style="font-size:10px;color:#8aaabb;margin-top:2px">emails with 2+ records</div></div>`;
   h+=`</div>`;
 
-  // Table
-  h+=`<div class="chart-card"><div style="overflow-x:auto"><table class="data-table" id="chTable">`;
+  // Multiple Memberships audit section
+  if(dupCount>0){
+    const dupList=Object.entries(emailFreq)
+      .filter(([,n])=>n>1)
+      .sort((a,b)=>b[1]-a[1]);
+    h+=`<div class="chart-card" style="margin-bottom:0;border-left:3px solid #f4a021">`;
+    h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">`;
+    h+=`<div class="chart-card-title" style="margin-bottom:0;color:#f4a021">Multiple Memberships — ${dupCount} email${dupCount>1?'s':''}</div>`;
+    h+=`<button onclick="_chDupOnly=!_chDupOnly;renderClientHistory()" style="padding:4px 12px;border-radius:4px;border:2px solid ${_chDupOnly?'#f4a021':'#2a4a5a'};background:${_chDupOnly?'#f4a021':'transparent'};color:${_chDupOnly?'#000':'#8aaabb'};font-family:Oswald,sans-serif;font-weight:600;font-size:11px;text-transform:uppercase;cursor:pointer">${_chDupOnly?'Show All':'Filter Table'}</button>`;
+    h+=`</div>`;
+    h+=`<div style="overflow-x:auto"><table class="data-table"><thead><tr>`;
+    h+=`<th>Email</th><th>Name</th><th class="num">Sales</th><th class="num">Cancels</th><th>Studios</th><th>Products</th>`;
+    h+=`</tr></thead><tbody>`;
+    for(const [email, count] of dupList){
+      const allRecs=(()=>{let a=[];for(const s of CH_RAW.studios){const sn=s.name.replace(/^SWEAT440\s+/,'');if(selStudios.size&&!selStudios.has(sn))continue;(s.records||[]).filter(r=>r.email===email&&r.date<=_chCap).forEach(r=>a.push({...r,studio:sn}));}return a;})();
+      const name=allRecs[0]?.client_name||'—';
+      const nSales=allRecs.filter(r=>r.type==='sale').length;
+      const nCancels=allRecs.filter(r=>r.type==='cancel').length;
+      const studios=[...new Set(allRecs.map(r=>r.studio))].join(', ');
+      const prods=[...new Set(allRecs.map(r=>r.product))].join(', ');
+      h+=`<tr style="background:rgba(244,160,33,.06)">`;
+      h+=`<td><a href="mailto:${email}" style="color:#f4a021;text-decoration:none">${email}</a></td>`;
+      h+=`<td>${name}</td>`;
+      h+=`<td class="num" style="color:#00FFC2;font-weight:700">${nSales}</td>`;
+      h+=`<td class="num" style="color:#ff6b6b">${nCancels}</td>`;
+      h+=`<td style="font-size:11px">${studios}</td>`;
+      h+=`<td style="font-size:11px">${prods}</td>`;
+      h+=`</tr>`;
+    }
+    h+=`</tbody></table></div></div>`;
+  }
+
+  // Main transactions table
+  h+=`<div class="chart-card"><div style="font-size:11px;color:#8aaabb;margin-bottom:8px">${records.length} transaction${records.length!==1?'s':''} shown${_chDupOnly?' — filtered to duplicate emails':''}</div>`;
+  h+=`<div style="overflow-x:auto"><table class="data-table" id="chTable">`;
   h+=`<thead><tr>`;
   h+=_thL('Name','client_name');
   h+=_thL('Email','email');
@@ -2117,12 +2168,14 @@ function renderClientHistory(){
     h+=`<tr><td colspan="11" style="text-align:center;color:#8aaabb;padding:24px">No records match the current filters.</td></tr>`;
   } else {
     for(const r of records){
-      const c=typeColor(r);
+      const isDup=dupEmails.has(r.email);
+      const c=r.type==='cancel'?'#ff6b6b':'inherit';
       const typeLabel=r.type==='cancel'?'<span style="color:#ff6b6b;font-weight:600">Cancel</span>':'<span style="color:#00FFC2;font-weight:600">Sale</span>';
       const amt=r.amount>0?`$${r.amount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';
-      h+=`<tr style="color:${c}">`;
+      const dupBadge=isDup?` <span style="font-size:9px;background:rgba(244,160,33,.2);color:#f4a021;border-radius:3px;padding:1px 4px;margin-left:3px" title="${emailFreq[r.email]} records for this email">×${emailFreq[r.email]}</span>`:'';
+      h+=`<tr style="color:${c}${isDup?';background:rgba(244,160,33,.04)':''}">`;
       h+=`<td>${r.client_name||'—'}</td>`;
-      h+=`<td><a href="mailto:${r.email}" style="color:#00A3E0;text-decoration:none">${r.email||'—'}</a></td>`;
+      h+=`<td><a href="mailto:${r.email}" style="color:${isDup?'#f4a021':'#00A3E0'};text-decoration:none">${r.email||'—'}</a>${dupBadge}</td>`;
       h+=`<td>${r.phone||'—'}</td>`;
       h+=`<td>${r.studio||'—'}</td>`;
       h+=`<td>${r.product||'—'}</td>`;
