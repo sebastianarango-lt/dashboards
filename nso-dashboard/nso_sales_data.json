@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T10:28:33.851688",
+  "generated_at": "2026-07-24T19:00:16.232240",
   "date_range": {
     "start": "2026-01-01",
     "end": "2026-07-22"
@@ -1471,7 +1471,7 @@
         },
         {
           "date": "2026-06-10",
-          "source": "N/A",
+          "source": "Other",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
@@ -3860,7 +3860,7 @@
         },
         {
           "date": "2026-06-15",
-          "source": "Local Listings",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
