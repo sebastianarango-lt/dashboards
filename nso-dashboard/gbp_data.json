@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-24T19:08:43",
+  "generated_at": "2026-07-25T10:06:42",
   "date_range": {
     "start": "2025-01-01",
-    "end": "2026-07-23"
+    "end": "2026-07-24"
   },
   "studios": [
     {
@@ -210,14 +210,14 @@
         },
         {
           "date": "2025-01-19",
-          "total_views": 172,
-          "desktop_maps": 22,
-          "desktop_search": 9,
-          "mobile_maps": 87,
-          "mobile_search": 54,
-          "calls": 3,
-          "website_clicks": 7,
-          "direction_requests": 5
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-20",
@@ -6238,17 +6238,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 94,
+          "total_views": 219,
           "desktop_maps": 28,
-          "desktop_search": 0,
+          "desktop_search": 27,
           "mobile_maps": 66,
-          "mobile_search": 0,
+          "mobile_search": 98,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 3,
           "direction_requests": 15
         },
         {
           "date": "2026-07-22",
+          "total_views": 83,
+          "desktop_maps": 27,
+          "desktop_search": 0,
+          "mobile_maps": 56,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 4
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -6259,7 +6270,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -12509,17 +12520,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 50,
+          "total_views": 116,
           "desktop_maps": 17,
+          "desktop_search": 23,
+          "mobile_maps": 33,
+          "mobile_search": 43,
+          "calls": 2,
+          "website_clicks": 4,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 52,
+          "desktop_maps": 19,
           "desktop_search": 0,
           "mobile_maps": 33,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
-          "direction_requests": 7
+          "direction_requests": 3
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -12530,7 +12552,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -12543,8 +12565,8 @@
       ],
       "reviews": {
         "average_rating": 4.9,
-        "total_count": 214,
-        "five_star_count": 210
+        "total_count": 215,
+        "five_star_count": 211
       }
     },
     {
@@ -18780,17 +18802,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 29,
+          "total_views": 51,
           "desktop_maps": 7,
-          "desktop_search": 0,
+          "desktop_search": 8,
           "mobile_maps": 22,
-          "mobile_search": 0,
+          "mobile_search": 14,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 5,
           "direction_requests": 1
         },
         {
           "date": "2026-07-22",
+          "total_views": 36,
+          "desktop_maps": 6,
+          "desktop_search": 0,
+          "mobile_maps": 30,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 5
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -18801,7 +18834,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -25047,17 +25080,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 35,
+          "total_views": 100,
           "desktop_maps": 12,
-          "desktop_search": 0,
+          "desktop_search": 16,
           "mobile_maps": 23,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 49,
+          "calls": 1,
+          "website_clicks": 5,
           "direction_requests": 3
         },
         {
           "date": "2026-07-22",
+          "total_views": 34,
+          "desktop_maps": 3,
+          "desktop_search": 0,
+          "mobile_maps": 31,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 11
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -25068,7 +25112,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -25082,7 +25126,7 @@
       "reviews": {
         "average_rating": 4.9,
         "total_count": 44,
-        "five_star_count": 44
+        "five_star_count": 43
       }
     },
     {
@@ -31325,21 +31369,21 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 28,
+          "total_views": 72,
           "desktop_maps": 3,
-          "desktop_search": 0,
+          "desktop_search": 16,
           "mobile_maps": 25,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 28,
+          "calls": 2,
+          "website_clicks": 10,
           "direction_requests": 14
         },
         {
           "date": "2026-07-22",
-          "total_views": 0,
-          "desktop_maps": 0,
+          "total_views": 18,
+          "desktop_maps": 4,
           "desktop_search": 0,
-          "mobile_maps": 0,
+          "mobile_maps": 14,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
@@ -31355,12 +31399,23 @@
           "calls": 0,
           "website_clicks": 0,
           "direction_requests": 0
+        },
+        {
+          "date": "2026-07-24",
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         }
       ],
       "reviews": {
         "average_rating": 5.0,
         "total_count": 348,
-        "five_star_count": 344
+        "five_star_count": 343
       }
     },
     {
@@ -31579,14 +31634,14 @@
         },
         {
           "date": "2025-01-20",
-          "total_views": 164,
-          "desktop_maps": 10,
-          "desktop_search": 12,
-          "mobile_maps": 70,
-          "mobile_search": 72,
-          "calls": 5,
-          "website_clicks": 14,
-          "direction_requests": 8
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-21",
@@ -37596,17 +37651,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 37,
+          "total_views": 128,
           "desktop_maps": 12,
-          "desktop_search": 0,
+          "desktop_search": 22,
           "mobile_maps": 25,
-          "mobile_search": 0,
+          "mobile_search": 69,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 4,
           "direction_requests": 14
         },
         {
           "date": "2026-07-22",
+          "total_views": 49,
+          "desktop_maps": 9,
+          "desktop_search": 0,
+          "mobile_maps": 40,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -37617,7 +37683,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -43867,17 +43933,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 31,
+          "total_views": 144,
           "desktop_maps": 4,
-          "desktop_search": 0,
+          "desktop_search": 15,
           "mobile_maps": 27,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 98,
+          "calls": 1,
+          "website_clicks": 3,
           "direction_requests": 14
         },
         {
           "date": "2026-07-22",
+          "total_views": 43,
+          "desktop_maps": 1,
+          "desktop_search": 0,
+          "mobile_maps": 42,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 9
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -43888,7 +43965,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -50138,17 +50215,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 33,
+          "total_views": 96,
           "desktop_maps": 4,
-          "desktop_search": 0,
+          "desktop_search": 10,
           "mobile_maps": 29,
-          "mobile_search": 0,
+          "mobile_search": 53,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 6,
           "direction_requests": 14
         },
         {
           "date": "2026-07-22",
+          "total_views": 39,
+          "desktop_maps": 6,
+          "desktop_search": 0,
+          "mobile_maps": 33,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 18
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -50159,7 +50247,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -56409,17 +56497,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 52,
+          "total_views": 66,
           "desktop_maps": 5,
-          "desktop_search": 0,
+          "desktop_search": 5,
           "mobile_maps": 47,
-          "mobile_search": 0,
+          "mobile_search": 9,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 1,
           "direction_requests": 4
         },
         {
           "date": "2026-07-22",
+          "total_views": 18,
+          "desktop_maps": 2,
+          "desktop_search": 0,
+          "mobile_maps": 16,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -56430,7 +56529,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -56648,14 +56747,14 @@
         },
         {
           "date": "2025-01-19",
-          "total_views": 84,
+          "total_views": 0,
           "desktop_maps": 0,
-          "desktop_search": 5,
-          "mobile_maps": 26,
-          "mobile_search": 53,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
           "calls": 0,
-          "website_clicks": 2,
-          "direction_requests": 1
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-20",
@@ -62676,17 +62775,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 18,
+          "total_views": 88,
           "desktop_maps": 3,
-          "desktop_search": 0,
+          "desktop_search": 11,
           "mobile_maps": 15,
-          "mobile_search": 0,
-          "calls": 0,
+          "mobile_search": 59,
+          "calls": 1,
           "website_clicks": 0,
           "direction_requests": 4
         },
         {
           "date": "2026-07-22",
+          "total_views": 30,
+          "desktop_maps": 2,
+          "desktop_search": 0,
+          "mobile_maps": 28,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -62697,7 +62807,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -62710,8 +62820,8 @@
       ],
       "reviews": {
         "average_rating": 5.0,
-        "total_count": 509,
-        "five_star_count": 507
+        "total_count": 508,
+        "five_star_count": 506
       }
     },
     {
@@ -62919,14 +63029,14 @@
         },
         {
           "date": "2025-01-19",
-          "total_views": 114,
-          "desktop_maps": 3,
-          "desktop_search": 3,
-          "mobile_maps": 53,
-          "mobile_search": 55,
-          "calls": 3,
-          "website_clicks": 13,
-          "direction_requests": 11
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-20",
@@ -68947,17 +69057,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 44,
+          "total_views": 104,
           "desktop_maps": 13,
-          "desktop_search": 0,
+          "desktop_search": 18,
           "mobile_maps": 31,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 42,
+          "calls": 4,
+          "website_clicks": 5,
           "direction_requests": 15
         },
         {
           "date": "2026-07-22",
+          "total_views": 41,
+          "desktop_maps": 6,
+          "desktop_search": 0,
+          "mobile_maps": 35,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 12
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -68968,7 +69089,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -75218,17 +75339,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 4,
+          "total_views": 8,
           "desktop_maps": 1,
-          "desktop_search": 0,
+          "desktop_search": 2,
           "mobile_maps": 3,
-          "mobile_search": 0,
+          "mobile_search": 2,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 1,
           "direction_requests": 0
         },
         {
           "date": "2026-07-22",
+          "total_views": 1,
+          "desktop_maps": 1,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 4
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -75239,7 +75371,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -81485,17 +81617,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 22,
+          "total_views": 50,
           "desktop_maps": 3,
-          "desktop_search": 0,
+          "desktop_search": 8,
           "mobile_maps": 19,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 20,
+          "calls": 4,
+          "website_clicks": 9,
           "direction_requests": 2
         },
         {
           "date": "2026-07-22",
+          "total_views": 36,
+          "desktop_maps": 5,
+          "desktop_search": 0,
+          "mobile_maps": 31,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 10
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -81506,7 +81649,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -81728,14 +81871,14 @@
         },
         {
           "date": "2025-01-19",
-          "total_views": 115,
-          "desktop_maps": 5,
-          "desktop_search": 5,
-          "mobile_maps": 41,
-          "mobile_search": 64,
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
           "calls": 0,
-          "website_clicks": 3,
-          "direction_requests": 4
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-20",
@@ -87756,17 +87899,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 49,
+          "total_views": 144,
           "desktop_maps": 10,
-          "desktop_search": 0,
+          "desktop_search": 21,
           "mobile_maps": 39,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 74,
+          "calls": 2,
+          "website_clicks": 8,
           "direction_requests": 5
         },
         {
           "date": "2026-07-22",
+          "total_views": 71,
+          "desktop_maps": 10,
+          "desktop_search": 0,
+          "mobile_maps": 61,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 21
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -87777,7 +87931,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -94027,17 +94181,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 4,
+          "total_views": 11,
           "desktop_maps": 0,
-          "desktop_search": 0,
+          "desktop_search": 2,
           "mobile_maps": 4,
-          "mobile_search": 0,
+          "mobile_search": 5,
           "calls": 0,
           "website_clicks": 0,
           "direction_requests": 0
         },
         {
           "date": "2026-07-22",
+          "total_views": 5,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 5,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -94048,7 +94213,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -100294,17 +100459,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 48,
+          "total_views": 53,
           "desktop_maps": 1,
           "desktop_search": 0,
           "mobile_maps": 47,
-          "mobile_search": 0,
+          "mobile_search": 5,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 3,
           "direction_requests": 3
         },
         {
           "date": "2026-07-22",
+          "total_views": 27,
+          "desktop_maps": 2,
+          "desktop_search": 0,
+          "mobile_maps": 25,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 12
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -100315,7 +100491,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -106561,17 +106737,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 12,
+          "total_views": 84,
           "desktop_maps": 5,
-          "desktop_search": 0,
+          "desktop_search": 10,
           "mobile_maps": 7,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 62,
+          "calls": 1,
+          "website_clicks": 4,
           "direction_requests": 3
         },
         {
           "date": "2026-07-22",
+          "total_views": 16,
+          "desktop_maps": 3,
+          "desktop_search": 0,
+          "mobile_maps": 13,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -106582,7 +106769,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -112832,17 +113019,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 66,
+          "total_views": 239,
           "desktop_maps": 15,
-          "desktop_search": 0,
+          "desktop_search": 40,
           "mobile_maps": 51,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 133,
+          "calls": 1,
+          "website_clicks": 3,
           "direction_requests": 5
         },
         {
           "date": "2026-07-22",
+          "total_views": 83,
+          "desktop_maps": 24,
+          "desktop_search": 0,
+          "mobile_maps": 59,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -112853,7 +113051,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -113086,14 +113284,14 @@
         },
         {
           "date": "2025-01-20",
-          "total_views": 191,
-          "desktop_maps": 8,
-          "desktop_search": 16,
-          "mobile_maps": 79,
-          "mobile_search": 88,
-          "calls": 8,
-          "website_clicks": 4,
-          "direction_requests": 14
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-21",
@@ -119103,17 +119301,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 59,
+          "total_views": 147,
           "desktop_maps": 19,
-          "desktop_search": 0,
+          "desktop_search": 21,
           "mobile_maps": 40,
-          "mobile_search": 0,
+          "mobile_search": 67,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 4,
           "direction_requests": 12
         },
         {
           "date": "2026-07-22",
+          "total_views": 50,
+          "desktop_maps": 9,
+          "desktop_search": 0,
+          "mobile_maps": 41,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 3
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -119124,7 +119333,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -119346,14 +119555,14 @@
         },
         {
           "date": "2025-01-19",
-          "total_views": 154,
-          "desktop_maps": 6,
-          "desktop_search": 7,
-          "mobile_maps": 67,
-          "mobile_search": 74,
-          "calls": 2,
-          "website_clicks": 6,
-          "direction_requests": 5
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-20",
@@ -125374,17 +125583,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 42,
+          "total_views": 153,
           "desktop_maps": 13,
-          "desktop_search": 0,
+          "desktop_search": 31,
           "mobile_maps": 29,
-          "mobile_search": 0,
+          "mobile_search": 80,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 1,
           "direction_requests": 3
         },
         {
           "date": "2026-07-22",
+          "total_views": 55,
+          "desktop_maps": 21,
+          "desktop_search": 0,
+          "mobile_maps": 34,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 1
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -125395,7 +125615,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -125628,14 +125848,14 @@
         },
         {
           "date": "2025-01-20",
-          "total_views": 220,
-          "desktop_maps": 13,
-          "desktop_search": 16,
-          "mobile_maps": 116,
-          "mobile_search": 75,
-          "calls": 3,
-          "website_clicks": 8,
-          "direction_requests": 8
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-21",
@@ -131645,17 +131865,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 63,
+          "total_views": 142,
           "desktop_maps": 9,
-          "desktop_search": 0,
+          "desktop_search": 14,
           "mobile_maps": 54,
+          "mobile_search": 65,
+          "calls": 4,
+          "website_clicks": 3,
+          "direction_requests": 20
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 70,
+          "desktop_maps": 7,
+          "desktop_search": 0,
+          "mobile_maps": 63,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
           "direction_requests": 20
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -131666,7 +131897,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -131680,7 +131911,7 @@
       "reviews": {
         "average_rating": 5.0,
         "total_count": 550,
-        "five_star_count": 541
+        "five_star_count": 540
       }
     },
     {
@@ -137916,21 +138147,21 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 55,
+          "total_views": 175,
           "desktop_maps": 21,
-          "desktop_search": 0,
+          "desktop_search": 29,
           "mobile_maps": 34,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 91,
+          "calls": 1,
+          "website_clicks": 8,
           "direction_requests": 10
         },
         {
           "date": "2026-07-22",
-          "total_views": 0,
-          "desktop_maps": 0,
+          "total_views": 64,
+          "desktop_maps": 14,
           "desktop_search": 0,
-          "mobile_maps": 0,
+          "mobile_maps": 50,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
@@ -137946,11 +138177,22 @@
           "calls": 0,
           "website_clicks": 0,
           "direction_requests": 0
+        },
+        {
+          "date": "2026-07-24",
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         }
       ],
       "reviews": {
         "average_rating": 4.9,
-        "total_count": 583,
+        "total_count": 582,
         "five_star_count": 562
       }
     },
@@ -144187,17 +144429,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 33,
+          "total_views": 134,
           "desktop_maps": 6,
-          "desktop_search": 0,
+          "desktop_search": 18,
           "mobile_maps": 27,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 83,
+          "calls": 3,
+          "website_clicks": 7,
           "direction_requests": 12
         },
         {
           "date": "2026-07-22",
+          "total_views": 46,
+          "desktop_maps": 4,
+          "desktop_search": 0,
+          "mobile_maps": 42,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 18
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -144208,7 +144461,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -150458,17 +150711,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 5,
+          "total_views": 32,
           "desktop_maps": 2,
-          "desktop_search": 0,
+          "desktop_search": 3,
           "mobile_maps": 3,
-          "mobile_search": 0,
+          "mobile_search": 24,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 1,
           "direction_requests": 10
         },
         {
           "date": "2026-07-22",
+          "total_views": 3,
+          "desktop_maps": 1,
+          "desktop_search": 0,
+          "mobile_maps": 2,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -150479,7 +150743,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -150708,13 +150972,13 @@
         },
         {
           "date": "2025-01-20",
-          "total_views": 43,
-          "desktop_maps": 7,
-          "desktop_search": 5,
-          "mobile_maps": 18,
-          "mobile_search": 13,
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
           "calls": 0,
-          "website_clicks": 2,
+          "website_clicks": 0,
           "direction_requests": 0
         },
         {
@@ -156725,17 +156989,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 26,
+          "total_views": 92,
           "desktop_maps": 4,
+          "desktop_search": 24,
+          "mobile_maps": 22,
+          "mobile_search": 42,
+          "calls": 1,
+          "website_clicks": 4,
+          "direction_requests": 6
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 25,
+          "desktop_maps": 3,
           "desktop_search": 0,
           "mobile_maps": 22,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
-          "direction_requests": 6
+          "direction_requests": 9
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -156746,7 +157021,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -156968,14 +157243,14 @@
         },
         {
           "date": "2025-01-19",
-          "total_views": 425,
-          "desktop_maps": 17,
-          "desktop_search": 30,
-          "mobile_maps": 185,
-          "mobile_search": 193,
-          "calls": 3,
-          "website_clicks": 21,
-          "direction_requests": 30
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-20",
@@ -162996,17 +163271,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 189,
+          "total_views": 363,
           "desktop_maps": 51,
-          "desktop_search": 0,
+          "desktop_search": 62,
           "mobile_maps": 138,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 112,
+          "calls": 1,
+          "website_clicks": 4,
           "direction_requests": 33
         },
         {
           "date": "2026-07-22",
+          "total_views": 183,
+          "desktop_maps": 28,
+          "desktop_search": 0,
+          "mobile_maps": 155,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 41
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -163017,7 +163303,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -163030,8 +163316,8 @@
       ],
       "reviews": {
         "average_rating": 4.9,
-        "total_count": 339,
-        "five_star_count": 326
+        "total_count": 338,
+        "five_star_count": 325
       }
     },
     {
@@ -169267,17 +169553,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 125,
+          "total_views": 284,
           "desktop_maps": 46,
-          "desktop_search": 0,
+          "desktop_search": 61,
           "mobile_maps": 79,
+          "mobile_search": 98,
+          "calls": 1,
+          "website_clicks": 6,
+          "direction_requests": 13
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 120,
+          "desktop_maps": 28,
+          "desktop_search": 0,
+          "mobile_maps": 92,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
           "direction_requests": 13
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -169288,7 +169585,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -175538,17 +175835,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 153,
+          "total_views": 229,
           "desktop_maps": 15,
-          "desktop_search": 0,
+          "desktop_search": 23,
           "mobile_maps": 138,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 53,
+          "calls": 2,
+          "website_clicks": 7,
           "direction_requests": 43
         },
         {
           "date": "2026-07-22",
+          "total_views": 127,
+          "desktop_maps": 13,
+          "desktop_search": 0,
+          "mobile_maps": 114,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 25
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -175559,7 +175867,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -181809,17 +182117,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 20,
+          "total_views": 31,
           "desktop_maps": 1,
-          "desktop_search": 0,
+          "desktop_search": 6,
           "mobile_maps": 19,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 5,
+          "calls": 2,
+          "website_clicks": 6,
           "direction_requests": 11
         },
         {
           "date": "2026-07-22",
+          "total_views": 12,
+          "desktop_maps": 2,
+          "desktop_search": 0,
+          "mobile_maps": 10,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -181830,7 +182149,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -188076,17 +188395,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 40,
+          "total_views": 73,
           "desktop_maps": 9,
-          "desktop_search": 0,
+          "desktop_search": 10,
           "mobile_maps": 31,
-          "mobile_search": 0,
+          "mobile_search": 23,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 3,
           "direction_requests": 1
         },
         {
           "date": "2026-07-22",
+          "total_views": 29,
+          "desktop_maps": 4,
+          "desktop_search": 0,
+          "mobile_maps": 25,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -188097,7 +188427,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -194343,17 +194673,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 18,
+          "total_views": 100,
           "desktop_maps": 3,
-          "desktop_search": 0,
+          "desktop_search": 11,
           "mobile_maps": 15,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 71,
+          "calls": 2,
+          "website_clicks": 14,
           "direction_requests": 6
         },
         {
           "date": "2026-07-22",
+          "total_views": 22,
+          "desktop_maps": 2,
+          "desktop_search": 0,
+          "mobile_maps": 20,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 11
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -194364,7 +194705,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -200614,8 +200955,19 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 3,
+          "total_views": 13,
           "desktop_maps": 0,
+          "desktop_search": 2,
+          "mobile_maps": 3,
+          "mobile_search": 8,
+          "calls": 0,
+          "website_clicks": 3,
+          "direction_requests": 0
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 4,
+          "desktop_maps": 1,
           "desktop_search": 0,
           "mobile_maps": 3,
           "mobile_search": 0,
@@ -200624,7 +200976,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -200635,7 +200987,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -206881,17 +207233,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 16,
+          "total_views": 27,
           "desktop_maps": 2,
-          "desktop_search": 0,
+          "desktop_search": 5,
           "mobile_maps": 14,
-          "mobile_search": 0,
+          "mobile_search": 6,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 1,
           "direction_requests": 0
         },
         {
           "date": "2026-07-22",
+          "total_views": 32,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 32,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 5
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -206902,7 +207265,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -213148,17 +213511,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 26,
+          "total_views": 102,
           "desktop_maps": 6,
+          "desktop_search": 19,
+          "mobile_maps": 20,
+          "mobile_search": 57,
+          "calls": 2,
+          "website_clicks": 5,
+          "direction_requests": 8
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 22,
+          "desktop_maps": 2,
           "desktop_search": 0,
           "mobile_maps": 20,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
-          "direction_requests": 8
+          "direction_requests": 6
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -213169,7 +213543,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -219419,17 +219793,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 33,
+          "total_views": 94,
           "desktop_maps": 9,
-          "desktop_search": 0,
+          "desktop_search": 13,
           "mobile_maps": 24,
-          "mobile_search": 0,
+          "mobile_search": 48,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 8,
           "direction_requests": 20
         },
         {
           "date": "2026-07-22",
+          "total_views": 38,
+          "desktop_maps": 7,
+          "desktop_search": 0,
+          "mobile_maps": 31,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 5
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -219440,7 +219825,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -225690,17 +226075,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 34,
+          "total_views": 60,
           "desktop_maps": 5,
-          "desktop_search": 0,
+          "desktop_search": 8,
           "mobile_maps": 29,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 18,
+          "calls": 2,
+          "website_clicks": 10,
           "direction_requests": 8
         },
         {
           "date": "2026-07-22",
+          "total_views": 24,
+          "desktop_maps": 4,
+          "desktop_search": 0,
+          "mobile_maps": 20,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -225711,7 +226107,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -225940,14 +226336,14 @@
         },
         {
           "date": "2025-01-20",
-          "total_views": 131,
-          "desktop_maps": 9,
-          "desktop_search": 8,
-          "mobile_maps": 59,
-          "mobile_search": 55,
-          "calls": 2,
-          "website_clicks": 4,
-          "direction_requests": 10
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-21",
@@ -231957,17 +232353,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 34,
+          "total_views": 121,
           "desktop_maps": 6,
-          "desktop_search": 0,
+          "desktop_search": 18,
           "mobile_maps": 28,
+          "mobile_search": 69,
+          "calls": 2,
+          "website_clicks": 3,
+          "direction_requests": 16
+        },
+        {
+          "date": "2026-07-22",
+          "total_views": 47,
+          "desktop_maps": 4,
+          "desktop_search": 0,
+          "mobile_maps": 43,
           "mobile_search": 0,
           "calls": 0,
           "website_clicks": 0,
           "direction_requests": 16
         },
         {
-          "date": "2026-07-22",
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -231978,7 +232385,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -232211,14 +232618,14 @@
         },
         {
           "date": "2025-01-20",
-          "total_views": 113,
-          "desktop_maps": 2,
-          "desktop_search": 12,
-          "mobile_maps": 32,
-          "mobile_search": 67,
-          "calls": 1,
-          "website_clicks": 8,
-          "direction_requests": 3
+          "total_views": 0,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 0,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 0
         },
         {
           "date": "2025-01-21",
@@ -238228,17 +238635,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 14,
+          "total_views": 119,
           "desktop_maps": 3,
-          "desktop_search": 0,
+          "desktop_search": 16,
           "mobile_maps": 11,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 89,
+          "calls": 1,
+          "website_clicks": 9,
           "direction_requests": 6
         },
         {
           "date": "2026-07-22",
+          "total_views": 29,
+          "desktop_maps": 5,
+          "desktop_search": 0,
+          "mobile_maps": 24,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 20
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -238249,7 +238667,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -244499,17 +244917,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 17,
+          "total_views": 80,
           "desktop_maps": 7,
-          "desktop_search": 0,
+          "desktop_search": 9,
           "mobile_maps": 10,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 54,
+          "calls": 3,
+          "website_clicks": 8,
           "direction_requests": 12
         },
         {
           "date": "2026-07-22",
+          "total_views": 13,
+          "desktop_maps": 4,
+          "desktop_search": 0,
+          "mobile_maps": 9,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 7
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -244520,7 +244949,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -250770,17 +251199,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 25,
+          "total_views": 81,
           "desktop_maps": 3,
-          "desktop_search": 0,
+          "desktop_search": 16,
           "mobile_maps": 22,
-          "mobile_search": 0,
-          "calls": 0,
-          "website_clicks": 0,
+          "mobile_search": 40,
+          "calls": 1,
+          "website_clicks": 13,
           "direction_requests": 10
         },
         {
           "date": "2026-07-22",
+          "total_views": 32,
+          "desktop_maps": 9,
+          "desktop_search": 0,
+          "mobile_maps": 23,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 11
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -250791,7 +251231,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -257041,17 +257481,28 @@
         },
         {
           "date": "2026-07-21",
-          "total_views": 16,
+          "total_views": 27,
           "desktop_maps": 2,
-          "desktop_search": 0,
+          "desktop_search": 5,
           "mobile_maps": 14,
-          "mobile_search": 0,
+          "mobile_search": 6,
           "calls": 0,
-          "website_clicks": 0,
+          "website_clicks": 1,
           "direction_requests": 0
         },
         {
           "date": "2026-07-22",
+          "total_views": 32,
+          "desktop_maps": 0,
+          "desktop_search": 0,
+          "mobile_maps": 32,
+          "mobile_search": 0,
+          "calls": 0,
+          "website_clicks": 0,
+          "direction_requests": 5
+        },
+        {
+          "date": "2026-07-23",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
@@ -257062,7 +257513,7 @@
           "direction_requests": 0
         },
         {
-          "date": "2026-07-23",
+          "date": "2026-07-24",
           "total_views": 0,
           "desktop_maps": 0,
           "desktop_search": 0,
