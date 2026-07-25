@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-24T19:00:16.232240",
+  "generated_at": "2026-07-25T09:59:51.579753",
   "date_range": {
     "start": "2026-01-01",
-    "end": "2026-07-22"
+    "end": "2026-07-23"
   },
   "studios": {
     "5753604": {
@@ -421,13 +421,27 @@
           "presales": 2,
           "cancellations": 0,
           "gross_revenue": 258.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Grassroots",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 258.0
         }
       ],
       "totals": {
-        "presales": 75,
+        "presales": 78,
         "cancellations": 6,
-        "net_presales": 69,
-        "gross_revenue": 9675.0
+        "net_presales": 72,
+        "gross_revenue": 10062.0
       }
     },
     "5755228": {
@@ -969,24 +983,53 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 258.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "SWEAT440 App",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         }
       ],
       "totals": {
-        "presales": 123,
+        "presales": 126,
         "cancellations": 6,
-        "net_presales": 117,
-        "gross_revenue": 12507.0
+        "net_presales": 120,
+        "gross_revenue": 12894.0
       }
     },
     "5754676": {
       "name": "SWEAT440 Dunwoody",
       "code": "GA-001",
-      "daily": [],
+      "daily": [
+        {
+          "date": "2026-07-23",
+          "source": "Meta Ads",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 198.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Website (unattributed)",
+          "presales": 10,
+          "cancellations": 0,
+          "gross_revenue": 990.0
+        }
+      ],
       "totals": {
-        "presales": 0,
+        "presales": 12,
         "cancellations": 0,
-        "net_presales": 0,
-        "gross_revenue": 0.0
+        "net_presales": 12,
+        "gross_revenue": 1188.0
       }
     },
     "5752080": {
@@ -1774,12 +1817,34 @@
     "5753113": {
       "name": "SWEAT440 Middletown",
       "code": "NJ-005",
-      "daily": [],
+      "daily": [
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 198.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Meta Ads",
+          "presales": 3,
+          "cancellations": 0,
+          "gross_revenue": 297.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Website (unattributed)",
+          "presales": 4,
+          "cancellations": 0,
+          "gross_revenue": 396.0
+        }
+      ],
       "totals": {
-        "presales": 0,
+        "presales": 9,
         "cancellations": 0,
-        "net_presales": 0,
-        "gross_revenue": 0.0
+        "net_presales": 9,
+        "gross_revenue": 891.0
       }
     },
     "5751381": {
@@ -3325,13 +3390,20 @@
           "presales": 2,
           "cancellations": 0,
           "gross_revenue": 278.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 149.0
         }
       ],
       "totals": {
-        "presales": 342,
+        "presales": 343,
         "cancellations": 34,
-        "net_presales": 308,
-        "gross_revenue": 42829.0
+        "net_presales": 309,
+        "gross_revenue": 42978.0
       }
     },
     "5753608": {
@@ -3750,24 +3822,53 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 258.0
         }
       ],
       "totals": {
-        "presales": 80,
+        "presales": 82,
         "cancellations": 9,
-        "net_presales": 71,
-        "gross_revenue": 10320.0
+        "net_presales": 73,
+        "gross_revenue": 10578.0
       }
     },
     "5753073": {
       "name": "SWEAT440 Old Bridge",
       "code": "NJ-004",
-      "daily": [],
+      "daily": [
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Meta Ads",
+          "presales": 5,
+          "cancellations": 0,
+          "gross_revenue": 495.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Website (unattributed)",
+          "presales": 3,
+          "cancellations": 0,
+          "gross_revenue": 297.0
+        }
+      ],
       "totals": {
-        "presales": 0,
+        "presales": 9,
         "cancellations": 0,
-        "net_presales": 0,
-        "gross_revenue": 0.0
+        "net_presales": 9,
+        "gross_revenue": 891.0
       }
     },
     "5753281": {
@@ -5185,13 +5286,27 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Business Mode",
+          "presales": 4,
+          "cancellations": 0,
+          "gross_revenue": 516.0
+        },
+        {
+          "date": "2026-07-23",
+          "source": "Social Media Organic",
+          "presales": 0,
+          "cancellations": 1,
+          "gross_revenue": 0.0
         }
       ],
       "totals": {
-        "presales": 217,
-        "cancellations": 22,
-        "net_presales": 195,
-        "gross_revenue": 26493.0
+        "presales": 221,
+        "cancellations": 23,
+        "net_presales": 198,
+        "gross_revenue": 27009.0
       }
     }
   }
