@@ -68,12 +68,12 @@
 .soc-date{font-size:11px;color:#8aaabb;font-weight:600}
 .soc-studio-badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;font-family:'Oswald',sans-serif;letter-spacing:.04em;margin-top:3px}
 @media(max-width:640px){.soc-row.soc-ig{grid-template-columns:56px 56px 1fr 48px 48px}.soc-row.soc-ig .soc-cell:nth-child(n+6){display:none}.soc-row.soc-ig.soc-th .soc-cell:nth-child(n+6){display:none}.soc-row.soc-ig.soc-th .soc-cell:nth-child(n+6){display:none}.soc-row.soc-fb{grid-template-columns:56px 56px 1fr}.soc-row.soc-fb .soc-cell:nth-child(n+4){display:none}}
-#leadsRingLeg,#memRingLeg{display:flex!important;flex-direction:column;gap:10px;font-size:13px;line-height:1.4;width:auto}
-#leadsRingLeg .ring-legend-item,#memRingLeg .ring-legend-item{display:flex!important;align-items:center;gap:0;width:auto}
-#leadsRingLeg .ring-legend-dot,#memRingLeg .ring-legend-dot{width:12px!important;height:12px!important;border-radius:3px;flex-shrink:0;margin-right:12px}
-#leadsRingLeg .ring-legend-label,#memRingLeg .ring-legend-label{white-space:nowrap;color:#1a1a2e;margin-right:16px;flex:0 0 auto}
-#leadsRingLeg .ring-legend-vol,#memRingLeg .ring-legend-vol{white-space:nowrap;text-align:right;color:#5a7a8a;margin-right:10px;flex:0 0 auto}
-#leadsRingLeg .ring-legend-pct,#memRingLeg .ring-legend-pct{white-space:nowrap;text-align:right;font-weight:700;color:#1a1a2e;flex:0 0 auto}
+#leadsRingLeg,#newsalesRingLeg,#cancRingLeg{display:flex!important;flex-direction:column;gap:10px;font-size:13px;line-height:1.4;width:auto}
+#leadsRingLeg .ring-legend-item,#newsalesRingLeg .ring-legend-item,#cancRingLeg .ring-legend-item{display:flex!important;align-items:center;gap:0;width:auto}
+#leadsRingLeg .ring-legend-dot,#newsalesRingLeg .ring-legend-dot,#cancRingLeg .ring-legend-dot{width:12px!important;height:12px!important;border-radius:3px;flex-shrink:0;margin-right:12px}
+#leadsRingLeg .ring-legend-label,#newsalesRingLeg .ring-legend-label,#cancRingLeg .ring-legend-label{white-space:nowrap;color:#1a1a2e;margin-right:16px;flex:0 0 auto}
+#leadsRingLeg .ring-legend-vol,#newsalesRingLeg .ring-legend-vol,#cancRingLeg .ring-legend-vol{white-space:nowrap;text-align:right;color:#5a7a8a;margin-right:10px;flex:0 0 auto}
+#leadsRingLeg .ring-legend-pct,#newsalesRingLeg .ring-legend-pct,#cancRingLeg .ring-legend-pct{white-space:nowrap;text-align:right;font-weight:700;color:#1a1a2e;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -89,7 +89,8 @@
       <div class="nav-submenu" id="funnel-group">
         <button class="nav-tab nav-sub" onclick="switchTab('funnel',this)">All Stages</button>
         <button class="nav-tab nav-sub" onclick="switchTab('leads',this)">Leads</button>
-        <button class="nav-tab nav-sub" onclick="switchTab('members',this)">Net Sales</button>
+        <button class="nav-tab nav-sub" onclick="switchTab('newsales',this)">New Sales</button>
+        <button class="nav-tab nav-sub" onclick="switchTab('cancellations',this)">Cancellations</button>
       </div>
     </div>
     <div class="nav-group">
@@ -162,7 +163,8 @@
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
         <div class="toggle-group" style="margin-bottom:0">
           <button class="tog-btn on" onclick="toggleDs(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Leads</button>
-          <button class="tog-btn on" onclick="toggleDs(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>Net Sales</button>
+          <button class="tog-btn on" onclick="toggleDs(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>New Sales</button>
+          <button class="tog-btn on" onclick="toggleDs(this,2)" style="border-color:#ff6b6b;background:#ff6b6b;color:#fff"><span class="dot" style="background:#fff"></span>Cancellations</button>
         </div>
         <div class="gran-group">
           <button class="gran-btn active" id="granDaily" onclick="setGran('daily')">Daily</button>
@@ -218,22 +220,40 @@
     <div id="gbp-content"></div>
   </div>
 
-  <!-- SALES -->
-  <div class="tab-content" id="tab-members">
-    <div id="mem-kpis" class="kpi-grid three"></div>
+  <!-- NEW SALES -->
+  <div class="tab-content" id="tab-newsales">
+    <div id="newsales-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <div><div class="chart-card-title" style="margin-bottom:0">Net Sales Over Time by Source</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:2px"></div></div>
+        <div><div class="chart-card-title" style="margin-bottom:0">New Sales Over Time by Source</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:2px"></div></div>
         <div class="gran-group">
           <button class="gran-btn active" id="granDailyS" onclick="setGran('daily')">Daily</button>
           <button class="gran-btn" id="granWeeklyS" onclick="setGran('weekly')">Weekly</button>
           <button class="gran-btn" id="granMonthlyS" onclick="setGran('monthly')">Monthly</button>
         </div>
       </div>
-      <div class="toggle-group" id="mem-toggles"></div>
-      <div style="position:relative;width:100%;height:260px"><canvas id="memChart"></canvas></div>
+      <div class="toggle-group" id="newsales-toggles"></div>
+      <div style="position:relative;width:100%;height:260px"><canvas id="newsalesChart"></canvas></div>
     </div>
-    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:-6px;margin-bottom:8px"></div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="memRing"></canvas></div><div class="ring-legend" id="memRingLeg"></div></div></div>
+    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:-6px;margin-bottom:8px"></div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="newsalesRing"></canvas></div><div class="ring-legend" id="newsalesRingLeg"></div></div></div>
+  </div>
+
+  <!-- CANCELLATIONS -->
+  <div class="tab-content" id="tab-cancellations">
+    <div id="canc-kpis" class="kpi-grid three"></div>
+    <div class="chart-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div><div class="chart-card-title" style="margin-bottom:0">Cancellations Over Time by Source</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:2px"></div></div>
+        <div class="gran-group">
+          <button class="gran-btn active" id="granDailyC" onclick="setGran('daily')">Daily</button>
+          <button class="gran-btn" id="granWeeklyC" onclick="setGran('weekly')">Weekly</button>
+          <button class="gran-btn" id="granMonthlyC" onclick="setGran('monthly')">Monthly</button>
+        </div>
+      </div>
+      <div class="toggle-group" id="canc-toggles"></div>
+      <div style="position:relative;width:100%;height:260px"><canvas id="cancChart"></canvas></div>
+    </div>
+    <div class="chart-card"><div class="chart-card-title">Source Participation</div><div class="data-thru-label" style="font-size:10px;color:#8aaabb;margin-top:-6px;margin-bottom:8px"></div><div class="ring-wrap" style="flex-direction:row;align-items:center;justify-content:center;gap:56px;padding:24px 40px"><div class="ring-canvas-wrap" style="width:300px;height:300px;flex-shrink:0;margin:0"><canvas id="cancRing"></canvas></div><div class="ring-legend" id="cancRingLeg"></div></div></div>
   </div>
 </div>
 
@@ -350,7 +370,9 @@ function kpiCard(l,v,pp,py,fmt,info){const dpp=cD(v,pp),dpy=cD(v,py);const ppH=d
 /* ── KPI INFO MODAL ─────────────────────────────────────────────────────── */
 const GLOSSARY={
   leads:{title:'Total Leads',desc:'Number of unique individuals who submitted a lead form or were entered as a prospect during the selected period. This is the top of the funnel — it counts new sign-up intents, not purchases.'},
+  nso_new_sale:{title:'Total New Sales',desc:'Number of recurring membership purchases during the selected date range, counted by purchase date. This is a gross figure — it counts every sale transaction and does not subtract cancellations. A sale is recorded on the date the membership was sold.'},
   nso_sale:{title:'Total Net Sales',desc:'Number of people who purchased a recurring membership during the selected date range, counted by purchase date. This is a net figure: gross presales minus any cancellations processed in the same period. A sale is recorded on the date the membership was sold, not the date the person first visited or activated their account.'},
+  nso_cancel:{title:'Total Cancellations',desc:'Number of presale membership cancellations processed during the selected date range, counted on the cancellation date. A cancellation is a separate transaction — it may relate to a sale from an earlier period. Fewer cancellations is better.'},
   meta_spend:{title:'Meta Ads — Spend',desc:'Total ad spend on Facebook and Instagram during the selected period, as reported by the Meta Marketing API. Includes all campaigns attributed to this studio.'},
   meta_impressions:{title:'Meta Ads — Impressions',desc:'Total number of times ads were shown to users on Facebook and Instagram. One person seeing the same ad multiple times counts as multiple impressions.'},
   meta_clicks:{title:'Meta Ads — Clicks',desc:'Total number of clicks on Meta ads, including link clicks, button clicks, and other interactions that direct users off the platform.'},
@@ -425,8 +447,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeKpiInfo();});
 function _infoBtn(key){const g=GLOSSARY[key];if(!g)return'';return`<button class="kpi-info-btn" onclick="showKpiInfo(this,event)" data-title="${_esc(g.title||key)}" data-desc="${_esc(g.desc)}" data-date="${_esc(g.date||'')}">i</button>`;}
 function _infoBtnInline(key){const g=GLOSSARY[key];if(!g)return'';return`<button class="kpi-info-btn kpi-info-inline" onclick="showKpiInfo(this,event)" data-title="${_esc(g.title||key)}" data-desc="${_esc(g.desc)}" data-date="${_esc(g.date||'')}">i</button>`;}
 
-function setGran(g){GRAN=g;['Daily','Weekly','Monthly'].forEach(x=>{['gran'+x,'gran'+x+'L','gran'+x+'S'].forEach(id=>{const b=document.getElementById(id);if(b)b.classList.toggle('active',x.toLowerCase()===g)})});applyFilters()}
-function toggleDs(btn,i){if(!trendChart)return;const ds=trendChart.data.datasets[i];ds.hidden=!ds.hidden;btn.classList.toggle('on');const cs=['#00A3E0','#00FFC2'];if(btn.classList.contains('on')){btn.style.background=cs[i];btn.style.borderColor=cs[i];btn.style.color='#000'}else{btn.style.background='#f4f9fd';btn.style.borderColor='#c0d4df';btn.style.color='#5a7a8a'}trendChart.update()}
+function setGran(g){GRAN=g;['Daily','Weekly','Monthly'].forEach(x=>{['gran'+x,'gran'+x+'L','gran'+x+'S','gran'+x+'C'].forEach(id=>{const b=document.getElementById(id);if(b)b.classList.toggle('active',x.toLowerCase()===g)})});applyFilters()}
+function toggleDs(btn,i){if(!trendChart)return;const ds=trendChart.data.datasets[i];ds.hidden=!ds.hidden;btn.classList.toggle('on');const cs=['#00A3E0','#00FFC2','#ff6b6b'],tc=['#000','#000','#fff'];if(btn.classList.contains('on')){btn.style.background=cs[i]||cs[0];btn.style.borderColor=cs[i]||cs[0];btn.style.color=tc[i]||'#000'}else{btn.style.background='#f4f9fd';btn.style.borderColor='#c0d4df';btn.style.color='#5a7a8a'}trendChart.update()}
 
 /* ══════════════════════════════════════════════════════════════════════════
    SUMMARY TAB
@@ -861,13 +883,11 @@ function drawSumSourceChart(studio,metric){
 /* ══════════════════════════════════════════════════════════════════════════
    CHART BUILDERS (Funnel, Area, Ring, Rank)
    ══════════════════════════════════════════════════════════════════════════ */
-function buildTrend(s,salesMap){
+function buildTrend(s,newSalesMap,cancMap){
   let rows=s;
-  if(salesMap){
-    const extraKeys=Object.keys(salesMap).filter(k=>!s.some(m=>m.key===k));
-    if(extraKeys.length)rows=[...s,...extraKeys.map(k=>({key:k,label:GRAN==='monthly'?fmMo(k):fmDay(k),signups:0,first_visits:0,first_sales:0}))].sort((a,b)=>a.key.localeCompare(b.key));
-  }
-  const isMob=window.innerWidth<=768;const ls=rows.map(m=>{const wl=GRAN!=='monthly'?_wkLabel(m.key):'';return wl?[m.label,wl]:m.label});const ld=rows.map(m=>m.signups||0),md=salesMap?rows.map(m=>salesMap[m.key]||0):rows.map(m=>m.first_sales||0);if(trendChart){const hd=trendChart.data.datasets.map(d=>d.hidden);trendChart.data.labels=ls;trendChart.data.datasets[0].data=ld;trendChart.data.datasets[1].data=md;trendChart.data.datasets.forEach((d,i)=>d.hidden=hd[i]);trendChart.update();return}trendChart=new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:ls,datasets:[{label:'Leads',data:ld,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},{label:'Net Sales',data:md,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false,borderDash:[2,3]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:12,maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a'}}}}})}
+  const maps=[newSalesMap,cancMap].filter(Boolean);
+  if(maps.length){const allKeys=new Set(s.map(m=>m.key));maps.forEach(m=>Object.keys(m).forEach(k=>allKeys.add(k)));const extraKeys=[...allKeys].filter(k=>!s.some(m=>m.key===k));if(extraKeys.length)rows=[...s,...extraKeys.map(k=>({key:k,label:GRAN==='monthly'?fmMo(k):fmDay(k),signups:0,first_visits:0,first_sales:0}))].sort((a,b)=>a.key.localeCompare(b.key));}
+  const isMob=window.innerWidth<=768;const ls=rows.map(m=>{const wl=GRAN!=='monthly'?_wkLabel(m.key):'';return wl?[m.label,wl]:m.label});const ld=rows.map(m=>m.signups||0),nd=newSalesMap?rows.map(m=>newSalesMap[m.key]||0):rows.map(m=>m.first_sales||0),cd=cancMap?rows.map(m=>cancMap[m.key]||0):rows.map(()=>0);if(trendChart){const hd=trendChart.data.datasets.map(d=>d.hidden);trendChart.data.labels=ls;trendChart.data.datasets[0].data=ld;trendChart.data.datasets[1].data=nd;if(trendChart.data.datasets[2])trendChart.data.datasets[2].data=cd;trendChart.data.datasets.forEach((d,i)=>d.hidden=hd[i]!==undefined?hd[i]:false);trendChart.update();return}trendChart=new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:ls,datasets:[{label:'Leads',data:ld,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},{label:'New Sales',data:nd,borderColor:'#00FFC2',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false,borderDash:[2,3]},{label:'Cancellations',data:cd,borderColor:'#ff6b6b',borderWidth:2,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false,borderDash:[4,4]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:12,maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a'}}}}})}
 function buildArea(id,tid,series,srcList,vk){const ctx=document.getElementById(id);if(!ctx)return;if(_ch[id]){_ch[id].destroy();_ch[id]=null}const tk=[...new Set(series.map(r=>r.key))].sort();const st=srcList.map(s=>series.filter(r=>r.source===s).reduce((a,r)=>a+(r[vk]||0),0));const sorted=[...srcList.keys()].sort((a,b)=>st[b]-st[a]).map(i=>srcList[i]);const ds=sorted.map(s=>{const c=srcColor(s,srcList.indexOf(s));return{label:s,data:tk.map(t=>series.filter(r=>r.key===t&&r.source===s).reduce((a,r)=>a+(r[vk]||0),0)),borderColor:c,backgroundColor:c+'cc',borderWidth:1,pointRadius:0,tension:.35,fill:true}});const isMob=window.innerWidth<=768;_ch[id]=new Chart(ctx,{type:'line',data:{labels:tk.map(k=>GRAN==='monthly'?fmMo(k):(wl=>wl?[fmDay(k),wl]:fmDay(k))(_wkLabel(k))),datasets:ds},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#5a7a8a',autoSkip:true,maxTicksLimit:isMob?5:12,maxRotation:0}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:11},color:'#5a7a8a'},stacked:true,min:0}}}});const tg=document.getElementById(tid);if(tg){tg.innerHTML='';sorted.forEach((s,bi)=>{const c=srcColor(s,srcList.indexOf(s));const btn=document.createElement('button');btn.className='tog-btn on';btn.style.cssText='border-color:'+c+';background:'+c+';color:#fff;font-size:11px;padding:4px 10px';btn.innerHTML='<span class="dot" style="background:#fff"></span>'+s.toUpperCase();btn.onclick=function(){const ch=_ch[id];if(!ch)return;ch.data.datasets[bi].hidden=!ch.data.datasets[bi].hidden;this.classList.toggle('on');if(this.classList.contains('on')){this.style.background=c;this.style.borderColor=c;this.style.color='#fff'}else{this.style.background='#f4f9fd';this.style.borderColor='#c0d4df';this.style.color='#5a7a8a'}ch.update()};tg.appendChild(btn)})}}
 function buildRing(cid,lid,rows,vk){const byS={};rows.forEach(r=>{byS[r.source]=(byS[r.source]||0)+(r[vk]||0)});const sorted=Object.entries(byS).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);const labels=sorted.map(s=>s[0]),values=sorted.map(s=>s[1]);const ctx=document.getElementById(cid);if(!ctx)return;if(_ch[cid]){_ch[cid].destroy();_ch[cid]=null}const total=values.reduce((s,v)=>s+v,0);const colors=labels.map((l,i)=>srcColor(l,i));_ch[cid]=new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data:values,backgroundColor:colors,borderColor:'#fff',borderWidth:2,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},cutout:'65%'}});const leg=document.getElementById(lid);if(leg)leg.innerHTML=labels.map((l,i)=>{const p=total?(values[i]/total*100).toFixed(1):0;return`<div class="ring-legend-item"><span class="ring-legend-dot" style="background:${colors[i]}"></span><span>${l}</span><span style="margin-left:auto;font-weight:600;color:#1a1a2e">${p}%</span></div>`}).join('')}
 function buildRank(tid,rows,vk){const tb=document.querySelector('#'+tid+' tbody');if(!tb)return;const byS={};rows.forEach(r=>{byS[r.studio]=(byS[r.studio]||0)+(r[vk]||0)});const sorted=Object.entries(byS).sort((a,b)=>b[1]-a[1]);const total=sorted.reduce((s,[,v])=>s+v,0);tb.innerHTML=sorted.map(([st,v])=>{const p=total?(v/total*100).toFixed(1):0;const bw=total?Math.round(v/total*80):0;return`<tr><td><span class="bar-mini" style="width:${bw}px"></span>${st.replace('SWEAT440 ','')}</td><td class="num">${v.toLocaleString('en-US')}</td><td class="pct">${p}%</td></tr>`}).join('')}
@@ -879,108 +899,93 @@ function renderFunnel(){
   const el=document.getElementById('funnelAllStudios');
   if(!el)return;
   if(!SC||!SC.studios||!SC.studios.length){el.innerHTML='<div style="padding:32px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">Scorecard data loading…</div>';return;}
-  const progCol=p=>p>=90?'#0a8a4a':p>=70?'#f4a021':'#e05a5a';
   const fmt=n=>n!=null?n.toLocaleString('en-US'):'—';
-  const fmtPct=p=>p!=null?p.toFixed(1)+'%':'—';
+  const progCol=p=>p>=90?'#0a8a4a':p>=70?'#f4a021':'#e05a5a';
 
-  // Show only the selected studio (same as Summary tab)
   const _scVisFunnel=_allowedStudios
     ?(SC.studios||[]).filter(s=>_allowedStudios.includes((s.data_name||s.full_name||s.name||'').replace(/^SWEAT440\s+/,'')))
     :(SC.studios||[]);
   if(!_sumStudio||(_allowedStudios&&!_scVisFunnel.find(s=>s.code===_sumStudio.code)))_sumStudio=_scVisFunnel[0]||SC.studios[0];
   const activeCode=_sumStudio?_sumStudio.code:null;
 
-  // Studio switcher tabs (only allowed studios visible)
+  // Studio switcher
   let h='<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">';
   _scVisFunnel.forEach(s=>{
     const active=s.code===activeCode;
-    h+=`<button onclick="_sumStudio=SC.studios.find(x=>x.code==='${s.code}');renderFunnel()" style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;font-weight:600;text-transform:uppercase;padding:6px 16px;border-radius:4px;border:2px solid ${active?'#00A3E0':'#c0d4df'};background:${active?'#00A3E0':'transparent'};color:${active?'#fff':'#5a7a8a'};cursor:pointer;letter-spacing:.5px">${s.name}</button>`;
+    h+=`<button onclick="_sumStudio=SC.studios.find(x=>x.code==='${s.code}');renderFunnel()" style="font-family:Oswald,sans-serif;font-style:italic;font-size:13px;font-weight:600;text-transform:uppercase;padding:6px 16px;border-radius:4px;border:2px solid ${active?'#00A3E0':'#2a4a5a'};background:${active?'#00A3E0':'transparent'};color:${active?'#fff':'#8aaabb'};cursor:pointer;letter-spacing:.5px">${s.name}</button>`;
   });
   h+='</div>';
 
   const studio=_sumStudio||SC.studios[0];
-  {
-    const weeks=studio.weeks||[];
-    const cw=studio.current_week||0;
-    const tgt=studio.targets||{};
-    const curWk=weeks.find(w=>(parseInt(String(w.week).replace(/[^0-9]/g,''))||0)===cw)||{};
+  const weeks=studio.weeks||[];
+  const cw=studio.current_week||0;
+  const tgt=studio.targets||{};
+  const curWk=weeks.find(w=>(parseInt(String(w.week).replace(/[^0-9]/g,''))||0)===cw)||{};
 
-    const cumLeads=curWk.total_leads||0;
-    const cumPres=curWk.presales_count||0;
-    const cumCanc=curWk.cancellations_count||0;
-    const _fTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_fTierMap[r.week]=r;});
-    const _fCurTier=_fTierMap[cw];
-    const netActive=_fCurTier?(_fCurTier.t0||0)+(_fCurTier.t1||0)+(_fCurTier.t2||0)+(_fCurTier.t3||0):Math.max(0,cumPres-cumCanc);
-    const newLeads=curWk.new_leads||0;
-    const newPres=curWk.presales_week||0;
-    const convRateCum=cumLeads>0?cumPres/cumLeads*100:null;
-    const convRateWk=curWk.conversion_rate||null;
+  const cumLeads = curWk.total_leads||0;
+  const cumSales = curWk.presales_count||0;      // gross sales
+  const cumCanc  = curWk.cancellations_count||0;
+  const _fTierMap={};(studio.tier_rmr_by_week||[]).forEach(r=>{_fTierMap[r.week]=r;});
+  const _fCurTier=_fTierMap[cw];
+  const netActive=_fCurTier?(_fCurTier.t0||0)+(_fCurTier.t1||0)+(_fCurTier.t2||0)+(_fCurTier.t3||0):Math.max(0,cumSales-cumCanc);
 
-    const tLeads=tgt.total_leads;
-    const tPres=tgt.presales_count;
-    const leadsPct=tLeads&&cumLeads?Math.min(100,Math.round(cumLeads/tLeads*100)):null;
-    const salesPct=tPres&&netActive?Math.min(100,Math.round(netActive/tPres*100)):null;
+  const tLeads=tgt.total_leads;
+  const tPres=tgt.presales_count;
+  const leadsPct=tLeads&&cumLeads?Math.min(100,Math.round(cumLeads/tLeads*100)):null;
+  const salesPct=tPres&&netActive?Math.min(100,Math.round(netActive/tPres*100)):null;
 
-    const totalWeeks=studio.go_week||(weeks.length-1);
-    const ds=curWk.date_start;
-    const de=curWk.date_end;
-    const fmtD=iso=>{if(!iso)return'';const d=new Date(iso+'T00:00:00Z');return`${d.getUTCMonth()+1}/${d.getUTCDate()}`};
-    const drFmt=ds&&de?`${fmtD(ds)} – ${fmtD(de)}`:curWk.date_range||'';
-    const isPreLaunch=cw===0;
-    const weekLabel=isPreLaunch?'Pre-Launch':`WEEK ${cw}`;
-    const funnelPresW=cumLeads>0?Math.max(4,Math.round(netActive/cumLeads*100)):0;
-    const pBar=(pct,col)=>pct!=null?`<div style="height:5px;background:#e8f0f5;border-radius:3px;margin-top:4px"><div style="height:100%;width:${pct}%;background:${col||'#00A3E0'};border-radius:3px;transition:width .3s"></div></div>`:'';
+  const totalWeeks=studio.go_week||(weeks.length-1);
+  const isPreLaunch=cw===0;
+  const weekLabel=isPreLaunch?'Pre-Launch':`Week ${cw}`;
+  const ds=curWk.date_start,de=curWk.date_end;
+  const fmtD=iso=>{if(!iso)return'';const d=new Date(iso+'T00:00:00Z');return`${d.getUTCMonth()+1}/${d.getUTCDate()}`;};
+  const drFmt=ds&&de?`${fmtD(ds)} – ${fmtD(de)}`:curWk.date_range||'';
 
-    h+=`<div class="chart-card" style="padding:14px 16px">`;
+  // Funnel bar widths — all relative to cumLeads so bars taper naturally
+  const salesW = cumLeads>0 ? Math.max(3, Math.min(100, Math.round(cumSales/cumLeads*100))) : (cumSales>0?100:0);
+  const cancW  = cumLeads>0 ? Math.max(0, Math.min(salesW, Math.round(cumCanc/cumLeads*100))) : 0;
 
-    // Header: name
-    h+=`<div style="font-family:Oswald,sans-serif;font-style:italic;font-size:15px;font-weight:700;text-transform:uppercase;color:#1a1a2e;letter-spacing:.5px;margin-bottom:6px">${studio.name}</div>`;
+  const fRow=(label,val,target,barW,barColor,pct,detail)=>{
+    let r=`<div style="margin-bottom:14px">`;
+    r+=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">`;
+    r+=`<span style="font-size:11px;font-family:Oswald,sans-serif;font-style:italic;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#8aaabb">${label}</span>`;
+    r+=`<span style="font-size:18px;font-weight:700;color:#e0e8ee">${fmt(val)}${target?`<span style="font-size:11px;color:#5a7a8a"> / ${fmt(target)}</span>`:''}</span>`;
+    r+=`</div>`;
+    r+=`<div style="height:8px;background:#1a3040;border-radius:4px;overflow:hidden">`;
+    r+=`<div style="height:100%;width:${barW}%;background:${barColor};border-radius:4px;transition:width .4s"></div>`;
+    r+=`</div>`;
+    if(pct!=null||detail){
+      r+=`<div style="font-size:9px;color:#5a7a8a;text-align:right;margin-top:2px">`;
+      if(pct!=null)r+=`${pct}% of target`;
+      if(detail)r+=`${pct!=null?' · ':''}${detail}`;
+      r+=`</div>`;
+    }
+    r+=`</div>`;
+    return r;
+  };
 
-    // Week + date row
-    h+=`<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px">`;
-    h+=`<span style="font-size:12px;font-weight:700;font-family:Oswald,sans-serif;font-style:italic;text-transform:uppercase;color:#00A3E0;letter-spacing:.5px">${weekLabel}</span>`;
-    h+=`<span style="font-size:10px;color:#8aaabb">of ${totalWeeks}</span>`;
-    if(drFmt){h+=`<span style="font-size:11px;color:#5a7a8a;margin-left:4px">${drFmt}</span>`;}
-    h+=`</div>`;
+  h+=`<div class="chart-card" style="padding:18px 20px">`;
 
-    // Leads row
-    h+=`<div style="margin-bottom:8px">`;
-    h+=`<div style="display:flex;justify-content:space-between;align-items:baseline">`;
-    h+=`<span style="font-size:11px;color:#5a7a8a;font-family:Oswald,sans-serif;font-style:italic;text-transform:uppercase;letter-spacing:.3px">Leads</span>`;
-    h+=`<span style="font-size:15px;font-weight:700;color:#1a1a2e">${fmt(cumLeads)}${tLeads?'<span style="font-size:11px;color:#8aaabb"> / '+fmt(tLeads)+'</span>':''}</span>`;
-    h+=`</div>`;
-    h+=pBar(leadsPct,'#00A3E0');
-    if(leadsPct!=null)h+=`<div style="font-size:9px;color:#8aaabb;text-align:right;margin-top:2px">${leadsPct}% of target${newLeads>0?' · +'+newLeads+' this week':''}</div>`;
-    h+=`</div>`;
+  // Header
+  h+=`<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px;flex-wrap:wrap">`;
+  h+=`<span style="font-family:Oswald,sans-serif;font-style:italic;font-size:16px;font-weight:700;text-transform:uppercase;color:#e0e8ee;letter-spacing:.5px">${studio.name}</span>`;
+  h+=`<span style="font-size:12px;font-weight:700;font-family:Oswald,sans-serif;font-style:italic;text-transform:uppercase;color:#00A3E0">${weekLabel}</span>`;
+  h+=`<span style="font-size:10px;color:#5a7a8a">of ${totalWeeks}</span>`;
+  if(drFmt)h+=`<span style="font-size:10px;color:#5a7a8a">${drFmt}</span>`;
+  h+=`</div>`;
 
-    // Presales row
-    h+=`<div style="margin-bottom:8px">`;
-    h+=`<div style="display:flex;justify-content:space-between;align-items:baseline">`;
-    h+=`<span style="font-size:11px;color:#5a7a8a;font-family:Oswald,sans-serif;font-style:italic;text-transform:uppercase;letter-spacing:.3px">Presales (net)</span>`;
-    h+=`<span style="font-size:15px;font-weight:700;color:#1a1a2e">${fmt(netActive)}${tPres?'<span style="font-size:11px;color:#8aaabb"> / '+fmt(tPres)+'</span>':''}</span>`;
-    h+=`</div>`;
-    h+=pBar(salesPct,progCol(salesPct||0));
-    if(salesPct!=null)h+=`<div style="font-size:9px;color:#8aaabb;text-align:right;margin-top:2px">${salesPct}% of target${newPres>0?' · +'+newPres+' this week':''}</div>`;
-    h+=`</div>`;
+  // Funnel rows: Leads → New Sales → Cancellations
+  h+=fRow('Leads', cumLeads, tLeads, 100, '#00A3E0', leadsPct, null);
+  h+=fRow('New Sales', cumSales, tPres, salesW, '#00FFC2', salesPct, null);
+  h+=fRow('Cancellations', cumCanc, null, cancW, '#ff6b6b', null, cumSales>0?`${(cumCanc/cumSales*100).toFixed(1)}% of sales`:null);
 
-    // Conv rate + mini funnel
-    h+=`<div style="display:flex;align-items:center;gap:12px;padding-top:8px;border-top:1px solid #e8f0f5">`;
-    h+=`<div style="flex:1">`;
-    h+=`<div style="font-size:9px;color:#8aaabb;text-transform:uppercase;letter-spacing:.5px;font-family:Oswald,sans-serif;font-style:italic">Conv Rate</div>`;
-    h+=`<div style="font-size:16px;font-weight:700;color:#00A3E0">${fmtPct(convRateCum)}</div>`;
-    if(convRateWk!=null)h+=`<div style="font-size:9px;color:#8aaabb">This week: ${convRateWk.toFixed(1)}%</div>`;
-    h+=`</div>`;
-    // Mini funnel visual
-    h+=`<div style="flex:1.5">`;
-    h+=`<div style="font-size:9px;color:#8aaabb;margin-bottom:3px">Leads → Presales</div>`;
-    h+=`<div style="height:7px;background:#00A3E0;border-radius:2px;margin-bottom:2px"></div>`;
-    h+=`<div style="height:7px;width:${funnelPresW}%;background:#00FFC2;border-radius:2px"></div>`;
-    h+=`</div>`;
-    h+=`</div>`;
+  // Net sales footer
+  h+=`<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid #1a3040;margin-top:4px">`;
+  h+=`<span style="font-size:11px;font-family:Oswald,sans-serif;font-style:italic;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#8aaabb">Net Sales</span>`;
+  h+=`<span style="font-size:20px;font-weight:700;color:${progCol(salesPct||0)}">${fmt(netActive)}${tPres?`<span style="font-size:11px;color:#5a7a8a"> / ${fmt(tPres)}</span>`:''}</span>`;
+  h+=`</div>`;
 
-    h+=`</div>`;  // card
-  }
-
+  h+=`</div>`;
   el.innerHTML=h;
 }
 
@@ -990,36 +995,44 @@ function applyFilters(){
   const fs=document.getElementById('fFrom').value,ts=document.getElementById('fTo').value;
   const from=fs?new Date(fs+'T00:00:00Z'):null,to=ts?new Date(ts+'T23:59:59Z'):new Date();
   const wins=from&&to?cW(from,to):{ppFrom:null,ppTo:null,pyFrom:null,pyTo:null};
+  // fa/faA: fa respects source filter (for charts); faA ignores it (for KPI totals, matching Summary methodology)
   function fa(f,t){return{daily:fR(RAW.daily_detail||[],f,t,st,sr),monthly:fR(RAW.monthly_detail||[],f,t,st,sr),get all(){return[...this.daily,...this.monthly]}}}
+  function faA(f,t){return{daily:fR(RAW.daily_detail||[],f,t,st,null),monthly:fR(RAW.monthly_detail||[],f,t,st,null),get all(){return[...this.daily,...this.monthly]}}}
   const curr=fa(from,to),pp=wins.ppFrom?fa(wins.ppFrom,wins.ppTo):{daily:[],monthly:[],all:[]},py=wins.pyFrom?fa(wins.pyFrom,wins.pyTo):{daily:[],monthly:[],all:[]};
+  const currA=faA(from,to),ppA=wins.ppFrom?faA(wins.ppFrom,wins.ppTo):{daily:[],monthly:[],all:[]},pyA=wins.pyFrom?faA(wins.pyFrom,wins.pyTo):{daily:[],monthly:[],all:[]};
   const cS=sR(curr.all),pS=sR(pp.all),yS=sR(py.all);
-  // NSO sales: use MART_SALES_DETAILS (nso_sales_data.json) — net presales (gross minus cancellations)
+  const cSA=sR(currA.all),pSA=sR(ppA.all),ySA=sR(pyA.all);
+  // NSO sales KPI totals: no source filter — matches Summary/Scorecard methodology (all transactions counted)
+  // NSO sales chart rows: source filter applied for breakdown views
+  const sCurrA=fR(NSO_SALES_ROWS,from,to,st,null);
+  const sPPA=wins.ppFrom?fR(NSO_SALES_ROWS,wins.ppFrom,wins.ppTo,st,null):[];
+  const sPYA=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,null):[];
   const sCurr=fR(NSO_SALES_ROWS,from,to,st,sr);
-  const sPP=wins.ppFrom?fR(NSO_SALES_ROWS,wins.ppFrom,wins.ppTo,st,sr):[];
-  const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
-  let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
-  // Sales-by-period for the Funnel Over Time chart — same dataset/formula as the Total Sales
-  // KPI above (nso_sales_data.json, net of cancellations), so the chart always sums to smC.
-  // The tier dataset (tier_daily_sales/tier_rmr_by_week) is reserved for the Scorecard tab's
-  // tier-breakdown rows and is not used anywhere else in the dashboard.
-  const salesByPeriod=_bucketByPeriod(sCurr,r=>(r.first_sales||0)-(r.cancellations||0));
-  if(Object.values(salesByPeriod).reduce((a,b)=>a+b,0)<0)Object.keys(salesByPeriod).forEach(k=>salesByPeriod[k]=0); // matches Math.max(0,...) clamp
-  buildTrend(toTS(curr.daily,curr.monthly),salesByPeriod);
+  let smC=netSales(sCurrA),smP=netSales(sPPA),smY=netSales(sPYA);
+  const nsC=sCurrA.reduce((a,r)=>a+(r.first_sales||0),0),nsP=sPPA.reduce((a,r)=>a+(r.first_sales||0),0),nsY=sPYA.reduce((a,r)=>a+(r.first_sales||0),0);
+  const cnC=sCurrA.reduce((a,r)=>a+(r.cancellations||0),0),cnP=sPPA.reduce((a,r)=>a+(r.cancellations||0),0),cnY=sPYA.reduce((a,r)=>a+(r.cancellations||0),0);
+  const newSalesByPeriod=_bucketByPeriod(sCurrA,r=>r.first_sales||0);
+  const cancByPeriod=_bucketByPeriod(sCurrA,r=>r.cancellations||0);
+  buildTrend(toTS(currA.daily,currA.monthly),newSalesByPeriod,cancByPeriod);
   const fkpi=document.getElementById('funnel-kpis');
-  if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads)+kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
-  document.getElementById('leads-kpis').innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads);
+  if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cSA.leads,pSA.leads,ySA.leads,null,GLOSSARY.leads)+kpiCard('Total New Sales',nsC,nsP||null,nsY||null,null,GLOSSARY.nso_new_sale)+kpiCard('Total Cancellations',cnC,cnP||null,cnY||null,null,GLOSSARY.nso_cancel)+kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
+  document.getElementById('leads-kpis').innerHTML=kpiCard('Total Leads',cSA.leads,pSA.leads,ySA.leads,null,GLOSSARY.leads);
   const leadsSeries=toSrcTSGran(curr.daily,curr.monthly);
   const activeSrcLeads=(sr||[]).filter(s=>leadsSeries.some(r=>r.source===s&&(r.signups||0)>0));
   buildArea('leadsChart','leads-toggles',leadsSeries,activeSrcLeads,'signups');
   buildRing('leadsRing','leadsRingLeg',curr.all,'signups');
-  document.getElementById('mem-kpis').innerHTML=kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
-  // Net out cancellations per row so this chart/ring sum to the same net total as the KPI card above.
-  const sCurrNet=sCurr.map(r=>({...r,first_sales:(r.first_sales||0)-(r.cancellations||0)}));
-  const salesSeries=toSrcTSGran(sCurrNet,[]);
-  const activeSrcSales=(sr||[]).filter(s=>salesSeries.some(r=>r.source===s&&(r.first_sales||0)>0));
-  buildArea('memChart','mem-toggles',salesSeries,activeSrcSales,'first_sales');
-  buildRing('memRing','memRingLeg',sCurrNet,'first_sales');
+  const newsalesKpis=document.getElementById('newsales-kpis');if(newsalesKpis)newsalesKpis.innerHTML=kpiCard('Total New Sales',nsC,nsP||null,nsY||null,null,GLOSSARY.nso_new_sale);
+  const newSalesSeries=toSrcTSGran(sCurr,[]);
+  const activeSrcNewSales=(sr||[]).filter(s=>newSalesSeries.some(r=>r.source===s&&(r.first_sales||0)>0));
+  buildArea('newsalesChart','newsales-toggles',newSalesSeries,activeSrcNewSales,'first_sales');
+  buildRing('newsalesRing','newsalesRingLeg',sCurr,'first_sales');
+  const cancKpis=document.getElementById('canc-kpis');if(cancKpis)cancKpis.innerHTML=kpiCard('Total Cancellations',cnC,cnP||null,cnY||null,null,GLOSSARY.nso_cancel);
+  const cancRows=sCurr.map(r=>({...r,first_sales:r.cancellations||0}));
+  const cancSeries=toSrcTSGran(cancRows,[]);
+  const activeSrcCanc=(sr||[]).filter(s=>cancSeries.some(r=>r.source===s&&(r.first_sales||0)>0));
+  buildArea('cancChart','canc-toggles',cancSeries,activeSrcCanc,'first_sales');
+  buildRing('cancRing','cancRingLeg',cancRows,'first_sales');
   if(document.getElementById('tab-meta').classList.contains('active'))renderMeta();
   if(document.getElementById('tab-google').classList.contains('active'))renderGoogle();
   if(document.getElementById('tab-ga4').classList.contains('active'))renderGA4();
