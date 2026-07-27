@@ -58,6 +58,10 @@
   }
   .period { color: var(--ink-soft); font-size: 12px; }
 
+  .dashboard-subtitle {
+    font-size: 13px; color: var(--ink-soft); margin-top: 2px;
+  }
+
   /* KPI grid */
   .kpi-grid {
     display: grid; gap: 12px;
@@ -66,12 +70,51 @@
   }
   .kpi {
     background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 14px 16px;
+    padding: 14px 16px; position: relative;
   }
   .kpi .label {
     font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
     color: var(--ink-soft); font-weight: 600;
+    display: flex; align-items: center; gap: 5px;
+    padding-right: 18px; /* keep room for the info icon */
   }
+  .kpi-info {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: absolute; top: 10px; right: 10px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #fff; border: 1.5px solid var(--brand-blue); color: var(--brand-blue);
+    font-size: 11px; font-weight: 700; font-style: italic;
+    text-transform: none; letter-spacing: normal;
+    cursor: pointer; user-select: none; flex: none;
+  }
+  .kpi-info:hover { background: var(--brand-blue); color: #fff; }
+
+  /* Info modal (opened by clicking a .kpi-info icon) */
+  .kpi-modal-backdrop {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(15, 23, 42, .35);
+    align-items: center; justify-content: center;
+  }
+  .kpi-modal-backdrop.open { display: flex; }
+  .kpi-modal {
+    position: relative; width: 320px; max-width: calc(100vw - 32px);
+    background: #fff; border-radius: 12px; padding: 20px 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  }
+  .kpi-modal-title {
+    color: var(--brand-blue); font-weight: 700; font-style: italic;
+    text-transform: uppercase; letter-spacing: .5px; font-size: 13px;
+    margin-bottom: 10px; padding-right: 20px;
+  }
+  .kpi-modal-body {
+    font-size: 13px; line-height: 1.5; color: var(--ink); font-style: normal;
+  }
+  .kpi-modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; cursor: pointer;
+    font-size: 18px; line-height: 1; color: var(--ink-soft); padding: 0;
+  }
+  .kpi-modal-close:hover { color: var(--ink); }
   .kpi .value {
     font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600;
     color: var(--ink); margin-top: 2px;
@@ -372,6 +415,7 @@
   <header class="topbar">
     <div>
       <h1>Meta Ads Dashboard - Open Studios</h1>
+      <div class="dashboard-subtitle">This is an internal-use dashboard for the Growth Marketing Manager and the Creative Director.</div>
       <div class="meta">
         <span id="generatedAt">Loading…</span>
       </div>
@@ -418,6 +462,15 @@
 
   <!-- KPI cards -->
   <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- KPI info modal (shared, populated on demand) -->
+  <div class="kpi-modal-backdrop" id="kpiModalBackdrop">
+    <div class="kpi-modal">
+      <button class="kpi-modal-close" id="kpiModalClose" aria-label="Close">&times;</button>
+      <div class="kpi-modal-title" id="kpiModalTitle"></div>
+      <div class="kpi-modal-body" id="kpiModalBody"></div>
+    </div>
+  </div>
 
   <!-- Daily trend -->
   <div class="card">
@@ -1073,6 +1126,12 @@ function render() {
   renderTabMediaType(view);
 }
 
+const KPI_INFO = {
+  Leads: "This is the total number of leads recorded in Meta Ads Manager. There may be differences between this figure and what appears in MBO due to Meta's different attribution models.",
+  Trials: "This figure is taken directly from Meta Ads Manager. It may vary from the information recorded in MBO due to the different attribution models.",
+  Purchases: "This figure is taken directly from Meta Ads Manager. It may vary from the information recorded in MBO due to the different attribution models.",
+};
+
 function renderKpis(t) {
   const cpt = t.trials    ? (t.spend / t.trials)    : 0;
   const cpp = t.purchases ? (t.spend / t.purchases) : 0;
@@ -1087,14 +1146,45 @@ function renderKpis(t) {
     { label: "Reach",       value: fmtInt(t.reach) },
   ];
   const grid = document.getElementById("kpiGrid");
-  grid.innerHTML = cards.map(c => `
+  grid.innerHTML = cards.map(c => {
+    const info = KPI_INFO[c.label];
+    return `
     <div class="kpi ${c.accent ? "accent" : ""}" ${c.accentColor ? `style="border-left:4px solid ${c.accentColor}"` : ""}>
       <div class="label">${c.label}</div>
+      ${info ? `<span class="kpi-info" data-kpi-label="${c.label}">i</span>` : ""}
       <div class="value" ${c.accentColor ? `style="color:${c.accentColor}"` : ""}>${c.value}</div>
       ${c.sub ? `<div class="sub">${c.sub}</div>` : ""}
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
+
+function openKpiModal(label) {
+  const info = KPI_INFO[label];
+  if (!info) return;
+  document.getElementById("kpiModalTitle").textContent = label;
+  document.getElementById("kpiModalBody").textContent = info;
+  document.getElementById("kpiModalBackdrop").classList.add("open");
+}
+
+function closeKpiModal() {
+  document.getElementById("kpiModalBackdrop").classList.remove("open");
+}
+
+document.addEventListener("click", (e) => {
+  const trigger = e.target.closest(".kpi-info");
+  if (trigger) {
+    openKpiModal(trigger.dataset.kpiLabel);
+    return;
+  }
+  if (e.target.id === "kpiModalBackdrop" || e.target.closest("#kpiModalClose")) {
+    closeKpiModal();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeKpiModal();
+});
 
 function renderDaily(daily) {
   currentDailyData = daily;
