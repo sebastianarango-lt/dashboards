@@ -83,6 +83,8 @@
   </div>
 </div>
 
+<div class="data-freshness-note" id="dataFreshnessNote"></div>
+
 <div class="main">
   <div class="tab-content active" id="tab-summary">
     <div class="kpi-grid" id="summary-kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px"></div>
@@ -570,6 +572,7 @@ async function loadData() {
   }
   try { META_ADS_RAW   = await metaRes.value.json();   } catch(e) { console.warn('meta-ads-data.json unavailable:', e); }
   try { GOOGLE_ADS_RAW = await googleRes.value.json(); } catch(e) { console.warn('google-ads-data.json unavailable:', e); }
+  _renderFreshnessNote();
 
   // Organic channel data — load in background, does NOT block main dashboard
   _loadOrganicData();
@@ -1950,6 +1953,7 @@ async function _loadOrganicData() {
   catch(e) { console.warn('social_insights.json unavailable:', e); SOCIAL_RAW = {facebook:[],instagram:[]}; }
   try { GBP_RAW_ORG = await gbpRes.value.json(); }
   catch(e) { console.warn('gbp_data.json unavailable:', e); GBP_RAW_ORG = null; }
+  _renderFreshnessNote();
 
   // If user is already on a social/GBP tab, re-render now that data is ready
   const activeTab = document.querySelector('.tab-content.active');
@@ -1968,6 +1972,16 @@ async function _loadOrganicData() {
 
   // Always re-render so data is ready when user switches to the tab
   renderGA4();
+}
+
+function _renderFreshnessNote() {
+  renderFreshnessNote('dataFreshnessNote', [
+    {raw: RAW,            lagDays: 2},
+    {raw: META_ADS_RAW,   lagDays: 1},
+    {raw: GOOGLE_ADS_RAW, lagDays: 1},
+    {raw: SOCIAL_RAW,     lagDays: 1},
+    {raw: GBP_RAW_ORG,    lagDays: 1},
+  ]);
 }
 
 // Data loaded in loadData() alongside other sources

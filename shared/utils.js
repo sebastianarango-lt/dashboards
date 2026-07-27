@@ -423,6 +423,32 @@ function fmtMonthLabel(iso) { return new Date(iso+'T00:00:00Z').toLocaleString('
 
 function fmtDayLabel(iso)   { return new Date(iso+'T00:00:00Z').toLocaleString('en-US',{month:'short',day:'numeric',timeZone:'UTC'}); }
 
+function fmtFullDate(d) { return d.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}); }
+
+// Data freshness note ------------------------------------------------------
+// Every data file stamps its own generated_at when a refresh succeeds; if a
+// refresh fails, generated_at stays put and the computed "through" date falls
+// behind on its own — no separate failure tracking needed. Snowflake-backed
+// files lag 2 days (fetch_data.py/fetch_nso_sales.py cap at today-2); ad
+// platform / GBP / social files lag 1 day (data is current through yesterday).
+function dataThroughDate(raw, lagDays) {
+  if (!raw || !raw.generated_at) return null;
+  const gen = new Date(raw.generated_at);
+  if (isNaN(gen)) return null;
+  return new Date(Date.UTC(gen.getUTCFullYear(), gen.getUTCMonth(), gen.getUTCDate() - lagDays));
+}
+
+function renderFreshnessNote(elId, sources) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  let oldest = null;
+  sources.forEach(({raw, lagDays}) => {
+    const d = dataThroughDate(raw, lagDays);
+    if (d && (!oldest || d < oldest)) oldest = d;
+  });
+  el.textContent = oldest ? ('Data current through ' + fmtFullDate(oldest)) : '';
+}
+
 function toTimeSeries(dailyRows, monthlyRows) {
   if (GRAN === 'daily') {
     const map = {};
