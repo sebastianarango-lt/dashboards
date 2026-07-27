@@ -5,9 +5,8 @@ from MART_SALES_DETAILS in Snowflake. Pure transactional approach: every
 buy (+1) and cancel (-1) transaction is counted on the day it occurs.
 
 Key logic:
-  - LOC=98  : LOCATION_ID=98 rows excluded only when a non-98 sibling exists
-              (same STUDIO_ID+CLIENT_ID+PRODUCT+DATE+QTY). When LOC=98 is
-              the studio's only location, those rows are kept.
+  - No dedup: all raw transactions counted, including LOC=98 rows, matching
+              MindBody's raw transaction counts exactly.
   - Presales: QUANTITY=1, IS_RETURN=0, counted on their SALE_DATE.
   - Cancels : QUANTITY=-1 OR IS_RETURN=1, counted on their SALE_DATE (return
               date), matching how MindBody surfaces them in period views.
@@ -125,33 +124,21 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
       gross_revenue — sum of GROSS_PAYMENTAMT_LOCAL on buy transactions
 
     Methodology to match MindBody:
-      - LOCATION_ID 98 rows are excluded only when a non-LOC=98 sibling exists
-        for the same logical key (STUDIO_ID+CLIENT_ID+PRODUCT+DATE+QTY).
-        When LOC=98 is the only row (studio's real location), it is kept.
-      - All other rows, including LOC=1 duplicates, are kept — MindBody counts
-        each row as a separate transaction.
+      - No dedup: all raw rows counted including LOC=98, matching MindBody exactly.
       - IS_RETURN cancellations are counted on their SALE_DATE (return date),
         consistent with how MindBody surfaces them in period reports.
     """
     sql = f"""
-    WITH all_txn AS (
-        -- All presale rows with a flag indicating whether a non-LOC=98 sibling
-        -- exists for the same logical transaction key.
-        -- LOC=98 rows are MindBody-internal duplicates ONLY when a LOC!=98 row
-        -- exists for the same key; otherwise LOC=98 may be the studio's real location.
+    WITH txn AS (
+        -- All presale transactions, no dedup — matches MindBody raw counts.
         SELECT
             STUDIO_ID,
             EMAIL_ID,
             PRODUCT_DESCRIPTION,
-            SALE_DATE::DATE                        AS sale_date,
+            SALE_DATE::DATE                        AS effective_date,
             QUANTITY,
             IS_RETURN,
-            LOCATION_ID,
-            COALESCE(GROSS_PAYMENTAMT_LOCAL, 0)    AS gross_revenue,
-            MAX(CASE WHEN LOCATION_ID != 98 THEN 1 ELSE 0 END) OVER (
-                PARTITION BY STUDIO_ID, CLIENT_ID, PRODUCT_DESCRIPTION,
-                             SALE_DATE::DATE, QUANTITY
-            ) AS has_non98_sibling
+            COALESCE(GROSS_PAYMENTAMT_LOCAL, 0)    AS gross_revenue
         FROM PLAYLIST_DATA_MART.MINDBODY_REPORTING_ANALYTICS.MART_SALES_DETAILS
         WHERE STUDIO_ID IN ({ID_LIST})
           AND ITEM_TYPE = 'Pricing Option'
@@ -161,21 +148,6 @@ def fetch_transactions(cur, start_date: str, end_date: str) -> list[dict]:
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%sweat440%'
           AND LOWER(TRIM(EMAIL_ID)) NOT LIKE '%leadteam%'
           ))
-    ),
-    txn AS (
-        -- Filtered presale transactions:
-        --   • Keep all non-LOC=98 rows (including LOC=1 duplicates MindBody counts).
-        --   • Keep LOC=98 rows only when no non-98 sibling exists (studio's real LOC).
-        SELECT
-            STUDIO_ID,
-            EMAIL_ID,
-            PRODUCT_DESCRIPTION,
-            sale_date                              AS effective_date,
-            QUANTITY,
-            IS_RETURN,
-            gross_revenue
-        FROM all_txn
-        WHERE (LOCATION_ID != 98 OR has_non98_sibling = 0)
     ),
     leads_src AS (
         -- Best lead-source record per client+studio (priority matches MARKETING_REPORTS.PUBLIC.LEADS)
