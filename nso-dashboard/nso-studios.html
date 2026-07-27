@@ -263,7 +263,8 @@ let CUR_USER=null,_allowedStudios=null;const isAdminUser=()=>CUR_USER&&CUR_USER.
 let _sumView='cum',_sumStudio=null,_scStudio=null,_dataThruLabel='',_sumD7End=null;
 const TODAY=new Date(),fom=new Date(TODAY.getFullYear(),TODAY.getMonth(),1),lpm=new Date(fom.getTime()-864e5),fpm=new Date(lpm.getFullYear(),lpm.getMonth(),1);
 function lds(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-document.getElementById('fFrom').value=lds(fom);document.getElementById('fTo').value=lds(TODAY);
+const TWO_DAYS_AGO=new Date(TODAY.getTime()-2*864e5);
+document.getElementById('fFrom').value=lds(fom);document.getElementById('fTo').value=lds(TWO_DAYS_AGO);
 
 function toggleNav(){document.getElementById('navTabs').classList.toggle('open')}
 function toggleControls(){const e=document.getElementById('ctrlInner');e.classList.toggle('open');document.getElementById('ctrlToggle').textContent=e.classList.contains('open')?'Filters ▴':'Filters ▾'}

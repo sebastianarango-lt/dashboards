@@ -576,11 +576,12 @@ async function loadData() {
 
   // Organic channel data — load in background, does NOT block main dashboard
   _loadOrganicData();
-  // Set default date range: month to date
+  // Set default date range: month to date, ending 2 days ago (last available data)
   const _today = new Date();
+  const _twoDaysAgo = new Date(_today.getTime() - 2 * 864e5);
   const _firstOfThisMonth = new Date(_today.getFullYear(), _today.getMonth(), 1);
   document.getElementById('fFrom').value = localDateStr(_firstOfThisMonth);
-  document.getElementById('fTo').value   = localDateStr(_today);
+  document.getElementById('fTo').value   = localDateStr(_twoDaysAgo);
 
   await loadStudiosRegistry();
   if (_allowedStudios) RAW.studios = RAW.studios.filter(s => _allowedStudios.includes(s));
