@@ -2127,21 +2127,32 @@ function renderClientHistory(){
     h+=`<div class="chart-card-title" style="margin-bottom:0;color:#f4a021">Multiple Memberships — ${dupCount} email${dupCount>1?'s':''}</div>`;
     h+=`<button onclick="_chDupOnly=!_chDupOnly;renderClientHistory()" style="padding:4px 12px;border-radius:4px;border:2px solid ${_chDupOnly?'#f4a021':'#2a4a5a'};background:${_chDupOnly?'#f4a021':'transparent'};color:${_chDupOnly?'#000':'#8aaabb'};font-family:Oswald,sans-serif;font-weight:600;font-size:11px;text-transform:uppercase;cursor:pointer">${_chDupOnly?'Show All':'Filter Table'}</button>`;
     h+=`</div>`;
+    h+=`<div style="background:rgba(244,160,33,.08);border:1px solid rgba(244,160,33,.3);border-radius:6px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.6;color:#000">`;
+    h+=`<span style="color:#f4a021;font-weight:700">⚠ Note:</span> A cancellation is a separate transaction and line item on this report. `;
+    h+=`<strong>Net Sales = 0</strong> means that presale has cancelled. `;
+    h+=`<strong>Net Sales = 1</strong> means that presale is properly rung up and any duplicates are resolved. `;
+    h+=`<strong>Net Sales = 2+</strong> need further investigation to determine whether it's a duplicate or if the member purchased a membership for someone else.`;
+    h+=`</div>`;
     h+=`<div style="overflow-x:auto"><table class="data-table"><thead><tr>`;
-    h+=`<th>Email</th><th>Name</th><th class="num">Sales</th><th class="num">Cancels</th><th>Studios</th><th>Products</th>`;
+    h+=`<th>Email</th><th>Name</th><th class="num">Sales</th><th class="num">Cancels</th><th class="num">Net Sales</th><th>Studios</th><th>Products</th>`;
     h+=`</tr></thead><tbody>`;
     for(const [email, count] of dupList){
       const allRecs=(()=>{let a=[];for(const s of CH_RAW.studios){const sn=s.name.replace(/^SWEAT440\s+/,'');if(selStudios.size&&!selStudios.has(sn))continue;(s.records||[]).filter(r=>r.email===email&&r.date<=_chCap).forEach(r=>a.push({...r,studio:sn}));}return a;})();
       const name=allRecs[0]?.client_name||'—';
       const nSales=allRecs.filter(r=>r.type==='sale').length;
       const nCancels=allRecs.filter(r=>r.type==='cancel').length;
+      const net=nSales-nCancels;
+      const netCell=net>=2
+        ?`<td class="num" style="color:#f4a021;font-weight:700">⚠ ${net}</td>`
+        :`<td class="num" style="color:#000">${net}</td>`;
       const studios=[...new Set(allRecs.map(r=>r.studio))].join(', ');
       const prods=[...new Set(allRecs.map(r=>r.product))].join(', ');
       h+=`<tr style="background:rgba(244,160,33,.06)">`;
       h+=`<td><a href="mailto:${email}" style="color:#f4a021;text-decoration:none">${email}</a></td>`;
       h+=`<td>${name}</td>`;
-      h+=`<td class="num" style="color:#00FFC2;font-weight:700">${nSales}</td>`;
+      h+=`<td class="num">${nSales}</td>`;
       h+=`<td class="num" style="color:#ff6b6b">${nCancels}</td>`;
+      h+=netCell;
       h+=`<td style="font-size:11px">${studios}</td>`;
       h+=`<td style="font-size:11px">${prods}</td>`;
       h+=`</tr>`;
@@ -2172,7 +2183,7 @@ function renderClientHistory(){
     for(const r of records){
       const isDup=dupEmails.has(r.email);
       const c=r.type==='cancel'?'#ff6b6b':'inherit';
-      const typeLabel=r.type==='cancel'?'<span style="color:#ff6b6b;font-weight:600">Cancel</span>':'<span style="color:#00FFC2;font-weight:600">Sale</span>';
+      const typeLabel=r.type==='cancel'?'<span style="color:#ff6b6b;font-weight:600">Cancel</span>':'<span style="color:#000;font-weight:600">Sale</span>';
       const amt=r.amount>0?`$${r.amount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`:'—';
       const dupBadge=isDup?` <span style="font-size:9px;background:rgba(244,160,33,.2);color:#f4a021;border-radius:3px;padding:1px 4px;margin-left:3px" title="${emailFreq[r.email]} records for this email">×${emailFreq[r.email]}</span>`:'';
       h+=`<tr style="color:${c}${isDup?';background:rgba(244,160,33,.04)':''}">`;
