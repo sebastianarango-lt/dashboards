@@ -80,19 +80,6 @@ jobs:
         run: cd nso-dashboard && python scripts/fetch_tier_rmr.py
         continue-on-error: true
 
-      - name: Refresh Client History (Snowflake → nso_client_history.json)
-        env:
-          SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
-          SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
-          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
-          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
-          SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
-          SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
-        run: |
-          python nso-dashboard/scripts/fetch_client_history.py \
-            --output nso-dashboard/nso_client_history.json
-        continue-on-error: true
-
       # ── COMMIT ────────────────────────────────────────────────────────────
       - name: Commit updated data files
         run: |
@@ -101,7 +88,6 @@ jobs:
           git add data.json
           git add nso-dashboard/nso_sales_data.json
           git add nso-dashboard/nso_scorecard_data.json
-          git add nso-dashboard/nso_client_history.json
           git diff --cached --quiet || git commit -m "chore: refresh snowflake data $(date -u '+%Y-%m-%d %H:%M UTC')"
           git pull --rebase origin main
           git push

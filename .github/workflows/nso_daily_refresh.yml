@@ -65,7 +65,7 @@ jobs:
         env:
           SNOWFLAKE_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
           SNOWFLAKE_USER:      ${{ secrets.SF_USER }}
-          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_PASSWORD }}
+          SNOWFLAKE_PASSWORD:  ${{ secrets.SF_TOKEN }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
           SNOWFLAKE_DATABASE:  ${{ secrets.SF_DATABASE }}
           SNOWFLAKE_ROLE:      ${{ secrets.SF_ROLE }}
@@ -162,7 +162,8 @@ jobs:
             nso-dashboard/marketing_data.json \
             nso-dashboard/nso_google_ads.json \
             nso-dashboard/nso_scorecard_data.json \
-            nso-dashboard/nso_ad_meta.json
+            nso-dashboard/nso_ad_meta.json \
+            nso-dashboard/nso_client_history.json
           find nso-dashboard/thumbnails -type f 2>/dev/null | grep -q . && \
             git add nso-dashboard/thumbnails/ || true
           git diff --cached --quiet || \
