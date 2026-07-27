@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T11:26:59.702432Z",
+  "generated_at": "2026-07-27T12:58:53.876077Z",
   "studios": [
     "Austin - Highland",
     "Austin - Zilker",
@@ -32010,7 +32010,7 @@
       "signups": 4,
       "first_visits": 2,
       "first_activations": 1,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-01-27",
@@ -36843,7 +36843,7 @@
       "signups": 1,
       "first_visits": 3,
       "first_activations": 1,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-01-31",
@@ -85910,6 +85910,15 @@
       "source": "Business Mode",
       "signups": 1,
       "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-03-11",
+      "studio": "Ocean Township",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -190435,7 +190444,7 @@
       "studio": "Miami Lakes",
       "source": "N/A",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 3,
       "first_sales": 3
     },
@@ -190453,7 +190462,7 @@
       "studio": "Miami Lakes",
       "source": "Website (unattributed)",
       "signups": 4,
-      "first_visits": 3,
+      "first_visits": 4,
       "first_activations": 0,
       "first_sales": 1
     },
@@ -205530,7 +205539,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-06-12",
@@ -253860,7 +253869,7 @@
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-07-17",
@@ -255948,7 +255957,7 @@
       "signups": 1,
       "first_visits": 3,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-07-19",
@@ -257762,15 +257771,6 @@
     {
       "date": "2026-07-20",
       "studio": "Middletown",
-      "source": "Local Listings",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-07-20",
-      "studio": "Middletown",
       "source": "Meta Ads",
       "signups": 3,
       "first_visits": 0,
@@ -257781,7 +257781,7 @@
       "date": "2026-07-20",
       "studio": "Middletown",
       "source": "Website (unattributed)",
-      "signups": 3,
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -260871,7 +260871,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-07-22",
@@ -260880,15 +260880,6 @@
       "signups": 3,
       "first_visits": 2,
       "first_activations": 1,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-07-22",
-      "studio": "Old Bridge",
-      "source": "Local Listings",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
       "first_sales": 0
     },
     {
@@ -260904,7 +260895,7 @@
       "date": "2026-07-22",
       "studio": "Old Bridge",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -262272,7 +262263,7 @@
       "date": "2026-07-23",
       "studio": "Old Bridge",
       "source": "Grassroots",
-      "signups": 15,
+      "signups": 13,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -262299,7 +262290,7 @@
       "date": "2026-07-23",
       "studio": "Old Bridge",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 3
@@ -262932,7 +262923,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-07-24",
@@ -263292,7 +263283,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-07-24",
@@ -263541,7 +263532,7 @@
       "date": "2026-07-24",
       "studio": "Old Bridge",
       "source": "Local Listings",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -263559,7 +263550,7 @@
       "date": "2026-07-24",
       "studio": "Old Bridge",
       "source": "Website (unattributed)",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -264001,7 +263992,7 @@
       "studio": "Coral Springs",
       "source": "ClassPass / Platforms",
       "signups": 2,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -264027,7 +264018,7 @@
       "date": "2026-07-25",
       "studio": "Dallas - Prestonwood",
       "source": "ClassPass / Platforms",
-      "signups": 1,
+      "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -264732,7 +264723,7 @@
       "signups": 4,
       "first_visits": 1,
       "first_activations": 1,
-      "first_sales": 0
+      "first_sales": 1
     },
     {
       "date": "2026-07-25",
@@ -264768,7 +264759,7 @@
       "signups": 8,
       "first_visits": 3,
       "first_activations": 0,
-      "first_sales": 0
+      "first_sales": 3
     },
     {
       "date": "2026-07-25",
@@ -265052,6 +265043,15 @@
     {
       "date": "2026-07-25",
       "studio": "Toms River",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-25",
+      "studio": "Toms River",
       "source": "Website (unattributed)",
       "signups": 0,
       "first_visits": 1,
@@ -265134,7 +265134,7 @@
       "date": "2026-07-25",
       "studio": "West Palm Beach",
       "source": "SWEAT440 App",
-      "signups": 3,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -265685,7 +265685,7 @@
       "month": "2023-08-01",
       "studio": "Miami - Upper East Side",
       "source": "N/A",
-      "signups": 199,
+      "signups": 200,
       "first_visits": 200,
       "first_activations": 1,
       "first_sales": 1
@@ -270554,7 +270554,7 @@
       "month": "2024-07-01",
       "studio": "Ocean Township",
       "source": "N/A",
-      "signups": 416,
+      "signups": 415,
       "first_visits": 353,
       "first_activations": 0,
       "first_sales": 0
@@ -270572,7 +270572,7 @@
       "month": "2024-07-01",
       "studio": "Ocean Township",
       "source": "Website (unattributed)",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 4,
       "first_activations": 0,
       "first_sales": 0
@@ -270860,7 +270860,7 @@
       "month": "2024-08-01",
       "studio": "Miami - Midtown",
       "source": "N/A",
-      "signups": 259,
+      "signups": 260,
       "first_visits": 236,
       "first_activations": 1,
       "first_sales": 1
@@ -274937,8 +274937,8 @@
       "month": "2025-04-01",
       "studio": "Miami - Midtown",
       "source": "N/A",
-      "signups": 237,
-      "first_visits": 211,
+      "signups": 236,
+      "first_visits": 210,
       "first_activations": 3,
       "first_sales": 3
     },
@@ -274946,8 +274946,8 @@
       "month": "2025-04-01",
       "studio": "Miami - Midtown",
       "source": "SWEAT440 App",
-      "signups": 1,
-      "first_visits": 0,
+      "signups": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -275585,7 +275585,7 @@
       "month": "2025-05-01",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 258,
+      "signups": 257,
       "first_visits": 163,
       "first_activations": 3,
       "first_sales": 3
@@ -275603,7 +275603,7 @@
       "month": "2025-05-01",
       "studio": "Miami Lakes",
       "source": "Website (unattributed)",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -279941,7 +279941,7 @@
       "month": "2025-11-01",
       "studio": "Reston",
       "source": "N/A",
-      "signups": 71,
+      "signups": 70,
       "first_visits": 0,
       "first_activations": 1,
       "first_sales": 1
@@ -279950,7 +279950,7 @@
       "month": "2025-11-01",
       "studio": "Reston",
       "source": "Other",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -281745,6 +281745,15 @@
       "first_visits": 0,
       "first_activations": 3,
       "first_sales": 10
+    },
+    {
+      "month": "2025-12-01",
+      "studio": "Reston",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "month": "2025-12-01",
