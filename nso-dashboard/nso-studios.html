@@ -136,6 +136,8 @@
   </div>
 </div>
 
+<div class="data-freshness-note" id="dataFreshnessNote"></div>
+
 <div class="main">
 
   <!-- SUMMARY TAB -->
@@ -2739,6 +2741,17 @@ async function init(){
 
   if(chRes.status==='fulfilled'){CH_RAW=chRes.value}
   else{console.warn('nso_client_history.json not found')}
+
+  renderFreshnessNote('dataFreshnessNote', [
+    {raw: dataRes.status==='fulfilled'   ? dataRes.value   : null, lagDays: 2},
+    {raw: salesRes.status==='fulfilled'  ? salesRes.value  : null, lagDays: 2},
+    {raw: scRes.status==='fulfilled'     ? scRes.value     : null, lagDays: 2},
+    {raw: mktRes.status==='fulfilled'    ? mktRes.value    : null, lagDays: 1},
+    {raw: gadsRes.status==='fulfilled'   ? gadsRes.value   : null, lagDays: 1},
+    {raw: socialRes.status==='fulfilled' ? socialRes.value : null, lagDays: 1},
+    {raw: gbpRes.status==='fulfilled'    ? gbpRes.value    : null, lagDays: 1},
+    {raw: adMetaRes.status==='fulfilled' ? adMetaRes.value : null, lagDays: 1},
+  ]);
 
   // Build multi-selects (filter NSO list to allowed studios if franchisee)
   // NSO names have "SWEAT440 " prefix; users.js stores names without it (matching data.json)
