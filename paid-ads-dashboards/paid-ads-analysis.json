@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T11:38:35.461846+00:00",
+  "generated_at": "2026-07-27T13:14:04.062194+00:00",
   "window_start": "2026-07-20",
   "window_end": "2026-07-26",
   "window_label": "Jul 20 – Jul 26, 2026",
@@ -1176,16 +1176,16 @@
       "display_name": "Free Class - Open Studios",
       "period_label": "Apr 15, 2026 onwards",
       "totals": {
-        "impressions": 2671995,
-        "clicks": 33018,
-        "reach": 1066125,
-        "leads": 942,
+        "impressions": 2673249,
+        "clicks": 33046,
+        "reach": 1066611,
+        "leads": 943,
         "purchases": 93,
         "trials": 399,
-        "spend": 83529.11,
+        "spend": 83595.74,
         "ctr": 1.24,
-        "cpm": 31.26,
-        "cpl": 88.67
+        "cpm": 31.27,
+        "cpl": 88.65
       },
       "most_recent_date": "2026-07-26",
       "high_count": 5,
@@ -1308,7 +1308,7 @@
           "impressions": 146,
           "leads": 0,
           "headline": "Only 146 impressions in the last 7 days",
-          "detail": "Ad has $51 in historical spend but barely showed this week (146 impressions).",
+          "detail": "Ad has $57 in historical spend but barely showed this week (146 impressions).",
           "recommendation": "Check budget exhaustion, bid strategy, audience size, or ad approval status."
         },
         {
@@ -6040,12 +6040,12 @@
           "ad_id": "120245634501900249",
           "ad_name": "26-NY-003-02 - PS - SI - Video - Voice",
           "studio_code": "NY-003",
-          "spend": 24.3,
+          "spend": 24.37,
           "leads": 2,
-          "cpl": 12.15,
-          "impressions": 299,
-          "headline": "Good CPL $12 but only 299 impressions — scale this",
-          "detail": "CPL of $12.15 is below the $50 target but the ad is getting limited exposure (299 impressions).",
+          "cpl": 12.18,
+          "impressions": 300,
+          "headline": "Good CPL $12 but only 300 impressions — scale this",
+          "detail": "CPL of $12.18 is below the $50 target but the ad is getting limited exposure (300 impressions).",
           "recommendation": "Increase daily budget or widen audience targeting to reach more people."
         },
         {
