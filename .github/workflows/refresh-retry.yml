@@ -2,7 +2,7 @@ name: Refresh Data Auto-Retry
 
 on:
   workflow_run:
-    workflows: ["Refresh Dashboard Data"]
+    workflows: ["Refresh Dashboard Data", "Refresh Snowflake Data"]
     types: [completed]
 
 permissions:
