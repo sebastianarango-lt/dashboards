@@ -2,7 +2,7 @@ name: Refresh Dashboard Data
 
 on:
   schedule:
-    - cron: "0 8 * * *"   # 4:00 AM Eastern (EDT=UTC-4; drifts to 3:00 AM during EST/winter)
+    - cron: "0 8 * * *"   # 4:00 AM Eastern (EDT=UTC-4; drifts to 3:00 AM during EST/winter) — runs 1hr after "Refresh Snowflake Data"
   workflow_dispatch:        # Manual trigger from GitHub UI
 
 permissions:
@@ -23,21 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install snowflake-connector-python requests python-dotenv
+          pip install requests python-dotenv
           pip install google-ads gspread google-auth
-
-      - name: Fetch Snowflake + Meta account-level data
-        env:
-          SF_ACCOUNT:   ${{ secrets.SF_ACCOUNT }}
-          SF_USER:      ${{ secrets.SF_USER }}
-          SF_TOKEN:     ${{ secrets.SF_TOKEN }}
-          SF_ROLE:      ${{ secrets.SF_ROLE }}
-          SF_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
-          SF_DATABASE:  ${{ secrets.SF_DATABASE }}
-          SF_SCHEMA:    ${{ secrets.SF_SCHEMA }}
-          META_TOKEN:   ${{ secrets.META_TOKEN }}
-          META_ACT:     ${{ secrets.META_ACT }}
-        run: python fetch_data.py
 
       - name: Fetch Meta Ads (Santi - account view)
         env:
@@ -87,7 +74,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json meta-ads-data.json google-ads-data.json
+          git add meta-ads-data.json google-ads-data.json
           git add nso-dashboard/social_insights.json
           git add nso-dashboard/gbp_data.json
           git add nso-dashboard/thumbnails/ 2>/dev/null || true
