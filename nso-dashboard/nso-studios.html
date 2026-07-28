@@ -2036,7 +2036,7 @@ let _chSort={col:'date',asc:false};
 function renderClientHistory(){
   const el=document.getElementById('ch-content');
   if(!el)return;
-  if(!isAdminUser()){el.innerHTML='';return;}
+  if(!isAdminUser()&&CUR_USER?.role!=='corporate'){el.innerHTML='';return;}
   if(!CH_RAW||!CH_RAW.studios){el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">Client history data not yet available.</div>';return;}
 
   const selStudios=new Set(_getSel('studioMenu').map(s=>s.replace(/^SWEAT440\s+/,'')));
