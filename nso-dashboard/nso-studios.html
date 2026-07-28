@@ -276,7 +276,7 @@
    NSO STUDIOS DASHBOARD — Self-contained
    ══════════════════════════════════════════════════════════════════════════ */
 const NSO=['SWEAT440 Aventura','SWEAT440 Burlington','SWEAT440 Dallas - Uptown','SWEAT440 Dunwoody','SWEAT440 Fort Myers','SWEAT440 Herriman','SWEAT440 Middletown','SWEAT440 Naples - Mercato','SWEAT440 North Miami','SWEAT440 Old Bridge','SWEAT440 Orlando - Dr Phillips','SWEAT440 Reston'];
-const EXCL_SRC=['ClassPass / Platforms','N/A'];
+const EXCL_SRC=['ClassPass / Platforms'];
 
 let RAW=null,SC=null,GRAN='daily',trendChart=null,NSO_SALES=null,NSO_SALES_ROWS=[],GBP_RAW=null,AD_META={},CH_RAW=null;const _ch={};let _chDupOnly=false;
 let CUR_USER=null,_allowedStudios=null;const isAdminUser=()=>CUR_USER&&CUR_USER.role==='admin';
@@ -995,29 +995,22 @@ function applyFilters(){
   const fs=document.getElementById('fFrom').value,ts=document.getElementById('fTo').value;
   const from=fs?new Date(fs+'T00:00:00Z'):null,to=ts?new Date(ts+'T23:59:59Z'):new Date();
   const wins=from&&to?cW(from,to):{ppFrom:null,ppTo:null,pyFrom:null,pyTo:null};
-  // fa/faA: fa respects source filter (for charts); faA ignores it (for KPI totals, matching Summary methodology)
   function fa(f,t){return{daily:fR(RAW.daily_detail||[],f,t,st,sr),monthly:fR(RAW.monthly_detail||[],f,t,st,sr),get all(){return[...this.daily,...this.monthly]}}}
-  function faA(f,t){return{daily:fR(RAW.daily_detail||[],f,t,st,null),monthly:fR(RAW.monthly_detail||[],f,t,st,null),get all(){return[...this.daily,...this.monthly]}}}
   const curr=fa(from,to),pp=wins.ppFrom?fa(wins.ppFrom,wins.ppTo):{daily:[],monthly:[],all:[]},py=wins.pyFrom?fa(wins.pyFrom,wins.pyTo):{daily:[],monthly:[],all:[]};
-  const currA=faA(from,to),ppA=wins.ppFrom?faA(wins.ppFrom,wins.ppTo):{daily:[],monthly:[],all:[]},pyA=wins.pyFrom?faA(wins.pyFrom,wins.pyTo):{daily:[],monthly:[],all:[]};
   const cS=sR(curr.all),pS=sR(pp.all),yS=sR(py.all);
-  const cSA=sR(currA.all),pSA=sR(ppA.all),ySA=sR(pyA.all);
-  // NSO sales KPI totals: no source filter — matches Summary/Scorecard methodology (all transactions counted)
-  // NSO sales chart rows: source filter applied for breakdown views
-  const sCurrA=fR(NSO_SALES_ROWS,from,to,st,null);
-  const sPPA=wins.ppFrom?fR(NSO_SALES_ROWS,wins.ppFrom,wins.ppTo,st,null):[];
-  const sPYA=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,null):[];
   const sCurr=fR(NSO_SALES_ROWS,from,to,st,sr);
+  const sPP=wins.ppFrom?fR(NSO_SALES_ROWS,wins.ppFrom,wins.ppTo,st,sr):[];
+  const sPY=wins.pyFrom?fR(NSO_SALES_ROWS,wins.pyFrom,wins.pyTo,st,sr):[];
   const netSales=rows=>Math.max(0,rows.reduce((a,r)=>a+(r.first_sales||0)-(r.cancellations||0),0));
-  let smC=netSales(sCurrA),smP=netSales(sPPA),smY=netSales(sPYA);
-  const nsC=sCurrA.reduce((a,r)=>a+(r.first_sales||0),0),nsP=sPPA.reduce((a,r)=>a+(r.first_sales||0),0),nsY=sPYA.reduce((a,r)=>a+(r.first_sales||0),0);
-  const cnC=sCurrA.reduce((a,r)=>a+(r.cancellations||0),0),cnP=sPPA.reduce((a,r)=>a+(r.cancellations||0),0),cnY=sPYA.reduce((a,r)=>a+(r.cancellations||0),0);
-  const newSalesByPeriod=_bucketByPeriod(sCurrA,r=>r.first_sales||0);
-  const cancByPeriod=_bucketByPeriod(sCurrA,r=>r.cancellations||0);
-  buildTrend(toTS(currA.daily,currA.monthly),newSalesByPeriod,cancByPeriod);
+  let smC=netSales(sCurr),smP=netSales(sPP),smY=netSales(sPY);
+  const nsC=sCurr.reduce((a,r)=>a+(r.first_sales||0),0),nsP=sPP.reduce((a,r)=>a+(r.first_sales||0),0),nsY=sPY.reduce((a,r)=>a+(r.first_sales||0),0);
+  const cnC=sCurr.reduce((a,r)=>a+(r.cancellations||0),0),cnP=sPP.reduce((a,r)=>a+(r.cancellations||0),0),cnY=sPY.reduce((a,r)=>a+(r.cancellations||0),0);
+  const newSalesByPeriod=_bucketByPeriod(sCurr,r=>r.first_sales||0);
+  const cancByPeriod=_bucketByPeriod(sCurr,r=>r.cancellations||0);
+  buildTrend(toTS(curr.daily,curr.monthly),newSalesByPeriod,cancByPeriod);
   const fkpi=document.getElementById('funnel-kpis');
-  if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cSA.leads,pSA.leads,ySA.leads,null,GLOSSARY.leads)+kpiCard('Total New Sales',nsC,nsP||null,nsY||null,null,GLOSSARY.nso_new_sale)+kpiCard('Total Cancellations',cnC,cnP||null,cnY||null,null,GLOSSARY.nso_cancel)+kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
-  document.getElementById('leads-kpis').innerHTML=kpiCard('Total Leads',cSA.leads,pSA.leads,ySA.leads,null,GLOSSARY.leads);
+  if(fkpi)fkpi.innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads)+kpiCard('Total New Sales',nsC,nsP||null,nsY||null,null,GLOSSARY.nso_new_sale)+kpiCard('Total Cancellations',cnC,cnP||null,cnY||null,null,GLOSSARY.nso_cancel)+kpiCard('Total Net Sales',smC,smP||null,smY||null,null,GLOSSARY.nso_sale);
+  document.getElementById('leads-kpis').innerHTML=kpiCard('Total Leads',cS.leads,pS.leads,yS.leads,null,GLOSSARY.leads);
   const leadsSeries=toSrcTSGran(curr.daily,curr.monthly);
   const activeSrcLeads=(sr||[]).filter(s=>leadsSeries.some(r=>r.source===s&&(r.signups||0)>0));
   buildArea('leadsChart','leads-toggles',leadsSeries,activeSrcLeads,'signups');
