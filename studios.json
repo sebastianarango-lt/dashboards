@@ -224,7 +224,9 @@
       "meta": {
         "page_id": "1013504171849728"
       },
-      "google_ads": {},
+      "google_ads": {
+        "match": "Dallas Uptown"
+      },
       "ga4": {},
       "gbp": {
         "location_id": null
@@ -355,7 +357,9 @@
       "status": "nso",
       "excluded_default": true,
       "meta": {},
-      "google_ads": {},
+      "google_ads": {
+        "match": "Fort Myers"
+      },
       "ga4": {},
       "gbp": {
         "location_id": "2005684758562901799",
@@ -746,7 +750,9 @@
       "meta": {
         "page_id": "1145229115329264"
       },
-      "google_ads": {},
+      "google_ads": {
+        "match": "North Miami"
+      },
       "ga4": {},
       "gbp": {
         "location_id": null
