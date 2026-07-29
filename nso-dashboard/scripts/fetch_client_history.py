@@ -38,7 +38,10 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+
+ET = ZoneInfo("America/New_York")
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -164,13 +167,14 @@ def fetch_all() -> dict:
         if sid not in studio_records:
             studio_records[sid] = []
 
-        # Parse time from CREATED_DATE_TIME_UTC
+        # Convert UTC timestamp to ET (handles EST/EDT automatically)
         time_str = ""
         if row["CREATED_UTC"]:
             try:
                 dt = row["CREATED_UTC"]
                 if hasattr(dt, "strftime"):
-                    time_str = dt.strftime("%H:%M")
+                    dt_et = dt.replace(tzinfo=timezone.utc).astimezone(ET)
+                    time_str = dt_et.strftime("%H:%M")
             except Exception:
                 pass
 
