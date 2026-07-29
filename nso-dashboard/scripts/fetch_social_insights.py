@@ -72,6 +72,60 @@ def discover_ig_ids(studios, user_token):
     print(f"  {found}/{len(studios)} studios have a linked Instagram account\n")
 
 
+def _month_key(date_str):
+    """Return 'YYYY-MM-01' for a given date string, or '' on error."""
+    try:
+        d = datetime.strptime(date_str, "%Y-%m-%d")
+        return f"{d.year}-{d.month:02d}-01"
+    except (ValueError, TypeError):
+        return ""
+
+
+def build_monthly_aggregates(daily_rows, posts, before_date_str):
+    """
+    Aggregate daily rows into monthly summaries for complete calendar months
+    that fall entirely before before_date_str (the rolling window start).
+    Only months where the last day < before_date_str are included, ensuring
+    partial boundary months are never archived prematurely.
+    Returns {month_key: aggregate_dict}.
+    """
+    from calendar import monthrange
+    cutoff = datetime.strptime(before_date_str, "%Y-%m-%d")
+    monthly = {}
+
+    for row in daily_rows:
+        try:
+            d = datetime.strptime(row["date"], "%Y-%m-%d")
+        except (ValueError, KeyError):
+            continue
+        last_day = datetime(d.year, d.month, monthrange(d.year, d.month)[1])
+        if last_day >= cutoff:
+            continue  # month not yet fully outside the rolling window
+        mk = f"{d.year}-{d.month:02d}-01"
+        if mk not in monthly:
+            monthly[mk] = {"month": mk, "reach": 0, "accounts_engaged": 0,
+                           "total_interactions": 0, "days_with_data": 0, "post_count": 0}
+        m = monthly[mk]
+        m["reach"] += row.get("reach") or 0
+        m["accounts_engaged"] += row.get("accounts_engaged") or 0
+        m["total_interactions"] += row.get("total_interactions") or 0
+        m["days_with_data"] += 1
+
+    for post in posts:
+        try:
+            d = datetime.strptime(post.get("date", ""), "%Y-%m-%d")
+        except (ValueError, TypeError):
+            continue
+        last_day = datetime(d.year, d.month, monthrange(d.year, d.month)[1])
+        if last_day >= cutoff:
+            continue
+        mk = f"{d.year}-{d.month:02d}-01"
+        if mk in monthly:
+            monthly[mk]["post_count"] += 1
+
+    return monthly
+
+
 def date_chunks(start_date, end_date, chunk_days=28):
     """Split a date range into chunks of max chunk_days days."""
     start = datetime.strptime(start_date, "%Y-%m-%d")
@@ -234,7 +288,7 @@ def fetch_instagram_insights(ig_id, studio_name, start_date, end_date, user_toke
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch Instagram insights for all SWEAT440 studios")
-    parser.add_argument("--days", type=int, default=30)
+    parser.add_argument("--days", type=int, default=90)
     parser.add_argument("--start", help="YYYY-MM-DD")
     parser.add_argument("--end", help="YYYY-MM-DD")
     parser.add_argument("--output", default="social_insights.json")
@@ -314,13 +368,30 @@ def main():
         old_daily = {r["date"]: r for r in old.get("daily", [])}
         new_daily = {r["date"]: r for r in new_data.get("daily", [])}
         old_daily.update(new_daily)
-        new_data["daily"] = sorted(old_daily.values(), key=lambda x: x["date"])
+        all_daily = sorted(old_daily.values(), key=lambda x: x["date"])
 
         # Posts: dedup by permalink, new API data wins for engagement counts
         old_posts = {p["permalink"]: p for p in old.get("posts", []) if p.get("permalink")}
         new_posts = {p["permalink"]: p for p in new_data.get("posts", []) if p.get("permalink")}
         old_posts.update(new_posts)
-        new_data["posts"] = sorted(old_posts.values(), key=lambda x: x.get("date", ""), reverse=True)
+        all_posts = sorted(old_posts.values(), key=lambda x: x.get("date", ""), reverse=True)
+
+        # Monthly aggregates: compute from full accumulated data for complete months
+        # entirely before the 90-day window. Existing stored months are preserved;
+        # recomputed months (still in accumulated daily data) overwrite the stored value.
+        new_monthly = build_monthly_aggregates(all_daily, all_posts, start_date)
+        old_monthly = {m["month"]: m for m in old.get("monthly", [])}
+        old_monthly.update(new_monthly)
+        new_data["monthly"] = sorted(old_monthly.values(), key=lambda x: x["month"])
+
+        # Prune daily rows and posts from months that are now fully archived.
+        # Boundary months (partially in the 90-day window) are kept intact so
+        # they can be correctly aggregated when they eventually fall out.
+        archived_keys = set(new_monthly.keys())
+        new_data["daily"] = [r for r in all_daily
+                             if _month_key(r["date"]) not in archived_keys]
+        new_data["posts"] = [p for p in all_posts
+                             if _month_key(p.get("date", "")) not in archived_keys]
 
         ig_map[studio_name] = new_data
 
