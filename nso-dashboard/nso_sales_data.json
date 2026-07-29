@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T10:48:22.533074",
+  "generated_at": "2026-07-29T17:18:46.233274",
   "date_range": {
     "start": "2026-01-01",
     "end": "2026-07-27"
@@ -193,7 +193,7 @@
         },
         {
           "date": "2026-06-21",
-          "source": "Other",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
@@ -460,20 +460,13 @@
         {
           "date": "2026-07-27",
           "source": "Business Mode",
-          "presales": 1,
+          "presales": 2,
           "cancellations": 0,
-          "gross_revenue": 129.0
+          "gross_revenue": 258.0
         },
         {
           "date": "2026-07-27",
           "source": "Google Ads",
-          "presales": 1,
-          "cancellations": 0,
-          "gross_revenue": 129.0
-        },
-        {
-          "date": "2026-07-27",
-          "source": "Meta Ads",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
@@ -3567,13 +3560,6 @@
           "gross_revenue": 447.0
         },
         {
-          "date": "2026-07-20",
-          "source": "N/A",
-          "presales": 1,
-          "cancellations": 0,
-          "gross_revenue": 0.0
-        },
-        {
           "date": "2026-07-21",
           "source": "Print Ads / Signs",
           "presales": 1,
@@ -3638,9 +3624,9 @@
         }
       ],
       "totals": {
-        "presales": 361,
+        "presales": 360,
         "cancellations": 34,
-        "net_presales": 327,
+        "net_presales": 326,
         "gross_revenue": 45510.0
       }
     },
@@ -4346,7 +4332,7 @@
         },
         {
           "date": "2026-07-12",
-          "source": "Other",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
@@ -5653,14 +5639,14 @@
         },
         {
           "date": "2026-07-26",
-          "source": "Grassroots",
+          "source": "Other",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
         },
         {
           "date": "2026-07-26",
-          "source": "Other",
+          "source": "SWEAT440 App",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T10:53:19",
+  "generated_at": "2026-07-29T17:23:06",
   "date_range": {
     "start": "2025-01-01",
     "end": "2026-05-11"
@@ -285913,9 +285913,9 @@
       "campaign_id": "23885503679",
       "status": "ENABLED",
       "spend": 39.99,
-      "impressions": 390,
+      "impressions": 389,
       "clicks": 18,
-      "ctr": 4.62,
+      "ctr": 4.63,
       "avg_cpc": 2.22,
       "conversions": 0.0,
       "cost_per_conversion": 0
