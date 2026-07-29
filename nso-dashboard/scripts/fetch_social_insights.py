@@ -195,28 +195,6 @@ def fetch_instagram_insights(ig_id, studio_name, start_date, end_date, user_toke
         except Exception as e:
             print(f"    WARNING IG reach chunk: {e}")
 
-        # Interactions (metric_type=total_value)
-        for metric_name in ("accounts_engaged", "total_interactions"):
-            try:
-                r = requests.get(f"{BASE}/{ig_id}/insights", params={
-                    "metric": metric_name,
-                    "period": "day",
-                    "metric_type": "total_value",
-                    "since": chunk_start,
-                    "until": chunk_end,
-                    "access_token": user_token,
-                })
-                data = r.json()
-                if "error" not in data:
-                    for metric_obj in data.get("data", []):
-                        for val in metric_obj.get("values", []):
-                            day = val["end_time"][:10]
-                            if start_date <= day <= end_date:
-                                if day not in daily_map:
-                                    daily_map[day] = {"date": day}
-                                daily_map[day][metric_name] = val["value"]
-            except Exception as e:
-                print(f"    WARNING IG {metric_name} chunk: {e}")
 
     # ── follower_count daily (last 30 days only) ──
     try:
