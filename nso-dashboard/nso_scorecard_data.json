@@ -3694,7 +3694,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 1729,
+          "ig_new_followers": 1736,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -5376,7 +5376,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": null,
+          "ig_new_followers": 5,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -6603,7 +6603,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 332,
+          "ig_new_followers": 339,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -7815,7 +7815,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 325,
+          "ig_new_followers": 327,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -10324,9 +10324,9 @@
         "conversion_rate": 35.0,
         "marketing_budget": 25100.0
       },
-      "co_week": 21,
-      "go_week": 25,
-      "opening_date": "2026-10-31",
+      "co_week": 22,
+      "go_week": 26,
+      "opening_date": "2026-11-07",
       "current_week": 12,
       "weeks": [
         {
@@ -10347,7 +10347,7 @@
           "digital_cancellations_week": null,
           "conversion_rate": null,
           "comm_events": null,
-          "ig_new_followers": 19460,
+          "ig_new_followers": 19462,
           "meta_spend": null,
           "google_spend": null,
           "grassroots_spend": null,
@@ -11169,6 +11169,35 @@
           "blended_cpl": null,
           "blended_cpa": null,
           "estimated_day1_rmr": null
+        },
+        {
+          "week": "WEEK 29",
+          "date_range": "11/23 - 11/29",
+          "date_start": "2026-11-23",
+          "date_end": "2026-11-29",
+          "new_leads": null,
+          "total_leads": 687.0,
+          "digital_leads_week": null,
+          "presales_week": null,
+          "presales_count": 141.0,
+          "cancellations_week": null,
+          "cancellations_count": 6.0,
+          "grassroots_leads": null,
+          "grassroots_presales": null,
+          "digital_presales_week": null,
+          "digital_cancellations_week": null,
+          "conversion_rate": null,
+          "comm_events": null,
+          "ig_new_followers": null,
+          "meta_spend": null,
+          "google_spend": null,
+          "grassroots_spend": null,
+          "other_spend": null,
+          "leadteam_fee": null,
+          "total_marketing_spend": null,
+          "blended_cpl": null,
+          "blended_cpa": null,
+          "estimated_day1_rmr": null
         }
       ],
       "tier_rmr_by_week": [
@@ -11367,6 +11396,13 @@
           "t1": 135,
           "t2": 0,
           "t3": 0
+        },
+        {
+          "week": 29,
+          "t0": 0,
+          "t1": 135,
+          "t2": 0,
+          "t3": 0
         }
       ],
       "pricing": {
@@ -11399,7 +11435,7 @@
         "price_129": "Pre Sale Membership",
         "price_149": "Pre-Sales Membership"
       },
-      "co_date": "2026-10-04",
+      "co_date": "2026-10-12",
       "goal_announce_target": 300.0,
       "tier_daily_sales": [
         {
