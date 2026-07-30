@@ -2648,8 +2648,19 @@ function renderInstagram(){
   const ppMedianLikes=_median(ppAllPosts.map(p=>p.likes||0));
   const ppMedianReach=_median(ppAllPosts.map(p=>p.est_reach||0));
 
-  // Historical post count (from monthly aggregates, no individual details available)
+  // Historical post count and medians from monthly aggregates
   const historicalPostCount=monthFiltered.reduce((t,s)=>(s.monthly||[]).reduce((a,m)=>a+(m.post_count||0),0)+t,0);
+  // Weighted average of monthly medians (weighted by post_count per month)
+  function _weightedMedian(studioList,field){
+    let totalW=0,totalV=0;
+    studioList.forEach(s=>(s.monthly||[]).forEach(m=>{
+      const v=m[field];const w=m.post_count||0;
+      if(v!=null&&w>0){totalV+=v*w;totalW+=w;}
+    }));
+    return totalW>0?Math.round(totalV/totalW):null;
+  }
+  const histMedianLikes=_weightedMedian(monthFiltered,'median_likes');
+  const histMedianReach=_weightedMedian(monthFiltered,'median_reach_per_post');
 
   function _igDelta(curr,pp){
     if(!ppFromStr)return'';
@@ -2668,8 +2679,13 @@ function renderInstagram(){
   if(hasFollowers)h+=_igKpi('Total Followers',totalFollowers.toLocaleString(),'');
   h+=_igKpi('Total Reach',totalReach.toLocaleString(),_igDelta(totalReach,ppTotalReach));
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
-  h+=_igKpi('Median Reach / Post',medianReach.toLocaleString(),_igDelta(medianReach,ppMedianReach));
-  h+=_igKpi('Median Likes',medianLikes.toLocaleString(),_igDelta(medianLikes,ppMedianLikes));
+  if(allPosts.length){
+    h+=_igKpi('Median Reach / Post',medianReach.toLocaleString(),_igDelta(medianReach,ppMedianReach));
+    h+=_igKpi('Median Likes',medianLikes.toLocaleString(),_igDelta(medianLikes,ppMedianLikes));
+  } else if(rangeExtendsBack){
+    if(histMedianReach!=null)h+=_igKpi('Median Reach / Post',histMedianReach.toLocaleString(),'');
+    if(histMedianLikes!=null)h+=_igKpi('Median Likes',histMedianLikes.toLocaleString(),'');
+  }
   h+=_igKpi('Posts in Period',(allPosts.length+historicalPostCount).toString(),_igDelta(allPosts.length,ppAllPosts.length));
   h+=`</div>`;
 
