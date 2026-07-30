@@ -1566,6 +1566,52 @@ function _metaCreativeName(adName){
   return (adName||'').replace(/^\d+\-[A-Z]{2}\-\d+\-\d+\s*-\s*/i,'').trim()||adName||'';
 }
 
+// ── Ad media lightbox ─────────────────────────────────────────────────────
+// Set AD_VIDEO_BASE to your R2 public URL once the bucket is configured.
+// Videos must be uploaded as: {ad_name_slug}.mp4
+// e.g. "26-fl-021-01-tier-129-neverlate.mp4"
+const AD_VIDEO_BASE = ''; // e.g. 'https://pub-xxxx.r2.dev'
+
+function _adSlug(name){
+  return(name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
+function _adVideoUrl(name){
+  return AD_VIDEO_BASE?`${AD_VIDEO_BASE}/${_adSlug(name)}.mp4`:null;
+}
+function _ensureAdLightbox(){
+  if(document.getElementById('ad-lightbox'))return;
+  const el=document.createElement('div');
+  el.id='ad-lightbox';
+  el.style.cssText='display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;cursor:pointer';
+  el.innerHTML=`
+    <button onclick="closeAdLightbox()" style="position:fixed;top:14px;right:18px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;line-height:1;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10000">&#10005;</button>
+    <div id="ad-lightbox-content" style="max-width:92vw;max-height:90vh;position:relative;cursor:default;display:flex;flex-direction:column;align-items:center;gap:10px" onclick="event.stopPropagation()"></div>`;
+  el.addEventListener('click',closeAdLightbox);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAdLightbox();});
+  document.body.appendChild(el);
+}
+function openAdMedia(thumb,isVid,videoUrl,preview,adName){
+  _ensureAdLightbox();
+  const lb=document.getElementById('ad-lightbox');
+  const ct=document.getElementById('ad-lightbox-content');
+  if(isVid&&videoUrl){
+    ct.innerHTML=`<video controls autoplay style="max-width:92vw;max-height:85vh;border-radius:8px;background:#000" src="${videoUrl}">Your browser does not support video.</video>
+      <p style="color:#aac;font-size:11px;margin:0">${adName||''}</p>`;
+  } else if(isVid&&preview){
+    window.open(preview,'_blank','noopener');return;
+  } else if(thumb){
+    ct.innerHTML=`<img src="${thumb}" style="max-width:92vw;max-height:85vh;border-radius:8px;object-fit:contain;box-shadow:0 4px 40px rgba(0,0,0,.6)" onerror="this.style.display='none'" loading="eager"/>
+      <p style="color:#aac;font-size:11px;margin:0">${adName||''}</p>`;
+  } else return;
+  lb.style.display='flex';
+}
+function closeAdLightbox(){
+  const lb=document.getElementById('ad-lightbox');
+  if(!lb)return;
+  lb.style.display='none';
+  document.getElementById('ad-lightbox-content').innerHTML='';
+}
+
 function renderMeta(){
   const el=document.getElementById('meta-content');if(!el)return;
   if(!META_RAW||!META_RAW.length){el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">No Meta Ads data available.</div>';return;}
@@ -1706,19 +1752,29 @@ function renderMeta(){
 
   el.innerHTML=h;
 
+  // Ad thumbnail click → lightbox (delegated, survives table re-sorts)
+  _ensureAdLightbox();
+  const _metaTable=document.getElementById('meta-ads-table');
+  if(_metaTable&&!_metaTable._lbBound){
+    _metaTable._lbBound=true;
+    _metaTable.addEventListener('click',e=>{
+      const btn=e.target.closest('.ad-thumb-btn');
+      if(!btn)return;
+      openAdMedia(btn.dataset.thumb,btn.dataset.vid==='1',btn.dataset.vurl||null,btn.dataset.prev||null,btn.dataset.name);
+    });
+  }
+
   // Populate creative ads table
   if(creativeRows.length){
     sortableTable('meta-ads-table',creativeRows,(g,i)=>{
       const isVid=(g.media_type||'').toLowerCase().includes('video')||g.name.toLowerCase().includes('reel');
-      const fallback=`<div style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px">${isVid?'&#9654;':'&#128444;'}</div>`;
       const canLink=isAdminUser();
+      const videoUrl=isVid?_adVideoUrl(g.name):null;
+      const thumbAttrs=`class="ad-thumb-btn" data-thumb="${(g.thumb||'').replace(/"/g,'&quot;')}" data-vid="${isVid?1:0}" data-vurl="${videoUrl||''}" data-prev="${(g.preview||'').replace(/"/g,'&quot;')}" data-name="${g.name.replace(/"/g,'&quot;')}" style="cursor:pointer"`;
+      const fallback=`<div ${thumbAttrs} style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer">${isVid?'&#9654;':'&#128444;'}</div>`;
       const thumbCell=g.thumb
-        ?(canLink
-          ?`<a href="${g.preview||g.thumb}" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2)"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.outerHTML=${JSON.stringify(fallback)}"/></a>`
-          :`<div style="width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2)"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.outerHTML=${JSON.stringify(fallback)}"/></div>`)
-        :(canLink
-          ?`<a href="${g.preview||'#'}" target="_blank" rel="noopener" style="display:flex;width:44px;height:44px;background:#0084b5;border-radius:6px;align-items:center;justify-content:center;font-size:18px;text-decoration:none">${isVid?'&#9654;':'&#128444;'}</a>`
-          :fallback);
+        ?`<div ${thumbAttrs} style="width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2);cursor:pointer"><img src="${g.thumb}" style="width:100%;height:100%;object-fit:cover;pointer-events:none" loading="lazy" onerror="this.parentElement.outerHTML='${fallback.replace(/'/g,"\\'")}'" /></div>`
+        :fallback;
       const nameCell=(canLink&&g.preview)
         ?`<a href="${g.preview}" target="_blank" rel="noopener" style="color:#1a4d6e;text-decoration:none;font-weight:600;font-size:13px">${g.name}</a>`
         :`<span style="font-weight:600;font-size:13px">${g.name}</span>`;
