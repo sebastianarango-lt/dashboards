@@ -2583,6 +2583,7 @@ function renderInstagram(){
   const windowStart=allDailyDates.length?[...allDailyDates].sort()[0]:null;
   const rangeExtendsBack=!!(from&&windowStart&&from<windowStart);
   const fromMonthKey=from?from.substring(0,7)+'-01':null;
+  const toMonthKey=to?to.substring(0,7)+'-01':null;
   const windowMonthKey=windowStart?windowStart.substring(0,7)+'-01':null;
 
   let ppFromStr=null,ppToStr=null,ppOutOfRange=false;
@@ -2606,10 +2607,10 @@ function renderInstagram(){
     posts:(s.posts||[]).filter(p=>p.date>=ppFromStr&&p.date<=ppToStr)
   })):[];
 
-  // Monthly data for the pre-window portion of the selected range
+  // Monthly data for the pre-window portion of the selected range, capped at toMonthKey
   const monthFiltered=rangeExtendsBack?studios.map(s=>({
     ...s,
-    monthly:(s.monthly||[]).filter(m=>m.month>=fromMonthKey&&m.month<windowMonthKey)
+    monthly:(s.monthly||[]).filter(m=>m.month>=fromMonthKey&&m.month<windowMonthKey&&(!toMonthKey||m.month<=toMonthKey))
   })):[];
 
   function _enrichPosts(studioList){
