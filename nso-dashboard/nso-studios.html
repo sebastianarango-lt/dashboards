@@ -2734,26 +2734,32 @@ function renderInstagram(){
   }
 
   let h='';
-  // Followers KPI: use historical monthly data only when the range ends before the rolling window.
-  // If the range ends within the live window (or no 'to' date), current_followers is the right value.
-  let followersLabel='Current Followers',followersVal=totalFollowers,hasFollowersKpi=hasFollowers,followersNote='';
-  if(rangeEndsInHistory){
+  // Followers KPI — three cases:
+  // 1. Range ends before rolling window: use monthly archive value
+  // 2. Range ends within rolling window with a 'to' date: reconstruct from current_followers minus deltas after 'to'
+  // 3. No 'to' date (open range): show current_followers
+  let followersLabel='Current Followers',followersVal=totalFollowers,hasFollowersKpi=hasFollowers;
+  if(rangeEndsInHistory&&monthFiltered.length){
     let mSum=0,mCount=0;
-    if(monthFiltered.length){
-      monthFiltered.forEach(s=>{
-        const mths=(s.monthly||[]).filter(m=>m.followers!=null).sort((a,b)=>b.month.localeCompare(a.month));
-        if(mths.length){mSum+=mths[0].followers;mCount++;}
-      });
-    }
-    if(mCount>0){
-      followersLabel='Followers';followersVal=mSum;hasFollowersKpi=true;
-    } else {
-      followersNote='No historic data for selected period';
-    }
+    monthFiltered.forEach(s=>{
+      const mths=(s.monthly||[]).filter(m=>m.followers!=null).sort((a,b)=>b.month.localeCompare(a.month));
+      if(mths.length){mSum+=mths[0].followers;mCount++;}
+    });
+    if(mCount>0){followersLabel='Followers';followersVal=mSum;hasFollowersKpi=true;}
+  } else if(to){
+    // Reconstruct: current_followers minus daily deltas that occurred after 'to'
+    let rSum=0,rCount=0;
+    studios.forEach(s=>{
+      if(!s.current_followers)return;
+      const deltasAfter=(s.daily||[]).filter(d=>d.date>to&&d.follower_count!=null)
+        .reduce((acc,d)=>acc+(d.follower_count||0),0);
+      rSum+=s.current_followers-deltasAfter;rCount++;
+    });
+    if(rCount>0){followersLabel='Followers';followersVal=rSum;hasFollowersKpi=true;}
   }
 
   h+=`<div class="kpi-grid">`;
-  if(hasFollowersKpi)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'',followersNote);
+  if(hasFollowersKpi)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'');
   h+=_igKpi('Total Reach',totalReach.toLocaleString(),_igDelta(totalReach,ppTotalReach));
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
   if(allPosts.length){
