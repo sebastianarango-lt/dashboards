@@ -2491,7 +2491,10 @@ function renderInstagram() {
     ? monthFiltered.reduce((t, s) => (s.monthly || []).reduce((a, m) => a + (m.post_count || 0), 0) + t, 0)
     : 0;
 
-  // Followers: use monthly archive when range ends in history; otherwise current_followers (API).
+  // Followers KPI — three cases:
+  // 1. Range ends before rolling window: use monthly archive value
+  // 2. Range ends within rolling window with a 'to' date: reconstruct from current_followers minus deltas after 'to'
+  // 3. No 'to' date (open range): show current_followers
   const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
   const hasFollowers   = filtered.some(s => s.current_followers > 0);
   let followersVal = totalFollowers, followersLabel = 'Current Followers', hasFollowersKpi = hasFollowers;
@@ -2502,6 +2505,16 @@ function renderInstagram() {
       if (mths.length) { mSum += mths[0].followers; mCount++; }
     });
     if (mCount > 0) { followersVal = mSum; followersLabel = 'Followers'; hasFollowersKpi = true; }
+  } else if (to) {
+    // Reconstruct: current_followers minus daily deltas that occurred after 'to'
+    let rSum = 0, rCount = 0;
+    studios.forEach(s => {
+      if (!s.current_followers) return;
+      const deltasAfter = (s.daily || []).filter(d => d.date > to && d.follower_count != null)
+        .reduce((acc, d) => acc + (d.follower_count || 0), 0);
+      rSum += s.current_followers - deltasAfter; rCount++;
+    });
+    if (rCount > 0) { followersVal = rSum; followersLabel = 'Followers'; hasFollowersKpi = true; }
   }
 
   // Delta badge — hidden for historical ranges to avoid misleading comparisons
