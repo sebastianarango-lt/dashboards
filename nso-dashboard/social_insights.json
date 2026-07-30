@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T08:10:27.030414",
+  "generated_at": "2026-07-30T08:55:16.252096",
   "date_range": {
     "start": "2026-04-30",
     "end": "2026-07-28"
@@ -748,7 +748,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 2,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -756,7 +758,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -764,7 +768,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -772,7 +778,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -780,7 +788,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -788,7 +798,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -796,7 +808,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -804,7 +818,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -812,7 +828,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 3
+          "post_count": 3,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -820,7 +838,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -828,7 +848,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -836,7 +858,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -844,7 +868,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 6,
+          "median_reach_per_post": 560
         },
         {
           "month": "2026-02-01",
@@ -852,7 +878,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 3,
+          "median_reach_per_post": 836
         },
         {
           "month": "2026-03-01",
@@ -860,7 +888,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 8,
+          "median_reach_per_post": 782
         },
         {
           "month": "2026-04-01",
@@ -868,7 +898,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 10,
+          "median_reach_per_post": 680
         }
       ]
     },
@@ -1545,7 +1577,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -1553,7 +1587,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -1561,7 +1597,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -1569,7 +1607,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -1577,7 +1617,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -1585,7 +1627,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -1593,7 +1637,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -1601,7 +1647,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -1609,7 +1657,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 3
+          "post_count": 3,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -1617,7 +1667,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 2
+          "post_count": 2,
+          "median_likes": 2,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -1625,7 +1677,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -1633,7 +1687,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -1641,7 +1697,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 8,
+          "median_reach_per_post": 634
         },
         {
           "month": "2026-02-01",
@@ -1649,7 +1707,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 11,
+          "median_reach_per_post": 1182
         },
         {
           "month": "2026-03-01",
@@ -1657,7 +1717,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 10,
+          "median_reach_per_post": 707
         },
         {
           "month": "2026-04-01",
@@ -1665,7 +1727,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 13,
+          "median_reach_per_post": 1137
         }
       ]
     },
@@ -2337,12 +2401,164 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-11-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-12-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2026-04-01",
           "reach": 75,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 1
+          "post_count": 1,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         }
       ]
     },
@@ -3044,12 +3260,44 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-04-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 2,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -3057,7 +3305,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -3065,7 +3315,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -3073,7 +3325,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -3081,7 +3335,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 1
+          "post_count": 1,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -3089,7 +3345,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -3097,7 +3355,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 22,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -3105,7 +3365,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 24,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -3113,7 +3375,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -3121,7 +3385,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 30
+          "post_count": 30,
+          "median_likes": 10,
+          "median_reach_per_post": 979
         },
         {
           "month": "2026-02-01",
@@ -3129,7 +3395,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 12,
+          "median_reach_per_post": 833
         },
         {
           "month": "2026-03-01",
@@ -3137,7 +3405,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 13,
+          "median_reach_per_post": 589
         },
         {
           "month": "2026-04-01",
@@ -3145,7 +3415,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 8,
+          "median_reach_per_post": 699
         }
       ]
     },
@@ -3860,7 +4132,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 28
+          "post_count": 28,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -3868,7 +4142,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -3876,7 +4152,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 31
+          "post_count": 31,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -3884,7 +4162,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 22,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -3892,7 +4172,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -3900,7 +4182,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -3908,7 +4192,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 23,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -3916,7 +4202,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 31
+          "post_count": 31,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -3924,7 +4212,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -3932,7 +4222,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -3940,7 +4232,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 30
+          "post_count": 30,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -3948,7 +4242,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -3956,7 +4252,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 13,
+          "median_reach_per_post": 1343
         },
         {
           "month": "2026-02-01",
@@ -3964,7 +4262,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 12,
+          "median_reach_per_post": 2083
         },
         {
           "month": "2026-03-01",
@@ -3972,7 +4272,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 27
+          "post_count": 27,
+          "median_likes": 13,
+          "median_reach_per_post": 1522
         },
         {
           "month": "2026-04-01",
@@ -3980,7 +4282,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 19,
+          "median_reach_per_post": 1373
         }
       ]
     },
@@ -4697,7 +5001,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -4705,7 +5011,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -4713,7 +5021,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -4721,7 +5031,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -4729,7 +5041,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -4737,7 +5051,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -4745,7 +5061,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -4753,7 +5071,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -4761,7 +5081,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 3
+          "post_count": 3,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -4769,7 +5091,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 3
+          "post_count": 3,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -4777,7 +5101,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -4785,7 +5111,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -4793,7 +5121,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 12,
+          "median_reach_per_post": 580
         },
         {
           "month": "2026-02-01",
@@ -4801,7 +5131,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 11,
+          "median_reach_per_post": 1103
         },
         {
           "month": "2026-03-01",
@@ -4809,7 +5141,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 15,
+          "median_reach_per_post": 714
         },
         {
           "month": "2026-04-01",
@@ -4817,7 +5151,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 28
+          "post_count": 28,
+          "median_likes": 17,
+          "median_reach_per_post": 644
         }
       ]
     },
@@ -5544,7 +5880,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -5552,7 +5890,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -5560,7 +5900,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -5568,7 +5910,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -5576,7 +5920,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -5584,7 +5930,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -5592,7 +5940,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -5600,7 +5950,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -5608,7 +5960,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -5616,7 +5970,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -5624,7 +5980,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -5632,7 +5990,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -5640,7 +6000,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 4,
+          "median_reach_per_post": 398
         },
         {
           "month": "2026-02-01",
@@ -5648,7 +6010,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 9,
+          "median_reach_per_post": 661
         },
         {
           "month": "2026-03-01",
@@ -5656,7 +6020,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 13,
+          "median_reach_per_post": 556
         },
         {
           "month": "2026-04-01",
@@ -5664,7 +6030,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 7,
+          "median_reach_per_post": 684
         }
       ]
     },
@@ -6416,12 +6784,114 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-11-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -6429,7 +6899,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -6437,7 +6909,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 6,
+          "median_reach_per_post": 883
         },
         {
           "month": "2026-02-01",
@@ -6445,7 +6919,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 9,
+          "median_reach_per_post": 1300
         },
         {
           "month": "2026-03-01",
@@ -6453,7 +6929,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 18,
+          "median_reach_per_post": 1398
         },
         {
           "month": "2026-04-01",
@@ -6461,7 +6939,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 8,
+          "median_reach_per_post": 1590
         }
       ]
     },
@@ -7168,7 +7648,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 13
         },
         {
           "month": "2025-02-01",
@@ -7176,7 +7657,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 12
         },
         {
           "month": "2025-03-01",
@@ -7184,7 +7666,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 8
         },
         {
           "month": "2025-04-01",
@@ -7192,7 +7675,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 7
         },
         {
           "month": "2025-05-01",
@@ -7200,7 +7684,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 7
         },
         {
           "month": "2025-06-01",
@@ -7208,7 +7693,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 7
         },
         {
           "month": "2025-07-01",
@@ -7216,7 +7702,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 7
         },
         {
           "month": "2025-08-01",
@@ -7224,7 +7711,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 5
         },
         {
           "month": "2025-09-01",
@@ -7232,7 +7720,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 6
         },
         {
           "month": "2025-10-01",
@@ -7240,7 +7729,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 5
         },
         {
           "month": "2025-11-01",
@@ -7248,7 +7738,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 4
         },
         {
           "month": "2025-12-01",
@@ -7256,7 +7747,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 4
         },
         {
           "month": "2026-01-01",
@@ -7264,7 +7756,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 3
         },
         {
           "month": "2026-02-01",
@@ -7272,7 +7765,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 3
         },
         {
           "month": "2026-03-01",
@@ -7280,7 +7774,8 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 0
+          "post_count": 0,
+          "median_reach_per_post": 3
         },
         {
           "month": "2026-04-01",
@@ -7288,7 +7783,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 1,
+          "median_reach_per_post": 84
         }
       ]
     },
@@ -8005,7 +8502,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -8013,7 +8512,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -8021,7 +8522,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -8029,7 +8532,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -8037,7 +8542,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -8045,7 +8552,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -8053,7 +8562,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -8061,7 +8572,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -8069,7 +8582,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 31,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -8077,7 +8592,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -8085,7 +8602,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 24,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -8093,7 +8612,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -8101,7 +8622,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 10,
+          "median_reach_per_post": 449
         },
         {
           "month": "2026-02-01",
@@ -8109,7 +8632,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 15,
+          "median_reach_per_post": 609
         },
         {
           "month": "2026-03-01",
@@ -8117,7 +8642,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 11,
+          "median_reach_per_post": 525
         },
         {
           "month": "2026-04-01",
@@ -8125,7 +8652,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 10,
+          "median_reach_per_post": 455
         }
       ]
     },
@@ -8852,7 +9381,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -8860,7 +9391,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 16,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -8868,7 +9401,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -8876,7 +9411,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -8884,7 +9421,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -8892,7 +9431,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -8900,7 +9441,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -8908,7 +9451,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -8916,7 +9461,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 35,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -8924,7 +9471,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -8932,7 +9481,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -8940,7 +9491,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -8948,7 +9501,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 9,
+          "median_reach_per_post": 972
         },
         {
           "month": "2026-02-01",
@@ -8956,7 +9511,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 5,
+          "median_reach_per_post": 1116
         },
         {
           "month": "2026-03-01",
@@ -8964,7 +9521,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 7,
+          "median_reach_per_post": 756
         },
         {
           "month": "2026-04-01",
@@ -8972,7 +9531,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 22,
+          "median_reach_per_post": 1005
         }
       ]
     },
@@ -9752,12 +10313,74 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-07-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -9765,7 +10388,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 41,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -9773,7 +10398,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 24,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -9781,7 +10408,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 35,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -9789,7 +10418,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 31,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -9797,7 +10428,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 45,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -9805,7 +10438,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 31,
+          "median_reach_per_post": 1196
         },
         {
           "month": "2026-02-01",
@@ -9813,7 +10448,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 17,
+          "median_reach_per_post": 1359
         },
         {
           "month": "2026-03-01",
@@ -9821,7 +10458,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 12,
+          "median_reach_per_post": 904
         },
         {
           "month": "2026-04-01",
@@ -9829,7 +10468,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 16,
+          "median_reach_per_post": 830
         }
       ]
     },
@@ -10496,7 +11137,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -10504,7 +11147,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -10512,7 +11157,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -10520,7 +11167,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -10528,7 +11177,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -10536,7 +11187,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -10544,7 +11197,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -10552,7 +11207,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -10560,7 +11217,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 32,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -10568,7 +11227,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -10576,7 +11237,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -10584,7 +11247,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 28,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -10592,7 +11257,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 27,
+          "median_reach_per_post": 826
         },
         {
           "month": "2026-02-01",
@@ -10600,7 +11267,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 18,
+          "median_reach_per_post": 814
         },
         {
           "month": "2026-03-01",
@@ -10608,7 +11277,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 22,
+          "median_reach_per_post": 866
         },
         {
           "month": "2026-04-01",
@@ -10616,7 +11287,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 13,
+          "median_reach_per_post": 811
         }
       ]
     },
@@ -11358,12 +12031,154 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-11-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-12-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2026-03-01",
           "reach": 4054,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 7,
+          "median_reach_per_post": 110
         },
         {
           "month": "2026-04-01",
@@ -11371,7 +12186,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 12,
+          "median_reach_per_post": 248
         }
       ]
     },
@@ -11828,7 +12645,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -11836,7 +12655,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -11844,7 +12665,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -11852,7 +12675,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -11860,7 +12685,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -11868,7 +12695,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -11876,7 +12705,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -11884,7 +12715,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -11892,7 +12725,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -11900,7 +12735,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -11908,7 +12745,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -11916,7 +12755,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -11924,7 +12765,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 5,
+          "median_reach_per_post": 43
         },
         {
           "month": "2026-02-01",
@@ -11932,7 +12775,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 2
+          "post_count": 2,
+          "median_likes": 9,
+          "median_reach_per_post": 15
         },
         {
           "month": "2026-03-01",
@@ -11940,7 +12785,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 2
+          "post_count": 2,
+          "median_likes": 9,
+          "median_reach_per_post": 13
         },
         {
           "month": "2026-04-01",
@@ -11948,7 +12795,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 4,
+          "median_reach_per_post": 16
         }
       ]
     },
@@ -12635,7 +13484,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -12643,7 +13494,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -12651,7 +13504,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -12659,7 +13514,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -12667,7 +13524,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -12675,7 +13534,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -12683,7 +13544,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -12691,7 +13554,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -12699,7 +13564,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -12707,7 +13574,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -12715,7 +13584,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -12723,7 +13594,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -12731,7 +13604,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 7,
+          "median_reach_per_post": 775
         },
         {
           "month": "2026-02-01",
@@ -12739,7 +13614,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 5,
+          "median_reach_per_post": 1660
         },
         {
           "month": "2026-03-01",
@@ -12747,7 +13624,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 7,
+          "median_reach_per_post": 1266
         },
         {
           "month": "2026-04-01",
@@ -12755,7 +13634,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 9,
+          "median_reach_per_post": 656
         }
       ]
     },
@@ -13432,7 +14313,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -13440,7 +14323,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -13448,7 +14333,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -13456,7 +14343,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -13464,7 +14353,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -13472,7 +14363,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -13480,7 +14373,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -13488,7 +14383,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -13496,7 +14393,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 21,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -13504,7 +14403,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 29,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -13512,7 +14413,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -13520,7 +14423,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -13528,7 +14433,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 15,
+          "median_reach_per_post": 443
         },
         {
           "month": "2026-02-01",
@@ -13536,7 +14443,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 17,
+          "median_reach_per_post": 603
         },
         {
           "month": "2026-03-01",
@@ -13544,7 +14453,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 18,
+          "median_reach_per_post": 561
         },
         {
           "month": "2026-04-01",
@@ -13552,7 +14463,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 10,
+          "median_reach_per_post": 298
         }
       ]
     },
@@ -14259,7 +15172,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -14267,7 +15182,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -14275,7 +15192,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -14283,7 +15202,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -14291,7 +15212,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -14299,7 +15222,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -14307,7 +15232,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -14315,7 +15242,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -14323,7 +15252,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -14331,7 +15262,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -14339,7 +15272,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -14347,7 +15282,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -14355,7 +15292,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 13,
+          "median_reach_per_post": 1164
         },
         {
           "month": "2026-02-01",
@@ -14363,7 +15302,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 11,
+          "median_reach_per_post": 687
         },
         {
           "month": "2026-03-01",
@@ -14371,7 +15312,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 8,
+          "median_reach_per_post": 559
         },
         {
           "month": "2026-04-01",
@@ -14379,7 +15322,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 11,
+          "median_reach_per_post": 397
         }
       ]
     },
@@ -15076,7 +16021,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -15084,7 +16031,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 19,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -15092,7 +16041,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 17,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -15100,7 +16051,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -15108,7 +16061,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -15116,7 +16071,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -15124,7 +16081,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -15132,7 +16091,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -15140,7 +16101,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -15148,7 +16111,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 31,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -15156,7 +16121,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 17,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -15164,7 +16131,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -15172,7 +16141,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 8,
+          "median_reach_per_post": 434
         },
         {
           "month": "2026-02-01",
@@ -15180,7 +16151,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 9,
+          "median_reach_per_post": 604
         },
         {
           "month": "2026-03-01",
@@ -15188,7 +16161,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 20,
+          "median_reach_per_post": 700
         },
         {
           "month": "2026-04-01",
@@ -15196,7 +16171,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 12,
+          "median_reach_per_post": 568
         }
       ]
     },
@@ -15903,7 +16880,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -15911,7 +16890,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -15919,7 +16900,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -15927,7 +16910,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -15935,7 +16920,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -15943,7 +16930,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -15951,7 +16940,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -15959,7 +16950,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -15967,7 +16960,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -15975,7 +16970,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -15983,7 +16980,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -15991,7 +16990,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -15999,7 +17000,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 38
+          "post_count": 38,
+          "median_likes": 6,
+          "median_reach_per_post": 681
         },
         {
           "month": "2026-02-01",
@@ -16007,7 +17010,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 5,
+          "median_reach_per_post": 1055
         },
         {
           "month": "2026-03-01",
@@ -16015,7 +17020,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 6,
+          "median_reach_per_post": 893
         },
         {
           "month": "2026-04-01",
@@ -16023,7 +17030,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 6,
+          "median_reach_per_post": 897
         }
       ]
     },
@@ -16780,7 +17789,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -16788,7 +17799,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 26,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -16796,7 +17809,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 37,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -16804,7 +17819,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 27
+          "post_count": 27,
+          "median_likes": 44,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -16812,7 +17829,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 28
+          "post_count": 28,
+          "median_likes": 21,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -16820,7 +17839,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 26,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -16828,7 +17849,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 26,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -16836,7 +17859,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 27,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -16844,7 +17869,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 31,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -16852,7 +17879,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 44,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -16860,7 +17889,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 39,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -16868,7 +17899,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 49,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -16876,7 +17909,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 31
+          "post_count": 31,
+          "median_likes": 33,
+          "median_reach_per_post": 1269
         },
         {
           "month": "2026-02-01",
@@ -16884,7 +17919,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 25,
+          "median_reach_per_post": 2096
         },
         {
           "month": "2026-03-01",
@@ -16892,7 +17929,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 45,
+          "median_reach_per_post": 1630
         },
         {
           "month": "2026-04-01",
@@ -16900,7 +17939,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 50,
+          "median_reach_per_post": 1847
         }
       ]
     },
@@ -17565,7 +18606,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 3
+          "post_count": 3,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -17573,7 +18616,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 4
+          "post_count": 4,
+          "median_likes": 40,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -17581,7 +18626,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -17589,7 +18636,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 2
+          "post_count": 2,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -17597,7 +18646,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -17605,7 +18656,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -17613,7 +18666,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -17621,7 +18676,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -17629,7 +18686,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 21,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -17637,7 +18696,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -17645,7 +18706,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 15,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -17653,7 +18716,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -17661,7 +18726,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 17,
+          "median_reach_per_post": 740
         },
         {
           "month": "2026-02-01",
@@ -17669,7 +18736,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 16,
+          "median_reach_per_post": 951
         },
         {
           "month": "2026-03-01",
@@ -17677,7 +18746,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 17,
+          "median_reach_per_post": 757
         },
         {
           "month": "2026-04-01",
@@ -17685,7 +18756,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 10,
+          "median_reach_per_post": 933
         }
       ]
     },
@@ -18352,7 +19425,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -18360,7 +19435,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -18368,7 +19445,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -18376,7 +19455,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -18384,7 +19465,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -18392,7 +19475,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -18400,7 +19485,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -18408,7 +19495,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -18416,7 +19505,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -18424,7 +19515,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -18432,7 +19525,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -18440,7 +19535,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -18448,7 +19545,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 6,
+          "median_reach_per_post": 551
         },
         {
           "month": "2026-02-01",
@@ -18456,7 +19555,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 4,
+          "median_reach_per_post": 874
         },
         {
           "month": "2026-03-01",
@@ -18464,7 +19565,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 5,
+          "median_reach_per_post": 425
         },
         {
           "month": "2026-04-01",
@@ -18472,7 +19575,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 7,
+          "median_reach_per_post": 487
         }
       ]
     },
@@ -19129,7 +20234,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -19137,7 +20244,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 5,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -19145,7 +20254,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -19153,7 +20264,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 23,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -19161,7 +20274,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -19169,7 +20284,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -19177,7 +20294,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -19185,7 +20304,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -19193,7 +20314,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -19201,7 +20324,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -19209,7 +20334,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -19217,7 +20344,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -19225,7 +20354,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 11,
+          "median_reach_per_post": 555
         },
         {
           "month": "2026-02-01",
@@ -19233,7 +20364,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 8,
+          "median_reach_per_post": 711
         },
         {
           "month": "2026-03-01",
@@ -19241,7 +20374,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 13,
+          "median_reach_per_post": 543
         },
         {
           "month": "2026-04-01",
@@ -19249,7 +20384,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 5,
+          "median_reach_per_post": 456
         }
       ]
     },
@@ -19911,12 +21048,74 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-07-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 0,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -19924,7 +21123,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -19932,7 +21133,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 1,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -19940,7 +21143,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 1
+          "post_count": 1,
+          "median_likes": 3,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -19948,7 +21153,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 1
+          "post_count": 1,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -19956,7 +21163,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -19964,7 +21173,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 3,
+          "median_reach_per_post": 181
         },
         {
           "month": "2026-02-01",
@@ -19972,7 +21183,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 3,
+          "median_reach_per_post": 184
         },
         {
           "month": "2026-03-01",
@@ -19980,7 +21193,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 9,
+          "median_reach_per_post": 138
         },
         {
           "month": "2026-04-01",
@@ -19988,7 +21203,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 6,
+          "median_reach_per_post": 372
         }
       ]
     },
@@ -20660,12 +21877,164 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-11-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-12-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2026-04-01",
           "reach": 16,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 1
+          "post_count": 1,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         }
       ]
     },
@@ -21342,7 +22711,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 28
+          "post_count": 28,
+          "median_likes": 22,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -21350,7 +22721,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -21358,7 +22731,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 27
+          "post_count": 27,
+          "median_likes": 34,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -21366,7 +22741,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 31,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -21374,7 +22751,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 29
+          "post_count": 29,
+          "median_likes": 45,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -21382,7 +22761,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 33
+          "post_count": 33,
+          "median_likes": 40,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -21390,7 +22771,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 30
+          "post_count": 30,
+          "median_likes": 42,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -21398,7 +22781,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 26
+          "post_count": 26,
+          "median_likes": 37,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -21406,7 +22791,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 44,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -21414,7 +22801,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 36,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -21422,7 +22811,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 33,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -21430,7 +22821,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 46,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -21438,7 +22831,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 27
+          "post_count": 27,
+          "median_likes": 25,
+          "median_reach_per_post": 950
         },
         {
           "month": "2026-02-01",
@@ -21446,7 +22841,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 7,
+          "median_reach_per_post": 1122
         },
         {
           "month": "2026-03-01",
@@ -21454,7 +22851,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 10,
+          "median_reach_per_post": 895
         },
         {
           "month": "2026-04-01",
@@ -21462,7 +22861,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 13,
+          "median_reach_per_post": 1016
         }
       ]
     },
@@ -22131,6 +23532,168 @@
           "image_url": "nso-dashboard/thumbnails/oldbridge/DaDiD1sCKSK.jpg",
           "engagement": 10
         }
+      ],
+      "monthly": [
+        {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-11-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-12-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        }
       ]
     },
     {
@@ -22761,12 +24324,164 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-11-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-12-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2026-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2026-04-01",
           "reach": 773,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 4,
+          "median_reach_per_post": 10
         }
       ]
     },
@@ -23403,7 +25118,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -23411,7 +25128,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 21,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -23419,7 +25138,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 28,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -23427,7 +25148,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 16,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -23435,7 +25158,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -23443,7 +25168,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -23451,7 +25178,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -23459,7 +25188,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -23467,7 +25198,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 25,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -23475,7 +25208,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -23483,7 +25218,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 18,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -23491,7 +25228,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 16,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -23499,7 +25238,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 10,
+          "median_reach_per_post": 498
         },
         {
           "month": "2026-02-01",
@@ -23507,7 +25248,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 9,
+          "median_reach_per_post": 1394
         },
         {
           "month": "2026-03-01",
@@ -23515,7 +25258,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 12,
+          "median_reach_per_post": 1107
         },
         {
           "month": "2026-04-01",
@@ -23523,7 +25268,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 9,
+          "median_reach_per_post": 894
         }
       ]
     },
@@ -24275,12 +26022,114 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-10-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-11-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -24288,7 +26137,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 5
+          "post_count": 5,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -24296,7 +26147,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 8,
+          "median_reach_per_post": 955
         },
         {
           "month": "2026-02-01",
@@ -24304,7 +26157,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 19,
+          "median_reach_per_post": 1355
         },
         {
           "month": "2026-03-01",
@@ -24312,7 +26167,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 29
+          "post_count": 29,
+          "median_likes": 12,
+          "median_reach_per_post": 1468
         },
         {
           "month": "2026-04-01",
@@ -24320,7 +26177,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 34
+          "post_count": 34,
+          "median_likes": 15,
+          "median_reach_per_post": 2191
         }
       ]
     },
@@ -25022,12 +26881,104 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-07-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-09-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-10-01",
           "reach": 35,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 3
+          "post_count": 3,
+          "median_likes": 4,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -25035,7 +26986,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 5,
+          "median_reach_per_post": 28
         },
         {
           "month": "2025-12-01",
@@ -25043,7 +26996,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 7,
+          "median_reach_per_post": 1173
         },
         {
           "month": "2026-01-01",
@@ -25051,7 +27006,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 2,
+          "median_reach_per_post": 1021
         },
         {
           "month": "2026-02-01",
@@ -25059,7 +27016,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 28
+          "post_count": 28,
+          "median_likes": 4,
+          "median_reach_per_post": 920
         },
         {
           "month": "2026-03-01",
@@ -25067,7 +27026,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 8,
+          "median_reach_per_post": 1728
         },
         {
           "month": "2026-04-01",
@@ -25075,7 +27036,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 9,
+          "median_reach_per_post": 1645
         }
       ]
     },
@@ -25772,7 +27735,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 20
+          "post_count": 20,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -25780,7 +27745,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -25788,7 +27755,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 16,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -25796,7 +27765,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -25804,7 +27775,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -25812,7 +27785,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -25820,7 +27795,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 13,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -25828,7 +27805,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -25836,7 +27815,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 25,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -25844,7 +27825,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 32,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -25852,7 +27835,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 11,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -25860,7 +27845,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 12,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -25868,7 +27855,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 25,
+          "median_reach_per_post": 861
         },
         {
           "month": "2026-02-01",
@@ -25876,7 +27865,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 13,
+          "median_reach_per_post": 1022
         },
         {
           "month": "2026-03-01",
@@ -25884,7 +27875,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 14,
+          "median_reach_per_post": 743
         },
         {
           "month": "2026-04-01",
@@ -25892,7 +27885,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 23,
+          "median_reach_per_post": 1045
         }
       ]
     },
@@ -26619,7 +28614,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -26627,7 +28624,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 16,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -26635,7 +28634,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 30,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -26643,7 +28644,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -26651,7 +28654,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 31
+          "post_count": 31,
+          "median_likes": 34,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -26659,7 +28664,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 27
+          "post_count": 27,
+          "median_likes": 19,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -26667,7 +28674,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 23,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -26675,7 +28684,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 29
+          "post_count": 29,
+          "median_likes": 22,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -26683,7 +28694,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 30
+          "post_count": 30,
+          "median_likes": 26,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -26691,7 +28704,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 25,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -26699,7 +28714,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 36
+          "post_count": 36,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -26707,7 +28724,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 39
+          "post_count": 39,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -26715,7 +28734,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 28
+          "post_count": 28,
+          "median_likes": 11,
+          "median_reach_per_post": 1225
         },
         {
           "month": "2026-02-01",
@@ -26723,7 +28744,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 22
+          "post_count": 22,
+          "median_likes": 7,
+          "median_reach_per_post": 1171
         },
         {
           "month": "2026-03-01",
@@ -26731,7 +28754,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 8,
+          "median_reach_per_post": 942
         },
         {
           "month": "2026-04-01",
@@ -26739,7 +28764,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 25
+          "post_count": 25,
+          "median_likes": 21,
+          "median_reach_per_post": 1098
         }
       ]
     },
@@ -27401,12 +29428,74 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-05-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-06-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-07-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -27414,7 +29503,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 43,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -27422,7 +29513,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -27430,7 +29523,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -27438,7 +29533,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 38,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -27446,7 +29543,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 19,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -27454,7 +29553,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 35
+          "post_count": 35,
+          "median_likes": 20,
+          "median_reach_per_post": 760
         },
         {
           "month": "2026-02-01",
@@ -27462,7 +29563,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 35
+          "post_count": 35,
+          "median_likes": 15,
+          "median_reach_per_post": 1620
         },
         {
           "month": "2026-03-01",
@@ -27470,7 +29573,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 24
+          "post_count": 24,
+          "median_likes": 17,
+          "median_reach_per_post": 849
         },
         {
           "month": "2026-04-01",
@@ -27478,7 +29583,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 11,
+          "median_reach_per_post": 929
         }
       ]
     },
@@ -28160,12 +30267,54 @@
       ],
       "monthly": [
         {
+          "month": "2025-01-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-02-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-03-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-04-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
+        },
+        {
           "month": "2025-05-01",
           "reach": 0,
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 2
+          "post_count": 2,
+          "median_likes": 7,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -28173,7 +30322,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 6,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -28181,7 +30332,19 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 10,
+          "median_reach_per_post": 0
+        },
+        {
+          "month": "2025-08-01",
+          "reach": 0,
+          "accounts_engaged": 0,
+          "total_interactions": 0,
+          "days_with_data": 0,
+          "post_count": 0,
+          "median_likes": null,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -28189,7 +30352,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 8
+          "post_count": 8,
+          "median_likes": 14,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -28197,7 +30362,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 8,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -28205,7 +30372,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 9,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -28213,7 +30382,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 10,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -28221,7 +30392,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 12,
+          "median_reach_per_post": 762
         },
         {
           "month": "2026-02-01",
@@ -28229,7 +30402,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 6
+          "post_count": 6,
+          "median_likes": 5,
+          "median_reach_per_post": 990
         },
         {
           "month": "2026-03-01",
@@ -28237,7 +30412,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 11,
+          "median_reach_per_post": 642
         },
         {
           "month": "2026-04-01",
@@ -28245,7 +30422,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 14,
+          "median_reach_per_post": 751
         }
       ]
     },
@@ -28992,7 +31171,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 17,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-02-01",
@@ -29000,7 +31181,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 7
+          "post_count": 7,
+          "median_likes": 19,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-03-01",
@@ -29008,7 +31191,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 45,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-04-01",
@@ -29016,7 +31201,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 12
+          "post_count": 12,
+          "median_likes": 47,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-05-01",
@@ -29024,7 +31211,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 11
+          "post_count": 11,
+          "median_likes": 19,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-06-01",
@@ -29032,7 +31221,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 15
+          "post_count": 15,
+          "median_likes": 31,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-07-01",
@@ -29040,7 +31231,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 23
+          "post_count": 23,
+          "median_likes": 29,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-08-01",
@@ -29048,7 +31241,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 14
+          "post_count": 14,
+          "median_likes": 19,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-09-01",
@@ -29056,7 +31251,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 13
+          "post_count": 13,
+          "median_likes": 56,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-10-01",
@@ -29064,7 +31261,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 17
+          "post_count": 17,
+          "median_likes": 27,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-11-01",
@@ -29072,7 +31271,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 19
+          "post_count": 19,
+          "median_likes": 34,
+          "median_reach_per_post": 0
         },
         {
           "month": "2025-12-01",
@@ -29080,7 +31281,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 9
+          "post_count": 9,
+          "median_likes": 20,
+          "median_reach_per_post": 0
         },
         {
           "month": "2026-01-01",
@@ -29088,7 +31291,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 21
+          "post_count": 21,
+          "median_likes": 22,
+          "median_reach_per_post": 540
         },
         {
           "month": "2026-02-01",
@@ -29096,7 +31301,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 18
+          "post_count": 18,
+          "median_likes": 16,
+          "median_reach_per_post": 1170
         },
         {
           "month": "2026-03-01",
@@ -29104,7 +31311,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 10
+          "post_count": 10,
+          "median_likes": 16,
+          "median_reach_per_post": 819
         },
         {
           "month": "2026-04-01",
@@ -29112,7 +31321,9 @@
           "accounts_engaged": 0,
           "total_interactions": 0,
           "days_with_data": 0,
-          "post_count": 16
+          "post_count": 16,
+          "median_likes": 26,
+          "median_reach_per_post": 1247
         }
       ]
     }
