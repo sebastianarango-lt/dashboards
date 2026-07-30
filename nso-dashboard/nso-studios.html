@@ -2674,19 +2674,29 @@ function renderInstagram(){
   }
 
   let h='';
-  // For historical ranges, use end-of-period followers from monthly data
-  let followersLabel='Current Followers', followersVal=totalFollowers;
-  if(rangeExtendsBack&&monthFiltered.length){
-    const mths=monthFiltered.flatMap(s=>s.monthly||[]).filter(m=>m.followers!=null);
+  // Show followers at the end of the selected range
+  // 1. Try last daily row with follower_count in range
+  // 2. Fall back to last monthly entry with followers
+  // 3. Fall back to current_followers (today)
+  let followersLabel='Current Followers', followersVal=totalFollowers, hasFollowersKpi=hasFollowers;
+  const dailyFcRows=filtered.flatMap(s=>s.daily.filter(r=>r.follower_count!=null))
+                            .sort((a,b)=>b.date.localeCompare(a.date));
+  if(dailyFcRows.length){
+    followersVal=dailyFcRows[0].follower_count;
+    followersLabel='Followers';
+    hasFollowersKpi=true;
+  } else if(rangeExtendsBack&&monthFiltered.length){
+    const mths=monthFiltered.flatMap(s=>s.monthly||[]).filter(m=>m.followers!=null)
+                            .sort((a,b)=>b.month.localeCompare(a.month));
     if(mths.length){
-      const lastMonth=mths.sort((a,b)=>b.month.localeCompare(a.month))[0];
-      followersVal=lastMonth.followers;
-      followersLabel='Followers ('+fmtMonthLabel(lastMonth.month)+')';
+      followersVal=mths[0].followers;
+      followersLabel='Followers';
+      hasFollowersKpi=true;
     }
   }
 
   h+=`<div class="kpi-grid">`;
-  if(hasFollowers||rangeExtendsBack)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'');
+  if(hasFollowersKpi)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'');
   h+=_igKpi('Total Reach',totalReach.toLocaleString(),_igDelta(totalReach,ppTotalReach));
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
   if(allPosts.length){
