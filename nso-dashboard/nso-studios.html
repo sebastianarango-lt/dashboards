@@ -2578,12 +2578,18 @@ function renderInstagram(){
   const fromD=from?new Date(from+'T00:00:00'):null;
   const toD=to?new Date(to+'T00:00:00'):null;
 
+  // Determine rolling window start from available daily data
+  const allDailyDates=studios.flatMap(s=>(s.daily||[]).map(r=>r.date));
+  const windowStart=allDailyDates.length?[...allDailyDates].sort()[0]:null;
+  const rangeExtendsBack=!!(from&&windowStart&&from<windowStart);
+  const fromMonthKey=from?from.substring(0,7)+'-01':null;
+  const windowMonthKey=windowStart?windowStart.substring(0,7)+'-01':null;
+
   let ppFromStr=null,ppToStr=null,ppOutOfRange=false;
   if(fromD&&toD){
     const{ppFrom:ppF,ppTo:ppT}=computeWindows(fromD,toD);
     ppFromStr=localDateStr(ppF);ppToStr=localDateStr(ppT);
-    const allAvailDates=studios.flatMap(s=>(s.daily||[]).map(r=>r.date));
-    const dataStart=allAvailDates.length?[...allAvailDates].sort()[0]:null;
+    const dataStart=windowStart||null;
     ppOutOfRange=!dataStart||ppFromStr<dataStart;
   }
 
@@ -2600,6 +2606,12 @@ function renderInstagram(){
     posts:(s.posts||[]).filter(p=>p.date>=ppFromStr&&p.date<=ppToStr)
   })):[];
 
+  // Monthly data for the pre-window portion of the selected range
+  const monthFiltered=rangeExtendsBack?studios.map(s=>({
+    ...s,
+    monthly:(s.monthly||[]).filter(m=>m.month>=fromMonthKey&&m.month<windowMonthKey)
+  })):[];
+
   function _enrichPosts(studioList){
     return studioList.flatMap(s=>{
       const reachByDate={};s.daily.forEach(r=>{reachByDate[r.date]=r.reach||0;});
@@ -2614,9 +2626,18 @@ function renderInstagram(){
   const allPosts=_enrichPosts(filtered);
   const ppAllPosts=_enrichPosts(ppFiltered);
 
-  const totalReach=_sumKey(filtered,'reach');
+  // Reach: daily (rolling window) + monthly (historical pre-window)
+  const dailyReach=_sumKey(filtered,'reach');
+  const monthlyReach=monthFiltered.reduce((t,s)=>(s.monthly||[]).reduce((a,m)=>a+(m.reach||0),0)+t,0);
+  const totalReach=dailyReach+monthlyReach;
   const ppTotalReach=_sumKey(ppFiltered,'reach');
-  const days=new Set(filtered.flatMap(s=>s.daily.map(r=>r.date))).size||1;
+
+  // Days for avg: unique daily dates + calendar days for each historical month
+  const dailyDays=new Set(filtered.flatMap(s=>s.daily.map(r=>r.date))).size;
+  const monthlyDays=monthFiltered.flatMap(s=>s.monthly||[]).reduce((t,m)=>{
+    const d=new Date(m.month);return t+new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+  },0);
+  const days=(dailyDays+monthlyDays)||1;
   const ppDays=new Set(ppFiltered.flatMap(s=>s.daily.map(r=>r.date))).size||1;
   const avgReach=Math.round(totalReach/days);
   const ppAvgReach=Math.round(ppTotalReach/ppDays);
@@ -2626,6 +2647,9 @@ function renderInstagram(){
   const medianReach=_median(allPosts.map(p=>p.est_reach||0));
   const ppMedianLikes=_median(ppAllPosts.map(p=>p.likes||0));
   const ppMedianReach=_median(ppAllPosts.map(p=>p.est_reach||0));
+
+  // Historical post count (from monthly aggregates, no individual details available)
+  const historicalPostCount=monthFiltered.reduce((t,s)=>(s.monthly||[]).reduce((a,m)=>a+(m.post_count||0),0)+t,0);
 
   function _igDelta(curr,pp){
     if(!ppFromStr)return'';
@@ -2646,12 +2670,16 @@ function renderInstagram(){
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
   h+=_igKpi('Median Reach / Post',medianReach.toLocaleString(),_igDelta(medianReach,ppMedianReach));
   h+=_igKpi('Median Likes',medianLikes.toLocaleString(),_igDelta(medianLikes,ppMedianLikes));
-  h+=_igKpi('Posts in Period',allPosts.length.toString(),_igDelta(allPosts.length,ppAllPosts.length));
+  h+=_igKpi('Posts in Period',(allPosts.length+historicalPostCount).toString(),_igDelta(allPosts.length,ppAllPosts.length));
   h+=`</div>`;
 
-  if(allPosts.length){
+  if(allPosts.length||historicalPostCount){
+    const histNote=rangeExtendsBack&&historicalPostCount>0
+      ?`<div style="font-size:11px;color:#8aaabb;font-family:'Open Sans',sans-serif;padding:6px 0 2px">Showing ${allPosts.length} posts from the last 90 days. ${historicalPostCount} older posts are available as monthly totals only.</div>`
+      :'';
     h+=`<div class="chart-card">
       <div class="chart-card-title">Best Performing Posts</div>
+      ${histNote}
       <div style="overflow-x:auto">
         <table class="data-table" id="ig-posts-table">
           <thead><tr>
