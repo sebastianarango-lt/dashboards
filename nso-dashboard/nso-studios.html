@@ -2688,6 +2688,11 @@ function renderInstagram(){
   }
   h+=_igKpi('Posts in Period',(allPosts.length+historicalPostCount).toString(),_igDelta(allPosts.length,ppAllPosts.length));
   h+=`</div>`;
+  const _disclaimerBase=`The Instagram API provides a rolling 90-day window of daily data. As each month falls completely outside that window, it is automatically archived as a monthly aggregate (reach, post count, and median engagement).`;
+  const _disclaimerExtra=rangeExtendsBack
+    ?` Metrics for dates before <strong>${windowStart}</strong> come from those monthly aggregates.`
+    :'';
+  h+=`<div style="font-size:11px;color:#8aaabb;font-family:'Open Sans',sans-serif;line-height:1.5;padding:6px 2px 12px">${_disclaimerBase}${_disclaimerExtra}</div>`;
 
   if(allPosts.length||historicalPostCount){
     const histNote=rangeExtendsBack&&historicalPostCount>0
