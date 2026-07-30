@@ -2490,23 +2490,28 @@ function renderInstagram() {
     ? monthFiltered.reduce((t, s) => (s.monthly || []).reduce((a, m) => a + (m.post_count || 0), 0) + t, 0)
     : 0;
 
-  // Dynamic followers KPI — uses end-of-range daily value, falls back to monthly archive
+  // Dynamic followers KPI — sum the last known follower_count per studio within range
   let followersVal = null, followersLabel = 'Followers', hasFollowersKpi = false;
-  const dailyFcRows = filtered.flatMap(s => s.daily.filter(r => r.follower_count != null))
-                              .sort((a, b) => b.date.localeCompare(a.date));
-  if (dailyFcRows.length) {
-    followersVal = dailyFcRows[0].follower_count;
-    hasFollowersKpi = true;
-  } else if (rangeExtendsBack && monthFiltered.length) {
-    const mths = monthFiltered.flatMap(s => s.monthly || []).filter(m => m.followers != null)
-                              .sort((a, b) => b.month.localeCompare(a.month));
-    if (mths.length) { followersVal = mths[0].followers; hasFollowersKpi = true; }
-  } else {
-    const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
-    if (filtered.some(s => s.current_followers > 0)) {
-      followersVal = totalFollowers;
-      followersLabel = 'Current Followers';
-      hasFollowersKpi = true;
+  {
+    let fcSum = 0, fcCount = 0;
+    filtered.forEach(s => {
+      const rows = s.daily.filter(r => r.follower_count != null).sort((a, b) => b.date.localeCompare(a.date));
+      if (rows.length) { fcSum += rows[0].follower_count; fcCount++; }
+    });
+    if (fcCount > 0) {
+      followersVal = fcSum; hasFollowersKpi = true;
+    } else if (rangeExtendsBack && monthFiltered.length) {
+      let mSum = 0, mCount = 0;
+      monthFiltered.forEach(s => {
+        const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
+        if (mths.length) { mSum += mths[0].followers; mCount++; }
+      });
+      if (mCount > 0) { followersVal = mSum; hasFollowersKpi = true; }
+    } else {
+      const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
+      if (filtered.some(s => s.current_followers > 0)) {
+        followersVal = totalFollowers; followersLabel = 'Current Followers'; hasFollowersKpi = true;
+      }
     }
   }
 
