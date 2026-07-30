@@ -2490,29 +2490,18 @@ function renderInstagram() {
     ? monthFiltered.reduce((t, s) => (s.monthly || []).reduce((a, m) => a + (m.post_count || 0), 0) + t, 0)
     : 0;
 
-  // Dynamic followers KPI — sum the last known follower_count per studio within range
-  let followersVal = null, followersLabel = 'Followers', hasFollowersKpi = false;
-  {
-    let fcSum = 0, fcCount = 0;
-    filtered.forEach(s => {
-      const rows = s.daily.filter(r => r.follower_count != null).sort((a, b) => b.date.localeCompare(a.date));
-      if (rows.length) { fcSum += rows[0].follower_count; fcCount++; }
+  // Followers: current_followers is the API total (account endpoint); daily follower_count is a delta, not total.
+  // For historical ranges use monthly archive; otherwise show current total.
+  const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
+  const hasFollowers   = filtered.some(s => s.current_followers > 0);
+  let followersVal = totalFollowers, followersLabel = 'Current Followers', hasFollowersKpi = hasFollowers;
+  if (rangeExtendsBack && monthFiltered.length) {
+    let mSum = 0, mCount = 0;
+    monthFiltered.forEach(s => {
+      const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
+      if (mths.length) { mSum += mths[0].followers; mCount++; }
     });
-    if (fcCount > 0) {
-      followersVal = fcSum; hasFollowersKpi = true;
-    } else if (rangeExtendsBack && monthFiltered.length) {
-      let mSum = 0, mCount = 0;
-      monthFiltered.forEach(s => {
-        const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
-        if (mths.length) { mSum += mths[0].followers; mCount++; }
-      });
-      if (mCount > 0) { followersVal = mSum; hasFollowersKpi = true; }
-    } else {
-      const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
-      if (filtered.some(s => s.current_followers > 0)) {
-        followersVal = totalFollowers; followersLabel = 'Current Followers'; hasFollowersKpi = true;
-      }
-    }
+    if (mCount > 0) { followersVal = mSum; followersLabel = 'Followers'; hasFollowersKpi = true; }
   }
 
   // Delta badge — hidden for historical ranges to avoid misleading comparisons

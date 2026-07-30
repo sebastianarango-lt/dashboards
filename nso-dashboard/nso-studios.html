@@ -2680,23 +2680,16 @@ function renderInstagram(){
   // 1. Try last daily row with follower_count in range
   // 2. Fall back to last monthly entry with followers
   // 3. Fall back to current_followers (today)
-  // Sum the last known follower_count per studio within the selected range
-  let followersLabel='Current Followers', followersVal=totalFollowers, hasFollowersKpi=hasFollowers;
-  {
-    let fcSum=0,fcCount=0;
-    filtered.forEach(s=>{
-      const rows=s.daily.filter(r=>r.follower_count!=null).sort((a,b)=>b.date.localeCompare(a.date));
-      if(rows.length){fcSum+=rows[0].follower_count;fcCount++;}
+  // Followers: current_followers is the API total (account endpoint); daily follower_count is a delta, not total.
+  // For historical ranges use monthly archive; otherwise show current total.
+  let followersLabel='Current Followers',followersVal=totalFollowers,hasFollowersKpi=hasFollowers;
+  if(rangeExtendsBack&&monthFiltered.length){
+    let mSum=0,mCount=0;
+    monthFiltered.forEach(s=>{
+      const mths=(s.monthly||[]).filter(m=>m.followers!=null).sort((a,b)=>b.month.localeCompare(a.month));
+      if(mths.length){mSum+=mths[0].followers;mCount++;}
     });
-    if(fcCount>0){followersVal=fcSum;followersLabel='Followers';hasFollowersKpi=true;}
-    else if(rangeExtendsBack&&monthFiltered.length){
-      let mSum=0,mCount=0;
-      monthFiltered.forEach(s=>{
-        const mths=(s.monthly||[]).filter(m=>m.followers!=null).sort((a,b)=>b.month.localeCompare(a.month));
-        if(mths.length){mSum+=mths[0].followers;mCount++;}
-      });
-      if(mCount>0){followersVal=mSum;followersLabel='Followers';hasFollowersKpi=true;}
-    }
+    if(mCount>0){followersVal=mSum;followersLabel='Followers';hasFollowersKpi=true;}
   }
 
   h+=`<div class="kpi-grid">`;
