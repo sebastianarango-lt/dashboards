@@ -2663,8 +2663,7 @@ function renderInstagram(){
   const histMedianReach=_weightedMedian(monthFiltered,'median_reach_per_post');
 
   function _igDelta(curr,pp){
-    if(!ppFromStr)return'';
-    if(ppOutOfRange)return'<div class="kpi-card-delta neu">&#9651; out of range</div>';
+    if(!ppFromStr||ppOutOfRange||rangeExtendsBack)return'';
     if(!pp)return'';
     const d=(curr-pp)/pp*100;
     const cls=d>=0?'pos':'neg';const arrow=d>=0?'&#9650;':'&#9660;';
@@ -2675,8 +2674,19 @@ function renderInstagram(){
   }
 
   let h='';
+  // For historical ranges, use end-of-period followers from monthly data
+  let followersLabel='Current Followers', followersVal=totalFollowers;
+  if(rangeExtendsBack&&monthFiltered.length){
+    const mths=monthFiltered.flatMap(s=>s.monthly||[]).filter(m=>m.followers!=null);
+    if(mths.length){
+      const lastMonth=mths.sort((a,b)=>b.month.localeCompare(a.month))[0];
+      followersVal=lastMonth.followers;
+      followersLabel='Followers ('+fmtMonthLabel(lastMonth.month)+')';
+    }
+  }
+
   h+=`<div class="kpi-grid">`;
-  if(hasFollowers)h+=_igKpi('Total Followers',totalFollowers.toLocaleString(),'');
+  if(hasFollowers||rangeExtendsBack)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'');
   h+=_igKpi('Total Reach',totalReach.toLocaleString(),_igDelta(totalReach,ppTotalReach));
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
   if(allPosts.length){
