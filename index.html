@@ -2393,7 +2393,8 @@ function renderInstagram() {
   // Rolling window detection — determines if date range extends before available daily data
   const allDailyDates = studios.flatMap(s => (s.daily || []).map(r => r.date));
   const windowStart   = allDailyDates.length ? [...allDailyDates].sort()[0] : null;
-  const rangeExtendsBack = !!(from && windowStart && from < windowStart);
+  const rangeExtendsBack    = !!(from && windowStart && from < windowStart);
+  const rangeEndsInHistory  = !!(to && windowStart && to < windowStart);
   const fromMonthKey   = from ? from.substring(0, 7) + '-01' : null;
   const toMonthKey     = to   ? to.substring(0, 7)   + '-01' : null;
   const windowMonthKey = windowStart ? windowStart.substring(0, 7) + '-01' : null;
@@ -2490,18 +2491,24 @@ function renderInstagram() {
     ? monthFiltered.reduce((t, s) => (s.monthly || []).reduce((a, m) => a + (m.post_count || 0), 0) + t, 0)
     : 0;
 
-  // Followers: current_followers is the API total (account endpoint); daily follower_count is a delta, not total.
-  // For historical ranges use monthly archive; otherwise show current total.
+  // Followers: use historical monthly data only when the range ends before the rolling window.
+  // If the range ends within the live window (or no 'to' date), current_followers is the right value.
   const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
   const hasFollowers   = filtered.some(s => s.current_followers > 0);
-  let followersVal = totalFollowers, followersLabel = 'Current Followers', hasFollowersKpi = hasFollowers;
-  if (rangeExtendsBack && monthFiltered.length) {
+  let followersVal = totalFollowers, followersLabel = 'Current Followers', hasFollowersKpi = hasFollowers, followersNote = '';
+  if (rangeEndsInHistory) {
     let mSum = 0, mCount = 0;
-    monthFiltered.forEach(s => {
-      const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
-      if (mths.length) { mSum += mths[0].followers; mCount++; }
-    });
-    if (mCount > 0) { followersVal = mSum; followersLabel = 'Followers'; hasFollowersKpi = true; }
+    if (monthFiltered.length) {
+      monthFiltered.forEach(s => {
+        const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
+        if (mths.length) { mSum += mths[0].followers; mCount++; }
+      });
+    }
+    if (mCount > 0) {
+      followersVal = mSum; followersLabel = 'Followers'; hasFollowersKpi = true;
+    } else {
+      followersNote = 'No historic data for selected period';
+    }
   }
 
   // Delta badge — hidden for historical ranges to avoid misleading comparisons
@@ -2513,14 +2520,15 @@ function renderInstagram() {
     const arrow = d >= 0 ? '&#9650;' : '&#9660;';
     return `<div class="kpi-card-delta ${cls}">${arrow} ${Math.abs(d).toFixed(1)}% prev period</div>`;
   }
-  function _igKpi(label, value, delta, infoKey) {
+  function _igKpi(label, value, delta, infoKey, note='') {
     const ib = infoKey ? _infoBtn(infoKey) : '';
-    return `<div class="kpi-card">${ib}<div class="kpi-card-label">${label}</div><div class="kpi-card-val">${value}</div>${delta}</div>`;
+    const noteHtml = note ? `<div style="font-size:10px;color:#888;font-style:italic;margin-top:3px">${note}</div>` : '';
+    return `<div class="kpi-card">${ib}<div class="kpi-card-label">${label}</div><div class="kpi-card-val">${value}</div>${delta}${noteHtml}</div>`;
   }
 
   let h = '';
   h += `<div class="kpi-grid">`;
-  if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers');
+  if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers', followersNote);
   h += _igKpi('Total Reach',     totalReach.toLocaleString(), _igDelta(totalReach, ppTotalReach), 'ig_total_reach');
   h += _igKpi('Avg Daily Reach', avgReach.toLocaleString(),   _igDelta(avgReach,   ppAvgReach),   'ig_avg_daily_reach');
   if (allPosts.length) {
