@@ -2491,24 +2491,17 @@ function renderInstagram() {
     ? monthFiltered.reduce((t, s) => (s.monthly || []).reduce((a, m) => a + (m.post_count || 0), 0) + t, 0)
     : 0;
 
-  // Followers: use historical monthly data only when the range ends before the rolling window.
-  // If the range ends within the live window (or no 'to' date), current_followers is the right value.
+  // Followers: use monthly archive when range ends in history; otherwise current_followers (API).
   const totalFollowers = filtered.reduce((a, s) => a + (s.current_followers || 0), 0);
   const hasFollowers   = filtered.some(s => s.current_followers > 0);
-  let followersVal = totalFollowers, followersLabel = 'Current Followers', hasFollowersKpi = hasFollowers, followersNote = '';
-  if (rangeEndsInHistory) {
+  let followersVal = totalFollowers, followersLabel = 'Current Followers', hasFollowersKpi = hasFollowers;
+  if (rangeEndsInHistory && monthFiltered.length) {
     let mSum = 0, mCount = 0;
-    if (monthFiltered.length) {
-      monthFiltered.forEach(s => {
-        const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
-        if (mths.length) { mSum += mths[0].followers; mCount++; }
-      });
-    }
-    if (mCount > 0) {
-      followersVal = mSum; followersLabel = 'Followers'; hasFollowersKpi = true;
-    } else {
-      followersNote = 'No historic data for selected period';
-    }
+    monthFiltered.forEach(s => {
+      const mths = (s.monthly || []).filter(m => m.followers != null).sort((a, b) => b.month.localeCompare(a.month));
+      if (mths.length) { mSum += mths[0].followers; mCount++; }
+    });
+    if (mCount > 0) { followersVal = mSum; followersLabel = 'Followers'; hasFollowersKpi = true; }
   }
 
   // Delta badge — hidden for historical ranges to avoid misleading comparisons
@@ -2528,7 +2521,7 @@ function renderInstagram() {
 
   let h = '';
   h += `<div class="kpi-grid">`;
-  if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers', followersNote);
+  if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers');
   h += _igKpi('Total Reach',     totalReach.toLocaleString(), _igDelta(totalReach, ppTotalReach), 'ig_total_reach');
   h += _igKpi('Avg Daily Reach', avgReach.toLocaleString(),   _igDelta(avgReach,   ppAvgReach),   'ig_avg_daily_reach');
   if (allPosts.length) {
