@@ -116,6 +116,12 @@ def build_monthly_aggregates(daily_rows, posts, before_date_str):
         m["total_interactions"] += row.get("total_interactions") or 0
         m["days_with_data"] += 1
         reach_by_date[row["date"]] = row.get("reach") or 0
+        # Track last known follower_count in the month
+        fc = row.get("follower_count")
+        if fc is not None:
+            if m.get("followers") is None or row["date"] > m.get("_last_fc_date", ""):
+                m["followers"] = fc
+                m["_last_fc_date"] = row["date"]
 
     # Count posts per date to estimate per-post reach
     posts_per_date = {}
@@ -145,7 +151,7 @@ def build_monthly_aggregates(daily_rows, posts, before_date_str):
         if n > 0 and reach > 0:
             m["_reach_per_post"].append(reach // n)
 
-    # Compute medians and remove temp lists
+    # Compute medians and remove temp fields
     for m in monthly.values():
         if m["_likes"]:
             m["median_likes"] = int(statistics.median(m["_likes"]))
@@ -153,6 +159,7 @@ def build_monthly_aggregates(daily_rows, posts, before_date_str):
             m["median_reach_per_post"] = int(statistics.median(m["_reach_per_post"]))
         del m["_likes"]
         del m["_reach_per_post"]
+        m.pop("_last_fc_date", None)
 
     return monthly
 

@@ -2674,8 +2674,19 @@ function renderInstagram(){
   }
 
   let h='';
+  // For historical ranges, use end-of-period followers from monthly data
+  let followersLabel='Current Followers', followersVal=totalFollowers;
+  if(rangeExtendsBack&&monthFiltered.length){
+    const mths=monthFiltered.flatMap(s=>s.monthly||[]).filter(m=>m.followers!=null);
+    if(mths.length){
+      const lastMonth=mths.sort((a,b)=>b.month.localeCompare(a.month))[0];
+      followersVal=lastMonth.followers;
+      followersLabel='Followers ('+fmtMonthLabel(lastMonth.month)+')';
+    }
+  }
+
   h+=`<div class="kpi-grid">`;
-  if(hasFollowers)h+=_igKpi('Current Followers',totalFollowers.toLocaleString(),'');
+  if(hasFollowers||rangeExtendsBack)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'');
   h+=_igKpi('Total Reach',totalReach.toLocaleString(),_igDelta(totalReach,ppTotalReach));
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
   if(allPosts.length){
