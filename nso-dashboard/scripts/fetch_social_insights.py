@@ -89,9 +89,12 @@ def build_monthly_aggregates(daily_rows, posts, before_date_str):
     partial boundary months are never archived prematurely.
     Returns {month_key: aggregate_dict}.
     """
+    import statistics
     from calendar import monthrange
     cutoff = datetime.strptime(before_date_str, "%Y-%m-%d")
     monthly = {}
+    # reach by date — needed to estimate reach per post
+    reach_by_date = {}
 
     for row in daily_rows:
         try:
@@ -104,13 +107,25 @@ def build_monthly_aggregates(daily_rows, posts, before_date_str):
         mk = f"{d.year}-{d.month:02d}-01"
         if mk not in monthly:
             monthly[mk] = {"month": mk, "reach": 0, "accounts_engaged": 0,
-                           "total_interactions": 0, "days_with_data": 0, "post_count": 0}
+                           "total_interactions": 0, "days_with_data": 0, "post_count": 0,
+                           "median_likes": None, "median_reach_per_post": None,
+                           "_likes": [], "_reach_per_post": []}
         m = monthly[mk]
         m["reach"] += row.get("reach") or 0
         m["accounts_engaged"] += row.get("accounts_engaged") or 0
         m["total_interactions"] += row.get("total_interactions") or 0
         m["days_with_data"] += 1
+        reach_by_date[row["date"]] = row.get("reach") or 0
+        # Track last known follower_count in the month
+        fc = row.get("follower_count")
+        if fc is not None:
+            if m.get("followers") is None or row["date"] > m.get("_last_fc_date", ""):
+                m["followers"] = fc
+                m["_last_fc_date"] = row["date"]
 
+    # Count posts per date to estimate per-post reach
+    posts_per_date = {}
+    valid_posts = []
     for post in posts:
         try:
             d = datetime.strptime(post.get("date", ""), "%Y-%m-%d")
@@ -119,9 +134,32 @@ def build_monthly_aggregates(daily_rows, posts, before_date_str):
         last_day = datetime(d.year, d.month, monthrange(d.year, d.month)[1])
         if last_day >= cutoff:
             continue
-        mk = f"{d.year}-{d.month:02d}-01"
-        if mk in monthly:
-            monthly[mk]["post_count"] += 1
+        posts_per_date[post["date"]] = posts_per_date.get(post["date"], 0) + 1
+        valid_posts.append(post)
+
+    for post in valid_posts:
+        mk = f"{post['date'][:7]}-01"
+        if mk not in monthly:
+            continue
+        m = monthly[mk]
+        m["post_count"] += 1
+        likes = post.get("likes")
+        if likes is not None:
+            m["_likes"].append(int(likes))
+        n = posts_per_date.get(post["date"], 1)
+        reach = reach_by_date.get(post["date"], 0)
+        if n > 0 and reach > 0:
+            m["_reach_per_post"].append(reach // n)
+
+    # Compute medians and remove temp fields
+    for m in monthly.values():
+        if m["_likes"]:
+            m["median_likes"] = int(statistics.median(m["_likes"]))
+        if m["_reach_per_post"]:
+            m["median_reach_per_post"] = int(statistics.median(m["_reach_per_post"]))
+        del m["_likes"]
+        del m["_reach_per_post"]
+        m.pop("_last_fc_date", None)
 
     return monthly
 
