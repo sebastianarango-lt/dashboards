@@ -1,10 +1,46 @@
 {
-  "generated_at": "2026-07-30T10:34:19",
+  "generated_at": "2026-07-31T10:50:57",
   "studios": [
     {
       "name": "SWEAT440 Aventura",
       "code": "FL-018",
       "records": [
+        {
+          "type": "sale",
+          "client_name": "Eva Salazar",
+          "email": "emsalazar@yahoo.com",
+          "phone": "3059048408",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "21:21",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Kayla Schlatter",
+          "email": "kaylaschlatter@gmail.com",
+          "phone": "7863782273",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "12:20",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Ari Nagar",
+          "email": "arijoelnagar@gmail.com",
+          "phone": "6468587443",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "06:24",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
         {
           "type": "sale",
           "client_name": "Alexia Furmanski",
@@ -1204,6 +1240,138 @@
       "name": "SWEAT440 Dallas - Uptown",
       "code": "TX-004",
       "records": [
+        {
+          "type": "sale",
+          "client_name": "Mike Hernton",
+          "email": "miknoe7@aol.com",
+          "phone": "2484709537",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "21:39",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Tasha Do",
+          "email": "tashatrando@yahoo.com",
+          "phone": "6024212228",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "21:00",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Alexia Flores",
+          "email": "alexiaflores21@icloud.com",
+          "phone": "2108275941",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "20:53",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Mariel Navarro",
+          "email": "mariel.navarro25@yahoo.com",
+          "phone": "2144779375",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "14:38",
+          "platform": "Consumer Mode Web",
+          "sold_by": "Client (Consumer)",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Kimberly Stribling",
+          "email": "kimberlystribling@yahoo.com",
+          "phone": "2146356336",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "13:50",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Ellie Cremer",
+          "email": "elliecrem@gmail.com",
+          "phone": "6308809783",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "13:18",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Ivana Richardson",
+          "email": "richardsonivana@me.com",
+          "phone": "8326233039",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "13:04",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Charles Robinson",
+          "email": "Officialcharlesjr3@gmail.com",
+          "phone": "2148819734",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "12:51",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Stephanie Newman",
+          "email": "stephaniegnewman@gmail.com",
+          "phone": "2147041277",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "12:27",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "George Macias",
+          "email": "jmacias066@gmail.com",
+          "phone": "2145631186",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "12:26",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "cancel",
+          "client_name": "Garrett Garcia",
+          "email": "garrett.garcia87@gmail.com",
+          "phone": "7207468129",
+          "product": "Pre Sales Membership",
+          "date": "2026-07-29",
+          "time": "11:33",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 0.0
+        },
         {
           "type": "sale",
           "client_name": "Raylee Hopkins",
@@ -3000,6 +3168,54 @@
       "records": [
         {
           "type": "sale",
+          "client_name": "Rachel Cook",
+          "email": "rachelcobb52@gmail.com",
+          "phone": "4044356955",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "17:56",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Lisa Webster",
+          "email": "lisakwebster77@gmail.com",
+          "phone": "4042905947",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "10:10",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Emma Healy",
+          "email": "emmamattingly@gmail.com",
+          "phone": "6102357728",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "09:43",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Melissa Nims",
+          "email": "melissa.nims@gmail.com",
+          "phone": "4044022004",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "05:10",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
           "client_name": "Penny Koppel",
           "email": "pkoppel31@gmail.com",
           "phone": "4042100007",
@@ -3256,6 +3472,54 @@
       "name": "SWEAT440 Herriman",
       "code": "UT-001",
       "records": [
+        {
+          "type": "sale",
+          "client_name": "Malissa Wilkinson",
+          "email": "bmwilkinson15@gmail.com",
+          "phone": "8016339807",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "20:44",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "andrew lumsden",
+          "email": "kirstyg6563@gmail.com",
+          "phone": "8014711469",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "11:16",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Bennsey Johnson",
+          "email": "bennsey.johnson@gmail.com",
+          "phone": "8018190021",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "11:13",
+          "platform": "Branded Web",
+          "sold_by": "Client (Web)",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "melanie lumsden",
+          "email": "mellymcb@hotmail.com",
+          "phone": "8014711469",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "11:12",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
         {
           "type": "sale",
           "client_name": "Mary Egan",
@@ -5916,6 +6180,42 @@
       "records": [
         {
           "type": "sale",
+          "client_name": "CRISTAL BALIATICO",
+          "email": "cbaliatico9@comcast.net",
+          "phone": "7328955316",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "20:47",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Jordyn Blaney",
+          "email": "jordynblaney@gmail.com",
+          "phone": "7328656374",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "12:28",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Katelyn Castelluzzo",
+          "email": "karh14@gmail.com",
+          "phone": "6464131977",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "07:39",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
           "client_name": "Alexa Tsaptsinos",
           "email": "alexa.tsaptsinos@gmail.com",
           "phone": "7327724272",
@@ -6268,6 +6568,18 @@
       "name": "SWEAT440 Naples - Mercato",
       "code": "FL-019",
       "records": [
+        {
+          "type": "sale",
+          "client_name": "Michael Sanders",
+          "email": "mikesanders12@yahoo.com",
+          "phone": "2392764319",
+          "product": "Pre-Sales Membership",
+          "date": "2026-07-29",
+          "time": "10:19",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 149.0
+        },
         {
           "type": "sale",
           "client_name": "Melynda Slaughter",
@@ -11015,6 +11327,42 @@
       "code": "FL-021",
       "records": [
         {
+          "type": "sale",
+          "client_name": "Rachel Ehrman",
+          "email": "rachelehrman@hotmail.com",
+          "phone": "3105007248",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "16:44",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Asher Ehrman",
+          "email": "ehrman.asher@gmail.com",
+          "phone": "3105600156",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "16:39",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
+          "type": "sale",
+          "client_name": "Sarah Espiedra",
+          "email": "sarahespiedra@gmail.com",
+          "phone": "3055279781",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "14:34",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 129.0
+        },
+        {
           "type": "cancel",
           "client_name": "Ana Sandoval",
           "email": "isisansovalp@gmail.com",
@@ -12528,6 +12876,18 @@
       "records": [
         {
           "type": "sale",
+          "client_name": "Denisse Castaldo",
+          "email": "nisseeg@me.com",
+          "phone": "4077136596",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "09:10",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
+        {
+          "type": "sale",
           "client_name": "Yudi Rodriguez",
           "email": "yudenisrodriguez14@gmail.com",
           "phone": "7869753738",
@@ -13036,6 +13396,18 @@
       "name": "SWEAT440 Reston",
       "code": "VA-001",
       "records": [
+        {
+          "type": "sale",
+          "client_name": "Melanie Seifert",
+          "email": "Seifertm.dpt@gmail.com",
+          "phone": "7033710407",
+          "product": "Pre Sale Membership",
+          "date": "2026-07-29",
+          "time": "10:53",
+          "platform": "Business Mode Web",
+          "sold_by": "Studio Staff",
+          "amount": 99.0
+        },
         {
           "type": "sale",
           "client_name": "Deepika Kothembaka",
