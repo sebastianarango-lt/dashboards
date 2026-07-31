@@ -2228,7 +2228,7 @@ function renderClientHistory(){
   h+=_thL('Studio','studio');
   h+=_thL('Product','product');
   h+=_th('Date','date');
-  h+=_th('Time','time');
+  h+=_th('Time (ET)','time');
   h+=_thL('Platform','platform');
   h+=_thL('Sold By','sold_by');
   h+=_th('Amount','amount');
@@ -2820,7 +2820,7 @@ async function init(){
     : NSO;
   _buildMS('studioMenu','studioLabel',_nsoVisible,[]);
   // Canonical source list from MARKETING_REPORTS.PUBLIC.LEADS_LIST
-  const _allSrc=['Meta Ads','Google Ads','Local Listings','Social Media Organic','Website (unattributed)','Word of Mouth','SWEAT440 App','MindBody App','ClassPass / Platforms','Grassroots','Business Mode','Print Ads / Signs','Internet / AI Search','Other','N/A'];
+  const _allSrc=['Meta Ads','Google Ads','Local Listings','Social Media Organic','Website (unattributed)','Word of Mouth','SWEAT440 App','MindBody App','ClassPass / Platforms','Grassroots','Business Mode / App','Public API','Print Ads / Signs','Internet / AI Search','Other','N/A'];
   _buildMS('sourceMenu','sourceLabel',_allSrc,EXCL_SRC);
 
   // Fallback dates

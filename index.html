@@ -1911,7 +1911,7 @@ function checkCPRWarning() {
   // Get selected sources
   const selSources = typeof getSelected === 'function' ? (getSelected('sourceMenu') || []) : [];
   const paidSources  = ['Meta Ads','Google Ads'];
-  const mktgSources  = ['Website (unattributed)','Business Mode','Meta Ads','Google Ads',
+  const mktgSources  = ['Website (unattributed)','Business Mode / App','Public API','Meta Ads','Google Ads',
                         'SWEAT440 App','MindBody App','Social Media Organic','Local Listings',
                         'Word of Mouth','Print Ads / Signs','N/A','Other'];
   const nonPaidSelected = selSources.some(s => !paidSources.includes(s));
