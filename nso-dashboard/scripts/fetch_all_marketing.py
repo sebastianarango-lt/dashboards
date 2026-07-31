@@ -25,6 +25,17 @@ if not os.environ.get("META_ACCESS_TOKEN"):
     load_dotenv(Path.cwd() / ".env")
 
 
+def _public_thumb(url: str) -> str:
+    """Return url only if it's a publicly accessible CDN URL.
+    Facebook emg1/external- proxy URLs are IP-bound to the server that generated
+    them and return 403 when loaded in the browser from a different IP."""
+    if not url:
+        return ""
+    if "external-" in url or "/emg1/" in url:
+        return ""
+    return url
+
+
 def safe(val, default=0):
     try:
         return float(val) if val is not None else default
@@ -89,13 +100,14 @@ def fetch_meta_ads(start_date, end_date):
         try:
             cdetails = meta.get_creatives_by_ids(unique_cids)
             for cid, cdata in cdetails.items():
-                # Cascade through creative shapes to find thumbnail (same logic as Open Studios)
+                # Cascade through creative shapes to find a publicly accessible thumbnail.
+                # link_data.picture is intentionally omitted — Facebook returns IP-bound
+                # emg1/external- proxy URLs there that 403 in the browser.
                 thumb = (
-                    cdata.get("thumbnail_url") or
-                    cdata.get("image_url") or
-                    ((cdata.get("object_story_spec") or {}).get("video_data") or {}).get("image_url") or
-                    ((cdata.get("object_story_spec") or {}).get("link_data") or {}).get("picture") or
-                    (((cdata.get("asset_feed_spec") or {}).get("images") or [{}])[0]).get("url") or ""
+                    _public_thumb(cdata.get("thumbnail_url")) or
+                    _public_thumb(cdata.get("image_url")) or
+                    _public_thumb(((cdata.get("object_story_spec") or {}).get("video_data") or {}).get("image_url")) or
+                    _public_thumb((((cdata.get("asset_feed_spec") or {}).get("images") or [{}])[0]).get("url")) or ""
                 )
                 obj_type = cdata.get("object_type", "")
                 for name in cid_to_names.get(cid, []):
@@ -637,8 +649,10 @@ def main():
             merged[name] = {
                 **prev,
                 **meta,
-                # Keep previous thumbnail_url if the new one is empty (deleted/archived ad)
-                "thumbnail_url": meta.get("thumbnail_url") or prev.get("thumbnail_url", ""),
+                # Keep previous thumbnail_url if the new one is empty (deleted/archived ad).
+                # _public_thumb filters out emg1/external- proxy URLs on both sides so
+                # stale broken URLs from prior runs are replaced on the next refresh.
+                "thumbnail_url": _public_thumb(meta.get("thumbnail_url")) or _public_thumb(prev.get("thumbnail_url", "")),
             }
 
         ad_meta_out = {
