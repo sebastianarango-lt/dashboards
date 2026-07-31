@@ -65,7 +65,9 @@ const SRC_COLOR_MAP = {
   'Website (unattributed)':  '#2ECC71',  // web green
   'SWEAT440 App':            '#F39C12',  // app amber
   'MindBody App':            '#8E44AD',  // MindBody purple
-  'Business Mode':           '#E74C3C',  // red
+  'Business Mode':           '#E74C3C',  // red (legacy — kept for backwards compat)
+  'Business Mode / App':     '#E74C3C',  // red
+  'Public API':              '#C0392B',  // dark red
   'Print Ads / Signs':       '#2980B9',  // print blue
   'N/A':                     '#7F8C8D',  // grey
   'Other':                   '#BDC3C7',  // light grey
@@ -650,7 +652,7 @@ function getMock() {
     'SWEAT440 Coral Gables','SWEAT440 Doral','SWEAT440 Miami Lakes'
   ];
   const sources = [
-    'Website (unattributed)','Business Mode','Meta Ads','Google Ads',
+    'Website (unattributed)','Business Mode / App','Public API','Meta Ads','Google Ads',
     'SWEAT440 App','MindBody App','Social Media Organic','Local Listings',
     'Word of Mouth','Print Ads / Signs','N/A','Other'
   ];
