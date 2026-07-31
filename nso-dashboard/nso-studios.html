@@ -2634,12 +2634,20 @@ function renderInstagram(){
   const fromD=from?new Date(from+'T00:00:00'):null;
   const toD=to?new Date(to+'T00:00:00'):null;
 
+  // Determine rolling window start from available daily data
+  const allDailyDates=studios.flatMap(s=>(s.daily||[]).map(r=>r.date));
+  const windowStart=allDailyDates.length?[...allDailyDates].sort()[0]:null;
+  const rangeExtendsBack=!!(from&&windowStart&&from<windowStart);
+  const rangeEndsInHistory=!!(to&&windowStart&&to<windowStart);
+  const fromMonthKey=from?from.substring(0,7)+'-01':null;
+  const toMonthKey=to?to.substring(0,7)+'-01':null;
+  const windowMonthKey=windowStart?windowStart.substring(0,7)+'-01':null;
+
   let ppFromStr=null,ppToStr=null,ppOutOfRange=false;
   if(fromD&&toD){
     const{ppFrom:ppF,ppTo:ppT}=computeWindows(fromD,toD);
     ppFromStr=localDateStr(ppF);ppToStr=localDateStr(ppT);
-    const allAvailDates=studios.flatMap(s=>(s.daily||[]).map(r=>r.date));
-    const dataStart=allAvailDates.length?[...allAvailDates].sort()[0]:null;
+    const dataStart=windowStart||null;
     ppOutOfRange=!dataStart||ppFromStr<dataStart;
   }
 
@@ -2656,12 +2664,19 @@ function renderInstagram(){
     posts:(s.posts||[]).filter(p=>p.date>=ppFromStr&&p.date<=ppToStr)
   })):[];
 
+  // Monthly data for the pre-window portion of the selected range, capped at toMonthKey
+  const monthFiltered=rangeExtendsBack?studios.map(s=>({
+    ...s,
+    monthly:(s.monthly||[]).filter(m=>m.month>=fromMonthKey&&m.month<windowMonthKey&&(!toMonthKey||m.month<=toMonthKey))
+  })):[];
+
   function _enrichPosts(studioList){
     return studioList.flatMap(s=>{
       const reachByDate={};s.daily.forEach(r=>{reachByDate[r.date]=r.reach||0;});
       const postsPerDay={};s.posts.forEach(p=>{postsPerDay[p.date]=(postsPerDay[p.date]||0)+1;});
       return s.posts.map(p=>({...p,studio:s.studio,code:s.code,
-        est_reach:postsPerDay[p.date]?Math.round((reachByDate[p.date]||0)/postsPerDay[p.date]):0}));
+        est_reach:postsPerDay[p.date]?Math.round((reachByDate[p.date]||0)/postsPerDay[p.date]):0,
+        er_pct:s.current_followers>0?+((p.likes+p.comments)/s.current_followers*100).toFixed(2):null}));
     });
   }
   function _median(arr){if(!arr.length)return 0;const s=[...arr].sort((a,b)=>a-b);const m=Math.floor(s.length/2);return s.length%2?s[m]:Math.round((s[m-1]+s[m])/2);}
@@ -2670,9 +2685,18 @@ function renderInstagram(){
   const allPosts=_enrichPosts(filtered);
   const ppAllPosts=_enrichPosts(ppFiltered);
 
-  const totalReach=_sumKey(filtered,'reach');
+  // Reach: daily (rolling window) + monthly (historical pre-window)
+  const dailyReach=_sumKey(filtered,'reach');
+  const monthlyReach=monthFiltered.reduce((t,s)=>(s.monthly||[]).reduce((a,m)=>a+(m.reach||0),0)+t,0);
+  const totalReach=dailyReach+monthlyReach;
   const ppTotalReach=_sumKey(ppFiltered,'reach');
-  const days=new Set(filtered.flatMap(s=>s.daily.map(r=>r.date))).size||1;
+
+  // Days for avg: unique daily dates + calendar days for each historical month
+  const dailyDays=new Set(filtered.flatMap(s=>s.daily.map(r=>r.date))).size;
+  const monthlyDays=monthFiltered.flatMap(s=>s.monthly||[]).reduce((t,m)=>{
+    const d=new Date(m.month);return t+new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+  },0);
+  const days=(dailyDays+monthlyDays)||1;
   const ppDays=new Set(ppFiltered.flatMap(s=>s.daily.map(r=>r.date))).size||1;
   const avgReach=Math.round(totalReach/days);
   const ppAvgReach=Math.round(ppTotalReach/ppDays);
@@ -2683,31 +2707,86 @@ function renderInstagram(){
   const ppMedianLikes=_median(ppAllPosts.map(p=>p.likes||0));
   const ppMedianReach=_median(ppAllPosts.map(p=>p.est_reach||0));
 
+  // Historical post count and medians from monthly aggregates
+  const historicalPostCount=monthFiltered.reduce((t,s)=>(s.monthly||[]).reduce((a,m)=>a+(m.post_count||0),0)+t,0);
+  // Weighted average of monthly medians (weighted by post_count per month)
+  function _weightedMedian(studioList,field){
+    let totalW=0,totalV=0;
+    studioList.forEach(s=>(s.monthly||[]).forEach(m=>{
+      const v=m[field];const w=m.post_count||0;
+      if(v!=null&&w>0){totalV+=v*w;totalW+=w;}
+    }));
+    return totalW>0?Math.round(totalV/totalW):null;
+  }
+  const histMedianLikes=_weightedMedian(monthFiltered,'median_likes');
+  const histMedianReach=_weightedMedian(monthFiltered,'median_reach_per_post');
+
   function _igDelta(curr,pp){
-    if(!ppFromStr)return'';
-    if(ppOutOfRange)return'<div class="kpi-card-delta neu">&#9651; out of range</div>';
+    if(!ppFromStr||ppOutOfRange||rangeExtendsBack)return'';
     if(!pp)return'';
     const d=(curr-pp)/pp*100;
     const cls=d>=0?'pos':'neg';const arrow=d>=0?'&#9650;':'&#9660;';
     return`<div class="kpi-card-delta ${cls}">${arrow} ${Math.abs(d).toFixed(1)}% prev period</div>`;
   }
-  function _igKpi(label,value,delta){
-    return`<div class="kpi-card"><div class="kpi-card-label">${label}</div><div class="kpi-card-val">${value}</div>${delta}</div>`;
+  function _igKpi(label,value,delta,note=''){
+    const noteHtml=note?`<div style="font-size:10px;color:#888;font-style:italic;margin-top:3px">${note}</div>`:'';
+    return`<div class="kpi-card"><div class="kpi-card-label">${label}</div><div class="kpi-card-val">${value}</div>${delta}${noteHtml}</div>`;
   }
 
   let h='';
+  // Followers KPI — three cases:
+  // 1. Range ends before rolling window: use monthly archive value
+  // 2. Range ends within rolling window with a 'to' date: reconstruct from current_followers minus deltas after 'to'
+  // 3. No 'to' date (open range): show current_followers
+  let followersLabel='Current Followers',followersVal=totalFollowers,hasFollowersKpi=hasFollowers;
+  if(rangeEndsInHistory&&monthFiltered.length){
+    let mSum=0,mCount=0;
+    monthFiltered.forEach(s=>{
+      const mths=(s.monthly||[]).filter(m=>m.followers!=null).sort((a,b)=>b.month.localeCompare(a.month));
+      if(mths.length){mSum+=mths[0].followers;mCount++;}
+    });
+    if(mCount>0){followersLabel='Followers';followersVal=mSum;hasFollowersKpi=true;}
+  } else if(to){
+    // Reconstruct: current_followers minus daily deltas that occurred after 'to'
+    let rSum=0,rCount=0;
+    studios.forEach(s=>{
+      if(!s.current_followers)return;
+      const deltasAfter=(s.daily||[]).filter(d=>d.date>to&&d.follower_count!=null)
+        .reduce((acc,d)=>acc+(d.follower_count||0),0);
+      rSum+=s.current_followers-deltasAfter;rCount++;
+    });
+    if(rCount>0){followersLabel='Followers';followersVal=rSum;hasFollowersKpi=true;}
+  }
+
   h+=`<div class="kpi-grid">`;
-  if(hasFollowers)h+=_igKpi('Total Followers',totalFollowers.toLocaleString(),'');
+  if(hasFollowersKpi)h+=_igKpi(followersLabel,followersVal.toLocaleString(),'');
   h+=_igKpi('Total Reach',totalReach.toLocaleString(),_igDelta(totalReach,ppTotalReach));
   h+=_igKpi('Avg Daily Reach',avgReach.toLocaleString(),_igDelta(avgReach,ppAvgReach));
-  h+=_igKpi('Median Reach / Post',medianReach.toLocaleString(),_igDelta(medianReach,ppMedianReach));
-  h+=_igKpi('Median Likes',medianLikes.toLocaleString(),_igDelta(medianLikes,ppMedianLikes));
-  h+=_igKpi('Posts in Period',allPosts.length.toString(),_igDelta(allPosts.length,ppAllPosts.length));
-  h+=`</div>`;
-
   if(allPosts.length){
+    h+=_igKpi('Median Reach / Post',medianReach.toLocaleString(),_igDelta(medianReach,ppMedianReach));
+    h+=_igKpi('Median Likes',medianLikes.toLocaleString(),_igDelta(medianLikes,ppMedianLikes));
+  } else if(rangeExtendsBack){
+    if(histMedianReach!=null)h+=_igKpi('Median Reach / Post',histMedianReach.toLocaleString(),'');
+    if(histMedianLikes!=null)h+=_igKpi('Median Likes',histMedianLikes.toLocaleString(),'');
+  }
+  h+=_igKpi('Posts in Period',(allPosts.length+historicalPostCount).toString(),_igDelta(allPosts.length,ppAllPosts.length));
+  h+=`</div>`;
+  const _disclaimerBase=`The Instagram API provides a rolling 90-day window of daily data. As each month falls completely outside that window, it is automatically archived as a monthly aggregate (reach, post count, and median engagement).`;
+  const _disclaimerExtra=rangeExtendsBack
+    ?` Metrics for dates before <strong>${windowStart}</strong> come from those monthly aggregates.`
+    :'';
+  h+=`<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
+    <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
+    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">${_disclaimerBase}${_disclaimerExtra}</p>
+  </div>`;
+
+  if(allPosts.length||historicalPostCount){
+    const histNote=rangeExtendsBack&&historicalPostCount>0
+      ?`<div style="font-size:11px;color:#8aaabb;font-family:'Open Sans',sans-serif;padding:6px 0 2px">Showing ${allPosts.length} posts from the last 90 days. ${historicalPostCount} older posts are available as monthly totals only.</div>`
+      :'';
     h+=`<div class="chart-card">
       <div class="chart-card-title">Best Performing Posts</div>
+      ${histNote}
       <div style="overflow-x:auto">
         <table class="data-table" id="ig-posts-table">
           <thead><tr>
@@ -2718,8 +2797,7 @@ function renderInstagram(){
             <th class="num" data-sort="est_reach">Reach</th>
             <th class="num" data-sort="likes">Likes</th>
             <th class="num" data-sort="comments">Comments</th>
-            <th class="num" data-sort="shares">Shares</th>
-            <th class="num" data-sort="engagement_rate">ER%</th>
+            <th class="num" data-sort="er_pct">ER%</th>
           </tr></thead>
           <tbody></tbody>
         </table>
@@ -2744,7 +2822,7 @@ function renderInstagram(){
         ?`<a href="${p.permalink}" target="_blank" rel="noopener" style="color:#1a4d6e;text-decoration:none">${(p.caption||'').slice(0,90)||'(no caption)'}</a>`
         :((p.caption||'').slice(0,90)||'(no caption)');
       const typeLabel=p.media_type==='CAROUSEL_ALBUM'?'CAROUSEL':(p.media_type||'—');
-      const er=p.engagement_rate!=null?parseFloat(p.engagement_rate).toFixed(2)+'%':'—';
+      const er=p.er_pct!=null?p.er_pct.toFixed(2)+'%':'—';
       return`<tr>
         <td>${img}</td>
         <td style="white-space:nowrap;color:#8aaabb;font-size:12px">${fmDay(p.date)}</td>
@@ -2753,7 +2831,6 @@ function renderInstagram(){
         <td class="num">${(p.est_reach||0).toLocaleString()}</td>
         <td class="num">${(p.likes||0).toLocaleString()}</td>
         <td class="num">${(p.comments||0).toLocaleString()}</td>
-        <td class="num">${(p.shares||0).toLocaleString()}</td>
         <td class="num">${er}</td>
       </tr>`;
     });
