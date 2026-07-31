@@ -81,8 +81,9 @@ _SOURCE_CASE = """
                                                                  THEN 'Website (unattributed)'
         WHEN LOWER(TRIM(l.LEAD_SOURCE)) IN ('branded mobile app (bma)','consumer mode')
                                                                  THEN 'SWEAT440 App'
-        WHEN LOWER(TRIM(l.LEAD_SOURCE)) IN ('business app','business mode','public api')
-                                                                 THEN 'Business Mode'
+        WHEN LOWER(TRIM(l.LEAD_SOURCE)) IN ('business app','business mode')
+                                                                 THEN 'Business Mode / App'
+        WHEN LOWER(TRIM(l.LEAD_SOURCE)) IN ('public api')        THEN 'Public API'
         WHEN LOWER(TRIM(l.LEAD_SOURCE)) IN ('mindbody app','mindbody web')
                                                                  THEN 'MindBody App'
         -- Word of mouth / platforms / catch-all
