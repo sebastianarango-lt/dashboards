@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-01T10:10:01.069351",
+  "generated_at": "2026-08-02T09:05:07.217893",
   "date_range": {
     "start": "2026-01-01",
-    "end": "2026-07-30"
+    "end": "2026-07-31"
   },
   "studios": {
     "5753604": {
@@ -193,7 +193,7 @@
         },
         {
           "date": "2026-06-21",
-          "source": "Other",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
@@ -494,10 +494,17 @@
         },
         {
           "date": "2026-07-27",
-          "source": "Public API",
-          "presales": 2,
+          "source": "Meta Ads",
+          "presales": 1,
           "cancellations": 0,
-          "gross_revenue": 258.0
+          "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-27",
+          "source": "Public API",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         },
         {
           "date": "2026-07-28",
@@ -533,13 +540,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Meta Ads",
+          "presales": 3,
+          "cancellations": 0,
+          "gross_revenue": 387.0
         }
       ],
       "totals": {
-        "presales": 100,
+        "presales": 103,
         "cancellations": 6,
-        "net_presales": 94,
-        "gross_revenue": 12900.0
+        "net_presales": 97,
+        "gross_revenue": 13287.0
       }
     },
     "5755228": {
@@ -1214,13 +1228,27 @@
           "presales": 0,
           "cancellations": 1,
           "gross_revenue": 0.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Business Mode / App",
+          "presales": 0,
+          "cancellations": 1,
+          "gross_revenue": 0.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Public API",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         }
       ],
       "totals": {
-        "presales": 153,
-        "cancellations": 8,
+        "presales": 154,
+        "cancellations": 9,
         "net_presales": 145,
-        "gross_revenue": 16377.0
+        "gross_revenue": 16506.0
       }
     },
     "5754676": {
@@ -1289,13 +1317,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Public API",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
         }
       ],
       "totals": {
-        "presales": 25,
+        "presales": 26,
         "cancellations": 0,
-        "net_presales": 25,
-        "gross_revenue": 2475.0
+        "net_presales": 26,
+        "gross_revenue": 2574.0
       }
     },
     "5752080": {
@@ -1780,7 +1815,7 @@
         },
         {
           "date": "2026-06-10",
-          "source": "Other",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
@@ -2148,13 +2183,20 @@
           "presales": 1,
           "cancellations": 1,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Public API",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         }
       ],
       "totals": {
-        "presales": 215,
+        "presales": 216,
         "cancellations": 12,
-        "net_presales": 203,
-        "gross_revenue": 23445.0
+        "net_presales": 204,
+        "gross_revenue": 23574.0
       }
     },
     "5753113": {
@@ -2293,13 +2335,20 @@
           "presales": 2,
           "cancellations": 0,
           "gross_revenue": 198.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Meta Ads",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 198.0
         }
       ],
       "totals": {
-        "presales": 34,
+        "presales": 36,
         "cancellations": 0,
-        "net_presales": 34,
-        "gross_revenue": 3366.0
+        "net_presales": 36,
+        "gross_revenue": 3564.0
       }
     },
     "5751381": {
@@ -3915,13 +3964,20 @@
           "presales": 0,
           "cancellations": 1,
           "gross_revenue": 0.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Grassroots",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 298.0
         }
       ],
       "totals": {
-        "presales": 363,
+        "presales": 365,
         "cancellations": 35,
-        "net_presales": 328,
-        "gross_revenue": 45937.0
+        "net_presales": 330,
+        "gross_revenue": 46235.0
       }
     },
     "5753608": {
@@ -4513,13 +4569,34 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Meta Ads",
+          "presales": 4,
+          "cancellations": 0,
+          "gross_revenue": 396.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "N/A",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Website (unattributed)",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 99.0
         }
       ],
       "totals": {
-        "presales": 25,
+        "presales": 31,
         "cancellations": 0,
-        "net_presales": 25,
-        "gross_revenue": 2475.0
+        "net_presales": 31,
+        "gross_revenue": 3069.0
       }
     },
     "5753281": {
@@ -4703,7 +4780,7 @@
         },
         {
           "date": "2026-07-12",
-          "source": "Other",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
@@ -6126,13 +6203,20 @@
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-31",
+          "source": "Public API",
+          "presales": 2,
+          "cancellations": 0,
+          "gross_revenue": 258.0
         }
       ],
       "totals": {
-        "presales": 237,
+        "presales": 239,
         "cancellations": 25,
-        "net_presales": 212,
-        "gross_revenue": 28923.0
+        "net_presales": 214,
+        "gross_revenue": 29181.0
       }
     }
   }
