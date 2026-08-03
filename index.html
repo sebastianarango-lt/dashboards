@@ -917,13 +917,12 @@ function updateCPRGranButtons() {
   if (!fromStr || !toStr) return;
   const from = new Date(fromStr+'T00:00:00Z'), to = new Date(toStr+'T23:59:59Z');
   const {dailyFrom,dailyTo} = getQuarterBounds();
-  const hasDaily  = from <= dailyTo && to >= dailyFrom;
+  const hasDaily  = from >= dailyFrom;
   const daysDiff  = (to-from)/86400000;
-  const isPre2026 = toStr < '2026-01-01'; // only monthly data available before 2026
   const btnD = document.getElementById('cprGranDaily');
   const btnW = document.getElementById('cprGranWeekly');
-  if (btnD) btnD.disabled = !hasDaily || isPre2026;
-  if (btnW) btnW.disabled = daysDiff > 366 || isPre2026;
+  if (btnD) btnD.disabled = !hasDaily;
+  if (btnW) btnW.disabled = !hasDaily || daysDiff > 366;
   if (CPR_GRAN==='daily'  && btnD && btnD.disabled) { CPR_GRAN='weekly';  ['daily','weekly','monthly'].forEach(g=>{const b=document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));if(b)b.classList.toggle('active',g==='weekly');}); }
   if (CPR_GRAN==='weekly' && btnW && btnW.disabled) { CPR_GRAN='monthly'; ['daily','weekly','monthly'].forEach(g=>{const b=document.getElementById('cprGran'+g.charAt(0).toUpperCase()+g.slice(1));if(b)b.classList.toggle('active',g==='monthly');}); }
 }
