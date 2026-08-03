@@ -1596,6 +1596,7 @@ async function buildMetaTab() {
     if (!creativeMap[shortName]) {
       creativeMap[shortName] = {
         name: shortName,
+        studio_code: meta?.studio_code || '',
         media_type:  meta?.media_type || 'Other',
         spend:0, impressions:0, clicks:0, leads:0, trials:0,
         status:      '',
