@@ -851,7 +851,7 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
     const {dailyFrom,dailyTo} = getQuarterBounds();
     const from = new Date(document.getElementById('fFrom').value+'T00:00:00Z');
     const to   = new Date(document.getElementById('fTo').value+'T23:59:59Z');
-    const hasDaily  = from <= dailyTo && to >= dailyFrom;
+    const hasDaily  = from >= dailyFrom;
     const hasWeekly = from >= dailyFrom;
     const daysDiff  = (to - from) / 86400000;
     const bd = document.getElementById('gran-daily-'+id);
