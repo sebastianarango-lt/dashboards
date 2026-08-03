@@ -281,9 +281,7 @@
   <div class="tab-content" id="tab-meta">
 
     <!-- Date-cutoff warning -->
-    <div class="date-warning-banner" id="meta-date-warning">
-      <strong>Heads up:</strong> Meta Ads data is only available starting April 1, 2026. Selecting an earlier date will show partial or no spend.
-    </div>
+    <div class="date-warning-banner" id="meta-date-warning"></div>
 
     <!-- Snowflake top KPIs + explanation banner (populated by buildMetaTab) -->
     <div id="meta-snowflake-row"></div>
@@ -1453,11 +1451,18 @@ async function buildMetaTab() {
   const kpisEl = document.getElementById('meta-kpis');
   if (!kpisEl) return;
 
-  // Show date-cutoff warning if start date is before Meta Ads data availability (2026-04-01)
-  const META_DATA_START = '2026-04-01';
+  // Show warning if selected date range goes beyond the 90-day rolling window
+  const _cutoff90 = new Date(); _cutoff90.setDate(_cutoff90.getDate() - 90);
+  const _cutoff90Str = _cutoff90.toISOString().slice(0, 10);
   const warnEl = document.getElementById('meta-date-warning');
   const curFrom = document.getElementById('fFrom')?.value;
-  if (warnEl) warnEl.classList.toggle('show', !!curFrom && curFrom < META_DATA_START);
+  if (warnEl) {
+    const beyond90 = !!curFrom && curFrom < _cutoff90Str;
+    warnEl.innerHTML = beyond90
+      ? '<strong>Heads up:</strong> Meta Ads data is only kept for a 90-day rolling window (back to ' + _cutoff90Str + '). Selecting an earlier date will show partial or no data.'
+      : '';
+    warnEl.classList.toggle('show', beyond90);
+  }
 
   if (!data) {
     kpisEl.innerHTML = '<div style="color:#888;padding:20px;grid-column:1/-1">No meta-ads-data.json found.</div>';
