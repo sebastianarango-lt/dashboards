@@ -470,8 +470,7 @@ function toTimeSeries(dailyRows, monthlyRows) {
     const map = {};
     [...dailyRows,...monthlyRows].forEach(r => {
       const d = new Date((r.date||r.month)+'T00:00:00Z');
-      const day = d.getUTCDay()||7;
-      const ws = new Date(d); ws.setUTCDate(d.getUTCDate()-day+1);
+      const ws = new Date(d); ws.setUTCDate(d.getUTCDate()-d.getUTCDay());
       const key = ws.toISOString().slice(0,10);
       if (!map[key]) map[key]={key,label:fmtDayLabel(key),signups:0,first_visits:0,first_activations:0};
       map[key].signups+=r.signups||0; map[key].first_visits+=r.first_visits||0; map[key].first_activations+=r.first_activations||0;
@@ -627,7 +626,7 @@ function toSourceTimeSeries(dailyRows,monthlyRows,gran){
   allRows.forEach(r=>{
     let key;
     if(g==='daily')key=r.date;
-    else if(g==='weekly'){const d=new Date((r.date||r.month)+'T00:00:00Z');const day=d.getUTCDay()||7;const ws=new Date(d);ws.setUTCDate(d.getUTCDate()-day+1);key=ws.toISOString().slice(0,10);}
+    else if(g==='weekly'){const d=new Date((r.date||r.month)+'T00:00:00Z');const ws=new Date(d);ws.setUTCDate(d.getUTCDate()-d.getUTCDay());key=ws.toISOString().slice(0,10);}
     else key=(r.date||r.month).slice(0,7)+'-01';
     const mk=key+'|'+r.source;
     if(!map[mk])map[mk]={key,source:r.source,signups:0,first_visits:0,first_activations:0};
