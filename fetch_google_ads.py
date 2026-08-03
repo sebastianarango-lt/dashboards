@@ -49,6 +49,8 @@ OUT_PATH  = REPO_ROOT / "google-ads-data.json"
 
 # Daily window: current Q + previous Q; anything older → monthly only
 DAILY_WINDOW_DAYS = 180  # ~2 quarters
+# Rolling window kept in output — older daily rows trimmed on write
+DAILY_KEEP_DAYS = 90
 
 logging.basicConfig(
     level=logging.INFO,
@@ -583,8 +585,8 @@ def run():
             "opportunities": round(total_opp, 2),
             "cost_per_opp": round(total_spend / total_opp, 2) if total_opp else 0,
         },
-        # Daily rows: current Q + previous Q, one row per studio per day
-        "daily":   daily_rows,
+        # Daily rows: 90-day rolling window, one row per studio per day
+        "daily":   [r for r in daily_rows if r["date"] >= (today - timedelta(days=DAILY_KEEP_DAYS)).isoformat()],
         # Monthly rows: older history (3yr cap), one row per studio per month
         "monthly": monthly_rows,
         # Asset performance tables (monthly, not date-filterable)
