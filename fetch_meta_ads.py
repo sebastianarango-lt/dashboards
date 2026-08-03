@@ -447,7 +447,7 @@ def run():
     studio_monthly = baked_monthly + computed_monthly
     log.info(f"  studio_monthly: {len(baked_monthly)} baked + {len(computed_monthly)} computed = {len(studio_monthly)} rows")
 
-    # ── 6. Sort and write ─────────────────────────────────────────────
+    # ── 6. Sort, trim to 90-day rolling window, and write ────────────
     ad_daily_out = sorted(
         ad_daily_idx.values(),
         key=lambda r: (r["date"], r["studio_code"], r["ad_id"])
@@ -456,6 +456,11 @@ def run():
         studio_daily_idx.values(),
         key=lambda r: (r["date"], r["studio_code"])
     )
+
+    # Rolling 90-day window for daily data — historical summary is in studio_monthly
+    cutoff_90 = (today - timedelta(days=90)).isoformat()
+    ad_daily_out     = [r for r in ad_daily_out     if r["date"] >= cutoff_90]
+    studio_daily_out = [r for r in studio_daily_out if r["date"] >= cutoff_90]
 
     output = {
         "generated_at":   datetime.now(timezone.utc).isoformat(),
