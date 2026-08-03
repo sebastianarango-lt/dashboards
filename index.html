@@ -1536,9 +1536,7 @@ async function buildMetaTab() {
   const snowMetaCpl   = snowMetaLeads > 0 ? spend / snowMetaLeads : 0;
   const metaSnowEl = document.getElementById('meta-snowflake-row');
   if (metaSnowEl) {
-    const adPreviewNote = isAdminUser()
-      ? 'To preview ads below, make sure you are logged into the Facebook account connected to Meta Business for your studio. Contact your Marketing Manager if you need access.'
-      : 'Coming soon: full ad previews (images and video) will be viewable directly from this dashboard in an upcoming update.';
+    const adPreviewNote = 'Click on an ad image to open the Facebook Ad Library page with all currently active ads from that studio. We\'re working on making full ad-by-ad previews available directly from this dashboard.';
     metaSnowEl.innerHTML =
       `<div class="kpi-grid three" style="margin-bottom:20px">` +
         kpiCard('Spend', spend, null, null, f$, GLOSSARY.meta) +
@@ -1555,9 +1553,7 @@ async function buildMetaTab() {
   // ---- Active Ads info banner (user-type aware) ----
   const _adsBanner = document.getElementById('meta-ads-info-banner');
   if (_adsBanner) {
-    const _bannerMsg = isAdminUser()
-      ? 'To preview an ad, make sure you are logged into the Facebook account connected to Meta Business for your studio. Click the thumbnail or creative name to open the preview. Contact your Marketing Manager if you need access.'
-      : 'Coming soon: full ad previews (images and video) will be viewable directly from this dashboard in an upcoming update.';
+    const _bannerMsg = 'Click on an ad image to open the Facebook Ad Library page with all currently active ads from that studio. We\'re working on making full ad-by-ad previews available directly from this dashboard.';
     _adsBanner.innerHTML =
       `<div style="display:flex;align-items:flex-start;gap:10px;background:#f0f6fa;border-left:3px solid #99DAF3;border-radius:6px;padding:10px 14px;margin-bottom:16px">` +
         `<span style="font-size:15px;line-height:1;color:#0084B5;flex-shrink:0;margin-top:1px">ⓘ</span>` +
@@ -1926,19 +1922,27 @@ function checkCPRWarning() {
   const nonPaidSelected = selSources.some(s => !paidSources.includes(s));
   const allMktgSelected = mktgSources.every(s => selSources.includes(s));
 
-  let msg = '';
+  const curFrom = document.getElementById('fFrom')?.value || '';
+  const preApril = curFrom && curFrom < '2026-04-01';
+  const hasAdCost = CPR_COSTS_ACTIVE.google || CPR_COSTS_ACTIVE.meta;
+
+  let msgs = [];
 
   // Warning 1: only paid costs selected but non-ad lead sources included
   if (paidOnly && nonPaidSelected) {
-    msg = '⚠️ You are only seeing Ad spend (Google/Meta), but your lead sources include non-ad channels. This will understate your cost per result. Please verify your Source filter.';
+    msgs.push('⚠️ You are only seeing Ad spend (Google/Meta), but your lead sources include non-ad channels. This will understate your cost per result. Please verify your Source filter.');
   }
   // Warning 2: all costs selected but not all marketing sources
-  else if (allCosts && selSources.length > 0 && !allMktgSelected) {
-    msg = '⚠️ You are including all cost sources but some marketing lead sources are deselected. Your cost per result may be overstated. Please verify your Source filter.';
+  if (allCosts && selSources.length > 0 && !allMktgSelected) {
+    msgs.push('⚠️ You are including all cost sources but some marketing lead sources are deselected. Your cost per result may be overstated. Please verify your Source filter.');
+  }
+  // Warning 3: date range includes pre-April 2026 — spend data is monthly only
+  if (preApril && hasAdCost) {
+    msgs.push('ℹ️ Meta Ads and Google Ads spend before April 2026 is based on monthly totals, not daily data. Daily and weekly granularity will not reflect actual day-by-day spend for that period.');
   }
 
-  if (msg) {
-    warn.textContent = msg;
+  if (msgs.length) {
+    warn.innerHTML = msgs.join('<br><br>');
     warn.style.display = 'block';
   } else {
     warn.style.display = 'none';
@@ -2556,22 +2560,17 @@ function renderInstagram() {
   h += _igKpi('Posts in Period', (allPosts.length + historicalPostCount).toString(), _igDelta(allPosts.length, ppAllPosts.length), 'ig_posts');
   h += `</div>`;
 
-  const _disclaimerBase  = 'Instagram reach data is available for the last 90 days only. ';
-  const _disclaimerExtra = rangeExtendsBack
-    ? 'Your selected date range extends beyond this window — reach and post counts for earlier months are sourced from archived monthly totals. Median metrics for historical months are pre-computed at archival time and may differ slightly from in-window calculations.'
-    : 'Dates outside this window show monthly archive totals where available.';
-  h += `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
-    <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
-    <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">${_disclaimerBase}${_disclaimerExtra}</p>
-  </div>`;
+  if (rangeExtendsBack) {
+    h += `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
+      <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
+      <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">Instagram reach data is available for the last 90 days only. Your selected date range extends beyond this window — reach and post counts for earlier months are sourced from archived monthly totals. Median metrics for historical months are pre-computed at archival time and may differ slightly from in-window calculations.</p>
+    </div>`;
+  }
 
   if (allPosts.length || historicalPostCount) {
-    const histNote = rangeExtendsBack && historicalPostCount > 0
-      ? `<div style="font-size:11px;color:#8aaabb;font-family:'Open Sans',sans-serif;padding:6px 0 2px">Showing ${allPosts.length} posts from the last 90 days. ${historicalPostCount} older posts are available as monthly totals only.</div>`
-      : '';
     h += `<div class="chart-card">
       <div class="chart-card-title">Best Performing Posts</div>
-      ${histNote}
+
       <div style="overflow-x:auto">
         <table class="data-table" id="ig-posts-table">
           <thead><tr>
