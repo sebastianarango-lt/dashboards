@@ -23,9 +23,9 @@
       <button class="nav-tab nav-group-label" onclick="toggleNavGroup('funnel-group',this)">Funnel ▾</button>
       <div class="nav-submenu" id="funnel-group">
         <button class="nav-tab nav-sub" onclick="switchTab('funnel',this)">All Stages</button>
-        <button class="nav-tab nav-sub" onclick="switchTab('leads',this)">New Accounts</button>
-        <button class="nav-tab nav-sub" onclick="switchTab('stage',this)">First Visits</button>
-        <button class="nav-tab nav-sub" onclick="switchTab('members',this)">Members</button>
+        <button class="nav-tab nav-sub" onclick="switchTab('leads',this)">Leads (New Accounts Created)</button>
+        <button class="nav-tab nav-sub" onclick="switchTab('stage',this)">First Timers (First Studio Visits)</button>
+        <button class="nav-tab nav-sub" onclick="switchTab('members',this)">New Members (First Memberships Activated)</button>
       </div>
     </div>
 
@@ -101,9 +101,9 @@
       <div class="chart-card-title">Funnel over time</div>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
         <div class="toggle-group" style="margin-bottom:0">
-          <button class="tog-btn on" data-ds="0" onclick="toggleDs(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>New Accounts</button>
-          <button class="tog-btn on" data-ds="1" onclick="toggleDs(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>First Visits</button>
-          <button class="tog-btn on" data-ds="2" onclick="toggleDs(this,2)" style="border-color:#DDFF00;background:#DDFF00;color:#000"><span class="dot" style="background:#000"></span>Memberships</button>
+          <button class="tog-btn on" data-ds="0" onclick="toggleDs(this,0)" style="border-color:#00A3E0;background:#00A3E0;color:#000"><span class="dot" style="background:#000"></span>Leads (New Accounts Created)</button>
+          <button class="tog-btn on" data-ds="1" onclick="toggleDs(this,1)" style="border-color:#00FFC2;background:#00FFC2;color:#000"><span class="dot" style="background:#000"></span>First Timers (First Studio Visits)</button>
+          <button class="tog-btn on" data-ds="2" onclick="toggleDs(this,2)" style="border-color:#DDFF00;background:#DDFF00;color:#000"><span class="dot" style="background:#000"></span>New Members (First Memberships Activated)</button>
         </div>
         <div class="gran-group">
           <button class="gran-btn active" id="granDaily"   onclick="setGran('daily')">Daily</button>
@@ -144,7 +144,7 @@
         <div class="chart-card-title">Studio ranking</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="leadsStudioTable">
-            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">New Accounts Created</th><th class="num" data-sort="pct">% of total</th></tr></thead>
+            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">Leads (New Accounts Created)</th><th class="num" data-sort="pct">% of total</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -179,7 +179,7 @@
         <div class="chart-card-title">Studio ranking</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="ftStudioTable">
-            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">First Studio Visits</th><th class="num" data-sort="pct">% of total</th></tr></thead>
+            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">First Timers (First Studio Visits)</th><th class="num" data-sort="pct">% of total</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -214,7 +214,7 @@
         <div class="chart-card-title">Studio ranking</div>
         <div style="overflow-x:auto">
           <table class="data-table" id="memStudioTable">
-            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">First Memberships Activated</th><th class="num" data-sort="pct">% of total</th></tr></thead>
+            <thead><tr><th class="row-num">#</th><th data-sort="studio">Studio</th><th class="num" data-sort="val">New Members (First Memberships Activated)</th><th class="num" data-sort="pct">% of total</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -409,8 +409,8 @@
 // -- KPI info tooltip ----------------------------------------------------------
 const GLOSSARY = {
   leads:    { title:'Leads (New Accounts Created)', desc:'Number of new accounts created in the time frame selected for the selected studio; account defined as client profile created.', date:'Counted on the date the Mindbody account was created.' },
-  ft:       { title:'First Studio Visits', desc:'Number of visits in the selected period from customers attending a class for the first time in the selected studio regardless of prior history at other SWEAT440 studios.', date:'Counted on the date the first class at this studio was attended.' },
-  mem:      { title:'First Memberships Activated', desc:'Number of customers who activated a membership for the first time during the selected time period in the selected studio.', date:'Counted on the activation date of the first recurring membership.' },
+  ft:       { title:'First Timers (First Studio Visits)', desc:'Number of visits in the selected period from customers attending a class for the first time in the selected studio regardless of prior history at other SWEAT440 studios.', date:'Counted on the date the first class at this studio was attended.' },
+  mem:      { title:'New Members (First Memberships Activated)', desc:'Number of customers who activated a membership for the first time during the selected time period in the selected studio.', date:'Counted on the activation date of the first recurring membership.' },
   spend:    { title:'Total Marketing Spend', desc:'The combined total of all marketing-related costs for a given period: Google Ads spend, Meta Ads spend, and the LeadTeam service fee. Represents the full investment in paid marketing for the studio during the selected time window.', date:'Ad spend is attributed to the date the ads were shown (not the invoice date). The LeadTeam fee is prorated on a daily basis across the billing period.' },
   google:   { title:'Google Ads Spend', desc:"The dollar amount spent on Google Ads campaigns for a specific studio during the selected period. Includes all Google Ads placements (Search, Display, etc.) associated with that studio's account.", date:'Attributed to the date the ads were served, not the date of the invoice or billing cycle.' },
   meta:     { title:'Meta Ads Spend', desc:'The dollar amount spent on Meta Ads (Facebook and Instagram) campaigns for a specific studio during the selected period.', date:'Attributed to the date the ads were served, not the date of the invoice or billing cycle.' },
@@ -683,9 +683,9 @@ function applyFilters() {
 
 function buildFunnel(curr, prev, pyear, ppLabel, pyLabel) {
   const stages = [
-    {label:'New Accounts Created', key:'leads',curr:curr.leads,prev:prev.leads,py:pyear.leads,color:'#00A3E0'},
-    {label:'First Studio Visits',  key:'ft',   curr:curr.ft,   prev:prev.ft,   py:pyear.ft,   color:'#00FFC2'},
-    {label:'First Memberships',    key:'mem',  curr:curr.mem,  prev:prev.mem,  py:pyear.mem,  color:'#DDFF00'},
+    {label:'Leads (New Accounts Created)',            key:'leads',curr:curr.leads,prev:prev.leads,py:pyear.leads,color:'#00A3E0'},
+    {label:'First Timers (First Studio Visits)',      key:'ft',   curr:curr.ft,   prev:prev.ft,   py:pyear.ft,   color:'#00FFC2'},
+    {label:'New Members (First Memberships Activated)',key:'mem',  curr:curr.mem,  prev:prev.mem,  py:pyear.mem,  color:'#DDFF00'},
   ];
   const max = Math.max(...stages.map(s=>s.curr),1);
   document.getElementById('funnelBars').innerHTML = stages.map(s => {
@@ -724,9 +724,9 @@ function buildTrend(series) {
   trendChart = new Chart(ctx, {
     type:'line',
     data:{labels,datasets:[
-      {label:'New Accounts Created',data:leadsD,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},
-      {label:'First Studio Visits', data:ftD,   borderColor:'#00FFC2',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},
-      {label:'First Memberships',   data:memD,  borderColor:'#DDFF00',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},
+      {label:'Leads (New Accounts Created)',            data:leadsD,borderColor:'#00A3E0',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},
+      {label:'First Timers (First Studio Visits)',      data:ftD,   borderColor:'#00FFC2',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},
+      {label:'New Members (First Memberships Activated)',data:memD,  borderColor:'#DDFF00',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,tension:.4,fill:false},
     ]},
     options:{
       responsive:true,maintainAspectRatio:false,
@@ -807,7 +807,7 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
   //  LEADS TAB
   const el1 = document.getElementById('leads-kpis');
   if(el1) el1.innerHTML =
-    kpiCard('Total New Accounts Created', leadsTotal, ppLeads||null, pyLeads||null, null, GLOSSARY.leads) +
+    kpiCard('Total Leads (New Accounts Created)', leadsTotal, ppLeads||null, pyLeads||null, null, GLOSSARY.leads) +
     convCard('Conv → 1st Visit', currConvFT,  ppConvFT,  pyConvFT,  GLOSSARY.conv_l_ft) +
     convCard('Conv → Member',    currConvMem, ppConvMem, pyConvMem, GLOSSARY.conv_ft_mem);
 
@@ -821,7 +821,7 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
   //  FIRST TIMERS TAB
   const el2 = document.getElementById('ft-kpis');
   if(el2) el2.innerHTML =
-    kpiCard('Total First Studio Visits', ftTotal, ppFT||null, pyFT||null, null, GLOSSARY.ft) +
+    kpiCard('Total First Timers (First Studio Visits)', ftTotal, ppFT||null, pyFT||null, null, GLOSSARY.ft) +
     convCard('Conv Rate (Lead→FT)', currConvFT,  ppConvFT,  pyConvFT,  GLOSSARY.conv_l_ft) +
     convCard('Conv → Member',       currConvMem, ppConvMem, pyConvMem, GLOSSARY.conv_ft_mem);
 
@@ -835,7 +835,7 @@ function buildStageTabs(currFiltered, ppFiltered, pyFiltered, ppLabel, pyLabel){
   //  NEW MEMBERS TAB
   const el3 = document.getElementById('mem-kpis');
   if(el3) el3.innerHTML =
-    kpiCard('Total First Memberships Activated', memTotal, ppMem||null, pyMem||null, null, GLOSSARY.mem) +
+    kpiCard('Total New Members (First Memberships Activated)', memTotal, ppMem||null, pyMem||null, null, GLOSSARY.mem) +
     convCard('Conv Rate (FT→Mbr)',  currConvMem,     ppConvMem, pyConvMem, GLOSSARY.conv_ft_mem) +
     convCard('Conv Rate (Lead→Mbr)',currConvMemLead, ppConvFT!=null&&ppConvMem!=null?ppConvFT*ppConvMem/100:null, pyConvFT!=null&&pyConvMem!=null?pyConvFT*pyConvMem/100:null, GLOSSARY.conv_l_mem);
 
@@ -986,9 +986,9 @@ function buildSummaryTab() {
   const curr = fsum(funnelCurr), pp = fsum(funnelPp), py = fsum(funnelPy);
 
   funnelEl.innerHTML =
-    kpiCard('New Accounts Created',       curr.leads, pp.leads||null, py.leads||null, null, GLOSSARY.leads) +
-    kpiCard('First Studio Visits',        curr.ft,    pp.ft||null,    py.ft||null,    null, GLOSSARY.ft)    +
-    kpiCard('First Memberships Activated',curr.mem,   pp.mem||null,   py.mem||null,   null, GLOSSARY.mem);
+    kpiCard('Leads (New Accounts Created)',             curr.leads, pp.leads||null, py.leads||null, null, GLOSSARY.leads) +
+    kpiCard('First Timers (First Studio Visits)',       curr.ft,    pp.ft||null,    py.ft||null,    null, GLOSSARY.ft)    +
+    kpiCard('New Members (First Memberships Activated)',curr.mem,   pp.mem||null,   py.mem||null,   null, GLOSSARY.mem);
 
   if (!spendEl) return;
   const from   = window._metaFrom   || null;
@@ -1520,7 +1520,7 @@ async function buildMetaTab() {
     metaSnowEl.innerHTML =
       `<div class="kpi-grid three" style="margin-bottom:20px">` +
         kpiCard('Spend', spend, null, null, f$, GLOSSARY.meta) +
-        kpiCard('New Accounts Created', snowMetaLeads, null, null, v => v, GLOSSARY.leads) +
+        kpiCard('Leads (New Accounts Created)', snowMetaLeads, null, null, v => v, GLOSSARY.leads) +
         kpiCard('Cost / Lead', snowMetaCpl, null, null, f$2, GLOSSARY.meta_blended_cpl) +
       `</div>` +
       `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>` +
@@ -1561,7 +1561,7 @@ async function buildMetaTab() {
     kpiCard('Spend',        adSpend,      null, null, f$,        GLOSSARY.meta) +
     kpiCard('Impressions',  impressions,  null, null, v=>fK(v),  GLOSSARY.meta_impressions) +
     kpiCard('Clicks',       clicks,       null, null, v=>fN(v),  GLOSSARY.meta_clicks) +
-    kpiCard('Leads',        leads,        null, null, v=>v,      GLOSSARY.leads) +
+    kpiCard('Leads (New Accounts Created)', leads, null, null, v=>v, GLOSSARY.leads) +
     kpiCard('Trials',       trials,       null, null, v=>v,      GLOSSARY.meta_trials) +
     kpiCard('Cost / Lead',  cpl,          null, null, f$2,       GLOSSARY.meta_cpl);
 
@@ -1796,7 +1796,7 @@ function buildGoogleTab() {
     gSnowEl.innerHTML=
       `<div class="kpi-grid three" style="margin-bottom:20px">`+
         kpiCard('Spend',gSpend,null,null,f$,GLOSSARY.google_spend_kpi)+
-        kpiCard('New Accounts Created',snowGoogleLeads,null,null,v=>v,GLOSSARY.leads)+
+        kpiCard('Leads (New Accounts Created)',snowGoogleLeads,null,null,v=>v,GLOSSARY.leads)+
         kpiCard('Cost / Lead',snowGoogleCpl,null,null,f$2,GLOSSARY.google_blended_cpl)+
       `</div>`+
       `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`+
