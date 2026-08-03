@@ -1658,8 +1658,11 @@ async function buildMetaTab() {
           const isVid  = (g.media_type||'').toLowerCase().includes('video') || g.name.toLowerCase().includes('reel');
           const fallbackIcon = isVid ? '&#9654;' : '&#128444;';
           const thumbFallback = `<div style="width:44px;height:44px;background:#0084b5;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px">${fallbackIcon}</div>`;
-          const adLink = g.preview_link || g.library_url || '#';
-          const canLink = isAdminUser();
+          const _pageId = META_CODE_TO_PAGE_ID[g.studio_code];
+          const adLink = _pageId
+            ? 'https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&view_all_page_id=' + _pageId
+            : (isAdminUser() ? (g.preview_link || g.library_url || '#') : '#');
+          const canLink = !!_pageId || isAdminUser();
           const thumbCell = g.thumbnail
             ? (canLink
               ? '<a href="' + adLink + '" target="_blank" rel="noopener" style="display:block;width:44px;height:44px;border-radius:6px;overflow:hidden;border:1px solid rgba(0,163,224,0.2);flex-shrink:0">'

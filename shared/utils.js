@@ -178,9 +178,12 @@ function googleStudioName(raw) { return GOOGLE_STUDIO_ALIAS[raw] || raw; }
 // studios.json by loadStudiosRegistry().
 const META_CODE_TO_STUDIO = {};
 
+// studio code -> Facebook Page ID. Populated from studios.json by loadStudiosRegistry().
+const META_CODE_TO_PAGE_ID = {};
+
 // Fetches studios.json and populates DEFAULT_EXCL_STUDIOS / NSO_STUDIOS /
-// CLOSED_STUDIOS / META_CODE_TO_STUDIO in place. Call once per page load,
-// before buildMultiSelect() or any META_CODE_TO_STUDIO lookup.
+// CLOSED_STUDIOS / META_CODE_TO_STUDIO / META_CODE_TO_PAGE_ID in place.
+// Call once per page load, before buildMultiSelect() or any lookup.
 async function loadStudiosRegistry(basePath = '') {
   let registry = { studios: [] };
   try {
@@ -193,11 +196,13 @@ async function loadStudiosRegistry(basePath = '') {
   NSO_STUDIOS.length = 0;
   CLOSED_STUDIOS.length = 0;
   for (const key of Object.keys(META_CODE_TO_STUDIO)) delete META_CODE_TO_STUDIO[key];
+  for (const key of Object.keys(META_CODE_TO_PAGE_ID)) delete META_CODE_TO_PAGE_ID[key];
   for (const s of (registry.studios || [])) {
     if (s.excluded_default) { DEFAULT_EXCL_STUDIOS.push(s.name); DEFAULT_EXCL_STUDIOS.push('- ' + s.name); }
     if (s.status === 'nso')    { NSO_STUDIOS.push(s.name);     NSO_STUDIOS.push('- ' + s.name); }
     if (s.status === 'closed') { CLOSED_STUDIOS.push(s.name);  CLOSED_STUDIOS.push('- ' + s.name); }
     if (s.code) META_CODE_TO_STUDIO[s.code] = s.name;
+    if (s.code && s.meta && s.meta.page_id) META_CODE_TO_PAGE_ID[s.code] = s.meta.page_id;
   }
   return registry;
 }
