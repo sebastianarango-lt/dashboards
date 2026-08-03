@@ -1459,7 +1459,7 @@ async function buildMetaTab() {
   if (warnEl) {
     const beyond90 = !!curFrom && curFrom < _cutoff90Str;
     warnEl.innerHTML = beyond90
-      ? '<strong>Heads up:</strong> Meta Ads data is only kept for a 90-day rolling window (back to ' + _cutoff90Str + '). Selecting an earlier date will show partial or no data.'
+      ? '<strong>Heads up:</strong> Meta Ads data is only kept for a 90-day rolling window (back to ' + _cutoff90Str + '). Individual ad breakdowns won\'t be available before that date, but monthly studio totals are still shown.'
       : '';
     warnEl.classList.toggle('show', beyond90);
   }
