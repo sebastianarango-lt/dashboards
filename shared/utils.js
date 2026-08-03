@@ -33,6 +33,7 @@ function sortableTable(tableId, data, renderRow, totalsRow) {
     });
     if (totalsRow) tfoot.innerHTML = totalsRow(sorted);
   }
+  state._render = render;
   ths.forEach(th => {
     th.classList.add('sortable');
     if (!th._sortableTableBound) {
@@ -40,7 +41,7 @@ function sortableTable(tableId, data, renderRow, totalsRow) {
       th.addEventListener('click', () => {
         const col = th.dataset.sort;
         if (state.col === col) { state.asc = !state.asc; } else { state.col = col; state.asc = true; }
-        render();
+        state._render();
       });
     }
   });
