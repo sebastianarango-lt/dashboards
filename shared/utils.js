@@ -383,9 +383,8 @@ function updateGranButtons(from, to) {
   // Daily data covers: start of current year → today
   // We check if the requested range overlaps with our daily data window at all
   const { dailyFrom, dailyTo } = getQuarterBounds();
-  // Allow daily if there's any overlap between [from,to] and [dailyFrom, dailyTo]
-  const hasDaily  = from <= dailyTo && to >= dailyFrom;
-  // Weekly requires the full range to be within the daily window — mixing monthly rows into weekly buckets creates misleading spikes
+  // Daily and Weekly require the full range to start within the daily data window
+  const hasDaily  = from >= dailyFrom;
   const hasWeekly = from >= dailyFrom;
   const daysDiff  = (to - from) / 86400000;
   const btnD = document.getElementById('granDaily');

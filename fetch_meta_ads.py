@@ -433,19 +433,32 @@ def run():
     log.info(f"  ad_meta: {len(ad_meta)} ads (thumb hits {thumb_hits}, creatives w/ no thumb {thumb_missing})")
 
     # ── 5. Compute studio_monthly for Apr 2026+ from studio_daily ────
+    # Only recompute months that are entirely within the 90-day daily window.
+    # Months outside the window are preserved from the existing output file so
+    # they are not lost when their daily rows get trimmed on subsequent runs.
+    cutoff_90_month = (today - timedelta(days=90)).strftime("%Y-%m")
+
+    # Preserve existing computed monthly for months at or before the cutoff
+    preserved_monthly: dict[tuple, float] = {
+        (r["month"][:7], r["studio_code"]): r["spend"]
+        for r in existing.get("studio_monthly", [])
+        if r.get("month", "") >= "2026-04" and r["month"][:7] <= cutoff_90_month
+    }
+
+    # Recompute only months fully inside the 90-day window
     monthly_fresh: dict[tuple, float] = defaultdict(float)
     for r in studio_daily_idx.values():
-        if r["date"] >= "2026-04-01":
-            month = r["date"][:7]  # "YYYY-MM"
-            monthly_fresh[(month, r["studio_code"])] += r["spend"]
+        if r["date"] >= "2026-04-01" and r["date"][:7] > cutoff_90_month:
+            monthly_fresh[(r["date"][:7], r["studio_code"])] += r["spend"]
 
+    merged_monthly = {**preserved_monthly, **{k: round(v, 2) for k, v in monthly_fresh.items()}}
     computed_monthly = [
-        {"month": m, "studio_code": sc, "spend": round(spend, 2)}
-        for (m, sc), spend in sorted(monthly_fresh.items())
+        {"month": m, "studio_code": sc, "spend": spend}
+        for (m, sc), spend in sorted(merged_monthly.items())
     ]
 
     studio_monthly = baked_monthly + computed_monthly
-    log.info(f"  studio_monthly: {len(baked_monthly)} baked + {len(computed_monthly)} computed = {len(studio_monthly)} rows")
+    log.info(f"  studio_monthly: {len(baked_monthly)} baked + {len(preserved_monthly)} preserved + {len(monthly_fresh)} recomputed = {len(studio_monthly)} rows")
 
     # ── 6. Sort, trim to 90-day rolling window, and write ────────────
     ad_daily_out = sorted(
@@ -457,24 +470,20 @@ def run():
         key=lambda r: (r["date"], r["studio_code"])
     )
 
-    # Rolling 90-day window for daily data — historical summary is in studio_monthly
+    # Rolling 90-day window — studio_daily/monthly moved to spend-data.json (build_spend_data.py)
     cutoff_90 = (today - timedelta(days=90)).isoformat()
-    ad_daily_out     = [r for r in ad_daily_out     if r["date"] >= cutoff_90]
-    studio_daily_out = [r for r in studio_daily_out if r["date"] >= cutoff_90]
+    ad_daily_out = [r for r in ad_daily_out if r["date"] >= cutoff_90]
 
     output = {
-        "generated_at":   datetime.now(timezone.utc).isoformat(),
-        "ad_daily":       ad_daily_out,
-        "studio_daily":   studio_daily_out,
-        "studio_monthly": studio_monthly,
-        "ad_meta":        ad_meta,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "ad_daily":     ad_daily_out,
+        "ad_meta":      ad_meta,
     }
 
     OUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
     log.info(
-        f"✅ Wrote {OUT_PATH} ({OUT_PATH.stat().st_size:,} bytes) — "
-        f"{len(ad_daily_out)} ad_daily, {len(studio_daily_out)} studio_daily, "
-        f"{len(studio_monthly)} studio_monthly, {len(ad_meta)} ad_meta"
+        f"Wrote {OUT_PATH} ({OUT_PATH.stat().st_size:,} bytes) — "
+        f"{len(ad_daily_out)} ad_daily, {len(ad_meta)} ad_meta"
     )
 
 
