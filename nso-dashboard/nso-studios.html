@@ -91,7 +91,7 @@
   <div class="nav-tabs" id="navTabs">
     <button class="nav-tab active" onclick="switchTab('summary',this)">Summary</button>
     <button class="nav-tab" onclick="switchTab('scorecard',this)">Scorecard</button>
-    <button class="nav-tab" id="navClientHistory" onclick="switchTab('clienthistory',this)" style="display:none">Client History<span class="nav-badge beta">Beta</span></button>
+    <button class="nav-tab" id="navClientHistory" onclick="switchTab('clienthistory',this)">Client History<span class="nav-badge beta">Beta</span></button>
     <div class="nav-group">
       <button class="nav-tab nav-group-label" onclick="toggleNavGroup('funnel-group',this)">Funnel ▾</button>
       <div class="nav-submenu" id="funnel-group">
@@ -2143,7 +2143,6 @@ let _chSort={col:'date',asc:false};
 function renderClientHistory(){
   const el=document.getElementById('ch-content');
   if(!el)return;
-  if(!isAdminUser()&&CUR_USER?.role!=='corporate'){el.innerHTML='';return;}
   if(!CH_RAW||!CH_RAW.studios){el.innerHTML='<div style="padding:40px;text-align:center;color:#8aaabb;font-family:Oswald,sans-serif;font-style:italic">Client history data not yet available.</div>';return;}
 
   const selStudios=new Set(_getSel('studioMenu').map(s=>s.replace(/^SWEAT440\s+/,'')));
@@ -2863,10 +2862,6 @@ async function init(){
   CUR_USER=_authUser;
   renderAuthNav(_authUser);
   _allowedStudios = getAuthStudios(_authUser);
-  if(isAdminUser()||CUR_USER?.role==='corporate'){
-    const _chTab=document.getElementById('navClientHistory');
-    if(_chTab)_chTab.style.display='';
-  }
   if(!isAdminUser()){
     const _igTab=document.getElementById('navTabInstagram');
     if(_igTab)_igTab.remove();
