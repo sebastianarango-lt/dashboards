@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T10:49:42.620702",
+  "generated_at": "2026-08-04T15:15:48.777337",
   "date_range": {
     "start": "2026-01-01",
     "end": "2026-08-02"
@@ -193,7 +193,7 @@
         },
         {
           "date": "2026-06-21",
-          "source": "N/A",
+          "source": "Other",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
@@ -2207,7 +2207,7 @@
         },
         {
           "date": "2026-07-29",
-          "source": "Meta Ads",
+          "source": "Public API",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
@@ -4829,7 +4829,7 @@
         },
         {
           "date": "2026-06-15",
-          "source": "N/A",
+          "source": "Local Listings",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
