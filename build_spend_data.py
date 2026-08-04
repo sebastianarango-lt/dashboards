@@ -73,17 +73,10 @@ def run():
         k = (r["month"][:7], r["studio_code"])
         meta_monthly[k] = meta_monthly.get(k, 0) + (r.get("spend") or 0)
 
-    # Also pull any computed monthly rows from meta-ads-data.json
-    # (Apr 2026+ months that fell outside the daily window)
-    for r in meta_live.get("studio_monthly", []):
-        mo = r.get("month", "")[:7]
-        if mo < str(DAILY_START_YEAR):  # only pre-2026 for monthly output
-            k = (mo, r["studio_code"])
-            meta_monthly[k] = meta_monthly.get(k, 0) + (r.get("spend") or 0)
 
     # ── 2. Collect Meta daily rows (Apr 2026+) ───────────────────────
     meta_daily: dict[tuple, float] = {}
-    for r in meta_live.get("studio_daily", []):
+    for r in meta_live.get("ad_daily", []):
         d = r.get("date", "")
         if d[:4] == str(DAILY_START_YEAR) and d >= f"{DAILY_START_YEAR}-04-01":
             k = (d, r["studio_code"])
