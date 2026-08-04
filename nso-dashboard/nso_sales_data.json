@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T02:38:11.261591",
+  "generated_at": "2026-08-04T09:33:29.204366",
   "date_range": {
     "start": "2026-01-01",
     "end": "2026-08-02"
@@ -494,10 +494,17 @@
         },
         {
           "date": "2026-07-27",
-          "source": "Public API",
-          "presales": 2,
+          "source": "Meta Ads",
+          "presales": 1,
           "cancellations": 0,
-          "gross_revenue": 258.0
+          "gross_revenue": 129.0
+        },
+        {
+          "date": "2026-07-27",
+          "source": "Public API",
+          "presales": 1,
+          "cancellations": 0,
+          "gross_revenue": 129.0
         },
         {
           "date": "2026-07-28",
@@ -1843,7 +1850,7 @@
         },
         {
           "date": "2026-06-10",
-          "source": "Other",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
@@ -2200,7 +2207,7 @@
         },
         {
           "date": "2026-07-29",
-          "source": "Public API",
+          "source": "Meta Ads",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 129.0
@@ -4822,7 +4829,7 @@
         },
         {
           "date": "2026-06-15",
-          "source": "Local Listings",
+          "source": "N/A",
           "presales": 1,
           "cancellations": 0,
           "gross_revenue": 99.0
