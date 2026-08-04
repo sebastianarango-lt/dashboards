@@ -93,6 +93,7 @@
   </div>
 
   <div class="tab-content" id="tab-funnel">
+    <div id="funnel-pre2026-msg"></div>
     <div class="chart-card">
       <div class="chart-card-title">Conversion funnel</div>
       <div class="funnel-wrap" id="funnelBars"></div>
@@ -119,6 +120,7 @@
 
   <!-- LEADS TAB -->
   <div class="tab-content" id="tab-leads">
+    <div id="leads-pre2026-msg"></div>
     <div id="leads-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -154,6 +156,7 @@
 
   <!-- FIRST TIMERS TAB -->
   <div class="tab-content" id="tab-stage">
+    <div id="ft-pre2026-msg"></div>
     <div id="ft-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -189,6 +192,7 @@
 
 <!-- NEW MEMBERS TAB -->
   <div class="tab-content" id="tab-members">
+    <div id="mem-pre2026-msg"></div>
     <div id="mem-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -650,12 +654,59 @@ function applyFilters() {
   const curr = filterAll(from,to);
   const pp   = filterAll(ppFrom,ppTo);
   const py   = filterAll(pyFrom,pyTo);
-  buildFunnel(sumRows(curr.all), sumRows(pp.all), sumRows(py.all),
-    `${fmtDate(ppFrom)} – ${fmtDate(ppTo)}`, `${fmtDate(pyFrom)} – ${fmtDate(pyTo)}`);
-  buildTrend(toTimeSeries(curr.daily, curr.monthly));
+  // Pre-2026 complete-month enforcement for funnel tabs
+  let _funnelBlock = false;
+  {
+    const _fpFrom = fromStr || '';
+    const _fpTo   = toStr   || '';
+    let   _msgHtml = '';
+    if (_fpFrom && _fpFrom < '2026-01-01') {
+      const startsOnFirst = _fpFrom.slice(-3) === '-01';
+      const toParts       = _fpTo.split('-').map(Number);
+      const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+      const endBad        = _fpTo < '2026-01-01' && toParts[2] !== lastDay;
+      if (!startsOnFirst || endBad) {
+        _funnelBlock = true;
+        _msgHtml =
+          '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+          'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+          '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+          'For data before 2026, please select <strong>complete months</strong> ' +
+          '(from the 1st to the last day of the month), as data is monthly.' +
+          '</div>';
+        const _fbEl = document.getElementById('funnelBars');
+        if (_fbEl) _fbEl.innerHTML = '';
+        if (typeof trendChart !== 'undefined' && trendChart) {
+          trendChart.data.labels = [];
+          trendChart.data.datasets.forEach(ds => ds.data = []);
+          trendChart.update();
+        }
+        ['leads-kpis','ft-kpis','mem-kpis'].forEach(id => {
+          const el = document.getElementById(id); if (el) el.innerHTML = '';
+        });
+      } else {
+        _msgHtml =
+          '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+          'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+          '&#9432; Data before 2026 shows monthly totals.' +
+          '</div>';
+      }
+    }
+    ['funnel-pre2026-msg','leads-pre2026-msg','ft-pre2026-msg','mem-pre2026-msg'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.innerHTML = _msgHtml;
+    });
+  }
+
+  if (!_funnelBlock) {
+    buildFunnel(sumRows(curr.all), sumRows(pp.all), sumRows(py.all),
+      `${fmtDate(ppFrom)} – ${fmtDate(ppTo)}`, `${fmtDate(pyFrom)} – ${fmtDate(pyTo)}`);
+    buildTrend(toTimeSeries(curr.daily, curr.monthly));
+  }
   // Always build all tabs  all are rendered (just hidden via opacity/height)
   if (typeof checkCPRWarning === 'function') checkCPRWarning();
-  buildStageTabs(curr, pp, py, fmtDate(ppFrom)+' – '+fmtDate(ppTo), fmtDate(pyFrom)+' – '+fmtDate(pyTo));
+  if (!_funnelBlock) {
+    buildStageTabs(curr, pp, py, fmtDate(ppFrom)+' – '+fmtDate(ppTo), fmtDate(pyFrom)+' – '+fmtDate(pyTo));
+  }
   window._metaFrom    = from;  window._metaTo   = to;
   window._metaPpFrom  = ppFrom; window._metaPpTo = ppTo;
   window._metaPyFrom  = pyFrom; window._metaPyTo = pyTo;
