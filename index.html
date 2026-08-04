@@ -1647,26 +1647,28 @@ async function buildMetaTab() {
   const cpl = leads > 0 ? adSpend / leads : 0;
 
   // ---- Snowflake top KPIs (platform spend ÷ Snowflake-attributed leads) ----
-  const _snowMeta = [
-    ...filterRows(RAW.daily_detail   || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
-    ...filterRows(RAW.monthly_detail || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
-  ];
-  const snowMetaLeads = _snowMeta.reduce((s, r) => s + (r.signups || 0), 0);
-  const snowMetaCpl   = snowMetaLeads > 0 ? spend / snowMetaLeads : 0;
-  const metaSnowEl = document.getElementById('meta-snowflake-row');
-  if (metaSnowEl) {
-    const adPreviewNote = 'Click on an ad image to open the Facebook Ad Library page with all currently active ads from that studio. We\'re working on making full ad-by-ad previews available directly from this dashboard.';
-    metaSnowEl.innerHTML =
-      `<div class="kpi-grid three" style="margin-bottom:20px">` +
-        kpiCard('Spend', spend, null, null, f$, GLOSSARY.meta) +
-        kpiCard('Leads (New Accounts Created)', snowMetaLeads, null, null, v => v, GLOSSARY.leads) +
-        kpiCard('Cost / Lead', snowMetaCpl, null, null, f$2, GLOSSARY.meta_blended_cpl) +
-      `</div>` +
-      `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>` +
-      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">` +
-        `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>` +
-        `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown above. This is expected — Meta uses a different attribution methodology than SWEAT440's standardized lead reporting. <strong>${adPreviewNote}</strong></p>` +
-      `</div>`;
+  if (!_metaPre2026Block) {
+    const _snowMeta = [
+      ...filterRows(RAW.daily_detail   || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
+      ...filterRows(RAW.monthly_detail || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
+    ];
+    const snowMetaLeads = _snowMeta.reduce((s, r) => s + (r.signups || 0), 0);
+    const snowMetaCpl   = snowMetaLeads > 0 ? spend / snowMetaLeads : 0;
+    const metaSnowEl = document.getElementById('meta-snowflake-row');
+    if (metaSnowEl) {
+      const adPreviewNote = 'Click on an ad image to open the Facebook Ad Library page with all currently active ads from that studio. We\'re working on making full ad-by-ad previews available directly from this dashboard.';
+      metaSnowEl.innerHTML =
+        `<div class="kpi-grid three" style="margin-bottom:20px">` +
+          kpiCard('Spend', spend, null, null, f$, GLOSSARY.meta) +
+          kpiCard('Leads (New Accounts Created)', snowMetaLeads, null, null, v => v, GLOSSARY.leads) +
+          kpiCard('Cost / Lead', snowMetaCpl, null, null, f$2, GLOSSARY.meta_blended_cpl) +
+        `</div>` +
+        `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>` +
+        `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">` +
+          `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>` +
+          `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown above. This is expected — Meta uses a different attribution methodology than SWEAT440's standardized lead reporting. <strong>${adPreviewNote}</strong></p>` +
+        `</div>`;
+    }
   }
 
   // ---- Active Ads info banner (user-type aware) ----
