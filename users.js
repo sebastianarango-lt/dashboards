@@ -567,6 +567,12 @@ const USERS = {
     studios: ['Naples - Mercato'],
     role: 'manager'
   },
+  'mercato@sweat440.studio': {
+    passwordHash: '88082350dadbc545b5677894efbd991700073bf79eb7d78c3c583692124a7e96',
+    name: 'Manager Naples - Mercato',
+    studios: ['Naples - Mercato'],
+    role: 'manager'
+  },
   'manager.miamilakes@sweat440.studio': {
     passwordHash: '1fa833e0b34fbca590ca637859caf92a1c8e94e434a84660244824034b2f037c',
     name: 'Manager Miami Lakes',
