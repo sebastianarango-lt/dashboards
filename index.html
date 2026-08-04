@@ -988,9 +988,9 @@ function buildSummaryTab() {
       funnelEl.innerHTML =
         '<div style="grid-column:1/-1;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
         'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7">' +
-        '<strong style="display:block;margin-bottom:6px">&#9888; Meses completos requeridos</strong>' +
-        'Para datos anteriores a 2026 es necesario seleccionar <strong>meses completos</strong> ' +
-        '(del d&#237;a 1 al &#250;ltimo d&#237;a del mes), ya que los datos son mensuales.' +
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+        'For data before 2026, please select <strong>complete months</strong> ' +
+        '(from the 1st to the last day of the month), as data is monthly.' +
         '</div>';
       if (spendEl) spendEl.innerHTML = '';
       if (cprEl)   cprEl.innerHTML   = '';
@@ -1000,7 +1000,7 @@ function buildSummaryTab() {
     summaryDisclaimer =
       '<div style="grid-column:1/-1;background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
       'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px">' +
-      '&#9432; Los datos anteriores a 2026 son totales mensuales.' +
+      '&#9432; Data before 2026 shows monthly totals.' +
       '</div>';
   }
 
