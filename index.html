@@ -2768,6 +2768,16 @@ function renderInstagram() {
       '</div>';
   }
 
+  // Orange message when end date is outside the rolling window (no individual post data)
+  if (windowStart && !igToInWindow) {
+    const _wsFormatted = new Date(windowStart + 'T00:00:00Z').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric', timeZone:'UTC'});
+    h +=
+      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fff3e0;border-left:3px solid #f59e0b;border-radius:6px;padding:14px 16px;margin-bottom:16px">` +
+        `<span style="font-size:15px;color:#e65100;flex-shrink:0;margin-top:1px">ⓘ</span>` +
+        `<p style="margin:0;font-size:13px;color:#7b4a1a;line-height:1.5">Post details are only available for the last 90 days. Select an end date after <strong>${_wsFormatted}</strong> to see individual posts, reach, and engagement metrics.</p>` +
+      `</div>`;
+  }
+
   const _showPosts = (allPosts.length || historicalPostCount) && (!igBlock || igToInWindow);
   if (_showPosts) {
     h += `<div class="chart-card">
