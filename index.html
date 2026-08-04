@@ -228,6 +228,7 @@
 
   <!-- CPR TAB -->
   <div class="tab-content" id="tab-cpr">
+    <div id="cpr-pre2026-msg"></div>
     <div class="chart-card" style="margin-bottom:20px">
       <div class="chart-card-title">Cost sources</div>
       <div class="cpr-filter" id="cprCostFilter">
@@ -1165,6 +1166,39 @@ function buildCPRTab() {
   const funnelCurr=window._cprCurr||null,funnelPp=window._cprPp||null,funnelPy=window._cprPy||null;
   const selStudios=window._cprStudios||[];
   if (!from||!to||!funnelCurr) return;
+
+  // Pre-2026 complete-month enforcement
+  const _cpFrom = document.getElementById('fFrom')?.value || '';
+  const _cpTo   = document.getElementById('fTo')?.value   || '';
+  const _cpMsgEl = document.getElementById('cpr-pre2026-msg');
+  if (_cpFrom && _cpFrom < '2026-01-01') {
+    const startsOnFirst = _cpFrom.slice(-3) === '-01';
+    const toParts       = _cpTo.split('-').map(Number);
+    const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+    const endBad        = _cpTo < '2026-01-01' && toParts[2] !== lastDay;
+    if (!startsOnFirst || endBad) {
+      if (_cpMsgEl) _cpMsgEl.innerHTML =
+        '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+        'For data before 2026, please select <strong>complete months</strong> ' +
+        '(from the 1st to the last day of the month), as data is monthly.' +
+        '</div>';
+      el.innerHTML = '';
+      const _bdEl = document.getElementById('cpr-spend-breakdown');
+      if (_bdEl) _bdEl.innerHTML = '';
+      if (typeof cprChart !== 'undefined' && cprChart) { cprChart.destroy(); cprChart = null; }
+      return;
+    }
+    if (_cpMsgEl) _cpMsgEl.innerHTML =
+      '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+      'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+      '&#9432; Data before 2026 shows monthly totals.' +
+      '</div>';
+  } else {
+    if (_cpMsgEl) _cpMsgEl.innerHTML = '';
+  }
+
   const fTime=from.getTime(),tTime=to.getTime();
   const allStudios=selStudios.length>0?selStudios:(RAW?RAW.studios:[]);
   const studioCount=allStudios.length||1;
@@ -2014,10 +2048,6 @@ function checkCPRWarning() {
   const nonPaidSelected = selSources.some(s => !paidSources.includes(s));
   const allMktgSelected = mktgSources.every(s => selSources.includes(s));
 
-  const curFrom = document.getElementById('fFrom')?.value || '';
-  const preApril = curFrom && curFrom < '2026-04-01';
-  const hasAdCost = CPR_COSTS_ACTIVE.google || CPR_COSTS_ACTIVE.meta;
-
   let msgs = [];
 
   // Warning 1: only paid costs selected but non-ad lead sources included
@@ -2027,10 +2057,6 @@ function checkCPRWarning() {
   // Warning 2: all costs selected but not all marketing sources
   if (allCosts && selSources.length > 0 && !allMktgSelected) {
     msgs.push('⚠️ You are including all cost sources but some marketing lead sources are deselected. Your cost per result may be overstated. Please verify your Source filter.');
-  }
-  // Warning 3: date range includes pre-April 2026 — spend data is monthly only
-  if (preApril && hasAdCost) {
-    msgs.push('ℹ️ Meta Ads and Google Ads spend before April 2026 is based on monthly totals, not daily data. Daily and weekly granularity will not reflect actual day-by-day spend for that period.');
   }
 
   if (msgs.length) {
