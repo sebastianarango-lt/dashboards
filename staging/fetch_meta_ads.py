@@ -1,0 +1,495 @@
+"""
+fetch_meta_ads.py
+─────────────────────────────────────────────────────────────
+ETL Meta Ads (account-level) → meta-ads-data.json
+
+Output shape
+────────────
+{
+  "generated_at":   "2026-05-14T...",
+
+  "ad_daily":       [{date, studio_code, ad_id, ad_name,
+                       spend, impressions, clicks, leads, trials}, ...]
+                    // Apr 1 2026 → today; grows indefinitely; upsert on (date, studio_code, ad_id)
+
+  "studio_daily":   [{date, studio_code,
+                       spend, impressions, clicks, leads, trials}, ...]
+                    // Apr 1 2026 → today; grows indefinitely; upsert on (date, studio_code)
+
+  "studio_monthly": [{month, studio_code, spend}, ...]
+                    // Jan 2025–Mar 2026: baked (preserved from file)
+                    // Apr 2026+: computed from studio_daily each run
+
+  "ad_meta":        {ad_id: {name, status, media_type, studio_code,
+                              thumbnail_url, library_url}, ...}
+                    // current snapshot of all known ads; merged each run
+}
+
+No campaign IDs in config. Queries the ad account directly.
+"""
+from __future__ import annotations
+
+import json
+import logging
+import re
+import sys
+from collections import defaultdict
+from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
+
+from meta_client import MetaClient, leads_of, purchases_of, trials_of
+
+# ── paths ────────────────────────────────────────────────────────────
+REPO_ROOT      = Path(__file__).resolve().parent
+OUT_PATH       = REPO_ROOT / "meta-ads-data.json"
+PAID_ADS_PATH  = REPO_ROOT / "meta-ads-baked.json"  # static baked monthly spend, never overwritten
+
+# How many days back to re-fetch on each daily run.
+# Historical data outside this window is preserved via upsert from the existing file.
+DAILY_LOOKBACK_DAYS = 21
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    stream=sys.stdout,
+)
+log = logging.getLogger("meta-ads-etl")
+
+
+# ── classification helpers (unchanged) ──────────────────────────────
+
+def match_studio(name: str, studios: list[dict]) -> dict | None:
+    """Match an ad/adset name to a studio. Every ad follows a "{date}-{CODE}-{seq}
+    - ..." naming convention (e.g. "26-FL-018-01 Open"), so the studio's own code
+    is checked first — it's embedded reliably even when the studio name/keyword
+    isn't (many NSO adsets say just "Open", never the studio name). Falls back to
+    the keyword `match` substring for any legacy naming that doesn't embed a code.
+    """
+    n = name or ""
+    for s in studios:
+        if s.get("code") and s["code"] in n:
+            return s
+    n_lower = n.lower()
+    for s in studios:
+        if s.get("match") and s["match"].lower() in n_lower:
+            return s
+    return None
+
+
+
+_VIDEO_KEYWORDS  = {"VIDEO", "REEL", "REELS", "GIF", "STORY", "STORIES"}
+_STATIC_KEYWORDS = {"STATIC", "IMAGE", "PHOTO", "CAROUSEL"}
+
+
+def _media_type_from_creative(creative: dict) -> str | None:
+    if not creative:
+        return None
+    ot = (creative.get("object_type") or "").upper()
+    if ot == "VIDEO": return "Video"
+    if ot == "PHOTO": return "Static"
+    if creative.get("video_id"):  return "Video"
+    if creative.get("image_hash"): return "Static"
+    oss = creative.get("object_story_spec") or {}
+    if isinstance(oss, dict):
+        vd = oss.get("video_data") or {}
+        if isinstance(vd, dict) and (vd.get("video_id") or vd.get("image_url")):
+            return "Video"
+        ld = oss.get("link_data") or {}
+        if isinstance(ld, dict):
+            if ld.get("video_id"):                          return "Video"
+            if ld.get("image_hash") or ld.get("picture"):  return "Static"
+        pd = oss.get("photo_data") or {}
+        if isinstance(pd, dict) and pd.get("image_hash"):  return "Static"
+    afs = creative.get("asset_feed_spec") or {}
+    if isinstance(afs, dict):
+        if afs.get("videos"): return "Video"
+        if afs.get("images"): return "Static"
+    return None
+
+
+def _extract_thumb(creative: dict) -> str:
+    """
+    Cascade through known Meta creative shapes to find a thumbnail URL.
+
+    Most ads in this account are dynamic creative / Advantage+, so the
+    top-level thumbnail_url / image_url come back empty. The actual image
+    URL is nested inside object_story_spec or asset_feed_spec.
+    """
+    if not creative:
+        return ""
+    # 1) Top-level (legacy / simple ads)
+    if creative.get("thumbnail_url"): return creative["thumbnail_url"]
+    if creative.get("image_url"):     return creative["image_url"]
+
+    # 2) object_story_spec — classic page-post ads
+    oss = creative.get("object_story_spec") or {}
+    if isinstance(oss, dict):
+        vd = oss.get("video_data") or {}
+        if isinstance(vd, dict) and vd.get("image_url"):
+            return vd["image_url"]
+        ld = oss.get("link_data") or {}
+        if isinstance(ld, dict) and ld.get("picture"):
+            return ld["picture"]
+
+    # 3) asset_feed_spec — dynamic creative / Advantage+
+    afs = creative.get("asset_feed_spec") or {}
+    if isinstance(afs, dict):
+        images = afs.get("images") or []
+        if isinstance(images, list) and images:
+            first = images[0] if isinstance(images[0], dict) else {}
+            if first.get("url"):           return first["url"]
+            if first.get("permalink_url"): return first["permalink_url"]
+        videos = afs.get("videos") or []
+        if isinstance(videos, list) and videos:
+            first = videos[0] if isinstance(videos[0], dict) else {}
+            if first.get("thumbnail_url"): return first["thumbnail_url"]
+            if first.get("url"):           return first["url"]
+
+    return ""
+
+
+def _media_type_from_name(ad_name: str) -> str:
+    if not ad_name: return "Other"
+    words = {w.upper() for w in re.findall(r"\w+", ad_name)}
+    if words & _VIDEO_KEYWORDS:  return "Video"
+    if words & _STATIC_KEYWORDS: return "Static"
+    return "Other"
+
+
+def safe_float(x, default=0.0):
+    try:    return float(x)
+    except: return default
+
+
+# ── quarter helpers ───────────────────────────────────────────────────
+
+def current_quarter_bounds(today: date) -> tuple[str, str]:
+    """Return (start, end) ISO strings for the current quarter."""
+    q = (today.month - 1) // 3
+    q_start = date(today.year, q * 3 + 1, 1)
+    q_end_month = q * 3 + 3
+    q_end = date(today.year, q_end_month,
+                 [31,28,31,30,31,30,31,31,30,31,30,31][q_end_month - 1])
+    # leap year adjustment
+    if q_end_month == 2 and (today.year % 4 == 0 and (today.year % 100 != 0 or today.year % 400 == 0)):
+        q_end = date(today.year, 2, 29)
+    return q_start.isoformat(), q_end.isoformat()
+
+
+def previous_quarter_bounds(today: date) -> tuple[str, str]:
+    q = (today.month - 1) // 3
+    if q == 0:
+        pq_year = today.year - 1; pq = 3
+    else:
+        pq_year = today.year;     pq = q - 1
+    pq_start = date(pq_year, pq * 3 + 1, 1)
+    pq_end_month = pq * 3 + 3
+    pq_end = date(pq_year, pq_end_month,
+                  [31,28,31,30,31,30,31,31,30,31,30,31][pq_end_month - 1])
+    if pq_end_month == 2 and (pq_year % 4 == 0 and (pq_year % 100 != 0 or pq_year % 400 == 0)):
+        pq_end = date(pq_year, 2, 29)
+    return pq_start.isoformat(), min(pq_end.isoformat(), date.today().isoformat())
+
+
+# ── main ETL ─────────────────────────────────────────────────────────
+
+def run():
+    import studios as studios_registry
+
+    ad_account  = studios_registry.defaults()["meta_ad_account_id"]  # e.g. "act_1553887681409034"
+    studios_cfg = studios_registry.meta_studio_rows()
+
+    today     = date.today()
+    today_iso = today.isoformat()
+
+    # ── date windows ─────────────────────────────────────────────────
+    # Fetch only the last DAILY_LOOKBACK_DAYS days each run.
+    # Older data is preserved via upsert from the existing file.
+    daily_start = (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
+    daily_end   = today_iso
+
+    # ── load existing output (for upsert + baked monthly) ────────────
+    existing: dict = {}
+    if OUT_PATH.exists():
+        try:
+            existing = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
+    existing_ad_daily     = existing.get("ad_daily",      [])
+    existing_studio_daily = existing.get("studio_daily",  [])
+    existing_ad_meta      = existing.get("ad_meta",        {})
+
+    # ── baked monthly spend (Jan 2025 – Mar 2026) ────────────────────
+    # Reads from meta-ads-baked.json — a static file committed once, never overwritten.
+    # Apr 2026+ is computed from studio_daily each run.
+    baked_monthly = []
+    if PAID_ADS_PATH.exists():
+        try:
+            baked = json.loads(PAID_ADS_PATH.read_text(encoding="utf-8"))
+            baked_monthly = baked.get("studio_monthly", [])
+            log.info(f"  Baked monthly rows (pre Apr 2026): {len(baked_monthly)}")
+        except Exception as e:
+            log.warning(f"  Could not read meta-ads-baked.json: {e}")
+    else:
+        log.warning("  meta-ads-baked.json not found — studio_monthly will only have Apr 2026+")
+
+    meta = MetaClient()
+
+    # ── 1. Fetch daily ad-level insights (account level) ─────────────
+    # Returns one row per (ad_id, date) with adset_name for studio matching.
+    log.info(f"Fetching daily ad insights [{daily_start} → {daily_end}] from {ad_account} ...")
+    try:
+        raw_daily_ad = meta.get_insights(
+            ad_account,
+            level="ad",
+            date_start=daily_start,
+            date_end=daily_end,
+            time_increment=1,
+        )
+        log.info(f"  {len(raw_daily_ad)} ad×day rows")
+    except Exception as e:
+        log.exception(f"❌ Daily ad insights failed: {e}")
+        sys.exit(1)
+
+    # ── 2. Fetch ad metadata (status, creative) ───────────────────────
+    # Get all active/paused ads on the account for thumbnails + status.
+    log.info("Fetching ad list from account ...")
+    try:
+        all_ads = meta.list_ads_for_account(ad_account)
+        log.info(f"  {len(all_ads)} ads")
+    except Exception as e:
+        log.warning(f"  list_ads_for_account failed: {e} — using existing ad_meta")
+        all_ads = []
+
+    # Batch-fetch creatives
+    cids_per_ad: dict[str, str] = {}
+    for ad in all_ads:
+        ad_id = ad.get("id")
+        if not ad_id: continue
+        cid = (ad.get("creative") or {}).get("id")
+        if cid: cids_per_ad[ad_id] = cid
+
+    unique_cids = list({c for c in cids_per_ad.values()})
+    if unique_cids:
+        log.info(f"Fetching {len(unique_cids)} creatives in batch ...")
+        try:
+            cdetails = meta.get_creatives_by_ids(unique_cids)
+        except Exception as e:
+            log.warning(f"  creatives batch failed: {e}")
+            cdetails = {}
+    else:
+        cdetails = {}
+
+    status_by_ad = {ad["id"]: ad.get("status", "UNKNOWN") for ad in all_ads if ad.get("id")}
+
+    # Collect preview_shareable_link and Ads Library URL per ad.
+    # preview_shareable_link works for all ad types (including Lead Gen forms).
+    # library_url is kept as a fallback using effective_object_story_id.
+    preview_link_by_ad: dict[str, str] = {}
+    library_id_by_ad: dict[str, str] = {}
+    for ad in all_ads:
+        ad_id = ad.get("id")
+        if not ad_id: continue
+        psl = ad.get("preview_shareable_link") or ""
+        if psl:
+            preview_link_by_ad[ad_id] = psl
+        eosi = ad.get("effective_object_story_id") or ""
+        post_id = eosi.split("_", 1)[1] if "_" in eosi else eosi
+        if post_id:
+            library_id_by_ad[ad_id] = post_id
+
+    # ── 3. Process daily ad rows → ad_daily + studio_daily ───────────
+    # Index buckets keyed by (date, studio_code, ad_id) and (date, studio_code)
+    ad_daily_idx:     dict[tuple, dict] = {}
+    studio_daily_idx: dict[tuple, dict] = {}
+
+    # Seed from existing data (will be overwritten for dates we're refetching)
+    for r in existing_ad_daily:
+        k = (r["date"], r["studio_code"], r["ad_id"])
+        ad_daily_idx[k] = r
+
+    for r in existing_studio_daily:
+        k = (r["date"], r["studio_code"])
+        studio_daily_idx[k] = r
+
+    # Track ad name per ad_id (for ad_meta, in case list_ads_for_account failed)
+    ad_name_seen: dict[str, str] = {}
+    ad_studio_seen: dict[str, str] = {}
+
+    rows_written = 0
+    rows_skipped = 0
+
+    for row in raw_daily_ad:
+        ad_id     = row.get("ad_id")
+        adset_name = row.get("adset_name", "")
+        d          = row.get("date_start")
+        if not ad_id or not d:
+            rows_skipped += 1
+            continue
+
+        studio = match_studio(adset_name, studios_cfg)
+        if not studio:
+            rows_skipped += 1
+            continue
+
+        sc       = studio["code"]
+        ad_name  = row.get("ad_name", "")
+        spend    = round(safe_float(row.get("spend")), 2)
+        impr     = int(safe_float(row.get("impressions")))
+        clicks   = int(safe_float(row.get("clicks")))
+        leads    = leads_of(row)
+        trials   = trials_of(row)
+
+        ad_name_seen[ad_id]  = ad_name
+        ad_studio_seen[ad_id] = sc
+
+        # ad_daily upsert
+        ak = (d, sc, ad_id)
+        ad_daily_idx[ak] = {
+            "date":        d,
+            "studio_code": sc,
+            "ad_id":       ad_id,
+            "ad_name":     ad_name,
+            "spend":       spend,
+            "impressions": impr,
+            "clicks":      clicks,
+            "leads":       leads,
+            "trials":      trials,
+        }
+
+        # studio_daily upsert — accumulate within this run then write
+        sk = (d, sc)
+        if sk not in studio_daily_idx:
+            studio_daily_idx[sk] = {
+                "date": d, "studio_code": sc,
+                "spend": 0.0, "impressions": 0, "clicks": 0, "leads": 0, "trials": 0,
+            }
+        # Re-aggregate from scratch for dates in this fetch window
+        # (handled below after full pass)
+
+        rows_written += 1
+
+    log.info(f"  processed: {rows_written} matched, {rows_skipped} skipped (no studio match)")
+
+    # Re-aggregate studio_daily for the fetch window from scratch
+    # (avoids double-counting if we re-process same dates)
+    studio_daily_fresh: dict[tuple, dict] = {}
+    for row in raw_daily_ad:
+        ad_id     = row.get("ad_id")
+        adset_name = row.get("adset_name", "")
+        d          = row.get("date_start")
+        if not ad_id or not d: continue
+        studio = match_studio(adset_name, studios_cfg)
+        if not studio: continue
+        sc = studio["code"]
+        sk = (d, sc)
+        if sk not in studio_daily_fresh:
+            studio_daily_fresh[sk] = {
+                "date": d, "studio_code": sc,
+                "spend": 0.0, "impressions": 0, "clicks": 0, "leads": 0, "trials": 0,
+            }
+        b = studio_daily_fresh[sk]
+        b["spend"]       = round(b["spend"] + safe_float(row.get("spend")), 2)
+        b["impressions"] += int(safe_float(row.get("impressions")))
+        b["clicks"]      += int(safe_float(row.get("clicks")))
+        b["leads"]       += leads_of(row)
+        b["trials"]      += trials_of(row)
+
+    # Merge fresh aggregations into the full index
+    # Preserve existing rows outside the fetch window, overwrite within it
+    for k, v in studio_daily_fresh.items():
+        studio_daily_idx[k] = v
+
+    log.info(f"  studio_daily: {len(studio_daily_idx)} total (date×studio) rows")
+    log.info(f"  ad_daily:     {len(ad_daily_idx)} total (date×studio×ad) rows")
+
+    # ── 4. Build ad_meta snapshot ─────────────────────────────────────
+    # Start from existing, then update with fresh data
+    ad_meta: dict[str, dict] = dict(existing_ad_meta)
+
+    thumb_hits = 0
+    thumb_missing = 0
+    for ad_id in set(list(ad_name_seen.keys()) + list(status_by_ad.keys())):
+        creative   = cdetails.get(cids_per_ad.get(ad_id, ""), {})
+        media_type = _media_type_from_creative(creative) or _media_type_from_name(ad_name_seen.get(ad_id, ""))
+        thumb = _extract_thumb(creative)
+
+        if thumb:
+            thumb_hits += 1
+        elif creative:
+            thumb_missing += 1
+
+        ad_meta[ad_id] = {
+            "name":          ad_name_seen.get(ad_id) or (ad_meta.get(ad_id) or {}).get("name", ""),
+            "status":        status_by_ad.get(ad_id, (ad_meta.get(ad_id) or {}).get("status", "UNKNOWN")),
+            "media_type":    media_type,
+            "studio_code":   ad_studio_seen.get(ad_id) or (ad_meta.get(ad_id) or {}).get("studio_code"),
+            "thumbnail_url": thumb or (ad_meta.get(ad_id) or {}).get("thumbnail_url", ""),
+            "preview_link":  preview_link_by_ad.get(ad_id) or (ad_meta.get(ad_id) or {}).get("preview_link", ""),
+            "library_url":   f"https://www.facebook.com/ads/library/?id={library_id_by_ad.get(ad_id, ad_id)}&country=US",
+        }
+
+    log.info(f"  ad_meta: {len(ad_meta)} ads (thumb hits {thumb_hits}, creatives w/ no thumb {thumb_missing})")
+
+    # ── 5. Compute studio_monthly for Apr 2026+ from studio_daily ────
+    # Only recompute months that are entirely within the 90-day daily window.
+    # Months outside the window are preserved from the existing output file so
+    # they are not lost when their daily rows get trimmed on subsequent runs.
+    cutoff_90_month = (today - timedelta(days=90)).strftime("%Y-%m")
+
+    # Preserve existing computed monthly for months at or before the cutoff
+    preserved_monthly: dict[tuple, float] = {
+        (r["month"][:7], r["studio_code"]): r["spend"]
+        for r in existing.get("studio_monthly", [])
+        if r.get("month", "") >= "2026-04" and r["month"][:7] <= cutoff_90_month
+    }
+
+    # Recompute only months fully inside the 90-day window
+    monthly_fresh: dict[tuple, float] = defaultdict(float)
+    for r in studio_daily_idx.values():
+        if r["date"] >= "2026-04-01" and r["date"][:7] > cutoff_90_month:
+            monthly_fresh[(r["date"][:7], r["studio_code"])] += r["spend"]
+
+    merged_monthly = {**preserved_monthly, **{k: round(v, 2) for k, v in monthly_fresh.items()}}
+    computed_monthly = [
+        {"month": m, "studio_code": sc, "spend": spend}
+        for (m, sc), spend in sorted(merged_monthly.items())
+    ]
+
+    studio_monthly = baked_monthly + computed_monthly
+    log.info(f"  studio_monthly: {len(baked_monthly)} baked + {len(preserved_monthly)} preserved + {len(monthly_fresh)} recomputed = {len(studio_monthly)} rows")
+
+    # ── 6. Sort, trim to 90-day rolling window, and write ────────────
+    ad_daily_out = sorted(
+        ad_daily_idx.values(),
+        key=lambda r: (r["date"], r["studio_code"], r["ad_id"])
+    )
+    studio_daily_out = sorted(
+        studio_daily_idx.values(),
+        key=lambda r: (r["date"], r["studio_code"])
+    )
+
+    # Rolling 90-day window — studio_daily/monthly moved to spend-data.json (build_spend_data.py)
+    cutoff_90 = (today - timedelta(days=90)).isoformat()
+    ad_daily_out = [r for r in ad_daily_out if r["date"] >= cutoff_90]
+
+    output = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "ad_daily":     ad_daily_out,
+        "ad_meta":      ad_meta,
+    }
+
+    OUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
+    log.info(
+        f"Wrote {OUT_PATH} ({OUT_PATH.stat().st_size:,} bytes) — "
+        f"{len(ad_daily_out)} ad_daily, {len(ad_meta)} ad_meta"
+    )
+
+
+if __name__ == "__main__":
+    try:
+        run()
+    except Exception as e:
+        log.exception(f"❌ ETL failed: {e}")
+        sys.exit(1)

@@ -1,0 +1,158 @@
+# ---------------------------------------------------------------------
+# SWEAT440 Paid Ads Dashboard -- Campaign config
+# ---------------------------------------------------------------------
+# Como funciona:
+#   - 'active_campaign' apunta a UN bloque dentro de 'campaigns:'.
+#   - Puedes tener tantos bloques como campanas quieras trackear.
+#   - Para cambiar de campana: edita 'active_campaign' y relanza
+#     el ETL (python backend/meta_to_sheets.py). No se toca codigo.
+# ---------------------------------------------------------------------
+
+active_campaign: free_class_open_studios_2026
+
+# 'campaigns_to_track' son TODAS las campanas que el ETL va a extraer en
+# cada run, para que aparezcan en el dropdown del dashboard.
+# Anade o quita nombres aqui segun necesites.
+campaigns_to_track:
+  - win_a_free_month_apr2026
+  - free_class_open_studios_2026
+  - buy_1_get_3_open_studios_2026
+
+# 'campaigns_to_refresh' son las campanas que el ETL re-fetchea desde Meta
+# cada run. Las campanas en 'campaigns_to_track' que NO esten aqui se cargan
+# del JSON existente (cache), ahorrando tiempo y quota de API.
+# Para forzar el re-fetch de una campana completada, agregala aqui temporalmente.
+campaigns_to_refresh:
+  - free_class_open_studios_2026
+
+
+campaigns:
+
+  # =================================================================
+  # Win a Free Month - Abril 2026  (completada)
+  # =================================================================
+  win_a_free_month_apr2026:
+    display_name: "Win a Free Month"
+    period_label: "Apr 1-14, 2026"
+    date_start:   "2026-04-01"
+    date_end:     "2026-04-14"
+    ad_account_id: "act_1553887681409034"   # SWEAT440 - Corporate Studios
+    campaign_id:   "120243785513570249"     # 2026 - Open Studios - Win a Free Month
+
+    audience_tokens:
+      DINKS: ["DINKS"]
+      POC:   ["POC"]
+      PYC:   ["PYC"]
+      SI:    ["SI"]
+      SAHP:  ["SAHP"]
+
+    # Pilares de producto (los buscamos como tokens en el nombre del ad)
+    pillar_tokens:
+      "Decision Relief":      ["DR"]
+      "Value Confidence":     ["VC"]
+      "Psychological Safety": ["PS"]
+      "Performance & Results": ["P&R", "P+R", "PR"]
+      "Social Safety":        ["SSB", "SS"]
+      HYROX:                  ["HYROX"]
+      DC:                     ["DC"]
+
+    # Studio roster resolved from studios.json (canonical registry) by code —
+    # see resolve_campaign_studios() in fetch_paid_ads.py. Legacy inline
+    # `studios:` list format is still supported as a fallback.
+    studio_codes:
+      [FL-001, FL-002, FL-003, FL-004, FL-005, FL-006, FL-007, FL-008,
+       FL-009, FL-010, FL-011, FL-012, FL-013, FL-014, FL-015, FL-016,
+       NC-001, NJ-001, NJ-002, NJ-003, NY-002, NY-003, NY-004, TX-001, TX-002,
+       FL-017, TX-003]
+
+
+  # =================================================================
+  # Free Class - Open Studios  (en curso, ejemplo para copiar)
+  # =================================================================
+  # Para activarla, cambia arriba 'active_campaign' a este nombre
+  # y relanza el ETL. La hoja de Google se reescribe con los nuevos
+  # datos, y el dashboard se ajusta automaticamente.
+  free_class_open_studios_2026:
+    display_name: "Free Class - Open Studios"
+    period_label: "Apr 15, 2026 onwards"
+    date_start:   "2026-04-15"
+    date_end:     "2026-12-31"
+    ad_account_id: "act_1553887681409034"   # misma cuenta corporate
+    campaign_ids:                            # 3 campanas bajo Free Class
+      - "120243103413640249"                 # Free Class - Native Forms
+      - "120249459170510249"                 # Free Class - Landing Pages - No Conversion
+      - "120250407271150249"                 # Free Class - Landing Pages
+    # Tipo de lead por campaign_id (Results column de Meta):
+    # Native Forms → native form events; Landing Pages → pixel lead event
+    campaign_lead_types:
+      "120243103413640249": [onsite_conversion.lead_grouped, leadgen_grouped, leadgen.other]
+      "120249459170510249": [_pixel_custom]   # custom pixel conversion in conversions[]
+      "120250407271150249": [_pixel_custom]   # custom pixel conversion in conversions[]
+
+    audience_tokens:
+      DINKS: ["DINKS"]
+      POC:   ["POC"]
+      PYC:   ["PYC"]
+      SI:    ["SI"]
+      SAHP:  ["SAHP"]
+
+    pillar_tokens:
+      "Decision Relief":      ["DR"]
+      "Value Confidence":     ["VC"]
+      "Psychological Safety": ["PS"]
+      "Performance & Results": ["P&R", "P+R", "PR"]
+      "Social Safety":        ["SSB", "SS"]
+      HYROX:                  ["HYROX"]
+      DC:                     ["DC"]
+
+    # Si tu proxima campana es solo para algunos studios, quita los codigos
+    # que no apliquen de la lista y el dashboard mostrara solo los relevantes.
+    studio_codes:
+      [FL-001, FL-002, FL-003, FL-004, FL-005, FL-006, FL-007, FL-008,
+       FL-009, FL-010, FL-011, FL-012, FL-013, FL-014, FL-015, FL-016,
+       NC-001, NJ-001, NJ-002, NJ-003, NY-002, NY-003, NY-004, TX-001, TX-002,
+       FL-017, TX-003]
+
+
+  # =================================================================
+  # Buy 1 Get 3 - Open Studios  (en curso - inició May 12, 2026)
+  # =================================================================
+  buy_1_get_3_open_studios_2026:
+    display_name: "Buy 1 Get 3"
+    period_label: "May 12–27, 2026"
+    date_start:   "2026-05-12"
+    date_end:     "2026-05-27"
+    ad_account_id: "act_1553887681409034"   # SWEAT440 - Corporate Studios
+    campaign_id:   "120248073278490249"     # 2026 - Open Studios - Buy 1 Get 3
+
+    audience_tokens:
+      DINKS: ["DINKS"]
+      POC:   ["POC"]
+      PYC:   ["PYC"]
+      SI:    ["SI"]
+      SAHP:  ["SAHP"]
+
+    pillar_tokens:
+      "Decision Relief":      ["DR"]
+      "Value Confidence":     ["VC"]
+      "Psychological Safety": ["PS"]
+      "Performance & Results": ["P&R", "P+R", "PR"]
+      "Social Safety":        ["SSB", "SS"]
+      HYROX:                  ["HYROX"]
+      DC:                     ["DC"]
+
+    studio_codes:
+      [FL-001, FL-002, FL-003, FL-004, FL-005, FL-006, FL-007, FL-008,
+       FL-009, FL-010, FL-011, FL-012, FL-013, FL-014, FL-015, FL-016,
+       NC-001, NJ-001, NJ-002, NJ-003, NY-002, NY-003, NY-004, TX-001, TX-002,
+       FL-017, TX-003]
+
+
+# ---------------------------------------------------------------------
+# Para anadir una campana nueva en el futuro:
+#   1. Copia uno de los bloques de arriba y renombralo (ej. black_friday_2026:).
+#   2. Ajusta display_name, period_label, date_start, date_end.
+#   3. Ajusta ad_account_id y campaign_id con los IDs de Meta.
+#   4. (Opcional) Ajusta la lista de studios si aplica.
+#   5. Arriba pon 'active_campaign: black_friday_2026' y corre el ETL.
+# ---------------------------------------------------------------------

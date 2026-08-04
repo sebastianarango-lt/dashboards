@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SWEAT440 — Meta Ads Dashboard - Open Studios</title>
+
+<!-- Brand fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Shared brand styles (repo-wide) -->
+<link rel="stylesheet" href="../shared/style.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<style>
+  /* Dashboard-specific styles (fallback if shared/style.css doesn't cover these) */
+  :root {
+    --brand-blue: #00A3E0;
+    --brand-blue-deep: #0084B5;
+    --ink: #0F172A;
+    --ink-soft: #475569;
+    --border: #E2E8F0;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --good: #16A34A;
+    --bad: #DC2626;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+  }
+  h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 600; letter-spacing: .5px; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+  header.topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  header.topbar h1 {
+    margin: 0; font-size: 28px; text-transform: uppercase;
+    color: var(--brand-blue-deep);
+  }
+  header.topbar .meta { color: var(--ink-soft); font-size: 12px; }
+  .campaign-picker {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .campaign-picker select {
+    font-family: inherit; font-size: 14px; padding: 8px 12px;
+    border: 1px solid var(--border); border-radius: 6px; background: #fff;
+    min-width: 280px;
+  }
+  .period { color: var(--ink-soft); font-size: 12px; }
+
+  .dashboard-subtitle {
+    font-size: 13px; color: var(--ink-soft); margin-top: 2px;
+  }
+
+  /* KPI grid */
+  .kpi-grid {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; position: relative;
+  }
+  .kpi .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
+    color: var(--ink-soft); font-weight: 600;
+    display: flex; align-items: center; gap: 5px;
+    padding-right: 18px; /* keep room for the info icon */
+  }
+  .kpi-info {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: absolute; top: 10px; right: 10px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #fff; border: 1.5px solid var(--brand-blue); color: var(--brand-blue);
+    font-size: 11px; font-weight: 700; font-style: italic;
+    text-transform: none; letter-spacing: normal;
+    cursor: pointer; user-select: none; flex: none;
+  }
+  .kpi-info:hover { background: var(--brand-blue); color: #fff; }
+
+  /* Info modal (opened by clicking a .kpi-info icon) */
+  .kpi-modal-backdrop {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(15, 23, 42, .35);
+    align-items: center; justify-content: center;
+  }
+  .kpi-modal-backdrop.open { display: flex; }
+  .kpi-modal {
+    position: relative; width: 320px; max-width: calc(100vw - 32px);
+    background: #fff; border-radius: 12px; padding: 20px 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  }
+  .kpi-modal-title {
+    color: var(--brand-blue); font-weight: 700; font-style: italic;
+    text-transform: uppercase; letter-spacing: .5px; font-size: 13px;
+    margin-bottom: 10px; padding-right: 20px;
+  }
+  .kpi-modal-body {
+    font-size: 13px; line-height: 1.5; color: var(--ink); font-style: normal;
+  }
+  .kpi-modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; cursor: pointer;
+    font-size: 18px; line-height: 1; color: var(--ink-soft); padding: 0;
+  }
+  .kpi-modal-close:hover { color: var(--ink); }
+  .kpi .value {
+    font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600;
+    color: var(--ink); margin-top: 2px;
+  }
+  .kpi .sub { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+  .kpi.accent { border-left: 4px solid var(--brand-blue); }
+
+  /* Section cards */
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 18px;
+  }
+  .card h2 { margin: 0 0 14px 0; font-size: 16px; color: var(--brand-blue-deep); }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th {
+    background: #F1F5F9; font-weight: 600; color: var(--ink-soft);
+    text-transform: uppercase; font-size: 11px; letter-spacing: .4px;
+    cursor: pointer; user-select: none;
+  }
+  th.sort-asc::after  { content: " ▲"; color: var(--brand-blue); }
+  th.sort-desc::after { content: " ▼"; color: var(--brand-blue); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr:hover { background: #F8FAFC; }
+  .type-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:.4px; }
+  .type-video    { background:#dbeafe; color:#1e40af; }
+  .type-estatico { background:#fce7f3; color:#9d174d; }
+  .type-carrusel { background:#d1fae5; color:#065f46; }
+  .cpl-good span, .cpl-warn span, .cpl-bad span {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .cpl-good span { background: #bbf7d0; color: #14532d; }
+  .cpl-warn span { background: #fef08a; color: #713f12; }
+  .cpl-bad  span { background: #fecaca; color: #7f1d1d; }
+
+  /* Layout helpers */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  canvas { max-width: 100%; }
+
+  /* Chart.js requires a constrained parent when maintainAspectRatio:false —
+     sin esto los canvases crecen en loop infinito. */
+  .chart-wrap { position: relative; width: 100%; }
+  .chart-wrap.h-daily  { height: 280px; }
+  .chart-wrap.h-small  { height: 240px; }
+
+  .empty { color: var(--ink-soft); font-style: italic; padding: 20px 0; }
+
+  .chip {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    background: #EFF6FF; color: var(--brand-blue-deep); font-size: 11px;
+    font-weight: 600; margin-right: 4px;
+  }
+
+  /* Tabs */
+  .tab-bar {
+    display: flex; gap: 2px; flex-wrap: wrap;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .tab {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px; font-weight: 600;
+    padding: 10px 18px; border: none; background: transparent;
+    color: var(--ink-soft); cursor: pointer;
+    text-transform: uppercase; letter-spacing: .5px;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+    transition: color .15s, border-color .15s;
+  }
+  .tab:hover:not(.active) { color: var(--ink); }
+  .tab.active {
+    color: var(--brand-blue-deep);
+    border-bottom-color: var(--brand-blue);
+  }
+  .tab-panel.hidden { display: none; }
+
+  /* ── AI Analysis tab ─────────────────────────────────────────────────── */
+  .ai-summary-bar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+  .ai-count-badge { padding:8px 16px; border-radius:8px; font-weight:700; font-size:13px; }
+  .ai-filter-bar  { display:flex; gap:6px; margin-bottom:20px; flex-wrap:wrap; align-items:center; }
+  .ai-filter-btn  {
+    padding:5px 12px; border:1px solid var(--border); border-radius:20px;
+    background:var(--card); color:var(--ink-soft); cursor:pointer; font-size:12px;
+    font-family:'Open Sans',sans-serif; white-space:nowrap;
+  }
+  .ai-filter-btn.active { background:var(--brand-blue); color:#fff; border-color:var(--brand-blue); }
+  .ai-filter-btn:hover:not(.active) { background:var(--bg); }
+  .ai-filter-group {
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    padding:4px 10px; border-radius:8px;
+  }
+  .ai-filter-group.grp-alert  { background:#FEF2F2; }
+  .ai-filter-group.grp-warn   { background:#FFFBEB; }
+  .ai-filter-group.grp-opp    { background:#F0FDF4; }
+  .ai-filter-group-label {
+    font-size:10px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.7px; white-space:nowrap; padding-right:2px;
+  }
+  .grp-alert .ai-filter-group-label  { color:#DC2626; }
+  .grp-warn  .ai-filter-group-label  { color:#D97706; }
+  .grp-opp   .ai-filter-group-label  { color:#16A34A; }
+
+  .finding-card {
+    background:var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px; margin-bottom:10px; border-left:4px solid var(--border);
+  }
+  .finding-card.sev-high        { border-left-color:#DC2626; }
+  .finding-card.sev-medium      { border-left-color:#F59E0B; }
+  .finding-card.sev-opportunity { border-left-color:#16A34A; }
+  .finding-card.sev-info        { border-left-color:#3B82F6; }
+
+  .finding-header   { display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+  .finding-badge    { padding:3px 8px; border-radius:4px; font-size:11px; font-weight:700;
+                      text-transform:uppercase; letter-spacing:.5px; white-space:nowrap; }
+  .fbadge-high        { background:#FEE2E2; color:#DC2626; }
+  .fbadge-medium      { background:#FEF3C7; color:#D97706; }
+  .fbadge-opportunity { background:#DCFCE7; color:#16A34A; }
+  .fbadge-info        { background:#DBEAFE; color:#2563EB; }
+  .fbadge-type        { background:#F1F5F9; color:var(--ink-soft); }
+
+  .finding-headline   { font-weight:700; font-size:14px; flex:1; min-width:0; }
+  .finding-studio     { font-size:11px; color:var(--ink-soft); white-space:nowrap; }
+  .finding-detail     { color:var(--ink-soft); font-size:13px; margin-bottom:8px; }
+  .finding-rec-alert  { background:#FFF7ED; border:1px solid #FED7AA; border-radius:6px;
+                        padding:8px 12px; font-size:12px; color:#92400E; }
+  .finding-rec-good   { background:#F0FDF4; border:1px solid #BBF7D0; border-radius:6px;
+                        padding:8px 12px; font-size:12px; color:#166534; }
+  .finding-meta       { display:flex; gap:16px; margin-top:10px; font-size:12px;
+                        color:var(--ink-soft); flex-wrap:wrap; align-items:center; }
+  .finding-meta strong { color:var(--ink); }
+  .finding-link { font-size:12px; color:var(--brand-blue); text-decoration:none; margin-left:auto; }
+  .finding-link:hover { text-decoration:underline; }
+  .ai-show-more { text-align:center; padding:14px; color:var(--brand-blue);
+                  cursor:pointer; font-size:13px; font-weight:600; }
+  .ai-show-more:hover { text-decoration:underline; }
+  .ai-narrative { background:#F0F9FF; border:1px solid #BAE6FD; border-radius:10px;
+                  padding:16px 18px; margin-bottom:16px; font-size:13px; line-height:1.6; }
+
+  /* Run Analysis button (local-only, hidden on live site) */
+  #runAnalysisBtn {
+    display: none; /* shown via JS on localhost only */
+    align-items: center; gap: 6px;
+    padding: 7px 14px; font-family: inherit; font-size: 12px; font-weight: 600;
+    background: var(--brand-blue); color: #fff;
+    border: none; border-radius: 6px; cursor: pointer;
+    transition: background .2s, opacity .2s; white-space: nowrap;
+  }
+  #runAnalysisBtn:hover:not(:disabled) { background: var(--brand-blue-deep); }
+  #runAnalysisBtn:disabled { opacity: .65; cursor: not-allowed; }
+  #runAnalysisBtn.btn-success { background: var(--good); }
+  #runAnalysisBtn.btn-error   { background: var(--bad); }
+  /* ─────────────────────────────────────────────────────────────────────── */
+
+  /* Granularity toggle */
+  .gran-toggle {
+    display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+  }
+  .gran-btn {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    padding: 6px 12px;
+    border: none; border-right: 1px solid var(--border);
+    background: #fff; color: var(--ink-soft);
+    cursor: pointer; transition: background .15s, color .15s;
+  }
+  .gran-btn:last-child { border-right: none; }
+  .gran-btn:hover:not(.active) { background: #F1F5F9; color: var(--ink); }
+  .gran-btn.active { background: var(--brand-blue); color: #fff; }
+
+  /* Metric picker (Daily Trend) */
+  .chart-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .chart-card-header h2 { margin: 0; }
+  .metric-picker { position: relative; }
+  .metric-picker-btn {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    background: #fff; color: var(--ink-soft);
+    cursor: pointer; border-radius: 6px;
+    display: flex; align-items: center; gap: 6px;
+    transition: border-color .15s, color .15s;
+  }
+  .metric-picker-btn:hover { border-color: var(--brand-blue); color: var(--ink); }
+  .metric-picker-menu {
+    position: absolute; right: 0; top: calc(100% + 6px);
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.10);
+    padding: 6px 0; min-width: 170px; z-index: 200;
+  }
+  .metric-picker-menu[hidden] { display: none; }
+  .metric-picker-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 16px; cursor: pointer; font-size: 13px;
+    user-select: none; transition: background .1s;
+  }
+  .metric-picker-item:hover { background: #F8FAFC; }
+  .metric-picker-item input[type="checkbox"] { cursor: pointer; width: 14px; height: 14px; }
+  .metric-color-dot {
+    display: inline-block; width: 10px; height: 10px;
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    padding: 10px 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .filter-bar > label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--ink-soft);
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .preset-btn {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .preset-btn:hover { background: #F1F5F9; color: var(--ink); }
+  .preset-btn.active {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+    color: #fff;
+  }
+  .custom-range {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 6px;
+  }
+  .custom-range[hidden] { display: none; }
+  .custom-range input[type="date"] {
+    font-family: inherit;
+    font-size: 12px;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+  }
+  .apply-btn {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border: none;
+    background: var(--brand-blue);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  .apply-btn:hover { background: var(--brand-blue-deep); }
+  .studio-filter-select {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    min-width: 200px;
+  }
+  .filter-bar .range-info {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <header class="topbar">
+    <div>
+      <h1>Meta Ads Dashboard - Open Studios</h1>
+      <div class="dashboard-subtitle">This is an internal-use dashboard for the Growth Marketing Manager and the Creative Director.</div>
+      <div class="meta">
+        <span id="generatedAt">Loading…</span>
+      </div>
+    </div>
+    <div class="campaign-picker">
+      <label for="campaignSelect" style="font-weight:600;color:var(--ink-soft);">Campaign:</label>
+      <select id="campaignSelect"></select>
+    </div>
+  </header>
+
+  <!-- Filter bar (period + studio — afecta TODO el dashboard) -->
+  <div class="filter-bar">
+    <label>Period:</label>
+    <button class="preset-btn active" data-preset="all">Full campaign</button>
+    <button class="preset-btn" data-preset="7">Last 7 days</button>
+    <button class="preset-btn" data-preset="30">Last 30 days</button>
+    <button class="preset-btn" data-preset="90">Last 90 days</button>
+    <button class="preset-btn" data-preset="custom">Custom</button>
+    <div class="custom-range" hidden>
+      <input type="date" id="dateStart">
+      <span style="color:var(--ink-soft)">→</span>
+      <input type="date" id="dateEnd">
+      <button class="apply-btn" id="applyCustom">Apply</button>
+    </div>
+    <label style="margin-left:18px;">Studio:</label>
+    <select id="studioFilterSelect" class="studio-filter-select">
+      <option value="">All studios</option>
+    </select>
+    <span class="range-info" id="rangeInfo"></span>
+  </div>
+
+  <!-- Tab bar -->
+  <div class="tab-bar">
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="audiences">Audiences</button>
+    <button class="tab" data-tab="pillars">Pillars</button>
+    <button class="tab" data-tab="concepts">Ads</button>
+    <button class="tab" data-tab="mediatype">Static vs Video</button>
+    <button class="tab" data-tab="ai-analysis">&#128200; AI Analysis</button>
+  </div>
+
+  <!-- ── Overview tab ─────────────────────────────────────────── -->
+  <div class="tab-panel" id="panel-overview">
+
+  <!-- KPI cards -->
+  <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- KPI info modal (shared, populated on demand) -->
+  <div class="kpi-modal-backdrop" id="kpiModalBackdrop">
+    <div class="kpi-modal">
+      <button class="kpi-modal-close" id="kpiModalClose" aria-label="Close">&times;</button>
+      <div class="kpi-modal-title" id="kpiModalTitle"></div>
+      <div class="kpi-modal-body" id="kpiModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Daily trend -->
+  <div class="card">
+    <div class="chart-card-header">
+      <h2>Daily Trend</h2>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="gran-toggle">
+          <button class="gran-btn active" data-gran="daily">Daily</button>
+          <button class="gran-btn" data-gran="weekly">Weekly</button>
+          <button class="gran-btn" data-gran="monthly">Monthly</button>
+        </div>
+        <div class="metric-picker" id="metricPicker">
+          <button class="metric-picker-btn" id="metricPickerBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Metrics ▾
+          </button>
+          <div class="metric-picker-menu" id="metricPickerMenu" hidden></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrap h-daily"><canvas id="dailyChart"></canvas></div>
+  </div>
+
+  <!-- Studios + Pillars side by side -->
+  <div class="grid-2" id="studiosPillarsRow">
+    <div class="card" id="studiosCard">
+      <h2>Studios — Performance</h2>
+      <div style="max-height: 500px; overflow:auto;">
+        <table id="studiosTable">
+          <thead>
+            <tr>
+              <th data-k="name">Studio</th>
+              <th data-k="state">State</th>
+              <th class="num" data-k="spend">Spend</th>
+              <th class="num" data-k="leads">Leads</th>
+              <th class="num" data-k="cpl">CPL</th>
+              <th class="num" data-k="trials">Trials</th>
+              <th class="num" data-k="cpt">CPT</th>
+              <th class="num" data-k="purchases">Purch.</th>
+              <th class="num" data-k="cpp">CPP</th>
+              <th class="num" data-k="impressions">Impr.</th>
+              <th class="num" data-k="ctr">CTR%</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 id="pillarsOverviewTitle">Pillars — Campaign-wide</h2>
+      <div class="chart-wrap h-small"><canvas id="pillarsChart"></canvas></div>
+      <div id="pillarsTableWrap" style="margin-top: 12px; max-height:240px; overflow:auto;"></div>
+    </div>
+  </div>
+
+  <!-- Audiences + Concepts -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>Audiences</h2>
+      <div class="chart-wrap h-small"><canvas id="audiencesChart"></canvas></div>
+      <div id="audiencesTableWrap" style="margin-top: 12px; max-height:240px; overflow:auto;"></div>
+    </div>
+    <div class="card">
+      <h2>Top Ads</h2>
+      <div class="chart-wrap h-small"><canvas id="conceptsChart"></canvas></div>
+      <div id="conceptsTableWrap" style="margin-top: 12px; max-height:240px; overflow:auto;"></div>
+    </div>
+  </div>
+
+  </div><!-- /#panel-overview -->
+
+  <!-- ── Audiences tab ────────────────────────────────────────── -->
+  <div class="tab-panel hidden" id="panel-audiences">
+    <div class="card">
+      <h2>Audiences — Summary <span id="audiencesWindowNote" class="period" style="font-weight:400;margin-left:8px;"></span></h2>
+      <div id="audiencesTableDailyWrap" style="overflow:auto;"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Leads &amp; Spend by Audience</h2>
+        <div class="chart-wrap h-daily"><canvas id="audiencesBarChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Spend Share by Audience</h2>
+        <div class="chart-wrap h-daily"><canvas id="audiencesDoughnutChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 id="audiencesLineTitle">Leads by Audience — Daily</h2>
+      <div class="chart-wrap h-daily"><canvas id="audiencesLineChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── Pillars tab ──────────────────────────────────────────── -->
+  <div class="tab-panel hidden" id="panel-pillars">
+    <div class="card">
+      <h2>Pillars — Summary <span id="pillarsWindowNote" class="period" style="font-weight:400;margin-left:8px;"></span></h2>
+      <div id="pillarsTableDailyWrap" style="overflow:auto;"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Leads &amp; Spend by Pillar</h2>
+        <div class="chart-wrap h-daily"><canvas id="pillarsBarChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Spend Share by Pillar</h2>
+        <div class="chart-wrap h-daily"><canvas id="pillarsDoughnutChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 id="pillarsLineTitle">Leads by Pillar — Daily</h2>
+      <div class="chart-wrap h-daily"><canvas id="pillarsLineChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── Static vs Video tab ─────────────────────────────────── -->
+  <div class="tab-panel hidden" id="panel-mediatype">
+    <div class="card">
+      <h2>Static vs Video — Summary <span id="mediatypeWindowNote" class="period" style="font-weight:400;margin-left:8px;"></span></h2>
+      <div id="mediatypeTableDailyWrap" style="overflow:auto;"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Leads &amp; CPL by Type</h2>
+        <div class="chart-wrap h-daily"><canvas id="mediatypeBarChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Leads Share by Type</h2>
+        <div class="chart-wrap h-daily"><canvas id="mediatypeDoughnutChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 id="mediatypeLineTitle">Leads by Type — Daily</h2>
+      <div class="chart-wrap h-daily"><canvas id="mediatypeLineChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── Ads tab (antes "Concepts") ──────────────────────────── -->
+  <div class="tab-panel hidden" id="panel-concepts">
+    <div class="card">
+      <div class="chart-card-header">
+        <h2>Ads — Summary <span id="conceptsWindowNote" class="period" style="font-weight:400;margin-left:8px;"></span></h2>
+        <div class="gran-toggle">
+          <button class="gran-btn active" data-type="all">All</button>
+          <button class="gran-btn" data-type="Video">Video</button>
+          <button class="gran-btn" data-type="Static">Static</button>
+          <button class="gran-btn" data-type="Carousel">Carousel</button>
+        </div>
+      </div>
+      <div id="conceptsTableDailyWrap" style="overflow:auto;"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Leads &amp; Spend by Ad (top 12)</h2>
+        <div class="chart-wrap h-daily"><canvas id="conceptsBarChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Spend Share by Ad (top 12)</h2>
+        <div class="chart-wrap h-daily"><canvas id="conceptsDoughnutChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 id="conceptsLineTitle">Leads by Ad — Daily (top 12)</h2>
+      <div class="chart-wrap h-daily"><canvas id="conceptsLineChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── AI Analysis tab ────────────────────────────────────────────────── -->
+  <div class="tab-panel hidden" id="panel-ai-analysis">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+    <div>
+      <h2 style="margin:0;font-size:20px">AI Analysis</h2>
+      <div style="font-size:12px;color:var(--ink-soft);margin-top:2px">Rule-based insights on ad performance — updated daily</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <span id="aiGenAt" style="font-size:12px;color:var(--ink-soft)"></span>
+      <button id="runAnalysisBtn" title="Local only: downloads latest data from GitHub then runs analyze_ads.py">
+        &#128260; Run Analysis in Local
+      </button>
+    </div>
+  </div>
+
+  <!-- Summary badges -->
+  <div class="ai-summary-bar">
+    <div class="ai-summary-section" style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:12px 20px;min-width:140px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#DC2626;margin-bottom:4px">High Alerts</div>
+      <div class="ai-count-badge" id="aiHighBadge" style="font-size:22px;font-weight:700;color:#DC2626;padding:0"></div>
+    </div>
+    <div class="ai-summary-section" style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 20px;min-width:140px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#D97706;margin-bottom:4px">Warnings</div>
+      <div class="ai-count-badge" id="aiWarnBadge" style="font-size:22px;font-weight:700;color:#D97706;padding:0"></div>
+    </div>
+    <div class="ai-summary-section" style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 20px;min-width:140px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#16A34A;margin-bottom:4px">Opportunities</div>
+      <div class="ai-count-badge" id="aiOppBadge" style="font-size:22px;font-weight:700;color:#16A34A;padding:0"></div>
+    </div>
+  </div>
+
+  <!-- Type filter chips -->
+  <div class="ai-filter-bar" id="aiFilterBar">
+    <button class="ai-filter-btn active" data-type="all">All</button>
+    <button class="ai-filter-btn" data-type="wasted_spend">&#128176; Wasted Spend</button>
+    <button class="ai-filter-btn" data-type="cpl_bad">&#128200; Bad CPL</button>
+    <button class="ai-filter-btn" data-type="low_ctr">&#128065; Low CTR</button>
+    <button class="ai-filter-btn" data-type="cpl_regular">&#128202; Regular CPL</button>
+    <button class="ai-filter-btn" data-type="low_impressions">&#128263; Low Impressions</button>
+    <button class="ai-filter-btn" data-type="scale_opportunity">&#128640; Scale</button>
+    <button class="ai-filter-btn" data-type="paused_high_spend">&#9208; Paused</button>
+  </div>
+
+  <!-- AI narrative (shown only when Anthropic API key is set) -->
+  <div id="aiNarrative" class="ai-narrative" style="display:none"></div>
+
+  <!-- Findings list -->
+  <div id="aiFindingsList"></div>
+
+  <div id="aiLoadingMsg" style="text-align:center;padding:40px;color:var(--ink-soft)">
+    Loading analysis data...
+  </div>
+  <div id="aiErrorMsg"   style="display:none;padding:20px;color:var(--bad)"></div>
+  </div>
+  <!-- ──────────────────────────────────────────────────────────────────────── -->
+
+</div><!-- /.container -->
+
+<script>
+let DATA = null;
+let ANALYSIS = null;
+let currentKey = null;
+let studiosSort = { col: "spend", dir: "desc" };
+let charts = {};
+let creativeMap = {};
+
+let dateFilter = { type: "all", start: null, end: null };
+let studioFilter = null;
+let currentDailyData = [];
+let adTypeFilter = "all";
+const lineTabSort = {}; // { [tableId]: { col, dir } }
+
+function detectAdType(name) {
+  const n = (name || "").toLowerCase();
+  if (n.includes("video"))                              return "Video";
+  if (n.includes("static") || n.includes("estatic"))   return "Static";
+  if (n.includes("carousel") || n.includes("carrusel")) return "Carousel";
+  return "Static"; // default: static image
+}
+
+function adTypeBadge(type) {
+  const cls = type === "Video" ? "type-video" : type === "Carousel" ? "type-carrusel" : "type-estatico";
+  return `<span class="type-badge ${cls}">${type}</span>`;
+}
+
+const DAILY_METRICS = [
+  { key: "cpl",       label: "CPL",       color: "#00A3E0", bgColor: "rgba(0,163,224,.15)",    yAxis: "y",  fmt: v => fmtMoney(v), fill: true,  compute: d => d.leads > 0 ? d.spend / d.leads : null },
+  { key: "leads",     label: "Leads",     color: "#F59E0B", bgColor: "rgba(245,158,11,.15)",   yAxis: "y1", fmt: v => fmtInt(v),   fill: false, compute: d => d.leads },
+  { key: "spend",     label: "Spend",     color: "#10B981", bgColor: "rgba(16,185,129,.15)",   yAxis: "y_spend", fmt: v => fmtMoney(v), fill: false, compute: d => d.spend },
+  { key: "trials",    label: "Trials",    color: "#6366F1", bgColor: "rgba(99,102,241,.15)",   yAxis: "y1", fmt: v => fmtInt(v),   fill: false, compute: d => d.trials },
+  { key: "purchases", label: "Purchases", color: "#EC4899", bgColor: "rgba(236,72,153,.15)",   yAxis: "y1", fmt: v => fmtMoney(v), fill: false, compute: d => d.purchases },
+];
+let dailyMetricSel = new Set(["cpl", "leads"]);
+let dailyGran = "daily";
+
+const BRAND = {
+  blue: "#00A3E0",
+  blueDeep: "#0084B5",
+  palette: [
+    "#00A3E0", "#0084B5", "#F59E0B", "#10B981", "#6366F1",
+    "#EC4899", "#EF4444", "#14B8A6", "#A855F7", "#84CC16",
+  ],
+};
+
+const fmtMoney = n => "$" + (Number(n) || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtInt   = n => (Number(n) || 0).toLocaleString("en-US");
+const fmtPct   = n => (Number(n) || 0).toFixed(2) + "%";
+
+async function bootstrap() {
+  // Load creative map (non-blocking — silently ignored if file doesn't exist yet)
+  try {
+    const cmRes = await fetch("creative-map.json?t=" + Date.now(), { cache: "no-store" });
+    if (cmRes.ok) creativeMap = await cmRes.json();
+  } catch (_) {}
+
+  // Load AI analysis JSON (non-blocking — silently ignored if not generated yet)
+  try {
+    const aRes = await fetch("paid-ads-analysis.json?t=" + Date.now(), { cache: "no-store" });
+    if (aRes.ok) ANALYSIS = await aRes.json();
+  } catch (_) {}
+
+  try {
+    const res = await fetch("daniel-paid-ads-data.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    DATA = await res.json();
+  } catch (e) {
+    document.body.innerHTML = `<div class="container"><div class="card" style="color:var(--bad)">
+      <h2>Could not load daniel-paid-ads-data.json</h2>
+      <pre style="color:var(--ink-soft);font-size:12px">${String(e)}</pre>
+    </div></div>`;
+    return;
+  }
+
+  document.getElementById("generatedAt").textContent =
+    "Updated " + new Date(DATA.generated_at).toLocaleString();
+
+  const sel = document.getElementById("campaignSelect");
+  DATA.campaigns_index.forEach(ci => {
+    const opt = document.createElement("option");
+    opt.value = ci.key;
+    opt.textContent = ci.display_name;
+    if (ci.is_default) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener("change", () => {
+    currentKey = sel.value;
+    resetFilterToAll();
+    aiShowAll = false;
+    render();
+    const activeTab = document.querySelector(".tab.active");
+    if (activeTab && activeTab.dataset.tab === "ai-analysis") renderAnalysis();
+  });
+  currentKey = sel.value || DATA.active_campaign;
+
+  initTabs();
+  initFilters();
+  initMetricPicker();
+  initGranToggle();
+  initAdTypeFilter();
+  initAiFilters();
+  initRunAnalysisButton();
+  populateStudioFilter();
+  render();
+}
+
+function resetFilterToAll() {
+  dateFilter = { type: "all", start: null, end: null };
+  studioFilter = null;
+  document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+  const allBtn = document.querySelector('.preset-btn[data-preset="all"]');
+  if (allBtn) allBtn.classList.add("active");
+  const customWrap = document.querySelector(".custom-range");
+  if (customWrap) customWrap.hidden = true;
+  populateStudioFilter();
+}
+
+function populateStudioFilter() {
+  const sel = document.getElementById("studioFilterSelect");
+  if (!sel) return;
+  const c = DATA.campaigns[currentKey];
+  if (!c) return;
+  const active = (c.studios || []).filter(s => s.spend > 0)
+                                   .sort((a, b) => b.spend - a.spend);
+  sel.innerHTML = '<option value="">All studios</option>' +
+    active.map(s => `<option value="${s.code}">${s.name} (${s.state})</option>`).join("");
+  sel.value = "";
+}
+
+function initFilters() {
+  document.querySelectorAll(".preset-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const preset = btn.dataset.preset;
+      document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const customWrap = document.querySelector(".custom-range");
+
+      if (preset === "custom") {
+        const c = DATA.campaigns[currentKey];
+        const ds = (c && c.daily_series) || {};
+        const winStart = ds.window_start || (c && c.date_start) || "";
+        const winEnd   = ds.window_end   || (c && c.date_end)   || "";
+        document.getElementById("dateStart").value = winStart;
+        document.getElementById("dateEnd").value   = winEnd;
+        customWrap.hidden = false;
+      } else {
+        customWrap.hidden = true;
+        dateFilter = { type: preset, start: null, end: null };
+        render();
+      }
+    });
+  });
+
+  document.getElementById("applyCustom").addEventListener("click", () => {
+    const start = document.getElementById("dateStart").value;
+    const end   = document.getElementById("dateEnd").value;
+    if (!start || !end) { alert("Por favor selecciona ambas fechas."); return; }
+    if (start > end)    { alert("La fecha de inicio debe ser anterior o igual a la de fin."); return; }
+    dateFilter = { type: "custom", start, end };
+    render();
+  });
+
+  document.getElementById("studioFilterSelect").addEventListener("change", e => {
+    studioFilter = e.target.value || null;
+    render();
+  });
+}
+
+function initTabs() {
+  document.querySelectorAll(".tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach(p => p.classList.add("hidden"));
+      btn.classList.add("active");
+      const panel = document.getElementById("panel-" + target);
+      if (panel) panel.classList.remove("hidden");
+      Object.values(charts).forEach(ch => { if (ch) ch.resize(); });
+      if (target === "ai-analysis") renderAnalysis();
+    });
+  });
+}
+
+function inDateRange(dateStr, start, end) {
+  if (!dateStr) return false;
+  return dateStr >= start && dateStr <= end;
+}
+
+function resolveDateRange(c) {
+  const ds = c.daily_series || {};
+  const winStart = ds.window_start || c.date_start;
+  const winEnd   = ds.window_end   || c.date_end;
+
+  if (dateFilter.type === "all") return { start: c.date_start, end: c.date_end };
+  if (dateFilter.type === "custom") {
+    return { start: dateFilter.start || winStart, end: dateFilter.end || winEnd };
+  }
+  const days = parseInt(dateFilter.type, 10) || 30;
+  const endDate = new Date(winEnd + "T00:00:00Z");
+  const startDate = new Date(endDate);
+  startDate.setUTCDate(startDate.getUTCDate() - days + 1);
+  let computedStart = startDate.toISOString().slice(0, 10);
+  if (computedStart < winStart) computedStart = winStart;
+  return { start: computedStart, end: winEnd };
+}
+
+function sumTotalsFromDaily(rows) {
+  const t = { spend: 0, impressions: 0, clicks: 0, reach: 0, leads: 0, trials: 0, purchases: 0 };
+  rows.forEach(r => {
+    t.spend       += r.spend       || 0;
+    t.impressions += r.impressions || 0;
+    t.clicks      += r.clicks      || 0;
+    t.reach       += r.reach       || 0;
+    t.leads       += r.leads       || 0;
+    t.trials      += r.trials      || 0;
+    t.purchases   += r.purchases   || 0;
+  });
+  t.cpl = t.leads ? t.spend / t.leads : 0;
+  t.ctr = t.impressions ? (t.clicks / t.impressions) * 100 : 0;
+  t.cpm = t.impressions ? (t.spend / t.impressions) * 1000 : 0;
+  return t;
+}
+
+function aggregateGroup(rows, keys) {
+  const groups = {};
+  rows.forEach(r => {
+    const key = keys.map(k => String(r[k] ?? "")).join("__");
+    if (!groups[key]) {
+      groups[key] = {};
+      keys.forEach(k => { groups[key][k] = r[k]; });
+      Object.assign(groups[key], { spend: 0, impressions: 0, clicks: 0, reach: 0, leads: 0, trials: 0, purchases: 0 });
+    }
+    const g = groups[key];
+    g.spend       += r.spend       || 0;
+    g.impressions += r.impressions || 0;
+    g.clicks      += r.clicks      || 0;
+    g.reach       += r.reach       || 0;
+    g.leads       += r.leads       || 0;
+    g.trials      += r.trials      || 0;
+    g.purchases   += r.purchases   || 0;
+  });
+  return Object.values(groups).map(g => ({
+    ...g,
+    cpl: g.leads      ? g.spend / g.leads      : 0,
+    cpt: g.trials     ? g.spend / g.trials     : 0,
+    cpp: g.purchases  ? g.spend / g.purchases  : 0,
+    ctr: g.impressions ? (g.clicks / g.impressions) * 100 : 0,
+    cpm: g.impressions ? (g.spend / g.impressions) * 1000 : 0,
+  }));
+}
+
+function buildView(c) {
+  const range = resolveDateRange(c);
+  const sf = studioFilter;
+
+  if (dateFilter.type === "all" && !sf) {
+    const ds0 = c.daily_series || {};
+    // Compute campaign-level daily totals from by_studio when top-level daily is missing
+    let daily = c.daily;
+    if (!daily) {
+      const dayMap = {};
+      (ds0.by_studio || []).forEach(r => {
+        if (!dayMap[r.date]) dayMap[r.date] = { date: r.date, spend: 0, impressions: 0, clicks: 0, reach: 0, leads: 0, trials: 0, purchases: 0 };
+        const d = dayMap[r.date];
+        d.spend       += r.spend       || 0;
+        d.impressions += r.impressions || 0;
+        d.clicks      += r.clicks      || 0;
+        d.reach       += r.reach       || 0;
+        d.leads       += r.leads       || 0;
+        d.trials      += r.trials      || 0;
+        d.purchases   += r.purchases   || 0;
+      });
+      daily = Object.values(dayMap).sort((a, b) => a.date.localeCompare(b.date));
+    }
+    return Object.assign({}, c, { _range: range, _filtered: false, _studio_filter: null, daily });
+  }
+
+  const { start, end } = range;
+  const inR = r => inDateRange(r.date, start, end);
+  const ds = c.daily_series || {};
+
+  let fByStudio     = (ds.by_studio || []).filter(inR);
+  let fByStuAud     = (ds.by_studio_audience || []).filter(inR);
+  let fByStuPillar  = (ds.by_studio_pillar || []).filter(inR);
+  let fByStuConcept = (ds.by_studio_concept || []).filter(inR);
+  let fByStuMedia   = (ds.by_studio_media_type || []).filter(inR);
+
+  let fDaily, fByAudience, fByPillar, fByConcept, fByMedia;
+
+  if (sf) {
+    fByStudio     = fByStudio.filter(r => r.studio_code === sf);
+    fByStuAud     = fByStuAud.filter(r => r.studio_code === sf);
+    fByStuPillar  = fByStuPillar.filter(r => r.studio_code === sf);
+    fByStuConcept = fByStuConcept.filter(r => r.studio_code === sf);
+    fByStuMedia   = fByStuMedia.filter(r => r.studio_code === sf);
+
+    fDaily = fByStudio.map(r => ({
+      date:        r.date,
+      spend:       r.spend       || 0,
+      impressions: r.impressions || 0,
+      clicks:      r.clicks      || 0,
+      reach:       r.reach       || 0,
+      leads:       r.leads       || 0,
+      trials:      r.trials      || 0,
+      purchases:   r.purchases   || 0,
+    }));
+
+    const stripStudio = key => r => ({
+      [key]: r[key], date: r.date,
+      spend: r.spend || 0, impressions: r.impressions || 0,
+      clicks: r.clicks || 0, reach: r.reach || 0,
+      leads: r.leads || 0, trials: r.trials || 0, purchases: r.purchases || 0,
+    });
+    fByAudience = fByStuAud.map(stripStudio("audience"));
+    fByPillar   = fByStuPillar.map(stripStudio("pillar"));
+    fByConcept  = fByStuConcept.map(stripStudio("concept"));
+    fByMedia    = fByStuMedia.map(stripStudio("media_type"));
+  } else {
+    // Build campaign daily from c.daily or aggregate from by_studio if missing
+    const srcDaily = c.daily || (() => {
+      const dm = {};
+      (ds.by_studio || []).forEach(r => {
+        if (!dm[r.date]) dm[r.date] = { date: r.date, spend: 0, impressions: 0, clicks: 0, reach: 0, leads: 0, trials: 0, purchases: 0 };
+        const d = dm[r.date];
+        d.spend += r.spend || 0; d.impressions += r.impressions || 0;
+        d.clicks += r.clicks || 0; d.reach += r.reach || 0;
+        d.leads += r.leads || 0; d.trials += r.trials || 0; d.purchases += r.purchases || 0;
+      });
+      return Object.values(dm).sort((a, b) => a.date.localeCompare(b.date));
+    })();
+    fDaily      = srcDaily.filter(inR);
+    fByAudience = (ds.by_audience || []).filter(inR);
+    fByPillar   = (ds.by_pillar || []).filter(inR);
+    fByConcept  = (ds.by_concept || []).filter(inR);
+    fByMedia    = (ds.by_media_type || []).filter(inR);
+  }
+
+  const studioMeta = {};
+  (c.studios || []).forEach(s => { studioMeta[s.code] = s; });
+  const studios = aggregateGroup(fByStudio, ["studio_code"]).map(a => {
+    const meta = studioMeta[a.studio_code] || {};
+    return Object.assign({
+      code:  a.studio_code,
+      name:  meta.name  || a.studio_code,
+      state: meta.state || "",
+    }, a);
+  });
+
+  return Object.assign({}, c, {
+    _range:             range,
+    _filtered:          true,
+    _studio_filter:     sf,
+    daily:              fDaily,
+    totals:             sumTotalsFromDaily(fDaily),
+    studios:            studios,
+    pillars:            aggregateGroup(fByPillar,   ["pillar"]),
+    audiences:          aggregateGroup(fByStuAud,   ["studio_code", "audience"]),
+    concepts:           aggregateGroup(fByConcept,  ["concept"]),
+    media_types:        aggregateGroup(fByMedia,    ["media_type"]),
+    studio_pillars:     aggregateGroup(fByStuPillar,  ["studio_code", "pillar"]),
+    studio_concepts:    aggregateGroup(fByStuConcept, ["studio_code", "concept"]),
+    studio_media_types: aggregateGroup(fByStuMedia,   ["studio_code", "media_type"]),
+    daily_series: Object.assign({}, ds, {
+      window_start:           start,
+      window_end:             end,
+      campaign:               fDaily,
+      by_studio:              fByStudio,
+      by_audience:            fByAudience,
+      by_pillar:              fByPillar,
+      by_concept:             fByConcept,
+      by_media_type:          fByMedia,
+      by_studio_audience:     fByStuAud,
+      by_studio_pillar:       fByStuPillar,
+      by_studio_concept:      fByStuConcept,
+      by_studio_media_type:   fByStuMedia,
+    }),
+  });
+}
+
+function render() {
+  const c = DATA.campaigns[currentKey];
+  if (!c) return;
+
+  const view = buildView(c);
+
+  const ri = document.getElementById("rangeInfo");
+  if (ri) {
+    ri.textContent = view._filtered
+      ? "Showing " + view._range.start + " → " + view._range.end + " (filtered from daily series)"
+      : "Showing full campaign window";
+  }
+
+  const studiosCard = document.getElementById("studiosCard");
+  const pillarsRow  = document.getElementById("studiosPillarsRow");
+  if (studiosCard && pillarsRow) {
+    if (view._studio_filter) {
+      studiosCard.style.display = "none";
+      pillarsRow.style.gridTemplateColumns = "1fr";
+    } else {
+      studiosCard.style.display = "";
+      pillarsRow.style.gridTemplateColumns = "";
+    }
+  }
+
+  const pTitle = document.getElementById("pillarsOverviewTitle");
+  if (pTitle) {
+    if (view._studio_filter) {
+      const meta = (c.studios || []).find(s => s.code === view._studio_filter);
+      pTitle.textContent = "Pillars — " + (meta ? meta.name : view._studio_filter);
+    } else {
+      pTitle.textContent = "Pillars — Campaign-wide";
+    }
+  }
+
+  renderKpis(view.totals);
+  renderDaily(view.daily);
+  renderStudios(view.studios);
+  renderPillars(view.pillars);
+  renderAudiences(view.audiences, view.studios);
+  renderConcepts(view.concepts);
+
+  renderTabAudiences(view);
+  renderTabPillars(view);
+  renderTabConcepts(view);
+  renderTabMediaType(view);
+}
+
+const KPI_INFO = {
+  Leads: "This is the total number of leads recorded in Meta Ads Manager. There may be differences between this figure and what appears in MBO due to Meta's different attribution models.",
+  Trials: "This figure is taken directly from Meta Ads Manager. It may vary from the information recorded in MBO due to the different attribution models.",
+  Purchases: "This figure is taken directly from Meta Ads Manager. It may vary from the information recorded in MBO due to the different attribution models.",
+};
+
+function renderKpis(t) {
+  const cpt = t.trials    ? (t.spend / t.trials)    : 0;
+  const cpp = t.purchases ? (t.spend / t.purchases) : 0;
+  const cards = [
+    { label: "Spend",       value: fmtMoney(t.spend),      accent: true },
+    { label: "Leads",       value: fmtInt(t.leads) },
+    { label: "CPL",         value: fmtMoney(t.cpl),        sub: "Cost per Lead", accent: false, accentColor: "#00A3E0" },
+    { label: "Trials",      value: fmtInt(t.trials),       sub: t.trials    ? "CPT " + fmtMoney(cpt) : "—" },
+    { label: "Purchases",   value: fmtInt(t.purchases),    sub: t.purchases ? "CPP " + fmtMoney(cpp) : "—" },
+    { label: "Impressions", value: fmtInt(t.impressions),  sub: "CPM " + fmtMoney(t.cpm) },
+    { label: "Clicks",      value: fmtInt(t.clicks),       sub: "CTR " + fmtPct(t.ctr) },
+    { label: "Reach",       value: fmtInt(t.reach) },
+  ];
+  const grid = document.getElementById("kpiGrid");
+  grid.innerHTML = cards.map(c => {
+    const info = KPI_INFO[c.label];
+    return `
+    <div class="kpi ${c.accent ? "accent" : ""}" ${c.accentColor ? `style="border-left:4px solid ${c.accentColor}"` : ""}>
+      <div class="label">${c.label}</div>
+      ${info ? `<span class="kpi-info" data-kpi-label="${c.label}">i</span>` : ""}
+      <div class="value" ${c.accentColor ? `style="color:${c.accentColor}"` : ""}>${c.value}</div>
+      ${c.sub ? `<div class="sub">${c.sub}</div>` : ""}
+    </div>
+  `;
+  }).join("");
+}
+
+function openKpiModal(label) {
+  const info = KPI_INFO[label];
+  if (!info) return;
+  document.getElementById("kpiModalTitle").textContent = label;
+  document.getElementById("kpiModalBody").textContent = info;
+  document.getElementById("kpiModalBackdrop").classList.add("open");
+}
+
+function closeKpiModal() {
+  document.getElementById("kpiModalBackdrop").classList.remove("open");
+}
+
+document.addEventListener("click", (e) => {
+  const trigger = e.target.closest(".kpi-info");
+  if (trigger) {
+    openKpiModal(trigger.dataset.kpiLabel);
+    return;
+  }
+  if (e.target.id === "kpiModalBackdrop" || e.target.closest("#kpiModalClose")) {
+    closeKpiModal();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeKpiModal();
+});
+
+function renderDaily(daily) {
+  currentDailyData = daily;
+  renderDailyChart(daily);
+}
+
+function aggregateByGran(daily, gran) {
+  if (gran === "daily") return daily;
+  const groups = {};
+  daily.forEach(d => {
+    let key;
+    const dt = new Date(d.date + "T00:00:00Z");
+    if (gran === "weekly") {
+      const dow  = dt.getUTCDay();
+      const diff = dow === 0 ? -6 : 1 - dow;
+      const mon  = new Date(dt);
+      mon.setUTCDate(dt.getUTCDate() + diff);
+      key = mon.toISOString().slice(0, 10);
+    } else {
+      key = d.date.slice(0, 7) + "-01";
+    }
+    if (!groups[key]) groups[key] = { date: key, spend: 0, leads: 0, trials: 0, purchases: 0, impressions: 0, clicks: 0 };
+    const g = groups[key];
+    g.spend       += d.spend       || 0;
+    g.leads       += d.leads       || 0;
+    g.trials      += d.trials      || 0;
+    g.purchases   += d.purchases   || 0;
+    g.impressions += d.impressions || 0;
+    g.clicks      += d.clicks      || 0;
+  });
+  return Object.values(groups).sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function formatGranLabel(dateStr, gran) {
+  const dt = new Date(dateStr + "T00:00:00Z");
+  if (gran === "weekly")  return "Wk " + (dt.getUTCMonth() + 1) + "/" + dt.getUTCDate();
+  if (gran === "monthly") return dt.toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+  return dateStr;
+}
+
+function renderDailyChart(daily) {
+  const rows     = aggregateByGran(daily, dailyGran);
+  const labels   = rows.map(d => formatGranLabel(d.date, dailyGran));
+  const selected = DAILY_METRICS.filter(m => dailyMetricSel.has(m.key));
+
+  const needY      = selected.some(m => m.yAxis === "y");
+  const needY1     = selected.some(m => m.yAxis === "y1");
+  const needSpend  = selected.some(m => m.yAxis === "y_spend");
+
+  const datasets = selected.map(m => ({
+    label:           m.label,
+    data:            rows.map(d => m.compute(d)),
+    yAxisID:         m.yAxis,
+    borderColor:     m.color,
+    backgroundColor: m.bgColor,
+    tension: .3, fill: m.fill, pointRadius: 2, spanGaps: true,
+  }));
+
+  const scales = {};
+  if (needY) {
+    scales.y = { position: "left", beginAtZero: true, title: { display: true, text: "CPL ($)" } };
+  }
+  if (needY1) {
+    const y1Label = selected.filter(m => m.yAxis === "y1").map(m => m.label).join(" / ");
+    scales.y1 = { position: "right", beginAtZero: true, grid: { drawOnChartArea: false }, title: { display: true, text: y1Label } };
+  }
+  if (needSpend) {
+    // Spend always gets its own independent scale so it never compresses CPL or counts
+    // Show the axis on the left only when CPL isn't also displayed there
+    const showAxis = !needY;
+    scales.y_spend = {
+      position:  showAxis ? "left" : "right",
+      beginAtZero: true,
+      display:   showAxis || !needY1,
+      grid:      { drawOnChartArea: showAxis && !needY },
+      title:     { display: true, text: "Spend ($)" },
+    };
+  }
+
+  if (charts.daily) charts.daily.destroy();
+  const ctx = document.getElementById("dailyChart").getContext("2d");
+  charts.daily = new Chart(ctx, {
+    type: "line",
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      scales,
+      plugins: {
+        legend: { position: "bottom" },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const v = ctx.parsed.y;
+              if (v === null || v === undefined) return ctx.dataset.label + ": —";
+              const m = DAILY_METRICS.find(m => m.label === ctx.dataset.label);
+              return ctx.dataset.label + ": " + (m ? m.fmt(v) : v);
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+function initGranToggle() {
+  document.querySelectorAll(".gran-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".gran-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      dailyGran = btn.dataset.gran;
+      renderDailyChart(currentDailyData);
+    });
+  });
+}
+
+function initMetricPicker() {
+  const btn  = document.getElementById("metricPickerBtn");
+  const menu = document.getElementById("metricPickerMenu");
+  if (!btn || !menu) return;
+
+  DAILY_METRICS.forEach(m => {
+    const item = document.createElement("label");
+    item.className = "metric-picker-item";
+
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.value = m.key;
+    cb.checked = dailyMetricSel.has(m.key);
+    cb.addEventListener("change", () => {
+      if (cb.checked) dailyMetricSel.add(m.key);
+      else            dailyMetricSel.delete(m.key);
+      renderDailyChart(currentDailyData);
+    });
+
+    const dot = document.createElement("span");
+    dot.className = "metric-color-dot";
+    dot.style.background = m.color;
+
+    item.appendChild(cb);
+    item.appendChild(dot);
+    item.appendChild(document.createTextNode(m.label));
+    menu.appendChild(item);
+  });
+
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    menu.hidden = !menu.hidden;
+  });
+  document.addEventListener("click", () => { menu.hidden = true; });
+}
+
+function renderStudios(studios) {
+  const tbody = document.querySelector("#studiosTable tbody");
+  const enriched = studios.map(s => ({
+    ...s,
+    cpt: s.trials    ? s.spend / s.trials    : 0,
+    cpp: s.purchases ? s.spend / s.purchases : 0,
+  }));
+  const rows = [...enriched].sort((a, b) => {
+    const { col, dir } = studiosSort;
+    const av = a[col], bv = b[col];
+    const cmp = (typeof av === "string") ? String(av).localeCompare(String(bv)) : (Number(av) - Number(bv));
+    return dir === "asc" ? cmp : -cmp;
+  });
+  tbody.innerHTML = rows.map(s => `
+    <tr>
+      <td>${s.name}</td>
+      <td>${s.state}</td>
+      <td class="num">${fmtMoney(s.spend)}</td>
+      <td class="num">${fmtInt(s.leads)}</td>
+      <td class="num ${s.leads ? (s.cpl < 50 ? 'cpl-good' : s.cpl <= 100 ? 'cpl-warn' : 'cpl-bad') : ''}">${s.leads ? `<span>${fmtMoney(s.cpl)}</span>` : "—"}</td>
+      <td class="num">${fmtInt(s.trials)}</td>
+      <td class="num">${s.trials ? fmtMoney(s.cpt) : "—"}</td>
+      <td class="num">${fmtInt(s.purchases)}</td>
+      <td class="num">${s.purchases ? fmtMoney(s.cpp) : "—"}</td>
+      <td class="num">${fmtInt(s.impressions)}</td>
+      <td class="num">${fmtPct(s.ctr)}</td>
+    </tr>
+  `).join("");
+  document.querySelectorAll("#studiosTable th").forEach(th => {
+    th.classList.remove("sort-asc", "sort-desc");
+    if (th.dataset.k === studiosSort.col) th.classList.add(studiosSort.dir === "asc" ? "sort-asc" : "sort-desc");
+    th.onclick = () => {
+      const k = th.dataset.k;
+      if (studiosSort.col === k) studiosSort.dir = studiosSort.dir === "asc" ? "desc" : "asc";
+      else { studiosSort.col = k; studiosSort.dir = (typeof studios[0][k] === "string") ? "asc" : "desc"; }
+      renderStudios(studios);
+    };
+  });
+}
+
+function renderPillars(pillars) {
+  pillars = [...pillars].sort((a, b) => b.spend - a.spend);
+  if (charts.pillars) charts.pillars.destroy();
+  const ctx = document.getElementById("pillarsChart").getContext("2d");
+  if (pillars.length === 0) {
+    document.getElementById("pillarsTableWrap").innerHTML = "<div class='empty'>No pillar classification available.</div>";
+    return;
+  }
+  charts.pillars = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: pillars.map(p => p.pillar),
+      datasets: [
+        { label: "Spend", data: pillars.map(p => p.spend), backgroundColor: BRAND.blue },
+        { label: "Leads", data: pillars.map(p => p.leads), backgroundColor: "#F59E0B", yAxisID: "y1" },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y:  { beginAtZero: true, title: { display: true, text: "$" } },
+        y1: { beginAtZero: true, position: "right", grid: { drawOnChartArea: false }, title: { display: true, text: "Leads" } },
+      },
+      plugins: { legend: { position: "bottom" } },
+    },
+  });
+  document.getElementById("pillarsTableWrap").innerHTML = `
+    <table>
+      <thead><tr><th>Pillar</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">CPL</th></tr></thead>
+      <tbody>
+        ${pillars.map(p => `
+          <tr>
+            <td>${p.pillar}</td>
+            <td class="num">${fmtMoney(p.spend)}</td>
+            <td class="num">${fmtInt(p.leads)}</td>
+            <td class="num">${p.leads ? fmtMoney(p.cpl) : "—"}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>`;
+}
+
+function renderAudiences(audiences, studios) {
+  const roll = {};
+  audiences.forEach(a => {
+    if (!roll[a.audience]) roll[a.audience] = { audience: a.audience, spend: 0, impressions: 0, leads: 0, studios: new Set() };
+    roll[a.audience].spend += a.spend;
+    roll[a.audience].impressions += a.impressions;
+    roll[a.audience].leads += a.leads;
+    roll[a.audience].studios.add(a.studio_code);
+  });
+  const rows = Object.values(roll).map(r => ({
+    ...r,
+    cpl: r.leads ? r.spend / r.leads : 0,
+    studios: r.studios.size,
+  })).sort((a, b) => b.spend - a.spend);
+  if (charts.audiences) charts.audiences.destroy();
+  const ctx = document.getElementById("audiencesChart").getContext("2d");
+  if (rows.length === 0) {
+    document.getElementById("audiencesTableWrap").innerHTML = "<div class='empty'>No audience tokens matched.</div>";
+    return;
+  }
+  charts.audiences = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: rows.map(r => r.audience),
+      datasets: [{ data: rows.map(r => r.spend), backgroundColor: rows.map((_, i) => BRAND.palette[i % BRAND.palette.length]) }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "right" },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${fmtMoney(ctx.parsed)}` } },
+      },
+    },
+  });
+  document.getElementById("audiencesTableWrap").innerHTML = `
+    <table>
+      <thead><tr><th>Audience</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">CPL</th><th class="num">Studios</th></tr></thead>
+      <tbody>
+        ${rows.map(r => `
+          <tr>
+            <td>${r.audience}</td>
+            <td class="num">${fmtMoney(r.spend)}</td>
+            <td class="num">${fmtInt(r.leads)}</td>
+            <td class="num">${r.leads ? fmtMoney(r.cpl) : "—"}</td>
+            <td class="num">${r.studios}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>`;
+}
+
+function renderConcepts(concepts) {
+  const top = [...concepts].sort((a, b) => b.spend - a.spend).slice(0, 10);
+  if (charts.concepts) charts.concepts.destroy();
+  const ctx = document.getElementById("conceptsChart").getContext("2d");
+  if (top.length === 0) {
+    document.getElementById("conceptsTableWrap").innerHTML = "<div class='empty'>No ads detected.</div>";
+    return;
+  }
+  charts.concepts = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: top.map(c => c.concept),
+      datasets: [{ label: "Spend", data: top.map(c => c.spend), backgroundColor: BRAND.blueDeep }],
+    },
+    options: {
+      indexAxis: "y", responsive: true, maintainAspectRatio: false,
+      scales: { x: { beginAtZero: true } },
+      plugins: { legend: { display: false } },
+    },
+  });
+  document.getElementById("conceptsTableWrap").innerHTML = `
+    <table>
+      <thead><tr><th>Ad</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">CPL</th></tr></thead>
+      <tbody>
+        ${top.map(c => `
+          <tr>
+            <td>${c.concept}</td>
+            <td class="num">${fmtMoney(c.spend)}</td>
+            <td class="num">${fmtInt(c.leads)}</td>
+            <td class="num">${c.leads ? fmtMoney(c.cpl) : "—"}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>`;
+}
+
+function renderTabAudiences(c) {
+  renderLineTab({
+    rows: (c.daily_series && c.daily_series.by_audience) || [],
+    window: c.daily_series, dimKey: "audience",
+    chartId: "audiencesLineChart", chartName: "audiencesLine",
+    barChartId: "audiencesBarChart", barChartName: "audiencesBar",
+    doughnutChartId: "audiencesDoughnutChart", doughnutChartName: "audiencesDoughnut",
+    tableId: "audiencesTableDailyWrap", windowNoteId: "audiencesWindowNote", titleId: "audiencesLineTitle",
+    label: "Audience", titleBase: "Leads by Audience — Daily", topN: null,
+  });
+}
+
+function renderTabPillars(c) {
+  renderLineTab({
+    rows: (c.daily_series && c.daily_series.by_pillar) || [],
+    window: c.daily_series, dimKey: "pillar",
+    chartId: "pillarsLineChart", chartName: "pillarsLine",
+    barChartId: "pillarsBarChart", barChartName: "pillarsBar",
+    doughnutChartId: "pillarsDoughnutChart", doughnutChartName: "pillarsDoughnut",
+    tableId: "pillarsTableDailyWrap", windowNoteId: "pillarsWindowNote", titleId: "pillarsLineTitle",
+    label: "Pillar", titleBase: "Leads by Pillar — Daily", topN: null,
+  });
+}
+
+function conceptCreative(dim) {
+  const lower = dim.toLowerCase();
+  const matches = Object.keys(creativeMap).filter(k => lower.includes(k));
+  if (!matches.length) return null;
+  return creativeMap[matches.sort((a, b) => b.length - a.length)[0]];
+}
+
+function renderTabConcepts(c) {
+  const allRows = (c.daily_series && c.daily_series.by_concept) || [];
+  const filteredRows = adTypeFilter === "all"
+    ? allRows
+    : allRows.filter(r => detectAdType(r.concept) === adTypeFilter);
+
+  renderLineTab({
+    rows: filteredRows,
+    window: c.daily_series, dimKey: "concept",
+    chartId: "conceptsLineChart", chartName: "conceptsLine",
+    barChartId: "conceptsBarChart", barChartName: "conceptsBar",
+    doughnutChartId: "conceptsDoughnutChart", doughnutChartName: "conceptsDoughnut",
+    tableId: "conceptsTableDailyWrap", windowNoteId: "conceptsWindowNote", titleId: "conceptsLineTitle",
+    label: "Ad", titleBase: "Leads by Ad — Daily", topN: 12,
+    extraColHeader: "Type",
+    extraColValue: dim => adTypeBadge(detectAdType(dim)),
+    dimRenderer: dim => {
+      const creative = conceptCreative(dim);
+      if (!creative) return dim;
+      return `<a href="${creative.url}" target="_blank" ` +
+        `style="color:#3B82F6;text-decoration:none;font-weight:500;" ` +
+        `title="${creative.label}">${dim}</a>`;
+    },
+  });
+}
+
+function initAdTypeFilter() {
+  document.querySelectorAll("[data-type]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-type]").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      adTypeFilter = btn.dataset.type;
+      render();
+    });
+  });
+}
+
+function renderTabMediaType(c) {
+  renderLineTab({
+    rows: (c.daily_series && c.daily_series.by_media_type) || [],
+    window: c.daily_series, dimKey: "media_type",
+    chartId: "mediatypeLineChart", chartName: "mediatypeLine",
+    barChartId: "mediatypeBarChart", barChartName: "mediatypeBar",
+    doughnutChartId: "mediatypeDoughnutChart", doughnutChartName: "mediatypeDoughnut",
+    tableId: "mediatypeTableDailyWrap", windowNoteId: "mediatypeWindowNote", titleId: "mediatypeLineTitle",
+    label: "Type", titleBase: "Leads by Type — Daily", topN: null,
+    barLeft:  { label: "Leads", color: "#F59E0B", value: o => o.leads || 0, title: "Leads", money: false },
+    barRight: { label: "CPL",   color: BRAND.blue, value: o => (o.leads ? o.spend / o.leads : 0), title: "CPL ($)", money: true },
+    pieValue: o => o.leads || 0,
+    pieIsMoney: false,
+  });
+}
+
+function renderLineTab(opts) {
+  const {
+    rows, window, dimKey,
+    chartId, chartName,
+    barChartId, barChartName,
+    doughnutChartId, doughnutChartName,
+    tableId, windowNoteId, titleId,
+    label, titleBase, topN,
+  } = opts;
+
+  const tableEl = document.getElementById(tableId);
+  const noteEl  = document.getElementById(windowNoteId);
+
+  // Only update the date-range note and chart title on a full (non-sort) render
+  if (!opts._sortOnly) {
+    const rangeTxt = window && window.window_start && window.window_end
+      ? `${window.window_start} – ${window.window_end}` : "";
+    if (noteEl) noteEl.textContent = rangeTxt;
+  }
+
+  // Skip chart re-render on sort-only updates
+  if (!opts._sortOnly) {
+    const killChart = name => { if (charts[name]) { charts[name].destroy(); charts[name] = null; } };
+    killChart(chartName); killChart(barChartName); killChart(doughnutChartName);
+  }
+
+  const clearCanvas = id => {
+    const ctx = document.getElementById(id);
+    if (ctx) { const c2 = ctx.getContext("2d"); c2.clearRect(0, 0, ctx.width, ctx.height); }
+  };
+
+  if (!rows.length) {
+    if (!opts._sortOnly) { clearCanvas(chartId); clearCanvas(barChartId); clearCanvas(doughnutChartId); }
+    tableEl.innerHTML = `<div class='empty'>No daily series data for this campaign / filter. Regenera <code>daniel-paid-ads-data.json</code> con el ETL nuevo, o ajusta el filtro de período.</div>`;
+    return;
+  }
+
+  const totals = {};
+  rows.forEach(r => {
+    const dim = r[dimKey];
+    if (!totals[dim]) totals[dim] = { dim, spend: 0, leads: 0, trials: 0, purchases: 0, impressions: 0, clicks: 0 };
+    totals[dim].spend       += r.spend       || 0;
+    totals[dim].leads       += r.leads       || 0;
+    totals[dim].trials      += r.trials      || 0;
+    totals[dim].purchases   += r.purchases   || 0;
+    totals[dim].impressions += r.impressions || 0;
+    totals[dim].clicks      += r.clicks      || 0;
+  });
+  // Enrich totals with computed fields
+  const allRows2 = Object.values(totals).map(o => ({
+    ...o,
+    cpl: o.leads      ? o.spend / o.leads      : 0,
+    cpt: o.trials     ? o.spend / o.trials     : 0,
+    cpp: o.purchases  ? o.spend / o.purchases  : 0,
+    ctr: o.impressions ? o.clicks / o.impressions * 100 : 0,
+  }));
+
+  // Sort state
+  if (!lineTabSort[tableId]) lineTabSort[tableId] = { col: "spend", dir: "desc" };
+  const srt = lineTabSort[tableId];
+
+  const sortRows = arr => [...arr].sort((a, b) => {
+    const av = a[srt.col], bv = b[srt.col];
+    const cmp = typeof av === "string" ? String(av).localeCompare(String(bv)) : (Number(av) - Number(bv));
+    return srt.dir === "asc" ? cmp : -cmp;
+  });
+
+  let ordered = sortRows(allRows2);
+  if (topN) ordered = ordered.slice(0, topN);
+  const keptDims = new Set(ordered.map(o => o.dim));
+
+  // Tabla resumen (top)
+  const extraColHeader = opts.extraColHeader || null;
+  const extraColValue  = opts.extraColValue  || null;
+
+  const cols = [
+    { key: "dim",         label: label,   cls: "" },
+    ...(extraColHeader ? [{ key: null, label: extraColHeader, cls: "" }] : []),
+    { key: "spend",       label: "Spend",  cls: "num" },
+    { key: "leads",       label: "Leads",  cls: "num" },
+    { key: "cpl",         label: "CPL",    cls: "num" },
+    { key: "trials",      label: "Trials", cls: "num" },
+    { key: "cpt",         label: "CPT",    cls: "num" },
+    { key: "purchases",   label: "Purch.", cls: "num" },
+    { key: "cpp",         label: "CPP",    cls: "num" },
+    { key: "impressions", label: "Impr.",  cls: "num" },
+    { key: "ctr",         label: "CTR%",   cls: "num" },
+  ];
+
+  tableEl.innerHTML = `
+    <table>
+      <thead><tr>
+        ${cols.map(c => {
+          if (!c.key) return `<th class="${c.cls}">${c.label}</th>`;
+          const active = srt.col === c.key;
+          return `<th class="${c.cls}${active ? (srt.dir === "asc" ? " sort-asc" : " sort-desc") : ""}" data-k="${c.key}" style="cursor:pointer">${c.label}</th>`;
+        }).join("")}
+      </tr></thead>
+      <tbody>
+        ${ordered.map(o => `<tr>
+            <td>${opts.dimRenderer ? opts.dimRenderer(o.dim) : o.dim}</td>
+            ${extraColValue ? `<td>${extraColValue(o.dim)}</td>` : ""}
+            <td class="num">${fmtMoney(o.spend)}</td>
+            <td class="num">${fmtInt(o.leads)}</td>
+            <td class="num">${o.leads     ? fmtMoney(o.cpl) : "—"}</td>
+            <td class="num">${fmtInt(o.trials)}</td>
+            <td class="num">${o.trials    ? fmtMoney(o.cpt) : "—"}</td>
+            <td class="num">${fmtInt(o.purchases)}</td>
+            <td class="num">${o.purchases ? fmtMoney(o.cpp) : "—"}</td>
+            <td class="num">${fmtInt(o.impressions)}</td>
+            <td class="num">${fmtPct(o.ctr)}</td>
+          </tr>`).join("")}
+      </tbody>
+    </table>`;
+
+  // Wire sort clicks — _sortOnly skips chart/note re-renders
+  tableEl.querySelectorAll("th[data-k]").forEach(th => {
+    th.addEventListener("click", () => {
+      const k = th.dataset.k;
+      if (srt.col === k) srt.dir = srt.dir === "asc" ? "desc" : "asc";
+      else { srt.col = k; srt.dir = k === "dim" ? "asc" : "desc"; }
+      renderLineTab({ ...opts, _sortOnly: true });
+    });
+  });
+
+  // Skip chart re-renders when only sorting the table
+  if (opts._sortOnly) return;
+
+  // Bar chart (defaults: Spend + Leads. opts.barLeft/barRight override.)
+  const barLeft = opts.barLeft || {
+    label: "Spend", color: BRAND.blue, value: o => o.spend || 0, title: "Spend ($)", money: true,
+  };
+  const barRight = opts.barRight || {
+    label: "Leads", color: "#F59E0B", value: o => o.leads || 0, title: "Leads", money: false,
+  };
+
+  if (barChartId) {
+    const barCtx = document.getElementById(barChartId).getContext("2d");
+    charts[barChartName] = new Chart(barCtx, {
+      type: "bar",
+      data: {
+        labels: ordered.map(o => o.dim),
+        datasets: [
+          { label: barLeft.label,  data: ordered.map(barLeft.value),  backgroundColor: barLeft.color,  yAxisID: "y" },
+          { label: barRight.label, data: ordered.map(barRight.value), backgroundColor: barRight.color, yAxisID: "y1" },
+        ],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        scales: {
+          y:  { beginAtZero: true, position: "left",  title: { display: true, text: barLeft.title } },
+          y1: { beginAtZero: true, position: "right", grid: { drawOnChartArea: false }, title: { display: true, text: barRight.title } },
+          x:  { ticks: { maxRotation: 30, minRotation: 0, autoSkip: false } },
+        },
+        plugins: {
+          legend: { position: "bottom" },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const cfg = ctx.datasetIndex === 0 ? barLeft : barRight;
+                const v = ctx.parsed.y;
+                return cfg.label + ": " + (cfg.money ? fmtMoney(v) : fmtInt(v));
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Doughnut chart (default: Spend share. opts.pieValue/pieIsMoney override.)
+  const pieAccessor = opts.pieValue || (o => o.spend || 0);
+  const pieIsMoney  = opts.pieIsMoney === undefined ? true : opts.pieIsMoney;
+
+  if (doughnutChartId) {
+    const dCtx = document.getElementById(doughnutChartId).getContext("2d");
+    const totalPie = ordered.reduce((s, o) => s + (pieAccessor(o) || 0), 0);
+    charts[doughnutChartName] = new Chart(dCtx, {
+      type: "doughnut",
+      data: {
+        labels: ordered.map(o => o.dim),
+        datasets: [{ data: ordered.map(pieAccessor), backgroundColor: ordered.map((_, i) => BRAND.palette[i % BRAND.palette.length]) }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: "right" },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const v = ctx.parsed;
+                const pct = totalPie ? (v / totalPie * 100).toFixed(1) : "0.0";
+                return `${ctx.label}: ${pieIsMoney ? fmtMoney(v) : fmtInt(v)} (${pct}%)`;
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Line chart (leads/día por dim)
+  const byDimByDate = {};
+  const allDates = new Set();
+  rows.forEach(r => {
+    if (!keptDims.has(r[dimKey])) return;
+    allDates.add(r.date);
+    const k = r[dimKey];
+    if (!byDimByDate[k]) byDimByDate[k] = {};
+    byDimByDate[k][r.date] = (byDimByDate[k][r.date] || 0) + (r.leads || 0);
+  });
+  const dates = [...allDates].sort();
+
+  const lineDatasets = ordered.map((o, i) => ({
+    label: o.dim,
+    data: dates.map(d => byDimByDate[o.dim][d] || 0),
+    borderColor:     BRAND.palette[i % BRAND.palette.length],
+    backgroundColor: BRAND.palette[i % BRAND.palette.length] + "22",
+    tension: .3, pointRadius: 2, spanGaps: true,
+  }));
+
+  const lineCtx = document.getElementById(chartId).getContext("2d");
+  charts[chartName] = new Chart(lineCtx, {
+    type: "line",
+    data: { labels: dates, datasets: lineDatasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: "Leads" } },
+        x: { ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 14 } },
+      },
+      plugins: {
+        legend: { position: "bottom" },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmtInt(ctx.parsed.y)}` } },
+      },
+    },
+  });
+}
+
+// ── AI Analysis ────────────────────────────────────────────────────────────
+let aiTypeFilter = "all";
+let aiShowAll    = false;
+let aiStudioMap  = {};   // code → "Name (ST)"
+const AI_PAGE_SIZE = 25;
+
+const AI_TYPE_LABELS = {
+  wasted_spend:      "Wasted Spend",
+  cpl_bad:           "Bad CPL",
+  low_ctr:           "Low CTR",
+  cpl_regular:       "Regular CPL",
+  low_impressions:   "Low Impressions",
+  scale_opportunity: "Scale",
+  paused_high_spend: "Paused",
+};
+
+function initAiFilters() {
+  document.querySelectorAll("#aiFilterBar .ai-filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#aiFilterBar .ai-filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      aiTypeFilter = btn.dataset.type;
+      aiShowAll = false;
+      renderAnalysis();
+    });
+  });
+}
+
+function renderFindingCard(f) {
+  const sevClass = { high:"fbadge-high", medium:"fbadge-medium", opportunity:"fbadge-opportunity", info:"fbadge-info" }[f.severity] || "fbadge-info";
+  const sevLabel = { high:"High Alert", medium:"Warning", opportunity:"Opportunity", info:"Info" }[f.severity] || f.severity;
+  const typeLabel = AI_TYPE_LABELS[f.type] || f.type;
+  const recClass  = (f.severity === "opportunity" || f.severity === "info") ? "finding-rec-good" : "finding-rec-alert";
+
+  const creative = conceptCreative(f.ad_name || "");
+  const adNameHtml = creative
+    ? `<a href="${creative.url}" target="_blank" title="Ver creativo en Drive"
+         style="color:inherit;text-decoration:none;">${f.ad_name || ""}
+         <span style="margin-left:4px;font-size:11px;opacity:.7">🔗</span></a>`
+    : (f.ad_name || "");
+
+  const meta = [];
+  if (f.spend)       meta.push(`Spend: <strong>${fmtMoney(f.spend)}</strong>`);
+  if (f.leads != null) meta.push(`Leads: <strong>${f.leads}</strong>`);
+  if (f.cpl)         meta.push(`CPL: <strong>${fmtMoney(f.cpl)}</strong>`);
+  if (f.ctr != null) meta.push(`CTR: <strong>${Number(f.ctr).toFixed(2)}%</strong>`);
+  if (f.impressions) meta.push(`Impressions: <strong>${fmtInt(f.impressions)}</strong>`);
+  if (f.campaign_avg_cpl) meta.push(`Camp. avg CPL: <strong>${fmtMoney(f.campaign_avg_cpl)}</strong>`);
+  if (f.last_date)   meta.push(`Last activity: <strong>${f.last_date}</strong>`);
+  return `<div class="finding-card sev-${f.severity}">
+    <div class="finding-header">
+      <span class="finding-badge ${sevClass}">${sevLabel}</span>
+      <span class="finding-badge fbadge-type">${typeLabel}</span>
+      <span class="finding-headline" style="flex:1;min-width:0;margin-left:4px">${adNameHtml}</span>
+      <span class="finding-studio">${aiStudioMap[f.studio_code] || f.studio_code || ""}</span>
+    </div>
+    <div style="font-weight:600;font-size:13px;margin-bottom:4px">${f.headline || ""}</div>
+    <div class="finding-detail">${f.detail || ""}</div>
+    <div class="${recClass}"><strong>Action:</strong> ${f.recommendation || ""}</div>
+    <div class="finding-meta">
+      ${meta.map(m => `<span>${m}</span>`).join("")}
+    </div>
+  </div>`;
+}
+
+function renderAnalysis() {
+  const loadEl  = document.getElementById("aiLoadingMsg");
+  const errorEl = document.getElementById("aiErrorMsg");
+  const listEl  = document.getElementById("aiFindingsList");
+  const narEl   = document.getElementById("aiNarrative");
+
+  if (!ANALYSIS) {
+    loadEl.style.display  = "";
+    loadEl.textContent    = "Analysis file not found. Run analyze_ads.py to generate it.";
+    listEl.innerHTML      = "";
+    narEl.style.display   = "none";
+    errorEl.style.display = "none";
+    return;
+  }
+
+  loadEl.style.display = "none";
+  errorEl.style.display = "none";
+
+  // Build studio code → display name map from campaign data
+  const campRaw = DATA && DATA.campaigns && DATA.campaigns[currentKey];
+  aiStudioMap = {};
+  if (campRaw && campRaw.studios) {
+    campRaw.studios.forEach(s => { aiStudioMap[s.code] = s.name + " (" + s.state + ")"; });
+  }
+
+  const campData = ANALYSIS.campaigns && ANALYSIS.campaigns[currentKey];
+  if (!campData) {
+    listEl.innerHTML = "<div class='empty'>No analysis available for this campaign.</div>";
+    return;
+  }
+
+  // Header
+  const windowLabel = ANALYSIS.window_label ? " · " + ANALYSIS.window_label : "";
+  document.getElementById("aiGenAt").textContent =
+    "Generated " + new Date(ANALYSIS.generated_at).toLocaleString() + windowLabel;
+  document.getElementById("aiHighBadge").textContent = campData.high_count ?? campData.alerts_count;
+  document.getElementById("aiWarnBadge").textContent  = campData.medium_count ?? 0;
+  document.getElementById("aiOppBadge").textContent   = campData.opportunities_count;
+
+  // Narrative (Claude API)
+  if (campData.narrative) {
+    narEl.style.display = "";
+    narEl.innerHTML = `<strong style="font-size:13px">&#129302; AI Summary</strong><p style="margin:8px 0 0">${campData.narrative}</p>`;
+  } else {
+    narEl.style.display = "none";
+  }
+
+  // Filter + paginate
+  let findings = campData.findings || [];
+  if (aiTypeFilter !== "all") findings = findings.filter(f => f.type === aiTypeFilter);
+
+  if (!findings.length) {
+    listEl.innerHTML = "<div class='empty'>No findings match this filter.</div>";
+    return;
+  }
+
+  const visible  = aiShowAll ? findings : findings.slice(0, AI_PAGE_SIZE);
+  const showMore = !aiShowAll && findings.length > AI_PAGE_SIZE
+    ? `<div class="ai-show-more" id="aiShowMoreBtn">Show ${findings.length - AI_PAGE_SIZE} more findings...</div>`
+    : "";
+
+  listEl.innerHTML = visible.map(renderFindingCard).join("") + showMore;
+
+  const smBtn = document.getElementById("aiShowMoreBtn");
+  if (smBtn) smBtn.addEventListener("click", () => { aiShowAll = true; renderAnalysis(); });
+}
+// ── Run Analysis in Local ─────────────────────────────────────────────────
+function initRunAnalysisButton() {
+  const isLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const btn = document.getElementById("runAnalysisBtn");
+  if (!isLocal || !btn) return;
+  btn.style.display = "flex";
+  btn.addEventListener("click", runLocalAnalysis);
+}
+
+async function runLocalAnalysis() {
+  const btn = document.getElementById("runAnalysisBtn");
+  const origHTML = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = "&#9203; Running...";
+  btn.classList.remove("btn-success", "btn-error");
+
+  try {
+    const res  = await fetch("/api/run-analysis", { method: "POST" });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.message || "Server error " + res.status);
+
+    // Reload both JSON files without a full page reload
+    const [aRes, dRes] = await Promise.all([
+      fetch("paid-ads-analysis.json?t="      + Date.now(), { cache: "no-store" }),
+      fetch("daniel-paid-ads-data.json?t="   + Date.now(), { cache: "no-store" }),
+    ]);
+    if (aRes.ok) ANALYSIS = await aRes.json();
+    if (dRes.ok) DATA     = await dRes.json();
+
+    renderAnalysis();
+    btn.innerHTML = "&#10003; Done!";
+    btn.classList.add("btn-success");
+    setTimeout(() => { btn.disabled = false; btn.innerHTML = origHTML; btn.classList.remove("btn-success"); }, 3000);
+  } catch (err) {
+    btn.innerHTML = "&#10007; Error";
+    btn.classList.add("btn-error");
+    btn.disabled = false;
+    console.error("[run-analysis]", err);
+    setTimeout(() => { btn.innerHTML = origHTML; btn.classList.remove("btn-error"); }, 4000);
+  }
+}
+// ───────────────────────────────────────────────────────────────────────────
+
+bootstrap();
+</script>
+</body>
+</html>
