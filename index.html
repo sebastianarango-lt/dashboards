@@ -349,6 +349,8 @@
 
   <!-- GOOGLE ADS TAB -->
   <div class="tab-content" id="tab-google">
+    <!-- Pre-2026 block/disclaimer (populated by buildGoogleTab) -->
+    <div id="google-pre2026-msg"></div>
     <!-- Snowflake top KPIs + explanation banner (populated by buildGoogleTab) -->
     <div id="google-snowflake-row"></div>
     <div class="kpi-grid" id="google-kpis" style="grid-template-columns:repeat(6,1fr);margin-bottom:20px"></div>
@@ -1909,6 +1911,36 @@ function buildGoogleTab() {
   if(!data){kpisEl.innerHTML='<div style="color:#888;padding:20px;grid-column:1/-1">No google-ads-data.json found.</div>';return;}
   const fromStr=document.getElementById('fFrom')?.value,toStr=document.getElementById('fTo')?.value;if(!fromStr||!toStr)return;
   const from=new Date(fromStr+'T00:00:00Z'),to=new Date(toStr+'T23:59:59Z');
+
+  // Pre-2026 complete-month enforcement for Snowflake section
+  const _gpMsgEl=document.getElementById('google-pre2026-msg');
+  let _googlePre2026Block=false;
+  if(fromStr<'2026-01-01'){
+    const startsOnFirst=fromStr.slice(-3)==='-01';
+    const toParts=toStr.split('-').map(Number);
+    const lastDay=new Date(Date.UTC(toParts[0],toParts[1],0)).getUTCDate();
+    const endBad=toStr<'2026-01-01'&&toParts[2]!==lastDay;
+    if(!startsOnFirst||endBad){
+      _googlePre2026Block=true;
+      if(_gpMsgEl)_gpMsgEl.innerHTML=
+        '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;'+
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">'+
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>'+
+        'For data before 2026, please select <strong>complete months</strong> '+
+        '(from the 1st to the last day of the month), as data is monthly.'+
+        '</div>';
+      const _sfGEl=document.getElementById('google-snowflake-row');
+      if(_sfGEl)_sfGEl.innerHTML='';
+    }else{
+      if(_gpMsgEl)_gpMsgEl.innerHTML=
+        '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;'+
+        'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">'+
+        '&#9432; Data before 2026 shows monthly totals.'+
+        '</div>';
+    }
+  }else{
+    if(_gpMsgEl)_gpMsgEl.innerHTML='';
+  }
   const ppFrom=window._metaPpFrom||null,ppTo=window._metaPpTo||null,pyFrom=window._metaPyFrom||null,pyTo=window._metaPyTo||null;
   const selSt=new Set(typeof getSelected==='function'?getSelected('studioMenu'):[]);const fbSt=selSt.size>0;
   function fgr(rows,f,t){if(!rows||!rows.length)return[];const fT=f?f.getTime():0,tT=t?t.getTime():Infinity;return rows.filter(r=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return false;if(fbSt&&!selSt.has(googleStudioName(r.studio)))return false;return true;});}
@@ -1926,26 +1958,28 @@ function buildGoogleTab() {
   const cpo_c=curr.opportunities>0?curr.spend/curr.opportunities:0,cpo_p=pp.opportunities>0?pp.spend/pp.opportunities:null,cpo_y=py.opportunities>0?py.spend/py.opportunities:null;
 
   // ---- Snowflake top KPIs (platform spend ÷ Snowflake-attributed leads) ----
-  const _gStudios=[...selSt];
-  const _snowGoogle=[
-    ...filterRows(RAW.daily_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
-    ...filterRows(RAW.monthly_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
-  ];
-  const snowGoogleLeads=_snowGoogle.reduce((s,r)=>s+(r.signups||0),0);
-  const snowGoogleCpl=snowGoogleLeads>0?gSpend/snowGoogleLeads:0;
-  const gSnowEl=document.getElementById('google-snowflake-row');
-  if(gSnowEl){
-    gSnowEl.innerHTML=
-      `<div class="kpi-grid three" style="margin-bottom:20px">`+
-        kpiCard('Spend',gSpend,null,null,f$,GLOSSARY.google_spend_kpi)+
-        kpiCard('Leads (New Accounts Created)',snowGoogleLeads,null,null,v=>v,GLOSSARY.leads)+
-        kpiCard('Cost / Lead',snowGoogleCpl,null,null,f$2,GLOSSARY.google_blended_cpl)+
-      `</div>`+
-      `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`+
-      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">`+
-        `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>`+
-        `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Google Ads and may differ from the lead totals shown above. This is expected — Google uses a different attribution methodology than SWEAT440's standardized lead reporting. Standardized leads include both <em>Google Ads</em> and <em>Internet/AI Search</em> sources from MindBody.</p>`+
-      `</div>`;
+  if(!_googlePre2026Block){
+    const _gStudios=[...selSt];
+    const _snowGoogle=[
+      ...filterRows(RAW.daily_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
+      ...filterRows(RAW.monthly_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
+    ];
+    const snowGoogleLeads=_snowGoogle.reduce((s,r)=>s+(r.signups||0),0);
+    const snowGoogleCpl=snowGoogleLeads>0?gSpend/snowGoogleLeads:0;
+    const gSnowEl=document.getElementById('google-snowflake-row');
+    if(gSnowEl){
+      gSnowEl.innerHTML=
+        `<div class="kpi-grid three" style="margin-bottom:20px">`+
+          kpiCard('Spend',gSpend,null,null,f$,GLOSSARY.google_spend_kpi)+
+          kpiCard('Leads (New Accounts Created)',snowGoogleLeads,null,null,v=>v,GLOSSARY.leads)+
+          kpiCard('Cost / Lead',snowGoogleCpl,null,null,f$2,GLOSSARY.google_blended_cpl)+
+        `</div>`+
+        `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`+
+        `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">`+
+          `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>`+
+          `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Google Ads and may differ from the lead totals shown above. This is expected — Google uses a different attribution methodology than SWEAT440's standardized lead reporting. Standardized leads include both <em>Google Ads</em> and <em>Internet/AI Search</em> sources from MindBody.</p>`+
+        `</div>`;
+    }
   }
 
   // ---- 90-day ad-window block: hide detail sections for older date ranges ----
