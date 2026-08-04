@@ -93,6 +93,7 @@
   </div>
 
   <div class="tab-content" id="tab-funnel">
+    <div id="funnel-pre2026-msg"></div>
     <div class="chart-card">
       <div class="chart-card-title">Conversion funnel</div>
       <div class="funnel-wrap" id="funnelBars"></div>
@@ -119,6 +120,7 @@
 
   <!-- LEADS TAB -->
   <div class="tab-content" id="tab-leads">
+    <div id="leads-pre2026-msg"></div>
     <div id="leads-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -154,6 +156,7 @@
 
   <!-- FIRST TIMERS TAB -->
   <div class="tab-content" id="tab-stage">
+    <div id="ft-pre2026-msg"></div>
     <div id="ft-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -189,6 +192,7 @@
 
 <!-- NEW MEMBERS TAB -->
   <div class="tab-content" id="tab-members">
+    <div id="mem-pre2026-msg"></div>
     <div id="mem-kpis" class="kpi-grid three"></div>
     <div class="chart-card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
@@ -224,6 +228,7 @@
 
   <!-- CPR TAB -->
   <div class="tab-content" id="tab-cpr">
+    <div id="cpr-pre2026-msg"></div>
     <div class="chart-card" style="margin-bottom:20px">
       <div class="chart-card-title">Cost sources</div>
       <div class="cpr-filter" id="cprCostFilter">
@@ -283,6 +288,9 @@
     <!-- Date-cutoff warning -->
     <div class="date-warning-banner" id="meta-date-warning"></div>
 
+    <!-- Pre-2026 block/disclaimer (populated by buildMetaTab) -->
+    <div id="meta-pre2026-msg"></div>
+
     <!-- Snowflake top KPIs + explanation banner (populated by buildMetaTab) -->
     <div id="meta-snowflake-row"></div>
 
@@ -341,6 +349,8 @@
 
   <!-- GOOGLE ADS TAB -->
   <div class="tab-content" id="tab-google">
+    <!-- Pre-2026 block/disclaimer (populated by buildGoogleTab) -->
+    <div id="google-pre2026-msg"></div>
     <!-- Snowflake top KPIs + explanation banner (populated by buildGoogleTab) -->
     <div id="google-snowflake-row"></div>
     <div class="kpi-grid" id="google-kpis" style="grid-template-columns:repeat(6,1fr);margin-bottom:20px"></div>
@@ -650,12 +660,59 @@ function applyFilters() {
   const curr = filterAll(from,to);
   const pp   = filterAll(ppFrom,ppTo);
   const py   = filterAll(pyFrom,pyTo);
-  buildFunnel(sumRows(curr.all), sumRows(pp.all), sumRows(py.all),
-    `${fmtDate(ppFrom)} – ${fmtDate(ppTo)}`, `${fmtDate(pyFrom)} – ${fmtDate(pyTo)}`);
-  buildTrend(toTimeSeries(curr.daily, curr.monthly));
+  // Pre-2026 complete-month enforcement for funnel tabs
+  let _funnelBlock = false;
+  {
+    const _fpFrom = fromStr || '';
+    const _fpTo   = toStr   || '';
+    let   _msgHtml = '';
+    if (_fpFrom && _fpFrom < '2026-01-01') {
+      const startsOnFirst = _fpFrom.slice(-3) === '-01';
+      const toParts       = _fpTo.split('-').map(Number);
+      const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+      const endBad        = _fpTo < '2026-01-01' && toParts[2] !== lastDay;
+      if (!startsOnFirst || endBad) {
+        _funnelBlock = true;
+        _msgHtml =
+          '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+          'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+          '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+          'For data before 2026, please select <strong>complete months</strong> ' +
+          '(from the 1st to the last day of the month), as data is monthly.' +
+          '</div>';
+        const _fbEl = document.getElementById('funnelBars');
+        if (_fbEl) _fbEl.innerHTML = '';
+        if (typeof trendChart !== 'undefined' && trendChart) {
+          trendChart.data.labels = [];
+          trendChart.data.datasets.forEach(ds => ds.data = []);
+          trendChart.update();
+        }
+        ['leads-kpis','ft-kpis','mem-kpis'].forEach(id => {
+          const el = document.getElementById(id); if (el) el.innerHTML = '';
+        });
+      } else {
+        _msgHtml =
+          '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+          'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+          '&#9432; Data before 2026 shows monthly totals.' +
+          '</div>';
+      }
+    }
+    ['funnel-pre2026-msg','leads-pre2026-msg','ft-pre2026-msg','mem-pre2026-msg'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.innerHTML = _msgHtml;
+    });
+  }
+
+  if (!_funnelBlock) {
+    buildFunnel(sumRows(curr.all), sumRows(pp.all), sumRows(py.all),
+      `${fmtDate(ppFrom)} – ${fmtDate(ppTo)}`, `${fmtDate(pyFrom)} – ${fmtDate(pyTo)}`);
+    buildTrend(toTimeSeries(curr.daily, curr.monthly));
+  }
   // Always build all tabs  all are rendered (just hidden via opacity/height)
   if (typeof checkCPRWarning === 'function') checkCPRWarning();
-  buildStageTabs(curr, pp, py, fmtDate(ppFrom)+' – '+fmtDate(ppTo), fmtDate(pyFrom)+' – '+fmtDate(pyTo));
+  if (!_funnelBlock) {
+    buildStageTabs(curr, pp, py, fmtDate(ppFrom)+' – '+fmtDate(ppTo), fmtDate(pyFrom)+' – '+fmtDate(pyTo));
+  }
   window._metaFrom    = from;  window._metaTo   = to;
   window._metaPpFrom  = ppFrom; window._metaPpTo = ppTo;
   window._metaPyFrom  = pyFrom; window._metaPyTo = pyTo;
@@ -973,6 +1030,37 @@ function buildSummaryTab() {
   const funnelPy   = window._cprPy   || null;
   if (!funnelCurr) return;
 
+  // Pre-2026 complete-month enforcement
+  const _sfFrom = document.getElementById('fFrom')?.value || '';
+  const _sfTo   = document.getElementById('fTo')?.value   || '';
+  let summaryDisclaimer = '';
+
+  if (_sfFrom && _sfFrom < '2026-01-01') {
+    const startsOnFirst = _sfFrom.slice(-3) === '-01';
+    const toParts       = _sfTo.split('-').map(Number);
+    const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+    const endBad        = _sfTo < '2026-01-01' && toParts[2] !== lastDay;
+
+    if (!startsOnFirst || endBad) {
+      funnelEl.innerHTML =
+        '<div style="grid-column:1/-1;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7">' +
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+        'For data before 2026, please select <strong>complete months</strong> ' +
+        '(from the 1st to the last day of the month), as data is monthly.' +
+        '</div>';
+      if (spendEl) spendEl.innerHTML = '';
+      if (cprEl)   cprEl.innerHTML   = '';
+      return;
+    }
+
+    summaryDisclaimer =
+      '<div style="grid-column:1/-1;background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+      'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px">' +
+      '&#9432; Data before 2026 shows monthly totals.' +
+      '</div>';
+  }
+
   function fsum(fi) {
     if (!fi) return {leads:0, ft:0, mem:0};
     const rows = [...(fi.daily||[]),...(fi.monthly||[])];
@@ -984,7 +1072,7 @@ function buildSummaryTab() {
   }
   const curr = fsum(funnelCurr), pp = fsum(funnelPp), py = fsum(funnelPy);
 
-  funnelEl.innerHTML =
+  funnelEl.innerHTML = summaryDisclaimer +
     kpiCard('Leads (New Accounts Created)',             curr.leads, pp.leads||null, py.leads||null, null, GLOSSARY.leads) +
     kpiCard('First Timers (First Studio Visits)',       curr.ft,    pp.ft||null,    py.ft||null,    null, GLOSSARY.ft)    +
     kpiCard('New Members (First Memberships Activated)',curr.mem,   pp.mem||null,   py.mem||null,   null, GLOSSARY.mem);
@@ -1083,6 +1171,39 @@ function buildCPRTab() {
   const funnelCurr=window._cprCurr||null,funnelPp=window._cprPp||null,funnelPy=window._cprPy||null;
   const selStudios=window._cprStudios||[];
   if (!from||!to||!funnelCurr) return;
+
+  // Pre-2026 complete-month enforcement
+  const _cpFrom = document.getElementById('fFrom')?.value || '';
+  const _cpTo   = document.getElementById('fTo')?.value   || '';
+  const _cpMsgEl = document.getElementById('cpr-pre2026-msg');
+  if (_cpFrom && _cpFrom < '2026-01-01') {
+    const startsOnFirst = _cpFrom.slice(-3) === '-01';
+    const toParts       = _cpTo.split('-').map(Number);
+    const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+    const endBad        = _cpTo < '2026-01-01' && toParts[2] !== lastDay;
+    if (!startsOnFirst || endBad) {
+      if (_cpMsgEl) _cpMsgEl.innerHTML =
+        '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+        'For data before 2026, please select <strong>complete months</strong> ' +
+        '(from the 1st to the last day of the month), as data is monthly.' +
+        '</div>';
+      el.innerHTML = '';
+      const _bdEl = document.getElementById('cpr-spend-breakdown');
+      if (_bdEl) _bdEl.innerHTML = '';
+      if (typeof cprChart !== 'undefined' && cprChart) { cprChart.destroy(); cprChart = null; }
+      return;
+    }
+    if (_cpMsgEl) _cpMsgEl.innerHTML =
+      '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+      'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+      '&#9432; Data before 2026 shows monthly totals.' +
+      '</div>';
+  } else {
+    if (_cpMsgEl) _cpMsgEl.innerHTML = '';
+  }
+
   const fTime=from.getTime(),tTime=to.getTime();
   const allStudios=selStudios.length>0?selStudios:(RAW?RAW.studios:[]);
   const studioCount=allStudios.length||1;
@@ -1426,18 +1547,9 @@ async function buildMetaTab() {
   const kpisEl = document.getElementById('meta-kpis');
   if (!kpisEl) return;
 
-  // Show warning if selected date range goes beyond the 90-day rolling window
-  const _cutoff90 = new Date(); _cutoff90.setDate(_cutoff90.getDate() - 90);
-  const _cutoff90Str = _cutoff90.toISOString().slice(0, 10);
+  // Hide legacy heads-up banner (replaced by inline block logic)
   const warnEl = document.getElementById('meta-date-warning');
-  const curFrom = document.getElementById('fFrom')?.value;
-  if (warnEl) {
-    const beyond90 = !!curFrom && curFrom < _cutoff90Str;
-    warnEl.innerHTML = beyond90
-      ? '<strong>Heads up:</strong> Meta Ads data is only kept for a 90-day rolling window (back to ' + _cutoff90Str + '). Individual ad breakdowns won\'t be available before that date, but monthly studio totals are still shown.'
-      : '';
-    warnEl.classList.toggle('show', beyond90);
-  }
+  if (warnEl) { warnEl.innerHTML = ''; warnEl.classList.remove('show'); }
 
   if (!data) {
     kpisEl.innerHTML = '<div style="color:#888;padding:20px;grid-column:1/-1">No meta-ads-data.json found.</div>';
@@ -1447,6 +1559,36 @@ async function buildMetaTab() {
   const fromStr = document.getElementById('fFrom')?.value;
   const toStr   = document.getElementById('fTo')?.value;
   if (!fromStr || !toStr) return;
+
+  // Pre-2026 complete-month enforcement for Snowflake section
+  const _mpMsgEl = document.getElementById('meta-pre2026-msg');
+  let _metaPre2026Block = false;
+  if (fromStr < '2026-01-01') {
+    const startsOnFirst = fromStr.slice(-3) === '-01';
+    const toParts       = toStr.split('-').map(Number);
+    const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+    const endBad        = toStr < '2026-01-01' && toParts[2] !== lastDay;
+    if (!startsOnFirst || endBad) {
+      _metaPre2026Block = true;
+      if (_mpMsgEl) _mpMsgEl.innerHTML =
+        '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+        'For data before 2026, please select <strong>complete months</strong> ' +
+        '(from the 1st to the last day of the month), as data is monthly.' +
+        '</div>';
+      const _sfEl = document.getElementById('meta-snowflake-row');
+      if (_sfEl) _sfEl.innerHTML = '';
+    } else {
+      if (_mpMsgEl) _mpMsgEl.innerHTML =
+        '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+        'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+        '&#9432; Data before 2026 shows monthly totals.' +
+        '</div>';
+    }
+  } else {
+    if (_mpMsgEl) _mpMsgEl.innerHTML = '';
+  }
 
   const fTime = new Date(fromStr + 'T00:00:00Z').getTime();
   const tTime = new Date(toStr   + 'T23:59:59Z').getTime();
@@ -1507,26 +1649,28 @@ async function buildMetaTab() {
   const cpl = leads > 0 ? adSpend / leads : 0;
 
   // ---- Snowflake top KPIs (platform spend ÷ Snowflake-attributed leads) ----
-  const _snowMeta = [
-    ...filterRows(RAW.daily_detail   || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
-    ...filterRows(RAW.monthly_detail || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
-  ];
-  const snowMetaLeads = _snowMeta.reduce((s, r) => s + (r.signups || 0), 0);
-  const snowMetaCpl   = snowMetaLeads > 0 ? spend / snowMetaLeads : 0;
-  const metaSnowEl = document.getElementById('meta-snowflake-row');
-  if (metaSnowEl) {
-    const adPreviewNote = 'Click on an ad image to open the Facebook Ad Library page with all currently active ads from that studio. We\'re working on making full ad-by-ad previews available directly from this dashboard.';
-    metaSnowEl.innerHTML =
-      `<div class="kpi-grid three" style="margin-bottom:20px">` +
-        kpiCard('Spend', spend, null, null, f$, GLOSSARY.meta) +
-        kpiCard('Leads (New Accounts Created)', snowMetaLeads, null, null, v => v, GLOSSARY.leads) +
-        kpiCard('Cost / Lead', snowMetaCpl, null, null, f$2, GLOSSARY.meta_blended_cpl) +
-      `</div>` +
-      `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>` +
-      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">` +
-        `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>` +
-        `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown above. This is expected — Meta uses a different attribution methodology than SWEAT440's standardized lead reporting. <strong>${adPreviewNote}</strong></p>` +
-      `</div>`;
+  if (!_metaPre2026Block) {
+    const _snowMeta = [
+      ...filterRows(RAW.daily_detail   || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
+      ...filterRows(RAW.monthly_detail || [], _mFromD, _mToD, _mStudios, ['Meta Ads']),
+    ];
+    const snowMetaLeads = _snowMeta.reduce((s, r) => s + (r.signups || 0), 0);
+    const snowMetaCpl   = snowMetaLeads > 0 ? spend / snowMetaLeads : 0;
+    const metaSnowEl = document.getElementById('meta-snowflake-row');
+    if (metaSnowEl) {
+      const adPreviewNote = 'Click on an ad image to open the Facebook Ad Library page with all currently active ads from that studio. We\'re working on making full ad-by-ad previews available directly from this dashboard.';
+      metaSnowEl.innerHTML =
+        `<div class="kpi-grid three" style="margin-bottom:20px">` +
+          kpiCard('Spend', spend, null, null, f$, GLOSSARY.meta) +
+          kpiCard('Leads (New Accounts Created)', snowMetaLeads, null, null, v => v, GLOSSARY.leads) +
+          kpiCard('Cost / Lead', snowMetaCpl, null, null, f$2, GLOSSARY.meta_blended_cpl) +
+        `</div>` +
+        `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>` +
+        `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">` +
+          `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>` +
+          `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Meta Ads Manager and may differ from the lead totals shown above. This is expected — Meta uses a different attribution methodology than SWEAT440's standardized lead reporting. <strong>${adPreviewNote}</strong></p>` +
+        `</div>`;
+    }
   }
 
   // ---- Active Ads info banner (user-type aware) ----
@@ -1544,13 +1688,14 @@ async function buildMetaTab() {
   if (outsideAdWindow()) {
     const _c90m = new Date(); _c90m.setDate(_c90m.getDate() - 90);
     const _c90mStr = _c90m.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric', timeZone:'UTC'});
-    kpisEl.innerHTML =
-      `<div style="display:flex;align-items:flex-start;gap:10px;background:#f0f6fa;border-left:3px solid #99DAF3;border-radius:6px;padding:14px 16px;grid-column:1/-1">` +
-        `<span style="font-size:15px;color:#0084B5;flex-shrink:0">ⓘ</span>` +
-        `<p style="margin:0;font-size:13px;color:#1a4d6e;line-height:1.5">Ad-level details are only available for the last 90 days. Select a start date after <strong>${_c90mStr}</strong> to see impressions, clicks, studio breakdowns, and individual ads.</p>` +
+    const _90dMsg =
+      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fff3e0;border-left:3px solid #f59e0b;border-radius:6px;padding:14px 16px">` +
+        `<span style="font-size:15px;color:#e65100;flex-shrink:0;margin-top:1px">ⓘ</span>` +
+        `<p style="margin:0;font-size:13px;color:#7b4a1a;line-height:1.5">Ad-level details are only available for the last 90 days. Select a start date after <strong>${_c90mStr}</strong> to see impressions, clicks, studio breakdowns, and individual ads.</p>` +
       `</div>`;
-    if (adsTb) adsTb.innerHTML = '';
-    if (stTb) stTb.innerHTML = '';
+    kpisEl.innerHTML = `<div style="grid-column:1/-1">${_90dMsg}</div>`;
+    if (adsTb) adsTb.innerHTML = `<tr><td colspan="9" style="padding:0 0 4px"><div style="padding:16px 20px">${_90dMsg}</div></td></tr>`;
+    if (stTb)  stTb.innerHTML  = `<tr><td colspan="9" style="padding:0 0 4px"><div style="padding:16px 20px">${_90dMsg}</div></td></tr>`;
     const _bElM = document.getElementById('meta-ads-info-banner'); if (_bElM) _bElM.innerHTML = '';
     return;
   }
@@ -1766,6 +1911,36 @@ function buildGoogleTab() {
   if(!data){kpisEl.innerHTML='<div style="color:#888;padding:20px;grid-column:1/-1">No google-ads-data.json found.</div>';return;}
   const fromStr=document.getElementById('fFrom')?.value,toStr=document.getElementById('fTo')?.value;if(!fromStr||!toStr)return;
   const from=new Date(fromStr+'T00:00:00Z'),to=new Date(toStr+'T23:59:59Z');
+
+  // Pre-2026 complete-month enforcement for Snowflake section
+  const _gpMsgEl=document.getElementById('google-pre2026-msg');
+  let _googlePre2026Block=false;
+  if(fromStr<'2026-01-01'){
+    const startsOnFirst=fromStr.slice(-3)==='-01';
+    const toParts=toStr.split('-').map(Number);
+    const lastDay=new Date(Date.UTC(toParts[0],toParts[1],0)).getUTCDate();
+    const endBad=toStr<'2026-01-01'&&toParts[2]!==lastDay;
+    if(!startsOnFirst||endBad){
+      _googlePre2026Block=true;
+      if(_gpMsgEl)_gpMsgEl.innerHTML=
+        '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;'+
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">'+
+        '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>'+
+        'For data before 2026, please select <strong>complete months</strong> '+
+        '(from the 1st to the last day of the month), as data is monthly.'+
+        '</div>';
+      const _sfGEl=document.getElementById('google-snowflake-row');
+      if(_sfGEl)_sfGEl.innerHTML='';
+    }else{
+      if(_gpMsgEl)_gpMsgEl.innerHTML=
+        '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;'+
+        'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">'+
+        '&#9432; Data before 2026 shows monthly totals.'+
+        '</div>';
+    }
+  }else{
+    if(_gpMsgEl)_gpMsgEl.innerHTML='';
+  }
   const ppFrom=window._metaPpFrom||null,ppTo=window._metaPpTo||null,pyFrom=window._metaPyFrom||null,pyTo=window._metaPyTo||null;
   const selSt=new Set(typeof getSelected==='function'?getSelected('studioMenu'):[]);const fbSt=selSt.size>0;
   function fgr(rows,f,t){if(!rows||!rows.length)return[];const fT=f?f.getTime():0,tT=t?t.getTime():Infinity;return rows.filter(r=>{const d=new Date((r.date||r.month)+'T00:00:00Z').getTime();if(d<fT||d>tT)return false;if(fbSt&&!selSt.has(googleStudioName(r.studio)))return false;return true;});}
@@ -1783,26 +1958,28 @@ function buildGoogleTab() {
   const cpo_c=curr.opportunities>0?curr.spend/curr.opportunities:0,cpo_p=pp.opportunities>0?pp.spend/pp.opportunities:null,cpo_y=py.opportunities>0?py.spend/py.opportunities:null;
 
   // ---- Snowflake top KPIs (platform spend ÷ Snowflake-attributed leads) ----
-  const _gStudios=[...selSt];
-  const _snowGoogle=[
-    ...filterRows(RAW.daily_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
-    ...filterRows(RAW.monthly_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
-  ];
-  const snowGoogleLeads=_snowGoogle.reduce((s,r)=>s+(r.signups||0),0);
-  const snowGoogleCpl=snowGoogleLeads>0?gSpend/snowGoogleLeads:0;
-  const gSnowEl=document.getElementById('google-snowflake-row');
-  if(gSnowEl){
-    gSnowEl.innerHTML=
-      `<div class="kpi-grid three" style="margin-bottom:20px">`+
-        kpiCard('Spend',gSpend,null,null,f$,GLOSSARY.google_spend_kpi)+
-        kpiCard('Leads (New Accounts Created)',snowGoogleLeads,null,null,v=>v,GLOSSARY.leads)+
-        kpiCard('Cost / Lead',snowGoogleCpl,null,null,f$2,GLOSSARY.google_blended_cpl)+
-      `</div>`+
-      `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`+
-      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">`+
-        `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>`+
-        `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Google Ads and may differ from the lead totals shown above. This is expected — Google uses a different attribution methodology than SWEAT440's standardized lead reporting. Standardized leads include both <em>Google Ads</em> and <em>Internet/AI Search</em> sources from MindBody.</p>`+
-      `</div>`;
+  if(!_googlePre2026Block){
+    const _gStudios=[...selSt];
+    const _snowGoogle=[
+      ...filterRows(RAW.daily_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
+      ...filterRows(RAW.monthly_detail||[],from,to,_gStudios,['Google Ads','Internet/AI Search']),
+    ];
+    const snowGoogleLeads=_snowGoogle.reduce((s,r)=>s+(r.signups||0),0);
+    const snowGoogleCpl=snowGoogleLeads>0?gSpend/snowGoogleLeads:0;
+    const gSnowEl=document.getElementById('google-snowflake-row');
+    if(gSnowEl){
+      gSnowEl.innerHTML=
+        `<div class="kpi-grid three" style="margin-bottom:20px">`+
+          kpiCard('Spend',gSpend,null,null,f$,GLOSSARY.google_spend_kpi)+
+          kpiCard('Leads (New Accounts Created)',snowGoogleLeads,null,null,v=>v,GLOSSARY.leads)+
+          kpiCard('Cost / Lead',snowGoogleCpl,null,null,f$2,GLOSSARY.google_blended_cpl)+
+        `</div>`+
+        `<div style="border-top:1px solid #dde8ef;margin:0 0 20px"></div>`+
+        `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">`+
+          `<span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>`+
+          `<p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">The metrics below are reported directly by Google Ads and may differ from the lead totals shown above. This is expected — Google uses a different attribution methodology than SWEAT440's standardized lead reporting. Standardized leads include both <em>Google Ads</em> and <em>Internet/AI Search</em> sources from MindBody.</p>`+
+        `</div>`;
+    }
   }
 
   // ---- 90-day ad-window block: hide detail sections for older date ranges ----
@@ -1932,10 +2109,6 @@ function checkCPRWarning() {
   const nonPaidSelected = selSources.some(s => !paidSources.includes(s));
   const allMktgSelected = mktgSources.every(s => selSources.includes(s));
 
-  const curFrom = document.getElementById('fFrom')?.value || '';
-  const preApril = curFrom && curFrom < '2026-04-01';
-  const hasAdCost = CPR_COSTS_ACTIVE.google || CPR_COSTS_ACTIVE.meta;
-
   let msgs = [];
 
   // Warning 1: only paid costs selected but non-ad lead sources included
@@ -1945,10 +2118,6 @@ function checkCPRWarning() {
   // Warning 2: all costs selected but not all marketing sources
   if (allCosts && selSources.length > 0 && !allMktgSelected) {
     msgs.push('⚠️ You are including all cost sources but some marketing lead sources are deselected. Your cost per result may be overstated. Please verify your Source filter.');
-  }
-  // Warning 3: date range includes pre-April 2026 — spend data is monthly only
-  if (preApril && hasAdCost) {
-    msgs.push('ℹ️ Meta Ads and Google Ads spend before April 2026 is based on monthly totals, not daily data. Daily and weekly granularity will not reflect actual day-by-day spend for that period.');
   }
 
   if (msgs.length) {
@@ -2422,6 +2591,16 @@ function renderInstagram() {
   const toMonthKey     = to   ? to.substring(0, 7)   + '-01' : null;
   const windowMonthKey = windowStart ? windowStart.substring(0, 7) + '-01' : null;
 
+  // Pre-window complete-month enforcement (same logic as other tabs)
+  const _igStartsOnFirst = from ? from.slice(-3) === '-01' : true;
+  const _igToParts       = to ? to.split('-').map(Number) : null;
+  const _igToLastDay     = _igToParts ? new Date(Date.UTC(_igToParts[0], _igToParts[1], 0)).getUTCDate() : null;
+  const _igEndBeforeWin  = !!(to && windowStart && to < windowStart);
+  const _igEndBad        = _igEndBeforeWin && _igToParts && _igToParts[2] !== _igToLastDay;
+  const igBlock          = rangeExtendsBack && (!_igStartsOnFirst || _igEndBad);
+  const igDisclaimer     = rangeExtendsBack && !igBlock;
+  const igToInWindow     = !!(to && windowStart && to >= windowStart);
+
   // Previous period window
   const fromD = from ? new Date(from + 'T00:00:00') : null;
   const toD   = to   ? new Date(to   + 'T00:00:00') : null;
@@ -2556,28 +2735,51 @@ function renderInstagram() {
   }
 
   let h = '';
-  h += `<div class="kpi-grid">`;
-  if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers');
-  h += _igKpi('Total Reach',     totalReach.toLocaleString(), _igDelta(totalReach, ppTotalReach), 'ig_total_reach');
-  h += _igKpi('Avg Daily Reach', avgReach.toLocaleString(),   _igDelta(avgReach,   ppAvgReach),   'ig_avg_daily_reach');
-  if (allPosts.length) {
-    h += _igKpi('Median Reach / Post', medianReach.toLocaleString(), _igDelta(medianReach, ppMedianReach), 'ig_median_reach');
-    h += _igKpi('Median Likes',        medianLikes.toLocaleString(), _igDelta(medianLikes, ppMedianLikes), 'ig_median_likes');
-  } else if (rangeExtendsBack) {
-    if (histMedianReach != null) h += _igKpi('Median Reach / Post', histMedianReach.toLocaleString(), '', 'ig_median_reach');
-    if (histMedianLikes != null) h += _igKpi('Median Likes',        histMedianLikes.toLocaleString(), '', 'ig_median_likes');
-  }
-  h += _igKpi('Posts in Period', (allPosts.length + historicalPostCount).toString(), _igDelta(allPosts.length, ppAllPosts.length), 'ig_posts');
-  h += `</div>`;
 
-  if (rangeExtendsBack) {
-    h += `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
-      <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
-      <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">Instagram reach data is available for the last 90 days only. Your selected date range extends beyond this window — reach and post counts for earlier months are sourced from archived monthly totals. Median metrics for historical months are pre-computed at archival time and may differ slightly from in-window calculations.</p>
-    </div>`;
+  if (igBlock) {
+    h +=
+      '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+      'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+      '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+      'For data outside the last 90 days, please select <strong>complete months</strong> ' +
+      '(from the 1st to the last day of the month), as data is monthly.' +
+      '</div>';
+  } else {
+    h += `<div class="kpi-grid">`;
+    if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers');
+    h += _igKpi('Total Reach',     totalReach.toLocaleString(), _igDelta(totalReach, ppTotalReach), 'ig_total_reach');
+    h += _igKpi('Avg Daily Reach', avgReach.toLocaleString(),   _igDelta(avgReach,   ppAvgReach),   'ig_avg_daily_reach');
+    if (allPosts.length) {
+      h += _igKpi('Median Reach / Post', medianReach.toLocaleString(), _igDelta(medianReach, ppMedianReach), 'ig_median_reach');
+      h += _igKpi('Median Likes',        medianLikes.toLocaleString(), _igDelta(medianLikes, ppMedianLikes), 'ig_median_likes');
+    } else if (rangeExtendsBack) {
+      if (histMedianReach != null) h += _igKpi('Median Reach / Post', histMedianReach.toLocaleString(), '', 'ig_median_reach');
+      if (histMedianLikes != null) h += _igKpi('Median Likes',        histMedianLikes.toLocaleString(), '', 'ig_median_likes');
+    }
+    h += _igKpi('Posts in Period', (allPosts.length + historicalPostCount).toString(), _igDelta(allPosts.length, ppAllPosts.length), 'ig_posts');
+    h += `</div>`;
   }
 
-  if (allPosts.length || historicalPostCount) {
+  if (igDisclaimer) {
+    h +=
+      '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+      'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+      '&#9432; Data outside the last 90 days shows monthly totals.' +
+      '</div>';
+  }
+
+  // Orange message when end date is outside the rolling window (no individual post data)
+  if (windowStart && !igToInWindow) {
+    const _wsFormatted = new Date(windowStart + 'T00:00:00Z').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric', timeZone:'UTC'});
+    h +=
+      `<div style="display:flex;align-items:flex-start;gap:10px;background:#fff3e0;border-left:3px solid #f59e0b;border-radius:6px;padding:14px 16px;margin-bottom:16px">` +
+        `<span style="font-size:15px;color:#e65100;flex-shrink:0;margin-top:1px">ⓘ</span>` +
+        `<p style="margin:0;font-size:13px;color:#7b4a1a;line-height:1.5">Post details are only available for the last 90 days. Select an end date after <strong>${_wsFormatted}</strong> to see individual posts, reach, and engagement metrics.</p>` +
+      `</div>`;
+  }
+
+  const _showPosts = (allPosts.length || historicalPostCount) && (!igBlock || igToInWindow);
+  if (_showPosts) {
     h += `<div class="chart-card">
       <div class="chart-card-title">Best Performing Posts</div>
 
