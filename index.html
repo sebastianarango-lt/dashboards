@@ -982,9 +982,9 @@ function buildSummaryTab() {
     const startsOnFirst = _sfFrom.slice(-3) === '-01';
     const toParts       = _sfTo.split('-').map(Number);
     const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
-    const endsOnLast    = toParts[2] === lastDay;
+    const endBad        = _sfTo < '2026-01-01' && toParts[2] !== lastDay;
 
-    if (!startsOnFirst || !endsOnLast) {
+    if (!startsOnFirst || endBad) {
       funnelEl.innerHTML =
         '<div style="grid-column:1/-1;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
         'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7">' +
