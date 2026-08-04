@@ -2591,6 +2591,16 @@ function renderInstagram() {
   const toMonthKey     = to   ? to.substring(0, 7)   + '-01' : null;
   const windowMonthKey = windowStart ? windowStart.substring(0, 7) + '-01' : null;
 
+  // Pre-window complete-month enforcement (same logic as other tabs)
+  const _igStartsOnFirst = from ? from.slice(-3) === '-01' : true;
+  const _igToParts       = to ? to.split('-').map(Number) : null;
+  const _igToLastDay     = _igToParts ? new Date(Date.UTC(_igToParts[0], _igToParts[1], 0)).getUTCDate() : null;
+  const _igEndBeforeWin  = !!(to && windowStart && to < windowStart);
+  const _igEndBad        = _igEndBeforeWin && _igToParts && _igToParts[2] !== _igToLastDay;
+  const igBlock          = rangeExtendsBack && (!_igStartsOnFirst || _igEndBad);
+  const igDisclaimer     = rangeExtendsBack && !igBlock;
+  const igToInWindow     = !!(to && windowStart && to >= windowStart);
+
   // Previous period window
   const fromD = from ? new Date(from + 'T00:00:00') : null;
   const toD   = to   ? new Date(to   + 'T00:00:00') : null;
@@ -2725,28 +2735,41 @@ function renderInstagram() {
   }
 
   let h = '';
-  h += `<div class="kpi-grid">`;
-  if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers');
-  h += _igKpi('Total Reach',     totalReach.toLocaleString(), _igDelta(totalReach, ppTotalReach), 'ig_total_reach');
-  h += _igKpi('Avg Daily Reach', avgReach.toLocaleString(),   _igDelta(avgReach,   ppAvgReach),   'ig_avg_daily_reach');
-  if (allPosts.length) {
-    h += _igKpi('Median Reach / Post', medianReach.toLocaleString(), _igDelta(medianReach, ppMedianReach), 'ig_median_reach');
-    h += _igKpi('Median Likes',        medianLikes.toLocaleString(), _igDelta(medianLikes, ppMedianLikes), 'ig_median_likes');
-  } else if (rangeExtendsBack) {
-    if (histMedianReach != null) h += _igKpi('Median Reach / Post', histMedianReach.toLocaleString(), '', 'ig_median_reach');
-    if (histMedianLikes != null) h += _igKpi('Median Likes',        histMedianLikes.toLocaleString(), '', 'ig_median_likes');
-  }
-  h += _igKpi('Posts in Period', (allPosts.length + historicalPostCount).toString(), _igDelta(allPosts.length, ppAllPosts.length), 'ig_posts');
-  h += `</div>`;
 
-  if (rangeExtendsBack) {
-    h += `<div style="display:flex;align-items:flex-start;gap:10px;background:#fdf8ee;border-left:3px solid #f4a021;border-radius:6px;padding:12px 16px;margin-bottom:20px">
-      <span style="font-size:15px;line-height:1;color:#c8860a;flex-shrink:0;margin-top:1px">ⓘ</span>
-      <p style="margin:0;font-size:12px;color:#6b5a2e;line-height:1.55">Instagram reach data is available for the last 90 days only. Your selected date range extends beyond this window — reach and post counts for earlier months are sourced from archived monthly totals. Median metrics for historical months are pre-computed at archival time and may differ slightly from in-window calculations.</p>
-    </div>`;
+  if (igBlock) {
+    h +=
+      '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+      'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7;margin-bottom:16px">' +
+      '<strong style="display:block;margin-bottom:6px">&#9888; Full months required</strong>' +
+      'For data outside the last 90 days, please select <strong>complete months</strong> ' +
+      '(from the 1st to the last day of the month), as data is monthly.' +
+      '</div>';
+  } else {
+    h += `<div class="kpi-grid">`;
+    if (hasFollowersKpi) h += _igKpi(followersLabel, followersVal.toLocaleString(), '', 'ig_followers');
+    h += _igKpi('Total Reach',     totalReach.toLocaleString(), _igDelta(totalReach, ppTotalReach), 'ig_total_reach');
+    h += _igKpi('Avg Daily Reach', avgReach.toLocaleString(),   _igDelta(avgReach,   ppAvgReach),   'ig_avg_daily_reach');
+    if (allPosts.length) {
+      h += _igKpi('Median Reach / Post', medianReach.toLocaleString(), _igDelta(medianReach, ppMedianReach), 'ig_median_reach');
+      h += _igKpi('Median Likes',        medianLikes.toLocaleString(), _igDelta(medianLikes, ppMedianLikes), 'ig_median_likes');
+    } else if (rangeExtendsBack) {
+      if (histMedianReach != null) h += _igKpi('Median Reach / Post', histMedianReach.toLocaleString(), '', 'ig_median_reach');
+      if (histMedianLikes != null) h += _igKpi('Median Likes',        histMedianLikes.toLocaleString(), '', 'ig_median_likes');
+    }
+    h += _igKpi('Posts in Period', (allPosts.length + historicalPostCount).toString(), _igDelta(allPosts.length, ppAllPosts.length), 'ig_posts');
+    h += `</div>`;
   }
 
-  if (allPosts.length || historicalPostCount) {
+  if (igDisclaimer) {
+    h +=
+      '<div style="background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+      'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px;margin-bottom:16px">' +
+      '&#9432; Data outside the last 90 days shows monthly totals.' +
+      '</div>';
+  }
+
+  const _showPosts = (allPosts.length || historicalPostCount) && (!igBlock || igToInWindow);
+  if (_showPosts) {
     h += `<div class="chart-card">
       <div class="chart-card-title">Best Performing Posts</div>
 
