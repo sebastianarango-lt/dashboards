@@ -973,6 +973,37 @@ function buildSummaryTab() {
   const funnelPy   = window._cprPy   || null;
   if (!funnelCurr) return;
 
+  // Pre-2026 complete-month enforcement
+  const _sfFrom = document.getElementById('fFrom')?.value || '';
+  const _sfTo   = document.getElementById('fTo')?.value   || '';
+  let summaryDisclaimer = '';
+
+  if (_sfFrom && _sfFrom < '2026-01-01') {
+    const startsOnFirst = _sfFrom.slice(-3) === '-01';
+    const toParts       = _sfTo.split('-').map(Number);
+    const lastDay       = new Date(Date.UTC(toParts[0], toParts[1], 0)).getUTCDate();
+    const endsOnLast    = toParts[2] === lastDay;
+
+    if (!startsOnFirst || !endsOnLast) {
+      funnelEl.innerHTML =
+        '<div style="grid-column:1/-1;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;' +
+        'padding:20px 24px;color:#5d4037;font-size:14px;line-height:1.7">' +
+        '<strong style="display:block;margin-bottom:6px">&#9888; Meses completos requeridos</strong>' +
+        'Para datos anteriores a 2026 es necesario seleccionar <strong>meses completos</strong> ' +
+        '(del d&#237;a 1 al &#250;ltimo d&#237;a del mes), ya que los datos son mensuales.' +
+        '</div>';
+      if (spendEl) spendEl.innerHTML = '';
+      if (cprEl)   cprEl.innerHTML   = '';
+      return;
+    }
+
+    summaryDisclaimer =
+      '<div style="grid-column:1/-1;background:rgba(0,163,224,0.08);border-left:4px solid #00A3E0;' +
+      'border-radius:0 4px 4px 0;padding:10px 16px;color:#005f87;font-size:13px">' +
+      '&#9432; Los datos anteriores a 2026 son totales mensuales.' +
+      '</div>';
+  }
+
   function fsum(fi) {
     if (!fi) return {leads:0, ft:0, mem:0};
     const rows = [...(fi.daily||[]),...(fi.monthly||[])];
@@ -984,7 +1015,7 @@ function buildSummaryTab() {
   }
   const curr = fsum(funnelCurr), pp = fsum(funnelPp), py = fsum(funnelPy);
 
-  funnelEl.innerHTML =
+  funnelEl.innerHTML = summaryDisclaimer +
     kpiCard('Leads (New Accounts Created)',             curr.leads, pp.leads||null, py.leads||null, null, GLOSSARY.leads) +
     kpiCard('First Timers (First Studio Visits)',       curr.ft,    pp.ft||null,    py.ft||null,    null, GLOSSARY.ft)    +
     kpiCard('New Members (First Memberships Activated)',curr.mem,   pp.mem||null,   py.mem||null,   null, GLOSSARY.mem);
