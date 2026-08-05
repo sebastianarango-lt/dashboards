@@ -192,7 +192,7 @@ def previous_quarter_bounds(today: date) -> tuple[str, str]:
 
 # ── main ETL ─────────────────────────────────────────────────────────
 
-def run():
+def run(start_override: str | None = None):
     import studios as studios_registry
 
     ad_account  = studios_registry.defaults()["meta_ad_account_id"]  # e.g. "act_1553887681409034"
@@ -204,7 +204,7 @@ def run():
     # ── date windows ─────────────────────────────────────────────────
     # Fetch only the last DAILY_LOOKBACK_DAYS days each run.
     # Older data is preserved via upsert from the existing file.
-    daily_start = (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
+    daily_start = start_override or (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
     daily_end   = today_iso
 
     # ── load existing output (for upsert + baked monthly) ────────────
@@ -433,8 +433,13 @@ def run():
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start", default=None,
+                        help="Override fetch start date (YYYY-MM-DD). Default: last DAILY_LOOKBACK_DAYS days.")
+    args = parser.parse_args()
     try:
-        run()
+        run(start_override=args.start)
     except Exception as e:
         log.exception(f"❌ ETL failed: {e}")
         sys.exit(1)
