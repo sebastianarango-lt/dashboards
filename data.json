@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T15:15:44.360443Z",
+  "generated_at": "2026-08-05T09:29:46.811131Z",
   "studios": [
     "Austin - Highland",
     "Austin - Zilker",
@@ -89013,7 +89013,7 @@
     {
       "date": "2026-03-11",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -108399,8 +108399,17 @@
     {
       "date": "2026-03-27",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-03-27",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -109659,7 +109668,7 @@
     {
       "date": "2026-03-28",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -110856,7 +110865,7 @@
     {
       "date": "2026-03-29",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -112305,7 +112314,7 @@
     {
       "date": "2026-03-30",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -112899,7 +112908,7 @@
     {
       "date": "2026-03-31",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -113142,7 +113151,7 @@
     {
       "date": "2026-03-31",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -113826,7 +113835,7 @@
     {
       "date": "2026-03-31",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -115194,7 +115203,7 @@
     {
       "date": "2026-04-01",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -115203,7 +115212,7 @@
     {
       "date": "2026-04-01",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -115860,7 +115869,7 @@
     {
       "date": "2026-04-02",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -116554,17 +116563,8 @@
       "date": "2026-04-02",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Other",
-      "signups": 0,
-      "first_visits": 1,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-04-02",
-      "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
       "signups": 2,
-      "first_visits": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 2
     },
@@ -116589,7 +116589,7 @@
     {
       "date": "2026-04-02",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -117228,7 +117228,7 @@
     {
       "date": "2026-04-03",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -117741,7 +117741,7 @@
     {
       "date": "2026-04-03",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -117858,7 +117858,7 @@
     {
       "date": "2026-04-03",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -117876,7 +117876,7 @@
     {
       "date": "2026-04-03",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -118335,7 +118335,7 @@
     {
       "date": "2026-04-04",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -119118,7 +119118,7 @@
     {
       "date": "2026-04-04",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -119262,7 +119262,7 @@
     {
       "date": "2026-04-04",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 1,
       "first_activations": 0,
@@ -119307,7 +119307,7 @@
     {
       "date": "2026-04-04",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -120621,7 +120621,7 @@
     {
       "date": "2026-04-05",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -121305,11 +121305,20 @@
     {
       "date": "2026-04-06",
       "studio": "Herriman",
-      "source": "Public API",
-      "signups": 4,
+      "source": "Other",
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
+    },
+    {
+      "date": "2026-04-06",
+      "studio": "Herriman",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-04-06",
@@ -121926,7 +121935,7 @@
     {
       "date": "2026-04-06",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -122043,7 +122052,7 @@
     {
       "date": "2026-04-06",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -122520,7 +122529,7 @@
     {
       "date": "2026-04-07",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -122736,7 +122745,7 @@
     {
       "date": "2026-04-07",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -123357,7 +123366,7 @@
     {
       "date": "2026-04-07",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -123519,7 +123528,7 @@
     {
       "date": "2026-04-07",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -124095,7 +124104,7 @@
     {
       "date": "2026-04-08",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -124239,7 +124248,7 @@
     {
       "date": "2026-04-08",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
@@ -124815,7 +124824,7 @@
     {
       "date": "2026-04-08",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -124959,7 +124968,7 @@
     {
       "date": "2026-04-08",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -124986,7 +124995,7 @@
     {
       "date": "2026-04-08",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -125679,7 +125688,7 @@
     {
       "date": "2026-04-09",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -126399,7 +126408,7 @@
     {
       "date": "2026-04-09",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -126876,7 +126885,7 @@
     {
       "date": "2026-04-10",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -127092,7 +127101,7 @@
     {
       "date": "2026-04-10",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -127614,7 +127623,7 @@
     {
       "date": "2026-04-10",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -127740,8 +127749,17 @@
     {
       "date": "2026-04-10",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-04-10",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -127758,7 +127776,7 @@
     {
       "date": "2026-04-10",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -128451,11 +128469,20 @@
     {
       "date": "2026-04-11",
       "studio": "Herriman",
-      "source": "Public API",
-      "signups": 9,
+      "source": "Other",
+      "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 5
+    },
+    {
+      "date": "2026-04-11",
+      "studio": "Herriman",
+      "source": "Public API",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-04-11",
@@ -129145,19 +129172,10 @@
       "date": "2026-04-11",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Other",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-04-11",
-      "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-04-11",
@@ -129171,7 +129189,7 @@
     {
       "date": "2026-04-11",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -129648,7 +129666,7 @@
     {
       "date": "2026-04-12",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -129882,7 +129900,7 @@
     {
       "date": "2026-04-12",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -130431,7 +130449,7 @@
     {
       "date": "2026-04-12",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -130539,7 +130557,7 @@
     {
       "date": "2026-04-12",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -130548,7 +130566,7 @@
     {
       "date": "2026-04-12",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -131007,7 +131025,7 @@
     {
       "date": "2026-04-13",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -131215,19 +131233,10 @@
       "date": "2026-04-13",
       "studio": "Herriman",
       "source": "Other",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-04-13",
-      "studio": "Herriman",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-04-13",
@@ -131926,16 +131935,7 @@
       "date": "2026-04-13",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Other",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-04-13",
-      "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -131961,7 +131961,7 @@
     {
       "date": "2026-04-13",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -133149,7 +133149,7 @@
     {
       "date": "2026-04-14",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -133266,7 +133266,7 @@
     {
       "date": "2026-04-14",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -133284,7 +133284,7 @@
     {
       "date": "2026-04-14",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -134436,7 +134436,7 @@
     {
       "date": "2026-04-15",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -134544,7 +134544,7 @@
     {
       "date": "2026-04-15",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -135183,7 +135183,7 @@
     {
       "date": "2026-04-16",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -135876,7 +135876,7 @@
     {
       "date": "2026-04-16",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -136281,7 +136281,7 @@
     {
       "date": "2026-04-17",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
@@ -137055,7 +137055,7 @@
     {
       "date": "2026-04-17",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -137136,7 +137136,7 @@
     {
       "date": "2026-04-17",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -137154,7 +137154,7 @@
     {
       "date": "2026-04-17",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -137829,7 +137829,7 @@
     {
       "date": "2026-04-18",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -138342,7 +138342,7 @@
     {
       "date": "2026-04-18",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -138405,7 +138405,7 @@
     {
       "date": "2026-04-18",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -138423,7 +138423,7 @@
     {
       "date": "2026-04-18",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -138882,7 +138882,7 @@
     {
       "date": "2026-04-19",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -139656,7 +139656,7 @@
     {
       "date": "2026-04-19",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -140115,7 +140115,7 @@
     {
       "date": "2026-04-20",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -140952,7 +140952,7 @@
     {
       "date": "2026-04-20",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -140970,7 +140970,7 @@
     {
       "date": "2026-04-20",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -141429,7 +141429,7 @@
     {
       "date": "2026-04-21",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -142356,7 +142356,7 @@
     {
       "date": "2026-04-21",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 3,
       "first_activations": 0,
@@ -142401,7 +142401,7 @@
     {
       "date": "2026-04-21",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -143130,7 +143130,7 @@
     {
       "date": "2026-04-22",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -143742,7 +143742,7 @@
     {
       "date": "2026-04-22",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -144264,7 +144264,7 @@
     {
       "date": "2026-04-23",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -144471,7 +144471,7 @@
     {
       "date": "2026-04-23",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -145128,7 +145128,7 @@
     {
       "date": "2026-04-23",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -145155,7 +145155,7 @@
     {
       "date": "2026-04-23",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -145623,7 +145623,7 @@
     {
       "date": "2026-04-24",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -145812,7 +145812,7 @@
     {
       "date": "2026-04-24",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -146298,7 +146298,7 @@
     {
       "date": "2026-04-24",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -146388,7 +146388,7 @@
     {
       "date": "2026-04-24",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -146397,7 +146397,7 @@
     {
       "date": "2026-04-24",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -146892,7 +146892,7 @@
     {
       "date": "2026-04-25",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -147072,7 +147072,7 @@
     {
       "date": "2026-04-25",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -147630,7 +147630,7 @@
     {
       "date": "2026-04-25",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -147738,7 +147738,7 @@
     {
       "date": "2026-04-25",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 10,
       "first_visits": 9,
       "first_activations": 0,
@@ -148143,7 +148143,7 @@
     {
       "date": "2026-04-26",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -148926,7 +148926,7 @@
     {
       "date": "2026-04-26",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -148953,7 +148953,7 @@
     {
       "date": "2026-04-26",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -149664,7 +149664,7 @@
     {
       "date": "2026-04-27",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -150285,7 +150285,7 @@
     {
       "date": "2026-04-27",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 2,
       "first_activations": 0,
@@ -151023,7 +151023,7 @@
     {
       "date": "2026-04-28",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -151681,19 +151681,10 @@
       "date": "2026-04-28",
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Other",
-      "signups": 0,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-04-28",
-      "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
       "signups": 2,
       "first_visits": 2,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 4
     },
     {
       "date": "2026-04-28",
@@ -151716,7 +151707,7 @@
     {
       "date": "2026-04-28",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -152220,7 +152211,7 @@
     {
       "date": "2026-04-29",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -152427,7 +152418,7 @@
     {
       "date": "2026-04-29",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -153012,7 +153003,7 @@
     {
       "date": "2026-04-29",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -153138,11 +153129,20 @@
     {
       "date": "2026-04-29",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
-      "signups": 4,
+      "source": "Other",
+      "signups": 3,
       "first_visits": 2,
       "first_activations": 0,
       "first_sales": 2
+    },
+    {
+      "date": "2026-04-29",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-04-29",
@@ -153174,7 +153174,7 @@
     {
       "date": "2026-04-29",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -153606,7 +153606,7 @@
     {
       "date": "2026-04-30",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -153768,11 +153768,20 @@
     {
       "date": "2026-04-30",
       "studio": "Herriman",
-      "source": "Public API",
-      "signups": 9,
+      "source": "Other",
+      "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 3
+      "first_sales": 2
+    },
+    {
+      "date": "2026-04-30",
+      "studio": "Herriman",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-04-30",
@@ -154344,7 +154353,7 @@
     {
       "date": "2026-04-30",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -154443,11 +154452,20 @@
     {
       "date": "2026-04-30",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
-      "signups": 4,
+      "source": "Other",
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
+    },
+    {
+      "date": "2026-04-30",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-04-30",
@@ -154974,11 +154992,20 @@
     {
       "date": "2026-05-01",
       "studio": "Herriman",
-      "source": "Public API",
-      "signups": 5,
+      "source": "Other",
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-05-01",
+      "studio": "Herriman",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-05-01",
@@ -155649,7 +155676,7 @@
     {
       "date": "2026-05-01",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -155685,7 +155712,7 @@
     {
       "date": "2026-05-01",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -156315,11 +156342,20 @@
     {
       "date": "2026-05-02",
       "studio": "Herriman",
-      "source": "Public API",
-      "signups": 5,
+      "source": "Other",
+      "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
+    },
+    {
+      "date": "2026-05-02",
+      "studio": "Herriman",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-05-02",
@@ -156891,11 +156927,20 @@
     {
       "date": "2026-05-02",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Other",
+      "signups": 0,
       "first_visits": 7,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-05-02",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-05-02",
@@ -157278,7 +157323,7 @@
     {
       "date": "2026-05-03",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -157485,7 +157530,7 @@
     {
       "date": "2026-05-03",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -157989,7 +158034,7 @@
     {
       "date": "2026-05-03",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -158097,7 +158142,7 @@
     {
       "date": "2026-05-03",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 1,
       "first_activations": 2,
@@ -158142,7 +158187,7 @@
     {
       "date": "2026-05-03",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -158664,7 +158709,7 @@
     {
       "date": "2026-05-04",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -158871,7 +158916,7 @@
     {
       "date": "2026-05-04",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -159465,7 +159510,7 @@
     {
       "date": "2026-05-04",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -159618,9 +159663,18 @@
     {
       "date": "2026-05-04",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-04",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 1,
-      "first_visits": 4,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -159654,7 +159708,7 @@
     {
       "date": "2026-05-04",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -160149,7 +160203,7 @@
     {
       "date": "2026-05-05",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -160383,7 +160437,7 @@
     {
       "date": "2026-05-05",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -160932,7 +160986,7 @@
     {
       "date": "2026-05-05",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -161078,7 +161132,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Other",
       "signups": 0,
-      "first_visits": 1,
+      "first_visits": 3,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -161087,7 +161141,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 2,
-      "first_visits": 3,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -161121,7 +161175,7 @@
     {
       "date": "2026-05-05",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -161526,7 +161580,7 @@
     {
       "date": "2026-05-06",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Word of Mouth",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -161706,7 +161760,7 @@
     {
       "date": "2026-05-06",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -162255,7 +162309,7 @@
     {
       "date": "2026-05-06",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -162408,9 +162462,18 @@
     {
       "date": "2026-05-06",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-06",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 0,
-      "first_visits": 3,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -163218,7 +163281,7 @@
     {
       "date": "2026-05-07",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 13,
       "first_visits": 0,
       "first_activations": 0,
@@ -163735,16 +163798,7 @@
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-05-07",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 0,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-05-07",
@@ -163920,7 +163974,7 @@
     {
       "date": "2026-05-07",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -164523,7 +164577,7 @@
     {
       "date": "2026-05-08",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -165018,7 +165072,7 @@
     {
       "date": "2026-05-08",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -165099,7 +165153,7 @@
     {
       "date": "2026-05-08",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -165216,9 +165270,18 @@
     {
       "date": "2026-05-08",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-08",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -165243,7 +165306,7 @@
     {
       "date": "2026-05-08",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -165704,7 +165767,7 @@
       "studio": "Dallas - Prestonwood",
       "source": "Other",
       "signups": 1,
-      "first_visits": 2,
+      "first_visits": 6,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -165713,7 +165776,7 @@
       "studio": "Dallas - Prestonwood",
       "source": "Public API",
       "signups": 1,
-      "first_visits": 4,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -165900,7 +165963,7 @@
     {
       "date": "2026-05-09",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -166395,7 +166458,7 @@
     {
       "date": "2026-05-09",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -166497,7 +166560,7 @@
       "source": "Other",
       "signups": 0,
       "first_visits": 1,
-      "first_activations": 3,
+      "first_activations": 30,
       "first_sales": 0
     },
     {
@@ -166515,7 +166578,7 @@
       "source": "Public API",
       "signups": 1,
       "first_visits": 0,
-      "first_activations": 27,
+      "first_activations": 0,
       "first_sales": 0
     },
     {
@@ -166926,9 +166989,18 @@
     {
       "date": "2026-05-10",
       "studio": "Dallas - Prestonwood",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-10",
+      "studio": "Dallas - Prestonwood",
       "source": "Public API",
       "signups": 0,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -167151,7 +167223,7 @@
     {
       "date": "2026-05-10",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -167583,7 +167655,7 @@
     {
       "date": "2026-05-10",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -167745,7 +167817,7 @@
     {
       "date": "2026-05-10",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -168267,9 +168339,9 @@
     {
       "date": "2026-05-11",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
-      "first_visits": 3,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -168290,6 +168362,15 @@
       "first_visits": 9,
       "first_activations": 3,
       "first_sales": 1
+    },
+    {
+      "date": "2026-05-11",
+      "studio": "Dallas - Prestonwood",
+      "source": "Word of Mouth",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-05-11",
@@ -168456,7 +168537,7 @@
     {
       "date": "2026-05-11",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -169149,7 +169230,7 @@
     {
       "date": "2026-05-11",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -169194,7 +169275,7 @@
     {
       "date": "2026-05-11",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -169716,18 +169797,18 @@
     {
       "date": "2026-05-12",
       "studio": "Dallas - Prestonwood",
-      "source": "Print Ads / Signs",
-      "signups": 1,
-      "first_visits": 0,
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
     {
       "date": "2026-05-12",
       "studio": "Dallas - Prestonwood",
-      "source": "Public API",
-      "signups": 0,
-      "first_visits": 1,
+      "source": "Print Ads / Signs",
+      "signups": 1,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -169995,7 +170076,7 @@
     {
       "date": "2026-05-12",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -170499,7 +170580,7 @@
     {
       "date": "2026-05-12",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -171203,15 +171284,6 @@
       "studio": "Dallas - Prestonwood",
       "source": "Other",
       "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-13",
-      "studio": "Dallas - Prestonwood",
-      "source": "Public API",
-      "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
@@ -171237,7 +171309,7 @@
     {
       "date": "2026-05-13",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -171480,7 +171552,7 @@
     {
       "date": "2026-05-13",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -172065,7 +172137,7 @@
     {
       "date": "2026-05-13",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -172209,10 +172281,19 @@
     {
       "date": "2026-05-13",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-13",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 2,
-      "first_visits": 2,
-      "first_activations": 1,
+      "first_visits": 1,
+      "first_activations": 0,
       "first_sales": 0
     },
     {
@@ -172947,7 +173028,7 @@
     {
       "date": "2026-05-14",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -173631,7 +173712,7 @@
     {
       "date": "2026-05-14",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -173856,7 +173937,7 @@
     {
       "date": "2026-05-15",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -174261,7 +174342,7 @@
     {
       "date": "2026-05-15",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
@@ -174819,7 +174900,7 @@
     {
       "date": "2026-05-15",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -174828,7 +174909,7 @@
     {
       "date": "2026-05-15",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -174945,6 +175026,15 @@
     {
       "date": "2026-05-15",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-15",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Print Ads / Signs",
       "signups": 0,
       "first_visits": 1,
@@ -174956,7 +175046,7 @@
       "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 0,
-      "first_visits": 2,
+      "first_visits": 1,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -175461,7 +175551,7 @@
       "source": "Other",
       "signups": 0,
       "first_visits": 0,
-      "first_activations": 1,
+      "first_activations": 11,
       "first_sales": 0
     },
     {
@@ -175471,15 +175561,6 @@
       "signups": 0,
       "first_visits": 1,
       "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-16",
-      "studio": "Dallas - Prestonwood",
-      "source": "Public API",
-      "signups": 0,
-      "first_visits": 0,
-      "first_activations": 11,
       "first_sales": 0
     },
     {
@@ -175506,7 +175587,7 @@
       "source": "Word of Mouth",
       "signups": 0,
       "first_visits": 0,
-      "first_activations": 1,
+      "first_activations": 2,
       "first_sales": 0
     },
     {
@@ -175710,7 +175791,7 @@
     {
       "date": "2026-05-16",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -176232,7 +176313,7 @@
     {
       "date": "2026-05-16",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -176565,7 +176646,7 @@
     {
       "date": "2026-05-17",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -176916,8 +176997,17 @@
     {
       "date": "2026-05-17",
       "studio": "Herriman",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-17",
+      "studio": "Herriman",
       "source": "Public API",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -177411,7 +177501,7 @@
     {
       "date": "2026-05-17",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -177780,7 +177870,7 @@
     {
       "date": "2026-05-18",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -178185,7 +178275,7 @@
     {
       "date": "2026-05-18",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -178752,7 +178842,7 @@
     {
       "date": "2026-05-18",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -178770,7 +178860,7 @@
     {
       "date": "2026-05-18",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -179580,7 +179670,7 @@
     {
       "date": "2026-05-19",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -180084,7 +180174,7 @@
     {
       "date": "2026-05-19",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -181372,16 +181462,7 @@
       "date": "2026-05-20",
       "studio": "Naples - Mercato",
       "source": "Other",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-05-20",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 2,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
@@ -181389,7 +181470,7 @@
     {
       "date": "2026-05-20",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -181587,7 +181668,7 @@
     {
       "date": "2026-05-20",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -182127,7 +182208,7 @@
     {
       "date": "2026-05-21",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
@@ -183054,7 +183135,7 @@
     {
       "date": "2026-05-22",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -183414,7 +183495,7 @@
     {
       "date": "2026-05-22",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -183936,11 +184017,20 @@
     {
       "date": "2026-05-22",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
-      "signups": 2,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-05-22",
+      "studio": "Orlando - Dr Phillips",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-05-22",
@@ -184305,7 +184395,7 @@
     {
       "date": "2026-05-23",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -184692,7 +184782,7 @@
     {
       "date": "2026-05-23",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -185133,11 +185223,20 @@
     {
       "date": "2026-05-23",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 2,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
+    },
+    {
+      "date": "2026-05-23",
+      "studio": "Naples - Mercato",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-05-23",
@@ -185250,9 +185349,18 @@
     {
       "date": "2026-05-23",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-23",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 1,
-      "first_visits": 1,
+      "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -185745,7 +185853,7 @@
     {
       "date": "2026-05-24",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -185862,7 +185970,7 @@
     {
       "date": "2026-05-24",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -186231,7 +186339,7 @@
     {
       "date": "2026-05-24",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -186438,7 +186546,7 @@
     {
       "date": "2026-05-24",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -187104,7 +187212,7 @@
     {
       "date": "2026-05-25",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -187599,7 +187707,7 @@
     {
       "date": "2026-05-25",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
@@ -188076,7 +188184,7 @@
     {
       "date": "2026-05-26",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -188445,7 +188553,7 @@
     {
       "date": "2026-05-26",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -189084,7 +189192,7 @@
     {
       "date": "2026-05-26",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -189156,7 +189264,7 @@
     {
       "date": "2026-05-26",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -189282,7 +189390,7 @@
     {
       "date": "2026-05-26",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -189543,7 +189651,7 @@
     {
       "date": "2026-05-27",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -189795,7 +189903,7 @@
     {
       "date": "2026-05-27",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -190002,7 +190110,7 @@
     {
       "date": "2026-05-27",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 17,
       "first_visits": 0,
       "first_activations": 0,
@@ -190569,8 +190677,17 @@
     {
       "date": "2026-05-27",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-27",
+      "studio": "Naples - Mercato",
       "source": "Public API",
-      "signups": 2,
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -190587,7 +190704,7 @@
     {
       "date": "2026-05-27",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -191478,7 +191595,7 @@
     {
       "date": "2026-05-28",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -192000,7 +192117,7 @@
     {
       "date": "2026-05-28",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -192189,7 +192306,7 @@
     {
       "date": "2026-05-28",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -192864,7 +192981,7 @@
     {
       "date": "2026-05-29",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -193359,7 +193476,7 @@
     {
       "date": "2026-05-29",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -193377,7 +193494,7 @@
     {
       "date": "2026-05-29",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -193530,7 +193647,7 @@
     {
       "date": "2026-05-29",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -193845,7 +193962,7 @@
     {
       "date": "2026-05-30",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -194322,7 +194439,7 @@
     {
       "date": "2026-05-30",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -194916,7 +195033,7 @@
     {
       "date": "2026-05-30",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -194961,7 +195078,7 @@
     {
       "date": "2026-05-30",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -195060,9 +195177,18 @@
     {
       "date": "2026-05-30",
       "studio": "Pinecrest - Palmetto Bay",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-05-30",
+      "studio": "Pinecrest - Palmetto Bay",
       "source": "Public API",
       "signups": 1,
-      "first_visits": 3,
+      "first_visits": 2,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -195339,7 +195465,7 @@
     {
       "date": "2026-05-31",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -195771,7 +195897,7 @@
     {
       "date": "2026-05-31",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -196302,7 +196428,7 @@
     {
       "date": "2026-05-31",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -196743,7 +196869,7 @@
     {
       "date": "2026-06-01",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -197859,7 +197985,7 @@
     {
       "date": "2026-06-01",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -198768,7 +198894,7 @@
     {
       "date": "2026-06-02",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -199353,7 +199479,7 @@
     {
       "date": "2026-06-02",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -199380,7 +199506,7 @@
     {
       "date": "2026-06-02",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -199551,7 +199677,7 @@
     {
       "date": "2026-06-02",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -199830,7 +199956,7 @@
     {
       "date": "2026-06-03",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -200055,7 +200181,7 @@
     {
       "date": "2026-06-03",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -200262,7 +200388,7 @@
     {
       "date": "2026-06-03",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -200928,7 +201054,7 @@
     {
       "date": "2026-06-03",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -201369,7 +201495,7 @@
     {
       "date": "2026-06-04",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -201621,7 +201747,7 @@
     {
       "date": "2026-06-04",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 45,
       "first_visits": 0,
       "first_activations": 0,
@@ -201783,7 +201909,7 @@
     {
       "date": "2026-06-04",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -202251,7 +202377,7 @@
     {
       "date": "2026-06-04",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -202269,7 +202395,7 @@
     {
       "date": "2026-06-04",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -202719,7 +202845,7 @@
     {
       "date": "2026-06-05",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -202935,7 +203061,7 @@
     {
       "date": "2026-06-05",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -204141,7 +204267,7 @@
     {
       "date": "2026-06-06",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -204375,7 +204501,7 @@
     {
       "date": "2026-06-06",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 10,
       "first_visits": 0,
       "first_activations": 0,
@@ -204555,7 +204681,7 @@
     {
       "date": "2026-06-06",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -205104,7 +205230,7 @@
     {
       "date": "2026-06-06",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -205122,7 +205248,7 @@
     {
       "date": "2026-06-06",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -205518,7 +205644,7 @@
     {
       "date": "2026-06-07",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -205707,7 +205833,7 @@
     {
       "date": "2026-06-07",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -206382,7 +206508,7 @@
     {
       "date": "2026-06-07",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -206409,7 +206535,7 @@
     {
       "date": "2026-06-07",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -206481,7 +206607,7 @@
     {
       "date": "2026-06-07",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -207174,7 +207300,7 @@
     {
       "date": "2026-06-08",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -207363,7 +207489,7 @@
     {
       "date": "2026-06-08",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
@@ -207903,7 +208029,7 @@
     {
       "date": "2026-06-08",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -208065,7 +208191,7 @@
     {
       "date": "2026-06-08",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -208353,7 +208479,7 @@
     {
       "date": "2026-06-09",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -208641,7 +208767,7 @@
     {
       "date": "2026-06-09",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -208893,7 +209019,7 @@
     {
       "date": "2026-06-09",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -209505,7 +209631,7 @@
     {
       "date": "2026-06-09",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -209523,7 +209649,7 @@
     {
       "date": "2026-06-09",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -209577,7 +209703,7 @@
     {
       "date": "2026-06-09",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -209712,7 +209838,7 @@
     {
       "date": "2026-06-09",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -209991,7 +210117,7 @@
     {
       "date": "2026-06-10",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -210261,11 +210387,20 @@
     {
       "date": "2026-06-10",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
-      "signups": 6,
+      "source": "Other",
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
+    },
+    {
+      "date": "2026-06-10",
+      "studio": "Dallas - Uptown",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-06-10",
@@ -210514,19 +210649,10 @@
       "date": "2026-06-10",
       "studio": "Herriman",
       "source": "Other",
-      "signups": 1,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-06-10",
-      "studio": "Herriman",
-      "source": "Public API",
-      "signups": 4,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 3
     },
     {
       "date": "2026-06-10",
@@ -211161,7 +211287,7 @@
     {
       "date": "2026-06-10",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -211224,7 +211350,7 @@
     {
       "date": "2026-06-10",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -211647,7 +211773,7 @@
     {
       "date": "2026-06-11",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -211836,7 +211962,7 @@
     {
       "date": "2026-06-11",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -212583,7 +212709,7 @@
     {
       "date": "2026-06-11",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -212691,7 +212817,7 @@
     {
       "date": "2026-06-11",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -212952,7 +213078,7 @@
     {
       "date": "2026-06-12",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -213213,7 +213339,7 @@
     {
       "date": "2026-06-12",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -213402,7 +213528,7 @@
     {
       "date": "2026-06-12",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -213852,7 +213978,7 @@
     {
       "date": "2026-06-12",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -213879,7 +214005,7 @@
     {
       "date": "2026-06-12",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -213942,7 +214068,7 @@
     {
       "date": "2026-06-12",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -214086,7 +214212,7 @@
     {
       "date": "2026-06-12",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -214383,7 +214509,7 @@
     {
       "date": "2026-06-13",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -214581,7 +214707,7 @@
     {
       "date": "2026-06-13",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -215562,7 +215688,7 @@
     {
       "date": "2026-06-13",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -215832,7 +215958,7 @@
     {
       "date": "2026-06-14",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -216039,7 +216165,7 @@
     {
       "date": "2026-06-14",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -216696,7 +216822,7 @@
     {
       "date": "2026-06-14",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -216714,7 +216840,7 @@
     {
       "date": "2026-06-14",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -216876,7 +217002,7 @@
     {
       "date": "2026-06-14",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -218190,7 +218316,7 @@
     {
       "date": "2026-06-15",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -218433,7 +218559,7 @@
     {
       "date": "2026-06-15",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -218757,7 +218883,7 @@
     {
       "date": "2026-06-16",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -219054,7 +219180,7 @@
     {
       "date": "2026-06-16",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 10,
       "first_visits": 0,
       "first_activations": 0,
@@ -219774,7 +219900,7 @@
     {
       "date": "2026-06-16",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -219864,7 +219990,7 @@
     {
       "date": "2026-06-16",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -219981,7 +220107,7 @@
     {
       "date": "2026-06-16",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -220260,7 +220386,7 @@
     {
       "date": "2026-06-17",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -220458,7 +220584,7 @@
     {
       "date": "2026-06-17",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -221169,7 +221295,7 @@
     {
       "date": "2026-06-17",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -221664,7 +221790,7 @@
     {
       "date": "2026-06-18",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -221880,7 +222006,7 @@
     {
       "date": "2026-06-18",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -222069,7 +222195,7 @@
     {
       "date": "2026-06-18",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -222474,7 +222600,7 @@
     {
       "date": "2026-06-18",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -222555,7 +222681,7 @@
     {
       "date": "2026-06-18",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -222933,7 +223059,7 @@
     {
       "date": "2026-06-19",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -223068,7 +223194,7 @@
     {
       "date": "2026-06-19",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -223293,7 +223419,7 @@
     {
       "date": "2026-06-19",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -223797,7 +223923,7 @@
     {
       "date": "2026-06-19",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -223824,7 +223950,7 @@
     {
       "date": "2026-06-19",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -224031,7 +224157,7 @@
     {
       "date": "2026-06-19",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -224355,7 +224481,7 @@
     {
       "date": "2026-06-20",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -224589,7 +224715,7 @@
     {
       "date": "2026-06-20",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -224805,7 +224931,7 @@
     {
       "date": "2026-06-20",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -225652,19 +225778,10 @@
       "date": "2026-06-21",
       "studio": "Aventura",
       "source": "Other",
-      "signups": 1,
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-06-21",
-      "studio": "Aventura",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
+      "first_sales": 2
     },
     {
       "date": "2026-06-21",
@@ -225876,7 +225993,7 @@
     {
       "date": "2026-06-21",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
@@ -226065,7 +226182,7 @@
     {
       "date": "2026-06-21",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -226560,7 +226677,7 @@
     {
       "date": "2026-06-21",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -226740,7 +226857,7 @@
     {
       "date": "2026-06-21",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -226947,7 +227064,7 @@
     {
       "date": "2026-06-22",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -227415,7 +227532,7 @@
     {
       "date": "2026-06-22",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -227883,7 +228000,7 @@
     {
       "date": "2026-06-22",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -227901,7 +228018,7 @@
     {
       "date": "2026-06-22",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -228072,7 +228189,7 @@
     {
       "date": "2026-06-22",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -228333,7 +228450,7 @@
     {
       "date": "2026-06-23",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -228585,7 +228702,7 @@
     {
       "date": "2026-06-23",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -228810,7 +228927,7 @@
     {
       "date": "2026-06-23",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -229386,7 +229503,7 @@
     {
       "date": "2026-06-23",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -229800,7 +229917,7 @@
     {
       "date": "2026-06-24",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -229989,7 +230106,7 @@
     {
       "date": "2026-06-24",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -230160,7 +230277,7 @@
     {
       "date": "2026-06-24",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -230700,7 +230817,7 @@
     {
       "date": "2026-06-24",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -230718,7 +230835,7 @@
     {
       "date": "2026-06-24",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -230817,7 +230934,7 @@
     {
       "date": "2026-06-24",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -230916,7 +231033,7 @@
     {
       "date": "2026-06-24",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -231186,7 +231303,7 @@
     {
       "date": "2026-06-25",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -231393,7 +231510,7 @@
     {
       "date": "2026-06-25",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -231555,7 +231672,7 @@
     {
       "date": "2026-06-25",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
@@ -232113,7 +232230,7 @@
     {
       "date": "2026-06-25",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -232707,7 +232824,7 @@
     {
       "date": "2026-06-26",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -232969,16 +233086,7 @@
       "date": "2026-06-26",
       "studio": "Herriman",
       "source": "Other",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
-    },
-    {
-      "date": "2026-06-26",
-      "studio": "Herriman",
-      "source": "Public API",
-      "signups": 4,
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -233661,7 +233769,7 @@
     {
       "date": "2026-06-26",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -233931,7 +234039,7 @@
     {
       "date": "2026-06-27",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -234174,7 +234282,7 @@
     {
       "date": "2026-06-27",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 8,
       "first_visits": 0,
       "first_activations": 0,
@@ -234426,7 +234534,7 @@
     {
       "date": "2026-06-27",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 15,
       "first_visits": 0,
       "first_activations": 0,
@@ -234894,7 +235002,7 @@
     {
       "date": "2026-06-27",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -235047,7 +235155,7 @@
     {
       "date": "2026-06-27",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -235281,7 +235389,7 @@
     {
       "date": "2026-06-28",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -235506,11 +235614,20 @@
     {
       "date": "2026-06-28",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
-      "signups": 2,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 1
+    },
+    {
+      "date": "2026-06-28",
+      "studio": "Dallas - Uptown",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
     },
     {
       "date": "2026-06-28",
@@ -235668,7 +235785,7 @@
     {
       "date": "2026-06-28",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -236082,8 +236199,8 @@
     {
       "date": "2026-06-28",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
-      "signups": 5,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -236091,8 +236208,8 @@
     {
       "date": "2026-06-28",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Print Ads / Signs",
+      "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -236181,7 +236298,7 @@
     {
       "date": "2026-06-28",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -236298,7 +236415,7 @@
     {
       "date": "2026-06-28",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -236748,7 +236865,7 @@
     {
       "date": "2026-06-29",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -236964,7 +237081,7 @@
     {
       "date": "2026-06-29",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -237558,7 +237675,7 @@
     {
       "date": "2026-06-29",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -237567,7 +237684,7 @@
     {
       "date": "2026-06-29",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Print Ads / Signs",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -237576,7 +237693,7 @@
     {
       "date": "2026-06-29",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -237648,7 +237765,7 @@
     {
       "date": "2026-06-29",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -237774,7 +237891,7 @@
     {
       "date": "2026-06-29",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -238062,7 +238179,7 @@
     {
       "date": "2026-06-30",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -238503,7 +238620,7 @@
     {
       "date": "2026-06-30",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -239061,7 +239178,7 @@
     {
       "date": "2026-06-30",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -239169,7 +239286,7 @@
     {
       "date": "2026-06-30",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -239574,7 +239691,7 @@
     {
       "date": "2026-07-01",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -239790,7 +239907,7 @@
     {
       "date": "2026-07-01",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -240015,7 +240132,7 @@
     {
       "date": "2026-07-01",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -240501,7 +240618,7 @@
     {
       "date": "2026-07-01",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -240528,7 +240645,7 @@
     {
       "date": "2026-07-01",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -240726,7 +240843,7 @@
     {
       "date": "2026-07-01",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -241194,7 +241311,7 @@
     {
       "date": "2026-07-02",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -241950,7 +242067,7 @@
     {
       "date": "2026-07-02",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -242085,7 +242202,7 @@
     {
       "date": "2026-07-02",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -242481,7 +242598,7 @@
     {
       "date": "2026-07-03",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -242895,11 +243012,20 @@
     {
       "date": "2026-07-03",
       "studio": "Herriman",
-      "source": "Public API",
-      "signups": 7,
+      "source": "Other",
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
+    },
+    {
+      "date": "2026-07-03",
+      "studio": "Herriman",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
     },
     {
       "date": "2026-07-03",
@@ -243417,7 +243543,7 @@
     {
       "date": "2026-07-03",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -243498,7 +243624,7 @@
     {
       "date": "2026-07-03",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -243885,7 +244011,7 @@
     {
       "date": "2026-07-04",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -244092,7 +244218,7 @@
     {
       "date": "2026-07-04",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -244335,7 +244461,7 @@
     {
       "date": "2026-07-04",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -244767,8 +244893,8 @@
     {
       "date": "2026-07-04",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
-      "signups": 3,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -244776,8 +244902,8 @@
     {
       "date": "2026-07-04",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Print Ads / Signs",
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -244794,7 +244920,7 @@
     {
       "date": "2026-07-04",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -244956,7 +245082,7 @@
     {
       "date": "2026-07-04",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -245172,7 +245298,7 @@
     {
       "date": "2026-07-05",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -245307,7 +245433,7 @@
     {
       "date": "2026-07-05",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -245919,20 +246045,20 @@
     {
       "date": "2026-07-05",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-05",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
-    },
-    {
-      "date": "2026-07-05",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-07-05",
@@ -245946,7 +246072,7 @@
     {
       "date": "2026-07-05",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -246054,7 +246180,7 @@
     {
       "date": "2026-07-05",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -246153,7 +246279,7 @@
     {
       "date": "2026-07-05",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -247359,7 +247485,7 @@
     {
       "date": "2026-07-06",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -247449,7 +247575,7 @@
     {
       "date": "2026-07-06",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -247998,7 +248124,7 @@
     {
       "date": "2026-07-07",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -248754,7 +248880,7 @@
     {
       "date": "2026-07-07",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -249006,7 +249132,7 @@
     {
       "date": "2026-07-07",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -249294,7 +249420,7 @@
     {
       "date": "2026-07-08",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -249483,7 +249609,7 @@
     {
       "date": "2026-07-08",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -250203,20 +250329,20 @@
     {
       "date": "2026-07-08",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-08",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 10,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
-    },
-    {
-      "date": "2026-07-08",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-07-08",
@@ -250230,7 +250356,7 @@
     {
       "date": "2026-07-08",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -250311,7 +250437,7 @@
     {
       "date": "2026-07-08",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -250653,7 +250779,7 @@
     {
       "date": "2026-07-09",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -250869,7 +250995,7 @@
     {
       "date": "2026-07-09",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -251085,7 +251211,7 @@
     {
       "date": "2026-07-09",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -251580,7 +251706,7 @@
     {
       "date": "2026-07-09",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -252012,7 +252138,7 @@
     {
       "date": "2026-07-10",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -252849,20 +252975,20 @@
     {
       "date": "2026-07-10",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-10",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-07-10",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-07-10",
@@ -252885,7 +253011,7 @@
     {
       "date": "2026-07-10",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -253119,7 +253245,7 @@
     {
       "date": "2026-07-10",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -253803,7 +253929,7 @@
     {
       "date": "2026-07-11",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -254289,20 +254415,20 @@
     {
       "date": "2026-07-11",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-11",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 14,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 4
-    },
-    {
-      "date": "2026-07-11",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-07-11",
@@ -254325,7 +254451,7 @@
     {
       "date": "2026-07-11",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -254514,7 +254640,7 @@
     {
       "date": "2026-07-11",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -254703,7 +254829,7 @@
     {
       "date": "2026-07-12",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -254829,7 +254955,7 @@
     {
       "date": "2026-07-12",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -255027,7 +255153,7 @@
     {
       "date": "2026-07-12",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -255522,7 +255648,7 @@
     {
       "date": "2026-07-12",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -255531,7 +255657,7 @@
     {
       "date": "2026-07-12",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Print Ads / Signs",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -255549,7 +255675,7 @@
     {
       "date": "2026-07-12",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -255649,19 +255775,10 @@
       "date": "2026-07-12",
       "studio": "Orlando - Dr Phillips",
       "source": "Other",
-      "signups": 1,
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
-      "first_sales": 1
-    },
-    {
-      "date": "2026-07-12",
-      "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
-      "signups": 2,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 2
+      "first_sales": 3
     },
     {
       "date": "2026-07-12",
@@ -255801,7 +255918,7 @@
     {
       "date": "2026-07-12",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -256098,7 +256215,7 @@
     {
       "date": "2026-07-13",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -256323,7 +256440,7 @@
     {
       "date": "2026-07-13",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -256584,7 +256701,7 @@
     {
       "date": "2026-07-13",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -257187,8 +257304,8 @@
     {
       "date": "2026-07-13",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
-      "signups": 2,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -257196,8 +257313,8 @@
     {
       "date": "2026-07-13",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Print Ads / Signs",
+      "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -258069,7 +258186,7 @@
     {
       "date": "2026-07-14",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 13,
       "first_visits": 0,
       "first_activations": 0,
@@ -258636,7 +258753,7 @@
     {
       "date": "2026-07-14",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -258663,7 +258780,7 @@
     {
       "date": "2026-07-14",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -259158,7 +259275,7 @@
     {
       "date": "2026-07-15",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -259383,7 +259500,7 @@
     {
       "date": "2026-07-15",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -259608,7 +259725,7 @@
     {
       "date": "2026-07-15",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -260157,20 +260274,20 @@
     {
       "date": "2026-07-15",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-07-15",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 2
-    },
-    {
-      "date": "2026-07-15",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
     },
     {
       "date": "2026-07-15",
@@ -260202,7 +260319,7 @@
     {
       "date": "2026-07-15",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -260283,7 +260400,7 @@
     {
       "date": "2026-07-15",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -260409,7 +260526,7 @@
     {
       "date": "2026-07-15",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -260697,7 +260814,7 @@
     {
       "date": "2026-07-16",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -260895,7 +261012,7 @@
     {
       "date": "2026-07-16",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -261633,20 +261750,20 @@
     {
       "date": "2026-07-16",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-07-16",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 12,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 3
-    },
-    {
-      "date": "2026-07-16",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 0,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
     },
     {
       "date": "2026-07-16",
@@ -261669,7 +261786,7 @@
     {
       "date": "2026-07-16",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -261867,7 +261984,7 @@
     {
       "date": "2026-07-16",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -262128,7 +262245,7 @@
     {
       "date": "2026-07-17",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -262497,7 +262614,7 @@
     {
       "date": "2026-07-17",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -263091,7 +263208,7 @@
     {
       "date": "2026-07-17",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -263595,7 +263712,7 @@
     {
       "date": "2026-07-18",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -263811,7 +263928,7 @@
     {
       "date": "2026-07-18",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
@@ -264387,7 +264504,7 @@
     {
       "date": "2026-07-18",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -264783,7 +264900,7 @@
     {
       "date": "2026-07-19",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -265161,7 +265278,7 @@
     {
       "date": "2026-07-19",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -265584,7 +265701,7 @@
     {
       "date": "2026-07-19",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -265593,7 +265710,7 @@
     {
       "date": "2026-07-19",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Print Ads / Signs",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -265611,7 +265728,7 @@
     {
       "date": "2026-07-19",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -265710,7 +265827,7 @@
     {
       "date": "2026-07-19",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -265854,7 +265971,7 @@
     {
       "date": "2026-07-19",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -266106,7 +266223,7 @@
     {
       "date": "2026-07-20",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -266412,7 +266529,7 @@
     {
       "date": "2026-07-20",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -266655,7 +266772,7 @@
     {
       "date": "2026-07-20",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 9,
       "first_visits": 0,
       "first_activations": 0,
@@ -267213,7 +267330,7 @@
     {
       "date": "2026-07-20",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -267240,7 +267357,7 @@
     {
       "date": "2026-07-20",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -267321,7 +267438,7 @@
     {
       "date": "2026-07-20",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -267411,7 +267528,7 @@
     {
       "date": "2026-07-20",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -267690,7 +267807,7 @@
     {
       "date": "2026-07-21",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -268086,7 +268203,7 @@
     {
       "date": "2026-07-21",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -268563,20 +268680,20 @@
     {
       "date": "2026-07-21",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-21",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-07-21",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-07-21",
@@ -268599,7 +268716,7 @@
     {
       "date": "2026-07-21",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -268680,7 +268797,7 @@
     {
       "date": "2026-07-21",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -268788,7 +268905,7 @@
     {
       "date": "2026-07-21",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -269148,7 +269265,7 @@
     {
       "date": "2026-07-22",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -269355,7 +269472,7 @@
     {
       "date": "2026-07-22",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -269589,7 +269706,7 @@
     {
       "date": "2026-07-22",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -270174,7 +270291,7 @@
     {
       "date": "2026-07-22",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -270255,7 +270372,7 @@
     {
       "date": "2026-07-22",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -270363,7 +270480,7 @@
     {
       "date": "2026-07-22",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -270579,7 +270696,7 @@
     {
       "date": "2026-07-23",
       "studio": "Austin - Highland",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -270651,7 +270768,7 @@
     {
       "date": "2026-07-23",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -270831,7 +270948,7 @@
     {
       "date": "2026-07-23",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -270948,7 +271065,7 @@
     {
       "date": "2026-07-23",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -271092,7 +271209,7 @@
     {
       "date": "2026-07-23",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -271344,7 +271461,7 @@
     {
       "date": "2026-07-23",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -271560,7 +271677,7 @@
     {
       "date": "2026-07-23",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -271587,7 +271704,7 @@
     {
       "date": "2026-07-23",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -271677,7 +271794,7 @@
     {
       "date": "2026-07-23",
       "studio": "Old Bridge",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -271704,7 +271821,7 @@
     {
       "date": "2026-07-23",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 130,
       "first_visits": 0,
       "first_activations": 0,
@@ -271767,7 +271884,7 @@
     {
       "date": "2026-07-23",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -271812,7 +271929,7 @@
     {
       "date": "2026-07-23",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -272046,7 +272163,7 @@
     {
       "date": "2026-07-24",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -272244,7 +272361,7 @@
     {
       "date": "2026-07-24",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -272325,7 +272442,7 @@
     {
       "date": "2026-07-24",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -272442,7 +272559,7 @@
     {
       "date": "2026-07-24",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -272883,20 +273000,20 @@
     {
       "date": "2026-07-24",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-07-24",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 12,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 5
-    },
-    {
-      "date": "2026-07-24",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 1
     },
     {
       "date": "2026-07-24",
@@ -272982,7 +273099,7 @@
     {
       "date": "2026-07-24",
       "studio": "Old Bridge",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -273018,7 +273135,7 @@
     {
       "date": "2026-07-24",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 35,
       "first_visits": 0,
       "first_activations": 0,
@@ -273108,7 +273225,7 @@
     {
       "date": "2026-07-24",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -273342,7 +273459,7 @@
     {
       "date": "2026-07-25",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -273522,7 +273639,7 @@
     {
       "date": "2026-07-25",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -273756,7 +273873,7 @@
     {
       "date": "2026-07-25",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -274287,7 +274404,7 @@
     {
       "date": "2026-07-25",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -274341,7 +274458,7 @@
     {
       "date": "2026-07-25",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -274458,7 +274575,7 @@
     {
       "date": "2026-07-25",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -274746,7 +274863,7 @@
     {
       "date": "2026-07-26",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -274917,7 +275034,7 @@
     {
       "date": "2026-07-26",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 7,
       "first_visits": 0,
       "first_activations": 0,
@@ -274989,7 +275106,7 @@
     {
       "date": "2026-07-26",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -275142,7 +275259,7 @@
     {
       "date": "2026-07-26",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -275421,7 +275538,7 @@
     {
       "date": "2026-07-26",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -275601,20 +275718,20 @@
     {
       "date": "2026-07-26",
       "studio": "Naples - Mercato",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-07-26",
+      "studio": "Naples - Mercato",
       "source": "Print Ads / Signs",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 1
-    },
-    {
-      "date": "2026-07-26",
-      "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
-      "first_visits": 0,
-      "first_activations": 0,
-      "first_sales": 0
     },
     {
       "date": "2026-07-26",
@@ -275628,7 +275745,7 @@
     {
       "date": "2026-07-26",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -275691,7 +275808,7 @@
     {
       "date": "2026-07-26",
       "studio": "Old Bridge",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -275727,7 +275844,7 @@
     {
       "date": "2026-07-26",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -275835,7 +275952,7 @@
     {
       "date": "2026-07-26",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -276132,7 +276249,7 @@
     {
       "date": "2026-07-27",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -276384,7 +276501,7 @@
     {
       "date": "2026-07-27",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -276573,7 +276690,7 @@
     {
       "date": "2026-07-27",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -277122,7 +277239,7 @@
     {
       "date": "2026-07-27",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -277239,7 +277356,7 @@
     {
       "date": "2026-07-27",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -277644,7 +277761,7 @@
     {
       "date": "2026-07-28",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -277869,7 +277986,7 @@
     {
       "date": "2026-07-28",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -277986,7 +278103,7 @@
     {
       "date": "2026-07-28",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -278094,7 +278211,7 @@
     {
       "date": "2026-07-28",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -278400,7 +278517,7 @@
     {
       "date": "2026-07-28",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 5,
       "first_visits": 0,
       "first_activations": 0,
@@ -278697,8 +278814,8 @@
     {
       "date": "2026-07-28",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
-      "signups": 6,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -278706,8 +278823,8 @@
     {
       "date": "2026-07-28",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Print Ads / Signs",
+      "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -278814,7 +278931,7 @@
     {
       "date": "2026-07-28",
       "studio": "Old Bridge",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -278841,7 +278958,7 @@
     {
       "date": "2026-07-28",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 49,
       "first_visits": 0,
       "first_activations": 0,
@@ -278931,7 +279048,7 @@
     {
       "date": "2026-07-28",
       "studio": "Pinecrest - Palmetto Bay",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -279219,7 +279336,7 @@
     {
       "date": "2026-07-29",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -279408,7 +279525,7 @@
     {
       "date": "2026-07-29",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -279489,7 +279606,7 @@
     {
       "date": "2026-07-29",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -279615,7 +279732,7 @@
     {
       "date": "2026-07-29",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -279921,7 +280038,7 @@
     {
       "date": "2026-07-29",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 6,
       "first_visits": 0,
       "first_activations": 0,
@@ -280173,8 +280290,8 @@
     {
       "date": "2026-07-29",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
-      "signups": 3,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -280182,8 +280299,8 @@
     {
       "date": "2026-07-29",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Print Ads / Signs",
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -280227,7 +280344,7 @@
     {
       "date": "2026-07-29",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -280344,7 +280461,7 @@
     {
       "date": "2026-07-29",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -280443,7 +280560,7 @@
     {
       "date": "2026-07-29",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -280704,7 +280821,7 @@
     {
       "date": "2026-07-30",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -280956,7 +281073,7 @@
     {
       "date": "2026-07-30",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -281118,7 +281235,7 @@
     {
       "date": "2026-07-30",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -281442,7 +281559,7 @@
     {
       "date": "2026-07-30",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -281676,8 +281793,8 @@
     {
       "date": "2026-07-30",
       "studio": "Naples - Mercato",
-      "source": "Print Ads / Signs",
-      "signups": 3,
+      "source": "Other",
+      "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -281685,8 +281802,8 @@
     {
       "date": "2026-07-30",
       "studio": "Naples - Mercato",
-      "source": "Public API",
-      "signups": 1,
+      "source": "Print Ads / Signs",
+      "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -281793,7 +281910,7 @@
     {
       "date": "2026-07-30",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -281883,7 +282000,7 @@
     {
       "date": "2026-07-30",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -282342,7 +282459,7 @@
     {
       "date": "2026-07-31",
       "studio": "Dallas - Uptown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 0,
       "first_visits": 0,
       "first_activations": 0,
@@ -282441,7 +282558,7 @@
     {
       "date": "2026-07-31",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -282549,7 +282666,7 @@
     {
       "date": "2026-07-31",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -282810,7 +282927,7 @@
     {
       "date": "2026-07-31",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -283071,7 +283188,7 @@
     {
       "date": "2026-07-31",
       "studio": "Old Bridge",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -283179,7 +283296,7 @@
     {
       "date": "2026-07-31",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -283413,7 +283530,7 @@
     {
       "date": "2026-08-01",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -283764,7 +283881,7 @@
     {
       "date": "2026-08-01",
       "studio": "Herriman",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -284295,7 +284412,7 @@
     {
       "date": "2026-08-01",
       "studio": "Naples - Mercato",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -284322,7 +284439,7 @@
     {
       "date": "2026-08-01",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 2,
       "first_visits": 0,
       "first_activations": 0,
@@ -284466,7 +284583,7 @@
     {
       "date": "2026-08-01",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -284835,7 +284952,7 @@
     {
       "date": "2026-08-02",
       "studio": "Aventura",
-      "source": "Public API",
+      "source": "Other",
       "signups": 4,
       "first_visits": 0,
       "first_activations": 0,
@@ -285114,7 +285231,7 @@
     {
       "date": "2026-08-02",
       "studio": "Dunwoody",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -285402,7 +285519,7 @@
     {
       "date": "2026-08-02",
       "studio": "Middletown",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -285645,7 +285762,7 @@
     {
       "date": "2026-08-02",
       "studio": "North Miami",
-      "source": "Public API",
+      "source": "Other",
       "signups": 3,
       "first_visits": 0,
       "first_activations": 0,
@@ -285753,7 +285870,7 @@
     {
       "date": "2026-08-02",
       "studio": "Orlando - Dr Phillips",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -285852,7 +285969,7 @@
     {
       "date": "2026-08-02",
       "studio": "Reston",
-      "source": "Public API",
+      "source": "Other",
       "signups": 1,
       "first_visits": 0,
       "first_activations": 0,
@@ -286055,6 +286172,1464 @@
       "first_visits": 2,
       "first_activations": 2,
       "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Highland",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Highland",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Highland",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Highland",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Highland",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Highland",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Zilker",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Zilker",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Zilker",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Austin - Zilker",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Aventura",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Aventura",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Boca Raton",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Boca Raton",
+      "source": "Local Listings",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Boca Raton",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Boca Raton",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Charlotte - Noda",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Charlotte - Noda",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Charlotte - Noda",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Charlotte - Noda",
+      "source": "Meta Ads",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Charlotte - Noda",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Charlotte - Noda",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Coral Gables",
+      "source": "ClassPass / Platforms",
+      "signups": 7,
+      "first_visits": 5,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Coral Gables",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Coral Gables",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Coral Springs",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 2,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Coral Springs",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Coral Springs",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Dallas - Prestonwood",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Dallas - Prestonwood",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Dallas - Uptown",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Deerfield Beach",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Deerfield Beach",
+      "source": "ClassPass / Platforms",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Deerfield Beach",
+      "source": "Grassroots",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Deerfield Beach",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Deerfield Beach",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 5,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 3,
+      "first_activations": 2,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Doral",
+      "source": "Website (unattributed)",
+      "signups": 5,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Dunwoody",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "Internet / AI Search",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "Public API",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Eastchester",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 5,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "ClassPass / Platforms",
+      "signups": 8,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Fort Lauderdale - Las Olas",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Fort Myers",
+      "source": "Grassroots",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Fort Myers",
+      "source": "N/A",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Herriman",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Herriman",
+      "source": "Grassroots",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Herriman",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Madison",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Brickell",
+      "source": "Business Mode / App",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Brickell",
+      "source": "ClassPass / Platforms",
+      "signups": 5,
+      "first_visits": 6,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Brickell",
+      "source": "Other",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Brickell",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Brickell",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Coconut Grove",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Midtown",
+      "source": "Business Mode / App",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Midtown",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Midtown",
+      "source": "Public API",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Midtown",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Midtown",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Upper East Side",
+      "source": "Business Mode / App",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Upper East Side",
+      "source": "ClassPass / Platforms",
+      "signups": 5,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Upper East Side",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Upper East Side",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami - Upper East Side",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Beach",
+      "source": "Business Mode / App",
+      "signups": 0,
+      "first_visits": 3,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Beach",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Beach",
+      "source": "Grassroots",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Beach",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Beach",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 6,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "Business Mode / App",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "Local Listings",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miami Lakes",
+      "source": "Website (unattributed)",
+      "signups": 1,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Middletown",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Middletown",
+      "source": "Other",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miramar",
+      "source": "ClassPass / Platforms",
+      "signups": 5,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miramar",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miramar",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miramar",
+      "source": "Public API",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miramar",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Miramar",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Chelsea",
+      "source": "ClassPass / Platforms",
+      "signups": 11,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Chelsea",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Chelsea",
+      "source": "Public API",
+      "signups": 4,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Chelsea",
+      "source": "Website (unattributed)",
+      "signups": 6,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - FiDi",
+      "source": "ClassPass / Platforms",
+      "signups": 4,
+      "first_visits": 8,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - FiDi",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - FiDi",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - FiDi",
+      "source": "Public API",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - FiDi",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - FiDi",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Park Slope",
+      "source": "Business Mode / App",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Park Slope",
+      "source": "ClassPass / Platforms",
+      "signups": 6,
+      "first_visits": 5,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Park Slope",
+      "source": "MindBody App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Park Slope",
+      "source": "Public API",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Park Slope",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "NYC - Park Slope",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 3,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "North Miami",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "North Miami",
+      "source": "Other",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 4
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "Local Listings",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "MindBody App",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "Public API",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "SWEAT440 App",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Ocean Township",
+      "source": "Website (unattributed)",
+      "signups": 4,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Old Bridge",
+      "source": "Local Listings",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Old Bridge",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Old Bridge",
+      "source": "Other",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 2
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Orlando - Dr Phillips",
+      "source": "Google Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Orlando - Dr Phillips",
+      "source": "Meta Ads",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Orlando - Dr Phillips",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pembroke Pines",
+      "source": "Business Mode / App",
+      "signups": 5,
+      "first_visits": 4,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pembroke Pines",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 3,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pembroke Pines",
+      "source": "Grassroots",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pembroke Pines",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pembroke Pines",
+      "source": "Website (unattributed)",
+      "signups": 3,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Business Mode / App",
+      "signups": 4,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "ClassPass / Platforms",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "SWEAT440 App",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Pinecrest - Palmetto Bay",
+      "source": "Website (unattributed)",
+      "signups": 6,
+      "first_visits": 4,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Reston",
+      "source": "Grassroots",
+      "signups": 17,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Reston",
+      "source": "Other",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "South Miami",
+      "source": "Business Mode / App",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "South Miami",
+      "source": "ClassPass / Platforms",
+      "signups": 3,
+      "first_visits": 2,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "South Miami",
+      "source": "Local Listings",
+      "signups": 2,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "South Miami",
+      "source": "N/A",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "South Miami",
+      "source": "SWEAT440 App",
+      "signups": 3,
+      "first_visits": 2,
+      "first_activations": 2,
+      "first_sales": 1
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "South Miami",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Toms River",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Toms River",
+      "source": "Google Ads",
+      "signups": 0,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Toms River",
+      "source": "Internet / AI Search",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Toms River",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Toms River",
+      "source": "MindBody App",
+      "signups": 0,
+      "first_visits": 0,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Toms River",
+      "source": "Website (unattributed)",
+      "signups": 0,
+      "first_visits": 2,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Wall Township",
+      "source": "SWEAT440 App",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "Wall Township",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "West Palm Beach",
+      "source": "Business Mode / App",
+      "signups": 2,
+      "first_visits": 1,
+      "first_activations": 2,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "West Palm Beach",
+      "source": "ClassPass / Platforms",
+      "signups": 1,
+      "first_visits": 1,
+      "first_activations": 1,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "West Palm Beach",
+      "source": "Local Listings",
+      "signups": 3,
+      "first_visits": 1,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "West Palm Beach",
+      "source": "Meta Ads",
+      "signups": 1,
+      "first_visits": 0,
+      "first_activations": 0,
+      "first_sales": 0
+    },
+    {
+      "date": "2026-08-03",
+      "studio": "West Palm Beach",
+      "source": "Website (unattributed)",
+      "signups": 2,
+      "first_visits": 2,
+      "first_activations": 1,
+      "first_sales": 0
     }
   ],
   "monthly_detail": [
@@ -286080,8 +287655,8 @@
       "month": "2023-08-01",
       "studio": "Austin - Highland",
       "source": "N/A",
-      "signups": 186,
-      "first_visits": 142,
+      "signups": 182,
+      "first_visits": 140,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286089,7 +287664,7 @@
       "month": "2023-08-01",
       "studio": "Austin - Zilker",
       "source": "N/A",
-      "signups": 151,
+      "signups": 146,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -286126,7 +287701,7 @@
       "studio": "Charlotte - Noda",
       "source": "N/A",
       "signups": 164,
-      "first_visits": 144,
+      "first_visits": 140,
       "first_activations": 1,
       "first_sales": 1
     },
@@ -286134,8 +287709,8 @@
       "month": "2023-08-01",
       "studio": "Coral Gables",
       "source": "N/A",
-      "signups": 229,
-      "first_visits": 171,
+      "signups": 222,
+      "first_visits": 163,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286161,8 +287736,8 @@
       "month": "2023-08-01",
       "studio": "Coral Springs",
       "source": "N/A",
-      "signups": 113,
-      "first_visits": 85,
+      "signups": 107,
+      "first_visits": 84,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286179,8 +287754,8 @@
       "month": "2023-08-01",
       "studio": "Deerfield Beach",
       "source": "N/A",
-      "signups": 182,
-      "first_visits": 137,
+      "signups": 177,
+      "first_visits": 134,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286206,8 +287781,8 @@
       "month": "2023-08-01",
       "studio": "Doral",
       "source": "N/A",
-      "signups": 216,
-      "first_visits": 172,
+      "signups": 209,
+      "first_visits": 166,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286233,7 +287808,7 @@
       "month": "2023-08-01",
       "studio": "Fort Lauderdale - Las Olas",
       "source": "N/A",
-      "signups": 12,
+      "signups": 11,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -286242,7 +287817,7 @@
       "month": "2023-08-01",
       "studio": "Madison",
       "source": "N/A",
-      "signups": 57,
+      "signups": 56,
       "first_visits": 18,
       "first_activations": 0,
       "first_sales": 0
@@ -286260,8 +287835,8 @@
       "month": "2023-08-01",
       "studio": "Miami - Brickell",
       "source": "N/A",
-      "signups": 301,
-      "first_visits": 223,
+      "signups": 288,
+      "first_visits": 213,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286305,7 +287880,7 @@
       "month": "2023-08-01",
       "studio": "Miami - Midtown",
       "source": "N/A",
-      "signups": 154,
+      "signups": 148,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -286314,8 +287889,8 @@
       "month": "2023-08-01",
       "studio": "Miami - Upper East Side",
       "source": "N/A",
-      "signups": 179,
-      "first_visits": 177,
+      "signups": 177,
+      "first_visits": 174,
       "first_activations": 1,
       "first_sales": 1
     },
@@ -286323,8 +287898,8 @@
       "month": "2023-08-01",
       "studio": "Miami Beach",
       "source": "N/A",
-      "signups": 186,
-      "first_visits": 162,
+      "signups": 177,
+      "first_visits": 157,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286332,8 +287907,8 @@
       "month": "2023-08-01",
       "studio": "Miami Lakes",
       "source": "N/A",
-      "signups": 169,
-      "first_visits": 122,
+      "signups": 163,
+      "first_visits": 119,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286377,8 +287952,8 @@
       "month": "2023-08-01",
       "studio": "NYC - Chelsea",
       "source": "N/A",
-      "signups": 241,
-      "first_visits": 200,
+      "signups": 234,
+      "first_visits": 198,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286386,8 +287961,8 @@
       "month": "2023-08-01",
       "studio": "NYC - FiDi",
       "source": "N/A",
-      "signups": 156,
-      "first_visits": 83,
+      "signups": 154,
+      "first_visits": 81,
       "first_activations": 0,
       "first_sales": 0
     },
@@ -286404,7 +287979,7 @@
       "month": "2023-08-01",
       "studio": "Nashville - Capitol View",
       "source": "N/A",
-      "signups": 28,
+      "signups": 27,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -286422,7 +287997,7 @@
       "month": "2023-08-01",
       "studio": "Pembroke Pines",
       "source": "N/A",
-      "signups": 12,
+      "signups": 11,
       "first_visits": 0,
       "first_activations": 0,
       "first_sales": 0
@@ -286458,8 +288033,8 @@
       "month": "2023-08-01",
       "studio": "Toms River",
       "source": "N/A",
-      "signups": 182,
-      "first_visits": 132,
+      "signups": 169,
+      "first_visits": 120,
       "first_activations": 0,
       "first_sales": 0
     },
