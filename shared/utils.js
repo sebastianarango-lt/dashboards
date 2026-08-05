@@ -33,6 +33,7 @@ function sortableTable(tableId, data, renderRow, totalsRow) {
     });
     if (totalsRow) tfoot.innerHTML = totalsRow(sorted);
   }
+  state._render = render;
   ths.forEach(th => {
     th.classList.add('sortable');
     if (!th._sortableTableBound) {
@@ -40,7 +41,7 @@ function sortableTable(tableId, data, renderRow, totalsRow) {
       th.addEventListener('click', () => {
         const col = th.dataset.sort;
         if (state.col === col) { state.asc = !state.asc; } else { state.col = col; state.asc = true; }
-        render();
+        state._render();
       });
     }
   });
@@ -178,9 +179,12 @@ function googleStudioName(raw) { return GOOGLE_STUDIO_ALIAS[raw] || raw; }
 // studios.json by loadStudiosRegistry().
 const META_CODE_TO_STUDIO = {};
 
+// studio code -> Facebook Page ID. Populated from studios.json by loadStudiosRegistry().
+const META_CODE_TO_PAGE_ID = {};
+
 // Fetches studios.json and populates DEFAULT_EXCL_STUDIOS / NSO_STUDIOS /
-// CLOSED_STUDIOS / META_CODE_TO_STUDIO in place. Call once per page load,
-// before buildMultiSelect() or any META_CODE_TO_STUDIO lookup.
+// CLOSED_STUDIOS / META_CODE_TO_STUDIO / META_CODE_TO_PAGE_ID in place.
+// Call once per page load, before buildMultiSelect() or any lookup.
 async function loadStudiosRegistry(basePath = '') {
   let registry = { studios: [] };
   try {
@@ -193,11 +197,13 @@ async function loadStudiosRegistry(basePath = '') {
   NSO_STUDIOS.length = 0;
   CLOSED_STUDIOS.length = 0;
   for (const key of Object.keys(META_CODE_TO_STUDIO)) delete META_CODE_TO_STUDIO[key];
+  for (const key of Object.keys(META_CODE_TO_PAGE_ID)) delete META_CODE_TO_PAGE_ID[key];
   for (const s of (registry.studios || [])) {
     if (s.excluded_default) { DEFAULT_EXCL_STUDIOS.push(s.name); DEFAULT_EXCL_STUDIOS.push('- ' + s.name); }
     if (s.status === 'nso')    { NSO_STUDIOS.push(s.name);     NSO_STUDIOS.push('- ' + s.name); }
     if (s.status === 'closed') { CLOSED_STUDIOS.push(s.name);  CLOSED_STUDIOS.push('- ' + s.name); }
     if (s.code) META_CODE_TO_STUDIO[s.code] = s.name;
+    if (s.code && s.meta && s.meta.page_id) META_CODE_TO_PAGE_ID[s.code] = s.meta.page_id;
   }
   return registry;
 }
@@ -377,9 +383,8 @@ function updateGranButtons(from, to) {
   // Daily data covers: start of current year → today
   // We check if the requested range overlaps with our daily data window at all
   const { dailyFrom, dailyTo } = getQuarterBounds();
-  // Allow daily if there's any overlap between [from,to] and [dailyFrom, dailyTo]
-  const hasDaily  = from <= dailyTo && to >= dailyFrom;
-  // Weekly requires the full range to be within the daily window — mixing monthly rows into weekly buckets creates misleading spikes
+  // Daily and Weekly require the full range to start within the daily data window
+  const hasDaily  = from >= dailyFrom;
   const hasWeekly = from >= dailyFrom;
   const daysDiff  = (to - from) / 86400000;
   const btnD = document.getElementById('granDaily');
@@ -464,8 +469,7 @@ function toTimeSeries(dailyRows, monthlyRows) {
     const map = {};
     [...dailyRows,...monthlyRows].forEach(r => {
       const d = new Date((r.date||r.month)+'T00:00:00Z');
-      const day = d.getUTCDay()||7;
-      const ws = new Date(d); ws.setUTCDate(d.getUTCDate()-day+1);
+      const ws = new Date(d); ws.setUTCDate(d.getUTCDate()-d.getUTCDay());
       const key = ws.toISOString().slice(0,10);
       if (!map[key]) map[key]={key,label:fmtDayLabel(key),signups:0,first_visits:0,first_activations:0};
       map[key].signups+=r.signups||0; map[key].first_visits+=r.first_visits||0; map[key].first_activations+=r.first_activations||0;
@@ -621,7 +625,7 @@ function toSourceTimeSeries(dailyRows,monthlyRows,gran){
   allRows.forEach(r=>{
     let key;
     if(g==='daily')key=r.date;
-    else if(g==='weekly'){const d=new Date((r.date||r.month)+'T00:00:00Z');const day=d.getUTCDay()||7;const ws=new Date(d);ws.setUTCDate(d.getUTCDate()-day+1);key=ws.toISOString().slice(0,10);}
+    else if(g==='weekly'){const d=new Date((r.date||r.month)+'T00:00:00Z');const ws=new Date(d);ws.setUTCDate(d.getUTCDate()-d.getUTCDay());key=ws.toISOString().slice(0,10);}
     else key=(r.date||r.month).slice(0,7)+'-01';
     const mk=key+'|'+r.source;
     if(!map[mk])map[mk]={key,source:r.source,signups:0,first_visits:0,first_activations:0};
