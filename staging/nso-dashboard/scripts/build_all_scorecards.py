@@ -39,8 +39,10 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 LEADTEAM_MONTHLY = 1200.0  # $1,200/month, prorated daily
 NSO_CONFIG_SHEET_URL = "https://docs.google.com/spreadsheets/d/1Ku0VSwOY6HVXuqucduWlsbKIiNzb0ojL21rozaPpHHU"
 
-# Calendar week 1 = Dec 29, 2025 (Mon); week N Monday = CAL_WEEK1_START + (N-1) weeks
-CAL_WEEK1_START = date(2025, 12, 29)
+# Scorecard weeks: Week 1 starts on the configured week1_start date (any day), ends the
+# following Saturday. All subsequent weeks run Sunday–Saturday. Charts independently use
+# the same convention (Sunday start via getUTCDay() in _periodKey).
+CAL_WEEK1_START = date(2025, 12, 28)  # Dec 28, 2025 = Sunday (reference only, not used in computation)
 
 # NSO Config sheet fixed column indices (0-based) — only for columns that never shift.
 # Scheduling and targets columns use header-name lookup via _ch() in load_studio_config().
@@ -127,25 +129,27 @@ SHEET_CONFIG = {
     },
 }
 
-# Naples irregular week date bounds (weeks 1-10 are fixed; 11+ continue Mon-Sun from 4/20)
+# Naples irregular week date bounds (weeks 1-10 are fixed; 11+ continue Sun-Sat from 4/19)
+# Week 1 starts Feb 9 (Mon, "Ads Go Live") and ends Sat Feb 14.
+# All subsequent weeks run Sunday–Saturday.
 NAPLES_EXPLICIT_WEEKS = {
-    0:  (None,               date(2026, 2,  8)),
-    1:  (date(2026, 2,  9),  date(2026, 2, 15)),
-    2:  (date(2026, 2, 16),  date(2026, 2, 22)),
-    3:  (date(2026, 2, 23),  date(2026, 3,  1)),
-    4:  (date(2026, 3,  2),  date(2026, 3,  8)),
-    5:  (date(2026, 3,  9),  date(2026, 3, 15)),
-    6:  (date(2026, 3, 16),  date(2026, 3, 22)),
-    7:  (date(2026, 3, 23),  date(2026, 3, 29)),
-    8:  (date(2026, 3, 30),  date(2026, 4,  5)),
-    9:  (date(2026, 4,  6),  date(2026, 4, 12)),
-    10: (date(2026, 4, 13),  date(2026, 4, 19)),
+    0:  (None,               date(2026, 2,  8)),  # Pre Feb 9 (ends Sun Feb 8)
+    1:  (date(2026, 2,  9),  date(2026, 2, 14)),  # Mon Feb 9  – Sat Feb 14
+    2:  (date(2026, 2, 15),  date(2026, 2, 21)),  # Sun Feb 15 – Sat Feb 21
+    3:  (date(2026, 2, 22),  date(2026, 2, 28)),  # Sun Feb 22 – Sat Feb 28
+    4:  (date(2026, 3,  1),  date(2026, 3,  7)),  # Sun Mar 1  – Sat Mar 7
+    5:  (date(2026, 3,  8),  date(2026, 3, 14)),  # Sun Mar 8  – Sat Mar 14
+    6:  (date(2026, 3, 15),  date(2026, 3, 21)),  # Sun Mar 15 – Sat Mar 21
+    7:  (date(2026, 3, 22),  date(2026, 3, 28)),  # Sun Mar 22 – Sat Mar 28
+    8:  (date(2026, 3, 29),  date(2026, 4,  4)),  # Sun Mar 29 – Sat Apr 4
+    9:  (date(2026, 4,  5),  date(2026, 4, 11)),  # Sun Apr 5  – Sat Apr 11
+    10: (date(2026, 4, 12),  date(2026, 4, 18)),  # Sun Apr 12 – Sat Apr 18
 }
 NAPLES_SPECIAL_LABELS = {
     0:  "Pre 2/10",
-    1:  "Ads Go Live 2/10 - 2/15",
-    24: "Target C/O 7/20 - 7/26",
-    27: "Target Grand Open 8/10 - 8/16",
+    1:  "Ads Go Live 2/10 - 2/14",
+    24: "Target C/O 7/19 - 7/25",
+    27: "Target Grand Open 8/9 - 8/15",
 }
 
 
@@ -308,8 +312,8 @@ def load_studio_config(gc):
 def make_naples_bounds(num_weeks):
     bounds = []
     explicit = NAPLES_EXPLICIT_WEEKS
-    last_end = date(2026, 4, 19)   # Week 10 end
-    next_mon = last_end + timedelta(days=1)  # 4/20 = Monday
+    last_end = date(2026, 4, 18)   # Week 10 end (Saturday)
+    next_sun = last_end + timedelta(days=1)  # 4/19 = Sunday
 
     bounds.append((0, explicit[0][0], explicit[0][1]))
     for wn in range(1, num_weeks + 1):
@@ -317,17 +321,26 @@ def make_naples_bounds(num_weeks):
             bounds.append((wn, explicit[wn][0], explicit[wn][1]))
         else:
             offset = wn - 11
-            ws = next_mon + timedelta(weeks=offset)
-            we = ws + timedelta(days=6)
+            ws = next_sun + timedelta(weeks=offset)
+            we = ws + timedelta(days=6)  # Saturday
             bounds.append((wn, ws, we))
     return bounds
 
 
-def make_mon_sun_bounds(week1_start, num_weeks):
+def make_sun_sat_bounds(week1_start, num_weeks):
+    """Build week bounds: Week 1 starts on week1_start (any day) and ends on the
+    first Saturday on or after it. All subsequent weeks run Sunday–Saturday."""
+    # Saturday = weekday 5 (Mon=0 … Sat=5, Sun=6)
+    days_to_sat = (5 - week1_start.weekday()) % 7
+    week1_end = week1_start + timedelta(days=days_to_sat)
+
     bounds = [(0, None, week1_start - timedelta(days=1))]
-    for i in range(1, num_weeks + 1):
-        ws = week1_start + timedelta(weeks=i - 1)
-        we = ws + timedelta(days=6)
+    bounds.append((1, week1_start, week1_end))
+
+    next_sun = week1_end + timedelta(days=1)
+    for i in range(2, num_weeks + 1):
+        ws = next_sun + timedelta(weeks=i - 2)
+        we = ws + timedelta(days=6)  # Saturday
         bounds.append((i, ws, we))
     return bounds
 
@@ -831,7 +844,7 @@ def main():
             print(f"  Skipping {full}: no week1_start configured in NSO Config sheet")
             continue
         else:
-            bounds = make_mon_sun_bounds(cfg["week1_start"], num_weeks)
+            bounds = make_sun_sat_bounds(cfg["week1_start"], num_weeks)
 
         ig_fc_studio    = ig_by_code.get(code, {})
         meta_spend_d    = meta_by_code.get(code, {})

@@ -10,15 +10,14 @@ Output shape
 
   "ad_daily":       [{date, studio_code, ad_id, ad_name,
                        spend, impressions, clicks, leads, trials}, ...]
-                    // Apr 1 2026 → today; grows indefinitely; upsert on (date, studio_code, ad_id)
+                    // rolling 90-day window; upsert on (date, studio_code, ad_id)
 
-  "studio_daily":   [{date, studio_code,
-                       spend, impressions, clicks, leads, trials}, ...]
-                    // Apr 1 2026 → today; grows indefinitely; upsert on (date, studio_code)
-
-  "studio_monthly": [{month, studio_code, spend}, ...]
-                    // Jan 2025–Mar 2026: baked (preserved from file)
-                    // Apr 2026+: computed from studio_daily each run
+  "studio_daily":   [{date, studio_code, impressions, clicks, leads, trials}, ...]
+                    // studio-level, NO spend (spend lives only in the spend
+                    // pipeline — see build_spend_data.py). From 2026-04-01
+                    // forward, never trimmed — grows indefinitely. Recomputed
+                    // from ad_daily each run for the current 90-day window;
+                    // older rows pass through untouched from the existing file.
 
   "ad_meta":        {ad_id: {name, status, media_type, studio_code,
                               thumbnail_url, library_url}, ...}
@@ -33,16 +32,16 @@ import json
 import logging
 import re
 import sys
-from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from meta_client import MetaClient, leads_of, purchases_of, trials_of
+from meta_client import MetaClient, leads_of, offsite_leads_of, purchases_of, trials_of
 
 # ── paths ────────────────────────────────────────────────────────────
 REPO_ROOT      = Path(__file__).resolve().parent
 OUT_PATH       = REPO_ROOT / "meta-ads-data.json"
-PAID_ADS_PATH  = REPO_ROOT / "meta-ads-baked.json"  # static baked monthly spend, never overwritten
+# Studio-level spend lives in meta-ads-baked.json + spend-data.json, not here —
+# see build_spend_data.py, backfill_meta_month.py, import_meta_daily_csv.py.
 
 # How many days back to re-fetch on each daily run.
 # Historical data outside this window is preserved via upsert from the existing file.
@@ -193,7 +192,7 @@ def previous_quarter_bounds(today: date) -> tuple[str, str]:
 
 # ── main ETL ─────────────────────────────────────────────────────────
 
-def run():
+def run(start_override: str | None = None):
     import studios as studios_registry
 
     ad_account  = studios_registry.defaults()["meta_ad_account_id"]  # e.g. "act_1553887681409034"
@@ -205,7 +204,7 @@ def run():
     # ── date windows ─────────────────────────────────────────────────
     # Fetch only the last DAILY_LOOKBACK_DAYS days each run.
     # Older data is preserved via upsert from the existing file.
-    daily_start = (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
+    daily_start = start_override or (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
     daily_end   = today_iso
 
     # ── load existing output (for upsert + baked monthly) ────────────
@@ -216,23 +215,8 @@ def run():
         except Exception:
             pass
 
-    existing_ad_daily     = existing.get("ad_daily",      [])
-    existing_studio_daily = existing.get("studio_daily",  [])
-    existing_ad_meta      = existing.get("ad_meta",        {})
-
-    # ── baked monthly spend (Jan 2025 – Mar 2026) ────────────────────
-    # Reads from meta-ads-baked.json — a static file committed once, never overwritten.
-    # Apr 2026+ is computed from studio_daily each run.
-    baked_monthly = []
-    if PAID_ADS_PATH.exists():
-        try:
-            baked = json.loads(PAID_ADS_PATH.read_text(encoding="utf-8"))
-            baked_monthly = baked.get("studio_monthly", [])
-            log.info(f"  Baked monthly rows (pre Apr 2026): {len(baked_monthly)}")
-        except Exception as e:
-            log.warning(f"  Could not read meta-ads-baked.json: {e}")
-    else:
-        log.warning("  meta-ads-baked.json not found — studio_monthly will only have Apr 2026+")
+    existing_ad_daily = existing.get("ad_daily", [])
+    existing_ad_meta  = existing.get("ad_meta",  {})
 
     meta = MetaClient()
 
@@ -299,19 +283,14 @@ def run():
         if post_id:
             library_id_by_ad[ad_id] = post_id
 
-    # ── 3. Process daily ad rows → ad_daily + studio_daily ───────────
-    # Index buckets keyed by (date, studio_code, ad_id) and (date, studio_code)
-    ad_daily_idx:     dict[tuple, dict] = {}
-    studio_daily_idx: dict[tuple, dict] = {}
+    # ── 3. Process daily ad rows → ad_daily ──────────────────────────
+    # Index bucket keyed by (date, studio_code, ad_id)
+    ad_daily_idx: dict[tuple, dict] = {}
 
     # Seed from existing data (will be overwritten for dates we're refetching)
     for r in existing_ad_daily:
         k = (r["date"], r["studio_code"], r["ad_id"])
         ad_daily_idx[k] = r
-
-    for r in existing_studio_daily:
-        k = (r["date"], r["studio_code"])
-        studio_daily_idx[k] = r
 
     # Track ad name per ad_id (for ad_meta, in case list_ads_for_account failed)
     ad_name_seen: dict[str, str] = {}
@@ -338,8 +317,9 @@ def run():
         spend    = round(safe_float(row.get("spend")), 2)
         impr     = int(safe_float(row.get("impressions")))
         clicks   = int(safe_float(row.get("clicks")))
-        leads    = leads_of(row)
-        trials   = trials_of(row)
+        leads          = leads_of(row)
+        offsite_leads  = offsite_leads_of(row)
+        trials         = trials_of(row)
 
         ad_name_seen[ad_id]  = ad_name
         ad_studio_seen[ad_id] = sc
@@ -347,62 +327,22 @@ def run():
         # ad_daily upsert
         ak = (d, sc, ad_id)
         ad_daily_idx[ak] = {
-            "date":        d,
-            "studio_code": sc,
-            "ad_id":       ad_id,
-            "ad_name":     ad_name,
-            "spend":       spend,
-            "impressions": impr,
-            "clicks":      clicks,
-            "leads":       leads,
-            "trials":      trials,
+            "date":          d,
+            "studio_code":   sc,
+            "ad_id":         ad_id,
+            "ad_name":       ad_name,
+            "spend":         spend,
+            "impressions":   impr,
+            "clicks":        clicks,
+            "leads":         leads,
+            "offsite_leads": offsite_leads,
+            "trials":        trials,
         }
-
-        # studio_daily upsert — accumulate within this run then write
-        sk = (d, sc)
-        if sk not in studio_daily_idx:
-            studio_daily_idx[sk] = {
-                "date": d, "studio_code": sc,
-                "spend": 0.0, "impressions": 0, "clicks": 0, "leads": 0, "trials": 0,
-            }
-        # Re-aggregate from scratch for dates in this fetch window
-        # (handled below after full pass)
 
         rows_written += 1
 
     log.info(f"  processed: {rows_written} matched, {rows_skipped} skipped (no studio match)")
-
-    # Re-aggregate studio_daily for the fetch window from scratch
-    # (avoids double-counting if we re-process same dates)
-    studio_daily_fresh: dict[tuple, dict] = {}
-    for row in raw_daily_ad:
-        ad_id     = row.get("ad_id")
-        adset_name = row.get("adset_name", "")
-        d          = row.get("date_start")
-        if not ad_id or not d: continue
-        studio = match_studio(adset_name, studios_cfg)
-        if not studio: continue
-        sc = studio["code"]
-        sk = (d, sc)
-        if sk not in studio_daily_fresh:
-            studio_daily_fresh[sk] = {
-                "date": d, "studio_code": sc,
-                "spend": 0.0, "impressions": 0, "clicks": 0, "leads": 0, "trials": 0,
-            }
-        b = studio_daily_fresh[sk]
-        b["spend"]       = round(b["spend"] + safe_float(row.get("spend")), 2)
-        b["impressions"] += int(safe_float(row.get("impressions")))
-        b["clicks"]      += int(safe_float(row.get("clicks")))
-        b["leads"]       += leads_of(row)
-        b["trials"]      += trials_of(row)
-
-    # Merge fresh aggregations into the full index
-    # Preserve existing rows outside the fetch window, overwrite within it
-    for k, v in studio_daily_fresh.items():
-        studio_daily_idx[k] = v
-
-    log.info(f"  studio_daily: {len(studio_daily_idx)} total (date×studio) rows")
-    log.info(f"  ad_daily:     {len(ad_daily_idx)} total (date×studio×ad) rows")
+    log.info(f"  ad_daily:  {len(ad_daily_idx)} total (date×studio×ad) rows")
 
     # ── 4. Build ad_meta snapshot ─────────────────────────────────────
     # Start from existing, then update with fresh data
@@ -432,64 +372,74 @@ def run():
 
     log.info(f"  ad_meta: {len(ad_meta)} ads (thumb hits {thumb_hits}, creatives w/ no thumb {thumb_missing})")
 
-    # ── 5. Compute studio_monthly for Apr 2026+ from studio_daily ────
-    # Only recompute months that are entirely within the 90-day daily window.
-    # Months outside the window are preserved from the existing output file so
-    # they are not lost when their daily rows get trimmed on subsequent runs.
-    cutoff_90_month = (today - timedelta(days=90)).strftime("%Y-%m")
-
-    # Preserve existing computed monthly for months at or before the cutoff
-    preserved_monthly: dict[tuple, float] = {
-        (r["month"][:7], r["studio_code"]): r["spend"]
-        for r in existing.get("studio_monthly", [])
-        if r.get("month", "") >= "2026-04" and r["month"][:7] <= cutoff_90_month
+    # ── 4b. Build studio_daily: non-spend engagement, since 2026-04-01,
+    # never trimmed. Recomputed fresh from ad_daily_idx (this run's full
+    # 90-day window) each time; existing rows outside that window are
+    # carried forward untouched, so the table grows forever instead of
+    # rolling off with ad_daily. Deliberately excludes spend — spend has
+    # its own lineage (meta-ads-baked.json → spend-data.json).
+    STUDIO_DAILY_FLOOR = "2026-04-01"
+    studio_daily_idx: dict[tuple, dict] = {
+        (r["date"], r["studio_code"]): r
+        for r in existing.get("studio_daily", [])
+        if r.get("date", "") >= STUDIO_DAILY_FLOOR
     }
 
-    # Recompute only months fully inside the 90-day window
-    monthly_fresh: dict[tuple, float] = defaultdict(float)
-    for r in studio_daily_idx.values():
-        if r["date"] >= "2026-04-01" and r["date"][:7] > cutoff_90_month:
-            monthly_fresh[(r["date"][:7], r["studio_code"])] += r["spend"]
+    studio_daily_fresh: dict[tuple, dict] = {}
+    for r in ad_daily_idx.values():
+        if r["date"] < STUDIO_DAILY_FLOOR:
+            continue
+        k = (r["date"], r["studio_code"])
+        if k not in studio_daily_fresh:
+            studio_daily_fresh[k] = {
+                "date": r["date"], "studio_code": r["studio_code"],
+                "impressions": 0, "clicks": 0, "leads": 0, "offsite_leads": 0, "trials": 0,
+            }
+        b = studio_daily_fresh[k]
+        b["impressions"]   += r["impressions"]
+        b["clicks"]        += r["clicks"]
+        b["leads"]         += r["leads"]
+        b["offsite_leads"] += r.get("offsite_leads", 0)
+        b["trials"]        += r["trials"]
 
-    merged_monthly = {**preserved_monthly, **{k: round(v, 2) for k, v in monthly_fresh.items()}}
-    computed_monthly = [
-        {"month": m, "studio_code": sc, "spend": spend}
-        for (m, sc), spend in sorted(merged_monthly.items())
-    ]
+    studio_daily_idx.update(studio_daily_fresh)  # this run's window wins; older rows pass through
+    studio_daily_out = sorted(studio_daily_idx.values(), key=lambda r: (r["date"], r["studio_code"]))
+    log.info(f"  studio_daily: {len(studio_daily_out)} total (date×studio) rows, floor {STUDIO_DAILY_FLOOR}")
 
-    studio_monthly = baked_monthly + computed_monthly
-    log.info(f"  studio_monthly: {len(baked_monthly)} baked + {len(preserved_monthly)} preserved + {len(monthly_fresh)} recomputed = {len(studio_monthly)} rows")
-
-    # ── 6. Sort, trim to 90-day rolling window, and write ────────────
+    # ── 5. Sort, trim to 90-day rolling window, and write ────────────
     ad_daily_out = sorted(
         ad_daily_idx.values(),
         key=lambda r: (r["date"], r["studio_code"], r["ad_id"])
     )
-    studio_daily_out = sorted(
-        studio_daily_idx.values(),
-        key=lambda r: (r["date"], r["studio_code"])
-    )
 
-    # Rolling 90-day window — studio_daily/monthly moved to spend-data.json (build_spend_data.py)
+    # Rolling 90-day window — ad-level detail moved to spend-data.json's daily
+    # rows once trimmed (studio-level spend lives in meta-ads-baked.json /
+    # build_spend_data.py instead, not here).
     cutoff_90 = (today - timedelta(days=90)).isoformat()
     ad_daily_out = [r for r in ad_daily_out if r["date"] >= cutoff_90]
 
     output = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "ad_daily":     ad_daily_out,
-        "ad_meta":      ad_meta,
+        "generated_at":   datetime.now(timezone.utc).isoformat(),
+        "ad_daily":       ad_daily_out,
+        "studio_daily":   studio_daily_out,
+        "ad_meta":        ad_meta,
     }
 
     OUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
     log.info(
         f"Wrote {OUT_PATH} ({OUT_PATH.stat().st_size:,} bytes) — "
-        f"{len(ad_daily_out)} ad_daily, {len(ad_meta)} ad_meta"
+        f"{len(ad_daily_out)} ad_daily, {len(studio_daily_out)} studio_daily, {len(ad_meta)} ad_meta"
     )
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start", default=None,
+                        help="Override fetch start date (YYYY-MM-DD). Default: last DAILY_LOOKBACK_DAYS days.")
+    args = parser.parse_args()
     try:
-        run()
+        run(start_override=args.start)
     except Exception as e:
         log.exception(f"❌ ETL failed: {e}")
         sys.exit(1)

@@ -390,7 +390,8 @@ const GLOSSARY={
   meta_spend:{title:'Meta Ads — Spend',desc:'Total ad spend on Facebook and Instagram during the selected period, as reported by the Meta Marketing API. Includes all campaigns attributed to this studio.'},
   meta_impressions:{title:'Meta Ads — Impressions',desc:'Total number of times ads were shown to users on Facebook and Instagram. One person seeing the same ad multiple times counts as multiple impressions.'},
   meta_clicks:{title:'Meta Ads — Clicks',desc:'Total number of clicks on Meta ads, including link clicks, button clicks, and other interactions that direct users off the platform.'},
-  meta_leads:{title:'Meta Ads — Leads',desc:'Number of lead form submissions generated through Meta ad campaigns. These are tracked via the Meta Lead Ads format or website conversion events tied to Meta pixels.'},
+  meta_leads:{title:'Meta Ads — Leads (Native)',desc:'Leads reported directly by Meta Ads Manager from native Facebook/Instagram Lead Ads forms. This count uses Meta\'s own tracking and attribution, and may differ from the standardized lead count shown above which comes from MindBody account creation records.'},
+  meta_offsite_leads:{title:'Meta Ads — Offsite Conversions (Alpha)',desc:'Pixel-tracked lead form submissions on the SWEAT440 website, reported by Meta as offsite_conversion.fb_pixel_lead. This is a separate signal from native Lead Ads and is shown here for diagnostic purposes. Admin only.'},
   meta_cpl:{title:'Meta Ads — Cost / Lead',desc:'Total Meta ad spend divided by the number of leads generated. Measures the average cost to acquire one lead through Meta advertising.'},
   meta_blended_cpl:{title:'Meta Ads — Cost / Lead',desc:'Meta ad spend divided by the number of leads SWEAT440 attributed to Meta Ads during the period (per the standard lead reporting used across this dashboard). Blends platform spend with Snowflake-attributed leads.'},
   google_spend:{title:'Google Ads — Spend',desc:'Total ad spend on Google Search and Display campaigns during the selected period, as reported by the Google Ads API.'},
@@ -1626,6 +1627,7 @@ function renderMeta(){
   const totalImp=allRows.reduce((s,r)=>s+(r.impressions||0),0);
   const totalClicks=allRows.reduce((s,r)=>s+(r.clicks||0),0);
   const totalLeads=allRows.reduce((s,r)=>s+(r.leads||0),0);
+  const totalOffsiteLeads=allRows.reduce((s,r)=>s+(r.offsite_leads||0),0);
   const cpl=totalLeads>0?totalSpend/totalLeads:0;
   const f$=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
   const f$2=v=>'$'+Number(v).toFixed(2);
@@ -1659,8 +1661,9 @@ function renderMeta(){
   h+=kpiCard('Spend',totalSpend,null,null,f$,GLOSSARY.meta_spend);
   h+=kpiCard('Impressions',totalImp,null,null,v=>fK(v),GLOSSARY.meta_impressions);
   h+=kpiCard('Clicks',totalClicks,null,null,v=>fN(v),GLOSSARY.meta_clicks);
-  h+=kpiCard('Leads',totalLeads,null,null,v=>v,GLOSSARY.meta_leads);
+  h+=kpiCard('Leads (Native)',totalLeads,null,null,v=>v,GLOSSARY.meta_leads);
   h+=kpiCard('Cost / Lead',cpl,null,null,f$2,GLOSSARY.meta_cpl);
+  if(isAdminUser())h+=kpiCard('Offsite Conversions <span style="font-size:9px;font-family:Oswald,sans-serif;font-style:italic;background:#DDFF00;color:#1a3a4a;padding:1px 5px;border-radius:3px;vertical-align:middle;margin-left:4px;letter-spacing:.5px">ALPHA</span>',totalOffsiteLeads,null,null,v=>v,GLOSSARY.meta_offsite_leads);
   h+=`</div>`;
 
   // Creative ads table — grouped by creative short name
