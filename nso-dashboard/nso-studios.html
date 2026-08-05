@@ -1626,6 +1626,7 @@ function renderMeta(){
   const totalImp=allRows.reduce((s,r)=>s+(r.impressions||0),0);
   const totalClicks=allRows.reduce((s,r)=>s+(r.clicks||0),0);
   const totalLeads=allRows.reduce((s,r)=>s+(r.leads||0),0);
+  const totalOffsiteLeads=allRows.reduce((s,r)=>s+(r.offsite_leads||0),0);
   const cpl=totalLeads>0?totalSpend/totalLeads:0;
   const f$=v=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
   const f$2=v=>'$'+Number(v).toFixed(2);
@@ -1659,8 +1660,9 @@ function renderMeta(){
   h+=kpiCard('Spend',totalSpend,null,null,f$,GLOSSARY.meta_spend);
   h+=kpiCard('Impressions',totalImp,null,null,v=>fK(v),GLOSSARY.meta_impressions);
   h+=kpiCard('Clicks',totalClicks,null,null,v=>fN(v),GLOSSARY.meta_clicks);
-  h+=kpiCard('Leads',totalLeads,null,null,v=>v,GLOSSARY.meta_leads);
+  h+=kpiCard('Leads (Native)',totalLeads,null,null,v=>v,GLOSSARY.meta_leads);
   h+=kpiCard('Cost / Lead',cpl,null,null,f$2,GLOSSARY.meta_cpl);
+  if(isAdminUser())h+=kpiCard('Offsite Conversions',totalOffsiteLeads,null,null,v=>v,'Pixel-tracked lead form submissions on the SWEAT440 website (offsite_conversion.fb_pixel_lead). Admin only.');
   h+=`</div>`;
 
   // Creative ads table — grouped by creative short name
