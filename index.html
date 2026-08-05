@@ -1572,7 +1572,7 @@ async function buildMetaTab() {
   const filterByStudio = selectedStudios.size > 0;
 
   // ---- Aggregate studio-level engagement from studio_daily (2026-04-01+, unbounded) ----
-  let impressions=0, clicks=0, leads=0, trials=0, hasStudioData=false;
+  let impressions=0, clicks=0, leads=0, offsiteLeads=0, trials=0, hasStudioData=false;
   const studioMap = {};
 
   for (const row of (data.studio_daily || [])) {
@@ -1581,10 +1581,11 @@ async function buildMetaTab() {
     const name = META_CODE_TO_STUDIO[row.studio_code] || row.studio_code;
     if (filterByStudio && !selectedStudios.has(name)) continue;
     hasStudioData = true;
-    impressions += row.impressions || 0;
-    clicks      += row.clicks      || 0;
-    leads       += row.leads       || 0;
-    trials      += row.trials      || 0;
+    impressions  += row.impressions   || 0;
+    clicks       += row.clicks        || 0;
+    leads        += row.leads         || 0;
+    offsiteLeads += row.offsite_leads || 0;
+    trials       += row.trials        || 0;
     if (!studioMap[name]) studioMap[name] = { impressions:0, clicks:0, leads:0, trials:0 };
     studioMap[name].impressions += row.impressions || 0;
     studioMap[name].clicks      += row.clicks      || 0;
@@ -1677,9 +1678,10 @@ async function buildMetaTab() {
       kpiCard('Spend',        spend,        null, null, f$,        GLOSSARY.meta) +
       kpiCard('Impressions',  impressions,  null, null, v=>fK(v),  GLOSSARY.meta_impressions) +
       kpiCard('Clicks',       clicks,       null, null, v=>fN(v),  GLOSSARY.meta_clicks) +
-      kpiCard('Leads (New Accounts Created)', leads, null, null, v=>v, GLOSSARY.leads) +
+      kpiCard('Leads (Native)', leads,      null, null, v=>v,      GLOSSARY.leads) +
       kpiCard('Trials',       trials,       null, null, v=>v,      GLOSSARY.meta_trials) +
-      kpiCard('Cost / Lead',  cpl,          null, null, f$2,       GLOSSARY.meta_cpl);
+      kpiCard('Cost / Lead',  cpl,          null, null, f$2,       GLOSSARY.meta_cpl) +
+      (isAdminUser() ? kpiCard('Offsite Conversions', offsiteLeads, null, null, v=>v, 'Pixel-tracked lead form submissions on the SWEAT440 website (offsite_conversion.fb_pixel_lead). Admin only.') : '');
 
     // ---- Studio table ----
     const studioRows = Object.entries(studioMap).map(([name, s]) => ({

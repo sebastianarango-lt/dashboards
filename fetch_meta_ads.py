@@ -35,7 +35,7 @@ import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from meta_client import MetaClient, leads_of, purchases_of, trials_of
+from meta_client import MetaClient, leads_of, offsite_leads_of, purchases_of, trials_of
 
 # ── paths ────────────────────────────────────────────────────────────
 REPO_ROOT      = Path(__file__).resolve().parent
@@ -192,7 +192,7 @@ def previous_quarter_bounds(today: date) -> tuple[str, str]:
 
 # ── main ETL ─────────────────────────────────────────────────────────
 
-def run():
+def run(start_override: str | None = None):
     import studios as studios_registry
 
     ad_account  = studios_registry.defaults()["meta_ad_account_id"]  # e.g. "act_1553887681409034"
@@ -204,7 +204,7 @@ def run():
     # ── date windows ─────────────────────────────────────────────────
     # Fetch only the last DAILY_LOOKBACK_DAYS days each run.
     # Older data is preserved via upsert from the existing file.
-    daily_start = (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
+    daily_start = start_override or (today - timedelta(days=DAILY_LOOKBACK_DAYS)).isoformat()
     daily_end   = today_iso
 
     # ── load existing output (for upsert + baked monthly) ────────────
@@ -317,8 +317,9 @@ def run():
         spend    = round(safe_float(row.get("spend")), 2)
         impr     = int(safe_float(row.get("impressions")))
         clicks   = int(safe_float(row.get("clicks")))
-        leads    = leads_of(row)
-        trials   = trials_of(row)
+        leads          = leads_of(row)
+        offsite_leads  = offsite_leads_of(row)
+        trials         = trials_of(row)
 
         ad_name_seen[ad_id]  = ad_name
         ad_studio_seen[ad_id] = sc
@@ -326,15 +327,16 @@ def run():
         # ad_daily upsert
         ak = (d, sc, ad_id)
         ad_daily_idx[ak] = {
-            "date":        d,
-            "studio_code": sc,
-            "ad_id":       ad_id,
-            "ad_name":     ad_name,
-            "spend":       spend,
-            "impressions": impr,
-            "clicks":      clicks,
-            "leads":       leads,
-            "trials":      trials,
+            "date":          d,
+            "studio_code":   sc,
+            "ad_id":         ad_id,
+            "ad_name":       ad_name,
+            "spend":         spend,
+            "impressions":   impr,
+            "clicks":        clicks,
+            "leads":         leads,
+            "offsite_leads": offsite_leads,
+            "trials":        trials,
         }
 
         rows_written += 1
@@ -391,13 +393,14 @@ def run():
         if k not in studio_daily_fresh:
             studio_daily_fresh[k] = {
                 "date": r["date"], "studio_code": r["studio_code"],
-                "impressions": 0, "clicks": 0, "leads": 0, "trials": 0,
+                "impressions": 0, "clicks": 0, "leads": 0, "offsite_leads": 0, "trials": 0,
             }
         b = studio_daily_fresh[k]
-        b["impressions"] += r["impressions"]
-        b["clicks"]      += r["clicks"]
-        b["leads"]       += r["leads"]
-        b["trials"]      += r["trials"]
+        b["impressions"]   += r["impressions"]
+        b["clicks"]        += r["clicks"]
+        b["leads"]         += r["leads"]
+        b["offsite_leads"] += r.get("offsite_leads", 0)
+        b["trials"]        += r["trials"]
 
     studio_daily_idx.update(studio_daily_fresh)  # this run's window wins; older rows pass through
     studio_daily_out = sorted(studio_daily_idx.values(), key=lambda r: (r["date"], r["studio_code"]))
@@ -430,8 +433,13 @@ def run():
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start", default=None,
+                        help="Override fetch start date (YYYY-MM-DD). Default: last DAILY_LOOKBACK_DAYS days.")
+    args = parser.parse_args()
     try:
-        run()
+        run(start_override=args.start)
     except Exception as e:
         log.exception(f"❌ ETL failed: {e}")
         sys.exit(1)

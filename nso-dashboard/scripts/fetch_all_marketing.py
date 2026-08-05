@@ -141,10 +141,14 @@ def fetch_meta_ads(start_date, end_date):
             }],
         )
         for row in raw_rows:
-            leads, cost_per_lead = 0, 0.0
+            leads, offsite_leads, cost_per_lead = 0, 0, 0.0
             for action in (row.get("actions") or []):
-                if action.get("action_type") in ("lead", "offsite_conversion.fb_pixel_lead"):
-                    leads += int(float(action.get("value", 0)))
+                at = action.get("action_type")
+                v  = int(float(action.get("value", 0)))
+                if at == "lead":
+                    leads += v
+                elif at == "offsite_conversion.fb_pixel_lead":
+                    offsite_leads += v
             for cpa in (row.get("cost_per_action_type") or []):
                 if cpa.get("action_type") in ("lead", "offsite_conversion.fb_pixel_lead"):
                     cost_per_lead = float(cpa.get("value", 0))
@@ -163,6 +167,7 @@ def fetch_meta_ads(start_date, end_date):
                 "ctr":           round(safe(row.get("ctr")), 2),
                 "cpc":           round(safe(row.get("cpc")), 2),
                 "leads":         leads,
+                "offsite_leads": offsite_leads,
                 "cost_per_lead": round(cost_per_lead, 2),
                 "thumbnail_url": creative.get("thumbnail_url", ""),
                 "image_url":     creative.get("image_url", ""),
