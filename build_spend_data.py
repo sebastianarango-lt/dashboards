@@ -5,9 +5,27 @@ Combines Meta Ads and Google Ads studio-level spend into a single file:
 
   spend-data.json
   ├── daily   — one row per (date, studio_code) for ALL of 2026
-  │             Jan–Mar 2026: monthly totals distributed evenly across days
-  │             Apr 2026+:    actual daily API data
+  │             Jan–Mar 2026: monthly totals distributed evenly across days,
+  │             unless a baked real-daily source covers that month (see below)
+  │             Apr 2026+:    actual daily API data (live ad_daily/daily, or
+  │                           a platform's *-ads-baked.json studio_daily for
+  │                           a range manually backfilled via
+  │                           backfill_meta_month.py / backfill_google_range.py)
+  │             a month with neither live nor baked daily data falls back to
+  │             its studio_monthly total, distributed evenly across days
   └── monthly — one row per (month, studio_code) for everything before 2026
+
+`daily` is a SELF-ACCUMULATING LEDGER, not a stateless recompute: each run
+loads its own prior output as a base and only overwrites the (date,
+studio_code) cells its current sources actually supply a value for. A cell
+that ages out of every live/baked source this run — because a platform's
+source file failed to load, or a date simply isn't covered by anything
+currently available — is left exactly as it was, never reset to zero. This
+is what makes "keep daily spend until new order" hold even as the underlying
+90-day rolling windows (ad_daily, google daily) roll forward. `monthly`
+(pre-2026) has no such requirement — its own inputs (meta-ads-baked.json's
+studio_monthly, google-ads-data.json's monthly) are already permanent and
+append-only, so it's recomputed fresh from scratch every run.
 
 Run after fetch_meta_ads.py and fetch_google_ads.py have written their files.
 """
@@ -17,12 +35,13 @@ import calendar
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-REPO_ROOT       = Path(__file__).resolve().parent
-META_BAKED_PATH = REPO_ROOT / "meta-ads-baked.json"
-META_LIVE_PATH  = REPO_ROOT / "meta-ads-data.json"
-GOOGLE_PATH     = REPO_ROOT / "google-ads-data.json"
-STUDIOS_PATH    = REPO_ROOT / "studios.json"
-OUT_PATH        = REPO_ROOT / "spend-data.json"
+REPO_ROOT        = Path(__file__).resolve().parent
+META_BAKED_PATH   = REPO_ROOT / "meta-ads-baked.json"
+META_LIVE_PATH    = REPO_ROOT / "meta-ads-data.json"
+GOOGLE_PATH       = REPO_ROOT / "google-ads-data.json"
+GOOGLE_BAKED_PATH = REPO_ROOT / "google-ads-baked.json"
+STUDIOS_PATH      = REPO_ROOT / "studios.json"
+OUT_PATH          = REPO_ROOT / "spend-data.json"
 
 DAILY_START_YEAR = 2026   # all of this year is represented as daily rows
 
@@ -58,6 +77,7 @@ def run():
     meta_baked   = load_json(META_BAKED_PATH)
     meta_live    = load_json(META_LIVE_PATH)
     google_raw   = load_json(GOOGLE_PATH)
+    google_baked = load_json(GOOGLE_BAKED_PATH)  # optional — may not exist yet
 
     # ── Build nametocode lookup from studios.json ─────────────────────
     studios_list = studios_raw.get("studios", studios_raw) if isinstance(studios_raw, dict) else studios_raw
@@ -73,12 +93,21 @@ def run():
         k = (r["month"][:7], r["studio_code"])
         meta_monthly[k] = meta_monthly.get(k, 0) + (r.get("spend") or 0)
 
-
     # ── 2. Collect Meta daily rows (Apr 2026+) ───────────────────────
     meta_daily: dict[tuple, float] = {}
     for r in meta_live.get("ad_daily", []):
         d = r.get("date", "")
         if d[:4] == str(DAILY_START_YEAR) and d >= f"{DAILY_START_YEAR}-04-01":
+            k = (d, r["studio_code"])
+            meta_daily[k] = meta_daily.get(k, 0) + (r.get("spend") or 0)
+
+    # Baked real daily rows — e.g. a one-time backfill_meta_month.py run, or a
+    # user-supplied import for a range that aged out of ad_daily's 90-day
+    # window (or predates it, e.g. Jan–Mar). Preserves true daily granularity
+    # instead of falling back to a flattened monthly total for that range.
+    for r in meta_baked.get("studio_daily", []):
+        d = r.get("date", "")
+        if d[:4] == str(DAILY_START_YEAR):
             k = (d, r["studio_code"])
             meta_daily[k] = meta_daily.get(k, 0) + (r.get("spend") or 0)
 
@@ -104,44 +133,71 @@ def run():
             k = (d, code)
             google_daily[k] = google_daily.get(k, 0) + (r.get("spend") or 0)
 
-    # ── 5. Build daily output rows for all of 2026 ───────────────────
-    # Jan–Mar 2026: distribute from monthly totals
-    # Apr 2026+:    use actual daily data
-
-    daily_out: dict[tuple, dict] = {}
-
-    def upsert_daily(date_str, code, meta=0.0, google=0.0):
-        k = (date_str, code)
-        if k not in daily_out:
-            daily_out[k] = {"date": date_str, "studio_code": code, "meta_spend": 0.0, "google_spend": 0.0}
-        daily_out[k]["meta_spend"]   = round(daily_out[k]["meta_spend"]   + meta,   4)
-        daily_out[k]["google_spend"] = round(daily_out[k]["google_spend"] + google, 4)
-
-    # Jan–Mar 2026 from Meta monthly
-    for (mo, code), spend in meta_monthly.items():
-        if mo[:4] == str(DAILY_START_YEAR):
-            for row in distribute_monthly_to_days(mo, spend, code):
-                upsert_daily(row["date"], code, meta=row["daily"])
-
-    # Jan–Mar 2026 from Google monthly (pull 2026 months from google_raw.monthly)
-    for r in google_raw.get("monthly", []):
-        mo = r.get("month", "")[:7]
-        if mo[:4] == str(DAILY_START_YEAR) and mo < f"{DAILY_START_YEAR}-04":
+    # Baked real daily rows for Google — e.g. a one-time
+    # backfill_google_range.py run for a gap or a Jan–Mar real-daily upgrade.
+    for r in google_baked.get("studio_daily", []):
+        d = r.get("date", "")
+        if d[:4] == str(DAILY_START_YEAR):
             code = name_to_code.get(r.get("studio", ""))
             if not code:
                 continue
-            for row in distribute_monthly_to_days(mo, r.get("spend") or 0, code):
-                upsert_daily(row["date"], code, google=row["daily"])
+            k = (d, code)
+            google_daily[k] = google_daily.get(k, 0) + (r.get("spend") or 0)
 
-    # Apr 2026+ Meta daily
+    # ── 5. Self-accumulating daily ledger ────────────────────────────
+    # Seed from spend-data.json's OWN prior output, not from scratch. Only
+    # cells this run's fresh sources (above) actually touch get overwritten;
+    # everything else — including a platform whose source file failed to
+    # load this run, which naturally contributes nothing above — is carried
+    # forward untouched. This is what "keep until new order" means in practice.
+    existing_out = load_json(OUT_PATH)
+    daily_out: dict[tuple, dict] = {
+        (r["date"], r["studio_code"]): {
+            "date":         r["date"],
+            "studio_code":  r["studio_code"],
+            "meta_spend":   r.get("meta_spend", 0.0),
+            "google_spend": r.get("google_spend", 0.0),
+        }
+        for r in existing_out.get("daily", [])
+    }
+
+    def row(date_str, code):
+        k = (date_str, code)
+        if k not in daily_out:
+            daily_out[k] = {"date": date_str, "studio_code": code, "meta_spend": 0.0, "google_spend": 0.0}
+        return daily_out[k]
+
+    # Jan–Mar 2026 from Meta monthly, distributed across days (only for
+    # months not already covered by real daily data above)
+    for (mo, code), spend in meta_monthly.items():
+        if mo[:4] == str(DAILY_START_YEAR):
+            for r in distribute_monthly_to_days(mo, spend, code):
+                row(r["date"], code)["meta_spend"] = round(r["daily"], 4)
+
+    # 2026 months from Google monthly not already covered by google_daily —
+    # normally just Jan-Mar (pre-daily-window), but also picks up any later
+    # 2026 month whose daily rows have aged out of google-ads-data.json's
+    # 90-day window and been folded into its "monthly" bucket instead.
+    google_daily_months = {d[:7] for (d, _code) in google_daily}
+    for r in google_raw.get("monthly", []):
+        mo = r.get("month", "")[:7]
+        if mo[:4] == str(DAILY_START_YEAR) and mo not in google_daily_months:
+            code = name_to_code.get(r.get("studio", ""))
+            if not code:
+                continue
+            for dr in distribute_monthly_to_days(mo, r.get("spend") or 0, code):
+                row(dr["date"], code)["google_spend"] = round(dr["daily"], 4)
+
+    # Apr 2026+ Meta daily (live ad_daily + baked real-daily, combined above)
     for (d, code), spend in meta_daily.items():
-        upsert_daily(d, code, meta=spend)
+        row(d, code)["meta_spend"] = round(spend, 4)
 
-    # Apr 2026+ Google daily
+    # Apr 2026+ Google daily (live daily + baked real-daily, combined above)
     for (d, code), spend in google_daily.items():
-        upsert_daily(d, code, google=spend)
+        row(d, code)["google_spend"] = round(spend, 4)
 
-    # ── 6. Build monthly output rows (pre-2026) ──────────────────────
+    # ── 6. Build monthly output rows (pre-2026) — stateless, recomputed ──
+    # fresh every run since its own inputs are already permanent/append-only.
     all_keys = set(meta_monthly.keys()) | set(google_monthly.keys())
     monthly_out = []
     for (mo, code) in sorted(all_keys):
@@ -166,7 +222,8 @@ def run():
 
     print(
         f"OK Wrote {OUT_PATH.name} — "
-        f"{len(daily_list)} daily rows, {len(monthly_out)} monthly rows"
+        f"{len(daily_list)} daily rows ({len(existing_out.get('daily', []))} carried in from prior run), "
+        f"{len(monthly_out)} monthly rows"
     )
     daily_months = sorted(set(r["date"][:7] for r in daily_list))
     if daily_months:
